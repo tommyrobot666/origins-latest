@@ -29,6 +29,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.resources.RegistryOps;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.packs.PackType;
+import net.minecraft.server.packs.resources.PreparableReloadListener;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.util.Util;
@@ -42,7 +43,7 @@ import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 import java.util.stream.IntStream;
 
-public class OriginLayerManager extends IdentifiableMultiJsonDataLoader implements IdPreparableReloadListener {
+public class OriginLayerManager extends IdentifiableMultiJsonDataLoader implements PreparableReloadListener {
 
     public static final Set<Identifier> DEPENDENCIES = Util.make(new ObjectOpenHashSet<>(), set -> set.add(OriginManager.ID));
     public static final Identifier ID = Origins.identifier("origin_layers");
