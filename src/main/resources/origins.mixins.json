@@ -11,17 +11,13 @@
         "LikeWaterMixin",
         "LivingEntityAccessor",
       "MobAccessor",
-        "OriginUpgradeMixin",
         "ScareCreepersMixin",
         "SelectionInvulnerabilityMixin",
-        "TargetPredicateAccessor",
       "TargetGoalAccessor",
         "WaterBreathingMixin$BreathingImpl",
         "WaterBreathingMixin$TurtleHelmetProxy"
     ],
     "client": [
-        "DrawContextAccessor",
-        "KeyBindingAccessor",
         "WaterVisionMixin"
     ],
     "injectors": {

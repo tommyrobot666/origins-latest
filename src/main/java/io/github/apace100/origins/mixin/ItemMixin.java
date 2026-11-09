@@ -3,14 +3,13 @@ package io.github.apace100.origins.mixin;
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import io.github.apace100.origins.component.item.ItemOriginsComponent;
 import io.github.apace100.origins.registry.ModDataComponentTypes;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.stat.Stats;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
-import net.minecraft.util.TypedActionResult;
-import net.minecraft.world.World;
+import net.minecraft.stats.Stats;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
@@ -18,21 +17,21 @@ import org.spongepowered.asm.mixin.injection.At;
 public abstract class ItemMixin {
 
     @ModifyReturnValue(method = "use", at = @At("RETURN"))
-    private TypedActionResult<ItemStack> origins$selectItemOrigins(TypedActionResult<ItemStack> original, World world, PlayerEntity user, Hand hand) {
+    private InteractionResult origins$selectItemOrigins(InteractionResult original, final Level level, final Player player, final InteractionHand hand) {
 
-        if (original.getResult() != ActionResult.PASS) {
+        if (original != InteractionResult.PASS) {
             return original;
         }
 
-        ItemStack stack = original.getValue();
+        ItemStack stack = player.getItemInHand(hand);
         ItemOriginsComponent itemOrigins = stack.get(ModDataComponentTypes.ORIGIN);
 
-        if (itemOrigins != null && itemOrigins.setOrigin(user)) {
+        if (itemOrigins != null && itemOrigins.setOrigin(player)) {
 
-            user.incrementStat(Stats.USED.getOrCreateStat((Item) (Object) this));
-            stack.decrementUnlessCreative(1, user);
+            player.awardStat(Stats.ITEM_USED.get((Item) (Object) this));
+            stack.consume(1, player);
 
-            return TypedActionResult.consume(stack);
+            return InteractionResult.CONSUME;//TypedActionResult.consume(stack);
 
         }
 
