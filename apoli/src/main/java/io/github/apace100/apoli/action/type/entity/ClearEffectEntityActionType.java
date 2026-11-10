@@ -10,7 +10,7 @@
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.entity.effect.StatusEffect;
-//import net.minecraft.registry.entry.RegistryEntry;
+//import net.minecraft.registry.entry.Holder;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.List;
@@ -28,9 +28,9 @@
 //            .set("effects", actionType.effects)
 //    );
 //
-//    private final List<RegistryEntry<StatusEffect>> effects;
+//    private final List<Holder<StatusEffect>> effects;
 //
-//    public ClearEffectEntityActionType(List<RegistryEntry<StatusEffect>> effects) {
+//    public ClearEffectEntityActionType(List<Holder<StatusEffect>> effects) {
 //        this.effects = effects;
 //    }
 //

@@ -16,7 +16,7 @@ import net.minecraft.entity.attribute.AttributeContainer;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeInstance;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
-import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.registry.entry.Holder;
 import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.NotNull;
 
@@ -45,11 +45,11 @@ public class AttributeModifyTransferPowerType extends PowerType {
     );
 
     private final Class<?> modifyClass;
-    private final RegistryEntry<EntityAttribute> attribute;
+    private final Holder<EntityAttribute> attribute;
 
     private final double valueMultiplier;
 
-    public AttributeModifyTransferPowerType(Class<?> modifyClass, RegistryEntry<EntityAttribute> attribute, double valueMultiplier, Optional<EntityCondition> condition) {
+    public AttributeModifyTransferPowerType(Class<?> modifyClass, Holder<EntityAttribute> attribute, double valueMultiplier, Optional<EntityCondition> condition) {
         super(condition);
         this.modifyClass = modifyClass;
         this.attribute = attribute;

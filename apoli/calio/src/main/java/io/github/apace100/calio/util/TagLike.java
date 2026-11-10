@@ -7,10 +7,9 @@ import io.github.apace100.calio.data.DataException;
 import io.github.apace100.calio.mixin.HolderSetBackedAccessor;
 import io.github.apace100.calio.mixin.TagEntryAccessor;
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import net.minecraft.core.*;
 import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.registry.*;
-import net.minecraft.registry.entry.RegistryEntry;
-import net.minecraft.core.HolderSet;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.TagEntry;
 import net.minecraft.tags.TagKey;
 import net.minecraft.resources.Identifier;
@@ -21,13 +20,13 @@ import java.util.*;
 @SuppressWarnings("unused")
 public class TagLike<T> {
 
-    private final RegistryKey<? extends Registry<T>> registryRef;
+    private final ResourceKey<? extends Registry<T>> registryRef;
     private final ImmutableSet<TagEntry> tagEntries;
 
-    private final ImmutableMap<RegistryKey<T>, T> elementsByKey;
+    private final ImmutableMap<ResourceKey<T>, T> elementsByKey;
     private final ImmutableMap<TagKey<T>, Collection<T>> elementsByTag;
 
-    protected TagLike(RegistryKey<? extends Registry<T>> registryRef, Map<RegistryKey<T>, T> elementsByKey, Map<TagKey<T>, Collection<T>> elementsByTag, Collection<TagEntry> tagEntries) {
+    protected TagLike(ResourceKey<? extends Registry<T>> registryRef, Map<ResourceKey<T>, T> elementsByKey, Map<TagKey<T>, Collection<T>> elementsByTag, Collection<TagEntry> tagEntries) {
         this.registryRef = registryRef;
         this.elementsByKey = ImmutableMap.copyOf(elementsByKey);
         this.elementsByTag = ImmutableMap.copyOf(elementsByTag);
@@ -45,39 +44,39 @@ public class TagLike<T> {
 
     public void write(RegistryFriendlyByteBuf buf) {
 
-        buf.writeRegistryKey(registryRef);
+        buf.writeResourceKey(registryRef);
         CalioPacketCodecs.TAG_ENTRY_SET.encode(buf, entries());
 
-        buf.writeBoolean(SerializableRegistries.SYNCED_REGISTRIES.contains(registryRef));
+        buf.writeBoolean(RegistrySynchronization.isNetworkable(registryRef));
 
     }
 
     public static <T> TagLike<T> read(RegistryFriendlyByteBuf buf) {
 
-        RegistryKey<? extends Registry<T>> registryRef = buf.readRegistryRefKey();
+        ResourceKey<? extends Registry<T>> registryRef = buf.readRegistryKey();
         Set<TagEntry> tagEntries = CalioPacketCodecs.TAG_ENTRY_SET.decode(buf);
 
         boolean syncedRegistry = buf.readBoolean();
         return syncedRegistry
-            ? builder(registryRef).build(buf.getRegistryManager().getWrapperOrThrow(registryRef))
+            ? builder(registryRef).build(buf.registryAccess().getOrThrow(registryRef).value())
             : new TagLike<>(registryRef, Map.of(), Map.of(), tagEntries);
 
     }
 
-    public static <T> Builder<T> builder(RegistryKey<? extends Registry<T>> registryRef) {
+    public static <T> Builder<T> builder(ResourceKey<? extends Registry<T>> registryRef) {
         return new Builder<>(registryRef);
     }
 
-    public static <T> Builder<T> builder(RegistryKey<? extends Registry<T>> registryRef, Collection<TagEntry> tagEntries) {
+    public static <T> Builder<T> builder(ResourceKey<? extends Registry<T>> registryRef, Collection<TagEntry> tagEntries) {
         return new Builder<>(registryRef, tagEntries);
     }
 
     public static class Builder<E> {
 
-        private final RegistryKey<? extends Registry<E>> registryRef;
+        private final ResourceKey<? extends Registry<E>> registryRef;
         private final Set<TagEntry> tagEntries;
 
-        public Builder(RegistryKey<? extends Registry<E>> registryRef) {
+        public Builder(ResourceKey<? extends Registry<E>> registryRef) {
             this.registryRef = registryRef;
             this.tagEntries = new ObjectOpenHashSet<>();
         }
@@ -87,7 +86,7 @@ public class TagLike<T> {
             this.tagEntries = new ObjectOpenHashSet<>(tagLike.entries());
         }
 
-        public Builder(RegistryKey<? extends Registry<E>> registryRef, Collection<TagEntry> tagEntries) {
+        public Builder(ResourceKey<? extends Registry<E>> registryRef, Collection<TagEntry> tagEntries) {
             this.registryRef = registryRef;
             this.tagEntries = new ObjectOpenHashSet<>(tagEntries);
         }
@@ -112,9 +111,9 @@ public class TagLike<T> {
         }
 
         @SuppressWarnings("unchecked")
-        public TagLike<E> build(@NotNull RegistryEntryLookup<E> entryLookup) {
+        public TagLike<E> build(@NotNull HolderGetter<E> entryLookup) {
 
-            Map<RegistryKey<E>, E> elementsByKey = new HashMap<>();
+            Map<ResourceKey<E>, E> elementsByKey = new HashMap<>();
             Map<TagKey<E>, Collection<E>> elementsByTag = new HashMap<>();
 
             Set<TagEntry> tagEntries = new HashSet<>();
@@ -130,19 +129,19 @@ public class TagLike<T> {
 
                 if (isTag) {
 
-                    TagKey<E> tag = TagKey.of(registryRef, id);
-                    Optional<HolderSet.Named<E>> entries = entryLookup.getOptional(tag);
+                    TagKey<E> tag = TagKey.create(registryRef, id);
+                    Optional<HolderSet.Named<E>> entries = entryLookup.get(tag);
 
                     if (required && entries.isEmpty()) {
-                        throw new DataException(DataException.Phase.READING, index, "Tag \"" + id + "\" for registry \"" + registryRef.getValue() + "\" doesn't exist!");
+                        throw new DataException(DataException.Phase.READING, index, "Tag \"" + id + "\" for registry \"" + registryRef.identifier() + "\" doesn't exist!");
                     }
 
                     else if (entries.isPresent()) {
                         Collection<E> elements = elementsByTag.computeIfAbsent(tag, k -> new ObjectOpenHashSet<>());
                         entries.stream()
-                            .map(registryEntries -> ((HolderSetBackedAccessor<E>) registryEntries).callGetEntries())
+                            .map(registryEntries -> ((HolderSetBackedAccessor<E>) registryEntries).callContents())
                             .flatMap(Collection::stream)
-                            .map(RegistryEntry::value)
+                            .map(Holder::value)
                             .forEach(elements::add);
                     }
 
@@ -150,11 +149,11 @@ public class TagLike<T> {
 
                 else {
 
-                    RegistryKey<E> key = RegistryKey.of(registryRef, id);
-                    Optional<RegistryEntry.Reference<E>> entry = entryLookup.getOptional(key);
+                    ResourceKey<E> key = ResourceKey.create(registryRef, id);
+                    Optional<Holder.Reference<E>> entry = entryLookup.get(key);
 
                     if (required && entry.isEmpty()) {
-                        throw new DataException(DataException.Phase.READING, index, "Type \"" + id + "\" is not registered in registry \"" + registryRef.getValue() + "\"!");
+                        throw new DataException(DataException.Phase.READING, index, "Type \"" + id + "\" is not registered in registry \"" + registryRef.identifier() + "\"!");
                     }
 
                     else {

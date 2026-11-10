@@ -8,7 +8,7 @@
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.entity.effect.StatusEffect;
 //import net.minecraft.entity.effect.StatusEffectInstance;
-//import net.minecraft.registry.entry.RegistryEntry;
+//import net.minecraft.registry.entry.Holder;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.List;
@@ -31,10 +31,10 @@
 //            .set("inverted", powerType.inverted)
 //    );
 //
-//    protected final List<RegistryEntry<StatusEffect>> effects;
+//    protected final List<Holder<StatusEffect>> effects;
 //    protected final boolean inverted;
 //
-//    public EffectImmunityPowerType(List<RegistryEntry<StatusEffect>> effects, boolean inverted, Optional<EntityCondition> condition) {
+//    public EffectImmunityPowerType(List<Holder<StatusEffect>> effects, boolean inverted, Optional<EntityCondition> condition) {
 //        super(condition);
 //        this.effects = effects;
 //        this.inverted = inverted;
@@ -49,7 +49,7 @@
 //        return doesApply(instance.getEffectType());
 //    }
 //
-//    public boolean doesApply(RegistryEntry<StatusEffect> effect) {
+//    public boolean doesApply(Holder<StatusEffect> effect) {
 //        return inverted ^ effects.contains(effect);
 //    }
 //

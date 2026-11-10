@@ -48,7 +48,7 @@
 //    }
 //
 //    @Override
-//    public ItemStack craft(CraftingRecipeInput input, RegistryWrapper.WrapperLookup lookup) {
+//    public ItemStack craft(CraftingRecipeInput input, HolderLookup.Provider lookup) {
 //        return delegate().craft(input, lookup);
 //    }
 //
@@ -58,7 +58,7 @@
 //    }
 //
 //    @Override
-//    public ItemStack getResult(RegistryWrapper.WrapperLookup registriesLookup) {
+//    public ItemStack getResult(HolderLookup.Provider registriesLookup) {
 //        return delegate().getResult(registriesLookup);
 //    }
 //

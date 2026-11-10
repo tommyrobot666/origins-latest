@@ -35,7 +35,7 @@
 //
 //    @Shadow private static float blue;
 //
-//    @ModifyExpressionValue(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;hasStatusEffect(Lnet/minecraft/registry/entry/RegistryEntry;)Z", ordinal = 0))
+//    @ModifyExpressionValue(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;hasStatusEffect(Lnet/minecraft/registry/entry/Holder;)Z", ordinal = 0))
 //    private static boolean apoli$nightVisionProxy(boolean original, @Local Entity cameraFocusedEntity) {
 //        return original
 //            || PowerHolderComponent.hasPowerType(cameraFocusedEntity, NightVisionPowerType.class);

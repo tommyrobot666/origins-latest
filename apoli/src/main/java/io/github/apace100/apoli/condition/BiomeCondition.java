@@ -5,7 +5,7 @@
 //import io.github.apace100.apoli.condition.type.BiomeConditionTypes;
 //import io.github.apace100.apoli.data.ApoliDataTypes;
 //import io.github.apace100.calio.data.SerializableDataType;
-//import net.minecraft.registry.entry.RegistryEntry;
+//import net.minecraft.registry.entry.Holder;
 //import net.minecraft.util.math.BlockPos;
 //import net.minecraft.world.biome.Biome;
 //
@@ -21,7 +21,7 @@
 //		this(conditionType, false);
 //	}
 //
-//	public boolean test(BlockPos pos, RegistryEntry<Biome> biomeEntry) {
+//	public boolean test(BlockPos pos, Holder<Biome> biomeEntry) {
 //		return test(new BiomeConditionContext(pos, biomeEntry));
 //	}
 //

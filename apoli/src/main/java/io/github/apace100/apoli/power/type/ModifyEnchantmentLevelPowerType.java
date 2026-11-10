@@ -31,9 +31,9 @@
 //import net.minecraft.inventory.StackReference;
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.core.Registry;
-//import net.minecraft.registry.RegistryKey;
+//import net.minecraft.registry.ResourceKey;
 //import net.minecraft.core.registries.Registries;
-//import net.minecraft.registry.entry.RegistryEntry;
+//import net.minecraft.registry.entry.Holder;
 //import net.minecraft.server.command.CommandSourceStack;
 //import net.minecraft.text.MutableText;
 //import net.minecraft.network.chat.Component;
@@ -75,10 +75,10 @@
 //        .weakKeys()
 //        .build();
 //
-//    private final RegistryKey<Enchantment> enchantmentKey;
+//    private final ResourceKey<Enchantment> enchantmentKey;
 //    private final Optional<ItemCondition> itemCondition;
 //
-//    public ModifyEnchantmentLevelPowerType(RegistryKey<Enchantment> enchantmentKey, Optional<ItemCondition> itemCondition, List<Modifier> modifiers, Optional<EntityCondition> condition) {
+//    public ModifyEnchantmentLevelPowerType(ResourceKey<Enchantment> enchantmentKey, Optional<ItemCondition> itemCondition, List<Modifier> modifiers, Optional<EntityCondition> condition) {
 //        super(modifiers, condition);
 //        this.enchantmentKey = enchantmentKey;
 //        this.itemCondition = itemCondition;
@@ -267,7 +267,7 @@
 //        //  ...iterate through every power type without checking if it's active again (to eliminate unnecessary checks)
 //        for (var powerType : PowerHolderComponent.getPowerTypes(entity, ModifyEnchantmentLevelPowerType.class, true)) {
 //
-//            RegistryEntry.Reference<Enchantment> enchantmentReference = enchantmentRegistry.getEntry(powerType.enchantmentKey).orElseThrow();
+//            Holder.Reference<Enchantment> enchantmentReference = enchantmentRegistry.getEntry(powerType.enchantmentKey).orElseThrow();
 //            int enchantmentId = enchantmentRegistry.getRawId(enchantmentReference.value());
 //
 //            //  If the specified enchantment in the power type hasn't been processed yet...

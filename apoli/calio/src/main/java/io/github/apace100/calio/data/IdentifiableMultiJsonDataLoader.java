@@ -90,7 +90,7 @@ public abstract class IdentifiableMultiJsonDataLoader extends ExtendedSinglePrep
     }
 
     @Override
-    protected void preApply(MultiJsonDataContainer prepared, ResourceManager manager, Profiler profiler) {
+    protected void preApply(MultiJsonDataContainer prepared, ResourceManager manager, ProfilerFiller profiler) {
 
         var preparedIterator = prepared.entrySet().iterator();
         while (preparedIterator.hasNext()) {

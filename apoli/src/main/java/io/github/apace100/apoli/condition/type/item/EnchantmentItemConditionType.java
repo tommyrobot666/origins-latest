@@ -13,7 +13,7 @@
 //import net.minecraft.component.type.ItemEnchantmentsComponent;
 //import net.minecraft.enchantment.Enchantment;
 //import net.minecraft.world.item.ItemStack;
-//import net.minecraft.registry.RegistryKey;
+//import net.minecraft.registry.ResourceKey;
 //import net.minecraft.core.registries.Registries;
 //import net.minecraft.world.Level;
 //import org.jetbrains.annotations.NotNull;
@@ -41,13 +41,13 @@
 //            .set("compare_to", conditionType.compareTo)
 //    );
 //
-//    private final Optional<RegistryKey<Enchantment>> enchantmentKey;
+//    private final Optional<ResourceKey<Enchantment>> enchantmentKey;
 //    private final boolean useModifications;
 //
 //    private final Comparison comparison;
 //    private final int compareTo;
 //
-//    public EnchantmentItemConditionType(Optional<RegistryKey<Enchantment>> enchantmentKey, boolean useModifications, Comparison comparison, int compareTo) {
+//    public EnchantmentItemConditionType(Optional<ResourceKey<Enchantment>> enchantmentKey, boolean useModifications, Comparison comparison, int compareTo) {
 //        this.enchantmentKey = enchantmentKey;
 //        this.useModifications = useModifications;
 //        this.comparison = comparison;

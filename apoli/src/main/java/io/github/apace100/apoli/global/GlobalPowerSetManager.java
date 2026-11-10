@@ -50,9 +50,9 @@ public class GlobalPowerSetManager extends IdentifiableMultiJsonDataLoader imple
         .setPrettyPrinting()
         .create();
 
-    private final RegistryWrapper.WrapperLookup wrapperLookup;
+    private final HolderLookup.Provider wrapperLookup;
 
-    GlobalPowerSetManager(RegistryWrapper.WrapperLookup wrapperLookup) {
+    GlobalPowerSetManager(HolderLookup.Provider wrapperLookup) {
         super(GSON, "global_powers", PackType.SERVER_DATA);
         this.wrapperLookup = wrapperLookup;
     }

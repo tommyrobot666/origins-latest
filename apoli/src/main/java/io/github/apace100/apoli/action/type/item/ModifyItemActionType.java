@@ -15,7 +15,7 @@
 //import net.minecraft.loot.context.LootContextParameterSet;
 //import net.minecraft.loot.context.LootContextParameters;
 //import net.minecraft.loot.function.LootFunction;
-//import net.minecraft.registry.RegistryKey;
+//import net.minecraft.registry.ResourceKey;
 //import net.minecraft.core.registries.Registries;
 //import net.minecraft.server.level.ServerLevel;
 //import org.jetbrains.annotations.NotNull;
@@ -34,9 +34,9 @@
 //            .set("modifier", actionType.modifier)
 //    );
 //
-//    private final RegistryKey<LootFunction> modifier;
+//    private final ResourceKey<LootFunction> modifier;
 //
-//    public ModifyItemActionType(RegistryKey<LootFunction> modifier) {
+//    public ModifyItemActionType(ResourceKey<LootFunction> modifier) {
 //        this.modifier = modifier;
 //    }
 //

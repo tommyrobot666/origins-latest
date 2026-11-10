@@ -50,7 +50,7 @@
 //    }
 //
 //    @Override
-//    public ItemStack craft(CraftingRecipeInput input, RegistryWrapper.WrapperLookup lookup) {
+//    public ItemStack craft(CraftingRecipeInput input, HolderLookup.Provider lookup) {
 //
 //        if (input instanceof PowerCraftingInventory pci) {
 //
@@ -73,7 +73,7 @@
 //    }
 //
 //    @Override
-//    public ItemStack getResult(RegistryWrapper.WrapperLookup registriesLookup) {
+//    public ItemStack getResult(HolderLookup.Provider registriesLookup) {
 //        return delegate().getResult(registriesLookup);
 //    }
 //
@@ -112,7 +112,7 @@
 //        return delegate().getGroup();
 //    }
 //
-//    public Pair<ItemStack, Collection<ModifyCraftingPowerType>> getModifiedResult(RegistryWrapper.WrapperLookup registriesLookup, @Nullable Player player) {
+//    public Pair<ItemStack, Collection<ModifyCraftingPowerType>> getModifiedResult(HolderLookup.Provider registriesLookup, @Nullable Player player) {
 //        return getModifiedResult(id(), delegate(), registriesLookup, player);
 //    }
 //
@@ -131,7 +131,7 @@
 //            && PowerHolderComponent.hasPowerType(player, ModifyCraftingPowerType.class, mcpt -> mcpt.doesApply(id, craftingRecipe.getResult(player.getRegistryManager())));
 //    }
 //
-//    public static Pair<ItemStack, Collection<ModifyCraftingPowerType>> getModifiedResult(Identifier id, CraftingRecipe craftingRecipe, RegistryWrapper.WrapperLookup registriesLookup, @Nullable Player player) {
+//    public static Pair<ItemStack, Collection<ModifyCraftingPowerType>> getModifiedResult(Identifier id, CraftingRecipe craftingRecipe, HolderLookup.Provider registriesLookup, @Nullable Player player) {
 //
 //        ItemStack resultStack = craftingRecipe.getResult(registriesLookup).copy();
 //        StackReference newStackRef = InventoryUtil.createStackReference(resultStack);

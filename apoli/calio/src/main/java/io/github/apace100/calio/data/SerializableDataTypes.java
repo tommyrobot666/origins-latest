@@ -30,6 +30,7 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.tags.TagEntry;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.Attribute;
@@ -364,63 +365,6 @@ public final class SerializableDataTypes {
 				};
 			}
 		)
-	);
-
-	/**
-	 * 	<p>A data type for decoding/encoding a {@link Holder<Item>} formatted as an object with a {@code tag} key
-	 * 	(to define an item tag, e.g: {@code {"tag": "minecraft:meat"}}) or an {@code item} key (to define an item, e.g:
-	 * 	{@code {"item": "minecraft:diamond"}}</p>
-	 *
-	 * 	 <p>This data type also allows for defining an empty item stack entry (e.g: {@code minecraft:air}), compared to
-	 * 	 {@link Holder<Item>#CODEC}, which doesn't. This is <b>deprecated</b> in favor of using
-	 * 	 {@link #INLINE_INGREDIENT_ENTRY} since vanilla will use a similar format in the future.</p>
-	 */
-	@Deprecated(since = "1.14.0-alpha.7")
-	public static final SerializableDataType<Holder<Item>> OBJECT_INGREDIENT_ENTRY = SerializableDataType.compound(
-		new SerializableData()
-			.add("item", ITEM, null)
-			.add("tag", ITEM_TAG, null)
-			.validate(data -> {
-
-				boolean hasItem = data.isPresent("item");
-				boolean hasTag = data.isPresent("tag");
-
-				if (hasItem == hasTag) {
-					return DataResult.error(() -> (hasItem ? "Both" : "Any of") + " \"item\" and \"tag\" fields " + (hasItem ? "shouldn't" : "must") + " be defined!");
-				}
-
-				else {
-					return DataResult.success(data);
-				}
-
-			}),
-		data -> {
-
-			if (data.isPresent("item")) {
-
-				Item item = data.get("item");
-				ItemStack stack = new ItemStack(item);
-
-				return new Ingredient.StackEntry(stack);
-
-			}
-
-			else {
-				return new Ingredient.TagEntry(data.get("tag"));
-			}
-
-		},
-		(entry, serializableData) -> {
-			SerializableData.Instance data = serializableData.instance();
-			return switch (entry) {
-				case Ingredient.StackEntry stackEntry ->
-					data.set("item", stackEntry.stack().getItem());
-				case Ingredient.TagEntry tagEntry ->
-					data.set("tag", tagEntry.tag());
-				default ->
-					throw new UnsupportedOperationException("Ingredient entry is not an item or a tag!");
-			};
-		}
 	);
 
 	/**
@@ -792,23 +736,6 @@ public final class SerializableDataTypes {
     public static final SerializableDataType<ActionResult> ACTION_RESULT = SerializableDataType.enumValue(ActionResult.class);
 
     public static final SerializableDataType<UseAction> USE_ACTION = SerializableDataType.enumValue(UseAction.class);
-
-	@Deprecated(forRemoval = true)
-    public static final CompoundSerializableDataType<StatusEffectChance> STATUS_EFFECT_CHANCE = SerializableDataType.compound(
-        new SerializableData()
-            .add("effect", STATUS_EFFECT_INSTANCE)
-            .add("chance", FLOAT, 1.0F),
-        data -> new StatusEffectChance(
-            data.get("effect"),
-            data.getFloat("chance")
-        ),
-        (effectChance, serializableData) -> serializableData.instance()
-            .set("effect", effectChance.statusEffectInstance())
-            .set("chance", effectChance.chance())
-    );
-
-	@Deprecated(forRemoval = true)
-    public static final SerializableDataType<List<StatusEffectChance>> STATUS_EFFECT_CHANCES = STATUS_EFFECT_CHANCE.list();
 
     public static final SerializableDataType<FoodProperties.StatusEffectEntry> FOOD_STATUS_EFFECT_ENTRY = SerializableDataType.of(FoodProperties.StatusEffectEntry.CODEC, FoodProperties.StatusEffectEntry.STREAM_CODEC);
 

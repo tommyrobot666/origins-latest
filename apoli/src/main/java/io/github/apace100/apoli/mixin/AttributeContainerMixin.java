@@ -8,7 +8,7 @@
 //import net.minecraft.entity.attribute.DefaultAttributeContainer;
 //import net.minecraft.entity.attribute.EntityAttribute;
 //import net.minecraft.entity.attribute.EntityAttributeInstance;
-//import net.minecraft.registry.entry.RegistryEntry;
+//import net.minecraft.registry.entry.Holder;
 //import org.jetbrains.annotations.Nullable;
 //import org.spongepowered.asm.mixin.Final;
 //import org.spongepowered.asm.mixin.Mixin;
@@ -41,7 +41,7 @@
 //    }
 //
 //    @Inject(method = "getCustomInstance", at = @At("RETURN"))
-//    private void apoli$setCustomAttributeInstanceOwner(RegistryEntry<EntityAttribute> attribute, CallbackInfoReturnable<EntityAttributeInstance> cir) {
+//    private void apoli$setCustomAttributeInstanceOwner(Holder<EntityAttribute> attribute, CallbackInfoReturnable<EntityAttributeInstance> cir) {
 //
 //        if (cir.getReturnValue() instanceof OwnableAttributeInstance ownableAttributeInstance) {
 //            ownableAttributeInstance.apoli$setOwner(this.apoli$getOwner());
@@ -50,7 +50,7 @@
 //    }
 //
 //    @Inject(method = "getValue", at = @At("RETURN"))
-//    private void apoli$setAttributeInstanceOwner(RegistryEntry<EntityAttribute> attribute, CallbackInfoReturnable<Double> cir, @Local EntityAttributeInstance attributeInstance) {
+//    private void apoli$setAttributeInstanceOwner(Holder<EntityAttribute> attribute, CallbackInfoReturnable<Double> cir, @Local EntityAttributeInstance attributeInstance) {
 //
 //        if (attributeInstance instanceof OwnableAttributeInstance ownableAttributeInstance) {
 //            ownableAttributeInstance.apoli$setOwner(this.apoli$getOwner());

@@ -15,13 +15,13 @@ import java.util.concurrent.ConcurrentHashMap;
 public class CalioServer {
 
 	@ApiStatus.Internal
-	public static final Map<TagKey<?>, Collection<RegistryAccess.RegistryEntry<?>>> REGISTRY_TAGS = new ConcurrentHashMap<>();
+	public static final Map<TagKey<?>, Collection<RegistryAccess.Holder<?>>> REGISTRY_TAGS = new ConcurrentHashMap<>();
 	@ApiStatus.Internal
 	public static final Map<Unit, RegistryAccess> DYNAMIC_REGISTRIES = new ConcurrentHashMap<>();
 	@ApiStatus.Internal
 	public static final Map<Unit, ReloadableServerResources> DATA_PACK_CONTENTS = new ConcurrentHashMap<>();
 
-	public static ImmutableMap<TagKey<?>, Collection<RegistryAccess.RegistryEntry<?>>> getRegistryTags() {
+	public static ImmutableMap<TagKey<?>, Collection<RegistryAccess.Holder<?>>> getRegistryTags() {
 		return ImmutableMap.copyOf(REGISTRY_TAGS);
 	}
 

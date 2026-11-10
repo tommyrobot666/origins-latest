@@ -12,7 +12,7 @@
 //import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.entity.attribute.EntityAttribute;
 //import net.minecraft.entity.attribute.EntityAttributeInstance;
-//import net.minecraft.registry.entry.RegistryEntry;
+//import net.minecraft.registry.entry.Holder;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.Optional;
@@ -35,12 +35,12 @@
 //            .set("compare_to", conditionType.compareTo)
 //    );
 //
-//    private final RegistryEntry<EntityAttribute> attribute;
+//    private final Holder<EntityAttribute> attribute;
 //
 //    private final Comparison comparison;
 //    private final double compareTo;
 //
-//    public AttributeEntityConditionType(RegistryEntry<EntityAttribute> attribute, Comparison comparison, double compareTo) {
+//    public AttributeEntityConditionType(Holder<EntityAttribute> attribute, Comparison comparison, double compareTo) {
 //        this.attribute = attribute;
 //        this.comparison = comparison;
 //        this.compareTo = compareTo;

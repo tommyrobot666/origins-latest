@@ -7,7 +7,7 @@
 //import io.github.apace100.apoli.data.TypedDataObjectFactory;
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
-//import net.minecraft.registry.entry.RegistryEntry;
+//import net.minecraft.registry.entry.Holder;
 //import net.minecraft.world.event.GameEvent;
 //import org.jetbrains.annotations.NotNull;
 //
@@ -23,9 +23,9 @@
 //            .set("event", actionType.event)
 //    );
 //
-//    private final RegistryEntry<GameEvent> event;
+//    private final Holder<GameEvent> event;
 //
-//    public EmitGameEventEntityActionType(RegistryEntry<GameEvent> event) {
+//    public EmitGameEventEntityActionType(Holder<GameEvent> event) {
 //        this.event = event;
 //    }
 //

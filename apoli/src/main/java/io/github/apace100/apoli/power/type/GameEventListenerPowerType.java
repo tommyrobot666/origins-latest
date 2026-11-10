@@ -14,7 +14,7 @@
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.world.entity.Entity;
 //import net.minecraft.world.entity.LivingEntity;
-//import net.minecraft.registry.entry.RegistryEntry;
+//import net.minecraft.registry.entry.Holder;
 //import net.minecraft.tags.TagKey;
 //import net.minecraft.server.level.ServerLevel;
 //import net.minecraft.util.math.BlockPos;
@@ -80,7 +80,7 @@
 //    private final Optional<BiEntityCondition> biEntityCondition;
 //    private final Optional<BlockCondition> blockCondition;
 //
-//    private final List<RegistryEntry<GameEvent>> gameEvents;
+//    private final List<Holder<GameEvent>> gameEvents;
 //    private final Optional<TagKey<GameEvent>> gameEventTag;
 //
 //    private final GameEventListener.TriggerOrder triggerOrder;
@@ -93,7 +93,7 @@
 //
 //    private EntityGameEventHandler<VibrationListener> gameEventHandler;
 //
-//    public GameEventListenerPowerType(Optional<BiEntityAction> biEntityAction, Optional<BiEntityCondition> biEntityCondition, Optional<BlockAction> blockAction, Optional<BlockCondition> blockCondition, List<RegistryEntry<GameEvent>> gameEvents, Optional<TagKey<GameEvent>> gameEventTag, GameEventListener.TriggerOrder triggerOrder, HudRender hudRender, int cooldownDuration, boolean showParticle, int range, Optional<EntityCondition> condition) {
+//    public GameEventListenerPowerType(Optional<BiEntityAction> biEntityAction, Optional<BiEntityCondition> biEntityCondition, Optional<BlockAction> blockAction, Optional<BlockCondition> blockCondition, List<Holder<GameEvent>> gameEvents, Optional<TagKey<GameEvent>> gameEventTag, GameEventListener.TriggerOrder triggerOrder, HudRender hudRender, int cooldownDuration, boolean showParticle, int range, Optional<EntityCondition> condition) {
 //        super(cooldownDuration, hudRender, condition);
 //
 //        this.biEntityAction = biEntityAction;
@@ -201,14 +201,14 @@
 //        }
 //
 //        @Override
-//        public boolean accepts(ServerLevel world, BlockPos pos, RegistryEntry<GameEvent> event, GameEvent.Emitter emitter) {
+//        public boolean accepts(ServerLevel world, BlockPos pos, Holder<GameEvent> event, GameEvent.Emitter emitter) {
 //            return GameEventListenerPowerType.this.canUse()
 //                && blockCondition.map(condition -> condition.test(world, pos)).orElse(true)
 //                && biEntityCondition.map(condition -> condition.test(emitter.sourceEntity(), getHolder())).orElse(true);
 //        }
 //
 //        @Override
-//        public void accept(ServerLevel world, BlockPos pos, RegistryEntry<GameEvent> event, @Nullable Entity sourceEntity, @Nullable Entity entity, float distance) {
+//        public void accept(ServerLevel world, BlockPos pos, Holder<GameEvent> event, @Nullable Entity sourceEntity, @Nullable Entity entity, float distance) {
 //
 //            GameEventListenerPowerType.this.use();
 //
@@ -222,7 +222,7 @@
 //            return gameEventTag.orElse(Vibrations.Callback.super.getTag());
 //        }
 //
-//        public boolean containsEvent(RegistryEntry<GameEvent> gameEvent) {
+//        public boolean containsEvent(Holder<GameEvent> gameEvent) {
 //            return gameEventTag.map(gameEvent::isIn).orElse(true)
 //                && (gameEvents.isEmpty() || gameEvents.contains(gameEvent));
 //        }

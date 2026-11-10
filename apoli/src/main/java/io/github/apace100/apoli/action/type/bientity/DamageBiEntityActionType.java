@@ -15,7 +15,7 @@
 //import net.minecraft.world.entity.Entity;
 //import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.entity.damage.DamageType;
-//import net.minecraft.registry.RegistryKey;
+//import net.minecraft.registry.ResourceKey;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.List;
@@ -54,12 +54,12 @@
 //            .set("modifiers", actionType.modifiers)
 //    );
 //
-//    private final RegistryKey<DamageType> damageType;
+//    private final ResourceKey<DamageType> damageType;
 //    private final Optional<Float> amount;
 //
 //    private final List<Modifier> modifiers;
 //
-//    public DamageBiEntityActionType(RegistryKey<DamageType> damageType, Optional<Float> amount, List<Modifier> modifiers) {
+//    public DamageBiEntityActionType(ResourceKey<DamageType> damageType, Optional<Float> amount, List<Modifier> modifiers) {
 //        this.damageType = damageType;
 //        this.amount = amount;
 //        this.modifiers = modifiers;

@@ -28,7 +28,7 @@
 //import net.minecraft.fluid.FluidState;
 //import net.minecraft.inventory.StackReference;
 //import net.minecraft.world.item.ItemStack;
-//import net.minecraft.registry.entry.RegistryEntry;
+//import net.minecraft.registry.entry.Holder;
 //import net.minecraft.registry.tag.DamageTypeTags;
 //import net.minecraft.registry.tag.FluidTags;
 //import net.minecraft.server.level.ServerPlayer;
@@ -95,7 +95,7 @@
 //    @ModifyVariable(method = "addStatusEffect(Lnet/minecraft/entity/effect/StatusEffectInstance;Lnet/minecraft/entity/Entity;)Z", at = @At("HEAD"), argsOnly = true)
 //    private StatusEffectInstance apoli$modifyStatusEffect(StatusEffectInstance original) {
 //
-//        RegistryEntry<StatusEffect> effectType = original.getEffectType();
+//        Holder<StatusEffect> effectType = original.getEffectType();
 //
 //        float amplifier = PowerHolderComponent.modify(this, ModifyStatusEffectAmplifierPowerType.class, original.getAmplifier(), p -> p.doesApply(effectType));
 //        float duration = PowerHolderComponent.modify(this, ModifyStatusEffectDurationPowerType.class, original.getDuration(), p -> p.doesApply(effectType));
@@ -504,7 +504,7 @@
 //
 //    @Shadow public abstract boolean isDead();
 //
-//    @Shadow public abstract double getAttributeValue(RegistryEntry<EntityAttribute> attribute);
+//    @Shadow public abstract double getAttributeValue(Holder<EntityAttribute> attribute);
 //
 //    @Shadow public abstract float getArmorVisibility();
 //
@@ -516,7 +516,7 @@
 //
 //    @Shadow public float forwardSpeed;
 //
-//    @Shadow public abstract double getAttributeBaseValue(RegistryEntry<EntityAttribute> attribute);
+//    @Shadow public abstract double getAttributeBaseValue(Holder<EntityAttribute> attribute);
 //
 //    @Inject(method = "getOffGroundSpeed", at = @At("RETURN"), cancellable = true)
 //    private void modifyFlySpeed(CallbackInfoReturnable<Float> cir) {

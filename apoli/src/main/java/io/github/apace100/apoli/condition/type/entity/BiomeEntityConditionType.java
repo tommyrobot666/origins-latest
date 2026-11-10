@@ -9,9 +9,9 @@
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataType;
 //import net.minecraft.world.entity.Entity;
-//import net.minecraft.registry.RegistryKey;
+//import net.minecraft.registry.ResourceKey;
 //import net.minecraft.core.registries.Registries;
-//import net.minecraft.registry.entry.RegistryEntry;
+//import net.minecraft.registry.entry.Holder;
 //import net.minecraft.world.biome.Biome;
 //import org.jetbrains.annotations.NotNull;
 //
@@ -38,10 +38,10 @@
 //
 //    private final Optional<BiomeCondition> biomeCondition;
 //
-//    private final Optional<RegistryKey<Biome>> biome;
-//    private final Optional<List<RegistryKey<Biome>>> biomes;
+//    private final Optional<ResourceKey<Biome>> biome;
+//    private final Optional<List<ResourceKey<Biome>>> biomes;
 //
-//    public BiomeEntityConditionType(Optional<BiomeCondition> biomeCondition, Optional<RegistryKey<Biome>> biome, Optional<List<RegistryKey<Biome>>> biomes) {
+//    public BiomeEntityConditionType(Optional<BiomeCondition> biomeCondition, Optional<ResourceKey<Biome>> biome, Optional<List<ResourceKey<Biome>>> biomes) {
 //        this.biomeCondition = biomeCondition;
 //        this.biome = biome;
 //        this.biomes = biomes;
@@ -52,8 +52,8 @@
 //
 //        Entity entity = context.entity();
 //
-//        RegistryEntry<Biome> biomeEntry = entity.level().getBiome(entity.getBlockPos());
-//        RegistryKey<Biome> biomeKey = biomeEntry.getKey().orElseThrow();
+//        Holder<Biome> biomeEntry = entity.level().getBiome(entity.getBlockPos());
+//        ResourceKey<Biome> biomeKey = biomeEntry.getKey().orElseThrow();
 //
 //        return biome.map(biomeKey::equals).orElse(true)
 //            && biomes.map(keys -> keys.contains(biomeKey)).orElse(true)

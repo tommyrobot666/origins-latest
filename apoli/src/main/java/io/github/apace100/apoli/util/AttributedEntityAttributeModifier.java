@@ -2,8 +2,8 @@
 //
 //import net.minecraft.entity.attribute.EntityAttribute;
 //import net.minecraft.entity.attribute.EntityAttributeModifier;
-//import net.minecraft.registry.entry.RegistryEntry;
+//import net.minecraft.registry.entry.Holder;
 //
-//public record AttributedEntityAttributeModifier(RegistryEntry<EntityAttribute> attribute, EntityAttributeModifier modifier) {
+//public record AttributedEntityAttributeModifier(Holder<EntityAttribute> attribute, EntityAttributeModifier modifier) {
 //
 //}

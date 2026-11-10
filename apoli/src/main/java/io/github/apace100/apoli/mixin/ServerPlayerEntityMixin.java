@@ -27,7 +27,7 @@
 //import net.minecraft.inventory.StackReference;
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.network.packet.s2c.play.GameStateChangeS2CPacket;
-//import net.minecraft.registry.RegistryKey;
+//import net.minecraft.registry.ResourceKey;
 //import net.minecraft.screen.ScreenHandlerListener;
 //import net.minecraft.server.MinecraftServer;
 //import net.minecraft.server.network.ServerPlayNetworkHandler;
@@ -58,7 +58,7 @@
 //public abstract class ServerPlayerMixin extends Player implements ScreenHandlerListener, EndRespawningEntity, CustomToastViewer {
 //
 //    @Shadow
-//    private RegistryKey<Level> spawnPointDimension;
+//    private ResourceKey<Level> spawnPointDimension;
 //
 //    @Shadow
 //    private BlockPos spawnPointPosition;
@@ -94,8 +94,8 @@
 //        super(world, pos, yaw, gameProfile);
 //    }
 //
-//    @WrapOperation(method = "trySleep", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/network/ServerPlayer;setSpawnPoint(Lnet/minecraft/registry/RegistryKey;Lnet/minecraft/util/math/BlockPos;FZZ)V"))
-//    private void apoli$preventSleep(ServerPlayer serverPlayer, RegistryKey<Level> dimension, BlockPos pos, float angle, boolean forced, boolean sendMessage, Operation<Void> original, @Cancellable CallbackInfoReturnable<Either<SleepFailureReason, Unit>> cir) {
+//    @WrapOperation(method = "trySleep", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/network/ServerPlayer;setSpawnPoint(Lnet/minecraft/registry/ResourceKey;Lnet/minecraft/util/math/BlockPos;FZZ)V"))
+//    private void apoli$preventSleep(ServerPlayer serverPlayer, ResourceKey<Level> dimension, BlockPos pos, float angle, boolean forced, boolean sendMessage, Operation<Void> original, @Cancellable CallbackInfoReturnable<Either<SleepFailureReason, Unit>> cir) {
 //
 //        List<PreventSleepPowerType> preventSleepPowers = PowerHolderComponent.getPowerTypes(this, PreventSleepPowerType.class)
 //            .stream()
@@ -121,7 +121,7 @@
 //    }
 //
 //    @ModifyReturnValue(method = "getSpawnPointDimension", at = @At("RETURN"))
-//    private RegistryKey<Level> apoli$modifySpawnPointDimension(RegistryKey<Level> original) {
+//    private ResourceKey<Level> apoli$modifySpawnPointDimension(ResourceKey<Level> original) {
 //
 //        if (!this.apoli$isEndRespawning() && (this.spawnPointPosition == null || this.apoli$hasObstructedOriginalSpawnPoint())) {
 //            return PowerHolderComponent.getPowerTypes(this, ModifyPlayerSpawnPowerType.class)

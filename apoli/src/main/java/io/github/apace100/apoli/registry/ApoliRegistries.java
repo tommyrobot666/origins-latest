@@ -14,7 +14,7 @@
 //import net.fabricmc.fabric.api.event.registry.FabricRegistryBuilder;
 //import net.fabricmc.fabric.api.event.registry.RegistryAttribute;
 //import net.minecraft.core.Registry;
-//import net.minecraft.registry.RegistryKey;
+//import net.minecraft.registry.ResourceKey;
 //
 //public class ApoliRegistries {
 //
@@ -36,7 +36,7 @@
 //    public static final Registry<IModifierOperation> MODIFIER_OPERATION = create(ApoliRegistryKeys.MODIFIER_OPERATION);
 //    public static final Registry<ContainerType> CONTAINER_TYPE = create(ApoliRegistryKeys.CONTAINER_TYPE);
 //
-//    private static <T> Registry<T> create(RegistryKey<Registry<T>> registryKey) {
+//    private static <T> Registry<T> create(ResourceKey<Registry<T>> registryKey) {
 //        return FabricRegistryBuilder.createSimple(registryKey)
 //            .attribute(RegistryAttribute.SYNCED)
 //            .buildAndRegister();

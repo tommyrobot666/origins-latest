@@ -15,9 +15,9 @@
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.registry.DynamicRegistryManager;
 //import net.minecraft.core.Registry;
-//import net.minecraft.registry.RegistryKey;
+//import net.minecraft.registry.ResourceKey;
 //import net.minecraft.core.registries.Registries;
-//import net.minecraft.registry.entry.RegistryEntry;
+//import net.minecraft.registry.entry.Holder;
 //import net.minecraft.server.level.ServerLevel;
 //import org.jetbrains.annotations.NotNull;
 //
@@ -45,15 +45,15 @@
 //            .set("reset_repair_cost", actionType.resetRepairCost)
 //    );
 //
-//    private final Optional<RegistryKey<Enchantment>> enchantmentKey;
-//    private final Optional<List<RegistryKey<Enchantment>>> enchantmentKeys;
+//    private final Optional<ResourceKey<Enchantment>> enchantmentKey;
+//    private final Optional<List<ResourceKey<Enchantment>>> enchantmentKeys;
 //
-//    private final List<RegistryKey<Enchantment>> allEnchantmentKeys;
+//    private final List<ResourceKey<Enchantment>> allEnchantmentKeys;
 //
 //    private final Optional<Integer> levels;
 //    private final boolean resetRepairCost;
 //
-//    public RemoveEnchantmentItemActionType(Optional<RegistryKey<Enchantment>> enchantmentKey, Optional<List<RegistryKey<Enchantment>>> enchantmentKeys, Optional<Integer> levels, boolean resetRepairCost) {
+//    public RemoveEnchantmentItemActionType(Optional<ResourceKey<Enchantment>> enchantmentKey, Optional<List<ResourceKey<Enchantment>>> enchantmentKeys, Optional<Integer> levels, boolean resetRepairCost) {
 //
 //        this.enchantmentKey = enchantmentKey;
 //        this.enchantmentKeys = enchantmentKeys;
@@ -85,10 +85,10 @@
 //        ItemEnchantmentsComponent.Builder newEnchantments = new ItemEnchantmentsComponent.Builder(oldEnchantments);
 //
 //        Registry<Enchantment> enchantmentRegistry = dynamicRegistries.get(Registries.ENCHANTMENT);
-//        for (RegistryKey<Enchantment> enchantmentKey : allEnchantmentKeys) {
+//        for (ResourceKey<Enchantment> enchantmentKey : allEnchantmentKeys) {
 //
 //            //  Since the registry keys are already validated, this should be fine.
-//            RegistryEntry<Enchantment> enchantment = enchantmentRegistry.entryOf(enchantmentKey);
+//            Holder<Enchantment> enchantment = enchantmentRegistry.entryOf(enchantmentKey);
 //
 //            if (oldEnchantments.getEnchantments().contains(enchantment)) {
 //                newEnchantments.set(enchantment, levels.map(lvl -> oldEnchantments.getLevel(enchantment) - lvl).orElse(0));
@@ -96,7 +96,7 @@
 //
 //        }
 //
-//        for (RegistryEntry<Enchantment> oldEnchantment : oldEnchantments.getEnchantments()) {
+//        for (Holder<Enchantment> oldEnchantment : oldEnchantments.getEnchantments()) {
 //
 //            if (!allEnchantmentKeys.isEmpty()) {
 //                break;

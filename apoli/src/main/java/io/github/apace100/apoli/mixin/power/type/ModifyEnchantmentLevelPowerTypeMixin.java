@@ -15,7 +15,7 @@
 //import net.minecraft.enchantment.EnchantmentHelper;
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.predicate.item.ComponentSubPredicate;
-//import net.minecraft.registry.entry.RegistryEntry;
+//import net.minecraft.registry.entry.Holder;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.injection.At;
 //import org.spongepowered.asm.mixin.injection.ModifyVariable;
@@ -25,8 +25,8 @@
 //	@Mixin(EnchantmentHelper.class)
 //	public static abstract class EnchantmentHelperMixin {
 //
-//		@WrapOperation(method = "getLevel", at = @At(value = "INVOKE", target = "Lnet/minecraft/component/type/ItemEnchantmentsComponent;getLevel(Lnet/minecraft/registry/entry/RegistryEntry;)I"))
-//		private static int apoli$modifyOnLevelQuery(ItemEnchantmentsComponent instance, RegistryEntry<Enchantment> enchantment, Operation<Integer> original, @Local(argsOnly = true) net.minecraft.world.item.ItemStack stack) {
+//		@WrapOperation(method = "getLevel", at = @At(value = "INVOKE", target = "Lnet/minecraft/component/type/ItemEnchantmentsComponent;getLevel(Lnet/minecraft/registry/entry/Holder;)I"))
+//		private static int apoli$modifyOnLevelQuery(ItemEnchantmentsComponent instance, Holder<Enchantment> enchantment, Operation<Integer> original, @Local(argsOnly = true) net.minecraft.world.item.ItemStack stack) {
 //			return original.call(ModifyEnchantmentLevelPowerType.updateAndGetEnchantments(stack, instance), enchantment);
 //		}
 //

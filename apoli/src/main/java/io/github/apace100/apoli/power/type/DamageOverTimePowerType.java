@@ -16,9 +16,9 @@
 //import net.minecraft.nbt.CompoundTag;
 //import net.minecraft.nbt.Tag;
 //import net.minecraft.core.Registry;
-//import net.minecraft.registry.RegistryKey;
+//import net.minecraft.registry.ResourceKey;
 //import net.minecraft.core.registries.Registries;
-//import net.minecraft.registry.entry.RegistryEntry;
+//import net.minecraft.registry.entry.Holder;
 //import net.minecraft.world.Difficulty;
 //import org.jetbrains.annotations.NotNull;
 //
@@ -27,7 +27,7 @@
 //
 //public class DamageOverTimePowerType extends PowerType {
 //
-//    public static final RegistryKey<DamageType> GENERIC_DAMAGE = RegistryKey.of(Registries.DAMAGE_TYPE, Apoli.identifier("damage_over_time"));
+//    public static final ResourceKey<DamageType> GENERIC_DAMAGE = ResourceKey.create(Registries.DAMAGE_TYPE, Apoli.identifier("damage_over_time"));
 //
 //    public static final TypedDataObjectFactory<DamageOverTimePowerType> DATA_FACTORY = PowerType.createConditionedDataFactory(
 //        new SerializableData()
@@ -58,8 +58,8 @@
 //            .set("onset_delay", powerType.damageOnsetDelay)
 //    );
 //
-//    private final RegistryKey<DamageType> damageType;
-//    private final Optional<RegistryKey<Enchantment>> protectionEnchantmentKey;
+//    private final ResourceKey<DamageType> damageType;
+//    private final Optional<ResourceKey<Enchantment>> protectionEnchantmentKey;
 //
 //    private final float protectionEffectiveness;
 //
@@ -72,7 +72,7 @@
 //    private int outOfDamageTicks = 0;
 //    private int inDamageTicks = 0;
 //
-//    public DamageOverTimePowerType(RegistryKey<DamageType> damageType, Optional<RegistryKey<Enchantment>> protectionEnchantmentKey, float protectionEffectiveness, float damageAmountEasy, float damageAmount, int damageInterval, int damageOnsetDelay, Optional<EntityCondition> condition) {
+//    public DamageOverTimePowerType(ResourceKey<DamageType> damageType, Optional<ResourceKey<Enchantment>> protectionEnchantmentKey, float protectionEffectiveness, float damageAmountEasy, float damageAmount, int damageInterval, int damageOnsetDelay, Optional<EntityCondition> condition) {
 //        super(condition);
 //        this.damageType = damageType;
 //        this.protectionEnchantmentKey = protectionEnchantmentKey;
@@ -157,7 +157,7 @@
 //        Registry<Enchantment> enchantmentRegistry = holder.getRegistryManager().get(Registries.ENCHANTMENT);
 //
 //        Enchantment protectingEnchantment = enchantmentRegistry.getOrThrow(protectionEnchantmentKey.get());
-//        RegistryEntry<Enchantment> protectingEnchantmentEntry = enchantmentRegistry.getEntry(protectingEnchantment);
+//        Holder<Enchantment> protectingEnchantmentEntry = enchantmentRegistry.getEntry(protectingEnchantment);
 //
 //        Map<EquipmentSlot, ItemStack> potentialItems = protectingEnchantment.getEquipment(holder);
 //

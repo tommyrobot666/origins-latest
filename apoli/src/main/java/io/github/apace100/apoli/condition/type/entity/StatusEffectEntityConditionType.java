@@ -10,7 +10,7 @@
 //import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.entity.effect.StatusEffect;
 //import net.minecraft.entity.effect.StatusEffectInstance;
-//import net.minecraft.registry.entry.RegistryEntry;
+//import net.minecraft.registry.entry.Holder;
 //import org.jetbrains.annotations.NotNull;
 //
 //public class StatusEffectEntityConditionType extends EntityConditionType {
@@ -37,7 +37,7 @@
 //            .set("max_duration", conditionType.maxDuration)
 //    );
 //
-//    private final RegistryEntry<StatusEffect> effect;
+//    private final Holder<StatusEffect> effect;
 //
 //    private final int minAmplifier;
 //    private final int maxAmplifier;
@@ -45,7 +45,7 @@
 //    private final int minDuration;
 //    private final int maxDuration;
 //
-//    public StatusEffectEntityConditionType(RegistryEntry<StatusEffect> effect, int minAmplifier, int maxAmplifier, int minDuration, int maxDuration) {
+//    public StatusEffectEntityConditionType(Holder<StatusEffect> effect, int minAmplifier, int maxAmplifier, int minDuration, int maxDuration) {
 //        this.effect = effect;
 //        this.minAmplifier = minAmplifier;
 //        this.maxAmplifier = maxAmplifier;

@@ -6,7 +6,7 @@
 //import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.entity.effect.StatusEffectInstance;
 //import net.minecraft.nbt.CompoundTag;
-//import net.minecraft.network.PacketByteBuf;
+//import net.minecraft.network.FriendlyByteBuf;
 //import net.minecraft.network.codec.StreamCodec;
 //import net.minecraft.network.codec.ByteBufCodecs;
 //import net.minecraft.server.level.ServerPlayer;
@@ -52,7 +52,7 @@
 //
 //        });
 //
-//        public static final StreamCodec<PacketByteBuf, UpdateType> STREAM_CODEC = ByteBufCodecs.indexed(index -> values()[index], UpdateType::ordinal).cast();
+//        public static final StreamCodec<FriendlyByteBuf, UpdateType> STREAM_CODEC = ByteBufCodecs.indexed(index -> values()[index], UpdateType::ordinal).cast();
 //
 //        final BiConsumer<LivingEntity, StatusEffectInstance> consumer;
 //        UpdateType(BiConsumer<LivingEntity, StatusEffectInstance> consumer) {

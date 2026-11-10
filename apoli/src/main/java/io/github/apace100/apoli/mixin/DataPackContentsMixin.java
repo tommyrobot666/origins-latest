@@ -9,7 +9,7 @@
 //import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 //
 //@Mixin(DataPackContents.class)
-//public abstract class DataPackContentsMixin {
+//public abstract class ReloadableServerResourcesMixin {
 //
 //	@Inject(method = "refresh", at = @At("HEAD"))
 //	private void onRefresh(CallbackInfo ci) {

@@ -2,8 +2,8 @@
 //
 //import net.minecraft.client.world.ClientWorld;
 //import net.minecraft.registry.DynamicRegistryManager;
-//import net.minecraft.registry.RegistryKey;
-//import net.minecraft.registry.entry.RegistryEntry;
+//import net.minecraft.registry.ResourceKey;
+//import net.minecraft.registry.entry.Holder;
 //import net.minecraft.util.profiler.Profiler;
 //import net.minecraft.world.MutableWorldProperties;
 //import net.minecraft.world.Level;
@@ -19,7 +19,7 @@
 //@Mixin(ClientWorld.class)
 //public abstract class ClientWorldMixin extends Level {
 //
-//	protected ClientWorldMixin(MutableWorldProperties properties, RegistryKey<Level> registryRef, DynamicRegistryManager registryManager, RegistryEntry<DimensionType> dimensionEntry, Supplier<Profiler> profiler, boolean isClient, boolean debugWorld, long biomeAccess, int maxChainedNeighborUpdates) {
+//	protected ClientWorldMixin(MutableWorldProperties properties, ResourceKey<Level> registryRef, DynamicRegistryManager registryManager, Holder<DimensionType> dimensionEntry, Supplier<Profiler> profiler, boolean isClient, boolean debugWorld, long biomeAccess, int maxChainedNeighborUpdates) {
 //		super(properties, registryRef, registryManager, dimensionEntry, profiler, isClient, debugWorld, biomeAccess, maxChainedNeighborUpdates);
 //	}
 //

@@ -390,7 +390,7 @@ public final class MiscUtil {
         return new Vec3(entity.getX(), entity.getY() + entity.getEyeHeight(entity.getPose()), entity.getZ());
     }
 
-    public static double getAttributeValueOrElse(Entity entity, RegistryEntry<EntityAttribute> attribute, double defaultValue) {
+    public static double getAttributeValueOrElse(Entity entity, Holder<EntityAttribute> attribute, double defaultValue) {
 
         if (entity instanceof LivingEntity livingEntity && livingEntity.getAttributes().hasAttribute(attribute)) {
             return livingEntity.getAttributeValue(attribute);

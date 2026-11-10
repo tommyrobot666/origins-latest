@@ -24,7 +24,7 @@ public abstract class TagManagerLoaderMixin {
         CalioServer.REGISTRY_TAGS.clear();
 
         this.registryTags.forEach(entry -> entry.tags().forEach((id, entries) ->
-            CalioServer.REGISTRY_TAGS.put(TagKey.of(entry.key(), id), (Collection) entries))
+            CalioServer.REGISTRY_TAGS.put(TagKey.create(entry.key(), id), (Collection) entries))
         );
 
     }

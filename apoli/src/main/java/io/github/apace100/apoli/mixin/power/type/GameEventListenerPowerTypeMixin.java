@@ -7,7 +7,7 @@
 //import io.github.apace100.apoli.power.type.GameEventListenerPowerType;
 //import net.minecraft.world.entity.Entity;
 //import net.minecraft.particle.ParticleEffect;
-//import net.minecraft.registry.entry.RegistryEntry;
+//import net.minecraft.registry.entry.Holder;
 //import net.minecraft.tags.TagKey;
 //import net.minecraft.server.level.ServerLevel;
 //import net.minecraft.world.Level;
@@ -27,8 +27,8 @@
 //	@Mixin(Vibrations.Callback.class)
 //	public interface CustomCallbackHandler {
 //
-//		@WrapOperation(method = "canAccept", at = @At(value = "INVOKE", target = "Lnet/minecraft/registry/entry/RegistryEntry;isIn(Lnet/minecraft/registry/tag/TagKey;)Z", ordinal = 0))
-//		private boolean apoli$acceptsGameEvent(RegistryEntry<GameEvent> gameEvent, TagKey<GameEvent> gameEventTag, Operation<Boolean> original) {
+//		@WrapOperation(method = "canAccept", at = @At(value = "INVOKE", target = "Lnet/minecraft/registry/entry/Holder;isIn(Lnet/minecraft/registry/tag/TagKey;)Z", ordinal = 0))
+//		private boolean apoli$acceptsGameEvent(Holder<GameEvent> gameEvent, TagKey<GameEvent> gameEventTag, Operation<Boolean> original) {
 //
 //			if ((Vibrations.Callback) this instanceof GameEventListenerPowerType.Callback powerCallback) {
 //				return powerCallback.containsEvent(gameEvent);

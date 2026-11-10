@@ -422,14 +422,6 @@ public class DataObjectRegistry<T extends DataObject<T>> {
         private boolean readFromData;
         private boolean useLoadingPriority;
 
-        /**
-         *  <b>Use {@link #Builder(Identifier)} instead.</b>
-         */
-        @Deprecated(forRemoval = true)
-        public Builder(Identifier registryId, Class<T> objectClass) {
-            this(registryId);
-        }
-
         public Builder(Identifier registryId) {
 
             this.registryId = registryId;
@@ -464,15 +456,6 @@ public class DataObjectRegistry<T extends DataObject<T>> {
             this.readFromData = true;
             this.dataFolder = dataFolder;
             this.useLoadingPriority = useLoadingPriority;
-            return this;
-        }
-
-        /**
-         *  <p>Use {@link #dataErrorHandler(TriConsumer)} instead.</p>
-         */
-        @Deprecated
-        public Builder<T> dataErrorHandler(BiConsumer<Identifier, Exception> handler) {
-            this.legacyErrorHandler = handler;
             return this;
         }
 

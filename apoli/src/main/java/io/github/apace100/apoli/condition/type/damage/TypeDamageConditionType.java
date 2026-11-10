@@ -8,7 +8,7 @@
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.entity.damage.DamageType;
-//import net.minecraft.registry.RegistryKey;
+//import net.minecraft.registry.ResourceKey;
 //import org.jetbrains.annotations.NotNull;
 //
 //public class TypeDamageConditionType extends DamageConditionType {
@@ -23,9 +23,9 @@
 //            .set("damage_type", conditionType.damageType)
 //    );
 //
-//    private final RegistryKey<DamageType> damageType;
+//    private final ResourceKey<DamageType> damageType;
 //
-//    public TypeDamageConditionType(RegistryKey<DamageType> damageType) {
+//    public TypeDamageConditionType(ResourceKey<DamageType> damageType) {
 //        this.damageType = damageType;
 //    }
 //

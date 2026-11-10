@@ -3,7 +3,7 @@
 //import io.github.apace100.apoli.condition.EntityCondition;
 //import net.minecraft.entity.effect.StatusEffect;
 //import net.minecraft.entity.effect.StatusEffectInstance;
-//import net.minecraft.registry.entry.RegistryEntry;
+//import net.minecraft.registry.entry.Holder;
 //
 //import java.util.LinkedList;
 //import java.util.List;
@@ -35,11 +35,11 @@
 //        this(effectInstance, Optional.empty());
 //    }
 //
-//    public void addEffect(RegistryEntry<StatusEffect> effect, int duration) {
+//    public void addEffect(Holder<StatusEffect> effect, int duration) {
 //        addEffect(effect, duration, 0);
 //    }
 //
-//    public void addEffect(RegistryEntry<StatusEffect> effect, int duration, int amplifier) {
+//    public void addEffect(Holder<StatusEffect> effect, int duration, int amplifier) {
 //        addEffect(new StatusEffectInstance(effect, duration, amplifier));
 //    }
 //

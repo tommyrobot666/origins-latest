@@ -55,7 +55,7 @@
 //    }
 //
 //    @WrapOperation(method = {"renderWidget", "getTooltip", "appendClickableNarrations"}, at = @At(value = "INVOKE", target = "Lnet/minecraft/recipe/Recipe;getResult(Lnet/minecraft/registry/RegistryWrapper$WrapperLookup;)Lnet/minecraft/item/ItemStack;"))
-//    private ItemStack apoli$modifyResultQuery(Recipe<?> recipe, RegistryWrapper.WrapperLookup wrapperLookup, Operation<ItemStack> original) {
+//    private ItemStack apoli$modifyResultQuery(Recipe<?> recipe, HolderLookup.Provider wrapperLookup, Operation<ItemStack> original) {
 //
 //        if (recipe instanceof ModifiedCraftingRecipe modifiedCraftingRecipe && this.recipeBook instanceof PowerCraftingObject pco) {
 //            return modifiedCraftingRecipe.getModifiedResult(wrapperLookup, pco.apoli$getPlayer()).getFirst();

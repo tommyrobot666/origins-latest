@@ -26,7 +26,7 @@
 //        ((EndRespawningEntity)this.player).apoli$setEndRespawning(true);
 //    }
 //
-//    @Inject(method = "onClientStatus", at = @At(value = "INVOKE", target = "Lnet/minecraft/advancement/criterion/ChangedDimensionCriterion;trigger(Lnet/minecraft/server/network/ServerPlayer;Lnet/minecraft/registry/RegistryKey;Lnet/minecraft/registry/RegistryKey;)V"))
+//    @Inject(method = "onClientStatus", at = @At(value = "INVOKE", target = "Lnet/minecraft/advancement/criterion/ChangedDimensionCriterion;trigger(Lnet/minecraft/server/network/ServerPlayer;Lnet/minecraft/registry/ResourceKey;Lnet/minecraft/registry/ResourceKey;)V"))
 //    private void undoEndRespawnStatus(ClientStatusC2SPacket packet, CallbackInfo ci) {
 //        ((EndRespawningEntity)this.player).apoli$setEndRespawning(false);
 //    }

@@ -10,16 +10,23 @@ import com.mojang.serialization.*;
 import com.mojang.serialization.codecs.UnboundedMapCodec;
 import io.github.apace100.calio.CalioServer;
 import io.github.apace100.calio.codec.JsonCodec;
-import io.github.apace100.calio.mixin.WeightedListAccessor;
 import io.github.apace100.calio.registry.DataObjectFactory;
 import io.github.apace100.calio.util.*;
 import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
+import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.RegistryOps;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.tags.TagEntry;
+import net.minecraft.tags.TagKey;
+import net.minecraft.util.ByIdMap;
 import net.minecraft.util.random.Weighted;
 import net.minecraft.util.random.WeightedList;
 import org.apache.commons.lang3.EnumUtils;
@@ -54,15 +61,6 @@ public class SerializableDataType<T> {
         this(codec, ByteBufCodecs.fromCodec(codec).cast());
     }
 
-    /**
-     *  <p>Use {@link #of(Codec)}, {@link #of(Codec, StreamCodec)}, or {@link #jsonBacked(BiConsumer, Function, Function, Function)}
-     *  (if you want to keep using the JSON codec for encoding/decoding the type) instead.</p>
-     */
-    @Deprecated
-    public SerializableDataType(Class<?> dataClass, BiConsumer<RegistryFriendlyByteBuf, T> send, Function<RegistryFriendlyByteBuf, T> receive, Function<JsonElement, T> fromJson, Function<T, JsonElement> toJson) {
-        this(new JsonCodec<>(fromJson, toJson), StreamCodec.of((value, buf) -> send.accept(buf, value), receive::apply));
-    }
-
     public Codec<T> codec() {
         return codec;
     }
@@ -85,38 +83,6 @@ public class SerializableDataType<T> {
 
     public void send(RegistryFriendlyByteBuf buf, T value) {
         this.packetCodec().encode(buf, value);
-    }
-
-    /**
-     *  Use {@link #read(DynamicOps, Object)} with {@link JsonOps#INSTANCE} instead.
-     */
-    @Deprecated
-    public T read(JsonElement jsonElement) {
-        return read(JsonOps.INSTANCE, jsonElement).getOrThrow();
-    }
-
-    /**
-     *  Use {@link #write(DynamicOps, T)} with {@link JsonOps#INSTANCE} instead.
-     */
-    @Deprecated
-    public JsonElement writeUnsafely(Object value) throws Exception {
-
-        try {
-            return this.write(this.cast(value));
-        }
-
-        catch (ClassCastException e) {
-            throw new Exception(e);
-        }
-
-    }
-
-    /**
-     *  Use {@link #write(DynamicOps, T)} with {@link JsonOps#INSTANCE} instead.
-     */
-    @Deprecated
-    public JsonElement write(T value) {
-        return write(JsonOps.INSTANCE, value).getOrThrow();
     }
 
     public T cast(Object data) {
@@ -233,71 +199,20 @@ public class SerializableDataType<T> {
             new SerializableData()
                 .add("element", singleDataType)
                 .add("weight", SerializableDataTypes.INT, 1),
-            data -> new WeightedList.Entry<>(
+            data -> new Weighted<>(
                 data.get("element"),
                 data.get("weight")
             ),
             (entry, serializableData) -> serializableData.instance()
-                .set("element", entry.getElement())
-                .set("weight", entry.getWeight())
+                .set("element", entry.value())
+                .set("weight", entry.weight())
         );
 
-        return entryDataType.list().map(
-            WeightedList::new,
-            weightedList -> new ObjectArrayList<>(((WeightedListAccessor<T>) weightedList).getEntries())
+        return entryDataType.list().xmap(
+                WeightedList::of,
+            weightedList -> new ObjectArrayList<>(weightedList.unwrap())
         );
 
-    }
-
-    /**
-     *  Use {@link #registry(Registry)} instead.
-     */
-    @Deprecated
-    public static <T> SerializableDataType<T> registry(Class<T> dataClass, Registry<T> registry) {
-        return registry(dataClass, registry, false);
-    }
-
-    /**
-     *  Use {@link #registry(Registry, String)} instead.
-     */
-    @Deprecated
-    public static <T> SerializableDataType<T> registry(Class<T> dataClass, Registry<T> registry, String defaultNamespace) {
-        return registry(dataClass, registry, defaultNamespace, false);
-    }
-
-    /**
-     *  Use {@link #registry(Registry, boolean)} instead.
-     */
-    @Deprecated
-    public static <T> SerializableDataType<T> registry(Class<T> dataClass, Registry<T> registry, boolean showPossibleValues) {
-        return registry(dataClass, registry, Identifier.DEFAULT_NAMESPACE, showPossibleValues);
-    }
-
-    /**
-     *  Use {@link #registry(Registry, String, boolean)} instead.
-     */
-    @Deprecated
-    public static <T> SerializableDataType<T> registry(Class<T> dataClass, Registry<T> registry, String defaultNamespace, boolean showPossibleValues) {
-        return registry(dataClass, registry, defaultNamespace, null, (reg, id) -> {
-            String possibleValues = showPossibleValues ? ". Expected value to be any of " + String.join(", ", reg.getIds().stream().map(Identifier::toString).toList()) : "";
-            return new RuntimeException("Type \"%s\" is not registered in registry \"%s\"%s".formatted(id, registry.getKey().getValue(), possibleValues));
-        });
-    }
-
-    /**
-     *  Use {@link #registry(Registry, BiFunction)} instead.
-     */
-    @Deprecated
-    public static <T> SerializableDataType<T> registry(Class<T> dataClass, Registry<T> registry, BiFunction<Registry<T>, Identifier, RuntimeException> exception) {
-        return registry(dataClass, registry, Identifier.DEFAULT_NAMESPACE, null, exception);
-    }
-
-    /**
-     *  Use {@link #registry(Registry, String, IdentifierAlias, BiFunction)} instead.
-     */
-    @Deprecated
-    public static <T> SerializableDataType<T> registry(Class<T> dataClass, Registry<T> registry, String defaultNamespace, @Nullable IdentifierAlias aliases, BiFunction<Registry<T>, Identifier, RuntimeException> exception) {
-        return registry(registry, defaultNamespace, aliases, (_registry, id) -> exception.apply(_registry, id).getMessage());
     }
 
     public static <T> SerializableDataType<T> registry(Registry<T> registry) {
@@ -314,8 +229,8 @@ public class SerializableDataType<T> {
 
     public static <T> SerializableDataType<T> registry(Registry<T> registry, String defaultNamespace, boolean showPossibleValues) {
         return registry(registry, defaultNamespace, null, (reg, id) -> {
-            String possibleValues = showPossibleValues ? " Expected value to be any of " + String.join(", ", reg.getIds().stream().map(Identifier::toString).toList()) : "";
-            return "Type \"%s\" is not registered in registry \"%s\"!%s".formatted(id, registry.getKey().getValue(), possibleValues);
+            String possibleValues = showPossibleValues ? " Expected value to be any of " + String.join(", ", reg.listElementIds().map(rk -> rk.identifier().toString()).toList()) : "";
+            return "Type \"%s\" is not registered in registry \"%s\"!%s".formatted(id, registry.key().registry(), possibleValues);
         });
     }
 
@@ -332,7 +247,7 @@ public class SerializableDataType<T> {
                     return ops.getStringValue(input)
                         .flatMap(str -> DynamicIdentifier.ofResult(str, defaultNamespace))
                         .flatMap(id -> registry
-                            .getOrEmpty(aliases == null ? id : aliases.resolveAlias(id, registry::containsId))
+                                .getOptional(aliases == null ? id : aliases.resolveAlias(id, registry::containsKey))
                             .map(t -> Pair.of(t, input))
                             .map(DataResult::success)
                             .orElse(DataResult.error(() -> exception.apply(registry, id))));
@@ -340,28 +255,12 @@ public class SerializableDataType<T> {
 
                 @Override
                 public <I> DataResult<I> encode(T input, DynamicOps<I> ops, I prefix) {
-                    return registry.getCodec().encode(input, ops, prefix);
+                    return registry.byNameCodec().encode(input, ops, prefix);
                 }
 
             },
-            ByteBufCodecs.registryValue(registry.getKey())
+            ByteBufCodecs.registry(registry.key())
         );
-    }
-
-    /**
-     *
-     *  <p>Use any of the following instead:</p>
-     *
-     *  <ul>
-     *      <li>{@link #compound(DataObjectFactory) compound(DataObjectFactory&lt;T&gt;)} for processing with a {@link DataObjectFactory}.</li>
-     *      <li>{@link #compound(SerializableData, Function, BiFunction) compound(SerializableData, Function&lt;SerializableData.Instance, T&gt, BiFunction&lt;T, SerializableData, SerializableData.Instance&gt;)} for simple processing.</li>
-     *      <li>{@link CompoundSerializableDataType#CompoundSerializableDataType(SerializableData, Function, Function) CompoundSerializableDataType(SerializableData, Function&lt;SerializableData, MapCodec&lt;T&gt;&gt;, Function&lt;SerializableData, StreamCodec&lt;RegistryFriendlyByteBuf, T&gt;&gt;)} for more granular control on how the element will be decoded/encoded.</li>
-     *  </ul>
-     *
-     */
-    @Deprecated
-    public static <T> CompoundSerializableDataType<T> compound(Class<T> dataClass, SerializableData serializableData, Function<SerializableData.Instance, T> fromData, BiFunction<SerializableData, T, SerializableData.Instance> toData) {
-        return compound(serializableData, fromData, (t, _serializableData) -> toData.apply(_serializableData, t));
     }
 
     public static <T> CompoundSerializableDataType<T> compound(DataObjectFactory<T> factory) {
@@ -479,14 +378,6 @@ public class SerializableDataType<T> {
         );
     }
 
-    /**
-     *  Use {@link #mapped(Supplier)} <b>(recommended)</b> or {@link #mapped(BiMap)} instead.
-     */
-    @Deprecated
-    public static <T> SerializableDataType<T> mapped(Class<T> dataClass, @NotNull BiMap<String, T> biMap) {
-        return mapped(biMap);
-    }
-
     public static <V> SerializableDataType<V> mapped(@NotNull BiMap<String, V> biMap) {
         return mapped(Suppliers.memoize(() -> biMap));
     }
@@ -566,32 +457,16 @@ public class SerializableDataType<T> {
         );
     }
 
-    /**
-     *  Use {@link #xmap(Function, Function)} instead.
-     */
-    @Deprecated
-    public static <T, U> SerializableDataType<T> wrap(Class<T> dataClass, SerializableDataType<U> base, Function<T, U> toFunction, Function<U, T> fromFunction) {
-        return base.xmap(fromFunction, toFunction);
-    }
-
-    /**
-     *  Use {@link #tagKey(RegistryKey)} instead.
-     */
-    @Deprecated
-    public static <T> SerializableDataType<TagKey<T>> tag(RegistryKey<? extends Registry<T>> registryRef) {
-        return tagKey(registryRef);
-    }
-
-    public static <T> SerializableDataType<TagKey<T>> tagKey(RegistryKey<? extends Registry<T>> registryRef) {
+    public static <T> SerializableDataType<TagKey<T>> tagKey(ResourceKey<? extends Registry<T>> registryRef) {
         return lazy(() -> new SerializableDataType<>(
-            new Codec<T>() {
+            new Codec<TagKey<T>>() {
 
                 @Override
                 public <I> DataResult<Pair<TagKey<T>, I>> decode(DynamicOps<I> ops, I input) {
                     return SerializableDataTypes.IDENTIFIER.codec().decode(ops, input)
                         .flatMap(idAndInput -> {
 
-                            Pair<TagKey<T>, I> tagAndInput = idAndInput.mapFirst(id -> TagKey.of(registryRef, id));
+                            Pair<TagKey<T>, I> tagAndInput = idAndInput.mapFirst(id -> TagKey.create(registryRef, id));
                             TagKey<T> tag = tagAndInput.getFirst();
 
                             if (CalioServer.getRegistryTags().containsKey(tag)) {
@@ -601,11 +476,11 @@ public class SerializableDataType<T> {
                             else {
                                 return RegistryOpsUtil.getEntryLookup(ops, registryRef)
                                     .map(DataResult::success)
-                                    .orElse(DataResult.error(() -> "Couldn't find registry \"" + registryRef.getValue() + "\"; " + (ops instanceof RegistryOps<I> ? "it doesn't exist!" : "the passed dynamic ops is not a registry ops!")))
-                                    .flatMap(entryLookup -> entryLookup.getOptional(tag)
+                                    .orElse(DataResult.error(() -> "Couldn't find registry \"" + registryRef.identifier() + "\"; " + (ops instanceof RegistryOps<I> ? "it doesn't exist!" : "the passed dynamic ops is not a registry ops!")))
+                                    .flatMap(entryLookup -> entryLookup.get(tag)
                                         .map(registryEntries -> tagAndInput)
                                         .map(DataResult::success)
-                                        .orElse(DataResult.error(() -> "Tag \"" + tag.id() + "\" for registry \"" + registryRef.getValue() + "\" doesn't exist!")));
+                                        .orElse(DataResult.error(() -> "Tag \"" + tag.location() + "\" for registry \"" + registryRef.identifier() + "\" doesn't exist!")));
                             }
 
                         });
@@ -613,65 +488,65 @@ public class SerializableDataType<T> {
 
                 @Override
                 public <I> DataResult<I> encode(TagKey<T> input, DynamicOps<I> ops, I prefix) {
-                    return SerializableDataTypes.IDENTIFIER.codec().encode(input.id(), ops, prefix);
+                    return SerializableDataTypes.IDENTIFIER.codec().encode(input.location(), ops, prefix);
                 }
 
             },
             StreamCodec.of(
-                (buf, value) -> buf.writeIdentifier(value.id()),
-                buf -> TagKey.of(registryRef, buf.readIdentifier())
+                (buf, value) -> buf.writeIdentifier(value.location()),
+                buf -> TagKey.create(registryRef, buf.readIdentifier())
             )
         ));
     }
 
-    public static <A> SerializableDataType<RegistryEntry<A>> registryEntry(Registry<A> registry) {
+    public static <A> SerializableDataType<Holder<A>> registryEntry(Registry<A> registry) {
         return new SerializableDataType<>(
-			new Codec<T>() {
+			new Codec<Holder<A>>() {
 
 				@Override
-				public <T> DataResult<Pair<RegistryEntry<A>, T>> decode(DynamicOps<T> ops, T input) {
+				public <T> DataResult<Pair<Holder<A>, T>> decode(DynamicOps<T> ops, T input) {
 					return SerializableDataTypes.IDENTIFIER.codec().decode(ops, input)
                         .flatMap(idAndInput -> {
 
-                            Pair<RegistryKey<A>, T> keyAndInput = idAndInput.mapFirst(id -> RegistryKey.of(registry.getKey(), id));
-                            RegistryKey<A> key = keyAndInput.getFirst();
+                            Pair<ResourceKey<A>, T> keyAndInput = idAndInput.mapFirst(id -> ResourceKey.create(registry.key(), id));
+                            ResourceKey<A> key = keyAndInput.getFirst();
 
-                            return registry.getEntry(key)
-                                .map(entry -> keyAndInput.mapFirst(k -> (RegistryEntry<A>) entry))
+                            return registry.get(key)
+                                .map(entry -> keyAndInput.mapFirst(k -> (Holder<A>) entry))
                                 .map(DataResult::success)
-                                .orElse(DataResult.error(() -> "Type \"" + key.getValue() + "\" is not registered in registry \"" + registry.getKey().getValue() + "\"!"));
+                                .orElse(DataResult.error(() -> "Type \"" + key.identifier() + "\" is not registered in registry \"" + registry.key().identifier() + "\"!"));
 
                         });
 				}
 
 				@Override
-				public <T> DataResult<T> encode(RegistryEntry<A> input, DynamicOps<T> ops, T prefix) {
-					return input.getKeyOrValue().map(
-                        key -> SerializableDataTypes.IDENTIFIER.codec().encode(key.getValue(), ops, prefix),
-                        a -> registry.getCodec().encode(a, ops, prefix)
+				public <T> DataResult<T> encode(Holder<A> input, DynamicOps<T> ops, T prefix) {
+					return input.unwrap().map(
+                        key -> SerializableDataTypes.IDENTIFIER.codec().encode(key.identifier(), ops, prefix),
+                        a -> registry.byNameCodec().encode(a, ops, prefix)
                     );
 				}
 
 			},
-            ByteBufCodecs.registryEntry(registry.getKey())
+            ByteBufCodecs.holderRegistry(registry.key())
         );
     }
 
-    public static <T> SerializableDataType<RegistryKey<T>> registryKey(RegistryKey<? extends Registry<T>> registryRef) {
+    public static <T> SerializableDataType<ResourceKey<T>> registryKey(ResourceKey<? extends Registry<T>> registryRef) {
         return registryKey(registryRef, Set.of());
     }
 
-    public static <T> SerializableDataType<RegistryKey<T>> registryKey(RegistryKey<? extends Registry<T>> registryRef, Collection<RegistryKey<T>> exemptions) {
+    public static <T> SerializableDataType<ResourceKey<T>> registryKey(ResourceKey<? extends Registry<T>> registryRef, Collection<ResourceKey<T>> exemptions) {
         return new SerializableDataType<>(
-            new Codec<T>() {
+            new Codec<ResourceKey<T>>() {
 
                 @Override
-                public <I> DataResult<Pair<RegistryKey<T>, I>> decode(DynamicOps<I> ops, I input) {
+                public <I> DataResult<Pair<ResourceKey<T>, I>> decode(DynamicOps<I> ops, I input) {
                     return SerializableDataTypes.IDENTIFIER.codec().decode(ops, input)
                         .flatMap(idAndInput -> {
 
-                            Pair<RegistryKey<T>, I> keyAndInput = idAndInput.mapFirst(id -> RegistryKey.of(registryRef, id));
-                            RegistryKey<T> key = keyAndInput.getFirst();
+                            Pair<ResourceKey<T>, I> keyAndInput = idAndInput.mapFirst(id -> ResourceKey.create(registryRef, id));
+                            ResourceKey<T> key = keyAndInput.getFirst();
 
                             if (exemptions.contains(key)) {
                                 return DataResult.success(keyAndInput);
@@ -680,25 +555,25 @@ public class SerializableDataType<T> {
                             else {
                                 return RegistryOpsUtil.getEntryLookup(ops, registryRef)
                                     .map(DataResult::success)
-                                    .orElse(DataResult.error(() -> "Couldn't find registry \"" + registryRef.getValue() + "\"; " + (ops instanceof RegistryOps<I> ? "it doesn't exist!" : "the passed dynamic ops is not a registry ops!")))
-                                    .flatMap(entryLookup -> entryLookup.getOptional(key)
+                                    .orElse(DataResult.error(() -> "Couldn't find registry \"" + registryRef.identifier() + "\"; " + (ops instanceof RegistryOps<I> ? "it doesn't exist!" : "the passed dynamic ops is not a registry ops!")))
+                                    .flatMap(entryLookup -> entryLookup.get(key)
                                         .map(ref -> keyAndInput)
                                         .map(DataResult::success)
-                                        .orElse(DataResult.error(() -> "Type \"" + key.getValue() + "\" is not registered in registry \"" + registryRef.getValue() + "\"!")));
+                                        .orElse(DataResult.error(() -> "Type \"" + key.identifier() + "\" is not registered in registry \"" + registryRef.identifier() + "\"!")));
                             }
 
                         });
                 }
 
                 @Override
-                public <I> DataResult<I> encode(RegistryKey<T> input, DynamicOps<I> ops, I prefix) {
-                    return SerializableDataTypes.IDENTIFIER.codec().encode(input.getValue(), ops, prefix);
+                public <I> DataResult<I> encode(ResourceKey<T> input, DynamicOps<I> ops, I prefix) {
+                    return SerializableDataTypes.IDENTIFIER.codec().encode(input.identifier(), ops, prefix);
                 }
 
             },
             StreamCodec.of(
-                PacketByteBuf::writeRegistryKey,
-                buf -> buf.readRegistryKey(registryRef)
+                FriendlyByteBuf::writeResourceKey,
+                buf -> buf.readResourceKey(registryRef)
             )
         );
     }
@@ -720,9 +595,9 @@ public class SerializableDataType<T> {
 
     @ApiStatus.Internal
     private static <E extends Enum<E>> SerializableDataType<E> enumValueInternal(Class<E> enumClass, Supplier<Map<String, E>> additionalMapSupplier) {
-        IntFunction<E> ordinalToEnum = ValueLists.createIdToValueFunction((ToIntFunction<E>) Enum::ordinal, enumClass.getEnumConstants(), ValueLists.OutOfBoundsHandling.CLAMP);
+        IntFunction<E> ordinalToEnum = ByIdMap.continuous((ToIntFunction<E>) Enum::ordinal, enumClass.getEnumConstants(), ByIdMap.OutOfBoundsStrategy.CLAMP);
         return new SerializableDataType<>(
-            new Codec<T>() {
+            new Codec<E>() {
 
                 @Override
                 public <T> DataResult<Pair<E, T>> decode(DynamicOps<T> ops, T input) {
@@ -775,44 +650,14 @@ public class SerializableDataType<T> {
                 }
 
             },
-            ByteBufCodecs.indexed(ordinalToEnum, Enum::ordinal).cast()
+            ByteBufCodecs.idMapper(ordinalToEnum, Enum::ordinal).cast()
         );
-    }
-
-    /**
-     *  Use {@link #enumSet(SerializableDataType)} instead.
-     */
-    @Deprecated
-    public static <E extends Enum<E>> SerializableDataType<EnumSet<E>> enumSet(Class<E> enumClass, SerializableDataType<E> enumDataType) {
-        return enumSet(enumDataType);
     }
 
     public static <E extends Enum<E>> SerializableDataType<EnumSet<E>> enumSet(SerializableDataType<E> enumDataType) {
         return enumDataType.list(1, Integer.MAX_VALUE).xmap(
             EnumSet::copyOf,
             ObjectArrayList::new
-        );
-    }
-
-    /**
-     *  Use either {@link #boundNumber(SerializableDataType, Number, BiFunction, Number, BiFunction)} or the built-in methods for ranged numbers, like {@link Codec#intRange(int, int)} and pass it to {@link #of(Codec)}
-     *  (or {@link #of(Codec, StreamCodec)} if you want to pass its packet codec as well.)
-     */
-    @Deprecated
-    public static <N extends Number & Comparable<N>> SerializableDataType<N> boundNumber(SerializableDataType<N> numberDataType, N min, N max, Function<N, BiFunction<N, N, N>> read) {
-        return numberDataType.comapFlatMap(
-            number -> {
-
-                try {
-                    return DataResult.success(read.apply(number).apply(min, max));
-                }
-
-                catch (Exception e) {
-                    return DataResult.error(e::getMessage);
-                }
-
-            },
-            Function.identity()
         );
     }
 
@@ -873,14 +718,14 @@ public class SerializableDataType<T> {
 
     public static <E> SerializableDataType<TagLike<E>> tagLike(Registry<E> registry) {
         return lazy(() -> of(
-            new Codec<T>() {
+            new Codec<TagLike<E>>() {
 
                 @Override
                 public <T> DataResult<Pair<TagLike<E>, T>> decode(DynamicOps<T> ops, T input) {
                     return TAG_ENTRY_SET.get().codec().decode(ops, input)
                         .map(entriesAndInput -> entriesAndInput
-                            .mapFirst(entries -> new TagLike.Builder<>(registry.getKey(), entries))
-                            .mapFirst(builder -> builder.build(registry.getReadOnlyWrapper())));
+                            .mapFirst(entries -> new TagLike.Builder<>(registry.key(), entries))
+                            .mapFirst(builder -> builder.build(registry)));
                 }
 
                 @Override
@@ -890,26 +735,26 @@ public class SerializableDataType<T> {
 
             },
             StreamCodec.of(
-                TagLike::write,
+                    (b,t) -> t.write(b),
                 TagLike::read
             )
         ));
     }
 
-    public static <E> SerializableDataType<TagLike<E>> tagLike(RegistryKey<E> registryKey) {
+    public static <E> SerializableDataType<TagLike<E>> tagLike(ResourceKey<E> registryKey) {
         return lazy(() -> of(
-            new Codec<T>() {
+            new Codec<TagLike<E>>() {
 
-                private final RegistryKey<? extends Registry<E>> registryRef = registryKey.getRegistryRef();
+                private final ResourceKey<? extends Registry<E>> registryRef = registryKey.registryKey();
 
                 @Override
                 public <T> DataResult<Pair<TagLike<E>, T>> decode(DynamicOps<T> ops, T input) {
                     return RegistryOpsUtil.getEntryLookup(ops, registryRef)
                         .map(DataResult::success)
-                        .orElse(DataResult.error(() -> "Couldn't find registry \"" + registryRef.getValue() + "\"; " + (ops instanceof RegistryOps<T> ? "it doesn't exist!" : "the passed dynamic ops is not a registry ops!")))
+                        .orElse(DataResult.error(() -> "Couldn't find registry \"" + registryRef.identifier() + "\"; " + (ops instanceof RegistryOps<T> ? "it doesn't exist!" : "the passed dynamic ops is not a registry ops!")))
                         .flatMap(entryLookup -> TAG_ENTRY_SET.get().codec().decode(ops, input)
                             .map(entriesAndInput -> entriesAndInput
-                                .mapFirst(entries -> new TagLike.Builder<>(registryRef, entries))
+                                .mapFirst(entries -> new TagLike.Builder<E>(registryRef, entries))
                                 .mapFirst(builder -> builder.build(entryLookup))));
                 }
 
@@ -920,7 +765,7 @@ public class SerializableDataType<T> {
 
             },
             StreamCodec.of(
-                TagLike::write,
+                    (b,t) -> t.write(b),
                 TagLike::read
             )
         ));

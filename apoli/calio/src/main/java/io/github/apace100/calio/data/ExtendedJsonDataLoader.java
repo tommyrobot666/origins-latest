@@ -74,7 +74,7 @@ public abstract class ExtendedJsonDataLoader extends ExtendedSinglePreparationRe
     }
 
     @Override
-    protected void preApply(Map<Identifier, JsonElement> prepared, ResourceManager manager, Profiler profiler) {
+    protected void preApply(Map<Identifier, JsonElement> prepared, ResourceManager manager, ProfilerFiller profiler) {
 
         var preparedEntryIterator = prepared.entrySet().iterator();
         while (preparedEntryIterator.hasNext()) {

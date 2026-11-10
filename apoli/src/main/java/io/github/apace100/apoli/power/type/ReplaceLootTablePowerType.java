@@ -18,7 +18,7 @@
 //import net.minecraft.loot.LootTable;
 //import net.minecraft.loot.context.LootContext;
 //import net.minecraft.loot.context.LootContextParameters;
-//import net.minecraft.registry.RegistryKey;
+//import net.minecraft.registry.ResourceKey;
 //import net.minecraft.core.registries.Registries;
 //import net.minecraft.resources.Identifier;
 //import net.minecraft.util.InvalidIdentifierException;
@@ -32,7 +32,7 @@
 //
 //public class ReplaceLootTablePowerType extends PowerType implements Prioritized<ReplaceLootTablePowerType> {
 //
-//    public static final RegistryKey<LootTable> REPLACED_TABLE_KEY = RegistryKey.of(Registries.LOOT_TABLE, Apoli.identifier("replaced_loot_table"));
+//    public static final ResourceKey<LootTable> REPLACED_TABLE_KEY = ResourceKey.create(Registries.LOOT_TABLE, Apoli.identifier("replaced_loot_table"));
 //
 //    private static final Stack<LootTable> REPLACEMENT_STACK = new Stack<>();
 //    private static final Stack<LootTable> BACKTRACK_STACK = new Stack<>();
@@ -89,7 +89,7 @@
 //        return priority;
 //    }
 //
-//    public boolean hasReplacement(RegistryKey<LootTable> lootTableKey) {
+//    public boolean hasReplacement(ResourceKey<LootTable> lootTableKey) {
 //
 //        Identifier id = lootTableKey.getValue();
 //        String idString = id.toString();
@@ -121,7 +121,7 @@
 //            && biEntityCondition.map(condition -> condition.test(getHolder(), contextEntity)).orElse(true);
 //    }
 //
-//    public Optional<RegistryKey<LootTable>> getReplacement(RegistryKey<LootTable> key) {
+//    public Optional<ResourceKey<LootTable>> getReplacement(ResourceKey<LootTable> key) {
 //
 //        String id = key.getValue().toString();
 //        for (var entry : replacements.entrySet()) {
@@ -135,7 +135,7 @@
 //                try {
 //
 //                    String replaced = matcher.replaceAll(replacement);
-//                    RegistryKey<LootTable> replacedKey = RegistryKey.of(Registries.LOOT_TABLE, Identifier.of(replaced));
+//                    ResourceKey<LootTable> replacedKey = ResourceKey.create(Registries.LOOT_TABLE, Identifier.of(replaced));
 //
 //                    return Optional.of(replacedKey);
 //

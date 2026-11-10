@@ -13,7 +13,7 @@
 //import net.minecraft.loot.context.LootContextParameterSet;
 //import net.minecraft.loot.context.LootContextParameters;
 //import net.minecraft.loot.context.LootContextTypes;
-//import net.minecraft.registry.RegistryKey;
+//import net.minecraft.registry.ResourceKey;
 //import net.minecraft.core.registries.Registries;
 //import net.minecraft.server.level.ServerLevel;
 //import org.jetbrains.annotations.NotNull;
@@ -32,9 +32,9 @@
 //            .set("predicate", conditionType.predicate)
 //    );
 //
-//    private final RegistryKey<LootCondition> predicate;
+//    private final ResourceKey<LootCondition> predicate;
 //
-//    public PredicateEntityConditionType(RegistryKey<LootCondition> predicate) {
+//    public PredicateEntityConditionType(ResourceKey<LootCondition> predicate) {
 //        this.predicate = predicate;
 //    }
 //

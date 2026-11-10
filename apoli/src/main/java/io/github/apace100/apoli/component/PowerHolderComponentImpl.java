@@ -261,7 +261,7 @@ public class PowerHolderComponentImpl implements PowerHolderComponent {
     }
 
     @Override
-    public void readFromNbt(@NotNull CompoundTag compoundTag, RegistryWrapper.WrapperLookup lookup) {
+    public void readFromNbt(@NotNull CompoundTag compoundTag, HolderLookup.Provider lookup) {
 
         powers.clear();
         powerSources.clear();
@@ -322,7 +322,7 @@ public class PowerHolderComponentImpl implements PowerHolderComponent {
     }
 
     @Override
-    public void writeToNbt(@NotNull CompoundTag compoundTag, RegistryWrapper.WrapperLookup lookup) {
+    public void writeToNbt(@NotNull CompoundTag compoundTag, HolderLookup.Provider lookup) {
 
         ListTag powersTag = new ListTag();
         powers.forEach((power, powerType) -> {

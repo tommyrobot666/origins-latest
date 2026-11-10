@@ -7,7 +7,7 @@
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.entity.attribute.EntityAttribute;
-//import net.minecraft.registry.entry.RegistryEntry;
+//import net.minecraft.registry.entry.Holder;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.List;
@@ -27,9 +27,9 @@
 //            .set("attribute", powerType.attribute)
 //    );
 //
-//    private final RegistryEntry<EntityAttribute> attribute;
+//    private final Holder<EntityAttribute> attribute;
 //
-//    public ModifyAttributePowerType(RegistryEntry<EntityAttribute> attribute, List<Modifier> modifiers, Optional<EntityCondition> condition) {
+//    public ModifyAttributePowerType(Holder<EntityAttribute> attribute, List<Modifier> modifiers, Optional<EntityCondition> condition) {
 //        super(modifiers, condition);
 //        this.attribute = attribute;
 //    }
@@ -39,7 +39,7 @@
 //        return PowerTypes.MODIFY_ATTRIBUTE;
 //    }
 //
-//    public RegistryEntry<EntityAttribute> getAttribute() {
+//    public Holder<EntityAttribute> getAttribute() {
 //        return attribute;
 //    }
 //

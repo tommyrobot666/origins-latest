@@ -23,7 +23,7 @@ public record AnyNamespaceLoadedResourceCondition(List<String> namespaces) imple
     }
 
     @Override
-    public boolean test(@Nullable RegistryWrapper.WrapperLookup registryLookup) {
+    public boolean test(@Nullable HolderLookup.Provider registryLookup) {
         return CalioResourceConditions.namespacesLoaded(namespaces, false);
     }
 

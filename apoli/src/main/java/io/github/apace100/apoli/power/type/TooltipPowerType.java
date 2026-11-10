@@ -162,7 +162,7 @@
 //    @Override
 //    public Tag toTag() {
 //
-//        RegistryWrapper.WrapperLookup registryLookup = getHolder().getRegistryManager();
+//        HolderLookup.Provider registryLookup = getHolder().getRegistryManager();
 //        RegistryOps<Tag> nbtOps = registryLookup.getOps(NbtOps.INSTANCE);
 //
 //        CompoundTag rootNbt = new CompoundTag();
@@ -182,7 +182,7 @@
 //    @Override
 //    public void fromTag(Tag tag) {
 //
-//        RegistryWrapper.WrapperLookup registryLookup = getHolder().getRegistryManager();
+//        HolderLookup.Provider registryLookup = getHolder().getRegistryManager();
 //        RegistryOps<Tag> nbtOps = registryLookup.getOps(NbtOps.INSTANCE);
 //
 //        this.tooltipTexts.clear();

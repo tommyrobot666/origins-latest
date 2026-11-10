@@ -7,7 +7,7 @@
 //import io.github.apace100.apoli.data.TypedDataObjectFactory;
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
-//import net.minecraft.registry.RegistryKey;
+//import net.minecraft.registry.ResourceKey;
 //import net.minecraft.world.Level;
 //import org.jetbrains.annotations.NotNull;
 //
@@ -23,9 +23,9 @@
 //            .set("dimension", conditionType.dimension)
 //    );
 //
-//    private final RegistryKey<Level> dimension;
+//    private final ResourceKey<Level> dimension;
 //
-//    public DimensionEntityConditionType(RegistryKey<Level> dimension) {
+//    public DimensionEntityConditionType(ResourceKey<Level> dimension) {
 //        this.dimension = dimension;
 //    }
 //

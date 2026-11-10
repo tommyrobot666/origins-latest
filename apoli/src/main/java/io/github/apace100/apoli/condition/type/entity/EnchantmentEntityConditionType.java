@@ -14,9 +14,9 @@
 //import net.minecraft.enchantment.Enchantment;
 //import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.world.item.ItemStack;
-//import net.minecraft.registry.RegistryKey;
+//import net.minecraft.registry.ResourceKey;
 //import net.minecraft.core.registries.Registries;
-//import net.minecraft.registry.entry.RegistryEntry;
+//import net.minecraft.registry.entry.Holder;
 //import org.jetbrains.annotations.NotNull;
 //
 //public class EnchantmentEntityConditionType extends EntityConditionType {
@@ -43,7 +43,7 @@
 //            .set("compare_to", conditionType.compareTo)
 //    );
 //
-//    private final RegistryKey<Enchantment> enchantmentKey;
+//    private final ResourceKey<Enchantment> enchantmentKey;
 //    private final boolean useModifications;
 //
 //    private final Calculation calculation;
@@ -51,7 +51,7 @@
 //    private final Comparison comparison;
 //    private final int compareTo;
 //
-//    public EnchantmentEntityConditionType(RegistryKey<Enchantment> enchantmentKey, boolean useModifications, Calculation calculation, Comparison comparison, int compareTo) {
+//    public EnchantmentEntityConditionType(ResourceKey<Enchantment> enchantmentKey, boolean useModifications, Calculation calculation, Comparison comparison, int compareTo) {
 //        this.enchantmentKey = enchantmentKey;
 //        this.useModifications = useModifications;
 //        this.calculation = calculation;
@@ -64,7 +64,7 @@
 //
 //        if (context.entity() instanceof LivingEntity livingEntity) {
 //
-//            RegistryEntry<Enchantment> enchantment = livingEntity.getRegistryManager().get(Registries.ENCHANTMENT).entryOf(enchantmentKey);
+//            Holder<Enchantment> enchantment = livingEntity.getRegistryManager().get(Registries.ENCHANTMENT).entryOf(enchantmentKey);
 //            int level = calculation.queryTotalLevel(livingEntity, enchantment, useModifications);
 //
 //            return comparison.compare(level, compareTo);
@@ -87,7 +87,7 @@
 //        SUM {
 //
 //            @Override
-//            public int queryLevel(ItemStack stack, RegistryEntry<Enchantment> enchantmentEntry, boolean useModifications, int totalLevel) {
+//            public int queryLevel(ItemStack stack, Holder<Enchantment> enchantmentEntry, boolean useModifications, int totalLevel) {
 //                return ModifyEnchantmentLevelPowerType.getEnchantments(stack, useModifications).getLevel(enchantmentEntry);
 //            }
 //
@@ -96,7 +96,7 @@
 //        MAX {
 //
 //            @Override
-//            public int queryLevel(ItemStack stack, RegistryEntry<Enchantment> enchantmentEntry, boolean useModifications, int totalLevel) {
+//            public int queryLevel(ItemStack stack, Holder<Enchantment> enchantmentEntry, boolean useModifications, int totalLevel) {
 //
 //                int potentialLevel = ModifyEnchantmentLevelPowerType.getEnchantments(stack, useModifications).getLevel(enchantmentEntry);
 //
@@ -112,7 +112,7 @@
 //
 //        };
 //
-//        public int queryTotalLevel(LivingEntity entity, RegistryEntry<Enchantment> enchantmentEntry, boolean useModifications) {
+//        public int queryTotalLevel(LivingEntity entity, Holder<Enchantment> enchantmentEntry, boolean useModifications) {
 //
 //            Enchantment enchantment = enchantmentEntry.value();
 //            int totalLevel = 0;
@@ -125,7 +125,7 @@
 //
 //        }
 //
-//        public abstract int queryLevel(ItemStack stack, RegistryEntry<Enchantment> enchantmentEntry, boolean useModifications, int totalLevel);
+//        public abstract int queryLevel(ItemStack stack, Holder<Enchantment> enchantmentEntry, boolean useModifications, int totalLevel);
 //
 //    }
 //

@@ -10,9 +10,9 @@
 //import net.minecraft.entity.Dismounting;
 //import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.core.Registry;
-//import net.minecraft.registry.RegistryKey;
+//import net.minecraft.registry.ResourceKey;
 //import net.minecraft.core.registries.Registries;
-//import net.minecraft.registry.entry.RegistryEntry;
+//import net.minecraft.registry.entry.Holder;
 //import net.minecraft.core.HolderSet;
 //import net.minecraft.tags.TagKey;
 //import net.minecraft.server.MinecraftServer;
@@ -76,12 +76,12 @@
 //            .set("priority", powerType.getPriority())
 //    );
 //
-//    private final RegistryKey<Level> dimensionKey;
+//    private final ResourceKey<Level> dimensionKey;
 //
-//    private final Optional<RegistryKey<Structure>> structureKey;
+//    private final Optional<ResourceKey<Structure>> structureKey;
 //    private final Optional<TagKey<Structure>> structureTag;
 //
-//    private final Optional<RegistryKey<Biome>> biomeKey;
+//    private final Optional<ResourceKey<Biome>> biomeKey;
 //    private final Optional<TagKey<Biome>> biomeTag;
 //
 //    private final SpawnStrategy spawnStrategy;
@@ -90,7 +90,7 @@
 //    private final float dimensionDistanceMultiplier;
 //    private final int priority;
 //
-//    public ModifyPlayerSpawnPowerType(RegistryKey<Level> dimensionKey, Optional<RegistryKey<Structure>> structureKey, Optional<TagKey<Structure>> structureTag, Optional<RegistryKey<Biome>> biomeKey, Optional<TagKey<Biome>> biomeTag, SpawnStrategy spawnStrategy, Optional<SoundEvent> respawnSound, float dimensionDistanceMultiplier, int priority, Optional<EntityCondition> condition) {
+//    public ModifyPlayerSpawnPowerType(ResourceKey<Level> dimensionKey, Optional<ResourceKey<Structure>> structureKey, Optional<TagKey<Structure>> structureTag, Optional<ResourceKey<Biome>> biomeKey, Optional<TagKey<Biome>> biomeTag, SpawnStrategy spawnStrategy, Optional<SoundEvent> respawnSound, float dimensionDistanceMultiplier, int priority, Optional<EntityCondition> condition) {
 //        super(condition);
 //        this.dimensionKey = dimensionKey;
 //        this.structureKey = structureKey;
@@ -132,7 +132,7 @@
 //        return priority;
 //    }
 //
-//    public RegistryKey<Level> getDimensionKey() {
+//    public ResourceKey<Level> getDimensionKey() {
 //        return dimensionKey;
 //    }
 //
@@ -242,7 +242,7 @@
 //            StringBuilder name = new StringBuilder();
 //
 //            biomeKey
-//                .map(RegistryKey::getValue)
+//                .map(ResourceKey::getValue)
 //                .ifPresent(id -> name.append("biome \"").append(id).append("\""));
 //            biomeTag
 //                .map(TagKey::id)
@@ -264,7 +264,7 @@
 //        }
 //
 //        Registry<Structure> structureRegistry = dimension.getRegistryManager().get(Registries.STRUCTURE);
-//        List<RegistryEntry<Structure>> structureEntries = new ArrayList<>();
+//        List<Holder<Structure>> structureEntries = new ArrayList<>();
 //
 //        structureKey
 //            .map(structureRegistry::entryOf)
@@ -284,7 +284,7 @@
 //        }
 //
 //        var result = Optional.ofNullable(dimension.getChunkManager().getChunkGenerator().locateStructure(dimension, HolderSet.of(structureEntries), center, radius, false))
-//            .map(pair -> pair.mapSecond(RegistryEntry::value))
+//            .map(pair -> pair.mapSecond(Holder::value))
 //            .map(pair -> new Pair<>(pair.getFirst(), pair.getSecond()));
 //
 //        if (result.isEmpty()) {
@@ -293,7 +293,7 @@
 //            StringBuilder name = new StringBuilder();
 //
 //            structureKey
-//                .map(RegistryKey::getValue)
+//                .map(ResourceKey::getValue)
 //                .ifPresent(id -> name.append("structure \"").append(id).append("\""));
 //            structureTag
 //                .map(TagKey::id)

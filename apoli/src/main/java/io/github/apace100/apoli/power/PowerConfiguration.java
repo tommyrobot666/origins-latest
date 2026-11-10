@@ -22,14 +22,6 @@ public record PowerConfiguration<T extends PowerType>(Identifier id, TypedDataOb
 		return of(id, PowerType.createConditionedDataFactory(serializableData, fromData, toData));
 	}
 
-	/**
-	 * 	<b>Use {@link #of(Identifier, TypedDataObjectFactory)} instead.</b>
-	 */
-	@Deprecated(forRemoval = true)
-	public static <T extends PowerType> PowerConfiguration<T> dataFactory(Identifier id, TypedDataObjectFactory<T> dataFactory) {
-		return of(id, dataFactory);
-	}
-
 	public static <T extends PowerType> PowerConfiguration<T> of(Identifier id, TypedDataObjectFactory<T> dataFactory) {
 		return new PowerConfiguration<>(id, dataFactory);
 	}

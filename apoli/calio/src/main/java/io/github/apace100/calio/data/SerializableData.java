@@ -183,14 +183,6 @@ public class SerializableData extends MapCodec<SerializableData.Instance> {
         return "SerializableData[fields = " + fields + "]";
     }
 
-    /**
-     *  Use {@link #receive(RegistryFriendlyByteBuf)} instead.
-     */
-    @Deprecated
-    public Instance read(RegistryFriendlyByteBuf buf) {
-        return receive(buf);
-    }
-
     public Instance receive(RegistryFriendlyByteBuf buf) {
 
         Instance data = instance();
@@ -221,13 +213,6 @@ public class SerializableData extends MapCodec<SerializableData.Instance> {
 
     }
 
-    /**
-     *  Use {@link #send(RegistryFriendlyByteBuf, Instance)} instead.
-     */
-    @Deprecated
-    public void write(RegistryFriendlyByteBuf buf, Instance data) {
-        this.send(buf, data);
-    }
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     public void send(RegistryFriendlyByteBuf buf, Instance data) {
@@ -273,26 +258,6 @@ public class SerializableData extends MapCodec<SerializableData.Instance> {
 
         });
 
-    }
-
-    /**
-     *  <p><b>Use {@link #decode(DynamicOps, MapLike)} (or {@link #decoder()}) instead.</b></p>
-     *  <p>Some, if not most, data types may also require a {@link RegistryOps}, which can be retrieved from a {@link net.minecraft.core.RegistryAccess} or a {@link net.minecraft.core.HolderLookup.Provider}.</p>
-     */
-    @Deprecated(forRemoval = true)
-    public Instance read(JsonObject jsonObject) {
-        return this.decoder().parse(JsonOps.INSTANCE, jsonObject).getOrThrow(JsonParseException::new);
-    }
-
-    /**
-     *  <p><b>Use {@link #encode(Instance, DynamicOps, RecordBuilder)} (or {@link #encoder()}) instead.</b></p>
-     *  <p>Some, if not most, data types may also require a {@link RegistryOps}, which can be retrieved from a {@link net.minecraft.core.RegistryAccess} or a {@link net.minecraft.core.HolderLookup.Provider}.</p>
-     */
-    @Deprecated(forRemoval = true)
-    public JsonObject write(Instance data) {
-        return encoder().encodeStart(JsonOps.INSTANCE, data)
-            .flatMap(jsonElement -> jsonElement instanceof JsonObject jsonObject ? DataResult.success(jsonObject) : DataResult.error(() -> "Not a JSON object: " + jsonElement))
-            .getOrThrow(JsonParseException::new);
     }
 
     public <T> SerializableData add(String name, @NotNull Codec<T> codec) {

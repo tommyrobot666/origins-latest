@@ -10,7 +10,7 @@
 //import net.minecraft.entity.attribute.EntityAttribute;
 //import net.minecraft.entity.attribute.EntityAttributeInstance;
 //import net.minecraft.entity.attribute.EntityAttributeModifier;
-//import net.minecraft.registry.entry.RegistryEntry;
+//import net.minecraft.registry.entry.Holder;
 //import org.jetbrains.annotations.Nullable;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.Shadow;
@@ -31,7 +31,7 @@
 //    @Shadow
 //    public abstract double getBaseValue();
 //
-//    @Shadow public abstract RegistryEntry<EntityAttribute> getAttribute();
+//    @Shadow public abstract Holder<EntityAttribute> getAttribute();
 //
 //    @Unique
 //    @Nullable
