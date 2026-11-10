@@ -5,7 +5,7 @@
 //import io.github.apace100.apoli.data.TypedDataObjectFactory;
 //import io.github.apace100.apoli.power.PowerConfiguration;
 //import io.github.apace100.apoli.util.HudRender;
-//import io.github.apace100.apoli.util.keybinding.KeyBindingReference;
+//import io.github.apace100.apoli.util.keybinding.KeyMappingReference;
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.world.entity.LivingEntity;
@@ -26,7 +26,7 @@
 //			.add("speed", SerializableDataTypes.FLOAT)
 //			.add("hud_render", HudRender.DATA_TYPE, HudRender.DONT_RENDER)
 //			.add("cooldown", SerializableDataTypes.INT, 1)
-//			.add("key", ApoliDataTypes.BACKWARDS_COMPATIBLE_KEY, KeyBindingReference.NONE),
+//			.add("key", ApoliDataTypes.BACKWARDS_COMPATIBLE_KEY, KeyMappingReference.NONE),
 //		(data, condition) -> new LaunchPowerType(
 //			data.get("sound"),
 //			data.get("speed"),
@@ -46,7 +46,7 @@
 //	private final Optional<SoundEvent> sound;
 //	private final float speed;
 //
-//	public LaunchPowerType(Optional<SoundEvent> sound, float speed, HudRender hudRender, int cooldownDuration, KeyBindingReference key, Optional<EntityCondition> condition) {
+//	public LaunchPowerType(Optional<SoundEvent> sound, float speed, HudRender hudRender, int cooldownDuration, KeyMappingReference key, Optional<EntityCondition> condition) {
 //		super(hudRender, cooldownDuration, key, condition);
 //		this.sound = sound;
 //		this.speed = speed;

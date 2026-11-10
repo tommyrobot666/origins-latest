@@ -38,7 +38,7 @@ public class Calio implements ModInitializer {
 //        Criteria.register(CodeTriggerCriterion.ID.toString(), CodeTriggerCriterion.INSTANCE);
 		CalioResourceConditions.register();
 
-		PayloadTypeRegistry.clientboundPlay().register(SyncDataObjectRegistryS2CPacket.PACKET_ID, SyncDataObjectRegistryS2CPacket.PACKET_CODEC);
+		PayloadTypeRegistry.clientboundPlay().register(SyncDataObjectRegistryS2CPacket.PACKET_ID, SyncDataObjectRegistryS2CPacket.STREAM_CODEC);
 		ServerLifecycleEvents.SYNC_DATA_PACK_CONTENTS.register((player, joined) -> DataObjectRegistry.performAutoSync(player));
 
 	}

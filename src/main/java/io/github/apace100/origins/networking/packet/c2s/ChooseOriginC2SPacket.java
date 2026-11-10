@@ -9,7 +9,7 @@ import net.minecraft.resources.Identifier;
 public record ChooseOriginC2SPacket(Identifier layerId, Identifier originId) implements CustomPacketPayload {
 
     public static final Type<ChooseOriginC2SPacket> PACKET_ID = new Type<>(Origins.identifier("c2s/choose_origin"));
-    public static final StreamCodec<ByteBuf, ChooseOriginC2SPacket> PACKET_CODEC = StreamCodec.composite(
+    public static final StreamCodec<ByteBuf, ChooseOriginC2SPacket> STREAM_CODEC = StreamCodec.composite(
         Identifier.STREAM_CODEC, ChooseOriginC2SPacket::layerId,
         Identifier.STREAM_CODEC, ChooseOriginC2SPacket::originId,
         ChooseOriginC2SPacket::new

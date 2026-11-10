@@ -19,9 +19,9 @@ import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 public class OriginsClient implements ClientModInitializer {
 
     public static KeyMapping.Category originsCategory;
-    public static KeyMapping primaryActiveKeyBinding;
-    public static KeyMapping secondaryActiveKeyBinding;
-    public static KeyMapping viewOriginKeyBinding;
+    public static KeyMapping primaryActiveKeyMapping;
+    public static KeyMapping secondaryActiveKeyMapping;
+    public static KeyMapping viewOriginKeyMapping;
 
     public static boolean isServerRunningOrigins = false;
 
@@ -35,23 +35,23 @@ public class OriginsClient implements ClientModInitializer {
         ModPacketsS2C.register();
 
         originsCategory = KeyMapping.Category.register(Origins.identifier("category"));
-        primaryActiveKeyBinding = new KeyMapping("key.origins.primary_active", InputConstants.Type.KEYBOARD, InputConstants.KEY_G, originsCategory);
-        secondaryActiveKeyBinding = new KeyMapping("key.origins.secondary_active", InputConstants.Type.KEYBOARD, InputConstants.UNKNOWN.getValue(), originsCategory);
-        viewOriginKeyBinding = new KeyMapping("key.origins.view_origin", InputConstants.Type.KEYBOARD, InputConstants.KEY_O, originsCategory);
+        primaryActiveKeyMapping = new KeyMapping("key.origins.primary_active", InputConstants.Type.KEYBOARD, InputConstants.KEY_G, originsCategory);
+        secondaryActiveKeyMapping = new KeyMapping("key.origins.secondary_active", InputConstants.Type.KEYBOARD, InputConstants.UNKNOWN.getValue(), originsCategory);
+        viewOriginKeyMapping = new KeyMapping("key.origins.view_origin", InputConstants.Type.KEYBOARD, InputConstants.KEY_O, originsCategory);
 
-        KeyBindingUtil.ALIASES.addAlias("primary", primaryActiveKeyBinding.getName());
-        KeyBindingUtil.ALIASES.addAlias("secondary", secondaryActiveKeyBinding.getName());
+        KeyBindingUtil.ALIASES.addAlias("primary", primaryActiveKeyMapping.getName());
+        KeyBindingUtil.ALIASES.addAlias("secondary", secondaryActiveKeyMapping.getName());
 
         //  "none" is the default key used when no keybinding reference is specified in powers
-        KeyBindingUtil.ALIASES.addAlias("none", primaryActiveKeyBinding.getName());
+        KeyBindingUtil.ALIASES.addAlias("none", primaryActiveKeyMapping.getName());
 
-        KeyMappingHelper.registerKeyMapping(primaryActiveKeyBinding);
-        KeyMappingHelper.registerKeyMapping(secondaryActiveKeyBinding);
-        KeyMappingHelper.registerKeyMapping(viewOriginKeyBinding);
+        KeyMappingHelper.registerKeyMapping(primaryActiveKeyMapping);
+        KeyMappingHelper.registerKeyMapping(secondaryActiveKeyMapping);
+        KeyMappingHelper.registerKeyMapping(viewOriginKeyMapping);
 
         ClientTickEvents.START_CLIENT_TICK.register(client -> {
 
-            while (viewOriginKeyBinding.consumeClick()) {
+            while (viewOriginKeyMapping.consumeClick()) {
 
                 if (!(client.gui.screen() instanceof ViewOriginScreen)) {
                     client.setScreenAndShow(new ViewOriginScreen());

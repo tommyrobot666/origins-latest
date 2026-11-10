@@ -15,8 +15,8 @@
 //import net.fabricmc.api.EnvType;
 //import net.fabricmc.api.Environment;
 //import net.minecraft.client.Minecraft;
-//import net.minecraft.client.option.KeyBinding;
-//import net.minecraft.client.util.InputUtil;
+//import net.minecraft.client.KeyMapping;
+//import com.mojang.blaze3d.platform.InputConstants;
 //import net.minecraft.component.ComponentHolder;
 //import net.minecraft.component.ComponentMap;
 //import net.minecraft.component.ComponentType;
@@ -130,7 +130,7 @@
 //        else if (config.tooltips.compactUsabilityHints) {
 //
 //            Minecraft client = Minecraft.getInstance();
-//            KeyBinding keyBinding = ApoliClient.showPowersOnUsabilityHint;
+//            KeyMapping keyBinding = ApoliClient.showPowersOnUsabilityHint;
 //
 //            Integer keyCode = !keyBinding.isUnbound()
 //                ? InputUtil.fromTranslationKey(keyBinding.getBoundKeyTranslationKey()).getCode()

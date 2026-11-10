@@ -16,7 +16,7 @@ import java.util.Set;
 import java.util.function.IntFunction;
 import java.util.function.Supplier;
 
-public class CalioPacketCodecs {
+public class CalioByteBufCodecs {
 
     public static final StreamCodec<ByteBuf, ExtraCodecs.TagOrElementLocation> TAG_ENTRY_ID = ByteBufCodecs.STRING_UTF8.map(
         str -> {
@@ -39,7 +39,7 @@ public class CalioPacketCodecs {
         TagEntry::new
     );
 
-    public static final StreamCodec<ByteBuf, Set<TagEntry>> TAG_ENTRY_SET = collection(HashSet::new, () -> CalioPacketCodecs.TAG_ENTRY);
+    public static final StreamCodec<ByteBuf, Set<TagEntry>> TAG_ENTRY_SET = collection(HashSet::new, () -> CalioByteBufCodecs.TAG_ENTRY);
 
     public static <B extends ByteBuf, E, C extends Collection<E>> StreamCodec<B, C> collection(IntFunction<C> collectionFactory, Supplier<StreamCodec<? super B, E>> elementCodec) {
         return collection(collectionFactory, elementCodec, Integer.MAX_VALUE);

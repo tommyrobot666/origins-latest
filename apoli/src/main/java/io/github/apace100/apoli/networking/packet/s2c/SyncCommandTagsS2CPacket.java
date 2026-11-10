@@ -6,17 +6,17 @@
 //import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 //import net.minecraft.world.entity.Entity;
 //import net.minecraft.network.codec.StreamCodec;
-//import net.minecraft.network.codec.PacketCodecs;
-//import net.minecraft.network.packet.CustomPayload;
+//import net.minecraft.network.codec.ByteBufCodecs;
+//import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 //
 //import java.util.Set;
 //
 //public record SyncCommandTagsS2CPacket(Set<String> tags, int entityId) implements CustomPayload {
 //
-//	public static final Id<SyncCommandTagsS2CPacket> ID = new Id<>(Apoli.identifier("s2c/sync_command_tags"));
-//	public static final StreamCodec<ByteBuf, SyncCommandTagsS2CPacket> CODEC = StreamCodec.tuple(
-//		PacketCodecs.STRING.collect(PacketCodecUtil.toHashSet()), SyncCommandTagsS2CPacket::tags,
-//		PacketCodecs.INTEGER, SyncCommandTagsS2CPacket::entityId,
+//	public static final Type<SyncCommandTagsS2CPacket> ID = new Type<>(Apoli.identifier("s2c/sync_command_tags"));
+//	public static final StreamCodec<ByteBuf, SyncCommandTagsS2CPacket> CODEC = StreamCodec.composite(
+//		ByteBufCodecs.STRING.collect(PacketCodecUtil.toHashSet()), SyncCommandTagsS2CPacket::tags,
+//		ByteBufCodecs.INTEGER, SyncCommandTagsS2CPacket::entityId,
 //		SyncCommandTagsS2CPacket::new
 //	);
 //
@@ -25,7 +25,7 @@
 //	}
 //
 //	@Override
-//	public Id<? extends CustomPayload> getId() {
+//	public Type<? extends CustomPacketPayload> type() {
 //		return ID;
 //	}
 //

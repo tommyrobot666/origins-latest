@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 
 public class MultiplePower extends Power {
 
-    protected static final Function<Power, StreamCodec<RegistryFriendlyByteBuf, MultiplePower>> PACKET_CODEC = power -> new StreamCodec<>() {
+    protected static final Function<Power, StreamCodec<RegistryFriendlyByteBuf, MultiplePower>> STREAM_CODEC = power -> new StreamCodec<>() {
 
         @Override
         public MultiplePower decode(RegistryFriendlyByteBuf buf) {

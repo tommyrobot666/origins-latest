@@ -3,7 +3,7 @@
 //import io.github.apace100.apoli.Apoli;
 //import net.minecraft.network.PacketByteBuf;
 //import net.minecraft.network.codec.StreamCodec;
-//import net.minecraft.network.packet.CustomPayload;
+//import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 //import net.minecraft.resources.Identifier;
 //
 //import java.util.ArrayList;
@@ -12,8 +12,8 @@
 //
 //public record SyncEntityTypeTagCacheS2CPacket(Map<Identifier, Collection<Identifier>> subTags) implements CustomPayload {
 //
-//	public static final Id<SyncEntityTypeTagCacheS2CPacket> PACKET_ID = new Id<>(Apoli.identifier("s2c/sync_entity_type_tag_cache"));
-//	public static final StreamCodec<PacketByteBuf, SyncEntityTypeTagCacheS2CPacket> PACKET_CODEC = StreamCodec.of(SyncEntityTypeTagCacheS2CPacket::write, SyncEntityTypeTagCacheS2CPacket::read);
+//	public static final Type<SyncEntityTypeTagCacheS2CPacket> PACKET_ID = new Type<>(Apoli.identifier("s2c/sync_entity_type_tag_cache"));
+//	public static final StreamCodec<PacketByteBuf, SyncEntityTypeTagCacheS2CPacket> STREAM_CODEC = StreamCodec.of(SyncEntityTypeTagCacheS2CPacket::write, SyncEntityTypeTagCacheS2CPacket::read);
 //
 //	private static SyncEntityTypeTagCacheS2CPacket read(PacketByteBuf buf) {
 //		return new SyncEntityTypeTagCacheS2CPacket(buf.readMap(PacketByteBuf::readIdentifier, valBuf -> valBuf.readCollection(ArrayList::new, PacketByteBuf::readIdentifier)));
@@ -24,7 +24,7 @@
 //	}
 //
 //	@Override
-//	public Id<? extends CustomPayload> getId() {
+//	public Type<? extends CustomPacketPayload> type() {
 //		return PACKET_ID;
 //	}
 //

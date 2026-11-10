@@ -10,7 +10,7 @@ import org.jspecify.annotations.NonNull;
 public record OpenChooseOriginScreenS2CPacket(boolean showBackground) implements CustomPacketPayload {
 
     public static final Type<OpenChooseOriginScreenS2CPacket> PACKET_ID = new Type<>(Origins.identifier("s2c/open_origin_screen"));
-    public static final StreamCodec<ByteBuf, OpenChooseOriginScreenS2CPacket> PACKET_CODEC = ByteBufCodecs.BOOL.map(OpenChooseOriginScreenS2CPacket::new, OpenChooseOriginScreenS2CPacket::showBackground);
+    public static final StreamCodec<ByteBuf, OpenChooseOriginScreenS2CPacket> STREAM_CODEC = ByteBufCodecs.BOOL.map(OpenChooseOriginScreenS2CPacket::new, OpenChooseOriginScreenS2CPacket::showBackground);
 
     @Override
     public @NonNull Type<? extends CustomPacketPayload> type() {

@@ -9,7 +9,7 @@
 //
 //    public static final ComponentType<ItemPowersComponent> POWERS = ComponentType.<ItemPowersComponent>builder()
 //        .codec(ItemPowersComponent.CODEC)
-//        .packetCodec(ItemPowersComponent.PACKET_CODEC)
+//        .packetCodec(ItemPowersComponent.STREAM_CODEC)
 //        .build();
 //
 //    public static void register() {

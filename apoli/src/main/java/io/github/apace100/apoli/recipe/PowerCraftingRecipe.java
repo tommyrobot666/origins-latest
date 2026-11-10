@@ -99,13 +99,13 @@
 //
 //    private void send(RegistryFriendlyByteBuf buf) {
 //        buf.writeIdentifier(powerId());
-//        Recipe.PACKET_CODEC.encode(buf, delegate());
+//        Recipe.STREAM_CODEC.encode(buf, delegate());
 //    }
 //
 //    private static PowerCraftingRecipe receive(RegistryFriendlyByteBuf buf) {
 //
 //        Identifier powerId = buf.readIdentifier();
-//        Recipe<?> recipe = Recipe.PACKET_CODEC.decode(buf);
+//        Recipe<?> recipe = Recipe.STREAM_CODEC.decode(buf);
 //
 //        if (recipe instanceof CraftingRecipe craftingRecipe) {
 //            return new PowerCraftingRecipe(powerId, craftingRecipe);
@@ -124,7 +124,7 @@
 //            ApoliDataTypes.DISALLOWING_INTERNAL_CRAFTING_RECIPE.codec().fieldOf("recipe").forGetter(PowerCraftingRecipe::delegate)
 //        ).apply(instance, PowerCraftingRecipe::new));
 //
-//        public static final StreamCodec<RegistryFriendlyByteBuf, PowerCraftingRecipe> PACKET_CODEC = StreamCodec.of(
+//        public static final StreamCodec<RegistryFriendlyByteBuf, PowerCraftingRecipe> STREAM_CODEC = StreamCodec.of(
 //            PowerCraftingRecipe::send,
 //            PowerCraftingRecipe::receive
 //        );
@@ -136,7 +136,7 @@
 //
 //        @Override
 //        public StreamCodec<RegistryFriendlyByteBuf, PowerCraftingRecipe> packetCodec() {
-//            return PACKET_CODEC;
+//            return STREAM_CODEC;
 //        }
 //
 //    }

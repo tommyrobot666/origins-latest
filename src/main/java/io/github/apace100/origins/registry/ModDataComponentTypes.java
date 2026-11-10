@@ -10,7 +10,7 @@ public class ModDataComponentTypes {
 
     public static final DataComponentType<ItemOriginsComponent> ORIGIN = DataComponentType.<ItemOriginsComponent>builder()
         .persistent(ItemOriginsComponent.CODEC)
-        .networkSynchronized(ItemOriginsComponent.PACKET_CODEC)
+        .networkSynchronized(ItemOriginsComponent.STREAM_CODEC)
         .build();
 
     public static void register() {

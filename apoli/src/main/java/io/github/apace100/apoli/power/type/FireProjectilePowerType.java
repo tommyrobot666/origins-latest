@@ -7,7 +7,7 @@
 //import io.github.apace100.apoli.power.PowerConfiguration;
 //import io.github.apace100.apoli.util.HudRender;
 //import io.github.apace100.apoli.util.MiscUtil;
-//import io.github.apace100.apoli.util.keybinding.KeyBindingReference;
+//import io.github.apace100.apoli.util.keybinding.KeyMappingReference;
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.world.entity.Entity;
@@ -39,7 +39,7 @@
 //            .add("entity_type", SerializableDataTypes.ENTITY_TYPE)
 //            .add("tag", SerializableDataTypes.NBT_COMPOUND, new NbtCompound())
 //            .add("sound", SerializableDataTypes.SOUND_EVENT.optional(), Optional.empty())
-//            .add("key", ApoliDataTypes.BACKWARDS_COMPATIBLE_KEY, KeyBindingReference.NONE)
+//            .add("key", ApoliDataTypes.BACKWARDS_COMPATIBLE_KEY, KeyMappingReference.NONE)
 //            .add("hud_render", HudRender.DATA_TYPE, HudRender.DONT_RENDER)
 //            .add("cooldown", SerializableDataTypes.INT, 1)
 //            .add("count", SerializableDataTypes.INT, 1)
@@ -98,7 +98,7 @@
 //    private boolean finishedStartDelay;
 //    private int shotProjectiles;
 //
-//    public FireProjectilePowerType(Optional<EntityAction> projectileAction, Optional<EntityAction> shooterAction, EntityType<?> entityType, NbtCompound tag, Optional<SoundEvent> soundEvent, KeyBindingReference key, HudRender hudRender, int cooldownDuration, int projectileCount, int interval, int startDelay, float speed, float divergence, Optional<EntityCondition> condition) {
+//    public FireProjectilePowerType(Optional<EntityAction> projectileAction, Optional<EntityAction> shooterAction, EntityType<?> entityType, NbtCompound tag, Optional<SoundEvent> soundEvent, KeyMappingReference key, HudRender hudRender, int cooldownDuration, int projectileCount, int interval, int startDelay, float speed, float divergence, Optional<EntityCondition> condition) {
 //        super(hudRender, cooldownDuration, key, condition);
 //        this.projectileAction = projectileAction;
 //        this.shooterAction = shooterAction;

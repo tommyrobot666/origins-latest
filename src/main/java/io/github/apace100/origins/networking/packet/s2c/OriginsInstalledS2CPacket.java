@@ -10,7 +10,7 @@ public class OriginsInstalledS2CPacket implements CustomPacketPayload {
 	public static final OriginsInstalledS2CPacket INSTANCE = new OriginsInstalledS2CPacket();
 
 	public static final Type<OriginsInstalledS2CPacket> PACKET_ID = new Type<>(Origins.identifier("s2c/origins_installed"));
-	public static final StreamCodec<ByteBuf, OriginsInstalledS2CPacket> PACKET_CODEC = StreamCodec.unit(INSTANCE);
+	public static final StreamCodec<ByteBuf, OriginsInstalledS2CPacket> STREAM_CODEC = StreamCodec.unit(INSTANCE);
 
 	private OriginsInstalledS2CPacket() {
 

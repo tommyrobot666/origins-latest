@@ -110,9 +110,9 @@ public class Power implements Validatable {
 
                     return switch (type) {
                         case 0 ->
-                            MultiplePower.PACKET_CODEC.apply(basePower).decode(buf);
+                            MultiplePower.STREAM_CODEC.apply(basePower).decode(buf);
                         case 1 ->
-                            SubPower.PACKET_CODEC.apply(basePower).decode(buf);
+                            SubPower.STREAM_CODEC.apply(basePower).decode(buf);
                         case Byte.MAX_VALUE ->
                             basePower;
                         default ->
@@ -150,11 +150,11 @@ public class Power implements Validatable {
                     switch (value) {
                         case MultiplePower multiplePower -> {
                             buf.writeByte(0);
-                            MultiplePower.PACKET_CODEC.apply(value).encode(buf, multiplePower);
+                            MultiplePower.STREAM_CODEC.apply(value).encode(buf, multiplePower);
                         }
                         case SubPower subPower -> {
                             buf.writeByte(1);
-                            SubPower.PACKET_CODEC.apply(value).encode(buf, subPower);
+                            SubPower.STREAM_CODEC.apply(value).encode(buf, subPower);
                         }
                         default ->
                             buf.writeByte(Byte.MAX_VALUE);

@@ -10,7 +10,7 @@ public record VersionHandshakePacket(int[] semver) implements CustomPacketPayloa
     private static final StreamCodec<FriendlyByteBuf, int[]> INT_ARRAY = StreamCodec.of(FriendlyByteBuf::writeVarIntArray, FriendlyByteBuf::readVarIntArray);
 
     public static final Type<VersionHandshakePacket> PACKET_ID = new Type<>(Origins.identifier("handshake/version"));
-    public static final StreamCodec<FriendlyByteBuf, VersionHandshakePacket> PACKET_CODEC = INT_ARRAY.map(VersionHandshakePacket::new, VersionHandshakePacket::semver);
+    public static final StreamCodec<FriendlyByteBuf, VersionHandshakePacket> STREAM_CODEC = INT_ARRAY.map(VersionHandshakePacket::new, VersionHandshakePacket::semver);
 
     @Override
     public Type<? extends CustomPacketPayload> type() {

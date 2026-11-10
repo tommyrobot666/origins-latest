@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 public record SyncOriginsS2CPacket(Map<Identifier, Origin> originsById) implements CustomPacketPayload {
 
     public static final Type<SyncOriginsS2CPacket> PACKET_ID = new Type<>(Origins.identifier("s2c/sync_origin_registry"));
-    public static final StreamCodec<RegistryFriendlyByteBuf, SyncOriginsS2CPacket> PACKET_CODEC = StreamCodec.of((b,p) -> p.write(b), SyncOriginsS2CPacket::read);
+    public static final StreamCodec<RegistryFriendlyByteBuf, SyncOriginsS2CPacket> STREAM_CODEC = StreamCodec.of((b,p) -> p.write(b), SyncOriginsS2CPacket::read);
 
     public static SyncOriginsS2CPacket read(RegistryFriendlyByteBuf buf) {
 

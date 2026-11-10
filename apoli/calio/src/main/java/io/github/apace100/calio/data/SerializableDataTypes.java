@@ -6,7 +6,7 @@ import com.google.gson.internal.LazilyParsedNumber;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.*;
 import com.mojang.serialization.codecs.PrimitiveCodec;
-import io.github.apace100.calio.codec.CalioPacketCodecs;
+import io.github.apace100.calio.codec.CalioByteBufCodecs;
 import io.github.apace100.calio.mixin.IngredientAccessor;
 import io.github.apace100.calio.mixin.TagEntryAccessor;
 import io.github.apace100.calio.registry.DataObjectFactories;
@@ -513,7 +513,7 @@ public final class SerializableDataTypes {
 			}
 
 		},
-        new CustomIngredientPacketCodec(ItemStack.OPTIONAL_LIST_PACKET_CODEC.xmap(
+        new CustomIngredientPacketCodec(ItemStack.OPTIONAL_LIST_STREAM_CODEC.xmap(
             itemStacks -> Ingredient.ofEntries(itemStacks
                 .stream()
                 .map(Ingredient.StackEntry::new)),
@@ -525,7 +525,7 @@ public final class SerializableDataTypes {
     /**
      *  A data type version of {@link Ingredient#DISALLOW_EMPTY_CODEC}
      */
-    public static final SerializableDataType<Ingredient> VANILLA_INGREDIENT = SerializableDataType.of(Ingredient.DISALLOW_EMPTY_CODEC, Ingredient.PACKET_CODEC);
+    public static final SerializableDataType<Ingredient> VANILLA_INGREDIENT = SerializableDataType.of(Ingredient.DISALLOW_EMPTY_CODEC, Ingredient.STREAM_CODEC);
 
     public static final SerializableDataType<Block> BLOCK = SerializableDataType.registry(Registries.BLOCK);
 
@@ -646,7 +646,7 @@ public final class SerializableDataTypes {
 			}
 
 		},
-		serializableData -> ParticleTypes.PACKET_CODEC.cast()
+		serializableData -> ParticleTypes.STREAM_CODEC.cast()
 	);
 
     public static final SerializableDataType<ParticleOptions> PARTICLE_EFFECT_OR_TYPE = SerializableDataType.recursive(self -> {
@@ -681,7 +681,7 @@ public final class SerializableDataTypes {
 		);
 	});
 
-    public static final SerializableDataType<DataComponentPatch> COMPONENT_CHANGES = SerializableDataType.of(DataComponentPatch.CODEC, DataComponentPatch.PACKET_CODEC);
+    public static final SerializableDataType<DataComponentPatch> COMPONENT_CHANGES = SerializableDataType.of(DataComponentPatch.CODEC, DataComponentPatch.STREAM_CODEC);
 
 	public static final SerializableDataType<ItemStack> UNCOUNTED_ITEM_STACK = SerializableDataType.lazy(() -> SerializableDataType.compound(DataObjectFactories.UNCOUNTED_ITEM_STACK));
 
@@ -689,7 +689,7 @@ public final class SerializableDataTypes {
 
     public static final SerializableDataType<List<ItemStack>> ITEM_STACKS = ITEM_STACK.list();
 
-    public static final SerializableDataType<Component> TEXT = SerializableDataType.of(ComponentSerialization.CODEC, ComponentSerialization.UNLIMITED_REGISTRY_PACKET_CODEC);
+    public static final SerializableDataType<Component> TEXT = SerializableDataType.of(ComponentSerialization.CODEC, ComponentSerialization.UNLIMITED_REGISTRY_STREAM_CODEC);
 
     public static final SerializableDataType<List<Component>> TEXTS = TEXT.list();
 
@@ -727,7 +727,7 @@ public final class SerializableDataTypes {
 			}
 
 		},
-		serializableData -> Recipe.PACKET_CODEC
+		serializableData -> Recipe.STREAM_CODEC
 	);
 
     public static final CompoundSerializableDataType<RecipeEntry<?>> RECIPE_ENTRY = new CompoundSerializableDataType<>(
@@ -761,9 +761,9 @@ public final class SerializableDataTypes {
 
 			};
 		},
-		serializableData -> StreamCodec.tuple(
-			Identifier.PACKET_CODEC, RecipeEntry::id,
-			Recipe.PACKET_CODEC, RecipeEntry::value,
+		serializableData -> StreamCodec.composite(
+			Identifier.STREAM_CODEC, RecipeEntry::id,
+			Recipe.STREAM_CODEC, RecipeEntry::value,
 			RecipeEntry::new
 		)
 	);
@@ -810,7 +810,7 @@ public final class SerializableDataTypes {
 	@Deprecated(forRemoval = true)
     public static final SerializableDataType<List<StatusEffectChance>> STATUS_EFFECT_CHANCES = STATUS_EFFECT_CHANCE.list();
 
-    public static final SerializableDataType<FoodProperties.StatusEffectEntry> FOOD_STATUS_EFFECT_ENTRY = SerializableDataType.of(FoodProperties.StatusEffectEntry.CODEC, FoodProperties.StatusEffectEntry.PACKET_CODEC);
+    public static final SerializableDataType<FoodProperties.StatusEffectEntry> FOOD_STATUS_EFFECT_ENTRY = SerializableDataType.of(FoodProperties.StatusEffectEntry.CODEC, FoodProperties.StatusEffectEntry.STREAM_CODEC);
 
     public static final SerializableDataType<List<FoodProperties.StatusEffectEntry>> FOOD_STATUS_EFFECT_ENTRIES = FOOD_STATUS_EFFECT_ENTRY.list();
 
@@ -982,7 +982,7 @@ public final class SerializableDataTypes {
 			}
 
 		},
-		CalioPacketCodecs.TAG_ENTRY.cast()
+		CalioByteBufCodecs.TAG_ENTRY.cast()
 	));
 
     public static final SerializableDataType<List<TagEntry>> TAG_ENTRIES = TAG_ENTRY.list();
@@ -993,7 +993,7 @@ public final class SerializableDataTypes {
 
     public static final SerializableDataType<TagLike<EntityType<?>>> ENTITY_TYPE_TAG_LIKE = SerializableDataType.tagLike(Registries.ENTITY_TYPE);
 
-    public static final SerializableDataType<PotionContentsComponent> POTION_CONTENTS_COMPONENT = SerializableDataType.of(PotionContentsComponent.CODEC, PotionContentsComponent.PACKET_CODEC);
+    public static final SerializableDataType<PotionContentsComponent> POTION_CONTENTS_COMPONENT = SerializableDataType.of(PotionContentsComponent.CODEC, PotionContentsComponent.STREAM_CODEC);
 
     public static final SerializableDataType<ResourceKey<LootFunction>> ITEM_MODIFIER = SerializableDataType.registryKey(Registries.ITEM_MODIFIER);
 

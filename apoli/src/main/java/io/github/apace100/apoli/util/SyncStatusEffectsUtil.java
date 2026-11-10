@@ -8,7 +8,7 @@
 //import net.minecraft.nbt.NbtCompound;
 //import net.minecraft.network.PacketByteBuf;
 //import net.minecraft.network.codec.StreamCodec;
-//import net.minecraft.network.codec.PacketCodecs;
+//import net.minecraft.network.codec.ByteBufCodecs;
 //import net.minecraft.server.network.ServerPlayer;
 //
 //import java.util.function.BiConsumer;
@@ -52,7 +52,7 @@
 //
 //        });
 //
-//        public static final StreamCodec<PacketByteBuf, UpdateType> PACKET_CODEC = PacketCodecs.indexed(index -> values()[index], UpdateType::ordinal).cast();
+//        public static final StreamCodec<PacketByteBuf, UpdateType> STREAM_CODEC = ByteBufCodecs.indexed(index -> values()[index], UpdateType::ordinal).cast();
 //
 //        final BiConsumer<LivingEntity, StatusEffectInstance> consumer;
 //        UpdateType(BiConsumer<LivingEntity, StatusEffectInstance> consumer) {

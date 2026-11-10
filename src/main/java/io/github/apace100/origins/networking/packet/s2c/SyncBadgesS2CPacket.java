@@ -15,7 +15,7 @@ import java.util.Map;
 public record SyncBadgesS2CPacket(Map<Identifier, List<Badge>> badgesById) implements CustomPacketPayload {
 
     public static final Type<SyncBadgesS2CPacket> PACKET_ID = new Type<>(Origins.identifier("s2c/sync_badge_registry"));
-    public static final StreamCodec<RegistryFriendlyByteBuf, SyncBadgesS2CPacket> PACKET_CODEC = StreamCodec.of((b,p)-> p.write(b), SyncBadgesS2CPacket::read);
+    public static final StreamCodec<RegistryFriendlyByteBuf, SyncBadgesS2CPacket> STREAM_CODEC = StreamCodec.of((b,p)-> p.write(b), SyncBadgesS2CPacket::read);
 
     public static SyncBadgesS2CPacket read(RegistryFriendlyByteBuf buf) {
 

@@ -4,8 +4,8 @@
 //import net.minecraft.nbt.NbtElement;
 //import net.minecraft.network.PacketByteBuf;
 //import net.minecraft.network.codec.StreamCodec;
-//import net.minecraft.network.codec.PacketCodecs;
-//import net.minecraft.network.packet.CustomPayload;
+//import net.minecraft.network.codec.ByteBufCodecs;
+//import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 //import net.minecraft.resources.Identifier;
 //
 //import java.util.HashMap;
@@ -13,15 +13,15 @@
 //
 //public record SyncBulkPowerDataS2CPacket(int entityId, Map<Identifier, NbtElement> powerAndData) implements CustomPayload {
 //
-//    public static final Id<SyncBulkPowerDataS2CPacket> PACKET_ID = new Id<>(Apoli.identifier("s2c/sync_bulk_power_data"));
-//    public static final StreamCodec<PacketByteBuf, SyncBulkPowerDataS2CPacket> PACKET_CODEC = StreamCodec.tuple(
-//        PacketCodecs.VAR_INT, SyncBulkPowerDataS2CPacket::entityId,
-//        PacketCodecs.map(HashMap::new, Identifier.PACKET_CODEC, PacketCodecs.NBT_ELEMENT), SyncBulkPowerDataS2CPacket::powerAndData,
+//    public static final Type<SyncBulkPowerDataS2CPacket> PACKET_ID = new Type<>(Apoli.identifier("s2c/sync_bulk_power_data"));
+//    public static final StreamCodec<PacketByteBuf, SyncBulkPowerDataS2CPacket> STREAM_CODEC = StreamCodec.composite(
+//        ByteBufCodecs.VAR_INT, SyncBulkPowerDataS2CPacket::entityId,
+//        ByteBufCodecs.map(HashMap::new, Identifier.STREAM_CODEC, ByteBufCodecs.NBT_ELEMENT), SyncBulkPowerDataS2CPacket::powerAndData,
 //        SyncBulkPowerDataS2CPacket::new
 //    );
 //
 //    @Override
-//    public Id<? extends CustomPayload> getId() {
+//    public Type<? extends CustomPacketPayload> type() {
 //        return PACKET_ID;
 //    }
 //

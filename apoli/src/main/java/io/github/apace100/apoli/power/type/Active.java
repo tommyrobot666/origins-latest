@@ -2,12 +2,12 @@ package io.github.apace100.apoli.power.type;
 
 import io.github.apace100.apoli.ApoliClient;
 import io.github.apace100.apoli.component.PowerHolderComponent;
-import io.github.apace100.apoli.util.keybinding.KeyBindingReference;
+import io.github.apace100.apoli.util.keybinding.KeyMappingReference;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.util.TriState;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.option.KeyBinding;
+import net.minecraft.client.KeyMapping;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -16,7 +16,7 @@ import java.util.Map;
 
 public interface Active {
 
-    KeyBindingReference getKey();
+    KeyMappingReference getKey();
 
     default boolean canTrigger() {
         return true;
@@ -41,9 +41,9 @@ public interface Active {
                 continue;
             }
 
-            KeyBindingReference keyBindingReference = activePowerType.getKey();
-            TriState keyPressed = keyBindingReference.asKeyBinding()
-                .map(KeyBinding::isPressed)
+            KeyMappingReference keyBindingReference = activePowerType.getKey();
+            TriState keyPressed = keyBindingReference.asKeyMapping()
+                .map(KeyMapping::isPressed)
                 .map(TriState::of)
                 .orElse(TriState.DEFAULT);
 
@@ -51,14 +51,14 @@ public interface Active {
                 continue;
             }
 
-            if (currentKeybindingStates.computeIfAbsent(keyBindingReference.id(), k -> keyPressed.get()) && (keyBindingReference.continuous() || !ApoliClient.lastKeyBindingStates.getOrDefault(keyBindingReference.id(), false))) {
+            if (currentKeybindingStates.computeIfAbsent(keyBindingReference.id(), k -> keyPressed.get()) && (keyBindingReference.continuous() || !ApoliClient.lastKeyMappingStates.getOrDefault(keyBindingReference.id(), false))) {
 				//noinspection unchecked
 				triggeredPowerTypes.add((P) powerType);
             }
 
         }
 
-        ApoliClient.lastKeyBindingStates.putAll(currentKeybindingStates);
+        ApoliClient.lastKeyMappingStates.putAll(currentKeybindingStates);
         ApoliClient.performActivePowerTypes(triggeredPowerTypes);
 
     }

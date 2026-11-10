@@ -42,7 +42,7 @@ public class ItemOriginsComponent implements TooltipProvider {
         ItemOriginsComponent::entries
     );
 
-    public static final StreamCodec<FriendlyByteBuf, ItemOriginsComponent> PACKET_CODEC = ByteBufCodecs.collection(ObjectLinkedOpenHashSet::new, Entry.PACKET_CODEC).map(
+    public static final StreamCodec<FriendlyByteBuf, ItemOriginsComponent> STREAM_CODEC = ByteBufCodecs.collection(ObjectLinkedOpenHashSet::new, Entry.STREAM_CODEC).map(
         ItemOriginsComponent::new,
 		ItemOriginsComponent::entries
     );
@@ -137,7 +137,7 @@ public class ItemOriginsComponent implements TooltipProvider {
             Identifier.CODEC.optionalFieldOf("origin", Origin.EMPTY.getId()).forGetter(Entry::originId)
         ).apply(instance, Entry::new));
 
-        public static final StreamCodec<FriendlyByteBuf, Entry> PACKET_CODEC = StreamCodec.composite(
+        public static final StreamCodec<FriendlyByteBuf, Entry> STREAM_CODEC = StreamCodec.composite(
             Identifier.STREAM_CODEC, Entry::layerId,
             Identifier.STREAM_CODEC, Entry::originId,
             Entry::new

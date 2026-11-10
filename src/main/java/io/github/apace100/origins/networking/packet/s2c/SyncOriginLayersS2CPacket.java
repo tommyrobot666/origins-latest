@@ -15,7 +15,7 @@ import java.util.Map;
 public record SyncOriginLayersS2CPacket(Map<Identifier, OriginLayer> layersById) implements CustomPacketPayload {
 
     public static final Type<SyncOriginLayersS2CPacket> PACKET_ID = new Type<>(Origins.identifier("s2c/sync_origin_layer_registry"));
-    public static final StreamCodec<RegistryFriendlyByteBuf, SyncOriginLayersS2CPacket> PACKET_CODEC = StreamCodec.of((b,p) -> p.write(b), SyncOriginLayersS2CPacket::read);
+    public static final StreamCodec<RegistryFriendlyByteBuf, SyncOriginLayersS2CPacket> STREAM_CODEC = StreamCodec.of((b,p) -> p.write(b), SyncOriginLayersS2CPacket::read);
 
     public static SyncOriginLayersS2CPacket read(RegistryFriendlyByteBuf buf) {
 

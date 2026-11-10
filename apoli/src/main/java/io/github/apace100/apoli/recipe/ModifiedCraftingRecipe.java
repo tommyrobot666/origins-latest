@@ -161,13 +161,13 @@
 //
 //    private void send(RegistryFriendlyByteBuf buf) {
 //        buf.writeIdentifier(id());
-//        Recipe.PACKET_CODEC.encode(buf, delegate());
+//        Recipe.STREAM_CODEC.encode(buf, delegate());
 //    }
 //
 //    private static ModifiedCraftingRecipe receive(RegistryFriendlyByteBuf buf) {
 //
 //        Identifier id = buf.readIdentifier();
-//        Recipe<?> recipe = Recipe.PACKET_CODEC.decode(buf);
+//        Recipe<?> recipe = Recipe.STREAM_CODEC.decode(buf);
 //
 //        if (recipe instanceof CraftingRecipe craftingRecipe) {
 //            return new ModifiedCraftingRecipe(id, craftingRecipe);
@@ -186,7 +186,7 @@
 //            ApoliDataTypes.DISALLOWING_INTERNAL_CRAFTING_RECIPE.codec().fieldOf("recipe").forGetter(ModifiedCraftingRecipe::delegate)
 //        ).apply(instance, ModifiedCraftingRecipe::new));
 //
-//        public static final StreamCodec<RegistryFriendlyByteBuf, ModifiedCraftingRecipe> PACKET_CODEC = StreamCodec.of(
+//        public static final StreamCodec<RegistryFriendlyByteBuf, ModifiedCraftingRecipe> STREAM_CODEC = StreamCodec.of(
 //            ModifiedCraftingRecipe::send,
 //            ModifiedCraftingRecipe::receive
 //        );
@@ -198,7 +198,7 @@
 //
 //        @Override
 //        public StreamCodec<RegistryFriendlyByteBuf, ModifiedCraftingRecipe> packetCodec() {
-//            return PACKET_CODEC;
+//            return STREAM_CODEC;
 //        }
 //
 //    }

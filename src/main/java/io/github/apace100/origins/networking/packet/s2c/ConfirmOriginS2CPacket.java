@@ -9,7 +9,7 @@ import net.minecraft.resources.Identifier;
 public record ConfirmOriginS2CPacket(Identifier layerId, Identifier originId) implements CustomPacketPayload {
 
     public static final Type<ConfirmOriginS2CPacket> PACKET_ID = new Type<>(Origins.identifier("s2c/confirm_origin"));
-    public static final StreamCodec<FriendlyByteBuf, ConfirmOriginS2CPacket> PACKET_CODEC = StreamCodec.composite(
+    public static final StreamCodec<FriendlyByteBuf, ConfirmOriginS2CPacket> STREAM_CODEC = StreamCodec.composite(
         Identifier.STREAM_CODEC, ConfirmOriginS2CPacket::layerId,
         Identifier.STREAM_CODEC, ConfirmOriginS2CPacket::originId,
         ConfirmOriginS2CPacket::new

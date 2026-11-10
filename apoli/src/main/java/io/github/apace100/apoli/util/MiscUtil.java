@@ -27,7 +27,7 @@
 //import net.minecraft.inventory.SlotRange;
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.nbt.NbtCompound;
-//import net.minecraft.network.packet.CustomPayload;
+//import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 //import net.minecraft.network.packet.Packet;
 //import net.minecraft.network.packet.s2c.play.ExplosionS2CPacket;
 //import net.minecraft.particle.ParticleTypes;

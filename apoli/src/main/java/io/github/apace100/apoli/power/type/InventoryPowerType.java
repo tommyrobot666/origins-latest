@@ -8,7 +8,7 @@
 //import io.github.apace100.apoli.data.TypedDataObjectFactory;
 //import io.github.apace100.apoli.data.container.ContainerType;
 //import io.github.apace100.apoli.power.PowerConfiguration;
-//import io.github.apace100.apoli.util.keybinding.KeyBindingReference;
+//import io.github.apace100.apoli.util.keybinding.KeyMappingReference;
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.component.EnchantmentEffectComponentTypes;
@@ -35,7 +35,7 @@
 //            .add("title", ApoliDataTypes.DEFAULT_TRANSLATABLE_TEXT, Text.translatable("container.inventory"))
 //            .add("container_type", ApoliDataTypes.CONTAINER_TYPE, ApoliContainerTypes.GENERIC_3X3)
 //            .add("drop_on_death_filter", ItemCondition.DATA_TYPE.optional(), Optional.empty())
-//            .add("key", ApoliDataTypes.BACKWARDS_COMPATIBLE_KEY, KeyBindingReference.NONE)
+//            .add("key", ApoliDataTypes.BACKWARDS_COMPATIBLE_KEY, KeyMappingReference.NONE)
 //            .add("drop_on_death", SerializableDataTypes.BOOLEAN, false)
 //            .add("recoverable", SerializableDataTypes.BOOLEAN, true),
 //        (data, condition) -> new InventoryPowerType(
@@ -60,7 +60,7 @@
 //    private final ContainerType containerType;
 //
 //    private final Optional<ItemCondition> dropOnDeathFilter;
-//    private final KeyBindingReference key;
+//    private final KeyMappingReference key;
 //
 //    private final boolean shouldDropOnDeath;
 //    private final boolean recoverable;
@@ -70,7 +70,7 @@
 //
 //    private boolean dirty;
 //
-//    public InventoryPowerType(Text containerTitle, ContainerType containerType, Optional<ItemCondition> dropOnDeathFilter, KeyBindingReference key, boolean shouldDropOnDeath, boolean recoverable, Optional<EntityCondition> condition) {
+//    public InventoryPowerType(Text containerTitle, ContainerType containerType, Optional<ItemCondition> dropOnDeathFilter, KeyMappingReference key, boolean shouldDropOnDeath, boolean recoverable, Optional<EntityCondition> condition) {
 //        super(condition);
 //        this.containerTitle = containerTitle;
 //        this.containerType = containerType;
@@ -205,7 +205,7 @@
 //    }
 //
 //    @Override
-//    public KeyBindingReference getKey() {
+//    public KeyMappingReference getKey() {
 //        return key;
 //    }
 //

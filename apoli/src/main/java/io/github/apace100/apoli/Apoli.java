@@ -1,31 +1,31 @@
 package io.github.apace100.apoli;
 
-import io.github.apace100.apoli.action.type.BiEntityActionTypes;
-import io.github.apace100.apoli.action.type.BlockActionTypes;
-import io.github.apace100.apoli.action.type.EntityActionTypes;
-import io.github.apace100.apoli.action.type.ItemActionTypes;
+//import io.github.apace100.apoli.action.type.BiEntityActionTypes;
+//import io.github.apace100.apoli.action.type.BlockActionTypes;
+//import io.github.apace100.apoli.action.type.EntityActionTypes;
+//import io.github.apace100.apoli.action.type.ItemActionTypes;
 import io.github.apace100.apoli.command.PowerCommand;
 import io.github.apace100.apoli.command.ResourceCommand;
 import io.github.apace100.apoli.component.PowerHolderComponent;
 import io.github.apace100.apoli.component.PowerHolderComponentImpl;
-import io.github.apace100.apoli.component.item.ApoliDataComponentTypes;
-import io.github.apace100.apoli.component.item.ItemPowersComponent;
+//import io.github.apace100.apoli.component.item.ApoliDataComponentTypes;
+//import io.github.apace100.apoli.component.item.ItemPowersComponent;
 import io.github.apace100.apoli.condition.type.*;
-import io.github.apace100.apoli.data.ApoliContainerTypes;
+//import io.github.apace100.apoli.data.ApoliContainerTypes;
 import io.github.apace100.apoli.global.GlobalPowerSetManager;
 import io.github.apace100.apoli.integration.PowerIntegration;
-import io.github.apace100.apoli.loot.condition.ApoliLootConditionTypes;
-import io.github.apace100.apoli.loot.function.ApoliLootFunctionTypes;
+//import io.github.apace100.apoli.loot.condition.ApoliLootConditionTypes;
+//import io.github.apace100.apoli.loot.function.ApoliLootFunctionTypes;
 import io.github.apace100.apoli.networking.ModPackets;
 import io.github.apace100.apoli.networking.ModPacketsC2S;
 import io.github.apace100.apoli.power.PowerManager;
-import io.github.apace100.apoli.power.type.ModifyEnchantmentLevelPowerType;
+//import io.github.apace100.apoli.power.type.ModifyEnchantmentLevelPowerType;
 import io.github.apace100.apoli.power.type.PowerTypes;
-import io.github.apace100.apoli.recipe.ApoliRecipeSerializers;
-import io.github.apace100.apoli.registry.ApoliClassData;
+//import io.github.apace100.apoli.recipe.ApoliRecipeSerializers;
+//import io.github.apace100.apoli.registry.ApoliClassData;
 import io.github.apace100.apoli.util.ApoliConfig;
 import io.github.apace100.apoli.util.GainedPowerCriterion;
-import io.github.apace100.apoli.util.modifier.ModifierOperations;
+//import io.github.apace100.apoli.util.modifier.ModifierOperations;
 import io.github.apace100.calio.Calio;
 import io.github.apace100.calio.util.CalioResourceConditions;
 import io.github.ladysnake.pal.AbilitySource;
@@ -92,33 +92,33 @@ public class Apoli implements ModInitializer, EntityComponentInitializer {
 			ResourceCommand.register(rootNode);
 
 			if (FabricLoader.getInstance().isDevelopmentEnvironment()) {
-				ModifyEnchantmentLevelPowerType.DebugCommand.register(rootNode);
+//				ModifyEnchantmentLevelPowerType.DebugCommand.register(rootNode);
 			}
 
 		});
 
-		ApoliLootFunctionTypes.register();
-		ApoliLootConditionTypes.register();
-
-		ApoliContainerTypes.register();
-		ApoliClassData.registerAll();
-
-		ModifierOperations.registerAll();
-		ApoliDataComponentTypes.register();
-		ApoliRecipeSerializers.register();
-
-		BiEntityConditionTypes.register();
-		BiomeConditionTypes.register();
-		BlockConditionTypes.register();
-		DamageConditionTypes.register();
-		EntityConditionTypes.register();
-		FluidConditionTypes.register();
-		ItemConditionTypes.register();
-
-		EntityActionTypes.register();
-		ItemActionTypes.register();
-		BlockActionTypes.register();
-		BiEntityActionTypes.register();
+//		ApoliLootFunctionTypes.register();
+//		ApoliLootConditionTypes.register();
+//
+//		ApoliContainerTypes.register();
+//		ApoliClassData.registerAll();
+//
+//		ModifierOperations.registerAll();
+//		ApoliDataComponentTypes.register();
+//		ApoliRecipeSerializers.register();
+//
+//		BiEntityConditionTypes.register();
+//		BiomeConditionTypes.register();
+//		BlockConditionTypes.register();
+//		DamageConditionTypes.register();
+//		EntityConditionTypes.register();
+//		FluidConditionTypes.register();
+//		ItemConditionTypes.register();
+//
+//		EntityActionTypes.register();
+//		ItemActionTypes.register();
+//		BlockActionTypes.register();
+//		BiEntityActionTypes.register();
 
 		PowerTypes.register();
 		PowerIntegration.register();

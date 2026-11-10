@@ -17,7 +17,7 @@
 //import io.github.apace100.apoli.util.*;
 //import io.github.apace100.apoli.util.context.ActionContext;
 //import io.github.apace100.apoli.util.context.ConditionContext;
-//import io.github.apace100.apoli.util.keybinding.KeyBindingReference;
+//import io.github.apace100.apoli.util.keybinding.KeyMappingReference;
 //import io.github.apace100.calio.SerializationHelper;
 //import io.github.apace100.calio.data.CompoundSerializableDataType;
 //import io.github.apace100.calio.data.SerializableData;
@@ -109,18 +109,18 @@
 //	@Deprecated(forRemoval = true)
 //    public static final SerializableDataType<List<Pair<Integer, ItemStack>>> POSITIONED_ITEM_STACKS = POSITIONED_ITEM_STACK.list();
 //
-//    public static final SerializableDataType<KeyBindingReference> KEY = KeyBindingReference.DATA_FACTORY.getDataType();
+//    public static final SerializableDataType<KeyMappingReference> KEY = KeyMappingReference.DATA_FACTORY.getDataType();
 //
-//    public static final SerializableDataType<KeyBindingReference> BACKWARDS_COMPATIBLE_KEY = SerializableDataType.of(
+//    public static final SerializableDataType<KeyMappingReference> BACKWARDS_COMPATIBLE_KEY = SerializableDataType.of(
 //        new Codec<>() {
 //
 //            @Override
-//            public <T> DataResult<com.mojang.datafixers.util.Pair<KeyBindingReference, T>> decode(DynamicOps<T> ops, T input) {
+//            public <T> DataResult<com.mojang.datafixers.util.Pair<KeyMappingReference, T>> decode(DynamicOps<T> ops, T input) {
 //
 //                DataResult<String> stringInput = ops.getStringValue(input);
 //                if (stringInput.isSuccess()) {
 //					return stringInput
-//						.map(KeyBindingReference::new)
+//						.map(KeyMappingReference::new)
 //						.map(key -> com.mojang.datafixers.util.Pair.of(key, input));
 //                }
 //
@@ -131,7 +131,7 @@
 //            }
 //
 //            @Override
-//            public <T> DataResult<T> encode(KeyBindingReference input, DynamicOps<T> ops, T prefix) {
+//            public <T> DataResult<T> encode(KeyMappingReference input, DynamicOps<T> ops, T prefix) {
 //                return KEY.codec().encode(input, ops, prefix);
 //            }
 //
@@ -155,11 +155,11 @@
 //
 //    public static final SerializableDataType<List<ArgumentWrapper<Integer>>> ITEM_SLOTS = ITEM_SLOT.list();
 //
-//	public static final SerializableDataType<SlotRange> SLOT_RANGE = SerializableDataType.of(SlotRangesUtil.INDEX_OR_STRING_CODEC, SlotRangesUtil.PACKET_CODEC.cast());
+//	public static final SerializableDataType<SlotRange> SLOT_RANGE = SerializableDataType.of(SlotRangesUtil.INDEX_OR_STRING_CODEC, SlotRangesUtil.STREAM_CODEC.cast());
 //
 //	public static final SerializableDataType<List<SlotRange>> SLOT_RANGES = SLOT_RANGE.list();
 //
-//	public static final SerializableDataType<SlotRange> SINGLE_SLOT_RANGE = SerializableDataType.of(SlotRangesUtil.SINGLE_INDEX_OR_STRING_CODEC, SlotRangesUtil.PACKET_CODEC.cast());
+//	public static final SerializableDataType<SlotRange> SINGLE_SLOT_RANGE = SerializableDataType.of(SlotRangesUtil.SINGLE_INDEX_OR_STRING_CODEC, SlotRangesUtil.STREAM_CODEC.cast());
 //
 //	public static final SerializableDataType<List<SlotRange>> SINGLE_SLOT_RANGES = SINGLE_SLOT_RANGE.list();
 //
@@ -220,7 +220,7 @@
 //			}
 //
 //		},
-//		TextCodecs.UNLIMITED_REGISTRY_PACKET_CODEC
+//		TextCodecs.UNLIMITED_REGISTRY_STREAM_CODEC
 //	);
 //
 //    public static final SerializableDataType<StackClickPhase> STACK_CLICK_PHASE = SerializableDataType.enumValue(StackClickPhase.class);

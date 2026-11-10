@@ -6,7 +6,7 @@
 //import io.github.apace100.apoli.data.TypedDataObjectFactory;
 //import io.github.apace100.apoli.power.Power;
 //import io.github.apace100.apoli.power.PowerConfiguration;
-//import io.github.apace100.apoli.util.keybinding.KeyBindingReference;
+//import io.github.apace100.apoli.util.keybinding.KeyMappingReference;
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.world.entity.Entity;
@@ -20,7 +20,7 @@
 //
 //    public static final TypedDataObjectFactory<TogglePowerType> DATA_FACTORY = PowerType.createConditionedDataFactory(
 //        new SerializableData()
-//            .add("key", ApoliDataTypes.BACKWARDS_COMPATIBLE_KEY, KeyBindingReference.NONE)
+//            .add("key", ApoliDataTypes.BACKWARDS_COMPATIBLE_KEY, KeyMappingReference.NONE)
 //            .add("retain_state", SerializableDataTypes.BOOLEAN, true)
 //            .add("active_by_default", SerializableDataTypes.BOOLEAN, true),
 //        (data, condition) -> new TogglePowerType(
@@ -35,14 +35,14 @@
 //            .set("active_by_default", powerType.activeByDefault)
 //    );
 //
-//    private final KeyBindingReference key;
+//    private final KeyMappingReference key;
 //
 //    private final boolean activeByDefault;
 //    private final boolean shouldRetainState;
 //
 //    private boolean toggled;
 //
-//    public TogglePowerType(KeyBindingReference key, boolean retainState, boolean activeByDefault, Optional<EntityCondition> condition) {
+//    public TogglePowerType(KeyMappingReference key, boolean retainState, boolean activeByDefault, Optional<EntityCondition> condition) {
 //        super(condition);
 //        this.key = key;
 //        this.activeByDefault = activeByDefault;
@@ -112,7 +112,7 @@
 //    }
 //
 //    @Override
-//    public KeyBindingReference getKey() {
+//    public KeyMappingReference getKey() {
 //        return key;
 //    }
 //

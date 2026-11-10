@@ -8,7 +8,7 @@ import java.util.function.Function;
 
 public class SubPower extends Power {
 
-    protected static final Function<Power, StreamCodec<RegistryFriendlyByteBuf, SubPower>> PACKET_CODEC = power -> new StreamCodec<>() {
+    protected static final Function<Power, StreamCodec<RegistryFriendlyByteBuf, SubPower>> STREAM_CODEC = power -> new StreamCodec<>() {
 
         @Override
         public SubPower decode(RegistryFriendlyByteBuf buf) {

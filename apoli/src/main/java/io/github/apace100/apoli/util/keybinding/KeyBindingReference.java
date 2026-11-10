@@ -6,22 +6,22 @@
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.fabricmc.api.EnvType;
 //import net.fabricmc.api.Environment;
-//import net.minecraft.client.option.KeyBinding;
+//import net.minecraft.client.KeyMapping;
 //
 //import java.util.Objects;
 //import java.util.Optional;
 //
-//public record KeyBindingReference(String id, boolean continuous) {
+//public record KeyMappingReference(String id, boolean continuous) {
 //
-//	public static final KeyBindingReference NONE = new KeyBindingReference("none");
+//	public static final KeyMappingReference NONE = new KeyMappingReference("none");
 //
-//	public static final TypedDataObjectFactory<KeyBindingReference> DATA_FACTORY = TypedDataObjectFactory.simple(
+//	public static final TypedDataObjectFactory<KeyMappingReference> DATA_FACTORY = TypedDataObjectFactory.simple(
 //		new SerializableData()
 //			.add("key", SerializableDataTypes.STRING, null)
 //			.addFunctionedDefault("id", SerializableDataTypes.STRING, data -> data.get("key"))
 //			.add("continuous", SerializableDataTypes.BOOLEAN, false)
 //			.validate(MiscUtil.validateAllFieldsPresent("id")),
-//		data -> new KeyBindingReference(
+//		data -> new KeyMappingReference(
 //			data.get("id"),
 //			data.get("continuous")
 //		),
@@ -30,7 +30,7 @@
 //			.set("continuous", keyBindingReference.continuous())
 //	);
 //
-//	public KeyBindingReference(String id) {
+//	public KeyMappingReference(String id) {
 //		this(id, false);
 //	}
 //
@@ -41,7 +41,7 @@
 //			return true;
 //		}
 //
-//		else if (obj instanceof KeyBindingReference that) {
+//		else if (obj instanceof KeyMappingReference that) {
 //			return this.id().equals(that.id())
 //				&& this.continuous() == that.continuous();
 //		}
@@ -58,8 +58,8 @@
 //	}
 //
 //	@Environment(EnvType.CLIENT)
-//	public Optional<KeyBinding> asKeyBinding() {
-//		return KeyBindingUtil.getKeyBinding(id());
+//	public Optional<KeyMapping> asKeyMapping() {
+//		return KeyBindingUtil.getKeyMapping(id());
 //	}
 //
 //}
