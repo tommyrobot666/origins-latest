@@ -15,7 +15,7 @@ import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerConfigurationNetworkHandler;
 import net.minecraft.server.network.ServerPlayer;
-import net.minecraft.text.Text;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 
 public class ModPacketsC2S {
@@ -40,7 +40,7 @@ public class ModPacketsC2S {
         }
 
         else {
-            handler.disconnect(Text.of("This server requires you to install the Apoli mod (v" + Apoli.VERSION + ") to play."));
+            handler.disconnect(Component.of("This server requires you to install the Apoli mod (v" + Apoli.VERSION + ") to play."));
         }
 
     }
@@ -75,7 +75,7 @@ public class ModPacketsC2S {
             separator = ".";
         }
 
-        handler.disconnect(Text.stringifiedTranslatable("apoli.gui.version_mismatch", Apoli.VERSION, semverString));
+        handler.disconnect(Component.stringifiedTranslatable("apoli.gui.version_mismatch", Apoli.VERSION, semverString));
 
     }
 

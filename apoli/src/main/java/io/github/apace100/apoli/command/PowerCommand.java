@@ -1,6 +1,5 @@
 package io.github.apace100.apoli.command;
 
-import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.arguments.BoolArgumentType;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.context.CommandContext;
@@ -23,8 +22,6 @@ import net.minecraft.network.chat.ComponentUtils;
 import net.minecraft.network.chat.HoverEvent;
 import net.minecraft.network.chat.Style;
 import net.minecraft.resources.Identifier;
-import net.minecraft.server.permissions.PermissionLevel;
-import net.minecraft.server.permissions.Permissions;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 
@@ -292,7 +289,7 @@ public class PowerCommand {
 			}
 
 			else {
-				commandSource.sendSuccess(() -> Component.translatable("commands.apoli.list.pass", target.getName(), powersTooltip.size(), Texts.join(powersTooltip, Component.of(", "))), false);
+				commandSource.sendSuccess(() -> Component.translatable("commands.apoli.list.pass", target.getName(), powersTooltip.size(), ComponentUtils.formatList(powersTooltip, Component.literal(", "))), false);
 			}
 
 			return powersTooltip.size();

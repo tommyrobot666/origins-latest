@@ -2,7 +2,7 @@ package io.github.apace100.calio.data;
 
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.*;
-import io.github.apace100.calio.codec.CalioByteBufCodecs;
+import io.github.apace100.calio.codec.CalioPacketCodecs;
 import io.github.apace100.calio.util.Validatable;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -30,7 +30,7 @@ public class ListSerializableDataType<E> extends SerializableDataType<List<E>> {
 	}
 
 	public ListSerializableDataType(SerializableDataType<E> elementDataType, int minSize, int maxSize) {
-		this(createListCodec(elementDataType, minSize, maxSize), CalioByteBufCodecs.collection(ObjectArrayList::new, elementDataType::packetCodec), elementDataType, minSize, maxSize);
+		this(createListCodec(elementDataType, minSize, maxSize), CalioPacketCodecs.collection(ObjectArrayList::new, elementDataType::packetCodec), elementDataType, minSize, maxSize);
 	}
 
 	@Override

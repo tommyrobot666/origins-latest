@@ -21,7 +21,7 @@
 //import net.minecraft.nbt.NbtElement;
 //import net.minecraft.screen.ScreenHandlerFactory;
 //import net.minecraft.screen.SimpleNamedScreenHandlerFactory;
-//import net.minecraft.text.Text;
+//import net.minecraft.network.chat.Component;
 //import net.minecraft.util.collection.DefaultedList;
 //import org.jetbrains.annotations.NotNull;
 //
@@ -32,7 +32,7 @@
 //
 //    public static final TypedDataObjectFactory<InventoryPowerType> DATA_FACTORY = PowerType.createConditionedDataFactory(
 //        new SerializableData()
-//            .add("title", ApoliDataTypes.DEFAULT_TRANSLATABLE_TEXT, Text.translatable("container.inventory"))
+//            .add("title", ApoliDataTypes.DEFAULT_TRANSLATABLE_TEXT, Component.translatable("container.inventory"))
 //            .add("container_type", ApoliDataTypes.CONTAINER_TYPE, ApoliContainerTypes.GENERIC_3X3)
 //            .add("drop_on_death_filter", ItemCondition.DATA_TYPE.optional(), Optional.empty())
 //            .add("key", ApoliDataTypes.BACKWARDS_COMPATIBLE_KEY, KeyMappingReference.NONE)
@@ -56,7 +56,7 @@
 //            .set("recoverable", powerType.recoverable)
 //    );
 //
-//    private final Text containerTitle;
+//    private final Component containerTitle;
 //    private final ContainerType containerType;
 //
 //    private final Optional<ItemCondition> dropOnDeathFilter;
@@ -70,7 +70,7 @@
 //
 //    private boolean dirty;
 //
-//    public InventoryPowerType(Text containerTitle, ContainerType containerType, Optional<ItemCondition> dropOnDeathFilter, KeyMappingReference key, boolean shouldDropOnDeath, boolean recoverable, Optional<EntityCondition> condition) {
+//    public InventoryPowerType(Component containerTitle, ContainerType containerType, Optional<ItemCondition> dropOnDeathFilter, KeyMappingReference key, boolean shouldDropOnDeath, boolean recoverable, Optional<EntityCondition> condition) {
 //        super(condition);
 //        this.containerTitle = containerTitle;
 //        this.containerType = containerType;
@@ -213,7 +213,7 @@
 //        return container;
 //    }
 //
-//    public Text getContainerTitle() {
+//    public Component getContainerTitle() {
 //        return containerTitle;
 //    }
 //

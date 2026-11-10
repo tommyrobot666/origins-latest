@@ -9,30 +9,30 @@ import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import io.github.apace100.apoli.power.type.PowerType;
 import io.github.apace100.apoli.util.PowerUtil;
-import net.minecraft.command.CommandSource;
-import net.minecraft.scoreboard.ScoreAccess;
-import net.minecraft.server.command.ServerCommandSource;
-import net.minecraft.text.Text;
+import net.minecraft.commands.CommandSourceStack;
+import net.minecraft.commands.SharedSuggestionProvider;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.scores.ScoreAccess;
 
 import java.util.concurrent.CompletableFuture;
 
 // Very similar to OperationArgumentType, but modified to make it work with resources.
 public class PowerOperationArgumentType implements ArgumentType<PowerOperationArgumentType.Operation> {
 
-    public static final SimpleCommandExceptionType INVALID_OPERATION = new SimpleCommandExceptionType(Text.translatable("arguments.operation.invalid"));
-    public static final SimpleCommandExceptionType DIVISION_ZERO_EXCEPTION = new SimpleCommandExceptionType(Text.translatable("arguments.operation.div0"));
+    public static final SimpleCommandExceptionType INVALID_OPERATION = new SimpleCommandExceptionType(Component.translatable("arguments.operation.invalid"));
+    public static final SimpleCommandExceptionType DIVISION_ZERO_EXCEPTION = new SimpleCommandExceptionType(Component.translatable("arguments.operation.div0"));
 
     public static PowerOperationArgumentType operation() {
         return new PowerOperationArgumentType();
     }
 
-    public static Operation getOperation(CommandContext<ServerCommandSource> context, String argumentName) {
+    public static Operation getOperation(CommandContext<CommandSourceStack> context, String argumentName) {
         return context.getArgument(argumentName, Operation.class);
     }
 
     @Override
     public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> context, SuggestionsBuilder builder) {
-        return CommandSource.suggestMatching(new String[]{"=", "+=", "-=", "*=", "/=", "%=", "<", ">", "><"}, builder);
+        return SharedSuggestionProvider.suggest(new String[]{"=", "+=", "-=", "*=", "/=", "%=", "<", ">", "><"}, builder);
     }
 
     @Override
@@ -50,17 +50,17 @@ public class PowerOperationArgumentType implements ArgumentType<PowerOperationAr
         String stringOperator = stringReader.getString().substring(i, stringReader.getCursor());
         return switch (stringOperator) {
             case "=" -> (powerType, scoreAccess) ->
-                PowerUtil.setResourceValue(powerType, scoreAccess.getScore());
+                PowerUtil.setResourceValue(powerType, scoreAccess.get());
             case "+=" -> (powerType, scoreAccess) ->
-                PowerUtil.changeResourceValue(powerType, scoreAccess.getScore());
+                PowerUtil.changeResourceValue(powerType, scoreAccess.get());
             case "-=" -> (powerType, scoreAccess) ->
-                PowerUtil.changeResourceValue(powerType, -scoreAccess.getScore());
+                PowerUtil.changeResourceValue(powerType, -scoreAccess.get());
             case "*=" -> (powerType, scoreAccess) ->
-                PowerUtil.setResourceValue(powerType, PowerUtil.getResourceValue(powerType) * scoreAccess.getScore());
+                PowerUtil.setResourceValue(powerType, PowerUtil.getResourceValue(powerType) * scoreAccess.get());
             case "/=" -> (powerType, scoreAccess) -> {
 
                 int resourceValue = PowerUtil.getResourceValue(powerType);
-                int scoreValue = scoreAccess.getScore();
+                int scoreValue = scoreAccess.get();
 
                 if (scoreValue == 0) {
                     throw DIVISION_ZERO_EXCEPTION.create();
@@ -74,7 +74,7 @@ public class PowerOperationArgumentType implements ArgumentType<PowerOperationAr
             case "%=" -> (powerType, scoreAccess) -> {
 
                 int resourceValue = PowerUtil.getResourceValue(powerType);
-                int scoreValue = scoreAccess.getScore();
+                int scoreValue = scoreAccess.get();
 
                 if (scoreValue == 0) {
                     throw DIVISION_ZERO_EXCEPTION.create();
@@ -86,15 +86,15 @@ public class PowerOperationArgumentType implements ArgumentType<PowerOperationAr
 
             };
             case "<" -> (powerType, scoreAccess) ->
-                PowerUtil.setResourceValue(powerType, Math.min(PowerUtil.getResourceValue(powerType), scoreAccess.getScore()));
+                PowerUtil.setResourceValue(powerType, Math.min(PowerUtil.getResourceValue(powerType), scoreAccess.get()));
             case ">" -> (powerType, scoreAccess) ->
-                PowerUtil.setResourceValue(powerType, Math.max(PowerUtil.getResourceValue(powerType), scoreAccess.getScore()));
+                PowerUtil.setResourceValue(powerType, Math.max(PowerUtil.getResourceValue(powerType), scoreAccess.get()));
             case "><" -> (powerType, scoreAccess) -> {
 
                 int resourceValue = PowerUtil.getResourceValue(powerType);
-                int scoreValue = scoreAccess.getScore();
+                int scoreValue = scoreAccess.get();
 
-                scoreAccess.setScore(resourceValue);
+                scoreAccess.set(resourceValue);
                 return PowerUtil.setResourceValue(powerType, scoreValue);
 
             };

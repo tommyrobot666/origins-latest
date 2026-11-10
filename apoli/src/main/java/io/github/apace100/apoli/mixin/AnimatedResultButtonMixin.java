@@ -18,7 +18,7 @@
 //import net.minecraft.recipe.RecipeEntry;
 //import net.minecraft.recipe.book.RecipeBook;
 //import net.minecraft.registry.RegistryWrapper;
-//import net.minecraft.text.Text;
+//import net.minecraft.network.chat.Component;
 //import net.minecraft.util.Formatting;
 //import net.minecraft.resources.Identifier;
 //import org.spongepowered.asm.mixin.Mixin;
@@ -68,7 +68,7 @@
 //    }
 //
 //    @ModifyReturnValue(method = "getTooltip", at = @At("RETURN"))
-//    private List<Text> apoli$appendRequiredRecipePowerTooltip(List<Text> original, @Share("originalEntry") LocalRef<RecipeEntry<?>> sharedOriginalEntry) {
+//    private List<Component> apoli$appendRequiredRecipePowerTooltip(List<Component> original, @Share("originalEntry") LocalRef<RecipeEntry<?>> sharedOriginalEntry) {
 //
 //        RecipeEntry<?> recipeEntry = sharedOriginalEntry.get() != null
 //            ? sharedOriginalEntry.get()
@@ -80,8 +80,8 @@
 //            PowerHolderComponent component = PowerHolderComponent.getNullable(pco.apoli$getPlayer());
 //
 //            if (power != null && component != null && !component.hasPower(power)) {
-//                original.add(Text.empty());
-//                original.add(Text.translatable("tooltip.apoli.power_recipe.required_power", power.getName()).formatted(Formatting.RED));
+//                original.add(Component.empty());
+//                original.add(Component.translatable("tooltip.apoli.power_recipe.required_power", power.getName()).formatted(Formatting.RED));
 //            }
 //
 //        }

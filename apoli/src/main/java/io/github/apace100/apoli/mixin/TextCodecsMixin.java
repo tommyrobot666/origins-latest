@@ -3,8 +3,8 @@
 //import com.mojang.serialization.DynamicOps;
 //import com.mojang.serialization.RecordBuilder;
 //import io.github.apace100.apoli.text.ForcedTranslatableTextContent;
-//import net.minecraft.text.TextCodecs;
-//import net.minecraft.text.TextContent;
+//import net.minecraft.network.chat.ComponentCodecs;
+//import net.minecraft.network.chat.ComponentContent;
 //import net.minecraft.util.StringIdentifiable;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.injection.At;

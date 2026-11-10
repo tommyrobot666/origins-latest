@@ -6,7 +6,7 @@ import com.google.gson.internal.LazilyParsedNumber;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.*;
 import com.mojang.serialization.codecs.PrimitiveCodec;
-import io.github.apace100.calio.codec.CalioByteBufCodecs;
+import io.github.apace100.calio.codec.CalioPacketCodecs;
 import io.github.apace100.calio.mixin.IngredientAccessor;
 import io.github.apace100.calio.mixin.TagEntryAccessor;
 import io.github.apace100.calio.registry.DataObjectFactories;
@@ -982,7 +982,7 @@ public final class SerializableDataTypes {
 			}
 
 		},
-		CalioByteBufCodecs.TAG_ENTRY.cast()
+		CalioPacketCodecs.TAG_ENTRY.cast()
 	));
 
     public static final SerializableDataType<List<TagEntry>> TAG_ENTRIES = TAG_ENTRY.list();

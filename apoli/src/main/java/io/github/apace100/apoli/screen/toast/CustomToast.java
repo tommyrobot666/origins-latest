@@ -11,7 +11,7 @@
 //import net.minecraft.client.toast.ToastManager;
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.text.OrderedText;
-//import net.minecraft.text.Text;
+//import net.minecraft.network.chat.Component;
 //import net.minecraft.resources.Identifier;
 //import net.minecraft.util.math.MathHelper;
 //
@@ -42,7 +42,7 @@
 //        this(toastData.title(), toastData.description(), toastData.texture(), toastData.iconStack(), (int) ((toastData.duration() / 20.0) * 1000.0));
 //    }
 //
-//    public CustomToast(Text title, Text description, Identifier texture, ItemStack iconStack, int duration) {
+//    public CustomToast(Component title, Component description, Identifier texture, ItemStack iconStack, int duration) {
 //
 //        TextRenderer textRenderer = Minecraft.getInstance().textRenderer;
 //        int maxWidth = this.getWidth() - 33;

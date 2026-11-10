@@ -6,7 +6,7 @@
 //import net.minecraft.client.font.TextRenderer;
 //import net.minecraft.client.gui.DrawContext;
 //import net.minecraft.client.gui.widget.AbstractTextWidget;
-//import net.minecraft.text.Text;
+//import net.minecraft.network.chat.Component;
 //import net.minecraft.util.Util;
 //import net.minecraft.util.math.MathHelper;
 //
@@ -18,7 +18,7 @@
 //    private TextAlignment textAlignment = TextAlignment.CENTER;
 //    private final boolean hasShadow;
 //
-//    public ScrollingTextWidget(int x, int y, int width, int height, Text text, boolean hasShadow, TextRenderer textRenderer) {
+//    public ScrollingTextWidget(int x, int y, int width, int height, Component text, boolean hasShadow, TextRenderer textRenderer) {
 //        super(x, y, width, height, text, textRenderer);
 //        this.hasShadow = hasShadow;
 //    }
@@ -44,7 +44,7 @@
 //        return false;
 //    }
 //
-//    protected static void drawScrollingText(DrawContext context, TextRenderer textRenderer, Text text, TextAlignment textAlignment, int left, int top, int right, int bottom, int color, boolean hasShadow) {
+//    protected static void drawScrollingText(DrawContext context, TextRenderer textRenderer, Component text, TextAlignment textAlignment, int left, int top, int right, int bottom, int color, boolean hasShadow) {
 //
 //        int textWidth = textRenderer.getWidth(text);
 //

@@ -34,7 +34,7 @@
 //import net.minecraft.server.network.ServerPlayer;
 //import net.minecraft.server.network.ServerRecipeBook;
 //import net.minecraft.server.world.ServerWorld;
-//import net.minecraft.text.Text;
+//import net.minecraft.network.chat.Component;
 //import net.minecraft.util.Pair;
 //import net.minecraft.util.Unit;
 //import net.minecraft.util.math.BlockPos;
@@ -71,13 +71,13 @@
 //    public ServerPlayNetworkHandler networkHandler;
 //
 //    @Shadow
-//    public abstract void sendMessage(Text message, boolean actionBar);
+//    public abstract void sendMessage(Component message, boolean actionBar);
 //
 //    @Shadow
 //    private boolean spawnForced;
 //
 //    @Shadow
-//    public abstract void sendMessage(Text message);
+//    public abstract void sendMessage(Component message);
 //
 //    @Shadow
 //    public abstract boolean shouldDamagePlayer(Player player);

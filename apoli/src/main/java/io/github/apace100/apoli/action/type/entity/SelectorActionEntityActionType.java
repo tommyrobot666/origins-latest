@@ -16,9 +16,9 @@
 //import net.minecraft.world.entity.Entity;
 //import net.minecraft.server.MinecraftServer;
 //import net.minecraft.server.command.CommandOutput;
-//import net.minecraft.server.command.ServerCommandSource;
+//import net.minecraft.server.command.CommandSourceStack;
 //import net.minecraft.server.network.ServerPlayer;
-//import net.minecraft.text.Text;
+//import net.minecraft.network.chat.Component;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.Optional;
@@ -64,7 +64,7 @@
 //            return;
 //        }
 //
-//        ServerCommandSource commandSource = entity.getCommandSource()
+//        CommandSourceStack commandSource = entity.getCommandSource()
 //            .withOutput(CommandOutput.DUMMY)
 //            .withLevel(Apoli.config.executeCommand.permissionLevel);
 //
@@ -82,7 +82,7 @@
 //        }
 //
 //        catch (CommandSyntaxException cse) {
-//            commandSource.sendError(Text.of(cse.getRawMessage()));
+//            commandSource.sendError(Component.of(cse.getRawMessage()));
 //        }
 //
 //    }

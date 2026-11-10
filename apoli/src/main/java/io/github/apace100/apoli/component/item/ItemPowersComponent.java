@@ -23,7 +23,7 @@
 //import net.minecraft.nbt.NbtOps;
 //import net.minecraft.network.codec.StreamCodec;
 //import net.minecraft.network.codec.ByteBufCodecs;
-//import net.minecraft.text.Text;
+//import net.minecraft.network.chat.Component;
 //import net.minecraft.util.Formatting;
 //import net.minecraft.resources.Identifier;
 //
@@ -88,7 +88,7 @@
 //        return entries.stream();
 //    }
 //
-//    public void appendTooltip(AttributeModifierSlot modifierSlot, Item.TooltipContext context, Consumer<Text> tooltip, TooltipType type) {
+//    public void appendTooltip(AttributeModifierSlot modifierSlot, Item.TooltipContext context, Consumer<Component> tooltip, TooltipType type) {
 //
 //        for (Entry entry : entries) {
 //
@@ -97,7 +97,7 @@
 //                continue;
 //            }
 //
-//            tooltip.accept(Text
+//            tooltip.accept(Component
 //                .translatable("tooltip.apoli.stack_power.name", power.getName())
 //                .formatted(entry.negative()
 //                    ? Formatting.RED
@@ -107,7 +107,7 @@
 //                continue;
 //            }
 //
-//            tooltip.accept(Text
+//            tooltip.accept(Component
 //                .translatable("tooltip.apoli.stack_power.description", power.getDescription())
 //                .formatted(Formatting.GRAY));
 //

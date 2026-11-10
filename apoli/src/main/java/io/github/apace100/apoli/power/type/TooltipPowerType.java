@@ -21,11 +21,11 @@
 //import net.minecraft.nbt.NbtOps;
 //import net.minecraft.registry.RegistryOps;
 //import net.minecraft.registry.RegistryWrapper;
-//import net.minecraft.server.command.ServerCommandSource;
+//import net.minecraft.server.command.CommandSourceStack;
 //import net.minecraft.server.world.ServerWorld;
-//import net.minecraft.text.Text;
-//import net.minecraft.text.TextCodecs;
-//import net.minecraft.text.Texts;
+//import net.minecraft.network.chat.Component;
+//import net.minecraft.network.chat.ComponentCodecs;
+//import net.minecraft.network.chat.Components;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.Collections;
@@ -63,21 +63,21 @@
 //    );
 //
 //    private final Optional<ItemCondition> itemCondition;
-//    private final List<Text> texts;
+//    private final List<Component> texts;
 //
 //    private final boolean resolve;
 //
 //    private final int tickRate;
 //    private final int order;
 //
-//    private final ObjectArrayList<Text> tooltipTexts;
+//    private final ObjectArrayList<Component> tooltipTexts;
 //
 //    private Integer startTicks;
 //    private Integer endTicks;
 //
 //    private boolean wasActive;
 //
-//    public TooltipPowerType(Optional<ItemCondition> itemCondition, List<Text> texts, boolean resolve, int tickRate, int order, Optional<EntityCondition> condition) {
+//    public TooltipPowerType(Optional<ItemCondition> itemCondition, List<Component> texts, boolean resolve, int tickRate, int order, Optional<EntityCondition> condition) {
 //        super(condition);
 //
 //        this.itemCondition = itemCondition;
@@ -127,7 +127,7 @@
 //
 //            else if (modTicks == startTicks) {
 //
-//                List<Text> parsedTexts = parseTexts();
+//                List<Component> parsedTexts = parseTexts();
 //                this.wasActive = true;
 //
 //                if (!parsedTexts.isEmpty() && Collections.disjoint(tooltipTexts, parsedTexts)) {
@@ -209,7 +209,7 @@
 //        return order;
 //    }
 //
-//    public void processTooltips(Consumer<Text> processor) {
+//    public void processTooltips(Consumer<Component> processor) {
 //
 //        if (resolve) {
 //            tooltipTexts.forEach(processor);
@@ -227,23 +227,23 @@
 //            .orElse(true);
 //    }
 //
-//    private List<Text> parseTexts() {
+//    private List<Component> parseTexts() {
 //
-//        List<Text> parsedTexts = Lists.newLinkedList();
+//        List<Component> parsedTexts = Lists.newLinkedList();
 //        LivingEntity holder = getHolder();
 //
 //        if (texts.isEmpty() || !(holder.getWorld() instanceof ServerWorld serverWorld)) {
 //            return parsedTexts;
 //        }
 //
-//        ListIterator<Text> textIterator = texts.listIterator();
-//        ServerCommandSource source = holder.getCommandSource()
+//        ListIterator<Component> textIterator = texts.listIterator();
+//        CommandSourceStack source = holder.getCommandSource()
 //            .withOutput(serverWorld.getServer())
 //            .withLevel(Apoli.config.executeCommand.permissionLevel);
 //
 //        while (textIterator.hasNext()) {
 //
-//            Text text = textIterator.next();
+//            Component text = textIterator.next();
 //            int index = textIterator.nextIndex();
 //
 //            try {

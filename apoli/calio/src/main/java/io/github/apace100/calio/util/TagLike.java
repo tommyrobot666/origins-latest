@@ -46,7 +46,7 @@ public class TagLike<T> {
     public void write(RegistryFriendlyByteBuf buf) {
 
         buf.writeRegistryKey(registryRef);
-        CalioByteBufCodecs.TAG_ENTRY_SET.encode(buf, entries());
+        CalioPacketCodecs.TAG_ENTRY_SET.encode(buf, entries());
 
         buf.writeBoolean(SerializableRegistries.SYNCED_REGISTRIES.contains(registryRef));
 
@@ -55,7 +55,7 @@ public class TagLike<T> {
     public static <T> TagLike<T> read(RegistryFriendlyByteBuf buf) {
 
         RegistryKey<? extends Registry<T>> registryRef = buf.readRegistryRefKey();
-        Set<TagEntry> tagEntries = CalioByteBufCodecs.TAG_ENTRY_SET.decode(buf);
+        Set<TagEntry> tagEntries = CalioPacketCodecs.TAG_ENTRY_SET.decode(buf);
 
         boolean syncedRegistry = buf.readBoolean();
         return syncedRegistry

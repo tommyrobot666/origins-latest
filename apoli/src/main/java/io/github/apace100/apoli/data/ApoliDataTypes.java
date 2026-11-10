@@ -37,8 +37,8 @@
 //import net.minecraft.network.codec.StreamCodec;
 //import net.minecraft.recipe.CraftingRecipe;
 //import net.minecraft.server.command.AdvancementCommand;
-//import net.minecraft.text.Text;
-//import net.minecraft.text.TextCodecs;
+//import net.minecraft.network.chat.Component;
+//import net.minecraft.network.chat.ComponentCodecs;
 //import net.minecraft.util.ClickType;
 //import net.minecraft.resources.Identifier;
 //import net.minecraft.util.Pair;
@@ -195,16 +195,16 @@
 //    public static final SerializableDataType<GameMode> GAME_MODE = SerializableDataType.enumValue(GameMode.class);
 //
 //    //  This is for keeping backwards compatibility to fields that used to accept strings as translation keys
-//    public static final SerializableDataType<Text> DEFAULT_TRANSLATABLE_TEXT = SerializableDataType.of(
+//    public static final SerializableDataType<Component> DEFAULT_TRANSLATABLE_TEXT = SerializableDataType.of(
 //		new Codec<>() {
 //
 //			@Override
-//			public <T> DataResult<com.mojang.datafixers.util.Pair<Text, T>> decode(DynamicOps<T> ops, T input) {
+//			public <T> DataResult<com.mojang.datafixers.util.Pair<Component, T>> decode(DynamicOps<T> ops, T input) {
 //
 //				DataResult<String> inputString = ops.getStringValue(input);
 //				if (inputString.isSuccess()) {
 //					return inputString
-//						.map(Text::translatable)
+//						.map(Component::translatable)
 //						.map(text -> com.mojang.datafixers.util.Pair.of(text, input));
 //				}
 //
@@ -215,7 +215,7 @@
 //			}
 //
 //			@Override
-//			public <T> DataResult<T> encode(Text input, DynamicOps<T> ops, T prefix) {
+//			public <T> DataResult<T> encode(Component input, DynamicOps<T> ops, T prefix) {
 //				return SerializableDataTypes.TEXT.codec().encode(input, ops, prefix);
 //			}
 //

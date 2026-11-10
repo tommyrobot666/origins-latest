@@ -7,7 +7,7 @@
 //import io.github.apace100.apoli.power.PowerConfiguration;
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
-//import net.minecraft.text.Text;
+//import net.minecraft.network.chat.Component;
 //import net.minecraft.util.math.BlockPos;
 //import net.minecraft.world.World;
 //import net.minecraft.world.WorldView;
@@ -20,7 +20,7 @@
 //    public static final TypedDataObjectFactory<PreventSleepPowerType> DATA_FACTORY = PowerType.createConditionedDataFactory(
 //        new SerializableData()
 //            .add("block_condition", BlockCondition.DATA_TYPE.optional(), Optional.empty())
-//            .add("message", ApoliDataTypes.DEFAULT_TRANSLATABLE_TEXT, Text.translatable("text.apoli.cannot_sleep"))
+//            .add("message", ApoliDataTypes.DEFAULT_TRANSLATABLE_TEXT, Component.translatable("text.apoli.cannot_sleep"))
 //            .add("set_spawn_point", SerializableDataTypes.BOOLEAN, true)
 //            .add("priority", SerializableDataTypes.INT, 0),
 //        (data, condition) -> new PreventSleepPowerType(
@@ -38,12 +38,12 @@
 //    );
 //
 //    private final Optional<BlockCondition> blockCondition;
-//    private final Text message;
+//    private final Component message;
 //
 //    private final boolean allowSpawnPoint;
 //    private final int priority;
 //
-//    public PreventSleepPowerType(Optional<BlockCondition> blockCondition, Text message, boolean allowSpawnPoint, int priority, Optional<EntityCondition> condition) {
+//    public PreventSleepPowerType(Optional<BlockCondition> blockCondition, Component message, boolean allowSpawnPoint, int priority, Optional<EntityCondition> condition) {
 //        super(condition);
 //        this.blockCondition = blockCondition;
 //        this.message = message;
@@ -73,7 +73,7 @@
 //            .orElse(true);
 //    }
 //
-//    public Text getMessage() {
+//    public Component getMessage() {
 //        return message;
 //    }
 //

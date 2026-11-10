@@ -11,7 +11,7 @@
 //import net.minecraft.world.entity.Entity;
 //import net.minecraft.server.MinecraftServer;
 //import net.minecraft.server.command.CommandOutput;
-//import net.minecraft.server.command.ServerCommandSource;
+//import net.minecraft.server.command.CommandSourceStack;
 //import net.minecraft.server.network.ServerPlayer;
 //import net.minecraft.server.world.ServerWorld;
 //import org.jetbrains.annotations.NotNull;
@@ -44,7 +44,7 @@
 //        }
 //
 //        MinecraftServer server = serverWorld.getServer();
-//        ServerCommandSource commandSource = entity.getCommandSource()
+//        CommandSourceStack commandSource = entity.getCommandSource()
 //            .withLevel(Apoli.config.executeCommand.permissionLevel)
 //            .withOutput(CommandOutput.DUMMY);
 //

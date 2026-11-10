@@ -34,9 +34,9 @@
 //import net.minecraft.registry.RegistryKey;
 //import net.minecraft.registry.RegistryKeys;
 //import net.minecraft.registry.entry.RegistryEntry;
-//import net.minecraft.server.command.ServerCommandSource;
+//import net.minecraft.server.command.CommandSourceStack;
 //import net.minecraft.text.MutableText;
-//import net.minecraft.text.Text;
+//import net.minecraft.network.chat.Component;
 //import org.jetbrains.annotations.ApiStatus;
 //import org.jetbrains.annotations.NotNull;
 //
@@ -307,7 +307,7 @@
 //
 //    public static final class DebugCommand {
 //
-//	    public static void register(RootCommandNode<ServerCommandSource> rootNode) {
+//	    public static void register(RootCommandNode<CommandSourceStack> rootNode) {
 //
 //            var melNode = literal(PowerTypes.MODIFY_ENCHANTMENT_LEVEL.id().getPath())
 //                .requires(source -> source.hasPermissionLevel(2))
@@ -320,13 +320,13 @@
 //
 //        public static class CacheNode {
 //
-//            public static LiteralArgumentBuilder<ServerCommandSource> builder() {
+//            public static LiteralArgumentBuilder<CommandSourceStack> builder() {
 //                return literal("cache")
 //                    .then(argument("target", PowerHolderArgumentType.holder())
 //                        .executes(CacheNode::execute));
 //            }
 //
-//            public static int execute(CommandContext<ServerCommandSource> context) throws CommandSyntaxException {
+//            public static int execute(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
 //
 //                UUID uuid = PowerHolderArgumentType.getHolder(context, "target").getUuid();
 //                var enchantmentsMapCache = ENCHANTMENTS_CACHE.getIfPresent(uuid);
@@ -335,7 +335,7 @@
 //                    throw new SimpleCommandExceptionType(() -> "Entity with UUID \"" + uuid + "\" didn't have a cache of enchantments!").create();
 //                }
 //
-//                MutableText enchantmentsText = Text.empty();
+//                MutableText enchantmentsText = Component.empty();
 //                var enchantmentsEntrySet = enchantmentsMapCache.asMap().entrySet();
 //
 //                for (var entry : enchantmentsEntrySet) {
@@ -345,7 +345,7 @@
 //
 //                    enchantmentsText
 //                        .append("\n")
-//                        .append(Text.literal(stack.toString() + " (identity hash: " + stack.hashCode() + ")"));
+//                        .append(Component.literal(stack.toString() + " (identity hash: " + stack.hashCode() + ")"));
 //
 //                    for (var enchantmentWithLevel : enchantments.getEnchantmentEntries()) {
 //
@@ -355,7 +355,7 @@
 //                        enchantmentsText
 //                            .append("\n")
 //                            .append(" - (").append(enchantment.value().description()).append("): ")
-//                            .append(Text.of(Integer.toString(level)));
+//                            .append(Component.of(Integer.toString(level)));
 //
 //                    }
 //

@@ -21,7 +21,7 @@
 //import net.minecraft.predicate.entity.EntityPredicates;
 //import net.minecraft.server.MinecraftServer;
 //import net.minecraft.server.command.CommandOutput;
-//import net.minecraft.server.command.ServerCommandSource;
+//import net.minecraft.server.command.CommandSourceStack;
 //import net.minecraft.server.network.ServerPlayer;
 //import net.minecraft.util.hit.BlockHitResult;
 //import net.minecraft.util.hit.EntityHitResult;
@@ -357,7 +357,7 @@
 //        Vec3d direction = destination.subtract(origin).normalize();
 //        double distance = origin.distanceTo(destination);
 //
-//        ServerCommandSource commandSource = entity.getCommandSource()
+//        CommandSourceStack commandSource = entity.getCommandSource()
 //            .withOutput(CommandOutput.DUMMY)
 //            .withLevel(Apoli.config.executeCommand.permissionLevel);
 //
@@ -387,7 +387,7 @@
 //            return;
 //        }
 //
-//        ServerCommandSource commandSource = entity.getCommandSource()
+//        CommandSourceStack commandSource = entity.getCommandSource()
 //            .withOutput(CommandOutput.DUMMY)
 //            .withPosition(hitPos)
 //            .withLevel(Apoli.config.executeCommand.permissionLevel);

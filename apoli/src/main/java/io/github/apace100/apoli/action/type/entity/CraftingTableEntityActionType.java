@@ -11,7 +11,7 @@
 //import net.minecraft.screen.ScreenHandlerFactory;
 //import net.minecraft.screen.SimpleNamedScreenHandlerFactory;
 //import net.minecraft.stat.Stats;
-//import net.minecraft.text.Text;
+//import net.minecraft.network.chat.Component;
 //import org.jetbrains.annotations.NotNull;
 //
 //public class CraftingTableEntityActionType extends EntityActionType {
@@ -30,7 +30,7 @@
 //
 //            };
 //
-//            player.openHandledScreen(new SimpleNamedScreenHandlerFactory(handlerFactory, Text.translatable("container.crafting")));
+//            player.openHandledScreen(new SimpleNamedScreenHandlerFactory(handlerFactory, Component.translatable("container.crafting")));
 //            player.incrementStat(Stats.INTERACT_WITH_CRAFTING_TABLE);
 //
 //        }

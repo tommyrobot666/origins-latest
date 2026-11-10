@@ -22,7 +22,7 @@
 //import net.minecraft.world.entity.player.Player;
 //import net.minecraft.registry.tag.TagKey;
 //import net.minecraft.scoreboard.AbstractTeam;
-//import net.minecraft.text.Text;
+//import net.minecraft.network.chat.Component;
 //import net.minecraft.util.math.BlockPos;
 //import net.minecraft.util.math.Direction;
 //import net.minecraft.util.math.MathHelper;
@@ -59,7 +59,7 @@
 //
 //    @Shadow public abstract World getWorld();
 //
-//    @Shadow public abstract Text getName();
+//    @Shadow public abstract Component getName();
 //
 //    @Shadow public abstract void setPose(EntityPose pose);
 //

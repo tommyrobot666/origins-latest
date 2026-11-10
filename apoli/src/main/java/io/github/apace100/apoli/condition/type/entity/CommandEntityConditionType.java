@@ -13,7 +13,7 @@
 //import net.minecraft.world.entity.Entity;
 //import net.minecraft.server.MinecraftServer;
 //import net.minecraft.server.command.CommandOutput;
-//import net.minecraft.server.command.ServerCommandSource;
+//import net.minecraft.server.command.CommandSourceStack;
 //import net.minecraft.server.network.ServerPlayer;
 //import net.minecraft.server.world.ServerWorld;
 //import net.minecraft.world.World;
@@ -63,7 +63,7 @@
 //        MinecraftServer server = serverWorld.getServer();
 //        AtomicInteger result = new AtomicInteger();
 //
-//        ServerCommandSource commandSource = entity.getCommandSource()
+//        CommandSourceStack commandSource = entity.getCommandSource()
 //            .withReturnValueConsumer((successful, returnValue) -> result.set(returnValue))
 //            .withLevel(Apoli.config.executeCommand.permissionLevel)
 //            .withOutput(CommandOutput.DUMMY);

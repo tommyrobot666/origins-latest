@@ -13,9 +13,9 @@
 //import net.minecraft.block.BlockState;
 //import net.minecraft.server.MinecraftServer;
 //import net.minecraft.server.command.CommandOutput;
-//import net.minecraft.server.command.ServerCommandSource;
+//import net.minecraft.server.command.CommandSourceStack;
 //import net.minecraft.server.world.ServerWorld;
-//import net.minecraft.text.Text;
+//import net.minecraft.network.chat.Component;
 //import net.minecraft.util.math.BlockPos;
 //import net.minecraft.util.math.Vec2f;
 //import org.jetbrains.annotations.NotNull;
@@ -65,14 +65,14 @@
 //        AtomicInteger result = new AtomicInteger();
 //
 //        String blockTranslationKey = blockState.getBlock().getTranslationKey();
-//        ServerCommandSource commandSource = new ServerCommandSource(
+//        CommandSourceStack commandSource = new CommandSourceStack(
 //            Apoli.config.executeCommand.showOutput ? server : CommandOutput.DUMMY,
 //            pos.toCenterPos(),
 //            Vec2f.ZERO,
 //            serverWorld,
 //            Apoli.config.executeCommand.permissionLevel,
 //            blockTranslationKey,
-//            Text.translatable(blockTranslationKey),
+//            Component.translatable(blockTranslationKey),
 //            server,
 //            null
 //        );

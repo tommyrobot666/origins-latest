@@ -20,7 +20,7 @@
 //import net.minecraft.server.world.ChunkTicketType;
 //import net.minecraft.server.world.ServerWorld;
 //import net.minecraft.sound.SoundEvent;
-//import net.minecraft.text.Text;
+//import net.minecraft.network.chat.Component;
 //import net.minecraft.util.Formatting;
 //import net.minecraft.util.Pair;
 //import net.minecraft.util.Unit;
@@ -249,7 +249,7 @@
 //                .ifPresent(id -> name.append(!name.isEmpty() ? " or " : "").append("any biomes from tag \"").append(id).append("\""));
 //
 //            Apoli.LOGGER.warn("Power \"{}\" could not set player {}'s spawn point at {} as none can be found nearby in dimension \"{}\".", this.getPower().getId(), holder.getName().getString(), name, dimensionKey.getValue());
-//            holder.sendMessage(Text.literal("Power \"%s\" couldn't set spawn point at %s as none can be found nearby in dimension \"%s\"!".formatted(this.getPower().getId(), name, dimensionKey.getValue())).formatted(Formatting.ITALIC, Formatting.GRAY));
+//            holder.sendMessage(Component.literal("Power \"%s\" couldn't set spawn point at %s as none can be found nearby in dimension \"%s\"!".formatted(this.getPower().getId(), name, dimensionKey.getValue())).formatted(Formatting.ITALIC, Formatting.GRAY));
 //
 //            return Optional.empty();
 //
@@ -300,7 +300,7 @@
 //                .ifPresent(id -> name.append(!name.isEmpty() ? " or " : "").append("any structures from tag \"").append(id).append("\""));
 //
 //            Apoli.LOGGER.warn("Power \"{}\" could not set player {}'s spawn point at {} as none can be found nearby in dimension \"{}\".", this.getPower().getId(), holder.getName().getString(), name, dimensionKey.getValue());
-//            holder.sendMessage(Text.literal("Power \"%s\" couldn't set spawn point at %s as none can be found nearby in dimension \"%s\"!".formatted(this.getPower().getId(), name, dimensionKey.getValue())).formatted(Formatting.ITALIC, Formatting.GRAY));
+//            holder.sendMessage(Component.literal("Power \"%s\" couldn't set spawn point at %s as none can be found nearby in dimension \"%s\"!".formatted(this.getPower().getId(), name, dimensionKey.getValue())).formatted(Formatting.ITALIC, Formatting.GRAY));
 //
 //            return Optional.empty();
 //

@@ -28,7 +28,7 @@
 //import net.minecraft.item.tooltip.TooltipType;
 //import net.minecraft.screen.ScreenTexts;
 //import net.minecraft.text.MutableText;
-//import net.minecraft.text.Text;
+//import net.minecraft.network.chat.Component;
 //import net.minecraft.util.Formatting;
 //import net.minecraft.util.UseAction;
 //import org.apache.commons.lang3.mutable.MutableBoolean;
@@ -67,10 +67,10 @@
 //    private TooltipType apoli$tooltipType;
 //
 //    @Unique
-//    private List<Text> apoli$tooltip;
+//    private List<Component> apoli$tooltip;
 //
-//    @Inject(method = "getTooltip", at = @At(value = "INVOKE", target = "Lnet/minecraft/text/MutableText;append(Lnet/minecraft/text/Text;)Lnet/minecraft/text/MutableText;"))
-//    private void apoli$cacheTooltipStuff(Item.TooltipContext context, @Nullable Player player, TooltipType type, CallbackInfoReturnable<List<Text>> cir, @Local List<Text> tooltip) {
+//    @Inject(method = "getTooltip", at = @At(value = "INVOKE", target = "Lnet/minecraft/text/MutableText;append(Lnet/minecraft/text/Component;)Lnet/minecraft/text/MutableText;"))
+//    private void apoli$cacheTooltipStuff(Item.TooltipContext context, @Nullable Player player, TooltipType type, CallbackInfoReturnable<List<Component>> cir, @Local List<Component> tooltip) {
 //
 //		// Although this is a client-only mixin, this is still seen by the internal server.
 //        if (player == null || !player.getWorld().isClient) {
@@ -93,7 +93,7 @@
 //    }
 //
 //    @Inject(method = "getTooltip", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/Item;appendTooltip(Lnet/minecraft/item/ItemStack;Lnet/minecraft/item/Item$TooltipContext;Ljava/util/List;Lnet/minecraft/item/tooltip/TooltipType;)V", shift = At.Shift.AFTER))
-//    private void apoli$appendUnusableTooltip(Item.TooltipContext context, @Nullable Player player, TooltipType type, CallbackInfoReturnable<List<Text>> cir) {
+//    private void apoli$appendUnusableTooltip(Item.TooltipContext context, @Nullable Player player, TooltipType type, CallbackInfoReturnable<List<Component>> cir) {
 //
 //        if (!(Apoli.config instanceof ApoliConfigClient config) || !config.tooltips.showUsabilityHints) {
 //            return;
@@ -113,15 +113,15 @@
 //        Formatting baseTextFormat = Formatting.GRAY;
 //        Formatting powerTextFormat = Formatting.RED;
 //
-//        Text powerText;
-//        Text baseText;
+//        Component powerText;
+//        Component baseText;
 //
 //        if (preventItemUsePowers.size() == 1) {
 //
 //            PreventItemUsePowerType preventItemUsePower = preventItemUsePowers.getFirst();
 //
 //            powerText = preventItemUsePower.getPower().getName().formatted(powerTextFormat);
-//            baseText = Text.translatable(translationKey, powerText).formatted(baseTextFormat);
+//            baseText = Component.translatable(translationKey, powerText).formatted(baseTextFormat);
 //
 //            apoli$tooltip.add(baseText);
 //
@@ -144,17 +144,17 @@
 //
 //            else {
 //
-//                powerText = Text.translatable("tooltip.apoli.usability_hint.power_count", preventItemUsePowers.size()).formatted(powerTextFormat);
-//                baseText = Text.translatable(translationKey, powerText).formatted(baseTextFormat);
+//                powerText = Component.translatable("tooltip.apoli.usability_hint.power_count", preventItemUsePowers.size()).formatted(powerTextFormat);
+//                baseText = Component.translatable(translationKey, powerText).formatted(baseTextFormat);
 //
 //                apoli$tooltip.add(baseText);
-//                apoli$tooltip.add(Text.empty());
+//                apoli$tooltip.add(Component.empty());
 //
-//                Text keyBindingText = KeyBindingUtil.getLocalizedName(keyBinding.getTranslationKey()).styled(style -> style
+//                Component keyBindingText = KeyBindingUtil.getLocalizedName(keyBinding.getTranslationKey()).styled(style -> style
 //                    .withColor(Formatting.YELLOW)
 //                    .withItalic(keyBinding.isUnbound()));
 //
-//                Text guideText = Text.translatable("tooltip.apoli.usability_hint.show_powers", keyBindingText).formatted(baseTextFormat);
+//                Component guideText = Component.translatable("tooltip.apoli.usability_hint.show_powers", keyBindingText).formatted(baseTextFormat);
 //                apoli$tooltip.add(guideText);
 //
 //            }
@@ -168,7 +168,7 @@
 //    }
 //
 //    @WrapOperation(method = "getTooltip", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;appendTooltip(Lnet/minecraft/component/ComponentType;Lnet/minecraft/item/Item$TooltipContext;Ljava/util/function/Consumer;Lnet/minecraft/item/tooltip/TooltipType;)V"))
-//    private void apoli$appendPowerTooltips(ItemStack stack, ComponentType<?> componentType, Item.TooltipContext context, Consumer<Text> tooltipConsumer, TooltipType type, Operation<Void> original, Item.TooltipContext mContext, @Nullable Player player, @Local List<Text> tooltip) {
+//    private void apoli$appendPowerTooltips(ItemStack stack, ComponentType<?> componentType, Item.TooltipContext context, Consumer<Component> tooltipConsumer, TooltipType type, Operation<Void> original, Item.TooltipContext mContext, @Nullable Player player, @Local List<Component> tooltip) {
 //
 //        original.call(stack, componentType, context, tooltipConsumer, type);
 //
@@ -183,7 +183,7 @@
 //    }
 //
 //    @Inject(method = "appendAttributeModifiersTooltip", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;applyAttributeModifier(Lnet/minecraft/component/type/AttributeModifierSlot;Ljava/util/function/BiConsumer;)V", shift = At.Shift.AFTER))
-//    private void apoli$appendItemPowersTooltips(Consumer<Text> tooltipConsumer, @Nullable Player player, CallbackInfo ci, @Local AttributeModifierSlot modifierSlot, @Local MutableBoolean shouldAppendSlotName) {
+//    private void apoli$appendItemPowersTooltips(Consumer<Component> tooltipConsumer, @Nullable Player player, CallbackInfo ci, @Local AttributeModifierSlot modifierSlot, @Local MutableBoolean shouldAppendSlotName) {
 //
 //        ItemPowersComponent itemPowersComponent = this.getOrDefault(ApoliDataComponentTypes.POWERS, ItemPowersComponent.DEFAULT);
 //        if (apoli$appendedSlots == null || apoli$appendedSlots.contains(modifierSlot) || !itemPowersComponent.containsSlot(modifierSlot)) {
@@ -193,7 +193,7 @@
 //        if (shouldAppendSlotName.isTrue()) {
 //
 //            tooltipConsumer.accept(ScreenTexts.EMPTY);
-//            tooltipConsumer.accept(Text.translatable("item.modifiers." + modifierSlot.asString()).formatted(Formatting.GRAY));
+//            tooltipConsumer.accept(Component.translatable("item.modifiers." + modifierSlot.asString()).formatted(Formatting.GRAY));
 //
 //            shouldAppendSlotName.setFalse();
 //
@@ -205,20 +205,20 @@
 //    }
 //
 //    @Unique
-//    private void apoli$appendExpandedTooltip(List<PreventItemUsePowerType> powers, List<Text> tooltip, String translationKey, Formatting powerTextColor, Formatting baseTextColor) {
+//    private void apoli$appendExpandedTooltip(List<PreventItemUsePowerType> powers, List<Component> tooltip, String translationKey, Formatting powerTextColor, Formatting baseTextColor) {
 //
-//        List<Text> powerTexts = new LinkedList<>();
+//        List<Component> powerTexts = new LinkedList<>();
 //        for (PreventItemUsePowerType power : powers) {
 //
-//            MutableText prependedText = Text.literal("  - ").formatted(baseTextColor);
+//            MutableText prependedText = Component.literal("  - ").formatted(baseTextColor);
 //            MutableText powerText = power.getPower().getName().formatted(powerTextColor);
 //
 //            powerTexts.add(prependedText.append(powerText));
 //
 //        }
 //
-//        Text powerText = Text.translatable("tooltip.apoli.usability_hint.power_count", powers.size()).formatted(powerTextColor);
-//        Text baseText = Text.translatable(translationKey, powerText).formatted(baseTextColor);
+//        Component powerText = Component.translatable("tooltip.apoli.usability_hint.power_count", powers.size()).formatted(powerTextColor);
+//        Component baseText = Component.translatable(translationKey, powerText).formatted(baseTextColor);
 //
 //        tooltip.add(baseText);
 //        tooltip.addAll(powerTexts);

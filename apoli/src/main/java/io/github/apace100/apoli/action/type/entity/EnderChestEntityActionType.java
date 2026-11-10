@@ -9,7 +9,7 @@
 //import net.minecraft.screen.ScreenHandlerFactory;
 //import net.minecraft.screen.SimpleNamedScreenHandlerFactory;
 //import net.minecraft.stat.Stats;
-//import net.minecraft.text.Text;
+//import net.minecraft.network.chat.Component;
 //import org.jetbrains.annotations.NotNull;
 //
 //public class EnderChestEntityActionType extends EntityActionType {
@@ -20,7 +20,7 @@
 //        if (context.entity() instanceof Player player) {
 //
 //            ScreenHandlerFactory handlerFactory = (syncId, playerInventory, _player) -> GenericContainerScreenHandler.createGeneric9x3(syncId, playerInventory, player.getEnderChestInventory());
-//            player.openHandledScreen(new SimpleNamedScreenHandlerFactory(handlerFactory, Text.translatable("container.enderchest")));
+//            player.openHandledScreen(new SimpleNamedScreenHandlerFactory(handlerFactory, Component.translatable("container.enderchest")));
 //
 //            player.incrementStat(Stats.OPEN_ENDERCHEST);
 //
