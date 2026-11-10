@@ -24,20 +24,20 @@
 //import net.minecraft.entity.damage.DamageSource;
 //import net.minecraft.entity.player.HungerManager;
 //import net.minecraft.world.entity.player.Player;
-//import net.minecraft.entity.player.PlayerInventory;
+//import net.minecraft.entity.player.Inventory;
 //import net.minecraft.inventory.StackReference;
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.network.packet.s2c.play.HealthUpdateS2CPacket;
 //import net.minecraft.registry.tag.DamageTypeTags;
 //import net.minecraft.server.command.CommandOutput;
-//import net.minecraft.server.network.ServerPlayer;
+//import net.minecraft.server.level.ServerPlayer;
 //import net.minecraft.util.ActionResult;
 //import net.minecraft.util.Hand;
 //import net.minecraft.util.Nameable;
 //import net.minecraft.util.math.BlockPos;
 //import net.minecraft.util.math.Direction;
-//import net.minecraft.util.math.Vec3d;
-//import net.minecraft.world.World;
+//import net.minecraft.util.math.Vec3;
+//import net.minecraft.world.Level;
 //import org.spongepowered.asm.mixin.Final;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.Shadow;
@@ -62,9 +62,9 @@
 //
 //    @Shadow
 //    @Final
-//    PlayerInventory inventory;
+//    Inventory inventory;
 //
-//    protected PlayerMixin(EntityType<? extends LivingEntity> entityType, World world) {
+//    protected PlayerMixin(EntityType<? extends LivingEntity> entityType, Level world) {
 //        super(entityType, world);
 //    }
 //
@@ -101,7 +101,7 @@
 //    private boolean apoli$updateStatsManually = false;
 //
 //    @ModifyVariable(method = "eatFood", at = @At("HEAD"), argsOnly = true)
-//    private FoodProperties apoli$modifyFoodProperties(FoodProperties original, World world, ItemStack stack, @Share("modifyFoodPowers") LocalRef<List<ModifyFoodPowerType>> sharedModifyFoodPowers) {
+//    private FoodProperties apoli$modifyFoodProperties(FoodProperties original, Level world, ItemStack stack, @Share("modifyFoodPowers") LocalRef<List<ModifyFoodPowerType>> sharedModifyFoodPowers) {
 //
 //        List<ModifyFoodPowerType> modifyFoodPowers = ((ModifiableFoodEntity) this).apoli$getCurrentModifyFoodPowers()
 //            .stream()
@@ -142,7 +142,7 @@
 //    }
 //
 //    @Inject(method = "eatFood", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/HungerManager;eat(Lnet/minecraft/component/type/FoodProperties;)V", shift = At.Shift.AFTER))
-//    private void apoli$executeActionsAfterEating(World world, ItemStack stack, FoodProperties foodComponent, CallbackInfoReturnable<ItemStack> cir, @Share("modifyFoodPowers") LocalRef<List<ModifyFoodPowerType>> sharedModifyFoodPowers) {
+//    private void apoli$executeActionsAfterEating(Level world, ItemStack stack, FoodProperties foodComponent, CallbackInfoReturnable<ItemStack> cir, @Share("modifyFoodPowers") LocalRef<List<ModifyFoodPowerType>> sharedModifyFoodPowers) {
 //
 //        List<ModifyFoodPowerType> modifyFoodPowers = sharedModifyFoodPowers.get();
 //        if (!((Player) (Object) this instanceof ServerPlayer serverPlayer) || modifyFoodPowers == null) {
@@ -186,8 +186,8 @@
 //            this.touchingWater = this.isSwimming();
 //            if (this.isSwimming()) {
 //                this.fallDistance = 0.0F;
-//                Vec3d look = this.getRotationVector();
-//                move(MovementType.SELF, new Vec3d(look.x/4, look.y/4, look.z/4));
+//                Vec3 look = this.getRotationVector();
+//                move(MovementType.SELF, new Vec3(look.x/4, look.y/4, look.z/4));
 //            }
 //        } else if(PowerHolderComponent.hasPowerType(this, IgnoreWaterPowerType.class)) {
 //            this.setSwimming(false);
@@ -216,13 +216,13 @@
 //        return PowerHolderComponent.modify(this, ModifyExhaustionPowerType.class, exhaustionIn);
 //    }
 //
-//    @Inject(method = "dropInventory", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerInventory;dropAll()V"))
+//    @Inject(method = "dropInventory", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/Inventory;dropAll()V"))
 //    private void dropAdditionalInventory(CallbackInfo ci) {
 //        PowerHolderComponent.withPowerTypes(this, InventoryPowerType.class, InventoryPowerType::shouldDropOnDeath, InventoryPowerType::dropItemsOnDeath);
 //        PowerHolderComponent.withPowerTypes(this, KeepInventoryPowerType.class, p -> true, KeepInventoryPowerType::preventItemsFromDropping);
 //    }
 //
-//    @Inject(method = "dropInventory", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerInventory;dropAll()V", shift = At.Shift.AFTER))
+//    @Inject(method = "dropInventory", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/Inventory;dropAll()V", shift = At.Shift.AFTER))
 //    private void restoreKeptInventory(CallbackInfo ci) {
 //        PowerHolderComponent.withPowerTypes(this, KeepInventoryPowerType.class, p -> true, KeepInventoryPowerType::restoreSavedItems);
 //    }

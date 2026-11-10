@@ -12,9 +12,9 @@
 //import net.minecraft.world.entity.Entity;
 //import net.minecraft.util.math.BlockPos;
 //import net.minecraft.util.math.Box;
-//import net.minecraft.util.math.Vec3d;
+//import net.minecraft.util.math.Vec3;
 //import net.minecraft.world.BlockCollisionSpliterator;
-//import net.minecraft.world.World;
+//import net.minecraft.world.Level;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.Optional;
@@ -27,7 +27,7 @@
 //            .add("offset_x", SerializableDataTypes.DOUBLE, 0.0)
 //            .add("offset_y", SerializableDataTypes.DOUBLE, 0.0)
 //            .add("offset_z", SerializableDataTypes.DOUBLE, 0.0)
-//            .addFunctionedDefault("offset", SerializableDataTypes.VECTOR, data -> new Vec3d(data.get("offset_x"), data.get("offset_y"), data.get("offset_z"))),
+//            .addFunctionedDefault("offset", SerializableDataTypes.VECTOR, data -> new Vec3(data.get("offset_x"), data.get("offset_y"), data.get("offset_z"))),
 //        data -> new BlockCollisionEntityConditionType(
 //            data.get("block_condition"),
 //            data.get("offset")
@@ -38,9 +38,9 @@
 //    );
 //
 //    private final Optional<BlockCondition> blockCondition;
-//    private final Vec3d offset;
+//    private final Vec3 offset;
 //
-//    public BlockCollisionEntityConditionType(Optional<BlockCondition> blockCondition, Vec3d offset) {
+//    public BlockCollisionEntityConditionType(Optional<BlockCondition> blockCondition, Vec3 offset) {
 //        this.blockCondition = blockCondition;
 //        this.offset = offset;
 //    }
@@ -51,7 +51,7 @@
 //        Entity entity = context.entity();
 //
 //        Box boundingBox = entity.getBoundingBox().offset(offset);
-//        World world = entity.getWorld();
+//        Level world = entity.level();
 //
 //        BlockCollisionSpliterator<BlockPos> spliterator = new BlockCollisionSpliterator<>(world, entity, boundingBox, false, (pos, shape) -> pos);
 //        ((BlockCollisionSpliteratorAccess) spliterator).apoli$setGetOriginalShapes(true);

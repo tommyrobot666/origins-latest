@@ -46,7 +46,7 @@
 //
 //        for (EquipmentSlot slot : EquipmentSlot.values()) {
 //
-//            if (equipmentSlot.matches(slot) && itemCondition.test(livingEntity.getWorld(), livingEntity.getEquippedStack(slot))) {
+//            if (equipmentSlot.matches(slot) && itemCondition.test(livingEntity.level(), livingEntity.getEquippedStack(slot))) {
 //                return true;
 //            }
 //

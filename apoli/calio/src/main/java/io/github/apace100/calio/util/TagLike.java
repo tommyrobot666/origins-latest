@@ -4,15 +4,15 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import io.github.apace100.calio.codec.*;
 import io.github.apace100.calio.data.DataException;
-import io.github.apace100.calio.mixin.RegistryEntryListBackedAccessor;
+import io.github.apace100.calio.mixin.HolderSetBackedAccessor;
 import io.github.apace100.calio.mixin.TagEntryAccessor;
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.registry.*;
 import net.minecraft.registry.entry.RegistryEntry;
-import net.minecraft.registry.entry.RegistryEntryList;
-import net.minecraft.registry.tag.TagEntry;
-import net.minecraft.registry.tag.TagKey;
+import net.minecraft.core.HolderSet;
+import net.minecraft.tags.TagEntry;
+import net.minecraft.tags.TagKey;
 import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.NotNull;
 
@@ -131,7 +131,7 @@ public class TagLike<T> {
                 if (isTag) {
 
                     TagKey<E> tag = TagKey.of(registryRef, id);
-                    Optional<RegistryEntryList.Named<E>> entries = entryLookup.getOptional(tag);
+                    Optional<HolderSet.Named<E>> entries = entryLookup.getOptional(tag);
 
                     if (required && entries.isEmpty()) {
                         throw new DataException(DataException.Phase.READING, index, "Tag \"" + id + "\" for registry \"" + registryRef.getValue() + "\" doesn't exist!");
@@ -140,7 +140,7 @@ public class TagLike<T> {
                     else if (entries.isPresent()) {
                         Collection<E> elements = elementsByTag.computeIfAbsent(tag, k -> new ObjectOpenHashSet<>());
                         entries.stream()
-                            .map(registryEntries -> ((RegistryEntryListBackedAccessor<E>) registryEntries).callGetEntries())
+                            .map(registryEntries -> ((HolderSetBackedAccessor<E>) registryEntries).callGetEntries())
                             .flatMap(Collection::stream)
                             .map(RegistryEntry::value)
                             .forEach(elements::add);

@@ -1,7 +1,7 @@
 package io.github.apace100.calio.mixin;
 
 import io.github.apace100.calio.CalioServer;
-import net.minecraft.registry.tag.TagKey;
+import net.minecraft.tags.TagKey;
 import net.minecraft.registry.tag.TagManagerLoader;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;

@@ -82,7 +82,7 @@
 //
 //        LivingEntity holder = getHolder();
 //
-//        blockAction.ifPresent(action -> action.execute(holder.getWorld(), hitResult.getBlockPos(), Optional.of(hitResult.getSide())));
+//        blockAction.ifPresent(action -> action.execute(holder.level(), hitResult.getBlockPos(), Optional.of(hitResult.getSide())));
 //        entityAction.ifPresent(action -> action.execute(holder));
 //
 //        if (holder instanceof Player player) {
@@ -95,7 +95,7 @@
 //        return usePhases.contains(usePhase)
 //            && directions.contains(hitResult.getSide())
 //            && super.shouldExecute(hand, heldStack)
-//            && blockCondition.map(condition -> condition.test(getHolder().getWorld(), hitResult.getBlockPos())).orElse(true);
+//            && blockCondition.map(condition -> condition.test(getHolder().level(), hitResult.getBlockPos())).orElse(true);
 //    }
 //
 //    public static boolean doesPrevent(Entity holder, BlockUsagePhase usePhase, BlockHitResult hitResult, ItemStack heldStack, Hand hand) {

@@ -18,7 +18,7 @@
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.screen.GrindstoneScreenHandler;
 //import net.minecraft.util.math.BlockPos;
-//import net.minecraft.world.World;
+//import net.minecraft.world.Level;
 //import org.jetbrains.annotations.NotNull;
 //import org.jetbrains.annotations.Nullable;
 //
@@ -105,18 +105,18 @@
 //
 //    public boolean allowsInTop(ItemStack stack) {
 //        return topItemCondition
-//            .map(condition -> condition.test(getHolder().getWorld(), stack))
+//            .map(condition -> condition.test(getHolder().level(), stack))
 //            .orElse(true);
 //    }
 //
 //    public boolean allowsInBottom(ItemStack stack) {
 //        return bottomItemCondition
-//            .map(condition -> condition.test(getHolder().getWorld(), stack))
+//            .map(condition -> condition.test(getHolder().level(), stack))
 //            .orElse(true);
 //    }
 //
 //    public boolean doesApply(ItemStack topStack, ItemStack bottomStack, ItemStack originalOutput, @Nullable BlockPos grindstonePos) {
-//        World world = getHolder().getWorld();
+//        Level world = getHolder().level();
 //        return allowsInTop(topStack)
 //            && allowsInBottom(bottomStack)
 //            && outputItemCondition.map(condition -> condition.test(world, originalOutput)).orElse(true)
@@ -139,7 +139,7 @@
 //                currentOutputStackReference.set(inputTop.copy());
 //        }
 //
-//        itemAction.ifPresent(action -> action.execute(getHolder().getWorld(), currentOutputStackReference));
+//        itemAction.ifPresent(action -> action.execute(getHolder().level(), currentOutputStackReference));
 //
 //    }
 //
@@ -150,11 +150,11 @@
 //
 //    public void executeActions(@Nullable BlockPos pos) {
 //        entityAction.ifPresent(action -> action.execute(getHolder()));
-//        blockAction.filter(action -> pos != null).ifPresent(action -> action.execute(getHolder().getWorld(), pos, Optional.empty()));
+//        blockAction.filter(action -> pos != null).ifPresent(action -> action.execute(getHolder().level(), pos, Optional.empty()));
 //    }
 //
 //    public void applyAfterGrindingItemAction(StackReference outputStackReference) {
-//        itemActionAfterGrinding.ifPresent(action -> action.execute(getHolder().getWorld(), outputStackReference));
+//        itemActionAfterGrinding.ifPresent(action -> action.execute(getHolder().level(), outputStackReference));
 //    }
 //
 //    public static boolean allowsInTopSlot(GrindstoneScreenHandler screenHandler, ItemStack stack) {

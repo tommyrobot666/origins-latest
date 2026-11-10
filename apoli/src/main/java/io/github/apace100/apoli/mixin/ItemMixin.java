@@ -8,7 +8,7 @@
 //import net.minecraft.item.Item;
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.util.Hand;
-//import net.minecraft.world.World;
+//import net.minecraft.world.Level;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.injection.At;
 //
@@ -16,7 +16,7 @@
 //public abstract class ItemMixin {
 //
 //    @ModifyExpressionValue(method = "use", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/Player;canConsume(Z)Z"))
-//    private boolean apoli$makeItemAlwaysEdible(boolean original, World world, Player user, Hand hand, @Local ItemStack stackInHand) {
+//    private boolean apoli$makeItemAlwaysEdible(boolean original, Level world, Player user, Hand hand, @Local ItemStack stackInHand) {
 //        return original || PowerHolderComponent.hasPowerType(user, ModifyFoodPowerType.class, mfp -> mfp.doesMakeAlwaysEdible() && mfp.doesApply(stackInHand));
 //    }
 //

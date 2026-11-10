@@ -22,8 +22,8 @@ accessible class net/minecraft/client/toast/ToastManager$Entry
 accessible class net/minecraft/server/network/ServerPlayer$RespawnPos
 accessible class net/minecraft/screen/slot/ArmorSlot
 accessible class net/minecraft/client/Minecraft$LoadingContext
-accessible method net/minecraft/registry/entry/RegistryEntryList$ListBacked getEntries ()Ljava/util/List;
-accessible class net/minecraft/registry/tag/TagGroupLoader$TagDependencies
+accessible method net/minecraft/registry/entry/HolderSet$ListBacked getEntries ()Ljava/util/List;
+accessible class net/minecraft/registry/tag/TagLoader$TagDependencies
 extendable method net/minecraft/network/chat/contents/TranslatableContents decompose ()V
 accessible field net/minecraft/network/chat/contents/TranslatableContents decomposedWith Lnet/minecraft/locale/Language;
 accessible field net/minecraft/network/chat/contents/TranslatableContents decomposedParts Ljava/util/List;

@@ -12,7 +12,7 @@
 //import net.minecraft.sound.SoundCategory;
 //import net.minecraft.sound.SoundEvent;
 //import net.minecraft.util.math.BlockPos;
-//import net.minecraft.world.World;
+//import net.minecraft.world.Level;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.Optional;
@@ -55,7 +55,7 @@
 //    public void accept(EntityActionContext context) {
 //
 //        Entity entity = context.entity();
-//        World world = entity.getWorld();
+//        Level world = entity.level();
 //
 //        BlockPos blockPos = BlockPos.ofFloored(entity.getPos().add(context.offset()));
 //        world.playSound(null, blockPos, sound, category.orElseGet(entity::getSoundCategory), volume, pitch);

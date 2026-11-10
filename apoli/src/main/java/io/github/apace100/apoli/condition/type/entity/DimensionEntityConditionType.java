@@ -8,7 +8,7 @@
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.registry.RegistryKey;
-//import net.minecraft.world.World;
+//import net.minecraft.world.Level;
 //import org.jetbrains.annotations.NotNull;
 //
 //public class DimensionEntityConditionType extends EntityConditionType {
@@ -23,15 +23,15 @@
 //            .set("dimension", conditionType.dimension)
 //    );
 //
-//    private final RegistryKey<World> dimension;
+//    private final RegistryKey<Level> dimension;
 //
-//    public DimensionEntityConditionType(RegistryKey<World> dimension) {
+//    public DimensionEntityConditionType(RegistryKey<Level> dimension) {
 //        this.dimension = dimension;
 //    }
 //
 //    @Override
 //    public boolean test(EntityConditionContext context) {
-//        return context.entity().getWorld().getRegistryKey().equals(dimension);
+//        return context.entity().level().getRegistryKey().equals(dimension);
 //    }
 //
 //    @Override

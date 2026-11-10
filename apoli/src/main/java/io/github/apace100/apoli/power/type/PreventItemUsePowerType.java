@@ -37,7 +37,7 @@
 //
 //    public boolean doesPrevent(ItemStack stack) {
 //        return itemCondition
-//            .map(condition -> condition.test(getHolder().getWorld(), stack))
+//            .map(condition -> condition.test(getHolder().level(), stack))
 //            .orElse(true);
 //    }
 //

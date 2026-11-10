@@ -15,8 +15,8 @@
 //import net.minecraft.world.entity.Entity;
 //import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.registry.entry.RegistryEntry;
-//import net.minecraft.registry.tag.TagKey;
-//import net.minecraft.server.world.ServerWorld;
+//import net.minecraft.tags.TagKey;
+//import net.minecraft.server.level.ServerLevel;
 //import net.minecraft.util.math.BlockPos;
 //import net.minecraft.world.event.EntityPositionSource;
 //import net.minecraft.world.event.GameEvent;
@@ -125,7 +125,7 @@
 //    @Override
 //    public void onAdded() {
 //
-//        if (getHolder().getWorld() instanceof ServerWorld serverWorld) {
+//        if (getHolder().level() instanceof ServerLevel serverWorld) {
 //            getGameEventHandler().onEntitySetPos(serverWorld);
 //        }
 //
@@ -134,7 +134,7 @@
 //    @Override
 //    public void onRemoved() {
 //
-//        if (getHolder().getWorld() instanceof ServerWorld serverWorld) {
+//        if (getHolder().level() instanceof ServerLevel serverWorld) {
 //            getGameEventHandler().onEntityRemoval(serverWorld);
 //        }
 //
@@ -142,7 +142,7 @@
 //
 //    @Override
 //    public void serverTick() {
-//        Ticker.tick(getHolder().getWorld(), getVibrationListenerData(), getVibrationCallback());
+//        Ticker.tick(getHolder().level(), getVibrationListenerData(), getVibrationCallback());
 //    }
 //
 //    @Override
@@ -201,14 +201,14 @@
 //        }
 //
 //        @Override
-//        public boolean accepts(ServerWorld world, BlockPos pos, RegistryEntry<GameEvent> event, GameEvent.Emitter emitter) {
+//        public boolean accepts(ServerLevel world, BlockPos pos, RegistryEntry<GameEvent> event, GameEvent.Emitter emitter) {
 //            return GameEventListenerPowerType.this.canUse()
 //                && blockCondition.map(condition -> condition.test(world, pos)).orElse(true)
 //                && biEntityCondition.map(condition -> condition.test(emitter.sourceEntity(), getHolder())).orElse(true);
 //        }
 //
 //        @Override
-//        public void accept(ServerWorld world, BlockPos pos, RegistryEntry<GameEvent> event, @Nullable Entity sourceEntity, @Nullable Entity entity, float distance) {
+//        public void accept(ServerLevel world, BlockPos pos, RegistryEntry<GameEvent> event, @Nullable Entity sourceEntity, @Nullable Entity entity, float distance) {
 //
 //            GameEventListenerPowerType.this.use();
 //

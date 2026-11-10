@@ -48,7 +48,7 @@ public class PowerTypes {
 //    public static final PowerConfiguration<EffectImmunityPowerType> EFFECT_IMMUNITY = register(PowerConfiguration.of(Apoli.identifier("effect_immunity"), EffectImmunityPowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<ElytraFlightPowerType> ELYTRA_FLIGHT = register(PowerConfiguration.of(Apoli.identifier("elytra_flight"), ElytraFlightPowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<EntityGlowPowerType> ENTITY_GLOW = register(PowerConfiguration.of(Apoli.identifier("entity_glow"), EntityGlowPowerType.DATA_FACTORY));
-//    public static final PowerConfiguration<EntitySetPowerType> ENTITY_SET = register(PowerConfiguration.of(Apoli.identifier("entity_set"), EntitySetPowerType.DATA_FACTORY));
+    public static final PowerConfiguration<EntitySetPowerType> ENTITY_SET = register(PowerConfiguration.of(Apoli.identifier("entity_set"), EntitySetPowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<ExhaustOverTimePowerType> EXHAUST = register(PowerConfiguration.of(Apoli.identifier("exhaust"), ExhaustOverTimePowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<FireImmunityPowerType> FIRE_IMMUNITY = register(PowerConfiguration.conditionedSimple(Apoli.identifier("fire_immunity"), FireImmunityPowerType::new));
 //    public static final PowerConfiguration<FireProjectilePowerType> FIRE_PROJECTILE = register(PowerConfiguration.of(Apoli.identifier("fire_projectile"), FireProjectilePowerType.DATA_FACTORY));

@@ -51,12 +51,12 @@
 //
 //    public boolean doesApply(BlockPos pos) {
 //        return blockCondition
-//            .map(condition -> condition.test(getHolder().getWorld(), pos))
+//            .map(condition -> condition.test(getHolder().level(), pos))
 //            .orElse(true);
 //    }
 //
 //    public void executeActions(BlockPos pos, Direction direction) {
-//        blockAction.ifPresent(action -> action.execute(getHolder().getWorld(), pos, Optional.of(direction)));
+//        blockAction.ifPresent(action -> action.execute(getHolder().level(), pos, Optional.of(direction)));
 //        entityAction.ifPresent(action -> action.execute(getHolder()));
 //    }
 //

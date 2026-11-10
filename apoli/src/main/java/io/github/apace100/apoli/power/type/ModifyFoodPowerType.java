@@ -105,13 +105,13 @@ public class ModifyFoodPowerType extends PowerType {
 
     public boolean doesApply(ItemStack stack) {
         return itemCondition
-            .map(condition -> condition.test(getHolder().getWorld(), stack))
+            .map(condition -> condition.test(getHolder().level(), stack))
             .orElse(true);
     }
 
     public void setConsumedItemStackReference(StackReference stackReference) {
         replaceStack.ifPresent(stackReference::set);
-        itemAction.ifPresent(action -> action.execute(getHolder().getWorld(), stackReference));
+        itemAction.ifPresent(action -> action.execute(getHolder().level(), stackReference));
     }
 
     public void eat() {

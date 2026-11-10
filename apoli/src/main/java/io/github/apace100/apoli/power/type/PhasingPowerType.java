@@ -68,7 +68,7 @@
 //
 //    public boolean doesApply(BlockPos pos) {
 //        return blockCondition
-//            .map(condition -> blacklist != condition.test(getHolder().getWorld(), pos))
+//            .map(condition -> blacklist != condition.test(getHolder().level(), pos))
 //            .orElse(true);
 //    }
 //

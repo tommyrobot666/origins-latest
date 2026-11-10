@@ -9,7 +9,7 @@
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.util.math.BlockPos;
 //import net.minecraft.world.BlockView;
-//import net.minecraft.world.World;
+//import net.minecraft.world.Level;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.Optional;
@@ -64,7 +64,7 @@
 //    }
 //
 //    public boolean doesApply(BlockView blockView, BlockPos pos) {
-//        return blockView instanceof World world && blockCondition
+//        return blockView instanceof Level world && blockCondition
 //            .map(condition -> condition.test(world, pos))
 //            .orElse(true);
 //    }

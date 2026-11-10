@@ -7,7 +7,7 @@
 //import io.github.apace100.apoli.access.ScreenHandlerUsabilityOverride;
 //import io.github.apace100.apoli.power.type.ModifyCraftingPowerType;
 //import net.minecraft.world.entity.player.Player;
-//import net.minecraft.entity.player.PlayerInventory;
+//import net.minecraft.entity.player.Inventory;
 //import net.minecraft.inventory.CraftingInventory;
 //import net.minecraft.inventory.CraftingResultInventory;
 //import net.minecraft.inventory.RecipeInputInventory;
@@ -20,7 +20,7 @@
 //import net.minecraft.screen.ScreenHandler;
 //import net.minecraft.screen.ScreenHandlerType;
 //import net.minecraft.screen.slot.Slot;
-//import net.minecraft.world.World;
+//import net.minecraft.world.Level;
 //import org.jetbrains.annotations.Nullable;
 //import org.spongepowered.asm.mixin.Final;
 //import org.spongepowered.asm.mixin.Mixin;
@@ -58,8 +58,8 @@
 //        super(screenHandlerType, i);
 //    }
 //
-//    @ModifyExpressionValue(method = "<init>(ILnet/minecraft/entity/player/PlayerInventory;Lnet/minecraft/screen/ScreenHandlerContext;)V", at = @At(value = "NEW", target = "(Lnet/minecraft/screen/ScreenHandler;II)Lnet/minecraft/inventory/CraftingInventory;"))
-//    private CraftingInventory apoli$cachePlayerToCraftingInventory(CraftingInventory original, int syncId, PlayerInventory playerInventory) {
+//    @ModifyExpressionValue(method = "<init>(ILnet/minecraft/entity/player/Inventory;Lnet/minecraft/screen/ScreenHandlerContext;)V", at = @At(value = "NEW", target = "(Lnet/minecraft/screen/ScreenHandler;II)Lnet/minecraft/inventory/CraftingInventory;"))
+//    private CraftingInventory apoli$cachePlayerToCraftingInventory(CraftingInventory original, int syncId, Inventory playerInventory) {
 //
 //        if (original instanceof PowerCraftingInventory pci) {
 //            pci.apoli$setPlayer(playerInventory.player);
@@ -69,8 +69,8 @@
 //
 //    }
 //
-//    @Inject(method = "updateResult", at = @At(value = "INVOKE", target = "Lnet/minecraft/recipe/RecipeManager;getFirstMatch(Lnet/minecraft/recipe/RecipeType;Lnet/minecraft/recipe/input/RecipeInput;Lnet/minecraft/world/World;Lnet/minecraft/recipe/RecipeEntry;)Ljava/util/Optional;"))
-//    private static void apoli$clearPowerCraftingInventory(ScreenHandler handler, World world, Player player, RecipeInputInventory craftingInventory, CraftingResultInventory resultInventory, @Nullable RecipeEntry<CraftingRecipe> recipe, CallbackInfo ci) {
+//    @Inject(method = "updateResult", at = @At(value = "INVOKE", target = "Lnet/minecraft/recipe/RecipeManager;getFirstMatch(Lnet/minecraft/recipe/RecipeType;Lnet/minecraft/recipe/input/RecipeInput;Lnet/minecraft/world/Level;Lnet/minecraft/recipe/RecipeEntry;)Ljava/util/Optional;"))
+//    private static void apoli$clearPowerCraftingInventory(ScreenHandler handler, Level world, Player player, RecipeInputInventory craftingInventory, CraftingResultInventory resultInventory, @Nullable RecipeEntry<CraftingRecipe> recipe, CallbackInfo ci) {
 //
 //        if (craftingInventory instanceof PowerCraftingInventory pci) {
 //            pci.apoli$setPowerTypes(new LinkedList<>());

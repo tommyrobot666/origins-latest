@@ -15,14 +15,14 @@
 //import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 //import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.world.item.ItemStack;
-//import net.minecraft.nbt.NbtCompound;
-//import net.minecraft.nbt.NbtElement;
-//import net.minecraft.nbt.NbtList;
+//import net.minecraft.nbt.CompoundTag;
+//import net.minecraft.nbt.Tag;
+//import net.minecraft.nbt.ListTag;
 //import net.minecraft.nbt.NbtOps;
 //import net.minecraft.registry.RegistryOps;
 //import net.minecraft.registry.RegistryWrapper;
 //import net.minecraft.server.command.CommandSourceStack;
-//import net.minecraft.server.world.ServerWorld;
+//import net.minecraft.server.level.ServerLevel;
 //import net.minecraft.network.chat.Component;
 //import net.minecraft.network.chat.ComponentCodecs;
 //import net.minecraft.network.chat.Components;
@@ -160,13 +160,13 @@
 //    }
 //
 //    @Override
-//    public NbtElement toTag() {
+//    public Tag toTag() {
 //
 //        RegistryWrapper.WrapperLookup registryLookup = getHolder().getRegistryManager();
-//        RegistryOps<NbtElement> nbtOps = registryLookup.getOps(NbtOps.INSTANCE);
+//        RegistryOps<Tag> nbtOps = registryLookup.getOps(NbtOps.INSTANCE);
 //
-//        NbtCompound rootNbt = new NbtCompound();
-//        NbtList tooltipTextsNbt = new NbtList();
+//        CompoundTag rootNbt = new CompoundTag();
+//        ListTag tooltipTextsNbt = new ListTag();
 //
 //        tooltipTexts.stream()
 //            .map(text -> TextCodecs.CODEC.encodeStart(nbtOps, text))
@@ -180,17 +180,17 @@
 //    }
 //
 //    @Override
-//    public void fromTag(NbtElement tag) {
+//    public void fromTag(Tag tag) {
 //
 //        RegistryWrapper.WrapperLookup registryLookup = getHolder().getRegistryManager();
-//        RegistryOps<NbtElement> nbtOps = registryLookup.getOps(NbtOps.INSTANCE);
+//        RegistryOps<Tag> nbtOps = registryLookup.getOps(NbtOps.INSTANCE);
 //
 //        this.tooltipTexts.clear();
 //
-//        NbtCompound rootNbt = (NbtCompound) tag;
-//        NbtElement tooltipTextsNbt = rootNbt.get("Tooltips");
+//        CompoundTag rootNbt = (CompoundTag) tag;
+//        Tag tooltipTextsNbt = rootNbt.get("Tooltips");
 //
-//        if (tooltipTextsNbt instanceof NbtList actualTooltipTextNbt) {
+//        if (tooltipTextsNbt instanceof ListTag actualTooltipTextNbt) {
 //
 //            actualTooltipTextNbt
 //                .stream()
@@ -223,7 +223,7 @@
 //
 //    public boolean doesApply(ItemStack stack) {
 //        return itemCondition
-//            .map(condition -> condition.test(getHolder().getWorld(), stack))
+//            .map(condition -> condition.test(getHolder().level(), stack))
 //            .orElse(true);
 //    }
 //
@@ -232,7 +232,7 @@
 //        List<Component> parsedTexts = Lists.newLinkedList();
 //        LivingEntity holder = getHolder();
 //
-//        if (texts.isEmpty() || !(holder.getWorld() instanceof ServerWorld serverWorld)) {
+//        if (texts.isEmpty() || !(holder.level() instanceof ServerLevel serverWorld)) {
 //            return parsedTexts;
 //        }
 //

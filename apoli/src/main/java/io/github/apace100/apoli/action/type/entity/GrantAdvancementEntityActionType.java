@@ -16,7 +16,7 @@
 //import net.minecraft.server.MinecraftServer;
 //import net.minecraft.server.ServerAdvancementLoader;
 //import net.minecraft.server.command.AdvancementCommand;
-//import net.minecraft.server.network.ServerPlayer;
+//import net.minecraft.server.level.ServerPlayer;
 //import net.minecraft.resources.Identifier;
 //import org.jetbrains.annotations.NotNull;
 //

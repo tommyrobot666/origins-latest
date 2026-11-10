@@ -13,10 +13,10 @@
 //import net.minecraft.world.entity.EntityType;
 //import net.minecraft.entity.projectile.ExplosiveProjectileEntity;
 //import net.minecraft.entity.projectile.ProjectileEntity;
-//import net.minecraft.nbt.NbtCompound;
-//import net.minecraft.server.world.ServerWorld;
+//import net.minecraft.nbt.CompoundTag;
+//import net.minecraft.server.level.ServerLevel;
 //import net.minecraft.util.math.MathHelper;
-//import net.minecraft.util.math.Vec3d;
+//import net.minecraft.util.math.Vec3;
 //import net.minecraft.util.math.random.Random;
 //import org.jetbrains.annotations.NotNull;
 //
@@ -31,7 +31,7 @@
 //        new SerializableData()
 //            .add("entity_type", SerializableDataTypes.ENTITY_TYPE)
 //            .add("projectile_action", EntityAction.DATA_TYPE.optional(), Optional.empty())
-//            .add("tag", SerializableDataTypes.NBT_COMPOUND, new NbtCompound())
+//            .add("tag", SerializableDataTypes.NBT_COMPOUND, new CompoundTag())
 //            .add("divergence", SerializableDataTypes.FLOAT, 1.0F)
 //            .add("speed", SerializableDataTypes.FLOAT, 1.5F)
 //            .add("count", SerializableDataTypes.INT, 1),
@@ -55,14 +55,14 @@
 //    private final EntityType<?> entityType;
 //    private final Optional<EntityAction> projectileAction;
 //
-//    private final NbtCompound tag;
+//    private final CompoundTag tag;
 //
 //    private final float divergence;
 //    private final float speed;
 //
 //    private final int count;
 //
-//    public FireProjectileEntityActionType(EntityType<?> entityType, Optional<EntityAction> projectileAction, NbtCompound tag, float divergence, float speed, int count) {
+//    public FireProjectileEntityActionType(EntityType<?> entityType, Optional<EntityAction> projectileAction, CompoundTag tag, float divergence, float speed, int count) {
 //        this.entityType = entityType;
 //        this.projectileAction = projectileAction;
 //        this.tag = tag;
@@ -76,14 +76,14 @@
 //
 //        Entity entity = context.entity();
 //
-//        if (!(entity.getWorld() instanceof ServerWorld serverWorld)) {
+//        if (!(entity.level() instanceof ServerLevel serverWorld)) {
 //            return;
 //        }
 //
 //        Random random = serverWorld.getRandom();
 //
-//        Vec3d velocity = entity.getVelocity();
-//        Vec3d verticalOffset = entity.getPos().add(0, entity.getEyeHeight(entity.getPose()), 0);
+//        Vec3 velocity = entity.getVelocity();
+//        Vec3 verticalOffset = entity.getPos().add(0, entity.getEyeHeight(entity.getPose()), 0);
 //
 //        float pitch = entity.getPitch();
 //        float yaw = entity.getYaw();
@@ -118,7 +118,7 @@
 //                float m = -MathHelper.sin(pitch * j);
 //                float n =  MathHelper.cos(yaw * j) * MathHelper.cos(pitch * j);
 //
-//                Vec3d velocityToApply = new Vec3d(l, m, n)
+//                Vec3 velocityToApply = new Vec3(l, m, n)
 //                    .normalize()
 //                    .add(random.nextGaussian() * k * divergence, random.nextGaussian() * k * divergence, random.nextGaussian() * k * divergence)
 //                    .multiply(speed);
@@ -130,7 +130,7 @@
 //
 //            if (!tag.isEmpty()) {
 //
-//                NbtCompound mergedNbt = entityToSpawn.writeNbt(new NbtCompound());
+//                CompoundTag mergedNbt = entityToSpawn.writeNbt(new CompoundTag());
 //                mergedNbt.copyFrom(tag);
 //
 //                entityToSpawn.readNbt(mergedNbt);

@@ -8,7 +8,7 @@
 //import io.github.apace100.apoli.util.requirement.BiEntityRequirement;
 //import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 //import net.minecraft.world.entity.Entity;
-//import net.minecraft.server.network.ServerPlayer;
+//import net.minecraft.server.level.ServerPlayer;
 //import org.jetbrains.annotations.NotNull;
 //
 //public class MountBiEntityActionType extends BiEntityActionType {

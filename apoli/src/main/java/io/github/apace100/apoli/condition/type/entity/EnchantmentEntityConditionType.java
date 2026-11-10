@@ -15,7 +15,7 @@
 //import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.registry.RegistryKey;
-//import net.minecraft.registry.RegistryKeys;
+//import net.minecraft.core.registries.Registries;
 //import net.minecraft.registry.entry.RegistryEntry;
 //import org.jetbrains.annotations.NotNull;
 //
@@ -64,7 +64,7 @@
 //
 //        if (context.entity() instanceof LivingEntity livingEntity) {
 //
-//            RegistryEntry<Enchantment> enchantment = livingEntity.getRegistryManager().get(RegistryKeys.ENCHANTMENT).entryOf(enchantmentKey);
+//            RegistryEntry<Enchantment> enchantment = livingEntity.getRegistryManager().get(Registries.ENCHANTMENT).entryOf(enchantmentKey);
 //            int level = calculation.queryTotalLevel(livingEntity, enchantment, useModifications);
 //
 //            return comparison.compare(level, compareTo);

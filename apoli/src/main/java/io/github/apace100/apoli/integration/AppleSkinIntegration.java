@@ -25,7 +25,7 @@ public class AppleSkinIntegration implements AppleSkinApi {
 
             EdibleItemPowerType.get(stack, player)
                 .map(EdibleItemPowerType::getFoodProperties)
-                .ifPresent(foodComponent -> event.modifiedFoodProperties = foodComponent);
+                .ifPresent(foodComponent -> event.modifiedFoodComponent = foodComponent);
 
             List<ModifyFoodPowerType> modifyFoodPowers = PowerHolderComponent.getPowerTypes(player, ModifyFoodPowerType.class)
                 .stream()
@@ -35,9 +35,9 @@ public class AppleSkinIntegration implements AppleSkinApi {
                 return;
             }
 
-            FoodProperties originalFoodProperties = !event.modifiedFoodProperties.equals(event.defaultFoodProperties)
-                ? event.modifiedFoodProperties
-                : event.defaultFoodProperties;
+            FoodProperties originalFoodProperties = !event.modifiedFoodComponent.equals(event.defaultFoodComponent)
+                ? event.modifiedFoodComponent
+                : event.defaultFoodComponent;
 
             List<Modifier> nutritionModifiers = modifyFoodPowers
                 .stream()
@@ -51,13 +51,13 @@ public class AppleSkinIntegration implements AppleSkinApi {
             int newNutrition = (int) ModifierUtil.applyModifiers(player, nutritionModifiers, originalFoodProperties.nutrition());
             float newSaturation = (float) ModifierUtil.applyModifiers(player, saturationModifiers, originalFoodProperties.saturation());
 
-            event.modifiedFoodProperties = new FoodProperties(
+            event.modifiedFoodComponent = new FoodProperties(
                 newNutrition,
                 newSaturation,
-                originalFoodProperties.canAlwaysEat(),
-                originalFoodProperties.eatSeconds(),
-                originalFoodProperties.usingConvertsTo(),
-                originalFoodProperties.effects()
+                originalFoodProperties.canAlwaysEat()
+//                originalFoodProperties.eatSeconds(),
+//                originalFoodProperties.usingConvertsTo(),
+//                originalFoodProperties.effects()
             );
 
         });

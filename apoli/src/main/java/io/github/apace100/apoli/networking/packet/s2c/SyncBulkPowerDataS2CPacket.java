@@ -1,7 +1,7 @@
 //package io.github.apace100.apoli.networking.packet.s2c;
 //
 //import io.github.apace100.apoli.Apoli;
-//import net.minecraft.nbt.NbtElement;
+//import net.minecraft.nbt.Tag;
 //import net.minecraft.network.PacketByteBuf;
 //import net.minecraft.network.codec.StreamCodec;
 //import net.minecraft.network.codec.ByteBufCodecs;
@@ -11,7 +11,7 @@
 //import java.util.HashMap;
 //import java.util.Map;
 //
-//public record SyncBulkPowerDataS2CPacket(int entityId, Map<Identifier, NbtElement> powerAndData) implements CustomPayload {
+//public record SyncBulkPowerDataS2CPacket(int entityId, Map<Identifier, Tag> powerAndData) implements CustomPayload {
 //
 //    public static final Type<SyncBulkPowerDataS2CPacket> PACKET_ID = new Type<>(Apoli.identifier("s2c/sync_bulk_power_data"));
 //    public static final StreamCodec<PacketByteBuf, SyncBulkPowerDataS2CPacket> STREAM_CODEC = StreamCodec.composite(

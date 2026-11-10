@@ -11,7 +11,7 @@
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.world.entity.Entity;
-//import net.minecraft.world.World;
+//import net.minecraft.world.Level;
 //import net.minecraft.world.explosion.Explosion;
 //import org.jetbrains.annotations.NotNull;
 //
@@ -72,7 +72,7 @@
 //    public void accept(EntityActionContext context) {
 //
 //        Entity entity = context.entity();
-//        World world = entity.getWorld();
+//        Level world = entity.level();
 //
 //        if (world.isClient()) {
 //            return;
@@ -84,9 +84,9 @@
 //        }
 //
 //        MiscUtil.createExplosion(
-//            entity.getWorld(),
+//            entity.level(),
 //            damageSelf ? null : entity,
-//            Explosion.createDamageSource(entity.getWorld(), entity),
+//            Explosion.createDamageSource(entity.level(), entity),
 //            entity.getPos().getX(),
 //            entity.getPos().getY(),
 //            entity.getPos().getZ(),

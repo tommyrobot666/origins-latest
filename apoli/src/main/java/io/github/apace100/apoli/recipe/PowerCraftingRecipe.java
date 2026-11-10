@@ -20,7 +20,7 @@
 //import net.minecraft.registry.RegistryWrapper;
 //import net.minecraft.resources.Identifier;
 //import net.minecraft.util.collection.DefaultedList;
-//import net.minecraft.world.World;
+//import net.minecraft.world.Level;
 //
 //public record PowerCraftingRecipe(Identifier powerId, CraftingRecipe delegate) implements CraftingRecipe {
 //
@@ -30,7 +30,7 @@
 //    }
 //
 //    @Override
-//    public boolean matches(CraftingRecipeInput input, World world) {
+//    public boolean matches(CraftingRecipeInput input, Level world) {
 //
 //        if (!(input instanceof PowerCraftingObject pco)) {
 //            return false;

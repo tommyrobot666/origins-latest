@@ -32,7 +32,7 @@
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.core.Registry;
 //import net.minecraft.registry.RegistryKey;
-//import net.minecraft.registry.RegistryKeys;
+//import net.minecraft.core.registries.Registries;
 //import net.minecraft.registry.entry.RegistryEntry;
 //import net.minecraft.server.command.CommandSourceStack;
 //import net.minecraft.text.MutableText;
@@ -94,7 +94,7 @@
 //    public void onRemoved() {
 //
 //        LivingEntity holder = getHolder();
-//        UUID uuid = holder.getUuid();
+//        UUID uuid = holder.getUUID();
 //
 //        for (var equipmentSlot : EquipmentSlot.values()) {
 //
@@ -138,7 +138,7 @@
 //
 //    public boolean doesItemConditionApply(ItemStack stack) {
 //        return this.itemCondition
-//            .map(condition -> condition.test(getHolder().getWorld(), stack))
+//            .map(condition -> condition.test(getHolder().level(), stack))
 //            .orElse(true);
 //    }
 //
@@ -159,7 +159,7 @@
 //            return defaultEnchantments;
 //        }
 //
-//        UUID uuid = linkedStack.apoli$getEntity().getUuid();
+//        UUID uuid = linkedStack.apoli$getEntity().getUUID();
 //        var enchantmentsCache = ENCHANTMENTS_CACHE.getIfPresent(uuid);
 //
 //        if (enchantmentsCache != null) {
@@ -197,7 +197,7 @@
 //        }
 //
 //        Entity entity = linkedStack.apoli$getEntity();
-//        var enchantmentsMapCache = ENCHANTMENTS_CACHE.getIfPresent(entity.getUuid());
+//        var enchantmentsMapCache = ENCHANTMENTS_CACHE.getIfPresent(entity.getUUID());
 //
 //        if (!PowerHolderComponent.getPowerTypes(entity, ModifyEnchantmentLevelPowerType.class, true).isEmpty()) {
 //
@@ -232,7 +232,7 @@
 //
 //    public static void recalculateCache(LivingEntity entity, ItemStack stack) {
 //
-//        UUID uuid = entity.getUuid();
+//        UUID uuid = entity.getUUID();
 //        boolean update = false;
 //
 //        //  Iterate through each power type without checking if it's active...
@@ -258,7 +258,7 @@
 //            return;
 //        }
 //
-//        Registry<Enchantment> enchantmentRegistry = entity.getRegistryManager().get(RegistryKeys.ENCHANTMENT);
+//        Registry<Enchantment> enchantmentRegistry = entity.getRegistryManager().get(Registries.ENCHANTMENT);
 //        ItemEnchantmentsComponent.Builder enchantmentsBuilder = new ItemEnchantmentsComponent.Builder(stack.getEnchantments());
 //
 //        IntSet processedEnchantmentIds = new IntOpenHashSet();
@@ -328,7 +328,7 @@
 //
 //            public static int execute(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
 //
-//                UUID uuid = PowerHolderArgumentType.getHolder(context, "target").getUuid();
+//                UUID uuid = PowerHolderArgumentType.getHolder(context, "target").getUUID();
 //                var enchantmentsMapCache = ENCHANTMENTS_CACHE.getIfPresent(uuid);
 //
 //                if (enchantmentsMapCache == null) {

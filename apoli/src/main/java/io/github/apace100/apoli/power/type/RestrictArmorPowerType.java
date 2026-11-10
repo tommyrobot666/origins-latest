@@ -65,14 +65,14 @@
 //
 //    public boolean doesRestrict(ItemStack stack, EquipmentSlot slot) {
 //        return armorConditions.getOrDefault(slot, Optional.empty())
-//            .map(condition -> condition.test(getHolder().getWorld(), stack))
+//            .map(condition -> condition.test(getHolder().level(), stack))
 //            .orElse(false);
 //    }
 //
 //    public void dropEquippedStacks() {
 //
 //        LivingEntity holder = getHolder();
-//        if (holder.getWorld().isClient()) {
+//        if (holder.level().isClient()) {
 //            return;
 //        }
 //
@@ -84,7 +84,7 @@
 //            ItemStack equippedStack = holder.getEquippedStack(equipmentSlot);
 //
 //            //  TODO: Prefer inserting the armor items into the entity's inventory directly (if present)
-//            if (equippedStack.isEmpty() && itemCondition.map(condition -> condition.test(holder.getWorld(), equippedStack)).orElse(false)) {
+//            if (equippedStack.isEmpty() && itemCondition.map(condition -> condition.test(holder.level(), equippedStack)).orElse(false)) {
 //                InventoryUtil.throwItem(holder, equippedStack, true, true, 0);
 //            }
 //

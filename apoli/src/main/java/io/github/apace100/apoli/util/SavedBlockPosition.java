@@ -6,7 +6,7 @@
 //import net.minecraft.loot.context.LootContext;
 //import net.minecraft.loot.context.LootContextParameters;
 //import net.minecraft.util.math.BlockPos;
-//import net.minecraft.util.math.Vec3d;
+//import net.minecraft.util.math.Vec3;
 //import net.minecraft.world.WorldView;
 //import org.jetbrains.annotations.Nullable;
 //
@@ -34,12 +34,12 @@
 //
 //    public static SavedBlockPosition fromLootContext(LootContext context) {
 //
-//        Vec3d origin = Optional
+//        Vec3 origin = Optional
 //            .ofNullable(context.get(LootContextParameters.ORIGIN))
-//            .orElse(Vec3d.ZERO);
+//            .orElse(Vec3.ZERO);
 //
 //        return new SavedBlockPosition(
-//            context.getWorld(),
+//            context.level(),
 //            BlockPos.ofFloored(origin),
 //            context.get(LootContextParameters.BLOCK_STATE),
 //            context.get(LootContextParameters.BLOCK_ENTITY)

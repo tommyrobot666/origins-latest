@@ -127,7 +127,7 @@
 //            StackReference reference = InventoryUtil.getStackReference(source, slot);
 //            ItemStack stack = reference.get();
 //
-//            if (reference != StackReference.EMPTY && itemCondition.map(condition -> condition.test(entity.getWorld(), stack)).orElse(false)) {
+//            if (reference != StackReference.EMPTY && itemCondition.map(condition -> condition.test(entity.level(), stack)).orElse(false)) {
 //                matches += processMode.applyAsInt(stack);
 //            }
 //

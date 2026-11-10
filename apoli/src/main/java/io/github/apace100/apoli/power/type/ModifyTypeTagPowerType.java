@@ -16,15 +16,15 @@ import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.entry.RegistryEntryList;
-import net.minecraft.registry.tag.TagEntry;
-import net.minecraft.registry.tag.TagGroupLoader;
-import net.minecraft.registry.tag.TagKey;
-import net.minecraft.resource.DependencyTracker;
-import net.minecraft.resource.LifecycledResourceManager;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.core.HolderSet;
+import net.minecraft.tags.TagEntry;
+import net.minecraft.tags.TagLoader;
+import net.minecraft.tags.TagKey;
+import net.minecraft.util.DependencySorter;
+import net.minecraft.server.packs.resources.CloseableResourceManager;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.network.ServerPlayer;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
@@ -39,7 +39,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class ModifyTypeTagPowerType extends PowerType {
 
     private static final Map<Identifier, Collection<Identifier>> ENTITY_TYPE_SUB_TAGS = new ConcurrentHashMap<>();
-    private static final String ENTITY_TYPE_TAG_PATH = RegistryKeys.getTagPath(RegistryKeys.ENTITY_TYPE);
+    private static final String ENTITY_TYPE_TAG_PATH = Registries.getTagPath(Registries.ENTITY_TYPE);
 
     public static final TypedDataObjectFactory<ModifyTypeTagPowerType> DATA_FACTORY = PowerType.createConditionedDataFactory(
         new SerializableData()
@@ -67,7 +67,7 @@ public class ModifyTypeTagPowerType extends PowerType {
     public boolean doesApply(TagKey<EntityType<?>> typeTag) {
         return Objects.equals(typeTag, tag) || ENTITY_TYPE_SUB_TAGS.getOrDefault(typeTag.id(), new ObjectArrayList<>())
             .stream()
-            .map(id -> TagKey.of(RegistryKeys.ENTITY_TYPE, id))
+            .map(id -> TagKey.of(Registries.ENTITY_TYPE, id))
             .anyMatch(this::doesApply);
     }
 
@@ -75,19 +75,19 @@ public class ModifyTypeTagPowerType extends PowerType {
         return PowerHolderComponent.hasPowerType(entity, ModifyTypeTagPowerType.class, type -> type.doesApply(typeTag));
     }
 
-    public static boolean doesApply(Entity entity, RegistryEntryList<EntityType<?>> entryList) {
+    public static boolean doesApply(Entity entity, HolderSet<EntityType<?>> entryList) {
         return entryList.getTagKey()
             .map(tagKey -> doesApply(entity, tagKey))
             .orElse(false);
     }
 
     @ApiStatus.Internal
-    public static <T> void setTagCache(String directory, TagEntry.ValueGetter<T> valueGetter, DependencyTracker<Identifier, TagGroupLoader.TagDependencies> dependencyTracker) {
+    public static <T> void setTagCache(String directory, TagEntry.ValueGetter<T> valueGetter, DependencySorter<Identifier, TagLoader.TagDependencies> dependencyTracker) {
 
         if (ENTITY_TYPE_TAG_PATH.equals(directory)) {
             dependencyTracker.traverse((id, dependencies) -> dependencies.entries()
                 .stream()
-                .map(TagGroupLoader.TrackedEntry::entry)
+                .map(TagLoader.TrackedEntry::entry)
                 .filter(entry -> entry.resolve(valueGetter, value -> {}))
                 .map(TagEntryAccessor.class::cast)
                 .filter(TagEntryAccessor::isTag)
@@ -99,7 +99,7 @@ public class ModifyTypeTagPowerType extends PowerType {
     }
 
     @ApiStatus.Internal
-    public static void resetTagCache(MinecraftServer server, LifecycledResourceManager resourceManager) {
+    public static void resetTagCache(MinecraftServer server, CloseableResourceManager resourceManager) {
         ENTITY_TYPE_SUB_TAGS.clear();
     }
 

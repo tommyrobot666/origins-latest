@@ -8,7 +8,7 @@
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.entity.effect.StatusEffectInstance;
-//import net.minecraft.nbt.NbtElement;
+//import net.minecraft.nbt.Tag;
 //import net.minecraft.nbt.NbtInt;
 //import org.jetbrains.annotations.NotNull;
 //
@@ -124,12 +124,12 @@
 //    }
 //
 //    @Override
-//    public NbtElement toTag() {
+//    public Tag toTag() {
 //        return NbtInt.of(currentStack);
 //    }
 //
 //    @Override
-//    public void fromTag(NbtElement tag) {
+//    public void fromTag(Tag tag) {
 //
 //        if (tag instanceof NbtInt nbtInt) {
 //            this.currentStack = nbtInt.intValue();

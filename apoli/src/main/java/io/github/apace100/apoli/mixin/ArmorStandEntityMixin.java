@@ -7,7 +7,7 @@
 //import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.entity.damage.DamageSource;
 //import net.minecraft.entity.decoration.ArmorStandEntity;
-//import net.minecraft.world.World;
+//import net.minecraft.world.Level;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.injection.At;
 //import org.spongepowered.asm.mixin.injection.Inject;
@@ -17,7 +17,7 @@
 //@Mixin(ArmorStandEntity.class)
 //public abstract class ArmorStandEntityMixin extends LivingEntity {
 //
-//    private ArmorStandEntityMixin(EntityType<? extends LivingEntity> entityType, World world) {
+//    private ArmorStandEntityMixin(EntityType<? extends LivingEntity> entityType, Level world) {
 //        super(entityType, world);
 //    }
 //

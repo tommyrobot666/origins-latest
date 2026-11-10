@@ -8,7 +8,7 @@
 //import io.github.apace100.apoli.data.TypedDataObjectFactory;
 //import io.github.apace100.calio.data.SerializableData;
 //import net.minecraft.fluid.FluidState;
-//import net.minecraft.world.World;
+//import net.minecraft.world.Level;
 //import org.jetbrains.annotations.NotNull;
 //
 //public class FluidBlockConditionType extends BlockConditionType {
@@ -32,7 +32,7 @@
 //    @Override
 //    public boolean test(BlockConditionContext context) {
 //
-//        World world = context.world();
+//        Level world = context.world();
 //        FluidState fluidState = world.getFluidState(context.pos());
 //
 //        return fluidCondition.test(fluidState);

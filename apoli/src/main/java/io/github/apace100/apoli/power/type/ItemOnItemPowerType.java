@@ -112,8 +112,8 @@
 //        return clickTypes.contains(clickType)
 //            && clickPhases.contains(clickPhase)
 //            && priorityPhase.test(this.getPriority())
-//            && usingItemCondition.map(condition -> condition.test(getHolder().getWorld(), usingStack)).orElse(true)
-//            && onItemCondition.map(condition -> condition.test(getHolder().getWorld(), onStack)).orElse(true);
+//            && usingItemCondition.map(condition -> condition.test(getHolder().level(), usingStack)).orElse(true)
+//            && onItemCondition.map(condition -> condition.test(getHolder().level(), onStack)).orElse(true);
 //    }
 //
 //    public void execute(StackReference usingStackReference, StackReference onStackReference, Slot slot) {
@@ -126,10 +126,10 @@
 //                : onStackReference.get();
 //
 //        StackReference resultStackReference = InventoryUtil.createStackReference(resultStackCopy);
-//        resultItemAction.ifPresent(action -> action.execute(holder.getWorld(), resultStackReference));
+//        resultItemAction.ifPresent(action -> action.execute(holder.level(), resultStackReference));
 //
-//        usingItemAction.ifPresent(action -> action.execute(holder.getWorld(), usingStackReference));
-//        onItemAction.ifPresent(action -> action.execute(holder.getWorld(), onStackReference));
+//        usingItemAction.ifPresent(action -> action.execute(holder.level(), usingStackReference));
+//        onItemAction.ifPresent(action -> action.execute(holder.level(), onStackReference));
 //
 //        if (holder instanceof Player player && (resultStack.isPresent() || resultItemAction.isPresent())) {
 //

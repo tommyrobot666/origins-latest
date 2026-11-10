@@ -9,7 +9,7 @@
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.component.DataComponentTypes;
 //import net.minecraft.component.type.NbtComponent;
-//import net.minecraft.nbt.NbtCompound;
+//import net.minecraft.nbt.CompoundTag;
 //import org.jetbrains.annotations.NotNull;
 //
 //public class MergeCustomDataItemActionType extends ItemActionType {
@@ -24,9 +24,9 @@
 //            .set("nbt", actionType.nbt)
 //    );
 //
-//    private final NbtCompound nbt;
+//    private final CompoundTag nbt;
 //
-//    public MergeCustomDataItemActionType(NbtCompound nbt) {
+//    public MergeCustomDataItemActionType(CompoundTag nbt) {
 //        this.nbt = nbt;
 //    }
 //

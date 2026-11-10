@@ -12,7 +12,7 @@
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.util.math.BlockPos;
 //import net.minecraft.util.math.Direction;
-//import net.minecraft.world.World;
+//import net.minecraft.world.Level;
 //import org.jetbrains.annotations.NotNull;
 //
 //public class AdjacentBlockConditionType extends BlockConditionType {
@@ -47,7 +47,7 @@
 //    @Override
 //    public boolean test(BlockConditionContext context) {
 //
-//        World world = context.world();
+//        Level world = context.world();
 //        BlockPos pos = context.pos();
 //
 //        int matches = 0;

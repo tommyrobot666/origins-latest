@@ -3,7 +3,7 @@
 //import io.github.apace100.apoli.networking.packet.s2c.SyncCommandTagsS2CPacket;
 //import io.github.apace100.apoli.util.MiscUtil;
 //import net.minecraft.world.entity.Entity;
-//import net.minecraft.world.World;
+//import net.minecraft.world.Level;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.Shadow;
 //import org.spongepowered.asm.mixin.Unique;
@@ -16,7 +16,7 @@
 //public abstract class EntityMixin {
 //
 //	@Shadow
-//	public abstract World getWorld();
+//	public abstract Level level();
 //
 //	@Unique
 //	private boolean apoli$syncCommandTags = false;
@@ -34,7 +34,7 @@
 //	@Inject(method = "baseTick", at = @At("TAIL"))
 //	private void apoli$syncCommandTagsWhenDirty(CallbackInfo ci) {
 //
-//		if (!this.getWorld().isClient() && apoli$syncCommandTags) {
+//		if (!this.level().isClient() && apoli$syncCommandTags) {
 //			MiscUtil.sendToTrackers(thisAsEntity(), new SyncCommandTagsS2CPacket(thisAsEntity()));
 //		}
 //

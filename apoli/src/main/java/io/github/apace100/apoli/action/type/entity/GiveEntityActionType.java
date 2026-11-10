@@ -54,12 +54,12 @@
 //
 //        Entity entity = context.entity();
 //
-//        if (entity.getWorld().isClient() || stack.isEmpty()) {
+//        if (entity.level().isClientSide()() || stack.isEmpty()) {
 //            return;
 //        }
 //
 //        StackReference stackReference = InventoryUtil.createStackReference(stack.copy());
-//        itemAction.ifPresent(action -> action.execute(entity.getWorld(), stackReference));
+//        itemAction.ifPresent(action -> action.execute(entity.level(), stackReference));
 //
 //        ItemStack stackToGive = stackReference.get();
 //

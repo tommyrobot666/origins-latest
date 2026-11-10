@@ -10,7 +10,7 @@
 //import net.minecraft.block.BlockState;
 //import net.minecraft.client.network.ClientPlayer;
 //import net.minecraft.world.entity.player.Player;
-//import net.minecraft.server.network.ServerPlayer;
+//import net.minecraft.server.level.ServerPlayer;
 //import org.jetbrains.annotations.NotNull;
 //
 //public class UsingEffectiveToolEntityConditionType extends EntityConditionType {
@@ -30,7 +30,7 @@
 //                return false;
 //            }
 //
-//            miningBlockState = playerEntity.getWorld().getBlockState(interactionManager.getMiningPos());
+//            miningBlockState = playerEntity.level().getBlockState(interactionManager.getMiningPos());
 //
 //        }
 //
@@ -41,7 +41,7 @@
 //                return false;
 //            }
 //
-//            miningBlockState = playerEntity.getWorld().getBlockState(interactionManager.getCurrentBreakingPos());
+//            miningBlockState = playerEntity.level().getBlockState(interactionManager.getCurrentBreakingPos());
 //
 //        }
 //

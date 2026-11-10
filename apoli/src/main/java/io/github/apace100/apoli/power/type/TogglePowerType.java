@@ -11,7 +11,7 @@
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.world.entity.Entity;
 //import net.minecraft.nbt.NbtByte;
-//import net.minecraft.nbt.NbtElement;
+//import net.minecraft.nbt.Tag;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.Optional;
@@ -81,7 +81,7 @@
 //        Entity holder = getHolder();
 //        Power power = getPower();
 //
-//        if (!holder.getWorld().isClient()) {
+//        if (!holder.level().isClient()) {
 //            this.toggled = !this.toggled;
 //            PowerHolderComponent.syncPower(holder, power);
 //        }
@@ -98,12 +98,12 @@
 //    }
 //
 //    @Override
-//    public NbtElement toTag() {
+//    public Tag toTag() {
 //        return NbtByte.of(toggled);
 //    }
 //
 //    @Override
-//    public void fromTag(NbtElement tag) {
+//    public void fromTag(Tag tag) {
 //
 //        if (tag instanceof NbtByte nbtByte) {
 //            this.toggled = nbtByte.byteValue() > 0;

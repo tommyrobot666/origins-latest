@@ -41,7 +41,7 @@
 //
 //    public boolean doesPrevent(BlockPos pos) {
 //        return blockCondition
-//            .map(condition -> condition.test(getHolder().getWorld(), pos))
+//            .map(condition -> condition.test(getHolder().level(), pos))
 //            .orElse(true);
 //    }
 //

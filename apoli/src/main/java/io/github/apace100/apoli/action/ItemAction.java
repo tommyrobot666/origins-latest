@@ -9,8 +9,8 @@
 //import io.github.apace100.calio.data.SerializableDataType;
 //import net.minecraft.inventory.StackReference;
 //import net.minecraft.world.item.ItemStack;
-//import net.minecraft.server.world.ServerWorld;
-//import net.minecraft.world.World;
+//import net.minecraft.server.level.ServerLevel;
+//import net.minecraft.world.Level;
 //
 //public final class ItemAction extends Action<ItemActionContext, ItemActionType> {
 //
@@ -20,9 +20,9 @@
 //		super(actionType);
 //	}
 //
-//	public void execute(World world, StackReference stackReference) {
+//	public void execute(Level world, StackReference stackReference) {
 //
-//		if (world instanceof ServerWorld serverWorld) {
+//		if (world instanceof ServerLevel serverWorld) {
 //			accept(new ItemActionContext(serverWorld, stackReference));
 //		}
 //

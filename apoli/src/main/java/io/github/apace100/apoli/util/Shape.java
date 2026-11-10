@@ -4,8 +4,8 @@
 //import net.minecraft.world.entity.Entity;
 //import net.minecraft.util.math.BlockPos;
 //import net.minecraft.util.math.Box;
-//import net.minecraft.util.math.Vec3d;
-//import net.minecraft.world.World;
+//import net.minecraft.util.math.Vec3;
+//import net.minecraft.world.Level;
 //
 //import java.util.Collection;
 //import java.util.Set;
@@ -37,7 +37,7 @@
 //
 //    }
 //
-//    public final Collection<Entity> getEntities(World world, Vec3d center, double radius) {
+//    public final Collection<Entity> getEntities(Level world, Vec3 center, double radius) {
 //
 //        ObjectOpenHashSet<Entity> entities = new ObjectOpenHashSet<>();
 //
@@ -89,7 +89,7 @@
 //    }
 //
 //    @Deprecated(forRemoval = true)
-//    public static Set<Entity> getEntities(Shape shape, World world, Vec3d center, double radius) {
+//    public static Set<Entity> getEntities(Shape shape, Level world, Vec3 center, double radius) {
 //        return (ObjectOpenHashSet<Entity>) shape.getEntities(world, center, radius);    // Should be safe
 //    }
 //

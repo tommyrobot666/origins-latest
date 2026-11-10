@@ -7,7 +7,7 @@
 //import io.github.apace100.apoli.util.SavedBlockPosition;
 //import io.github.apace100.calio.data.SerializableDataType;
 //import net.minecraft.util.math.BlockPos;
-//import net.minecraft.world.World;
+//import net.minecraft.world.Level;
 //
 //public final class BlockCondition extends Condition<BlockConditionContext, BlockConditionType> {
 //
@@ -25,7 +25,7 @@
 //		return test(new BlockConditionContext(savedBlock));
 //	}
 //
-//	public boolean test(World world, BlockPos pos) {
+//	public boolean test(Level world, BlockPos pos) {
 //		return test(new BlockConditionContext(world, pos));
 //	}
 //

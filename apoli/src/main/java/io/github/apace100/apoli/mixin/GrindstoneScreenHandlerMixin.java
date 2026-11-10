@@ -6,7 +6,7 @@
 //import io.github.apace100.apoli.power.type.ModifyGrindstonePowerType;
 //import io.github.apace100.apoli.util.InventoryUtil;
 //import net.minecraft.world.entity.player.Player;
-//import net.minecraft.entity.player.PlayerInventory;
+//import net.minecraft.entity.player.Inventory;
 //import net.minecraft.inventory.Inventory;
 //import net.minecraft.inventory.StackReference;
 //import net.minecraft.world.item.ItemStack;
@@ -67,8 +67,8 @@
 //        super(type, syncId);
 //    }
 //
-//    @Inject(method = "<init>(ILnet/minecraft/entity/player/PlayerInventory;Lnet/minecraft/screen/ScreenHandlerContext;)V", at = @At("RETURN"))
-//    private void cachePlayer(int syncId, PlayerInventory playerInventory, ScreenHandlerContext context, CallbackInfo ci) {
+//    @Inject(method = "<init>(ILnet/minecraft/entity/player/Inventory;Lnet/minecraft/screen/ScreenHandlerContext;)V", at = @At("RETURN"))
+//    private void cachePlayer(int syncId, Inventory playerInventory, ScreenHandlerContext context, CallbackInfo ci) {
 //        apoli$cachedPlayer = playerInventory.player;
 //    }
 //

@@ -12,7 +12,7 @@
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.world.entity.Entity;
 //import net.minecraft.util.math.BlockPos;
-//import net.minecraft.world.World;
+//import net.minecraft.world.Level;
 //import org.jetbrains.annotations.NotNull;
 //
 //public class BrightnessEntityConditionType extends EntityConditionType {
@@ -42,7 +42,7 @@
 //    public boolean test(EntityConditionContext context) {
 //
 //        Entity entity = context.entity();
-//        World world = entity.getWorld();
+//        Level world = entity.level();
 //
 //        return comparison.compare(world.getBrightness(BlockPos.ofFloored(MiscUtil.getPoseDependentEyePos(entity))), compareTo)
 //            || comparison.compare(world.getBrightness(entity.getBlockPos()), compareTo);

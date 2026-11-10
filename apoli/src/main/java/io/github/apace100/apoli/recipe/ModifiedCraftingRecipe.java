@@ -31,7 +31,7 @@
 //import net.minecraft.resources.Identifier;
 //import net.minecraft.util.collection.DefaultedList;
 //import net.minecraft.util.math.BlockPos;
-//import net.minecraft.world.World;
+//import net.minecraft.world.Level;
 //import org.jetbrains.annotations.Nullable;
 //
 //import java.util.Collection;
@@ -45,7 +45,7 @@
 //    }
 //
 //    @Override
-//    public boolean matches(CraftingRecipeInput input, World world) {
+//    public boolean matches(CraftingRecipeInput input, Level world) {
 //        return delegate().matches(input, world);
 //    }
 //

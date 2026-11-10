@@ -31,14 +31,14 @@
 //import net.minecraft.screen.ScreenHandlerListener;
 //import net.minecraft.server.MinecraftServer;
 //import net.minecraft.server.network.ServerPlayNetworkHandler;
-//import net.minecraft.server.network.ServerPlayer;
+//import net.minecraft.server.level.ServerPlayer;
 //import net.minecraft.server.network.ServerRecipeBook;
-//import net.minecraft.server.world.ServerWorld;
+//import net.minecraft.server.level.ServerLevel;
 //import net.minecraft.network.chat.Component;
 //import net.minecraft.util.Pair;
 //import net.minecraft.util.Unit;
 //import net.minecraft.util.math.BlockPos;
-//import net.minecraft.world.World;
+//import net.minecraft.world.Level;
 //import org.objectweb.asm.Opcodes;
 //import org.spongepowered.asm.mixin.Final;
 //import org.spongepowered.asm.mixin.Mixin;
@@ -58,7 +58,7 @@
 //public abstract class ServerPlayerMixin extends Player implements ScreenHandlerListener, EndRespawningEntity, CustomToastViewer {
 //
 //    @Shadow
-//    private RegistryKey<World> spawnPointDimension;
+//    private RegistryKey<Level> spawnPointDimension;
 //
 //    @Shadow
 //    private BlockPos spawnPointPosition;
@@ -86,20 +86,20 @@
 //    private float spawnAngle;
 //
 //    @Shadow
-//    private static Optional<ServerPlayer.RespawnPos> findRespawnPosition(ServerWorld world, BlockPos pos, float spawnAngle, boolean spawnForced, boolean alive) {
+//    private static Optional<ServerPlayer.RespawnPos> findRespawnPosition(ServerLevel world, BlockPos pos, float spawnAngle, boolean spawnForced, boolean alive) {
 //        throw new AssertionError();
 //    }
 //
-//    private ServerPlayerMixin(World world, BlockPos pos, float yaw, GameProfile gameProfile) {
+//    private ServerPlayerMixin(Level world, BlockPos pos, float yaw, GameProfile gameProfile) {
 //        super(world, pos, yaw, gameProfile);
 //    }
 //
 //    @WrapOperation(method = "trySleep", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/network/ServerPlayer;setSpawnPoint(Lnet/minecraft/registry/RegistryKey;Lnet/minecraft/util/math/BlockPos;FZZ)V"))
-//    private void apoli$preventSleep(ServerPlayer serverPlayer, RegistryKey<World> dimension, BlockPos pos, float angle, boolean forced, boolean sendMessage, Operation<Void> original, @Cancellable CallbackInfoReturnable<Either<SleepFailureReason, Unit>> cir) {
+//    private void apoli$preventSleep(ServerPlayer serverPlayer, RegistryKey<Level> dimension, BlockPos pos, float angle, boolean forced, boolean sendMessage, Operation<Void> original, @Cancellable CallbackInfoReturnable<Either<SleepFailureReason, Unit>> cir) {
 //
 //        List<PreventSleepPowerType> preventSleepPowers = PowerHolderComponent.getPowerTypes(this, PreventSleepPowerType.class)
 //            .stream()
-//            .filter(type -> type.doesPrevent(this.getWorld(), pos))
+//            .filter(type -> type.doesPrevent(this.level(), pos))
 //            .sorted(Comparator.comparing(PreventSleepPowerType::getPriority))
 //            .toList();
 //
@@ -121,7 +121,7 @@
 //    }
 //
 //    @ModifyReturnValue(method = "getSpawnPointDimension", at = @At("RETURN"))
-//    private RegistryKey<World> apoli$modifySpawnPointDimension(RegistryKey<World> original) {
+//    private RegistryKey<Level> apoli$modifySpawnPointDimension(RegistryKey<Level> original) {
 //
 //        if (!this.apoli$isEndRespawning() && (this.spawnPointPosition == null || this.apoli$hasObstructedOriginalSpawnPoint())) {
 //            return PowerHolderComponent.getPowerTypes(this, ModifyPlayerSpawnPowerType.class)
@@ -164,8 +164,8 @@
 //        return original || (!this.apoli$isEndRespawning() && (spawnPointPosition == null || this.apoli$hasObstructedOriginalSpawnPoint()) && PowerHolderComponent.hasPowerType(this, ModifyPlayerSpawnPowerType.class));
 //    }
 //
-//	@WrapOperation(method = "getRespawnTarget", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/network/ServerPlayer;findRespawnPosition(Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/util/math/BlockPos;FZZ)Ljava/util/Optional;"))
-//	private Optional<ServerPlayer.RespawnPos> apoli$retryObstructedSpawnPointIfFailed(ServerWorld world, BlockPos pos, float spawnAngle, boolean spawnForced, boolean alive, Operation<Optional<ServerPlayer.RespawnPos>> original) {
+//	@WrapOperation(method = "getRespawnTarget", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/network/ServerPlayer;findRespawnPosition(Lnet/minecraft/server/world/ServerLevel;Lnet/minecraft/util/math/BlockPos;FZZ)Ljava/util/Optional;"))
+//	private Optional<ServerPlayer.RespawnPos> apoli$retryObstructedSpawnPointIfFailed(ServerLevel world, BlockPos pos, float spawnAngle, boolean spawnForced, boolean alive, Operation<Optional<ServerPlayer.RespawnPos>> original) {
 //
 //	    Optional<ServerPlayer.RespawnPos> originalRespawnPos = original.call(world, pos, spawnAngle, spawnForced, alive);
 //
@@ -190,7 +190,7 @@
 //
 //    @Unique
 //    private boolean apoli$hasObstructedOriginalSpawnPoint() {
-//        ServerWorld spawnPointWorld = this.server.getWorld(spawnPointDimension);
+//        ServerLevel spawnPointWorld = this.server.level(spawnPointDimension);
 //        return spawnPointPosition != null
 //            && spawnPointWorld != null
 //            && findRespawnPosition(spawnPointWorld, this.spawnPointPosition, this.spawnAngle, this.spawnForced, true).isEmpty();

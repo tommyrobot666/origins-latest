@@ -15,7 +15,7 @@
 //	@Override
 //	public boolean test(EntityConditionContext context) {
 //		Entity entity = context.entity();
-//		return WorldUtil.inSnow(entity.getWorld(), BlockPos.ofFloored(MiscUtil.getPoseDependentEyePos(entity)), entity.getBlockPos());
+//		return WorldUtil.inSnow(entity.level(), BlockPos.ofFloored(MiscUtil.getPoseDependentEyePos(entity)), entity.getBlockPos());
 //	}
 //
 //	@Override

@@ -70,7 +70,7 @@
 //        Entity entity = context.entity();
 //        int matches = 0;
 //
-//        for (Entity target : shape.getEntities(entity.getWorld(), entity.getLerpedPos(1.0F), radius)) {
+//        for (Entity target : shape.getEntities(entity.level(), entity.getLerpedPos(1.0F), radius)) {
 //
 //            if (biEntityCondition.test(entity, target)) {
 //                ++matches;

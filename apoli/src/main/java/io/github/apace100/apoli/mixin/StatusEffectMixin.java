@@ -7,7 +7,7 @@
 //import net.minecraft.world.entity.Entity;
 //import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.entity.effect.StatusEffect;
-//import net.minecraft.registry.Registries;
+//import net.minecraft.core.registries.Registries;
 //import org.spongepowered.asm.mixin.Mixin;
 //
 //@Mixin(StatusEffect.class)

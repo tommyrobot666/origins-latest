@@ -12,8 +12,8 @@
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.world.entity.Entity;
 //import net.minecraft.world.entity.EntityType;
-//import net.minecraft.nbt.NbtCompound;
-//import net.minecraft.server.world.ServerWorld;
+//import net.minecraft.nbt.CompoundTag;
+//import net.minecraft.server.level.ServerLevel;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.Optional;
@@ -25,7 +25,7 @@
 //            .add("entity_type", SerializableDataTypes.ENTITY_TYPE)
 //            .add("entity_action", EntityAction.DATA_TYPE.optional(), Optional.empty())
 //            .add("bientity_action", BiEntityAction.DATA_TYPE.optional(), Optional.empty())
-//            .add("tag", SerializableDataTypes.NBT_COMPOUND, new NbtCompound()),
+//            .add("tag", SerializableDataTypes.NBT_COMPOUND, new CompoundTag()),
 //        data -> new SpawnEntityEntityActionType(
 //            data.get("entity_type"),
 //            data.get("entity_action"),
@@ -44,9 +44,9 @@
 //    private final Optional<EntityAction> entityAction;
 //    private final Optional<BiEntityAction> biEntityAction;
 //
-//    private final NbtCompound tag;
+//    private final CompoundTag tag;
 //
-//    public SpawnEntityEntityActionType(EntityType<?> entityType, Optional<EntityAction> entityAction, Optional<BiEntityAction> biEntityAction, NbtCompound tag) {
+//    public SpawnEntityEntityActionType(EntityType<?> entityType, Optional<EntityAction> entityAction, Optional<BiEntityAction> biEntityAction, CompoundTag tag) {
 //        this.entityType = entityType;
 //        this.entityAction = entityAction;
 //        this.biEntityAction = biEntityAction;
@@ -58,7 +58,7 @@
 //
 //        Entity entity = context.entity();
 //
-//        if (!(entity.getWorld() instanceof ServerWorld serverWorld)) {
+//        if (!(entity.level() instanceof ServerLevel serverWorld)) {
 //            return;
 //        }
 //

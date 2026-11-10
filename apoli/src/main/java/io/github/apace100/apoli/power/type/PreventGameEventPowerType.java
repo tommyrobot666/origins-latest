@@ -9,7 +9,7 @@
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 //import net.minecraft.registry.entry.RegistryEntry;
-//import net.minecraft.registry.tag.TagKey;
+//import net.minecraft.tags.TagKey;
 //import net.minecraft.world.event.GameEvent;
 //import org.jetbrains.annotations.NotNull;
 //

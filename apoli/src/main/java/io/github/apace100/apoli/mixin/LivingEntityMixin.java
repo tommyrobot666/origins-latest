@@ -31,9 +31,9 @@
 //import net.minecraft.registry.entry.RegistryEntry;
 //import net.minecraft.registry.tag.DamageTypeTags;
 //import net.minecraft.registry.tag.FluidTags;
-//import net.minecraft.server.network.ServerPlayer;
+//import net.minecraft.server.level.ServerPlayer;
 //import net.minecraft.util.math.BlockPos;
-//import net.minecraft.world.World;
+//import net.minecraft.world.Level;
 //import org.jetbrains.annotations.Nullable;
 //import org.objectweb.asm.Opcodes;
 //import org.spongepowered.asm.mixin.Mixin;
@@ -68,7 +68,7 @@
 //    @Shadow
 //    public abstract void setHealth(float health);
 //
-//    public LivingEntityMixin(EntityType<?> type, World world) {
+//    public LivingEntityMixin(EntityType<?> type, Level world) {
 //        super(type, world);
 //    }
 //
@@ -115,7 +115,7 @@
 //    @Inject(method = "setAttacker", at = @At("TAIL"))
 //    private void apoli$syncAttacker(LivingEntity attacker, CallbackInfo ci) {
 //
-//        if (this.getWorld().isClient) {
+//        if (this.level().isClient) {
 //            return;
 //        }
 //
@@ -370,7 +370,7 @@
 //    }
 //
 //    // SLOW_FALLING
-//    @ModifyVariable(at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;getFluidState(Lnet/minecraft/util/math/BlockPos;)Lnet/minecraft/fluid/FluidState;"), method = "travel", name = "d", ordinal = 0)
+//    @ModifyVariable(at = @At(value = "INVOKE", target = "Lnet/minecraft/world/Level;getFluidState(Lnet/minecraft/util/math/BlockPos;)Lnet/minecraft/fluid/FluidState;"), method = "travel", name = "d", ordinal = 0)
 //    public double modifyFallingVelocity(double original) {
 //
 //        if (this.getVelocity().y > 0D) {
@@ -396,7 +396,7 @@
 //
 //    @ModifyVariable(method = "travel", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;isOnGround()Z", opcode = Opcodes.GETFIELD, ordinal = 2))
 //    private float modifySlipperiness(float original) {
-//        return PowerHolderComponent.modify(this, ModifySlipperinessPowerType.class, original, p -> p.doesApply(getWorld(), getVelocityAffectingPos()));
+//        return PowerHolderComponent.modify(this, ModifySlipperinessPowerType.class, original, p -> p.doesApply(level(), getVelocityAffectingPos()));
 //    }
 //
 //    @ModifyVariable(method = "eatFood", at = @At("HEAD"), argsOnly = true)

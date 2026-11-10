@@ -12,7 +12,7 @@
 //import net.minecraft.server.MinecraftServer;
 //import net.minecraft.server.command.CommandOutput;
 //import net.minecraft.server.command.CommandSourceStack;
-//import net.minecraft.server.world.ServerWorld;
+//import net.minecraft.server.level.ServerLevel;
 //import net.minecraft.network.chat.Component;
 //import net.minecraft.util.math.BlockPos;
 //import net.minecraft.util.math.Vec2f;
@@ -39,7 +39,7 @@
 //    @Override
 //    public void accept(BlockActionContext context) {
 //
-//        ServerWorld world = context.world();
+//        ServerLevel world = context.world();
 //        BlockPos pos = context.pos();
 //
 //        BlockState blockState = world.getBlockState(pos);

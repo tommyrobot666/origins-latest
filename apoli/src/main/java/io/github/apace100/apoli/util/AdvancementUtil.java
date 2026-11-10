@@ -5,7 +5,7 @@
 //import net.minecraft.advancement.AdvancementManager;
 //import net.minecraft.advancement.PlacedAdvancement;
 //import net.minecraft.server.command.AdvancementCommand;
-//import net.minecraft.server.network.ServerPlayer;
+//import net.minecraft.server.level.ServerPlayer;
 //
 //import java.util.ArrayList;
 //import java.util.Collection;

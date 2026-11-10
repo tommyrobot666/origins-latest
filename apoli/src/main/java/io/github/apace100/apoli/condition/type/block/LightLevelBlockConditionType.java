@@ -12,7 +12,7 @@
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.util.math.BlockPos;
 //import net.minecraft.world.LightType;
-//import net.minecraft.world.World;
+//import net.minecraft.world.Level;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.Optional;
@@ -49,7 +49,7 @@
 //    @Override
 //    public boolean test(BlockConditionContext context) {
 //
-//        World world = context.world();
+//        Level world = context.world();
 //        BlockPos pos = context.pos();
 //
 //        int lightLevel = lightType

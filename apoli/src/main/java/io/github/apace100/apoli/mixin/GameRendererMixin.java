@@ -22,7 +22,7 @@
 //import net.minecraft.resources.Identifier;
 //import net.minecraft.util.math.BlockPos;
 //import net.minecraft.util.math.Box;
-//import net.minecraft.util.math.Vec3d;
+//import net.minecraft.util.math.Vec3;
 //import net.minecraft.world.BlockView;
 //import org.spongepowered.asm.mixin.Final;
 //import org.spongepowered.asm.mixin.Mixin;
@@ -211,7 +211,7 @@
 //
 //    @Unique
 //    private Set<BlockPos> getEyePos(float rangeX, float rangeY, float rangeZ) {
-//        Vec3d pos = camera.getFocusedEntity().getPos().add(0, camera.getFocusedEntity().getEyeHeight(camera.getFocusedEntity().getPose()), 0);
+//        Vec3 pos = camera.getFocusedEntity().getPos().add(0, camera.getFocusedEntity().getEyeHeight(camera.getFocusedEntity().getPose()), 0);
 //        Box cameraBox = new Box(pos, pos);
 //        cameraBox = cameraBox.expand(rangeX, rangeY, rangeZ);
 //        HashSet<BlockPos> set = new HashSet<>();

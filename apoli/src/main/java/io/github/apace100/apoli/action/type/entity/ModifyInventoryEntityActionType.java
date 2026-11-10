@@ -137,7 +137,7 @@
 //            StackReference reference = InventoryUtil.getStackReference(source, slot);
 //            ItemStack stack = reference.get();
 //
-//            if (reference == StackReference.EMPTY || !itemCondition.map(condition -> condition.test(thrower.getWorld(), stack)).orElse(true)) {
+//            if (reference == StackReference.EMPTY || !itemCondition.map(condition -> condition.test(thrower.level(), stack)).orElse(true)) {
 //                continue;
 //            }
 //
@@ -153,7 +153,7 @@
 //                    case ITEMS -> {
 //
 //			            StackReference copyReference = InventoryUtil.createStackReference(stack.copyWithCount(1));
-//			            itemAction.execute(thrower.getWorld(), copyReference);
+//			            itemAction.execute(thrower.level(), copyReference);
 //
 //			            if (!ItemStack.areItemsAndComponentsEqual(stack, copyReference.get())) {
 //
@@ -166,7 +166,7 @@
 //
 //		            }
 //		            case STACKS -> {
-//                        itemAction.execute(thrower.getWorld(), reference);
+//                        itemAction.execute(thrower.level(), reference);
 //                        processed++;
 //                    }
 //	            }

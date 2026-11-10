@@ -6,10 +6,10 @@
 //import io.github.apace100.apoli.action.type.block.meta.SequenceBlockActionType;
 //import io.github.apace100.apoli.data.ApoliDataTypes;
 //import io.github.apace100.calio.data.SerializableDataType;
-//import net.minecraft.server.world.ServerWorld;
+//import net.minecraft.server.level.ServerLevel;
 //import net.minecraft.util.math.BlockPos;
 //import net.minecraft.util.math.Direction;
-//import net.minecraft.world.World;
+//import net.minecraft.world.Level;
 //import org.jetbrains.annotations.Nullable;
 //
 //import java.util.Optional;
@@ -22,17 +22,17 @@
 //		super(actionType);
 //	}
 //
-//	public void execute(World world, BlockPos pos) {
+//	public void execute(Level world, BlockPos pos) {
 //		execute(world, pos, Optional.empty());
 //	}
 //
-//	public void execute(World world, BlockPos pos, @Nullable Direction direction) {
+//	public void execute(Level world, BlockPos pos, @Nullable Direction direction) {
 //		execute(world, pos, Optional.ofNullable(direction));
 //	}
 //
-//	public void execute(World world, BlockPos pos, Optional<Direction> direction) {
+//	public void execute(Level world, BlockPos pos, Optional<Direction> direction) {
 //
-//		if (world instanceof ServerWorld serverWorld) {
+//		if (world instanceof ServerLevel serverWorld) {
 //			accept(new BlockActionContext(serverWorld, pos, direction));
 //		}
 //

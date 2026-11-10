@@ -17,7 +17,7 @@
 //    @Override
 //    public boolean test(EntityConditionContext context) {
 //        Entity entity = context.entity();
-//        return entity.getWorld().isDay()
+//        return entity.level().isDay()
 //            && !IN_RAIN.test(context)
 //            && BRIGHTNESS.test(context)
 //            && EXPOSED_TO_SKY.test(context);

@@ -8,7 +8,7 @@
 //import io.github.apace100.apoli.power.type.RestrictArmorPowerType;
 //import net.minecraft.entity.EquipmentSlot;
 //import net.minecraft.world.entity.player.Player;
-//import net.minecraft.entity.player.PlayerInventory;
+//import net.minecraft.entity.player.Inventory;
 //import net.minecraft.inventory.CraftingInventory;
 //import net.minecraft.inventory.RecipeInputInventory;
 //import net.minecraft.world.item.ItemStack;
@@ -29,7 +29,7 @@
 //    private RecipeInputInventory craftingInput;
 //
 //    @ModifyExpressionValue(method = "<init>", at = @At(value = "NEW", target = "(Lnet/minecraft/screen/ScreenHandler;II)Lnet/minecraft/inventory/CraftingInventory;"))
-//    private CraftingInventory apoli$cachePlayerToCraftingInventory(CraftingInventory original, PlayerInventory playerInventory) {
+//    private CraftingInventory apoli$cachePlayerToCraftingInventory(CraftingInventory original, Inventory playerInventory) {
 //
 //        if (original instanceof PowerCraftingInventory pci) {
 //            pci.apoli$setPlayer(playerInventory.player);

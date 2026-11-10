@@ -12,7 +12,7 @@
 //import io.github.apace100.calio.data.SerializableData;
 //import net.minecraft.client.network.ClientPlayer;
 //import net.minecraft.world.entity.player.Player;
-//import net.minecraft.server.network.ServerPlayer;
+//import net.minecraft.server.level.ServerPlayer;
 //import net.minecraft.world.GameMode;
 //import org.jetbrains.annotations.NotNull;
 //

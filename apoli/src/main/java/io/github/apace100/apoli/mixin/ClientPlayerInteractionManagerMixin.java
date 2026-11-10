@@ -21,7 +21,7 @@
 //import net.minecraft.util.Hand;
 //import net.minecraft.util.ItemActionResult;
 //import net.minecraft.util.hit.BlockHitResult;
-//import net.minecraft.world.World;
+//import net.minecraft.world.Level;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.injection.At;
 //import org.spongepowered.asm.mixin.injection.Slice;
@@ -31,8 +31,8 @@
 //@Mixin(ClientPlayerInteractionManager.class)
 //public abstract class ClientPlayerInteractionManagerMixin {
 //
-//    @WrapOperation(method = "interactBlockInternal", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/BlockState;onUse(Lnet/minecraft/world/World;Lnet/minecraft/entity/player/Player;Lnet/minecraft/util/hit/BlockHitResult;)Lnet/minecraft/util/ActionResult;"))
-//    private ActionResult apoli$beforeUseBlock(BlockState state, World world, Player player, BlockHitResult hitResult, Operation<ActionResult> original, ClientPlayer mPlayer, Hand mHand, @Share("zeroPriority$useBlock") LocalRef<ActionResult> zeroPriority$useBlockRef) {
+//    @WrapOperation(method = "interactBlockInternal", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/BlockState;onUse(Lnet/minecraft/world/Level;Lnet/minecraft/entity/player/Player;Lnet/minecraft/util/hit/BlockHitResult;)Lnet/minecraft/util/ActionResult;"))
+//    private ActionResult apoli$beforeUseBlock(BlockState state, Level world, Player player, BlockHitResult hitResult, Operation<ActionResult> original, ClientPlayer mPlayer, Hand mHand, @Share("zeroPriority$useBlock") LocalRef<ActionResult> zeroPriority$useBlockRef) {
 //
 //        ItemStack stackInHand = player.getStackInHand(mHand);
 //        BlockUsagePhase usePhase = BlockUsagePhase.BLOCK;
@@ -143,8 +143,8 @@
 //
 //    }
 //
-//    @WrapOperation(method = "interactBlockInternal", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/BlockState;onUseWithItem(Lnet/minecraft/item/ItemStack;Lnet/minecraft/world/World;Lnet/minecraft/entity/player/Player;Lnet/minecraft/util/Hand;Lnet/minecraft/util/hit/BlockHitResult;)Lnet/minecraft/util/ItemActionResult;"))
-//    private ItemActionResult apoli$beforeItemUseOnBlock(BlockState state, ItemStack stack, World world, Player player, Hand hand, BlockHitResult hitResult, Operation<ItemActionResult> original, @Share("zeroPriority$itemUseOnBlock") LocalRef<ActionResult> zeroPriority$itemUseOnBlockRef) {
+//    @WrapOperation(method = "interactBlockInternal", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/BlockState;onUseWithItem(Lnet/minecraft/item/ItemStack;Lnet/minecraft/world/Level;Lnet/minecraft/entity/player/Player;Lnet/minecraft/util/Hand;Lnet/minecraft/util/hit/BlockHitResult;)Lnet/minecraft/util/ItemActionResult;"))
+//    private ItemActionResult apoli$beforeItemUseOnBlock(BlockState state, ItemStack stack, Level world, Player player, Hand hand, BlockHitResult hitResult, Operation<ItemActionResult> original, @Share("zeroPriority$itemUseOnBlock") LocalRef<ActionResult> zeroPriority$itemUseOnBlockRef) {
 //
 //        ItemStack stackInHand = player.getStackInHand(hand);
 //        BlockUsagePhase usePhase = BlockUsagePhase.ITEM;

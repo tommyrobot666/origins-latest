@@ -3,7 +3,7 @@
 //import com.mojang.serialization.MapCodec;
 //import net.minecraft.recipe.Recipe;
 //import net.minecraft.recipe.RecipeSerializer;
-//import net.minecraft.registry.Registries;
+//import net.minecraft.core.registries.Registries;
 //
 //public final class ApoliMapCodecs {
 //

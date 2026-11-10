@@ -8,9 +8,9 @@
 //import net.minecraft.world.entity.Entity;
 //import net.minecraft.particle.ParticleEffect;
 //import net.minecraft.registry.entry.RegistryEntry;
-//import net.minecraft.registry.tag.TagKey;
-//import net.minecraft.server.world.ServerWorld;
-//import net.minecraft.world.World;
+//import net.minecraft.tags.TagKey;
+//import net.minecraft.server.level.ServerLevel;
+//import net.minecraft.world.Level;
 //import net.minecraft.world.event.GameEvent;
 //import net.minecraft.world.event.Vibrations;
 //import net.minecraft.world.event.listener.EntityGameEventHandler;
@@ -45,8 +45,8 @@
 //	@Mixin(Vibrations.Ticker.class)
 //	public interface ParticleAppearanceHandler {
 //
-//		@WrapWithCondition(method = "method_51408", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/world/ServerWorld;spawnParticles(Lnet/minecraft/particle/ParticleEffect;DDDIDDDD)I"))
-//		private static boolean apoli$onlyShowParticleWhenSpecified(ServerWorld world, ParticleEffect particle, double x, double y, double z, int count, double deltaX, double deltaY, double deltaZ, double speed, Vibrations.ListenerData listenerData) {
+//		@WrapWithCondition(method = "method_51408", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/world/ServerLevel;spawnParticles(Lnet/minecraft/particle/ParticleEffect;DDDIDDDD)I"))
+//		private static boolean apoli$onlyShowParticleWhenSpecified(ServerLevel world, ParticleEffect particle, double x, double y, double z, int count, double deltaX, double deltaY, double deltaZ, double speed, Vibrations.ListenerData listenerData) {
 //
 //			if (listenerData instanceof GameEventListenerPowerType.ListenerData powerListenerData) {
 //				return powerListenerData.shouldShowParticle();
@@ -64,12 +64,12 @@
 //	public static abstract class EventHandlerUpdater {
 //
 //		@Shadow
-//		public abstract World getWorld();
+//		public abstract Level level();
 //
 //		@Inject(method = "updateEventHandler", at = @At("HEAD"))
-//		private void apoli$update(BiConsumer<EntityGameEventHandler<?>, ServerWorld> callback, CallbackInfo ci) {
+//		private void apoli$update(BiConsumer<EntityGameEventHandler<?>, ServerLevel> callback, CallbackInfo ci) {
 //
-//			if (getWorld() instanceof ServerWorld serverWorld) {
+//			if (level() instanceof ServerLevel serverWorld) {
 //				PowerHolderComponent.getPowerTypes((Entity) (Object) this, GameEventListenerPowerType.class, true)
 //					.stream()
 //					.map(GameEventListenerPowerType::getGameEventHandler)

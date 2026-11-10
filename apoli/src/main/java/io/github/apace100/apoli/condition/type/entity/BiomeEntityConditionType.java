@@ -10,7 +10,7 @@
 //import io.github.apace100.calio.data.SerializableDataType;
 //import net.minecraft.world.entity.Entity;
 //import net.minecraft.registry.RegistryKey;
-//import net.minecraft.registry.RegistryKeys;
+//import net.minecraft.core.registries.Registries;
 //import net.minecraft.registry.entry.RegistryEntry;
 //import net.minecraft.world.biome.Biome;
 //import org.jetbrains.annotations.NotNull;
@@ -23,8 +23,8 @@
 //    public static final TypedDataObjectFactory<BiomeEntityConditionType> DATA_FACTORY = TypedDataObjectFactory.simple(
 //        new SerializableData()
 //            .add("condition", BiomeCondition.DATA_TYPE.optional(), Optional.empty())
-//            .add("biome", SerializableDataType.registryKey(RegistryKeys.BIOME).optional(), Optional.empty())
-//            .add("biomes", SerializableDataType.registryKey(RegistryKeys.BIOME).list().optional(), Optional.empty()),
+//            .add("biome", SerializableDataType.registryKey(Registries.BIOME).optional(), Optional.empty())
+//            .add("biomes", SerializableDataType.registryKey(Registries.BIOME).list().optional(), Optional.empty()),
 //        data -> new BiomeEntityConditionType(
 //            data.get("condition"),
 //            data.get("biome"),
@@ -52,7 +52,7 @@
 //
 //        Entity entity = context.entity();
 //
-//        RegistryEntry<Biome> biomeEntry = entity.getWorld().getBiome(entity.getBlockPos());
+//        RegistryEntry<Biome> biomeEntry = entity.level().getBiome(entity.getBlockPos());
 //        RegistryKey<Biome> biomeKey = biomeEntry.getKey().orElseThrow();
 //
 //        return biome.map(biomeKey::equals).orElse(true)

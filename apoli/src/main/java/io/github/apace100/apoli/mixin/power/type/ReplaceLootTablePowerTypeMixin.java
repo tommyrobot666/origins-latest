@@ -22,7 +22,7 @@
 //import net.minecraft.loot.entry.LootTableEntry;
 //import net.minecraft.registry.DynamicRegistryManager;
 //import net.minecraft.registry.RegistryKey;
-//import net.minecraft.registry.RegistryKeys;
+//import net.minecraft.core.registries.Registries;
 //import net.minecraft.registry.ReloadableRegistries;
 //import org.spongepowered.asm.mixin.Final;
 //import org.spongepowered.asm.mixin.Mixin;
@@ -45,7 +45,7 @@
 //
 //		@Inject(method = "<init>", at = @At("TAIL"))
 //		private void setupLootTables(DynamicRegistryManager.Immutable registryManager, CallbackInfo ci) {
-//			registryManager.get(RegistryKeys.LOOT_TABLE).streamEntries().forEach(reference -> {
+//			registryManager.get(Registries.LOOT_TABLE).streamEntries().forEach(reference -> {
 //
 //				RegistryKey<LootTable> key = reference.registryKey();
 //
@@ -78,7 +78,7 @@
 //		@WrapOperation(method = "generateLoot", at = @At(value = "INVOKE", target = "Lcom/mojang/datafixers/util/Either;map(Ljava/util/function/Function;Ljava/util/function/Function;)Ljava/lang/Object;"))
 //		private <T, L extends RegistryKey<LootTable>, R extends LootTable> T replaceGetter(Either<L, R> either, Function<? super L, ? extends T> leftFunction, Function<? super R, ? extends T> rightFunction, Operation<T> original, Consumer<ItemStack> stackConsumer, LootContext lootContext) {
 //
-//			ReloadableRegistries.Lookup lookup = lootContext.getWorld().getServer().getReloadableRegistries();
+//			ReloadableRegistries.Lookup lookup = lootContext.level().getServer().getReloadableRegistries();
 //			Function<? super L, ? extends T> newGetter = l -> (T) lookup.getLootTable(l);
 //
 //			return original.call(either, newGetter, rightFunction);

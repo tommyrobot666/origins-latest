@@ -85,16 +85,16 @@
 //        LivingEntity holder = getHolder();
 //        return super.shouldExecute(hand, heldStack)
 //            && directions.contains(direction)
-//            && placeOnCondition.map(condition -> condition.test(holder.getWorld(), onPos)).orElse(true)
-//            && placeToCondition.map(condition -> condition.test(holder.getWorld(), toPos)).orElse(true);
+//            && placeOnCondition.map(condition -> condition.test(holder.level(), onPos)).orElse(true)
+//            && placeToCondition.map(condition -> condition.test(holder.level(), toPos)).orElse(true);
 //    }
 //
 //    public void executeActions(Hand hand, BlockPos toPos, BlockPos onPos, Direction direction) {
 //
 //        LivingEntity holder = getHolder();
 //
-//        placeOnAction.ifPresent(action -> action.execute(holder.getWorld(), onPos, Optional.of(direction)));
-//        placeToAction.ifPresent(action -> action.execute(holder.getWorld(), toPos, Optional.of(direction)));
+//        placeOnAction.ifPresent(action -> action.execute(holder.level(), onPos, Optional.of(direction)));
+//        placeToAction.ifPresent(action -> action.execute(holder.level(), toPos, Optional.of(direction)));
 //
 //        entityAction.ifPresent(action -> action.execute(holder));
 //

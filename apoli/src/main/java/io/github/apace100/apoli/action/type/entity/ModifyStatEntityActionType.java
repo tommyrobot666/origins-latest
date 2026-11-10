@@ -8,7 +8,7 @@
 //import io.github.apace100.apoli.util.modifier.Modifier;
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
-//import net.minecraft.server.network.ServerPlayer;
+//import net.minecraft.server.level.ServerPlayer;
 //import net.minecraft.stat.ServerStatHandler;
 //import net.minecraft.stat.Stat;
 //import org.jetbrains.annotations.NotNull;

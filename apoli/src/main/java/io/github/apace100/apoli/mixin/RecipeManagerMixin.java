@@ -8,7 +8,7 @@
 //import net.minecraft.recipe.*;
 //import net.minecraft.recipe.input.RecipeInput;
 //import net.minecraft.resources.Identifier;
-//import net.minecraft.world.World;
+//import net.minecraft.world.Level;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.injection.At;
 //
@@ -18,8 +18,8 @@
 //@Mixin(RecipeManager.class)
 //public abstract class RecipeManagerMixin {
 //
-//    @ModifyReturnValue(method = "getFirstMatch(Lnet/minecraft/recipe/RecipeType;Lnet/minecraft/recipe/input/RecipeInput;Lnet/minecraft/world/World;Lnet/minecraft/recipe/RecipeEntry;)Ljava/util/Optional;", at = @At("RETURN"))
-//    private Optional<RecipeEntry<?>> apoli$modifyCraftingRecipe(Optional<RecipeEntry<?>> original, RecipeType<?> type, RecipeInput input, World world) {
+//    @ModifyReturnValue(method = "getFirstMatch(Lnet/minecraft/recipe/RecipeType;Lnet/minecraft/recipe/input/RecipeInput;Lnet/minecraft/world/Level;Lnet/minecraft/recipe/RecipeEntry;)Ljava/util/Optional;", at = @At("RETURN"))
+//    private Optional<RecipeEntry<?>> apoli$modifyCraftingRecipe(Optional<RecipeEntry<?>> original, RecipeType<?> type, RecipeInput input, Level world) {
 //        return original.map(entry -> {
 //
 //            Identifier id = entry.id();

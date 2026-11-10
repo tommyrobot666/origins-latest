@@ -13,11 +13,11 @@
 //import net.minecraft.entity.damage.DamageSource;
 //import net.minecraft.entity.damage.DamageType;
 //import net.minecraft.world.item.ItemStack;
-//import net.minecraft.nbt.NbtCompound;
-//import net.minecraft.nbt.NbtElement;
+//import net.minecraft.nbt.CompoundTag;
+//import net.minecraft.nbt.Tag;
 //import net.minecraft.core.Registry;
 //import net.minecraft.registry.RegistryKey;
-//import net.minecraft.registry.RegistryKeys;
+//import net.minecraft.core.registries.Registries;
 //import net.minecraft.registry.entry.RegistryEntry;
 //import net.minecraft.world.Difficulty;
 //import org.jetbrains.annotations.NotNull;
@@ -27,7 +27,7 @@
 //
 //public class DamageOverTimePowerType extends PowerType {
 //
-//    public static final RegistryKey<DamageType> GENERIC_DAMAGE = RegistryKey.of(RegistryKeys.DAMAGE_TYPE, Apoli.identifier("damage_over_time"));
+//    public static final RegistryKey<DamageType> GENERIC_DAMAGE = RegistryKey.of(Registries.DAMAGE_TYPE, Apoli.identifier("damage_over_time"));
 //
 //    public static final TypedDataObjectFactory<DamageOverTimePowerType> DATA_FACTORY = PowerType.createConditionedDataFactory(
 //        new SerializableData()
@@ -119,7 +119,7 @@
 //        if (inDamageTicks++ - getDamageBegin() >= 0 && (inDamageTicks - getDamageBegin()) % damageInterval == 0) {
 //
 //            DamageSource damageSource = holder.getDamageSources().create(damageType);
-//            float amount = holder.getWorld().getDifficulty() == Difficulty.EASY
+//            float amount = holder.level().getDifficulty() == Difficulty.EASY
 //                ? damageAmountEasy
 //                : damageAmount;
 //
@@ -154,7 +154,7 @@
 //        }
 //
 //        LivingEntity holder = getHolder();
-//        Registry<Enchantment> enchantmentRegistry = holder.getRegistryManager().get(RegistryKeys.ENCHANTMENT);
+//        Registry<Enchantment> enchantmentRegistry = holder.getRegistryManager().get(Registries.ENCHANTMENT);
 //
 //        Enchantment protectingEnchantment = enchantmentRegistry.getOrThrow(protectionEnchantmentKey.get());
 //        RegistryEntry<Enchantment> protectingEnchantmentEntry = enchantmentRegistry.getEntry(protectingEnchantment);
@@ -180,9 +180,9 @@
 //    }
 //
 //    @Override
-//    public NbtElement toTag() {
+//    public Tag toTag() {
 //
-//        NbtCompound nbt = new NbtCompound();
+//        CompoundTag nbt = new CompoundTag();
 //
 //        nbt.putInt("InDamage", inDamageTicks);
 //        nbt.putInt("OutDamage", outOfDamageTicks);
@@ -192,9 +192,9 @@
 //    }
 //
 //    @Override
-//    public void fromTag(NbtElement tag) {
+//    public void fromTag(Tag tag) {
 //
-//        if (tag instanceof NbtCompound nbt) {
+//        if (tag instanceof CompoundTag nbt) {
 //            inDamageTicks = nbt.getInt("InDamage");
 //            outOfDamageTicks = nbt.getInt("OutDamage");
 //        }

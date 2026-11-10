@@ -12,7 +12,7 @@
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.util.math.BlockPos;
 //import net.minecraft.util.math.Direction;
-//import net.minecraft.world.World;
+//import net.minecraft.world.Level;
 //import net.minecraft.world.WorldEvents;
 //import org.jetbrains.annotations.NotNull;
 //
@@ -41,7 +41,7 @@
 //    @Override
 //    public void accept(BlockActionContext context) {
 //
-//        World world = context.world();
+//        Level world = context.world();
 //        BlockPos pos = context.pos();
 //
 //        Optional<Direction> optDirection = context.direction();
@@ -71,7 +71,7 @@
 //        return BlockActionTypes.BONE_MEAL;
 //    }
 //
-//    private void boneMealEvent(World world, BlockPos pos) {
+//    private void boneMealEvent(Level world, BlockPos pos) {
 //
 //        if (showEffects && !world.isClient()) {
 //            world.syncWorldEvent(WorldEvents.BONE_MEAL_USED, pos, 0);

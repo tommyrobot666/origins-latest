@@ -12,7 +12,7 @@
 //import net.minecraft.fluid.Fluid;
 //import net.minecraft.fluid.FluidState;
 //import net.minecraft.util.math.BlockPos;
-//import net.minecraft.world.World;
+//import net.minecraft.world.Level;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.Optional;
@@ -65,7 +65,7 @@
 //        ApoliClient.shouldReloadWorldRenderer = true;
 //    }
 //
-//    public boolean doesPrevent(World world, BlockPos pos) {
+//    public boolean doesPrevent(Level world, BlockPos pos) {
 //        return fluidCondition.map(condition -> condition.test(world.getFluidState(pos))).orElse(true)
 //            && blockCondition.map(condition -> condition.test(world, pos)).orElse(true);
 //    }

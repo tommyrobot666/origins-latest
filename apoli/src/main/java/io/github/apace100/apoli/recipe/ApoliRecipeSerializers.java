@@ -3,7 +3,7 @@
 //import io.github.apace100.apoli.Apoli;
 //import net.minecraft.recipe.Recipe;
 //import net.minecraft.recipe.RecipeSerializer;
-//import net.minecraft.registry.Registries;
+//import net.minecraft.core.registries.Registries;
 //import net.minecraft.core.Registry;
 //
 //public class ApoliRecipeSerializers {

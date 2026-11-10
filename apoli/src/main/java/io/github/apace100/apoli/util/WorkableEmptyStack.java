@@ -22,7 +22,7 @@
 //	public static ItemStack getOrCreate(Entity entity) {
 //
 //		try {
-//			return CACHE.get(entity.getUuid(), () -> {
+//			return CACHE.get(entity.getUUID(), () -> {
 //
 //			    ItemStack workableStack = new ItemStack((Void) null);
 //			    ((EntityLinkedItemStack) workableStack).apoli$setEntity(entity);
@@ -51,7 +51,7 @@
 //
 //	public static boolean isOf(Entity entity, ItemStack stack) {
 //
-//		UUID uuid = entity.getUuid();
+//		UUID uuid = entity.getUUID();
 //		ItemStack workableStack = CACHE.getIfPresent(uuid);
 //
 //		return stack.isEmpty()

@@ -6,7 +6,7 @@
 //import io.github.apace100.apoli.data.ApoliDataTypes;
 //import io.github.apace100.calio.data.SerializableDataType;
 //import net.minecraft.world.item.ItemStack;
-//import net.minecraft.world.World;
+//import net.minecraft.world.Level;
 //
 //public final class ItemCondition extends Condition<ItemConditionContext, ItemConditionType> {
 //
@@ -20,7 +20,7 @@
 //		this(conditionType, false);
 //	}
 //
-//	public boolean test(World world, ItemStack stack) {
+//	public boolean test(Level world, ItemStack stack) {
 //		return test(new ItemConditionContext(world, stack));
 //	}
 //

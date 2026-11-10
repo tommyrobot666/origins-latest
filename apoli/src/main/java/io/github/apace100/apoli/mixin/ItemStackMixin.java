@@ -26,7 +26,7 @@
 //import net.minecraft.util.Hand;
 //import net.minecraft.util.TypedActionResult;
 //import net.minecraft.util.UseAction;
-//import net.minecraft.world.World;
+//import net.minecraft.world.Level;
 //import org.jetbrains.annotations.Nullable;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.Shadow;
@@ -77,8 +77,8 @@
 //        this.apoli$holdingEntity = new WeakReference<>(entity);
 //    }
 //
-//    @WrapOperation(method = "use", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/Item;use(Lnet/minecraft/world/World;Lnet/minecraft/entity/player/Player;Lnet/minecraft/util/Hand;)Lnet/minecraft/util/TypedActionResult;"))
-//    private TypedActionResult<ItemStack> apoli$onItemUse(Item item, World world, Player user, Hand hand, Operation<TypedActionResult<ItemStack>> original) {
+//    @WrapOperation(method = "use", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/Item;use(Lnet/minecraft/world/Level;Lnet/minecraft/entity/player/Player;Lnet/minecraft/util/Hand;)Lnet/minecraft/util/TypedActionResult;"))
+//    private TypedActionResult<ItemStack> apoli$onItemUse(Item item, Level world, Player user, Hand hand, Operation<TypedActionResult<ItemStack>> original) {
 //
 //        //  region  Prevent item use
 //        ItemStack thisAsStack = (ItemStack) (Object) this;
@@ -125,8 +125,8 @@
 //
 //    }
 //
-//    @WrapOperation(method = "usageTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/Item;usageTick(Lnet/minecraft/world/World;Lnet/minecraft/entity/LivingEntity;Lnet/minecraft/item/ItemStack;I)V"))
-//    private void apoli$actionOnItemDuringUse(Item item, World world, LivingEntity user, ItemStack stack, int remainingUseTicks, Operation<Void> original, @Share("usingStackReference") LocalRef<StackReference> sharedUsingStackReference) {
+//    @WrapOperation(method = "usageTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/Item;usageTick(Lnet/minecraft/world/Level;Lnet/minecraft/entity/LivingEntity;Lnet/minecraft/item/ItemStack;I)V"))
+//    private void apoli$actionOnItemDuringUse(Item item, Level world, LivingEntity user, ItemStack stack, int remainingUseTicks, Operation<Void> original, @Share("usingStackReference") LocalRef<StackReference> sharedUsingStackReference) {
 //
 //        ActionOnItemUsePowerType.TriggerType triggerType = ActionOnItemUsePowerType.TriggerType.DURING;
 //
@@ -145,8 +145,8 @@
 //
 //    }
 //
-//    @WrapOperation(method = "onStoppedUsing", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/Item;onStoppedUsing(Lnet/minecraft/item/ItemStack;Lnet/minecraft/world/World;Lnet/minecraft/entity/LivingEntity;I)V"))
-//    private void apoli$actionOnItemStoppedUsing(Item item, ItemStack stack, World world, LivingEntity user, int remainingUseTicks, Operation<Void> original, @Share("stoppedUsingStackReference") LocalRef<StackReference> sharedStoppedUsingStackReference) {
+//    @WrapOperation(method = "onStoppedUsing", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/Item;onStoppedUsing(Lnet/minecraft/item/ItemStack;Lnet/minecraft/world/Level;Lnet/minecraft/entity/LivingEntity;I)V"))
+//    private void apoli$actionOnItemStoppedUsing(Item item, ItemStack stack, Level world, LivingEntity user, int remainingUseTicks, Operation<Void> original, @Share("stoppedUsingStackReference") LocalRef<StackReference> sharedStoppedUsingStackReference) {
 //
 //        ActionOnItemUsePowerType.TriggerType triggerType = ActionOnItemUsePowerType.TriggerType.STOP;
 //
@@ -165,8 +165,8 @@
 //
 //    }
 //
-//    @WrapOperation(method = "finishUsing", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/Item;finishUsing(Lnet/minecraft/item/ItemStack;Lnet/minecraft/world/World;Lnet/minecraft/entity/LivingEntity;)Lnet/minecraft/item/ItemStack;"))
-//    private ItemStack apoli$onFinishItemUse(Item item, ItemStack stack, World world, LivingEntity user, Operation<ItemStack> original) {
+//    @WrapOperation(method = "finishUsing", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/Item;finishUsing(Lnet/minecraft/item/ItemStack;Lnet/minecraft/world/Level;Lnet/minecraft/entity/LivingEntity;)Lnet/minecraft/item/ItemStack;"))
+//    private ItemStack apoli$onFinishItemUse(Item item, ItemStack stack, Level world, LivingEntity user, Operation<ItemStack> original) {
 //
 //        //  region  Action on item before finish using
 //        StackReference finishUsingStackRef = InventoryUtil.getStackReferenceFromStack(user, stack);

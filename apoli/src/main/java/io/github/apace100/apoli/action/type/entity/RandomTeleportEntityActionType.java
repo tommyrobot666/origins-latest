@@ -14,14 +14,14 @@
 //import net.minecraft.world.entity.Entity;
 //import net.minecraft.entity.mob.PathAwareEntity;
 //import net.minecraft.server.world.ChunkTicketType;
-//import net.minecraft.server.world.ServerWorld;
+//import net.minecraft.server.level.ServerLevel;
 //import net.minecraft.util.math.BlockPos;
 //import net.minecraft.util.math.ChunkPos;
 //import net.minecraft.util.math.MathHelper;
-//import net.minecraft.util.math.Vec3d;
+//import net.minecraft.util.math.Vec3;
 //import net.minecraft.util.math.random.Random;
 //import net.minecraft.world.Heightmap;
-//import net.minecraft.world.World;
+//import net.minecraft.world.Level;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.Optional;
@@ -35,7 +35,7 @@
 //            .add("landing_condition", EntityCondition.DATA_TYPE.optional(), Optional.empty())
 //            .add("landing_block_condition", BlockCondition.DATA_TYPE.optional(), Optional.empty())
 //            .add("heightmap", SerializableDataType.enumValue(Heightmap.Type.class).optional(), Optional.empty())
-//            .add("landing_offset", SerializableDataTypes.VECTOR, Vec3d.ZERO)
+//            .add("landing_offset", SerializableDataTypes.VECTOR, Vec3.ZERO)
 //            .add("area_width", SerializableDataTypes.POSITIVE_DOUBLE, 8.0D)
 //            .add("area_height", SerializableDataTypes.POSITIVE_DOUBLE, 8.0D)
 //            .add("loaded_chunks_only", SerializableDataTypes.BOOLEAN, true)
@@ -72,7 +72,7 @@
 //    private final Optional<BlockCondition> landingBlockCondition;
 //
 //    private final Optional<Heightmap.Type> heightmapType;
-//    private final Vec3d landingOffset;
+//    private final Vec3 landingOffset;
 //
 //    private final double areaWidth;
 //    private final double areaHeight;
@@ -80,7 +80,7 @@
 //    private final boolean loadedChunksOnly;
 //    private final int attempts;
 //
-//    public RandomTeleportEntityActionType(Optional<EntityAction> successAction, Optional<EntityAction> failAction, Optional<EntityCondition> landingCondition, Optional<BlockCondition> landingBlockCondition, Optional<Heightmap.Type> heightmapType, Vec3d landingOffset, double areaWidth, double areaHeight, boolean loadedChunksOnly, int attempts) {
+//    public RandomTeleportEntityActionType(Optional<EntityAction> successAction, Optional<EntityAction> failAction, Optional<EntityCondition> landingCondition, Optional<BlockCondition> landingBlockCondition, Optional<Heightmap.Type> heightmapType, Vec3 landingOffset, double areaWidth, double areaHeight, boolean loadedChunksOnly, int attempts) {
 //        this.successAction = successAction;
 //        this.failAction = failAction;
 //        this.landingCondition = landingCondition;
@@ -97,9 +97,9 @@
 //    public void accept(EntityActionContext context) {
 //
 //        Entity entity = context.entity();
-//        World world = entity.getWorld();
+//        Level world = entity.level();
 //
-//        if (!(world instanceof ServerWorld serverWorld)) {
+//        if (!(world instanceof ServerLevel serverWorld)) {
 //            return;
 //        }
 //
@@ -137,7 +137,7 @@
 //        return EntityActionTypes.RANDOM_TELEPORT;
 //    }
 //
-//    private boolean attemptToTeleport(Entity entity, ServerWorld serverWorld, double destX, double destY, double destZ) {
+//    private boolean attemptToTeleport(Entity entity, ServerLevel serverWorld, double destX, double destY, double destZ) {
 //
 //        BlockPos.Mutable destBlockPos = BlockPos.ofFloored(destX, destY, destZ).mutableCopy();
 //        boolean foundSurface = false;
@@ -199,7 +199,7 @@
 //
 //    }
 //
-//    private boolean shouldLandOnBlock(World world, BlockPos pos) {
+//    private boolean shouldLandOnBlock(Level world, BlockPos pos) {
 //        return landingBlockCondition
 //            .map(condition -> condition.test(world, pos))
 //            .orElseGet(() -> world.getBlockState(pos).blocksMovement());
@@ -208,7 +208,7 @@
 //    private boolean shouldLand(Entity entity) {
 //        return landingCondition
 //            .map(condition -> condition.test(entity))
-//            .orElseGet(() -> entity.getWorld().isSpaceEmpty(entity) && !entity.getWorld().containsFluid(entity.getBoundingBox()));
+//            .orElseGet(() -> entity.level().isSpaceEmpty(entity) && !entity.level().containsFluid(entity.getBoundingBox()));
 //    }
 //
 //}

@@ -14,7 +14,7 @@
 //import net.minecraft.server.MinecraftServer;
 //import net.minecraft.server.command.CommandOutput;
 //import net.minecraft.server.command.CommandSourceStack;
-//import net.minecraft.server.world.ServerWorld;
+//import net.minecraft.server.level.ServerLevel;
 //import net.minecraft.network.chat.Component;
 //import net.minecraft.util.math.BlockPos;
 //import net.minecraft.util.math.Vec2f;
@@ -57,7 +57,7 @@
 //        BlockState blockState = context.blockState();
 //        BlockPos pos = context.pos();
 //
-//        if (!(context.world() instanceof ServerWorld serverWorld)) {
+//        if (!(context.world() instanceof ServerLevel serverWorld)) {
 //            return false;
 //        }
 //

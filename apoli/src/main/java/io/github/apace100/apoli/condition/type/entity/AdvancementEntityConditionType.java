@@ -15,7 +15,7 @@
 //import net.minecraft.client.network.ClientPlayer;
 //import net.minecraft.world.entity.player.Player;
 //import net.minecraft.server.MinecraftServer;
-//import net.minecraft.server.network.ServerPlayer;
+//import net.minecraft.server.level.ServerPlayer;
 //import net.minecraft.resources.Identifier;
 //import org.jetbrains.annotations.NotNull;
 //

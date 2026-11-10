@@ -21,7 +21,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.UseAction;
-import net.minecraft.world.World;
+import net.minecraft.world.Level;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -103,7 +103,7 @@ public class EdibleItemPowerType extends PowerType implements Prioritized<Edible
 
     public boolean doesApply(ItemStack stack) {
         return itemCondition
-            .map(condition -> condition.test(getHolder().getWorld(), stack))
+            .map(condition -> condition.test(getHolder().level(), stack))
             .orElse(true);
     }
 
@@ -114,7 +114,7 @@ public class EdibleItemPowerType extends PowerType implements Prioritized<Edible
     public StackReference executeItemActions(StackReference consumedStackReference) {
 
         LivingEntity holder = getHolder();
-        World world = holder.getWorld();
+        Level world = holder.level();
 
         consumedItemAction.ifPresent(action -> action.execute(world, consumedStackReference));
 

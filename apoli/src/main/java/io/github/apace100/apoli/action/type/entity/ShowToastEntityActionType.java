@@ -32,7 +32,7 @@
 //
 //        Entity entity = context.entity();
 //
-//        if (!entity.getWorld().isClient() && entity instanceof CustomToastViewer viewer) {
+//        if (!entity.level().isClientSide()() && entity instanceof CustomToastViewer viewer) {
 //            viewer.apoli$showToast(customToastData);
 //        }
 //

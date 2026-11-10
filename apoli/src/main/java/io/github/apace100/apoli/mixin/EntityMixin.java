@@ -20,16 +20,16 @@
 //import net.minecraft.entity.MovementType;
 //import net.minecraft.entity.damage.DamageSource;
 //import net.minecraft.world.entity.player.Player;
-//import net.minecraft.registry.tag.TagKey;
+//import net.minecraft.tags.TagKey;
 //import net.minecraft.scoreboard.AbstractTeam;
 //import net.minecraft.network.chat.Component;
 //import net.minecraft.util.math.BlockPos;
 //import net.minecraft.util.math.Direction;
 //import net.minecraft.util.math.MathHelper;
-//import net.minecraft.util.math.Vec3d;
+//import net.minecraft.util.math.Vec3;
 //import net.minecraft.util.shape.VoxelShape;
 //import net.minecraft.world.BlockView;
-//import net.minecraft.world.World;
+//import net.minecraft.world.Level;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.Shadow;
 //import org.spongepowered.asm.mixin.Unique;
@@ -49,7 +49,7 @@
 //    @Shadow
 //    private boolean onGround;
 //
-//    @Shadow public abstract Vec3d getPos();
+//    @Shadow public abstract Vec3 getPos();
 //
 //    @Shadow public abstract double getX();
 //
@@ -57,7 +57,7 @@
 //
 //    @Shadow public abstract double getZ();
 //
-//    @Shadow public abstract World getWorld();
+//    @Shadow public abstract Level level();
 //
 //    @Shadow public abstract Component getName();
 //
@@ -87,7 +87,7 @@
 //
 //    }
 //
-//    @Inject(method = "fall", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/Block;onLandedUpon(Lnet/minecraft/world/World;Lnet/minecraft/block/BlockState;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/entity/Entity;F)V"))
+//    @Inject(method = "fall", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/Block;onLandedUpon(Lnet/minecraft/world/Level;Lnet/minecraft/block/BlockState;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/entity/Entity;F)V"))
 //    private void invokeActionOnLand(CallbackInfo ci) {
 //        PowerHolderComponent.withPowerTypes((Entity) (Object) this, ActionOnLandPowerType.class, p -> true, ActionOnLandPowerType::executeAction);
 //    }
@@ -140,13 +140,13 @@
 //    }
 //
 //    @ModifyVariable(method = "move", at = @At("HEAD"), argsOnly = true)
-//    private Vec3d modifyMovementVelocity(Vec3d original, MovementType movementType) {
+//    private Vec3 modifyMovementVelocity(Vec3 original, MovementType movementType) {
 //
 //        if (movementType != MovementType.SELF) {
 //            return original;
 //        }
 //
-//        return new Vec3d(
+//        return new Vec3(
 //            PowerHolderComponent.modify((Entity)(Object) this, ModifyVelocityPowerType.class, original.x, p -> p.doesApply(Direction.Axis.X), p -> {}),
 //            PowerHolderComponent.modify((Entity)(Object) this, ModifyVelocityPowerType.class, original.y, p -> p.doesApply(Direction.Axis.Y), p -> {}),
 //            PowerHolderComponent.modify((Entity)(Object) this, ModifyVelocityPowerType.class, original.z, p -> p.doesApply(Direction.Axis.Z), p -> {})
@@ -155,7 +155,7 @@
 //    }
 //
 //    @Inject(method = "move", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/Entity;getLandingPos()Lnet/minecraft/util/math/BlockPos;"))
-//    private void forceGrounded(MovementType movementType, Vec3d movement, CallbackInfo ci) {
+//    private void forceGrounded(MovementType movementType, Vec3 movement, CallbackInfo ci) {
 //        if(PowerHolderComponent.hasPowerType((Entity)(Object)this, GroundedPowerType.class)) {
 //            this.onGround = true;
 //        }
@@ -245,7 +245,7 @@
 //    private double apoli$verticalMovementValue;
 //
 //    @Unique
-//    private Vec3d apoli$prevPos;
+//    private Vec3 apoli$prevPos;
 //
 //    @Override
 //    public boolean apoli$isMovingHorizontally() {

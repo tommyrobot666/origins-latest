@@ -19,7 +19,7 @@
 //import net.minecraft.loot.context.LootContext;
 //import net.minecraft.loot.context.LootContextParameters;
 //import net.minecraft.registry.RegistryKey;
-//import net.minecraft.registry.RegistryKeys;
+//import net.minecraft.core.registries.Registries;
 //import net.minecraft.resources.Identifier;
 //import net.minecraft.util.InvalidIdentifierException;
 //import org.jetbrains.annotations.NotNull;
@@ -32,7 +32,7 @@
 //
 //public class ReplaceLootTablePowerType extends PowerType implements Prioritized<ReplaceLootTablePowerType> {
 //
-//    public static final RegistryKey<LootTable> REPLACED_TABLE_KEY = RegistryKey.of(RegistryKeys.LOOT_TABLE, Apoli.identifier("replaced_loot_table"));
+//    public static final RegistryKey<LootTable> REPLACED_TABLE_KEY = RegistryKey.of(Registries.LOOT_TABLE, Apoli.identifier("replaced_loot_table"));
 //
 //    private static final Stack<LootTable> REPLACEMENT_STACK = new Stack<>();
 //    private static final Stack<LootTable> BACKTRACK_STACK = new Stack<>();
@@ -116,7 +116,7 @@
 //    }
 //
 //    public boolean doesApply(Entity contextEntity, ItemStack toolStack, SavedBlockPosition savedBlock) {
-//        return itemCondition.map(condition -> condition.test(getHolder().getWorld(), toolStack)).orElse(true)
+//        return itemCondition.map(condition -> condition.test(getHolder().level(), toolStack)).orElse(true)
 //            && blockCondition.map(condition -> condition.test(savedBlock)).orElse(true)
 //            && biEntityCondition.map(condition -> condition.test(getHolder(), contextEntity)).orElse(true);
 //    }
@@ -135,7 +135,7 @@
 //                try {
 //
 //                    String replaced = matcher.replaceAll(replacement);
-//                    RegistryKey<LootTable> replacedKey = RegistryKey.of(RegistryKeys.LOOT_TABLE, Identifier.of(replaced));
+//                    RegistryKey<LootTable> replacedKey = RegistryKey.of(Registries.LOOT_TABLE, Identifier.of(replaced));
 //
 //                    return Optional.of(replacedKey);
 //

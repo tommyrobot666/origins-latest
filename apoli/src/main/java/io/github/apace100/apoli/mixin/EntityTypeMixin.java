@@ -5,8 +5,8 @@
 //import io.github.apace100.apoli.power.type.ModifyTypeTagPowerType;
 //import net.minecraft.world.entity.Entity;
 //import net.minecraft.world.entity.EntityType;
-//import net.minecraft.registry.entry.RegistryEntryList;
-//import net.minecraft.registry.tag.TagKey;
+//import net.minecraft.core.HolderSet;
+//import net.minecraft.tags.TagKey;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.Unique;
 //import org.spongepowered.asm.mixin.injection.At;
@@ -39,8 +39,8 @@
 //            || ModifyTypeTagPowerType.doesApply(this.apoli$getEntity(), tag);
 //    }
 //
-//    @ModifyReturnValue(method = "isIn(Lnet/minecraft/registry/entry/RegistryEntryList;)Z", at = @At("RETURN"))
-//    private boolean apoli$inTagEntryListProxy(boolean original, RegistryEntryList<EntityType<?>> entryList) {
+//    @ModifyReturnValue(method = "isIn(Lnet/minecraft/registry/entry/HolderSet;)Z", at = @At("RETURN"))
+//    private boolean apoli$inTagEntryListProxy(boolean original, HolderSet<EntityType<?>> entryList) {
 //        return original
 //            || ModifyTypeTagPowerType.doesApply(this.apoli$getEntity(), entryList);
 //    }

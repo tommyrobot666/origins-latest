@@ -23,7 +23,7 @@
 //
 //            ScreenHandlerFactory handlerFactory = (syncId, playerInventory, _player) -> {
 //
-//                CraftingScreenHandler craftingScreenHandler = new CraftingScreenHandler(syncId, playerInventory, ScreenHandlerContext.create(player.getWorld(), player.getBlockPos()));
+//                CraftingScreenHandler craftingScreenHandler = new CraftingScreenHandler(syncId, playerInventory, ScreenHandlerContext.create(player.level(), player.getBlockPos()));
 //                ((ScreenHandlerUsabilityOverride) craftingScreenHandler).apoli$canUse(true);
 //
 //                return craftingScreenHandler;

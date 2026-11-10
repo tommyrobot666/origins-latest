@@ -6,7 +6,7 @@
 //import io.github.apace100.apoli.mixin.internal.DefaultAttributeRegistryAccessor;
 //import net.minecraft.world.entity.EntityType;
 //import net.minecraft.entity.attribute.DefaultAttributeContainer;
-//import net.minecraft.registry.Registries;
+//import net.minecraft.core.registries.Registries;
 //import org.jetbrains.annotations.ApiStatus;
 //
 //import java.util.Collection;

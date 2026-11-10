@@ -11,10 +11,10 @@
 //import net.minecraft.world.entity.EntityType;
 //import net.minecraft.entity.ItemEntity;
 //import net.minecraft.world.entity.player.Player;
-//import net.minecraft.entity.player.PlayerInventory;
+//import net.minecraft.entity.player.Inventory;
 //import net.minecraft.inventory.StackReference;
 //import net.minecraft.world.item.ItemStack;
-//import net.minecraft.world.World;
+//import net.minecraft.world.Level;
 //import org.jetbrains.annotations.Nullable;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.Shadow;
@@ -36,12 +36,12 @@
 //    @Shadow
 //    public abstract void setStack(ItemStack stack);
 //
-//    private ItemEntityMixin(EntityType<?> type, World world) {
+//    private ItemEntityMixin(EntityType<?> type, Level world) {
 //        super(type, world);
 //    }
 //
-//    @WrapOperation(method = "onPlayerCollision", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerInventory;insertStack(Lnet/minecraft/item/ItemStack;)Z"))
-//    private boolean apoli$onItemPickup(PlayerInventory playerInventory, ItemStack stack, Operation<Boolean> original, Player player) {
+//    @WrapOperation(method = "onPlayerCollision", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/Inventory;insertStack(Lnet/minecraft/item/ItemStack;)Z"))
+//    private boolean apoli$onItemPickup(Inventory playerInventory, ItemStack stack, Operation<Boolean> original, Player player) {
 //
 //        if (PreventItemPickupPowerType.doesPrevent(thisAsItemEntity(), player)) {
 //            return false;

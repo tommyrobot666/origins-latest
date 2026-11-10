@@ -73,7 +73,7 @@
 //    }
 //
 //    public boolean doesApply(ItemStack stack, Entity thrower) {
-//        return itemCondition.map(condition -> condition.test(getHolder().getWorld(), stack)).orElse(true)
+//        return itemCondition.map(condition -> condition.test(getHolder().level(), stack)).orElse(true)
 //            && biEntityCondition.map(condition -> condition.test(thrower, getHolder())).orElse(true);
 //    }
 //
@@ -82,7 +82,7 @@
 //    }
 //
 //    public void executeItemAction(StackReference stackReference) {
-//        itemAction.ifPresent(action -> action.execute(getHolder().getWorld(), stackReference));
+//        itemAction.ifPresent(action -> action.execute(getHolder().level(), stackReference));
 //    }
 //
 //    public static void executeBiEntityAction(CallInstance<ActionOnItemPickupPowerType> callInstance, Entity throwerEntity) {

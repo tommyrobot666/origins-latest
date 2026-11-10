@@ -7,8 +7,8 @@
 //import net.minecraft.client.Minecraft;
 //import net.minecraft.client.network.ClientPlayer;
 //import net.minecraft.entity.*;
-//import net.minecraft.util.math.Vec3d;
-//import net.minecraft.world.World;
+//import net.minecraft.util.math.Vec3;
+//import net.minecraft.world.Level;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.Shadow;
 //import org.spongepowered.asm.mixin.injection.At;
@@ -21,7 +21,7 @@
 //
 //    @Shadow public abstract EntityDimensions getDimensions(EntityPose pose);
 //
-//    public EntityParticleMixin(EntityType<?> type, World world) {
+//    public EntityParticleMixin(EntityType<?> type, Level world) {
 //        super(type, world);
 //    }
 //
@@ -45,10 +45,10 @@
 //                continue;
 //            }
 //
-//            Vec3d spread = particlePower
+//            Vec3 spread = particlePower
 //                .getSpread()
 //                .multiply(this.getWidth(), this.getEyeHeight(this.getPose()), this.getWidth());
-//            Vec3d particlePos = this
+//            Vec3 particlePos = this
 //                .getPos()
 //                .add(particlePower.getOffsetX(), particlePower.getOffsetY(), particlePower.getOffsetZ());
 //
@@ -58,20 +58,20 @@
 //                velocityY = spread.getY() * particlePower.getSpeed();
 //                velocityZ = spread.getZ() * particlePower.getSpeed();
 //
-//                this.getWorld().addParticle(particlePower.getParticle(), particlePower.shouldForce(), particlePos.getX(), particlePos.getY(), particlePos.getZ(), velocityX, velocityY, velocityZ);
+//                this.level().addParticle(particlePower.getParticle(), particlePower.shouldForce(), particlePos.getX(), particlePos.getY(), particlePos.getZ(), velocityX, velocityY, velocityZ);
 //
 //            } else {
 //
 //                for (int i = 0; i < particlePower.getCount(); i++) {
 //
-//                    Vec3d newSpread = spread.multiply(this.random.nextGaussian(), this.random.nextGaussian(), this.random.nextGaussian());
-//                    Vec3d newParticlePos = particlePos.add(newSpread);
+//                    Vec3 newSpread = spread.multiply(this.random.nextGaussian(), this.random.nextGaussian(), this.random.nextGaussian());
+//                    Vec3 newParticlePos = particlePos.add(newSpread);
 //
 //                    velocityX = (2.0 * this.random.nextDouble() - 1.0) * particlePower.getSpeed();
 //                    velocityY = (2.0 * this.random.nextDouble() - 1.0) * particlePower.getSpeed();
 //                    velocityZ = (2.0 * this.random.nextDouble() - 1.0) * particlePower.getSpeed();
 //
-//                    this.getWorld().addParticle(particlePower.getParticle(), particlePower.shouldForce(), newParticlePos.getX(), newParticlePos.getY(), newParticlePos.getZ(), velocityX, velocityY, velocityZ);
+//                    this.level().addParticle(particlePower.getParticle(), particlePower.shouldForce(), newParticlePos.getX(), newParticlePos.getY(), newParticlePos.getZ(), velocityX, velocityY, velocityZ);
 //
 //                }
 //

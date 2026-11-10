@@ -5,7 +5,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.advancement.criterion.AbstractCriterion;
 import net.minecraft.predicate.entity.EntityPredicate;
 import net.minecraft.predicate.entity.LootContextPredicate;
-import net.minecraft.server.network.ServerPlayer;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.resources.Identifier;
 
 import java.util.Optional;

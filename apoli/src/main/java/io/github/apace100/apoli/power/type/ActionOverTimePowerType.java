@@ -7,7 +7,7 @@
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.nbt.NbtByte;
-//import net.minecraft.nbt.NbtElement;
+//import net.minecraft.nbt.Tag;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.Optional;
@@ -118,12 +118,12 @@
 //    }
 //
 //    @Override
-//    public NbtElement toTag() {
+//    public Tag toTag() {
 //        return NbtByte.of(wasActive);
 //    }
 //
 //    @Override
-//    public void fromTag(NbtElement tag) {
+//    public void fromTag(Tag tag) {
 //        wasActive = tag.equals(NbtByte.ONE);
 //    }
 //

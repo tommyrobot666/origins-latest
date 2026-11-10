@@ -16,9 +16,9 @@
 //import net.minecraft.registry.DynamicRegistryManager;
 //import net.minecraft.core.Registry;
 //import net.minecraft.registry.RegistryKey;
-//import net.minecraft.registry.RegistryKeys;
+//import net.minecraft.core.registries.Registries;
 //import net.minecraft.registry.entry.RegistryEntry;
-//import net.minecraft.server.world.ServerWorld;
+//import net.minecraft.server.level.ServerLevel;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.List;
@@ -71,7 +71,7 @@
 //    @Override
 //    public void accept(ItemActionContext context) {
 //
-//        ServerWorld world = context.world();
+//        ServerLevel world = context.world();
 //        StackReference stackReference = context.stackReference();
 //
 //        ItemStack stack = stackReference.get();
@@ -84,7 +84,7 @@
 //        ItemEnchantmentsComponent oldEnchantments = stack.getEnchantments();
 //        ItemEnchantmentsComponent.Builder newEnchantments = new ItemEnchantmentsComponent.Builder(oldEnchantments);
 //
-//        Registry<Enchantment> enchantmentRegistry = dynamicRegistries.get(RegistryKeys.ENCHANTMENT);
+//        Registry<Enchantment> enchantmentRegistry = dynamicRegistries.get(Registries.ENCHANTMENT);
 //        for (RegistryKey<Enchantment> enchantmentKey : allEnchantmentKeys) {
 //
 //            //  Since the registry keys are already validated, this should be fine.

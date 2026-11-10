@@ -34,7 +34,7 @@
 //    public boolean test(EntityConditionContext context) {
 //        Entity entity = context.entity();
 //        return entity.isOnGround()
-//            && blockCondition.map(condition -> condition.test(entity.getWorld(), entity.getSteppingPos())).orElse(true);
+//            && blockCondition.map(condition -> condition.test(entity.level(), entity.getSteppingPos())).orElse(true);
 //    }
 //
 //    @Override

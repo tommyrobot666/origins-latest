@@ -13,7 +13,7 @@
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.world.entity.Entity;
 //import net.minecraft.util.math.MathHelper;
-//import net.minecraft.util.math.Vec3d;
+//import net.minecraft.util.math.Vec3;
 //import org.apache.commons.lang3.function.TriConsumer;
 //import org.jetbrains.annotations.NotNull;
 //import org.joml.Vector3f;
@@ -63,7 +63,7 @@
 //            ? target::setVelocity
 //            : target::addVelocity;
 //
-//        Vec3d referenceVec = reference.apply(actor, target);
+//        Vec3 referenceVec = reference.apply(actor, target);
 //        Space.transformVectorToBase(referenceVec, velocityCopy, actor.getYaw(), true);  //  Vector normalized by method
 //
 //        method.accept(velocityCopy.x(), velocityCopy.y(), velocityCopy.z());
@@ -81,12 +81,12 @@
 //        return BiEntityRequirement.BOTH;
 //    }
 //
-//    public enum Reference implements BiFunction<Entity, Entity, Vec3d> {
+//    public enum Reference implements BiFunction<Entity, Entity, Vec3> {
 //
 //        POSITION {
 //
 //            @Override
-//            public Vec3d apply(Entity actor, Entity target) {
+//            public Vec3 apply(Entity actor, Entity target) {
 //                return target.getPos().subtract(actor.getPos());
 //            }
 //
@@ -95,7 +95,7 @@
 //        ROTATION {
 //
 //            @Override
-//            public Vec3d apply(Entity actor, Entity target) {
+//            public Vec3 apply(Entity actor, Entity target) {
 //
 //                float pitch = actor.getPitch();
 //                float yaw = actor.getYaw();
@@ -106,7 +106,7 @@
 //                float k = -MathHelper.sin(pitch * i);
 //                float l =  MathHelper.cos(yaw * i) * MathHelper.cos(pitch * i);
 //
-//                return new Vec3d(j, k, l);
+//                return new Vec3(j, k, l);
 //
 //            }
 //

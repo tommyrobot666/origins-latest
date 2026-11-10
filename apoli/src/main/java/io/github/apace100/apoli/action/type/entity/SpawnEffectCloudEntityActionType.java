@@ -11,8 +11,8 @@
 //import net.minecraft.entity.AreaEffectCloudEntity;
 //import net.minecraft.world.entity.Entity;
 //import net.minecraft.world.entity.LivingEntity;
-//import net.minecraft.server.world.ServerWorld;
-//import net.minecraft.util.math.Vec3d;
+//import net.minecraft.server.level.ServerLevel;
+//import net.minecraft.util.math.Vec3;
 //import org.jetbrains.annotations.NotNull;
 //
 //public class SpawnEffectCloudEntityActionType extends EntityActionType {
@@ -64,13 +64,13 @@
 //    public void accept(EntityActionContext context) {
 //
 //        Entity entity = context.entity();
-//        Vec3d pos = entity.getPos().add(context.offset());
+//        Vec3 pos = entity.getPos().add(context.offset());
 //
-//        if (!(entity.getWorld() instanceof ServerWorld serverWorld)) {
+//        if (!(entity.level() instanceof ServerLevel serverWorld)) {
 //            return;
 //        }
 //
-//        AreaEffectCloudEntity aec = new AreaEffectCloudEntity(entity.getWorld(), pos.getX(), pos.getY(), pos.getZ());
+//        AreaEffectCloudEntity aec = new AreaEffectCloudEntity(entity.level(), pos.getX(), pos.getY(), pos.getZ());
 //
 //        if (entity instanceof LivingEntity living) {
 //            aec.setOwner(living);

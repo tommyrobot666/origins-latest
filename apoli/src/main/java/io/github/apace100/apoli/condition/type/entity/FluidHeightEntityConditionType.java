@@ -10,7 +10,7 @@
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.fluid.Fluid;
-//import net.minecraft.registry.tag.TagKey;
+//import net.minecraft.tags.TagKey;
 //import org.jetbrains.annotations.NotNull;
 //
 //public class FluidHeightEntityConditionType extends EntityConditionType {

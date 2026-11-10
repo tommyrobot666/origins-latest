@@ -1,6 +1,6 @@
 //package io.github.apace100.apoli.mixin;
 //
-//import net.minecraft.server.network.ServerPlayerInteractionManager;
+//import net.minecraft.server.level.ServerPlayerInteractionManager;
 //import net.minecraft.util.math.BlockPos;
 //import net.minecraft.world.GameMode;
 //import org.spongepowered.asm.mixin.Mixin;

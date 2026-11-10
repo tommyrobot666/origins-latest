@@ -140,12 +140,12 @@
 //            StackReference reference = InventoryUtil.getStackReference(source, slot);
 //            ItemStack stack = reference.get();
 //
-//            if (reference == StackReference.EMPTY || !itemCondition.map(condition -> condition.test(thrower.getWorld(), stack)).orElse(true)) {
+//            if (reference == StackReference.EMPTY || !itemCondition.map(condition -> condition.test(thrower.level(), stack)).orElse(true)) {
 //                continue;
 //            }
 //
 //            entityAction.ifPresent(action -> action.execute(thrower));
-//            itemAction.ifPresent(action -> action.execute(thrower.getWorld(), reference));
+//            itemAction.ifPresent(action -> action.execute(thrower.level(), reference));
 //
 //            Optional<ItemStack> splitStack = amount
 //                .map(Math::abs)

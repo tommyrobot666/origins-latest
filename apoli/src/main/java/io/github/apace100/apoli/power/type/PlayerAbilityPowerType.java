@@ -6,9 +6,9 @@
 //import io.github.ladysnake.pal.Pal;
 //import io.github.ladysnake.pal.PlayerAbility;
 //import net.minecraft.world.entity.player.Player;
-//import net.minecraft.nbt.NbtCompound;
-//import net.minecraft.nbt.NbtElement;
-//import net.minecraft.server.network.ServerPlayer;
+//import net.minecraft.nbt.CompoundTag;
+//import net.minecraft.nbt.Tag;
+//import net.minecraft.server.level.ServerPlayer;
 //
 //import java.util.Objects;
 //import java.util.Optional;
@@ -45,9 +45,9 @@
 //    }
 //
 //    @Override
-//    public NbtElement toTag() {
+//    public Tag toTag() {
 //
-//        NbtCompound rootNbt = new NbtCompound();
+//        CompoundTag rootNbt = new CompoundTag();
 //        rootNbt.putBoolean("ShouldRefresh", shouldRefresh);
 //
 //        return rootNbt;
@@ -55,8 +55,8 @@
 //    }
 //
 //    @Override
-//    public void fromTag(NbtElement tag) {
-//        if (tag instanceof NbtCompound rootNbt) {
+//    public void fromTag(Tag tag) {
+//        if (tag instanceof CompoundTag rootNbt) {
 //            this.shouldRefresh = rootNbt.getBoolean("ShouldRefresh");
 //        }
 //    }
@@ -105,14 +105,14 @@
 //
 //    @Override
 //    public void onGained() {
-//        if (!getHolder().getWorld().isClient && this.isActive()) {
+//        if (!getHolder().level().isClient && this.isActive()) {
 //            grantAbility();
 //        }
 //    }
 //
 //    @Override
 //    public void onLost() {
-//        if (!getHolder().getWorld().isClient) {
+//        if (!getHolder().level().isClient) {
 //            revokeAbility();
 //        }
 //    }

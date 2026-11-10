@@ -31,7 +31,7 @@
 //    @Override
 //    public boolean test(EntityConditionContext context) {
 //        Entity entity = context.entity();
-//        return blockCondition.test(entity.getWorld(), entity.getBlockPos());
+//        return blockCondition.test(entity.level(), entity.getBlockPos());
 //    }
 //
 //    @Override

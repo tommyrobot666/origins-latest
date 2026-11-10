@@ -73,7 +73,7 @@
 //    private void apoli$cacheTooltipStuff(Item.TooltipContext context, @Nullable Player player, TooltipType type, CallbackInfoReturnable<List<Component>> cir, @Local List<Component> tooltip) {
 //
 //		// Although this is a client-only mixin, this is still seen by the internal server.
-//        if (player == null || !player.getWorld().isClient) {
+//        if (player == null || !player.level().isClient) {
 //            return;
 //        }
 //

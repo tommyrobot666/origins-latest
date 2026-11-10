@@ -37,7 +37,7 @@
 //        Entity entity = context.entity();
 //        BlockPos blockPos = BlockPos.ofFloored(entity.getPos().add(context.offset()));
 //
-//        blockAction.execute(entity.getWorld(), blockPos, Optional.empty());
+//        blockAction.execute(entity.level(), blockPos, Optional.empty());
 //
 //    }
 //

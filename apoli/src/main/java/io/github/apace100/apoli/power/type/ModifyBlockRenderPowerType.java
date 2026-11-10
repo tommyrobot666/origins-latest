@@ -10,7 +10,7 @@
 //import net.fabricmc.api.Environment;
 //import net.minecraft.block.BlockState;
 //import net.minecraft.util.math.BlockPos;
-//import net.minecraft.world.World;
+//import net.minecraft.world.Level;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.Optional;
@@ -57,7 +57,7 @@
 //        ApoliClient.shouldReloadWorldRenderer = true;
 //    }
 //
-//    public boolean doesPrevent(World world, BlockPos pos) {
+//    public boolean doesPrevent(Level world, BlockPos pos) {
 //        return blockCondition
 //            .map(condition -> condition.test(world, pos))
 //            .orElse(true);

@@ -80,14 +80,14 @@
 //    }
 //
 //    public boolean doesPrevent(ItemStack stack, Entity thrower) {
-//        return itemCondition.map(condition -> condition.test(getHolder().getWorld(), stack)).orElse(true)
+//        return itemCondition.map(condition -> condition.test(getHolder().level(), stack)).orElse(true)
 //            && biEntityCondition.map(condition -> condition.test(getHolder(), thrower)).orElse(true);
 //    }
 //
 //    public void executeActions(ItemEntity itemEntity, Entity thrower) {
 //
 //        StackReference stackReference = InventoryUtil.createStackReference(itemEntity.getStack());
-//        itemAction.ifPresent(action -> action.execute(getHolder().getWorld(), stackReference));
+//        itemAction.ifPresent(action -> action.execute(getHolder().level(), stackReference));
 //
 //        biEntityActionThrower.ifPresent(action -> action.execute(thrower, getHolder()));
 //        biEntityActionItem.ifPresent(action -> action.execute(getHolder(), itemEntity));

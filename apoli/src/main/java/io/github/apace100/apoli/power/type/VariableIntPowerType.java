@@ -1,7 +1,7 @@
 //package io.github.apace100.apoli.power.type;
 //
 //import io.github.apace100.apoli.condition.EntityCondition;
-//import net.minecraft.nbt.NbtElement;
+//import net.minecraft.nbt.Tag;
 //import net.minecraft.nbt.NbtInt;
 //import net.minecraft.util.math.MathHelper;
 //
@@ -54,12 +54,12 @@
 //    }
 //
 //    @Override
-//    public NbtElement toTag() {
+//    public Tag toTag() {
 //        return NbtInt.of(currentValue);
 //    }
 //
 //    @Override
-//    public void fromTag(NbtElement tag) {
+//    public void fromTag(Tag tag) {
 //        currentValue = MathHelper.clamp(((NbtInt) tag).intValue(), min, max);
 //    }
 //

@@ -17,8 +17,8 @@
 //import net.minecraft.inventory.Inventories;
 //import net.minecraft.inventory.Inventory;
 //import net.minecraft.world.item.ItemStack;
-//import net.minecraft.nbt.NbtCompound;
-//import net.minecraft.nbt.NbtElement;
+//import net.minecraft.nbt.CompoundTag;
+//import net.minecraft.nbt.Tag;
 //import net.minecraft.screen.ScreenHandlerFactory;
 //import net.minecraft.screen.SimpleNamedScreenHandlerFactory;
 //import net.minecraft.network.chat.Component;
@@ -118,9 +118,9 @@
 //    }
 //
 //    @Override
-//    public NbtCompound toTag() {
+//    public CompoundTag toTag() {
 //
-//        NbtCompound tag = new NbtCompound();
+//        CompoundTag tag = new CompoundTag();
 //        Inventories.writeNbt(tag, container, getHolder().getRegistryManager());
 //
 //        return tag;
@@ -128,9 +128,9 @@
 //    }
 //
 //    @Override
-//    public void fromTag(NbtElement tag) {
+//    public void fromTag(Tag tag) {
 //
-//        if (!(tag instanceof NbtCompound rootNbt)) {
+//        if (!(tag instanceof CompoundTag rootNbt)) {
 //            return;
 //        }
 //
@@ -227,12 +227,12 @@
 //
 //    public boolean shouldDropOnDeath(ItemStack stack) {
 //        return shouldDropOnDeath()
-//            && dropOnDeathFilter.map(condition -> condition.test(getHolder().getWorld(), stack)).orElse(true);
+//            && dropOnDeathFilter.map(condition -> condition.test(getHolder().level(), stack)).orElse(true);
 //    }
 //
 //    public void dropItemsOnDeath() {
 //
-//        if (!(getHolder() instanceof Player playerEntity) || playerEntity.getWorld().isClient()) {
+//        if (!(getHolder() instanceof Player playerEntity) || playerEntity.level().isClient()) {
 //            return;
 //        }
 //
@@ -254,7 +254,7 @@
 //
 //    public void dropItemsOnLost() {
 //
-//        if (!(getHolder() instanceof Player playerEntity) || playerEntity.getWorld().isClient()) {
+//        if (!(getHolder() instanceof Player playerEntity) || playerEntity.level().isClient()) {
 //            return;
 //        }
 //

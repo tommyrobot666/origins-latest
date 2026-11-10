@@ -57,7 +57,7 @@
 //        Entity entity = context.entity();
 //
 //        ScoreHolder scoreHolder = ScoreHolder.fromName(name.orElse(entity.getNameForScoreboard()));
-//        Scoreboard scoreboard = entity.getWorld().getScoreboard();
+//        Scoreboard scoreboard = entity.level().getScoreboard();
 //
 //        return Optional.ofNullable(scoreboard.getNullableObjective(objective))
 //            .flatMap(objective -> Optional.ofNullable(scoreboard.getScore(scoreHolder, objective)))

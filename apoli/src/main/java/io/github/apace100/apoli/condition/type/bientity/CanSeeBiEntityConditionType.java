@@ -10,7 +10,7 @@
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.world.entity.Entity;
 //import net.minecraft.util.hit.HitResult;
-//import net.minecraft.util.math.Vec3d;
+//import net.minecraft.util.math.Vec3;
 //import net.minecraft.world.RaycastContext;
 //import org.jetbrains.annotations.NotNull;
 //
@@ -43,15 +43,15 @@
 //        Entity actor = context.actor();
 //        Entity target = context.target();
 //
-//        if (actor.getWorld() != target.getWorld()) {
+//        if (actor.level() != target.level()) {
 //            return false;
 //        }
 //
-//        Vec3d actorEyePos = actor.getEyePos();
-//        Vec3d targetEyePos = target.getEyePos();
+//        Vec3 actorEyePos = actor.getEyePos();
+//        Vec3 targetEyePos = target.getEyePos();
 //
 //        RaycastContext raycastContext = new RaycastContext(actorEyePos, targetEyePos, shapeType, fluidHandling, actor);
-//        return actor.getWorld().raycast(raycastContext).getType() == HitResult.Type.MISS;
+//        return actor.level().raycast(raycastContext).getType() == HitResult.Type.MISS;
 //
 //    }
 //

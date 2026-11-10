@@ -9,7 +9,7 @@
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.component.DataComponentTypes;
 //import net.minecraft.component.type.NbtComponent;
-//import net.minecraft.nbt.NbtCompound;
+//import net.minecraft.nbt.CompoundTag;
 //import org.jetbrains.annotations.NotNull;
 //
 //public class CustomDataItemConditionType extends ItemConditionType {
@@ -24,9 +24,9 @@
 //            .set("nbt", conditionType.nbt)
 //    );
 //
-//    private final NbtCompound nbt;
+//    private final CompoundTag nbt;
 //
-//    public CustomDataItemConditionType(NbtCompound nbt) {
+//    public CustomDataItemConditionType(CompoundTag nbt) {
 //        this.nbt = nbt;
 //    }
 //

@@ -9,7 +9,7 @@
 //import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.world.entity.player.Player;
 //import net.minecraft.particle.ParticleEffect;
-//import net.minecraft.util.math.Vec3d;
+//import net.minecraft.util.math.Vec3;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.Optional;
@@ -23,8 +23,8 @@
 //            .add("offset_x", SerializableDataTypes.DOUBLE, 0.0D)
 //            .add("offset_y", SerializableDataTypes.DOUBLE, 0.0D)
 //            .add("offset_z", SerializableDataTypes.DOUBLE, 0.0D)
-//            .addFunctionedDefault("offset", SerializableDataTypes.VECTOR, data -> new Vec3d(data.get("offset_x"), data.get("offset_y"), data.get("offset_z")))
-//            .add("spread", SerializableDataTypes.VECTOR, new Vec3d(0.5, 0.5, 0.5))
+//            .addFunctionedDefault("offset", SerializableDataTypes.VECTOR, data -> new Vec3(data.get("offset_x"), data.get("offset_y"), data.get("offset_z")))
+//            .add("spread", SerializableDataTypes.VECTOR, new Vec3(0.5, 0.5, 0.5))
 //            .add("frequency", SerializableDataTypes.POSITIVE_INT)
 //            .add("count", SerializableDataTypes.NON_NEGATIVE_INT, 1)
 //            .add("speed", SerializableDataTypes.FLOAT, 0.0F)
@@ -60,8 +60,8 @@
 //    private final Optional<BiEntityCondition> biEntityCondition;
 //    private final ParticleEffect particleEffect;
 //
-//    private final Vec3d spread;
-//    private final Vec3d offset;
+//    private final Vec3 spread;
+//    private final Vec3 offset;
 //
 //    private final int frequency;
 //    private final int count;
@@ -72,7 +72,7 @@
 //    private final boolean visibleWhileInvisible;
 //    private final boolean force;
 //
-//    public ParticlePowerType(Optional<BiEntityCondition> biEntityCondition, ParticleEffect particleEffect, Vec3d offset, Vec3d spread, int frequency, int count, float speed, boolean visibleInFirstPerson, boolean visibleWhileInvisible, boolean force, Optional<EntityCondition> condition) {
+//    public ParticlePowerType(Optional<BiEntityCondition> biEntityCondition, ParticleEffect particleEffect, Vec3 offset, Vec3 spread, int frequency, int count, float speed, boolean visibleInFirstPerson, boolean visibleWhileInvisible, boolean force, Optional<EntityCondition> condition) {
 //        super(condition);
 //        this.biEntityCondition = biEntityCondition;
 //        this.particleEffect = particleEffect;
@@ -104,7 +104,7 @@
 //        return particleEffect;
 //    }
 //
-//    public Vec3d getSpread() {
+//    public Vec3 getSpread() {
 //        return spread;
 //    }
 //
@@ -112,7 +112,7 @@
 //        return frequency;
 //    }
 //
-//    public Vec3d getOffset() {
+//    public Vec3 getOffset() {
 //        return offset;
 //    }
 //

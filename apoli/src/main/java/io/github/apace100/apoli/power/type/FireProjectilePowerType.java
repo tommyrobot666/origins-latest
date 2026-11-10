@@ -15,14 +15,14 @@
 //import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.entity.projectile.ExplosiveProjectileEntity;
 //import net.minecraft.entity.projectile.ProjectileEntity;
-//import net.minecraft.nbt.NbtCompound;
-//import net.minecraft.nbt.NbtElement;
+//import net.minecraft.nbt.CompoundTag;
+//import net.minecraft.nbt.Tag;
 //import net.minecraft.nbt.NbtLong;
-//import net.minecraft.server.world.ServerWorld;
+//import net.minecraft.server.level.ServerLevel;
 //import net.minecraft.sound.SoundCategory;
 //import net.minecraft.sound.SoundEvent;
 //import net.minecraft.util.math.MathHelper;
-//import net.minecraft.util.math.Vec3d;
+//import net.minecraft.util.math.Vec3;
 //import net.minecraft.util.math.random.Random;
 //import org.jetbrains.annotations.NotNull;
 //
@@ -37,7 +37,7 @@
 //            .add("projectile_action", EntityAction.DATA_TYPE.optional(), Optional.empty())
 //            .add("shooter_action", EntityAction.DATA_TYPE.optional(), Optional.empty())
 //            .add("entity_type", SerializableDataTypes.ENTITY_TYPE)
-//            .add("tag", SerializableDataTypes.NBT_COMPOUND, new NbtCompound())
+//            .add("tag", SerializableDataTypes.NBT_COMPOUND, new CompoundTag())
 //            .add("sound", SerializableDataTypes.SOUND_EVENT.optional(), Optional.empty())
 //            .add("key", ApoliDataTypes.BACKWARDS_COMPATIBLE_KEY, KeyMappingReference.NONE)
 //            .add("hud_render", HudRender.DATA_TYPE, HudRender.DONT_RENDER)
@@ -83,7 +83,7 @@
 //    private final Optional<EntityAction> shooterAction;
 //
 //    private final EntityType<?> entityType;
-//    private final NbtCompound tag;
+//    private final CompoundTag tag;
 //
 //    private final Optional<SoundEvent> soundEvent;
 //
@@ -98,7 +98,7 @@
 //    private boolean finishedStartDelay;
 //    private int shotProjectiles;
 //
-//    public FireProjectilePowerType(Optional<EntityAction> projectileAction, Optional<EntityAction> shooterAction, EntityType<?> entityType, NbtCompound tag, Optional<SoundEvent> soundEvent, KeyMappingReference key, HudRender hudRender, int cooldownDuration, int projectileCount, int interval, int startDelay, float speed, float divergence, Optional<EntityCondition> condition) {
+//    public FireProjectilePowerType(Optional<EntityAction> projectileAction, Optional<EntityAction> shooterAction, EntityType<?> entityType, CompoundTag tag, Optional<SoundEvent> soundEvent, KeyMappingReference key, HudRender hudRender, int cooldownDuration, int projectileCount, int interval, int startDelay, float speed, float divergence, Optional<EntityCondition> condition) {
 //        super(hudRender, cooldownDuration, key, condition);
 //        this.projectileAction = projectileAction;
 //        this.shooterAction = shooterAction;
@@ -127,9 +127,9 @@
 //    }
 //
 //    @Override
-//    public NbtElement toTag() {
+//    public Tag toTag() {
 //
-//        NbtCompound nbt = new NbtCompound();
+//        CompoundTag nbt = new CompoundTag();
 //
 //        nbt.putLong("LastUseTime", lastUseTime);
 //        nbt.putInt("ShotProjectiles", shotProjectiles);
@@ -141,13 +141,13 @@
 //    }
 //
 //    @Override
-//    public void fromTag(NbtElement tag) {
+//    public void fromTag(Tag tag) {
 //
 //        if (tag instanceof NbtLong nbtLong) {
 //            this.lastUseTime = nbtLong.longValue();
 //        }
 //
-//        else if (tag instanceof NbtCompound nbtCompound) {
+//        else if (tag instanceof CompoundTag nbtCompound) {
 //            this.lastUseTime = nbtCompound.getLong("LastUseTime");
 //            this.shotProjectiles = nbtCompound.getInt("ShotProjectiles");
 //            this.finishedStartDelay = nbtCompound.getBoolean("FinishedStartDelay");
@@ -173,9 +173,9 @@
 //
 //                if (shotProjectiles <= projectileCount) {
 //
-//					soundEvent.ifPresent(event -> holder.getWorld().playSound(null, holder.getX(), holder.getY(), holder.getZ(), event, SoundCategory.NEUTRAL, 0.5F, 0.4F / (holder.getRandom().nextFloat() * 0.4F + 0.8F)));
+//					soundEvent.ifPresent(event -> holder.level().playSound(null, holder.getX(), holder.getY(), holder.getZ(), event, SoundCategory.NEUTRAL, 0.5F, 0.4F / (holder.getRandom().nextFloat() * 0.4F + 0.8F)));
 //
-//                    if (!holder.getWorld().isClient()) {
+//                    if (!holder.level().isClient()) {
 //                        fireProjectile();
 //                    }
 //
@@ -191,9 +191,9 @@
 //
 //            else if(interval == 0 && finishedStartDelay) {
 //
-//				soundEvent.ifPresent(event -> holder.getWorld().playSound(null, holder.getX(), holder.getY(), holder.getZ(), event, SoundCategory.NEUTRAL, 0.5F, 0.4F / (holder.getRandom().nextFloat() * 0.4F + 0.8F)));
+//				soundEvent.ifPresent(event -> holder.level().playSound(null, holder.getX(), holder.getY(), holder.getZ(), event, SoundCategory.NEUTRAL, 0.5F, 0.4F / (holder.getRandom().nextFloat() * 0.4F + 0.8F)));
 //
-//                if (!holder.getWorld().isClient()) {
+//                if (!holder.level().isClient()) {
 //
 //                    for(; shotProjectiles < projectileCount; shotProjectiles++) {
 //                        fireProjectile();
@@ -213,9 +213,9 @@
 //
 //                if (shotProjectiles <= projectileCount) {
 //
-//					soundEvent.ifPresent(event -> holder.getWorld().playSound(null, holder.getX(), holder.getY(), holder.getZ(), event, SoundCategory.NEUTRAL, 0.5F, 0.4F / (holder.getRandom().nextFloat() * 0.4F + 0.8F)));
+//					soundEvent.ifPresent(event -> holder.level().playSound(null, holder.getX(), holder.getY(), holder.getZ(), event, SoundCategory.NEUTRAL, 0.5F, 0.4F / (holder.getRandom().nextFloat() * 0.4F + 0.8F)));
 //
-//                    if (!holder.getWorld().isClient) {
+//                    if (!holder.level().isClient) {
 //                        fireProjectile();
 //                    }
 //
@@ -236,14 +236,14 @@
 //    private void fireProjectile() {
 //
 //        LivingEntity holder = getHolder();
-//        if (!(holder.getWorld() instanceof ServerWorld serverWorld)) {
+//        if (!(holder.level() instanceof ServerLevel serverWorld)) {
 //            return;
 //        }
 //
 //        Random random = serverWorld.getRandom();
 //
-//        Vec3d velocity = holder.getVelocity();
-//        Vec3d verticalOffset = holder.getPos().add(0, holder.getEyeHeight(holder.getPose()), 0);
+//        Vec3 velocity = holder.getVelocity();
+//        Vec3 verticalOffset = holder.getPos().add(0, holder.getEyeHeight(holder.getPose()), 0);
 //
 //        float pitch = holder.getPitch();
 //        float yaw = holder.getYaw();
@@ -276,7 +276,7 @@
 //            float m = -MathHelper.sin(pitch * j);
 //            float n =  MathHelper.cos(yaw * j) * MathHelper.cos(pitch * j);
 //
-//            Vec3d velocityToApply = new Vec3d(l, m, n)
+//            Vec3 velocityToApply = new Vec3(l, m, n)
 //                .normalize()
 //                .add(random.nextGaussian() * k * divergence, random.nextGaussian() * k * divergence, random.nextGaussian() * k * divergence)
 //                .multiply(speed);
@@ -288,7 +288,7 @@
 //
 //        if (!tag.isEmpty()) {
 //
-//            NbtCompound mergedTag = entityToSpawn.writeNbt(new NbtCompound());
+//            CompoundTag mergedTag = entityToSpawn.writeNbt(new CompoundTag());
 //            mergedTag.copyFrom(tag);
 //
 //            entityToSpawn.readNbt(mergedTag);

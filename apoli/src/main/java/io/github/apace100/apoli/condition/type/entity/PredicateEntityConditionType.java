@@ -14,8 +14,8 @@
 //import net.minecraft.loot.context.LootContextParameters;
 //import net.minecraft.loot.context.LootContextTypes;
 //import net.minecraft.registry.RegistryKey;
-//import net.minecraft.registry.RegistryKeys;
-//import net.minecraft.server.world.ServerWorld;
+//import net.minecraft.core.registries.Registries;
+//import net.minecraft.server.level.ServerLevel;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.Optional;
@@ -42,13 +42,13 @@
 //    public boolean test(EntityConditionContext context) {
 //
 //        Entity entity = context.entity();
-//        if (!(entity.getWorld() instanceof ServerWorld serverWorld)) {
+//        if (!(entity.level() instanceof ServerLevel serverWorld)) {
 //            return false;
 //        }
 //
 //        LootCondition lootCondition = serverWorld.getServer().getReloadableRegistries()
 //            .getRegistryManager()
-//            .get(RegistryKeys.PREDICATE)
+//            .get(Registries.PREDICATE)
 //            .getOrThrow(predicate);
 //        LootContextParameterSet lootContextParameterSet = new LootContextParameterSet.Builder(serverWorld)
 //            .add(LootContextParameters.ORIGIN, entity.getPos())

@@ -8,14 +8,14 @@
 //import net.minecraft.world.entity.EntityType;
 //import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.entity.damage.DamageSource;
-//import net.minecraft.world.World;
+//import net.minecraft.world.Level;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.injection.At;
 //
 //@Mixin(LivingEntity.class)
 //public abstract class PreventDeathPowerTypeMixin extends Entity {
 //
-//	PreventDeathPowerTypeMixin(EntityType<?> type, World world) {
+//	PreventDeathPowerTypeMixin(EntityType<?> type, Level world) {
 //		super(type, world);
 //	}
 //

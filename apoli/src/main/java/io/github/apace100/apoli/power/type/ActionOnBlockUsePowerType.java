@@ -83,12 +83,12 @@
 //            && usePhases.contains(usePhase)
 //            && directions.contains(hitResult.getSide())
 //            && super.shouldExecute(hand, heldStack)
-//            && blockCondition.map(condition -> condition.test(getHolder().getWorld(), hitResult.getBlockPos())).orElse(true);
+//            && blockCondition.map(condition -> condition.test(getHolder().level(), hitResult.getBlockPos())).orElse(true);
 //    }
 //
 //    public ActionResult executeAction(BlockHitResult hitResult, Hand hand) {
 //
-//        blockAction.ifPresent(action -> action.execute(getHolder().getWorld(), hitResult.getBlockPos(), Optional.of(hitResult.getSide())));
+//        blockAction.ifPresent(action -> action.execute(getHolder().level(), hitResult.getBlockPos(), Optional.of(hitResult.getSide())));
 //        entityAction.ifPresent(action -> action.execute(getHolder()));
 //
 //        if (getHolder() instanceof Player player) {

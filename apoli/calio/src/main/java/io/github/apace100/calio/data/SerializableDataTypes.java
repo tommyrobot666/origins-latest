@@ -625,7 +625,7 @@ public final class SerializableDataTypes {
 
 				else if (ops instanceof RegistryOps<T> registryOps) {
 
-					RegistryOps<NbtElement> nbtOps = registryOps.withDelegate(NbtOps.INSTANCE);
+					RegistryOps<Tag> nbtOps = registryOps.withDelegate(NbtOps.INSTANCE);
 
 					return prefix.add("params", ParticleTypes.TYPE_CODEC.encodeStart(nbtOps, input)
 						.flatMap(nbtElement -> nbtElement instanceof CompoundTag nbtCompound ? DataResult.success(nbtCompound) : DataResult.error(() -> "Not a compound tag: " + nbtElement))

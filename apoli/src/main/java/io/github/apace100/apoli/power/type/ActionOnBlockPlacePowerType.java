@@ -17,7 +17,7 @@
 //import net.minecraft.util.Hand;
 //import net.minecraft.util.math.BlockPos;
 //import net.minecraft.util.math.Direction;
-//import net.minecraft.world.World;
+//import net.minecraft.world.Level;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.EnumSet;
@@ -84,14 +84,14 @@
 //    public boolean shouldExecute(ItemStack heldStack, Hand hand, BlockPos toPos, BlockPos onPos, Direction direction) {
 //        return super.shouldExecute(hand, heldStack)
 //            && directions.contains(direction)
-//            && placeOnCondition.map(condition -> condition.test(getHolder().getWorld(), onPos)).orElse(true)
-//            && placeToCondition.map(condition -> condition.test(getHolder().getWorld(), toPos)).orElse(true);
+//            && placeOnCondition.map(condition -> condition.test(getHolder().level(), onPos)).orElse(true)
+//            && placeToCondition.map(condition -> condition.test(getHolder().level(), toPos)).orElse(true);
 //    }
 //
 //    public void executeOtherActions(BlockPos toPos, BlockPos onPos, Direction direction) {
 //
 //        Entity holder = getHolder();
-//        World world = holder.getWorld();
+//        Level world = holder.level();
 //
 //        Optional<Direction> optDirection = Optional.of(direction);
 //

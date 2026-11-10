@@ -4,8 +4,8 @@
 //import com.llamalad7.mixinextras.sugar.Local;
 //import io.github.apace100.apoli.component.PowerHolderComponent;
 //import io.github.apace100.apoli.power.type.ModifyInsomniaTicksPowerType;
-//import net.minecraft.server.network.ServerPlayer;
-//import net.minecraft.server.world.ServerWorld;
+//import net.minecraft.server.level.ServerPlayer;
+//import net.minecraft.server.level.ServerLevel;
 //import net.minecraft.world.spawner.PhantomSpawner;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.injection.At;
@@ -14,7 +14,7 @@
 //public class PhantomSpawnerMixin {
 //
 //    @ModifyExpressionValue(method = "spawn", at = @At(value = "INVOKE", target = "Lnet/minecraft/stat/ServerStatHandler;getStat(Lnet/minecraft/stat/Stat;)I"))
-//    private int apoli$modifyEffectiveTimeSinceRestValue(int original, ServerWorld world, boolean spawnMonsters, boolean spawnAnimals, @Local ServerPlayer player) {
+//    private int apoli$modifyEffectiveTimeSinceRestValue(int original, ServerLevel world, boolean spawnMonsters, boolean spawnAnimals, @Local ServerPlayer player) {
 //        return (int) PowerHolderComponent.modify(player, ModifyInsomniaTicksPowerType.class, original);
 //    }
 //

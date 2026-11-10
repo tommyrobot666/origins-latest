@@ -90,7 +90,7 @@
 //            StackReference stackReference = holder.getStackReference(slot);
 //            ItemStack stack = stackReference.get();
 //
-//            if (!stack.isEmpty() && itemCondition.map(condition -> condition.test(getHolder().getWorld(), stack)).orElse(true)) {
+//            if (!stack.isEmpty() && itemCondition.map(condition -> condition.test(getHolder().level(), stack)).orElse(true)) {
 //                cachedStacks.put(slot, stack);
 //                stackReference.set(ItemStack.EMPTY);
 //            }

@@ -41,7 +41,7 @@
 //            ItemStack stackInHand = livingEntity.getStackInHand(activeHand);
 //
 //            return itemCondition
-//                .map(condition -> condition.test(livingEntity.getWorld(), stackInHand))
+//                .map(condition -> condition.test(livingEntity.level(), stackInHand))
 //                .orElse(true);
 //
 //        }

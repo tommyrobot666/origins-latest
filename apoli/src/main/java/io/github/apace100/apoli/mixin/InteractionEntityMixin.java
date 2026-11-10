@@ -11,8 +11,8 @@
 //import net.minecraft.world.entity.EntityType;
 //import net.minecraft.entity.damage.DamageSource;
 //import net.minecraft.entity.decoration.InteractionEntity;
-//import net.minecraft.server.network.ServerPlayer;
-//import net.minecraft.world.World;
+//import net.minecraft.server.level.ServerPlayer;
+//import net.minecraft.world.Level;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.injection.At;
 //import org.spongepowered.asm.mixin.injection.Inject;
@@ -21,7 +21,7 @@
 //@Mixin(InteractionEntity.class)
 //public abstract class InteractionEntityMixin extends Entity {
 //
-//    private InteractionEntityMixin(EntityType<?> type, World world) {
+//    private InteractionEntityMixin(EntityType<?> type, Level world) {
 //        super(type, world);
 //    }
 //

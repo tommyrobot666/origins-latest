@@ -10,7 +10,7 @@
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.particle.ParticleTypes;
-//import net.minecraft.server.world.ServerWorld;
+//import net.minecraft.server.level.ServerLevel;
 //import net.minecraft.sound.SoundCategory;
 //import net.minecraft.sound.SoundEvent;
 //import org.jetbrains.annotations.NotNull;
@@ -61,7 +61,7 @@
 //	public void onUse() {
 //
 //		LivingEntity holder = getHolder();
-//		if (!(holder.getWorld() instanceof ServerWorld serverWorld)) {
+//		if (!(holder.level() instanceof ServerLevel serverWorld)) {
 //			return;
 //		}
 //

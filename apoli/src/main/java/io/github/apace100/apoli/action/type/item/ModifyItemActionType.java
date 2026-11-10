@@ -16,8 +16,8 @@
 //import net.minecraft.loot.context.LootContextParameters;
 //import net.minecraft.loot.function.LootFunction;
 //import net.minecraft.registry.RegistryKey;
-//import net.minecraft.registry.RegistryKeys;
-//import net.minecraft.server.world.ServerWorld;
+//import net.minecraft.core.registries.Registries;
+//import net.minecraft.server.level.ServerLevel;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.Optional;
@@ -43,13 +43,13 @@
 //    @Override
 //    public void accept(ItemActionContext context) {
 //
-//        ServerWorld world = context.world();
+//        ServerLevel world = context.world();
 //        StackReference stackReference = context.stackReference();
 //
 //        ItemStack oldStack = stackReference.get();
 //        LootFunction itemModifier = world.getServer().getReloadableRegistries()
 //            .getRegistryManager()
-//            .get(RegistryKeys.ITEM_MODIFIER)
+//            .get(Registries.ITEM_MODIFIER)
 //            .getOrThrow(modifier);
 //
 //        LootContextParameterSet lootContextParameterSet = new LootContextParameterSet.Builder(world)

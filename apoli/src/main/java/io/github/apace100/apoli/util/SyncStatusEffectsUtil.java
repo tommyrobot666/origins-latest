@@ -5,11 +5,11 @@
 //import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 //import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.entity.effect.StatusEffectInstance;
-//import net.minecraft.nbt.NbtCompound;
+//import net.minecraft.nbt.CompoundTag;
 //import net.minecraft.network.PacketByteBuf;
 //import net.minecraft.network.codec.StreamCodec;
 //import net.minecraft.network.codec.ByteBufCodecs;
-//import net.minecraft.server.network.ServerPlayer;
+//import net.minecraft.server.level.ServerPlayer;
 //
 //import java.util.function.BiConsumer;
 //
@@ -17,13 +17,13 @@
 //
 //    public static void sendStatusEffectUpdatePacket(LivingEntity entity, UpdateType updateType, StatusEffectInstance instance) {
 //
-//        if (entity.getWorld().isClient) {
+//        if (entity.level().isClientSide()) {
 //            return;
 //        }
 //
-//        NbtCompound statusEffectNbt = new NbtCompound();
+//        CompoundTag statusEffectNbt = new CompoundTag();
 //        if (instance != null && updateType != UpdateType.CLEAR) {
-//            statusEffectNbt = (NbtCompound) instance.writeNbt();
+//            statusEffectNbt = (CompoundTag) instance.writeNbt();
 //        }
 //
 //        SyncStatusEffectS2CPacket syncStatusEffectPacket = new SyncStatusEffectS2CPacket(entity.getId(), statusEffectNbt, updateType);

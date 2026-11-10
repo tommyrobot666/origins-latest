@@ -8,7 +8,7 @@
 //import io.github.apace100.apoli.data.TypedDataObjectFactory;
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.ladysnake.pal.PlayerAbility;
-//import net.minecraft.server.network.ServerPlayer;
+//import net.minecraft.server.level.ServerPlayer;
 //import org.jetbrains.annotations.NotNull;
 //
 //public class AbilityEntityConditionType extends EntityConditionType {

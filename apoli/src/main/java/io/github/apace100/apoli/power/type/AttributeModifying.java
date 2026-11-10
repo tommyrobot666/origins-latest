@@ -17,7 +17,7 @@
 //
 //	default void processModifiers(LivingEntity entity, BiConsumer<EntityAttributeModifier, EntityAttributeInstance> processor) {
 //
-//		if (entity.getWorld().isClient()) {
+//		if (entity.level().isClientSide()()) {
 //			return;
 //		}
 //

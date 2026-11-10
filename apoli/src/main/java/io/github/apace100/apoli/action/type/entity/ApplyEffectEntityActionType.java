@@ -37,7 +37,7 @@
 //    @Override
 //    public void accept(EntityActionContext context) {
 //
-//        if (context.entity() instanceof LivingEntity livingEntity && !livingEntity.getWorld().isClient()) {
+//        if (context.entity() instanceof LivingEntity livingEntity && !livingEntity.level().isClient()) {
 //            effects.forEach(livingEntity::addStatusEffect);
 //        }
 //

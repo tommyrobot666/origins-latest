@@ -73,7 +73,7 @@
 //
 //        for (BlockPos pos : shape.getBlockPositions(entity.getBlockPos(), radius)) {
 //
-//            if (blockCondition.test(entity.getWorld(), pos)) {
+//            if (blockCondition.test(entity.level(), pos)) {
 //                ++matches;
 //            }
 //

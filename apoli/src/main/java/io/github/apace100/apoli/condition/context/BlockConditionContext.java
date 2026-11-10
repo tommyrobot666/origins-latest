@@ -5,27 +5,27 @@
 //import net.minecraft.block.BlockState;
 //import net.minecraft.block.entity.BlockEntity;
 //import net.minecraft.util.math.BlockPos;
-//import net.minecraft.world.World;
+//import net.minecraft.world.Level;
 //import org.jetbrains.annotations.Nullable;
 //
 //import java.util.Optional;
 //
 //public record BlockConditionContext(SavedBlockPosition savedBlockPosition) implements ConditionContext {
 //
-//	public BlockConditionContext(World world, BlockPos pos, BlockState blockState, Optional<BlockEntity> blockEntity) {
+//	public BlockConditionContext(Level world, BlockPos pos, BlockState blockState, Optional<BlockEntity> blockEntity) {
 //		this(world, pos, blockState, blockEntity.orElse(null));
 //	}
 //
-//	public BlockConditionContext(World world, BlockPos pos, BlockState blockState, @Nullable BlockEntity blockEntity) {
+//	public BlockConditionContext(Level world, BlockPos pos, BlockState blockState, @Nullable BlockEntity blockEntity) {
 //		this(new SavedBlockPosition(world, pos, blockState, blockEntity));
 //	}
 //
-//	public BlockConditionContext(World world, BlockPos pos) {
+//	public BlockConditionContext(Level world, BlockPos pos) {
 //		this(world, pos, world.getBlockState(pos), world.getBlockEntity(pos));
 //	}
 //
-//	public World world() {
-//		return (World) savedBlockPosition().getWorld();
+//	public Level world() {
+//		return (Level) savedBlockPosition().level();
 //	}
 //
 //	public BlockPos pos() {

@@ -7,7 +7,7 @@
 //import io.github.apace100.apoli.util.modifier.Modifier;
 //import io.github.apace100.calio.data.SerializableData;
 //import net.minecraft.util.math.BlockPos;
-//import net.minecraft.world.World;
+//import net.minecraft.world.Level;
 //import net.minecraft.world.WorldView;
 //import org.jetbrains.annotations.NotNull;
 //
@@ -41,7 +41,7 @@
 //    }
 //
 //    public boolean doesApply(WorldView worldView, BlockPos pos) {
-//        return worldView instanceof World world && blockCondition
+//        return worldView instanceof Level world && blockCondition
 //            .map(condition -> condition.test(world, pos))
 //            .orElse(true);
 //    }

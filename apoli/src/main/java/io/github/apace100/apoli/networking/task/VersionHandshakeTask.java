@@ -3,7 +3,7 @@
 //import io.github.apace100.apoli.networking.packet.VersionHandshakePacket;
 //import net.fabricmc.fabric.api.networking.v1.ServerConfigurationNetworking;
 //import net.minecraft.network.packet.Packet;
-//import net.minecraft.server.network.ServerPlayerConfigurationTask;
+//import net.minecraft.server.level.ServerPlayerConfigurationTask;
 //
 //import java.util.function.Consumer;
 //

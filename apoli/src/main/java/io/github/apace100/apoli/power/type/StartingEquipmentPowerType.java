@@ -52,14 +52,14 @@
 //
 //    @Override
 //    public void onGained() {
-//        if (!getHolder().getWorld().isClient()) {
+//        if (!getHolder().level().isClient()) {
 //            giveStacks();
 //        }
 //    }
 //
 //    @Override
 //    public void onRespawn() {
-//        if (!getHolder().getWorld().isClient() && recurrent) {
+//        if (!getHolder().level().isClient() && recurrent) {
 //            giveStacks();
 //        }
 //    }

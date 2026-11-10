@@ -2,9 +2,9 @@
 //
 //import com.llamalad7.mixinextras.sugar.Local;
 //import io.github.apace100.apoli.power.type.ModifyTypeTagPowerType;
-//import net.minecraft.registry.tag.TagEntry;
-//import net.minecraft.registry.tag.TagGroupLoader;
-//import net.minecraft.resource.DependencyTracker;
+//import net.minecraft.tags.TagEntry;
+//import net.minecraft.tags.TagLoader;
+//import net.minecraft.util.DependencySorter;
 //import net.minecraft.resources.Identifier;
 //import org.spongepowered.asm.mixin.Final;
 //import org.spongepowered.asm.mixin.Mixin;
@@ -17,15 +17,15 @@
 //import java.util.List;
 //import java.util.Map;
 //
-//@Mixin(TagGroupLoader.class)
-//public abstract class TagGroupLoaderMixin<T> {
+//@Mixin(TagLoader.class)
+//public abstract class TagLoaderMixin<T> {
 //
 //    @Shadow
 //    @Final
 //    private String dataType;
 //
 //    @Inject(method = "buildGroup", at = @At("RETURN"))
-//    private void apoli$rebuildTagsInTags(Map<Identifier, List<TagGroupLoader.TrackedEntry>> tags, CallbackInfoReturnable<Map<Identifier, Collection<T>>> cir, @Local TagEntry.ValueGetter<T> valueGetter, @Local DependencyTracker<Identifier, TagGroupLoader.TagDependencies> dependencyTracker) {
+//    private void apoli$rebuildTagsInTags(Map<Identifier, List<TagLoader.TrackedEntry>> tags, CallbackInfoReturnable<Map<Identifier, Collection<T>>> cir, @Local TagEntry.ValueGetter<T> valueGetter, @Local DependencySorter<Identifier, TagLoader.TagDependencies> dependencyTracker) {
 //        ModifyTypeTagPowerType.setTagCache(dataType, valueGetter, dependencyTracker);
 //    }
 //

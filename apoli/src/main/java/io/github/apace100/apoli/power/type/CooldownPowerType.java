@@ -8,9 +8,9 @@
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.world.entity.LivingEntity;
-//import net.minecraft.nbt.NbtElement;
+//import net.minecraft.nbt.Tag;
 //import net.minecraft.nbt.NbtLong;
-//import net.minecraft.world.World;
+//import net.minecraft.world.Level;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.Optional;
@@ -56,12 +56,12 @@
 //    }
 //
 //    @Override
-//    public NbtElement toTag() {
+//    public Tag toTag() {
 //        return NbtLong.of(lastUseTime);
 //    }
 //
 //    @Override
-//    public void fromTag(NbtElement tag) {
+//    public void fromTag(Tag tag) {
 //        lastUseTime = ((NbtLong)tag).longValue();
 //    }
 //
@@ -82,13 +82,13 @@
 //
 //    public boolean canUse() {
 //        return isInitialized()
-//            && getHolder().getWorld().getTime() >= lastUseTime + cooldown;
+//            && getHolder().level().getTime() >= lastUseTime + cooldown;
 //    }
 //
 //    public void use() {
 //
 //        LivingEntity holder = getHolder();
-//        World world = holder.getWorld();
+//        Level world = holder.level();
 //
 //        if (world.isClient()) {
 //            return;
@@ -100,12 +100,12 @@
 //    }
 //
 //    public float getProgress() {
-//        float time = getHolder().getWorld().getTime() - lastUseTime;
+//        float time = getHolder().level().getTime() - lastUseTime;
 //        return Math.min(1F, Math.max(time / (float) cooldown, 0F));
 //    }
 //
 //    public int getRemainingTicks() {
-//        return (int) Math.max(0, cooldown - (getHolder().getWorld().getTime() - lastUseTime));
+//        return (int) Math.max(0, cooldown - (getHolder().level().getTime() - lastUseTime));
 //    }
 //
 //    public int getCooldown() {
@@ -113,12 +113,12 @@
 //    }
 //
 //    public void modify(int changeInTicks) {
-//        long currentTime = getHolder().getWorld().getTime();
+//        long currentTime = getHolder().level().getTime();
 //        this.lastUseTime = Math.min(lastUseTime + changeInTicks, currentTime);
 //    }
 //
 //    public void setCooldown(int cooldownInTicks) {
-//        long currentTime = getHolder().getWorld().getTime();
+//        long currentTime = getHolder().level().getTime();
 //        this.lastUseTime = currentTime - Math.min(cooldownInTicks, cooldown);
 //    }
 //

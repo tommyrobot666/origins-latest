@@ -21,7 +21,7 @@
 //import net.minecraft.state.property.Property;
 //import net.minecraft.util.StringIdentifiable;
 //import net.minecraft.util.math.BlockPos;
-//import net.minecraft.world.World;
+//import net.minecraft.world.Level;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.Optional;
@@ -76,7 +76,7 @@
 //    @Override
 //    public void accept(BlockActionContext context) {
 //
-//        World world = context.world();
+//        Level world = context.world();
 //        BlockPos pos = context.pos();
 //
 //        BlockState blockState = world.getBlockState(pos);
@@ -126,7 +126,7 @@
 //        return BlockActionTypes.MODIFY_BLOCK_STATE;
 //    }
 //
-//    private <T extends Enum<T> & StringIdentifiable> void setEnumProperty(EnumProperty<T> property, String name, World world, BlockPos pos, BlockState originalState) {
+//    private <T extends Enum<T> & StringIdentifiable> void setEnumProperty(EnumProperty<T> property, String name, Level world, BlockPos pos, BlockState originalState) {
 //        property.parse(name).ifPresentOrElse(
 //            propValue ->
 //                world.setBlockState(pos, originalState.with(property, propValue)),

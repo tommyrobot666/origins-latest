@@ -10,7 +10,7 @@
 //import io.github.apace100.apoli.util.MiscUtil;
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
-//import net.minecraft.server.world.ServerWorld;
+//import net.minecraft.server.level.ServerLevel;
 //import net.minecraft.util.math.BlockPos;
 //import net.minecraft.world.explosion.Explosion;
 //import org.jetbrains.annotations.NotNull;
@@ -65,7 +65,7 @@
 //    @Override
 //    public void accept(BlockActionContext context) {
 //
-//        ServerWorld world = context.world();
+//        ServerLevel world = context.world();
 //        BlockPos pos = context.pos();
 //
 //        Predicate<BlockConditionContext> behaviorCondition = indestructibleCondition;

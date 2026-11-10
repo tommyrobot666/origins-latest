@@ -7,7 +7,7 @@
 //import io.github.apace100.apoli.util.MiscUtil;
 //import net.minecraft.world.entity.Entity;
 //import net.minecraft.util.math.BlockPos;
-//import net.minecraft.world.World;
+//import net.minecraft.world.Level;
 //import org.jetbrains.annotations.NotNull;
 //
 //public class ExposedToSkyEntityConditionType extends EntityConditionType {
@@ -16,7 +16,7 @@
 //    public boolean test(EntityConditionContext context) {
 //
 //        Entity entity = context.entity();
-//        World world = entity.getWorld();
+//        Level world = entity.level();
 //
 //        return world.isSkyVisible(BlockPos.ofFloored(MiscUtil.getPoseDependentEyePos(entity)))
 //            || world.isSkyVisible(entity.getBlockPos());

@@ -8,15 +8,15 @@
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataType;
 //import net.minecraft.entity.damage.DamageType;
-//import net.minecraft.registry.RegistryKeys;
-//import net.minecraft.registry.tag.TagKey;
+//import net.minecraft.core.registries.Registries;
+//import net.minecraft.tags.TagKey;
 //import org.jetbrains.annotations.NotNull;
 //
 //public class InTagDamageConditionType extends DamageConditionType {
 //
 //    public static final TypedDataObjectFactory<InTagDamageConditionType> DATA_FACTORY = TypedDataObjectFactory.simple(
 //        new SerializableData()
-//            .add("tag", SerializableDataType.tagKey(RegistryKeys.DAMAGE_TYPE)),
+//            .add("tag", SerializableDataType.tagKey(Registries.DAMAGE_TYPE)),
 //        data -> new InTagDamageConditionType(
 //            data.get("tag")
 //        ),

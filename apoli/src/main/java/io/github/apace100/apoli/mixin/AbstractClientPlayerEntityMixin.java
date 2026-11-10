@@ -9,7 +9,7 @@
 //import net.minecraft.client.network.AbstractClientPlayer;
 //import net.minecraft.world.entity.player.Player;
 //import net.minecraft.util.math.BlockPos;
-//import net.minecraft.world.World;
+//import net.minecraft.world.Level;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.injection.At;
 //
@@ -18,7 +18,7 @@
 //@Mixin(AbstractClientPlayer.class)
 //public abstract class AbstractClientPlayerMixin extends Player {
 //
-//    private AbstractClientPlayerMixin(World world, BlockPos pos, float yaw, GameProfile gameProfile) {
+//    private AbstractClientPlayerMixin(Level world, BlockPos pos, float yaw, GameProfile gameProfile) {
 //        super(world, pos, yaw, gameProfile);
 //    }
 //

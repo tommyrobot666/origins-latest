@@ -14,8 +14,8 @@
 //import net.minecraft.enchantment.Enchantment;
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.registry.RegistryKey;
-//import net.minecraft.registry.RegistryKeys;
-//import net.minecraft.world.World;
+//import net.minecraft.core.registries.Registries;
+//import net.minecraft.world.Level;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.Optional;
@@ -58,11 +58,11 @@
 //    public boolean test(ItemConditionContext context) {
 //
 //        ItemStack stack = context.stack();
-//        World world = context.world();
+//        Level world = context.world();
 //
 //        ItemEnchantmentsComponent enchantmentsComponent = ModifyEnchantmentLevelPowerType.getEnchantments(stack, useModifications);
 //        int levelOrEnchantments = enchantmentKey
-//            .map(key -> world.getRegistryManager().get(RegistryKeys.ENCHANTMENT).entryOf(key))
+//            .map(key -> world.getRegistryManager().get(Registries.ENCHANTMENT).entryOf(key))
 //            .map(enchantmentsComponent::getLevel)
 //            .orElseGet(enchantmentsComponent::getSize);
 //

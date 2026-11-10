@@ -6,7 +6,7 @@
 //import io.github.apace100.apoli.util.modifier.Modifier;
 //import io.github.apace100.apoli.util.modifier.ModifierUtil;
 //import net.minecraft.screen.GrindstoneScreenHandler;
-//import net.minecraft.world.World;
+//import net.minecraft.world.Level;
 //import org.spongepowered.asm.mixin.Final;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.Shadow;
@@ -22,8 +22,8 @@
 //    @Shadow
 //    GrindstoneScreenHandler field_16780;
 //
-//    @ModifyReturnValue(method = "getExperience(Lnet/minecraft/world/World;)I", at = @At("RETURN"))
-//    private int apoli$modifyExperience(int original, World world) {
+//    @ModifyReturnValue(method = "getExperience(Lnet/minecraft/world/Level;)I", at = @At("RETURN"))
+//    private int apoli$modifyExperience(int original, Level world) {
 //
 //        if (!(field_16780 instanceof PowerModifiedGrindstone powerModifiedGrindstone)) {
 //            return original;

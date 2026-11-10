@@ -11,14 +11,14 @@
 //import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.core.Registry;
 //import net.minecraft.registry.RegistryKey;
-//import net.minecraft.registry.RegistryKeys;
+//import net.minecraft.core.registries.Registries;
 //import net.minecraft.registry.entry.RegistryEntry;
-//import net.minecraft.registry.entry.RegistryEntryList;
-//import net.minecraft.registry.tag.TagKey;
+//import net.minecraft.core.HolderSet;
+//import net.minecraft.tags.TagKey;
 //import net.minecraft.server.MinecraftServer;
-//import net.minecraft.server.network.ServerPlayer;
+//import net.minecraft.server.level.ServerPlayer;
 //import net.minecraft.server.world.ChunkTicketType;
-//import net.minecraft.server.world.ServerWorld;
+//import net.minecraft.server.level.ServerLevel;
 //import net.minecraft.sound.SoundEvent;
 //import net.minecraft.network.chat.Component;
 //import net.minecraft.util.Formatting;
@@ -27,8 +27,8 @@
 //import net.minecraft.util.math.BlockPos;
 //import net.minecraft.util.math.ChunkPos;
 //import net.minecraft.util.math.ChunkSectionPos;
-//import net.minecraft.util.math.Vec3d;
-//import net.minecraft.world.World;
+//import net.minecraft.util.math.Vec3;
+//import net.minecraft.world.Level;
 //import net.minecraft.world.biome.Biome;
 //import net.minecraft.world.gen.structure.Structure;
 //import org.apache.commons.lang3.function.TriFunction;
@@ -44,10 +44,10 @@
 //    public static final TypedDataObjectFactory<ModifyPlayerSpawnPowerType> DATA_FACTORY = createConditionedDataFactory(
 //        new SerializableData()
 //            .add("dimension", SerializableDataTypes.DIMENSION)
-//            .add("structure", SerializableDataType.registryKey(RegistryKeys.STRUCTURE).optional(), Optional.empty())
-//            .add("structure_tag", SerializableDataType.tagKey(RegistryKeys.STRUCTURE).optional(), Optional.empty())
-//            .add("biome", SerializableDataType.registryKey(RegistryKeys.BIOME).optional(), Optional.empty())
-//            .add("biome_tag", SerializableDataType.tagKey(RegistryKeys.BIOME).optional(), Optional.empty())
+//            .add("structure", SerializableDataType.registryKey(Registries.STRUCTURE).optional(), Optional.empty())
+//            .add("structure_tag", SerializableDataType.tagKey(Registries.STRUCTURE).optional(), Optional.empty())
+//            .add("biome", SerializableDataType.registryKey(Registries.BIOME).optional(), Optional.empty())
+//            .add("biome_tag", SerializableDataType.tagKey(Registries.BIOME).optional(), Optional.empty())
 //            .add("spawn_strategy", SerializableDataType.enumValue(SpawnStrategy.class), SpawnStrategy.DEFAULT)
 //            .add("respawn_sound", SerializableDataTypes.SOUND_EVENT.optional(), Optional.empty())
 //            .add("dimension_distance_multiplier", SerializableDataTypes.NON_NEGATIVE_FLOAT, 1.0F)
@@ -76,7 +76,7 @@
 //            .set("priority", powerType.getPriority())
 //    );
 //
-//    private final RegistryKey<World> dimensionKey;
+//    private final RegistryKey<Level> dimensionKey;
 //
 //    private final Optional<RegistryKey<Structure>> structureKey;
 //    private final Optional<TagKey<Structure>> structureTag;
@@ -90,7 +90,7 @@
 //    private final float dimensionDistanceMultiplier;
 //    private final int priority;
 //
-//    public ModifyPlayerSpawnPowerType(RegistryKey<World> dimensionKey, Optional<RegistryKey<Structure>> structureKey, Optional<TagKey<Structure>> structureTag, Optional<RegistryKey<Biome>> biomeKey, Optional<TagKey<Biome>> biomeTag, SpawnStrategy spawnStrategy, Optional<SoundEvent> respawnSound, float dimensionDistanceMultiplier, int priority, Optional<EntityCondition> condition) {
+//    public ModifyPlayerSpawnPowerType(RegistryKey<Level> dimensionKey, Optional<RegistryKey<Structure>> structureKey, Optional<TagKey<Structure>> structureTag, Optional<RegistryKey<Biome>> biomeKey, Optional<TagKey<Biome>> biomeTag, SpawnStrategy spawnStrategy, Optional<SoundEvent> respawnSound, float dimensionDistanceMultiplier, int priority, Optional<EntityCondition> condition) {
 //        super(condition);
 //        this.dimensionKey = dimensionKey;
 //        this.structureKey = structureKey;
@@ -111,7 +111,7 @@
 //    @Override
 //    public void onRespawn() {
 //        LivingEntity entity = getHolder();
-//		respawnSound.ifPresent(soundEvent -> entity.getWorld().playSound(null, entity.getX(), entity.getY(), entity.getX(), soundEvent, entity.getSoundCategory(), 1.0F, 1.0F));
+//		respawnSound.ifPresent(soundEvent -> entity.level().playSound(null, entity.getX(), entity.getY(), entity.getX(), soundEvent, entity.getSoundCategory(), 1.0F, 1.0F));
 //    }
 //
 //    @Override
@@ -122,7 +122,7 @@
 //        }
 //
 //        if (!serverPlayer.isDisconnected() && serverPlayer.getSpawnPointPosition() != null && !serverPlayer.isSpawnForced()) {
-//            serverPlayer.setSpawnPoint(World.OVERWORLD, null, 0F, false, false);
+//            serverPlayer.setSpawnPoint(Level.OVERWORLD, null, 0F, false, false);
 //        }
 //
 //    }
@@ -132,7 +132,7 @@
 //        return priority;
 //    }
 //
-//    public RegistryKey<World> getDimensionKey() {
+//    public RegistryKey<Level> getDimensionKey() {
 //        return dimensionKey;
 //    }
 //
@@ -142,18 +142,18 @@
 //            return;
 //        }
 //
-//        Pair<ServerWorld, BlockPos> spawnPoint = this.getSpawn().orElse(null);
+//        Pair<ServerLevel, BlockPos> spawnPoint = this.getSpawn().orElse(null);
 //        if (spawnPoint == null) {
 //            return;
 //        }
 //
-//        ServerWorld spawnPointDimension = spawnPoint.getLeft();
+//        ServerLevel spawnPointDimension = spawnPoint.getLeft();
 //        BlockPos spawnPointPosition = spawnPoint.getRight();
 //
 //        float pitch = serverPlayer.getPitch();
 //        float yaw = serverPlayer.getYaw();
 //
-//        Vec3d placement = Dismounting.findRespawnPos(serverPlayer.getType(), spawnPointDimension, spawnPointPosition, true);
+//        Vec3 placement = Dismounting.findRespawnPos(serverPlayer.getType(), spawnPointDimension, spawnPointPosition, true);
 //        if (placement == null) {
 //            Apoli.LOGGER.warn("Power \"{}\" could not find a suitable spawn point for player {}! Teleporting to the found location directly...", this.getPower().getId(), serverPlayer.getName().getString());
 //            serverPlayer.teleport(spawnPointDimension, spawnPointPosition.getX(), spawnPointPosition.getY(), spawnPointPosition.getZ(), pitch, yaw);
@@ -165,14 +165,14 @@
 //
 //    }
 //
-//    public Optional<Pair<ServerWorld, BlockPos>> getSpawn() {
+//    public Optional<Pair<ServerLevel, BlockPos>> getSpawn() {
 //
 //        if (!(getHolder() instanceof ServerPlayer serverPlayer)) {
 //            return Optional.empty();
 //        }
 //
 //        MinecraftServer server = serverPlayer.server;
-//        ServerWorld targetDimension = server.getWorld(dimensionKey);
+//        ServerLevel targetDimension = server.level(dimensionKey);
 //
 //        if (targetDimension == null) {
 //            return Optional.empty();
@@ -181,8 +181,8 @@
 //        int center = targetDimension.getLogicalHeight() / 2;
 //        int range = 64;
 //
-//        AtomicReference<Vec3d> newSpawnPointVec = new AtomicReference<>();
-//        BlockPos dimensionSpawnPos = serverPlayer.getServerWorld().getSpawnPos();
+//        AtomicReference<Vec3> newSpawnPointVec = new AtomicReference<>();
+//        BlockPos dimensionSpawnPos = serverPlayer.getServerLevel().getSpawnPos();
 //
 //        BlockPos.Mutable newSpawnPointPos = new BlockPos.Mutable();
 //        BlockPos.Mutable mutableDimensionSpawnPos = spawnStrategy.apply(dimensionSpawnPos, center, dimensionDistanceMultiplier).mutableCopy();
@@ -194,7 +194,7 @@
 //            return Optional.empty();
 //        }
 //
-//        Vec3d msp = newSpawnPointVec.get();
+//        Vec3 msp = newSpawnPointVec.get();
 //        newSpawnPointPos.set(msp.x, msp.y, msp.z);
 //
 //        targetDimension.getChunkManager().addTicket(ChunkTicketType.START, new ChunkPos(newSpawnPointPos), 11, Unit.INSTANCE);
@@ -202,7 +202,7 @@
 //
 //    }
 //
-//    private Optional<BlockPos> getBiomePos(ServerWorld targetDimension, BlockPos originPos) {
+//    private Optional<BlockPos> getBiomePos(ServerLevel targetDimension, BlockPos originPos) {
 //
 //        if (biomeKey.isEmpty() && biomeTag.isEmpty()) {
 //            return Optional.empty();
@@ -257,13 +257,13 @@
 //
 //    }
 //
-//    private Optional<Pair<BlockPos, Structure>> getStructurePos(ServerWorld dimension) {
+//    private Optional<Pair<BlockPos, Structure>> getStructurePos(ServerLevel dimension) {
 //
 //        if (structureKey.isEmpty() && structureTag.isEmpty()) {
 //            return Optional.empty();
 //        }
 //
-//        Registry<Structure> structureRegistry = dimension.getRegistryManager().get(RegistryKeys.STRUCTURE);
+//        Registry<Structure> structureRegistry = dimension.getRegistryManager().get(Registries.STRUCTURE);
 //        List<RegistryEntry<Structure>> structureEntries = new ArrayList<>();
 //
 //        structureKey
@@ -272,8 +272,8 @@
 //
 //        structureTag
 //            .flatMap(structureRegistry::getEntryList)
-//            .map(registryEntries -> (RegistryEntryList.ListBacked<Structure>) registryEntries)
-//            .map(RegistryEntryList.ListBacked::getEntries)
+//            .map(registryEntries -> (HolderSet.ListBacked<Structure>) registryEntries)
+//            .map(HolderSet.ListBacked::getEntries)
 //            .ifPresent(structureEntries::addAll);
 //
 //        BlockPos center = new BlockPos(0, 70, 0);
@@ -283,7 +283,7 @@
 //            radius = 6400;
 //        }
 //
-//        var result = Optional.ofNullable(dimension.getChunkManager().getChunkGenerator().locateStructure(dimension, RegistryEntryList.of(structureEntries), center, radius, false))
+//        var result = Optional.ofNullable(dimension.getChunkManager().getChunkGenerator().locateStructure(dimension, HolderSet.of(structureEntries), center, radius, false))
 //            .map(pair -> pair.mapSecond(RegistryEntry::value))
 //            .map(pair -> new Pair<>(pair.getFirst(), pair.getSecond()));
 //
@@ -310,7 +310,7 @@
 //
 //    }
 //
-//    private Optional<Vec3d> getSpawnPos(ServerWorld targetDimension, BlockPos originPos, int range) {
+//    private Optional<Vec3> getSpawnPos(ServerLevel targetDimension, BlockPos originPos, int range) {
 //
 //        if (structureKey.isEmpty() && structureTag.isEmpty()) {
 //            return this.getValidSpawn(targetDimension, originPos, range);
@@ -333,7 +333,7 @@
 //
 //    }
 //
-//    private Optional<Vec3d> getValidSpawn(ServerWorld targetDimension, BlockPos startPos, int range) {
+//    private Optional<Vec3> getValidSpawn(ServerLevel targetDimension, BlockPos startPos, int range) {
 //
 //        //  The 'direction' vector that determines the direction of the iteration
 //        int dx = 1;
@@ -346,7 +346,7 @@
 //        int center = startPos.getY();
 //
 //        //  The valid spawn position and (mutable) starting position
-//        Vec3d spawnPos;
+//        Vec3 spawnPos;
 //        BlockPos.Mutable mutableStartPos = startPos.mutableCopy();
 //
 //        //  The current position

@@ -71,7 +71,7 @@
 //
 //                    mutablePos.set(x, y, z);
 //
-//                    if (blockCondition.test(entity.getWorld(), mutablePos)) {
+//                    if (blockCondition.test(entity.level(), mutablePos)) {
 //                        ++matches;
 //                    }
 //

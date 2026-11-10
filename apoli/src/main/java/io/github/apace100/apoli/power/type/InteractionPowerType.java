@@ -8,7 +8,7 @@
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.world.entity.player.Player;
-//import net.minecraft.entity.player.PlayerInventory;
+//import net.minecraft.entity.player.Inventory;
 //import net.minecraft.inventory.StackReference;
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.util.ActionResult;
@@ -54,7 +54,7 @@
 //
 //    public boolean doesApplyToItem(ItemStack heldStack) {
 //        return heldItemCondition
-//            .map(condition -> condition.test(getHolder().getWorld(), heldStack))
+//            .map(condition -> condition.test(getHolder().level(), heldStack))
 //            .orElse(true);
 //    }
 //
@@ -65,7 +65,7 @@
 //    protected void performActorItemStuff(Player actor, Hand hand) {
 //
 //        StackReference heldStackReference = getHeldStackReference(actor, hand);
-//        heldItemAction.ifPresent(action -> action.execute(actor.getWorld(), heldStackReference));
+//        heldItemAction.ifPresent(action -> action.execute(actor.level(), heldStackReference));
 //
 //        ItemStack resultStack = this.resultStack.isPresent()
 //            ? this.resultStack.get().copy()
@@ -74,7 +74,7 @@
 //        StackReference resultStackReference = InventoryUtil.createStackReference(resultStack);
 //        boolean modified = this.resultStack.isPresent() || resultItemAction.isPresent();
 //
-//        resultItemAction.ifPresent(action -> action.execute(actor.getWorld(), resultStackReference));
+//        resultItemAction.ifPresent(action -> action.execute(actor.level(), resultStackReference));
 //
 //        if (modified) {
 //
@@ -92,10 +92,10 @@
 //
 //    protected static StackReference getHeldStackReference(Player player, Hand hand) {
 //
-//        PlayerInventory playerInventory = player.getInventory();
+//        Inventory playerInventory = player.getInventory();
 //        int selectedSlot = playerInventory.selectedSlot;
 //
-//        if (hand == Hand.MAIN_HAND && PlayerInventory.isValidHotbarIndex(selectedSlot)) {
+//        if (hand == Hand.MAIN_HAND && Inventory.isValidHotbarIndex(selectedSlot)) {
 //            return StackReference.of(playerInventory, selectedSlot);
 //        }
 //

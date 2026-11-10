@@ -138,7 +138,7 @@
 //            StackReference reference = InventoryUtil.getStackReference(source, slot);
 //            ItemStack stack = reference.get();
 //
-//            if (reference == StackReference.EMPTY || !itemCondition.map(condition -> condition.test(entity.getWorld(), stack)).orElse(true)) {
+//            if (reference == StackReference.EMPTY || !itemCondition.map(condition -> condition.test(entity.level(), stack)).orElse(true)) {
 //                continue;
 //            }
 //
@@ -151,7 +151,7 @@
 //            }
 //
 //            reference.set(replacementStack);
-//            itemAction.ifPresent(action -> action.execute(entity.getWorld(), reference));
+//            itemAction.ifPresent(action -> action.execute(entity.level(), reference));
 //
 //        }
 //

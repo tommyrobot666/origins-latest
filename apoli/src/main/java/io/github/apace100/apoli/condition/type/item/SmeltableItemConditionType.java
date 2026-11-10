@@ -7,7 +7,7 @@
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.recipe.RecipeType;
 //import net.minecraft.recipe.input.SingleStackRecipeInput;
-//import net.minecraft.world.World;
+//import net.minecraft.world.Level;
 //import org.jetbrains.annotations.NotNull;
 //
 //public class SmeltableItemConditionType extends ItemConditionType {
@@ -16,7 +16,7 @@
 //    public boolean test(ItemConditionContext context) {
 //
 //        ItemStack stack = context.stack();
-//        World world = context.world();
+//        Level world = context.world();
 //
 //        return world.getRecipeManager()
 //            .getFirstMatch(RecipeType.SMELTING, new SingleStackRecipeInput(stack), world)

@@ -47,7 +47,7 @@
 //        for (EquipmentSlot slot : EquipmentSlot.values()) {
 //
 //            if (equipmentSlot.matches(slot)) {
-//                itemAction.execute(livingEntity.getWorld(), StackReference.of(livingEntity, slot));
+//                itemAction.execute(livingEntity.level(), StackReference.of(livingEntity, slot));
 //            }
 //
 //        }

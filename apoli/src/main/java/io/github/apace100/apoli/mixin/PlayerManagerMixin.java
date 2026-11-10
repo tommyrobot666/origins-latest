@@ -7,7 +7,7 @@
 //import io.github.apace100.apoli.power.type.PowerType;
 //import net.minecraft.world.entity.Entity;
 //import net.minecraft.server.PlayerManager;
-//import net.minecraft.server.network.ServerPlayer;
+//import net.minecraft.server.level.ServerPlayer;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.injection.At;
 //import org.spongepowered.asm.mixin.injection.Inject;

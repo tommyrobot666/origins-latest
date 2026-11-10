@@ -4,7 +4,7 @@
 //import io.github.apace100.apoli.Apoli;
 //import net.minecraft.loot.condition.LootCondition;
 //import net.minecraft.loot.condition.LootConditionType;
-//import net.minecraft.registry.Registries;
+//import net.minecraft.core.registries.Registries;
 //import net.minecraft.core.Registry;
 //
 //public class ApoliLootConditionTypes {

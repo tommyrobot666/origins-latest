@@ -6,7 +6,7 @@
 //import net.minecraft.registry.entry.RegistryEntry;
 //import net.minecraft.util.profiler.Profiler;
 //import net.minecraft.world.MutableWorldProperties;
-//import net.minecraft.world.World;
+//import net.minecraft.world.Level;
 //import net.minecraft.world.dimension.DimensionType;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.injection.At;
@@ -17,9 +17,9 @@
 //import java.util.function.Supplier;
 //
 //@Mixin(ClientWorld.class)
-//public abstract class ClientWorldMixin extends World {
+//public abstract class ClientWorldMixin extends Level {
 //
-//	protected ClientWorldMixin(MutableWorldProperties properties, RegistryKey<World> registryRef, DynamicRegistryManager registryManager, RegistryEntry<DimensionType> dimensionEntry, Supplier<Profiler> profiler, boolean isClient, boolean debugWorld, long biomeAccess, int maxChainedNeighborUpdates) {
+//	protected ClientWorldMixin(MutableWorldProperties properties, RegistryKey<Level> registryRef, DynamicRegistryManager registryManager, RegistryEntry<DimensionType> dimensionEntry, Supplier<Profiler> profiler, boolean isClient, boolean debugWorld, long biomeAccess, int maxChainedNeighborUpdates) {
 //		super(properties, registryRef, registryManager, dimensionEntry, profiler, isClient, debugWorld, biomeAccess, maxChainedNeighborUpdates);
 //	}
 //

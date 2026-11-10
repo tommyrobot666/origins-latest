@@ -19,7 +19,7 @@
 //import net.minecraft.item.Item;
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.item.tooltip.TooltipType;
-//import net.minecraft.nbt.NbtCompound;
+//import net.minecraft.nbt.CompoundTag;
 //import net.minecraft.nbt.NbtOps;
 //import net.minecraft.network.codec.StreamCodec;
 //import net.minecraft.network.codec.ByteBufCodecs;
@@ -238,7 +238,7 @@
 //
 //        public Builder add(EnumSet<AttributeModifierSlot> slots, Identifier powerId, boolean hidden, boolean negative) {
 //
-//            NbtCompound entryNbt = new NbtCompound();
+//            CompoundTag entryNbt = new CompoundTag();
 //            for (AttributeModifierSlot slot : slots) {
 //
 //                entryNbt.putString("slot", slot.asString());

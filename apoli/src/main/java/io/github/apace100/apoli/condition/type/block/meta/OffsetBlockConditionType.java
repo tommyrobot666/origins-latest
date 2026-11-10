@@ -11,7 +11,7 @@
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.util.math.BlockPos;
 //import net.minecraft.util.math.Vec3i;
-//import net.minecraft.world.World;
+//import net.minecraft.world.Level;
 //import org.jetbrains.annotations.NotNull;
 //
 //public class OffsetBlockConditionType extends BlockConditionType {
@@ -43,7 +43,7 @@
 //    @Override
 //    public boolean test(BlockConditionContext context) {
 //
-//        World world = context.world();
+//        Level world = context.world();
 //        BlockPos offsetBlockPos = context.pos().add(offset);
 //
 //        return world.isChunkLoaded(offsetBlockPos)

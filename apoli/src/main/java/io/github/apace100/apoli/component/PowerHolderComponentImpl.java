@@ -11,13 +11,13 @@ import io.github.apace100.apoli.util.GainedPowerCriterion;
 import io.github.apace100.calio.data.SerializableData;
 import it.unimi.dsi.fastutil.objects.*;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.nbt.NbtCompound;
-import net.minecraft.nbt.NbtElement;
-import net.minecraft.nbt.NbtList;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.Tag;
+import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.server.network.ServerPlayer;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.NotNull;
 
@@ -238,7 +238,7 @@ public class PowerHolderComponentImpl implements PowerHolderComponent {
     public void tick() {
 
         Collection<PowerType> types = new ObjectArrayList<>(powers.values());
-        boolean client = owner.getWorld().isClient();
+        boolean client = owner.level().isClient();
 
         for (var type : types) {
 
@@ -261,21 +261,21 @@ public class PowerHolderComponentImpl implements PowerHolderComponent {
     }
 
     @Override
-    public void readFromNbt(@NotNull NbtCompound compoundTag, RegistryWrapper.WrapperLookup lookup) {
+    public void readFromNbt(@NotNull CompoundTag compoundTag, RegistryWrapper.WrapperLookup lookup) {
 
         powers.clear();
         powerSources.clear();
 
-        NbtList powersTag = compoundTag.getList("powers", NbtElement.COMPOUND_TYPE);
+        ListTag powersTag = compoundTag.getList("powers", Tag.COMPOUND_TYPE);
 
         //  Migrate compound NBTs from the old 'Powers' NBT path to the new 'powers' NBT path
         if (compoundTag.contains("Powers")) {
-            powersTag.addAll(compoundTag.getList("Powers", NbtElement.COMPOUND_TYPE));
+            powersTag.addAll(compoundTag.getList("Powers", Tag.COMPOUND_TYPE));
         }
 
         for (int i = 0; i < powersTag.size(); i++) {
 
-            NbtCompound powerTag = powersTag.getCompound(i);
+            CompoundTag powerTag = powersTag.getCompound(i);
 
             try {
 
@@ -322,9 +322,9 @@ public class PowerHolderComponentImpl implements PowerHolderComponent {
     }
 
     @Override
-    public void writeToNbt(@NotNull NbtCompound compoundTag, RegistryWrapper.WrapperLookup lookup) {
+    public void writeToNbt(@NotNull CompoundTag compoundTag, RegistryWrapper.WrapperLookup lookup) {
 
-        NbtList powersTag = new NbtList();
+        ListTag powersTag = new ListTag();
         powers.forEach((power, powerType) -> {
 
             PowerConfiguration<?> typeConfig = power.getType().getConfig();

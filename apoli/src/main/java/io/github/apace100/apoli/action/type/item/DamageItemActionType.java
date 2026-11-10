@@ -8,7 +8,7 @@
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.world.item.ItemStack;
-//import net.minecraft.server.world.ServerWorld;
+//import net.minecraft.server.level.ServerLevel;
 //import org.jetbrains.annotations.NotNull;
 //
 //public class DamageItemActionType extends ItemActionType {
@@ -37,7 +37,7 @@
 //    @Override
 //    public void accept(ItemActionContext context) {
 //
-//        ServerWorld world = context.world();
+//        ServerLevel world = context.world();
 //        ItemStack stack = context.stackReference().get();
 //
 //        if (ignoreUnbreaking) {
