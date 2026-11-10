@@ -1,6 +1,7 @@
 package io.github.apace100.apoli.power;
 
 import com.google.common.collect.ImmutableSet;
+import io.github.apace100.calio.util.BufUtil;
 import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -18,14 +19,14 @@ public class MultiplePower extends Power {
 
         @Override
         public MultiplePower decode(RegistryFriendlyByteBuf buf) {
-            Set<Identifier> subPowerIds = buf.readCollection(ObjectLinkedOpenHashSet::new, FriendlyByteBuf::readIdentifier);
+            Set<Identifier> subPowerIds = BufUtil.readCollection(buf, ObjectLinkedOpenHashSet::new, FriendlyByteBuf::readIdentifier);
             return new MultiplePower(power, subPowerIds);
 
         }
 
         @Override
         public void encode(RegistryFriendlyByteBuf buf, MultiplePower value) {
-            buf.writeCollection(value.getSubPowerIds(), FriendlyByteBuf::writeIdentifier);
+            BufUtil.writeCollection(buf, value.getSubPowerIds(), FriendlyByteBuf::writeIdentifier);
         }
 
     };

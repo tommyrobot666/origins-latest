@@ -465,13 +465,13 @@
 //        public static final PacketHandler<Map<Identifier, Collection<Power>>> GRANT_POWERS = new PacketHandler.Impl<>(
 //            powersBySource -> (buf, recipient) -> buf.writeMap(powersBySource,
 //                FriendlyByteBuf::writeIdentifier,
-//                (vbuf, powers) -> vbuf.writeCollection(powers, (ebuf, power) -> ebuf.writeIdentifier(power.getId()))
+//                (vbuf, powers) -> vBufUtil.writeCollection(powers, (ebuf, power) -> ebuf.writeIdentifier(power.getId()))
 //            ),
 //            (buf, component) -> {
 //
 //                var powersBySource = buf.readMap(
 //                    FriendlyByteBuf::readIdentifier,
-//                    vbuf -> vbuf.readCollection(ArrayList::new, ebuf -> PowerManager.get(ebuf.readIdentifier())));
+//                    vbuf -> vBufUtil.readCollection(ArrayList::new, ebuf -> PowerManager.get(ebuf.readIdentifier())));
 //
 //                powersBySource.forEach((source, powers) -> powers.forEach(power -> component.addPower(power, source)));
 //
@@ -485,7 +485,7 @@
 //
 //                var powersBySource = buf.readMap(
 //                    FriendlyByteBuf::readIdentifier,
-//                    vbuf -> vbuf.readCollection(ArrayList::new, ebuf -> PowerManager.get(ebuf.readIdentifier())));
+//                    vbuf -> vBufUtil.readCollection(ArrayList::new, ebuf -> PowerManager.get(ebuf.readIdentifier())));
 //
 //                powersBySource.forEach((source, powers) -> powers.forEach(power -> component.removePower(power, source)));
 //
@@ -495,7 +495,7 @@
 //
 //        public static final PacketHandler<Collection<Identifier>> REVOKE_ALL_POWERS = new PacketHandler.Impl<>(
 //            sources -> (buf, recipient) ->
-//                buf.writeCollection(sources, FriendlyByteBuf::writeIdentifier),
+//                BufUtil.writeCollection(sources, FriendlyByteBuf::writeIdentifier),
 //            (buf, component) -> buf
 //                .readCollection(ArrayList::new, FriendlyByteBuf::readIdentifier)
 //                .forEach(component::removeAllPowersFromSource),
