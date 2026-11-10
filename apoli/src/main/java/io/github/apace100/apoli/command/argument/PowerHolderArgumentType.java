@@ -4,23 +4,23 @@ import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import net.minecraft.command.argument.EntityArgumentType;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.server.command.ServerCommandSource;
-import net.minecraft.text.Text;
+import net.minecraft.commands.CommandSourceStack;
+import net.minecraft.commands.arguments.EntityArgument;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 
 import java.util.LinkedList;
 import java.util.List;
 
-public class PowerHolderArgumentType extends EntityArgumentType {
+public class PowerHolderArgumentType extends EntityArgument {
 
     public static final SimpleCommandExceptionType HOLDERS_NOT_FOUND = new SimpleCommandExceptionType(
-        Text.translatable("argument.apoli.power_holder.not_found.multiple")
+        Component.translatable("argument.apoli.power_holder.not_found.multiple")
     );
 
     public static final DynamicCommandExceptionType HOLDER_NOT_FOUND = new DynamicCommandExceptionType(
-        o -> Text.translatable("argument.apoli.power_holder.not_found.single", o)
+        o -> Component.translatable("argument.apoli.power_holder.not_found.single", o)
     );
 
     protected PowerHolderArgumentType(boolean singleTarget) {
@@ -35,7 +35,7 @@ public class PowerHolderArgumentType extends EntityArgumentType {
         return new PowerHolderArgumentType(false);
     }
 
-    public static LivingEntity getHolder(CommandContext<ServerCommandSource> context, String name) throws CommandSyntaxException {
+    public static LivingEntity getHolder(CommandContext<CommandSourceStack> context, String name) throws CommandSyntaxException {
 
         Entity entity = getEntity(context, name);
         if (!(entity instanceof LivingEntity livingEntity)) {
@@ -46,7 +46,7 @@ public class PowerHolderArgumentType extends EntityArgumentType {
 
     }
 
-    public static List<LivingEntity> getHolders(CommandContext<ServerCommandSource> context, String name) throws CommandSyntaxException {
+    public static List<LivingEntity> getHolders(CommandContext<CommandSourceStack> context, String name) throws CommandSyntaxException {
 
         List<? extends Entity> entities = new LinkedList<>(getEntities(context, name));
         List<LivingEntity> holders = entities.stream()
