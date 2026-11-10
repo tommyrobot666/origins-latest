@@ -6,7 +6,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.github.apace100.calio.util.CalioResourceConditions;
 import net.fabricmc.fabric.api.resource.conditions.v1.ResourceCondition;
 import net.fabricmc.fabric.api.resource.conditions.v1.ResourceConditionType;
-import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.resources.RegistryOps;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -23,7 +23,7 @@ public record AllNamespacesLoadedResourceCondition(List<String> namespaces) impl
     }
 
     @Override
-    public boolean test(@Nullable HolderLookup.Provider registryLookup) {
+    public boolean test(RegistryOps.@Nullable RegistryInfoLookup registryInfo) {
         return CalioResourceConditions.namespacesLoaded(namespaces, true);
     }
 

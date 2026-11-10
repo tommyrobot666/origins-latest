@@ -1,6 +1,7 @@
 package io.github.apace100.calio;
 
 import com.google.common.collect.ImmutableMap;
+import net.minecraft.core.Holder;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.server.ReloadableServerResources;
 import net.minecraft.tags.TagKey;
@@ -15,13 +16,13 @@ import java.util.concurrent.ConcurrentHashMap;
 public class CalioServer {
 
 	@ApiStatus.Internal
-	public static final Map<TagKey<?>, Collection<RegistryAccess.Holder<?>>> REGISTRY_TAGS = new ConcurrentHashMap<>();
+	public static final Map<TagKey<?>, Collection<Holder<?>>> REGISTRY_TAGS = new ConcurrentHashMap<>();
 	@ApiStatus.Internal
 	public static final Map<Unit, RegistryAccess> DYNAMIC_REGISTRIES = new ConcurrentHashMap<>();
 	@ApiStatus.Internal
 	public static final Map<Unit, ReloadableServerResources> DATA_PACK_CONTENTS = new ConcurrentHashMap<>();
 
-	public static ImmutableMap<TagKey<?>, Collection<RegistryAccess.Holder<?>>> getRegistryTags() {
+	public static ImmutableMap<TagKey<?>, Collection<Holder<?>>> getRegistryTags() {
 		return ImmutableMap.copyOf(REGISTRY_TAGS);
 	}
 

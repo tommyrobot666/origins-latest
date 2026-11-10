@@ -7,10 +7,10 @@ import io.github.apace100.calio.Calio;
 import io.github.apace100.calio.data.*;
 import io.github.apace100.calio.network.packet.s2c.SyncDataObjectRegistryS2CPacket;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
-import net.fabricmc.fabric.api.resource.IdentifiableResourceReloadListener;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.util.profiling.ProfilerFiller;
@@ -20,8 +20,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
 import java.util.function.*;
 
 //  TODO: Generalize this to use codecs/packet codecs -eggohito
@@ -58,7 +56,7 @@ public class DataObjectRegistry<T extends DataObject<T>> {
         this.jsonPreProcessor = jsonPreProcessor;
     }
 
-    private DataObjectRegistry(Identifier registryId, String factoryFieldName, DataObjectFactory<T> defaultFactory, @NotNull UnaryOperator<JsonElement> jsonPreProcessor, String dataFolder, boolean useLoadingPriority, ImmutableSet.Builder<Identifier> dependencies, @Nullable BiConsumer<Identifier, Exception> legacyErrorHandler, @Nullable TriConsumer<Identifier, String, Exception> errorHandler, @Nullable ResourceType resourceType) {
+    private DataObjectRegistry(Identifier registryId, String factoryFieldName, DataObjectFactory<T> defaultFactory, @NotNull UnaryOperator<JsonElement> jsonPreProcessor, String dataFolder, boolean useLoadingPriority, ImmutableSet.Builder<Identifier> dependencies, @Nullable BiConsumer<Identifier, Exception> legacyErrorHandler, @Nullable TriConsumer<Identifier, String, Exception> errorHandler, @Nullable PackType resourceType) {
         this(registryId, factoryFieldName, defaultFactory, jsonPreProcessor);
         this.loader = new Loader(dataFolder, useLoadingPriority, dependencies, legacyErrorHandler, errorHandler, resourceType);
     }
@@ -321,7 +319,7 @@ public class DataObjectRegistry<T extends DataObject<T>> {
         private final ImmutableSet<Identifier> dependencies;
         private final boolean useLoadingPriority;
 
-        public Loader(String dataFolder, boolean useLoadingPriority, ImmutableSet.Builder<Identifier> dependencies, @Nullable BiConsumer<Identifier, Exception> legacyErrorHandler, @Nullable TriConsumer<Identifier, String, Exception> errorHandler, @Nullable ResourceType resourceType) {
+        public Loader(String dataFolder, boolean useLoadingPriority, ImmutableSet.Builder<Identifier> dependencies, @Nullable BiConsumer<Identifier, Exception> legacyErrorHandler, @Nullable TriConsumer<Identifier, String, Exception> errorHandler, @Nullable PackType resourceType) {
             super(GSON, dataFolder, resourceType);
             this.useLoadingPriority = useLoadingPriority;
             this.legacyErrorHandler = legacyErrorHandler;
@@ -337,11 +335,6 @@ public class DataObjectRegistry<T extends DataObject<T>> {
         @Override
         public Identifier getBefore(){
             return dependencies.stream().findFirst().orElse(null);
-        }
-
-        @Override
-        public CompletableFuture<Void> reload(SharedState currentReload, Executor taskExecutor, PreparationBarrier preparationBarrier, Executor reloadExecutor) {
-            return null;
         }
 
         @Override
@@ -413,7 +406,7 @@ public class DataObjectRegistry<T extends DataObject<T>> {
         private TriConsumer<Identifier, String, Exception> errorHandler;
 
         @Nullable
-        private ResourceType resourceType;
+        private PackType resourceType;
 
         private String dataFolder;
         private String factoryFieldName = "type";
@@ -474,7 +467,7 @@ public class DataObjectRegistry<T extends DataObject<T>> {
 
         }
 
-        public Builder<T> resourceType(ResourceType resourceType) {
+        public Builder<T> resourceType(PackType resourceType) {
             this.resourceType = resourceType;
             return this;
         }

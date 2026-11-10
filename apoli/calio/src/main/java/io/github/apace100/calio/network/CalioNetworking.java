@@ -4,6 +4,6 @@ import net.minecraft.resources.Identifier;
 
 public class CalioNetworking {
 
-    public static final Identifier SYNC_DATA_OBJECT_REGISTRY = Identifier.of("calio", "sync_data_object_registry");
+    public static final Identifier SYNC_DATA_OBJECT_REGISTRY = Identifier.fromNamespaceAndPath("calio", "sync_data_object_registry");
 
 }
