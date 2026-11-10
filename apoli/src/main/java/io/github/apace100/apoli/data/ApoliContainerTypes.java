@@ -6,12 +6,12 @@
 //import io.github.apace100.apoli.registry.ApoliRegistries;
 //import io.github.apace100.calio.data.SerializableDataType;
 //import io.github.apace100.calio.util.IdentifierAlias;
-//import net.minecraft.registry.Registry;
+//import net.minecraft.core.Registry;
 //import net.minecraft.screen.Generic3x3ContainerScreenHandler;
 //import net.minecraft.screen.GenericContainerScreenHandler;
 //import net.minecraft.screen.HopperScreenHandler;
 //import net.minecraft.screen.ScreenHandlerType;
-//import net.minecraft.util.Identifier;
+//import net.minecraft.resources.Identifier;
 //
 //import java.util.Objects;
 //import java.util.stream.Collectors;

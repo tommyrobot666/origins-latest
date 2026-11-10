@@ -14,10 +14,10 @@
 //import io.github.apace100.calio.registry.DataObjectFactory;
 //import io.github.apace100.calio.util.Validatable;
 //import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-//import net.minecraft.entity.Entity;
-//import net.minecraft.network.RegistryByteBuf;
-//import net.minecraft.network.codec.PacketCodec;
-//import net.minecraft.util.Identifier;
+//import net.minecraft.world.entity.Entity;
+//import net.minecraft.network.RegistryFriendlyByteBuf;
+//import net.minecraft.network.codec.StreamCodec;
+//import net.minecraft.resources.Identifier;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.LinkedList;
@@ -91,10 +91,10 @@
 //                }
 //
 //            },
-//            new PacketCodec<>() {
+//            new StreamCodec<>() {
 //
 //                @Override
-//                public HudRender decode(RegistryByteBuf buf) {
+//                public HudRender decode(RegistryFriendlyByteBuf buf) {
 //
 //                    if (buf.readBoolean()) {
 //
@@ -112,7 +112,7 @@
 //                }
 //
 //                @Override
-//                public void encode(RegistryByteBuf buf, HudRender hudRender) {
+//                public void encode(RegistryFriendlyByteBuf buf, HudRender hudRender) {
 //
 //                    if (hudRender instanceof ParentHudRender parent) {
 //                        buf.writeBoolean(true);

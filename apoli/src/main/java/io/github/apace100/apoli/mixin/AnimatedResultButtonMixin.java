@@ -12,7 +12,7 @@
 //import io.github.apace100.apoli.recipe.ModifiedCraftingRecipe;
 //import io.github.apace100.apoli.recipe.PowerCraftingRecipe;
 //import net.minecraft.client.gui.screen.recipebook.AnimatedResultButton;
-//import net.minecraft.item.ItemStack;
+//import net.minecraft.world.item.ItemStack;
 //import net.minecraft.recipe.CraftingRecipe;
 //import net.minecraft.recipe.Recipe;
 //import net.minecraft.recipe.RecipeEntry;
@@ -20,7 +20,7 @@
 //import net.minecraft.registry.RegistryWrapper;
 //import net.minecraft.text.Text;
 //import net.minecraft.util.Formatting;
-//import net.minecraft.util.Identifier;
+//import net.minecraft.resources.Identifier;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.Shadow;
 //import org.spongepowered.asm.mixin.injection.At;

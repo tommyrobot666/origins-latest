@@ -13,8 +13,8 @@
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-//import net.minecraft.entity.LivingEntity;
-//import net.minecraft.item.ItemStack;
+//import net.minecraft.world.entity.LivingEntity;
+//import net.minecraft.world.item.ItemStack;
 //import net.minecraft.nbt.NbtCompound;
 //import net.minecraft.nbt.NbtElement;
 //import net.minecraft.nbt.NbtList;

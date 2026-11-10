@@ -5,7 +5,7 @@
 //import io.github.apace100.apoli.mixin.LootContextTypesAccessor;
 //import net.minecraft.loot.context.LootContextParameters;
 //import net.minecraft.loot.context.LootContextType;
-//import net.minecraft.util.Identifier;
+//import net.minecraft.resources.Identifier;
 //
 //public class ApoliLootContextTypes {
 //

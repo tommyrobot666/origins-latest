@@ -5,7 +5,7 @@
 //import io.github.apace100.apoli.condition.type.EntityConditionType;
 //import io.github.apace100.apoli.condition.type.EntityConditionTypes;
 //import io.github.apace100.apoli.util.MiscUtil;
-//import net.minecraft.entity.Entity;
+//import net.minecraft.world.entity.Entity;
 //import net.minecraft.util.math.BlockPos;
 //import net.minecraft.world.World;
 //import org.jetbrains.annotations.NotNull;

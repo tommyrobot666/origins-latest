@@ -8,7 +8,7 @@
 //import io.github.apace100.apoli.util.modifier.ModifierUtil;
 //import net.minecraft.block.AbstractBlock;
 //import net.minecraft.block.BlockState;
-//import net.minecraft.entity.player.PlayerEntity;
+//import net.minecraft.world.entity.player.Player;
 //import net.minecraft.util.math.BlockPos;
 //import net.minecraft.world.BlockView;
 //import org.spongepowered.asm.mixin.Mixin;
@@ -20,7 +20,7 @@
 //public abstract class AbstractBlockMixin {
 //
 //    @ModifyExpressionValue(method = "calcBlockBreakingDelta", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/BlockState;getHardness(Lnet/minecraft/world/BlockView;Lnet/minecraft/util/math/BlockPos;)F"))
-//    private float apoli$modifyBlockHardness(float original, BlockState state, PlayerEntity player, BlockView world, BlockPos pos) {
+//    private float apoli$modifyBlockHardness(float original, BlockState state, Player player, BlockView world, BlockPos pos) {
 //
 //        List<Modifier> hardnessModifiers = PowerHolderComponent.getPowerTypes(player, ModifyBreakSpeedPowerType.class)
 //            .stream()
@@ -33,7 +33,7 @@
 //    }
 //
 //    @ModifyReturnValue(method = "calcBlockBreakingDelta", at = @At("RETURN"))
-//    private float apoli$modifyBlockBreakSpeed(float original, BlockState state, PlayerEntity player, BlockView world, BlockPos pos) {
+//    private float apoli$modifyBlockBreakSpeed(float original, BlockState state, Player player, BlockView world, BlockPos pos) {
 //        return PowerHolderComponent.modify(player, ModifyBreakSpeedPowerType.class, original, mbsp -> mbsp.doesApply(pos));
 //    }
 //

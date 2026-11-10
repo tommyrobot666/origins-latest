@@ -11,7 +11,7 @@
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.block.EntityShapeContext;
 //import net.minecraft.block.ShapeContext;
-//import net.minecraft.entity.LivingEntity;
+//import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.util.math.BlockPos;
 //import net.minecraft.util.math.Direction;
 //import net.minecraft.util.shape.VoxelShape;

@@ -5,11 +5,11 @@
 //import io.github.apace100.apoli.component.PowerHolderComponent;
 //import io.github.apace100.apoli.data.ApoliDataTypes;
 //import io.github.apace100.apoli.power.PowerReference;
-//import net.minecraft.entity.Entity;
+//import net.minecraft.world.entity.Entity;
 //import net.minecraft.loot.condition.LootCondition;
 //import net.minecraft.loot.condition.LootConditionType;
 //import net.minecraft.loot.context.LootContext;
-//import net.minecraft.util.Identifier;
+//import net.minecraft.resources.Identifier;
 //
 //import java.util.Optional;
 //

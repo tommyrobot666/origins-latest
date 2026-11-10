@@ -3,15 +3,15 @@
 //import io.github.apace100.apoli.Apoli;
 //import io.github.apace100.apoli.util.SyncStatusEffectsUtil;
 //import net.minecraft.nbt.NbtCompound;
-//import net.minecraft.network.RegistryByteBuf;
-//import net.minecraft.network.codec.PacketCodec;
+//import net.minecraft.network.RegistryFriendlyByteBuf;
+//import net.minecraft.network.codec.StreamCodec;
 //import net.minecraft.network.codec.PacketCodecs;
 //import net.minecraft.network.packet.CustomPayload;
 //
 //public record SyncStatusEffectS2CPacket(int targetId, NbtCompound statusEffectData, SyncStatusEffectsUtil.UpdateType updateType) implements CustomPayload {
 //
 //    public static final Id<SyncStatusEffectS2CPacket> PACKET_ID = new Id<>(Apoli.identifier("s2c/sync_status_effect"));
-//    public static final PacketCodec<RegistryByteBuf, SyncStatusEffectS2CPacket> PACKET_CODEC = PacketCodec.tuple(
+//    public static final StreamCodec<RegistryFriendlyByteBuf, SyncStatusEffectS2CPacket> PACKET_CODEC = StreamCodec.tuple(
 //        PacketCodecs.VAR_INT, SyncStatusEffectS2CPacket::targetId,
 //        PacketCodecs.UNLIMITED_NBT_COMPOUND, SyncStatusEffectS2CPacket::statusEffectData,
 //        SyncStatusEffectsUtil.UpdateType.PACKET_CODEC, SyncStatusEffectS2CPacket::updateType,

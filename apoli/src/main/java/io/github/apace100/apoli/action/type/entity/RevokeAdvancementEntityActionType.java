@@ -14,8 +14,8 @@
 //import net.minecraft.server.MinecraftServer;
 //import net.minecraft.server.ServerAdvancementLoader;
 //import net.minecraft.server.command.AdvancementCommand;
-//import net.minecraft.server.network.ServerPlayerEntity;
-//import net.minecraft.util.Identifier;
+//import net.minecraft.server.network.ServerPlayer;
+//import net.minecraft.resources.Identifier;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.List;
@@ -54,7 +54,7 @@
 //    @Override
 //    public void accept(EntityActionContext context) {
 //
-//        if (!(context.entity() instanceof ServerPlayerEntity serverPlayer)) {
+//        if (!(context.entity() instanceof ServerPlayer serverPlayer)) {
 //            return;
 //        }
 //

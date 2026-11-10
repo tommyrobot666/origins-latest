@@ -9,10 +9,10 @@
 //import io.github.apace100.apoli.component.PowerHolderComponent;
 //import io.github.apace100.apoli.power.type.*;
 //import net.minecraft.block.BlockState;
-//import net.minecraft.entity.player.PlayerEntity;
+//import net.minecraft.world.entity.player.Player;
 //import net.minecraft.item.BlockItem;
 //import net.minecraft.item.ItemPlacementContext;
-//import net.minecraft.item.ItemStack;
+//import net.minecraft.world.item.ItemStack;
 //import net.minecraft.util.ActionResult;
 //import net.minecraft.util.Hand;
 //import net.minecraft.util.TypedActionResult;
@@ -32,7 +32,7 @@
 //    @ModifyReturnValue(method = "canPlace", at = @At("RETURN"))
 //    private boolean apoli$preventBlockPlace(boolean original, ItemPlacementContext context, BlockState state) {
 //
-//        PlayerEntity playerEntity = context.getPlayer();
+//        Player playerEntity = context.getPlayer();
 //        if (playerEntity == null) {
 //            return original;
 //        }
@@ -71,7 +71,7 @@
 //    }
 //
 //    @Inject(method = "place(Lnet/minecraft/item/ItemPlacementContext;)Lnet/minecraft/util/ActionResult;", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;getBlockState(Lnet/minecraft/util/math/BlockPos;)Lnet/minecraft/block/BlockState;"))
-//    private void apoli$actionOnBlockPlace(ItemPlacementContext context, CallbackInfoReturnable<ActionResult> cir, @Local PlayerEntity user, @Local BlockPos toPos, @Local ItemStack stack, @Share("aipci") LocalRef<Prioritized.CallInstance<ActiveInteractionPowerType>> aipciRef) {
+//    private void apoli$actionOnBlockPlace(ItemPlacementContext context, CallbackInfoReturnable<ActionResult> cir, @Local Player user, @Local BlockPos toPos, @Local ItemStack stack, @Share("aipci") LocalRef<Prioritized.CallInstance<ActiveInteractionPowerType>> aipciRef) {
 //
 //        if (user == null) {
 //            return;
@@ -114,8 +114,8 @@
 //
 //    }
 //
-//    @WrapOperation(method = "useOnBlock", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/Item;use(Lnet/minecraft/world/World;Lnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/util/Hand;)Lnet/minecraft/util/TypedActionResult;"))
-//    private TypedActionResult<ItemStack> apoli$preventItemUseIfFoodBlockItem(BlockItem instance, World world, PlayerEntity user, Hand hand, Operation<TypedActionResult<ItemStack>> original) {
+//    @WrapOperation(method = "useOnBlock", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/Item;use(Lnet/minecraft/world/World;Lnet/minecraft/entity/player/Player;Lnet/minecraft/util/Hand;)Lnet/minecraft/util/TypedActionResult;"))
+//    private TypedActionResult<ItemStack> apoli$preventItemUseIfFoodBlockItem(BlockItem instance, World world, Player user, Hand hand, Operation<TypedActionResult<ItemStack>> original) {
 //        ItemStack handStack = user.getStackInHand(hand);
 //        return PowerHolderComponent.hasPowerType(user, PreventItemUsePowerType.class, p -> p.doesPrevent(handStack))
 //            ? TypedActionResult.fail(handStack)

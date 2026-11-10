@@ -7,7 +7,7 @@
 //import io.github.apace100.apoli.data.TypedDataObjectFactory;
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
-//import net.minecraft.item.ItemStack;
+//import net.minecraft.world.item.ItemStack;
 //import net.minecraft.server.world.ServerWorld;
 //import org.jetbrains.annotations.NotNull;
 //

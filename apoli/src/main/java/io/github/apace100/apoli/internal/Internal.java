@@ -4,7 +4,7 @@
 //import io.github.apace100.apoli.access.OwnableAttributeContainer;
 //import io.github.apace100.apoli.mixin.internal.DefaultAttributeContainerAccessor;
 //import io.github.apace100.apoli.mixin.internal.DefaultAttributeRegistryAccessor;
-//import net.minecraft.entity.EntityType;
+//import net.minecraft.world.entity.EntityType;
 //import net.minecraft.entity.attribute.DefaultAttributeContainer;
 //import net.minecraft.registry.Registries;
 //import org.jetbrains.annotations.ApiStatus;

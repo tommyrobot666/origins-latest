@@ -12,15 +12,15 @@
 //import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 //import net.minecraft.component.ComponentChanges;
 //import net.minecraft.component.type.AttributeModifierSlot;
-//import net.minecraft.entity.Entity;
+//import net.minecraft.world.entity.Entity;
 //import net.minecraft.entity.EquipmentSlot;
-//import net.minecraft.item.ItemStack;
+//import net.minecraft.world.item.ItemStack;
 //import net.minecraft.loot.condition.LootCondition;
 //import net.minecraft.loot.context.LootContext;
 //import net.minecraft.loot.context.LootContextParameters;
 //import net.minecraft.loot.function.ConditionalLootFunction;
 //import net.minecraft.loot.function.LootFunctionType;
-//import net.minecraft.util.Identifier;
+//import net.minecraft.resources.Identifier;
 //
 //import java.util.*;
 //

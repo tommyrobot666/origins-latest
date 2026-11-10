@@ -11,15 +11,15 @@
 //import net.minecraft.block.Blocks;
 //import net.minecraft.block.FluidBlock;
 //import net.minecraft.block.enums.CameraSubmersionType;
-//import net.minecraft.client.MinecraftClient;
+//import net.minecraft.client.Minecraft;
 //import net.minecraft.client.gl.PostEffectProcessor;
 //import net.minecraft.client.render.Camera;
 //import net.minecraft.client.render.GameRenderer;
 //import net.minecraft.client.render.RenderTickCounter;
-//import net.minecraft.entity.Entity;
-//import net.minecraft.entity.LivingEntity;
+//import net.minecraft.world.entity.Entity;
+//import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.resource.ResourceManager;
-//import net.minecraft.util.Identifier;
+//import net.minecraft.resources.Identifier;
 //import net.minecraft.util.math.BlockPos;
 //import net.minecraft.util.math.Box;
 //import net.minecraft.util.math.Vec3d;
@@ -45,7 +45,7 @@
 //
 //    @Shadow
 //    @Final
-//    MinecraftClient client;
+//    Minecraft client;
 //
 //    @Shadow
 //    protected abstract void loadPostProcessor(Identifier identifier);
@@ -221,7 +221,7 @@
 //
 //    @ModifyExpressionValue(method = "method_18144", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/Entity;canHit()Z"))
 //    private static boolean apoli$preventEntitySelection(boolean original, Entity target) {
-//        Entity cameraEntity = MinecraftClient.getInstance().getCameraEntity();
+//        Entity cameraEntity = Minecraft.getInstance().getCameraEntity();
 //        return original
 //            && !PowerHolderComponent.hasPowerType(cameraEntity, PreventEntitySelectionPowerType.class, p -> p.doesPrevent(target));
 //    }

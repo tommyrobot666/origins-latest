@@ -4,8 +4,8 @@
 //import io.github.apace100.apoli.condition.context.EntityConditionContext;
 //import io.github.apace100.apoli.condition.type.EntityConditionType;
 //import io.github.apace100.apoli.condition.type.EntityConditionTypes;
-//import net.minecraft.client.MinecraftClient;
-//import net.minecraft.entity.Entity;
+//import net.minecraft.client.Minecraft;
+//import net.minecraft.world.entity.Entity;
 //import org.jetbrains.annotations.NotNull;
 //
 //public class GlowingEntityConditionType extends EntityConditionType {
@@ -15,7 +15,7 @@
 //		Entity entity = context.entity();
 //		return !entity.getWorld().isClient()
 //			? entity.isGlowing()
-//			: MinecraftClient.getInstance().hasOutline(entity);
+//			: Minecraft.getInstance().hasOutline(entity);
 //	}
 //
 //	@Override

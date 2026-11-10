@@ -4,7 +4,7 @@
 //import net.minecraft.client.texture.TextureManager;
 //import net.minecraft.client.texture.TextureTickListener;
 //import net.minecraft.resource.ResourceManager;
-//import net.minecraft.util.Identifier;
+//import net.minecraft.resources.Identifier;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.gen.Accessor;
 //import org.spongepowered.asm.mixin.gen.Invoker;

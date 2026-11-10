@@ -9,7 +9,7 @@
 //import net.minecraft.command.argument.EntityArgumentType;
 //import net.minecraft.command.argument.serialize.ArgumentSerializer;
 //import net.minecraft.command.argument.serialize.ConstantArgumentSerializer;
-//import net.minecraft.registry.Registry;
+//import net.minecraft.core.Registry;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.Shadow;
 //import org.spongepowered.asm.mixin.injection.At;

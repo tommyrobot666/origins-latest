@@ -552,7 +552,7 @@ public class PowerManager extends IdentifiableMultiJsonDataLoader implements IdP
 
     }
 
-    public static void send(ServerPlayerEntity player) {
+    public static void send(ServerPlayer player) {
 
         if (player.server.isRemote()) {
             ServerPlayNetworking.send(player, new SyncPowersS2CPacket(POWERS_BY_ID));

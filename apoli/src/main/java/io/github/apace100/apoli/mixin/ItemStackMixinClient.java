@@ -14,7 +14,7 @@
 //import io.github.apace100.apoli.util.keybinding.KeyBindingUtil;
 //import net.fabricmc.api.EnvType;
 //import net.fabricmc.api.Environment;
-//import net.minecraft.client.MinecraftClient;
+//import net.minecraft.client.Minecraft;
 //import net.minecraft.client.option.KeyBinding;
 //import net.minecraft.client.util.InputUtil;
 //import net.minecraft.component.ComponentHolder;
@@ -22,9 +22,9 @@
 //import net.minecraft.component.ComponentType;
 //import net.minecraft.component.DataComponentTypes;
 //import net.minecraft.component.type.AttributeModifierSlot;
-//import net.minecraft.entity.player.PlayerEntity;
+//import net.minecraft.world.entity.player.Player;
 //import net.minecraft.item.Item;
-//import net.minecraft.item.ItemStack;
+//import net.minecraft.world.item.ItemStack;
 //import net.minecraft.item.tooltip.TooltipType;
 //import net.minecraft.screen.ScreenTexts;
 //import net.minecraft.text.MutableText;
@@ -70,7 +70,7 @@
 //    private List<Text> apoli$tooltip;
 //
 //    @Inject(method = "getTooltip", at = @At(value = "INVOKE", target = "Lnet/minecraft/text/MutableText;append(Lnet/minecraft/text/Text;)Lnet/minecraft/text/MutableText;"))
-//    private void apoli$cacheTooltipStuff(Item.TooltipContext context, @Nullable PlayerEntity player, TooltipType type, CallbackInfoReturnable<List<Text>> cir, @Local List<Text> tooltip) {
+//    private void apoli$cacheTooltipStuff(Item.TooltipContext context, @Nullable Player player, TooltipType type, CallbackInfoReturnable<List<Text>> cir, @Local List<Text> tooltip) {
 //
 //		// Although this is a client-only mixin, this is still seen by the internal server.
 //        if (player == null || !player.getWorld().isClient) {
@@ -93,7 +93,7 @@
 //    }
 //
 //    @Inject(method = "getTooltip", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/Item;appendTooltip(Lnet/minecraft/item/ItemStack;Lnet/minecraft/item/Item$TooltipContext;Ljava/util/List;Lnet/minecraft/item/tooltip/TooltipType;)V", shift = At.Shift.AFTER))
-//    private void apoli$appendUnusableTooltip(Item.TooltipContext context, @Nullable PlayerEntity player, TooltipType type, CallbackInfoReturnable<List<Text>> cir) {
+//    private void apoli$appendUnusableTooltip(Item.TooltipContext context, @Nullable Player player, TooltipType type, CallbackInfoReturnable<List<Text>> cir) {
 //
 //        if (!(Apoli.config instanceof ApoliConfigClient config) || !config.tooltips.showUsabilityHints) {
 //            return;
@@ -129,7 +129,7 @@
 //
 //        else if (config.tooltips.compactUsabilityHints) {
 //
-//            MinecraftClient client = MinecraftClient.getInstance();
+//            Minecraft client = Minecraft.getInstance();
 //            KeyBinding keyBinding = ApoliClient.showPowersOnUsabilityHint;
 //
 //            Integer keyCode = !keyBinding.isUnbound()
@@ -168,7 +168,7 @@
 //    }
 //
 //    @WrapOperation(method = "getTooltip", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;appendTooltip(Lnet/minecraft/component/ComponentType;Lnet/minecraft/item/Item$TooltipContext;Ljava/util/function/Consumer;Lnet/minecraft/item/tooltip/TooltipType;)V"))
-//    private void apoli$appendPowerTooltips(ItemStack stack, ComponentType<?> componentType, Item.TooltipContext context, Consumer<Text> tooltipConsumer, TooltipType type, Operation<Void> original, Item.TooltipContext mContext, @Nullable PlayerEntity player, @Local List<Text> tooltip) {
+//    private void apoli$appendPowerTooltips(ItemStack stack, ComponentType<?> componentType, Item.TooltipContext context, Consumer<Text> tooltipConsumer, TooltipType type, Operation<Void> original, Item.TooltipContext mContext, @Nullable Player player, @Local List<Text> tooltip) {
 //
 //        original.call(stack, componentType, context, tooltipConsumer, type);
 //
@@ -183,7 +183,7 @@
 //    }
 //
 //    @Inject(method = "appendAttributeModifiersTooltip", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;applyAttributeModifier(Lnet/minecraft/component/type/AttributeModifierSlot;Ljava/util/function/BiConsumer;)V", shift = At.Shift.AFTER))
-//    private void apoli$appendItemPowersTooltips(Consumer<Text> tooltipConsumer, @Nullable PlayerEntity player, CallbackInfo ci, @Local AttributeModifierSlot modifierSlot, @Local MutableBoolean shouldAppendSlotName) {
+//    private void apoli$appendItemPowersTooltips(Consumer<Text> tooltipConsumer, @Nullable Player player, CallbackInfo ci, @Local AttributeModifierSlot modifierSlot, @Local MutableBoolean shouldAppendSlotName) {
 //
 //        ItemPowersComponent itemPowersComponent = this.getOrDefault(ApoliDataComponentTypes.POWERS, ItemPowersComponent.DEFAULT);
 //        if (apoli$appendedSlots == null || apoli$appendedSlots.contains(modifierSlot) || !itemPowersComponent.containsSlot(modifierSlot)) {

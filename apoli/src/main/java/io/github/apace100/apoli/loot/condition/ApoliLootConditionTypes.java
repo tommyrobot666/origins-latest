@@ -5,7 +5,7 @@
 //import net.minecraft.loot.condition.LootCondition;
 //import net.minecraft.loot.condition.LootConditionType;
 //import net.minecraft.registry.Registries;
-//import net.minecraft.registry.Registry;
+//import net.minecraft.core.Registry;
 //
 //public class ApoliLootConditionTypes {
 //

@@ -9,7 +9,7 @@
 //import io.github.apace100.apoli.util.keybinding.KeyBindingReference;
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
-//import net.minecraft.entity.Entity;
+//import net.minecraft.world.entity.Entity;
 //import net.minecraft.nbt.NbtByte;
 //import net.minecraft.nbt.NbtElement;
 //import org.jetbrains.annotations.NotNull;

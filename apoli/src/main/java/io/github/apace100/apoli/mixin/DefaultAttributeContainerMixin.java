@@ -3,7 +3,7 @@
 //import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 //import io.github.apace100.apoli.access.OwnableAttributeContainer;
 //import io.github.apace100.apoli.access.OwnableAttributeInstance;
-//import net.minecraft.entity.Entity;
+//import net.minecraft.world.entity.Entity;
 //import net.minecraft.entity.attribute.DefaultAttributeContainer;
 //import net.minecraft.entity.attribute.EntityAttributeInstance;
 //import org.jetbrains.annotations.Nullable;

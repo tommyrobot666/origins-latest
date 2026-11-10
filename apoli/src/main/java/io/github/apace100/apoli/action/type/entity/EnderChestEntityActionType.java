@@ -4,7 +4,7 @@
 //import io.github.apace100.apoli.action.context.EntityActionContext;
 //import io.github.apace100.apoli.action.type.EntityActionType;
 //import io.github.apace100.apoli.action.type.EntityActionTypes;
-//import net.minecraft.entity.player.PlayerEntity;
+//import net.minecraft.world.entity.player.Player;
 //import net.minecraft.screen.GenericContainerScreenHandler;
 //import net.minecraft.screen.ScreenHandlerFactory;
 //import net.minecraft.screen.SimpleNamedScreenHandlerFactory;
@@ -17,7 +17,7 @@
 //    @Override
 //    public void accept(EntityActionContext context) {
 //
-//        if (context.entity() instanceof PlayerEntity player) {
+//        if (context.entity() instanceof Player player) {
 //
 //            ScreenHandlerFactory handlerFactory = (syncId, playerInventory, _player) -> GenericContainerScreenHandler.createGeneric9x3(syncId, playerInventory, player.getEnderChestInventory());
 //            player.openHandledScreen(new SimpleNamedScreenHandlerFactory(handlerFactory, Text.translatable("container.enderchest")));

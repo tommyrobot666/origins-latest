@@ -15,14 +15,14 @@
 //import io.github.apace100.apoli.util.Space;
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
-//import net.minecraft.entity.Entity;
+//import net.minecraft.world.entity.Entity;
 //import net.minecraft.entity.attribute.EntityAttributes;
 //import net.minecraft.entity.projectile.ProjectileUtil;
 //import net.minecraft.predicate.entity.EntityPredicates;
 //import net.minecraft.server.MinecraftServer;
 //import net.minecraft.server.command.CommandOutput;
 //import net.minecraft.server.command.ServerCommandSource;
-//import net.minecraft.server.network.ServerPlayerEntity;
+//import net.minecraft.server.network.ServerPlayer;
 //import net.minecraft.util.hit.BlockHitResult;
 //import net.minecraft.util.hit.EntityHitResult;
 //import net.minecraft.util.hit.HitResult;
@@ -362,7 +362,7 @@
 //            .withLevel(Apoli.config.executeCommand.permissionLevel);
 //
 //        if (Apoli.config.executeCommand.showOutput) {
-//            commandSource = commandSource.withOutput(entity instanceof ServerPlayerEntity serverPlayer && serverPlayer.networkHandler != null
+//            commandSource = commandSource.withOutput(entity instanceof ServerPlayer serverPlayer && serverPlayer.networkHandler != null
 //                ? serverPlayer
 //                : server);
 //        }
@@ -393,7 +393,7 @@
 //            .withLevel(Apoli.config.executeCommand.permissionLevel);
 //
 //        if (Apoli.config.executeCommand.showOutput) {
-//            commandSource = commandSource.withOutput(entity instanceof ServerPlayerEntity serverPlayer && serverPlayer.networkHandler != null
+//            commandSource = commandSource.withOutput(entity instanceof ServerPlayer serverPlayer && serverPlayer.networkHandler != null
 //                ? serverPlayer
 //                : server);
 //        }

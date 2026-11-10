@@ -12,11 +12,11 @@
 //import net.minecraft.advancement.AdvancementEntry;
 //import net.minecraft.advancement.AdvancementProgress;
 //import net.minecraft.client.network.ClientAdvancementManager;
-//import net.minecraft.client.network.ClientPlayerEntity;
-//import net.minecraft.entity.player.PlayerEntity;
+//import net.minecraft.client.network.ClientPlayer;
+//import net.minecraft.world.entity.player.Player;
 //import net.minecraft.server.MinecraftServer;
-//import net.minecraft.server.network.ServerPlayerEntity;
-//import net.minecraft.util.Identifier;
+//import net.minecraft.server.network.ServerPlayer;
+//import net.minecraft.resources.Identifier;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.Map;
@@ -42,7 +42,7 @@
 //    @Override
 //    public boolean test(EntityConditionContext context) {
 //
-//        if (!(context.entity() instanceof PlayerEntity player)) {
+//        if (!(context.entity() instanceof Player player)) {
 //            return false;
 //        }
 //
@@ -57,14 +57,14 @@
 //            }
 //
 //            else {
-//                return ((ServerPlayerEntity) player).getAdvancementTracker()
+//                return ((ServerPlayer) player).getAdvancementTracker()
 //                    .getProgress(advancementEntry)
 //                    .isDone();
 //            }
 //
 //        }
 //
-//        else if (player instanceof ClientPlayerEntity clientPlayer && clientPlayer.networkHandler != null) {
+//        else if (player instanceof ClientPlayer clientPlayer && clientPlayer.networkHandler != null) {
 //
 //            ClientAdvancementManager advancementManager = clientPlayer.networkHandler.getAdvancementHandler();
 //            AdvancementEntry advancement = advancementManager.get(this.advancement);

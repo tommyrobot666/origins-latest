@@ -1,7 +1,7 @@
 //package io.github.apace100.apoli.access;
 //
 //import io.github.apace100.apoli.util.ArmPoseReference;
-//import net.minecraft.entity.EntityPose;
+//import net.minecraft.world.entity.EntityPose;
 //
 //import java.util.Optional;
 //

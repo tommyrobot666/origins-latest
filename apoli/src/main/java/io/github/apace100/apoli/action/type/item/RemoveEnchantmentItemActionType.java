@@ -12,9 +12,9 @@
 //import net.minecraft.component.type.ItemEnchantmentsComponent;
 //import net.minecraft.enchantment.Enchantment;
 //import net.minecraft.inventory.StackReference;
-//import net.minecraft.item.ItemStack;
+//import net.minecraft.world.item.ItemStack;
 //import net.minecraft.registry.DynamicRegistryManager;
-//import net.minecraft.registry.Registry;
+//import net.minecraft.core.Registry;
 //import net.minecraft.registry.RegistryKey;
 //import net.minecraft.registry.RegistryKeys;
 //import net.minecraft.registry.entry.RegistryEntry;

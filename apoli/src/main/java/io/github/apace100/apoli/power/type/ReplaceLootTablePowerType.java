@@ -13,14 +13,14 @@
 //import io.github.apace100.apoli.util.SavedBlockPosition;
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
-//import net.minecraft.entity.Entity;
-//import net.minecraft.item.ItemStack;
+//import net.minecraft.world.entity.Entity;
+//import net.minecraft.world.item.ItemStack;
 //import net.minecraft.loot.LootTable;
 //import net.minecraft.loot.context.LootContext;
 //import net.minecraft.loot.context.LootContextParameters;
 //import net.minecraft.registry.RegistryKey;
 //import net.minecraft.registry.RegistryKeys;
-//import net.minecraft.util.Identifier;
+//import net.minecraft.resources.Identifier;
 //import net.minecraft.util.InvalidIdentifierException;
 //import org.jetbrains.annotations.NotNull;
 //

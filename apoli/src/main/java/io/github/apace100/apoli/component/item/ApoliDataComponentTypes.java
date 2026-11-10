@@ -3,7 +3,7 @@
 //import io.github.apace100.apoli.Apoli;
 //import net.minecraft.component.ComponentType;
 //import net.minecraft.registry.Registries;
-//import net.minecraft.registry.Registry;
+//import net.minecraft.core.Registry;
 //
 //public class ApoliDataComponentTypes {
 //

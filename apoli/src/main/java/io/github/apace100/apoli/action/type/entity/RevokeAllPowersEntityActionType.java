@@ -8,7 +8,7 @@
 //import io.github.apace100.apoli.data.TypedDataObjectFactory;
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
-//import net.minecraft.util.Identifier;
+//import net.minecraft.resources.Identifier;
 //import org.jetbrains.annotations.NotNull;
 //
 //public class RevokeAllPowersEntityActionType extends EntityActionType {

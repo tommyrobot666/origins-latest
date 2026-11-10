@@ -1,22 +1,22 @@
-//package io.github.apace100.apoli.power.type;
-//
-//import io.github.apace100.apoli.Apoli;
-//import io.github.apace100.apoli.power.PowerConfiguration;
-//import io.github.apace100.apoli.power.type.meta.DummyPowerType;
-//import io.github.apace100.apoli.power.type.meta.MultiplePowerType;
-//import io.github.apace100.apoli.registry.ApoliRegistries;
-//import io.github.apace100.calio.data.SerializableDataType;
-//import io.github.apace100.calio.util.IdentifierAlias;
-//import net.minecraft.registry.Registry;
-//
-//public class PowerTypes {
-//
-//    public static final IdentifierAlias ALIASES = new IdentifierAlias();
-//    public static final SerializableDataType<PowerConfiguration<PowerType>> DATA_TYPE = SerializableDataType.registry(ApoliRegistries.POWER_TYPE, Apoli.MODID, ALIASES, (configurations, id) -> "Power type \"" + id + "\" is undefined!");
-//
-//    public static final PowerConfiguration<DummyPowerType> DUMMY = register(PowerConfiguration.conditionedSimple(Apoli.identifier("dummy"), DummyPowerType::new));
-//    public static final PowerConfiguration<MultiplePowerType> MULTIPLE = register(PowerConfiguration.simple(Apoli.identifier("multiple"), MultiplePowerType::new));
-//
+package io.github.apace100.apoli.power.type;
+
+import io.github.apace100.apoli.Apoli;
+import io.github.apace100.apoli.power.PowerConfiguration;
+import io.github.apace100.apoli.power.type.meta.DummyPowerType;
+import io.github.apace100.apoli.power.type.meta.MultiplePowerType;
+import io.github.apace100.apoli.registry.ApoliRegistries;
+import io.github.apace100.calio.data.SerializableDataType;
+import io.github.apace100.calio.util.IdentifierAlias;
+import net.minecraft.core.Registry;
+
+public class PowerTypes {
+
+    public static final IdentifierAlias ALIASES = new IdentifierAlias();
+    public static final SerializableDataType<PowerConfiguration<PowerType>> DATA_TYPE = SerializableDataType.registry(ApoliRegistries.POWER_TYPE, Apoli.MODID, ALIASES, (configurations, id) -> "Power type \"" + id + "\" is undefined!");
+
+    public static final PowerConfiguration<DummyPowerType> DUMMY = register(PowerConfiguration.conditionedSimple(Apoli.identifier("dummy"), DummyPowerType::new));
+    public static final PowerConfiguration<MultiplePowerType> MULTIPLE = register(PowerConfiguration.simple(Apoli.identifier("multiple"), MultiplePowerType::new));
+
 //    public static final PowerConfiguration<ActionOnBeingUsedPowerType> ACTION_ON_BEING_USED = register(PowerConfiguration.of(Apoli.identifier("action_on_being_used"), ActionOnBeingUsedPowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<ActionOnBlockBreakPowerType> ACTION_ON_BLOCK_BREAK = register(PowerConfiguration.of(Apoli.identifier("action_on_block_break"), ActionOnBlockBreakPowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<ActionOnBlockPlacePowerType> ACTION_ON_BLOCK_PLACE = register(PowerConfiguration.of(Apoli.identifier("action_on_block_place"), ActionOnBlockPlacePowerType.DATA_FACTORY));
@@ -133,21 +133,21 @@
 //    public static final PowerConfiguration<TogglePowerType> TOGGLE = register(PowerConfiguration.of(Apoli.identifier("toggle"), TogglePowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<TooltipPowerType> TOOLTIP = register(PowerConfiguration.of(Apoli.identifier("tooltip"), TooltipPowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<WalkOnFluidPowerType> WALK_ON_FLUID = register(PowerConfiguration.of(Apoli.identifier("walk_on_fluid"), WalkOnFluidPowerType.DATA_FACTORY));
-//
-//    public static void register() {
-//        ALIASES.addPathAlias("simple", DUMMY.id().getPath());
-//        ALIASES.addPathAlias("self_action_when_hit", ACTION_WHEN_DAMAGE_TAKEN.id().getPath());
-//        ALIASES.addPathAlias("active_self", ACTION_ON_KEY_PRESS.id().getPath());
-//    }
-//
-//    @SuppressWarnings("unchecked")
-//	public static <T extends PowerType> PowerConfiguration<T> register(PowerConfiguration<T> configuration) {
-//
-//        PowerConfiguration<PowerType> casted = (PowerConfiguration<PowerType>) configuration;
-//        Registry.register(ApoliRegistries.POWER_TYPE, casted.id(), casted);
-//
-//        return configuration;
-//
-//    }
-//
-//}
+
+    public static void register() {
+        ALIASES.addPathAlias("simple", DUMMY.id().getPath());
+        ALIASES.addPathAlias("self_action_when_hit", ACTION_WHEN_DAMAGE_TAKEN.id().getPath());
+        ALIASES.addPathAlias("active_self", ACTION_ON_KEY_PRESS.id().getPath());
+    }
+
+    @SuppressWarnings("unchecked")
+	public static <T extends PowerType> PowerConfiguration<T> register(PowerConfiguration<T> configuration) {
+
+        PowerConfiguration<PowerType> casted = (PowerConfiguration<PowerType>) configuration;
+        Registry.register(ApoliRegistries.POWER_TYPE, casted.id(), casted);
+
+        return configuration;
+
+    }
+
+}

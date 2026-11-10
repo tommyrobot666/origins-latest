@@ -7,11 +7,11 @@
 //import io.github.apace100.apoli.power.type.ModifyCraftingPowerType;
 //import io.github.apace100.apoli.power.type.RestrictArmorPowerType;
 //import net.minecraft.entity.EquipmentSlot;
-//import net.minecraft.entity.player.PlayerEntity;
+//import net.minecraft.world.entity.player.Player;
 //import net.minecraft.entity.player.PlayerInventory;
 //import net.minecraft.inventory.CraftingInventory;
 //import net.minecraft.inventory.RecipeInputInventory;
-//import net.minecraft.item.ItemStack;
+//import net.minecraft.world.item.ItemStack;
 //import net.minecraft.screen.PlayerScreenHandler;
 //import net.minecraft.screen.slot.Slot;
 //import org.spongepowered.asm.mixin.Final;
@@ -40,13 +40,13 @@
 //    }
 //
 //    @ModifyExpressionValue(method = "quickMove", at = @At(value = "INVOKE", target = "Lnet/minecraft/screen/slot/Slot;hasStack()Z", ordinal = 0), slice = @Slice(from = @At(value = "FIELD", target = "Lnet/minecraft/entity/EquipmentSlot$Type;HUMANOID_ARMOR:Lnet/minecraft/entity/EquipmentSlot$Type;")))
-//    private boolean apoli$disallowQuickMovingRestrictedWearables(boolean original, PlayerEntity player, @Local(ordinal = 1) ItemStack stackToInsert, @Local EquipmentSlot slot) {
+//    private boolean apoli$disallowQuickMovingRestrictedWearables(boolean original, Player player, @Local(ordinal = 1) ItemStack stackToInsert, @Local EquipmentSlot slot) {
 //        return original
 //            || PowerHolderComponent.hasPowerType(player, RestrictArmorPowerType.class, p -> p.doesRestrict(stackToInsert, slot));
 //    }
 //
 //    @ModifyVariable(method = "quickMove", at = @At(value = "INVOKE", target = "Lnet/minecraft/screen/PlayerScreenHandler;insertItem(Lnet/minecraft/item/ItemStack;IIZ)Z", ordinal = 0), ordinal = 1)
-//    private ItemStack apoli$modifyResultStackOnQuickMove(ItemStack original, PlayerEntity player, int slotId, @Local Slot slot) {
+//    private ItemStack apoli$modifyResultStackOnQuickMove(ItemStack original, Player player, int slotId, @Local Slot slot) {
 //        return ModifyCraftingPowerType.executeAfterCraftingAction(player, craftingInput, slot, original);
 //    }
 //

@@ -9,9 +9,9 @@
 //import io.github.apace100.apoli.power.PowerConfiguration;
 //import io.github.apace100.apoli.util.PriorityPhase;
 //import io.github.apace100.calio.data.SerializableData;
-//import net.minecraft.entity.Entity;
-//import net.minecraft.entity.player.PlayerEntity;
-//import net.minecraft.item.ItemStack;
+//import net.minecraft.world.entity.Entity;
+//import net.minecraft.world.entity.player.Player;
+//import net.minecraft.world.item.ItemStack;
 //import net.minecraft.util.ActionResult;
 //import net.minecraft.util.Hand;
 //import org.jetbrains.annotations.NotNull;
@@ -65,7 +65,7 @@
 //    public ActionResult executeAction(Entity other, Hand hand) {
 //
 //        biEntityAction.ifPresent(action -> action.execute(getHolder(), other));
-//        this.performActorItemStuff((PlayerEntity) getHolder(), hand);
+//        this.performActorItemStuff((Player) getHolder(), hand);
 //
 //        return this.getActionResult();
 //

@@ -6,12 +6,12 @@
 //import io.github.apace100.apoli.access.PowerCraftingInventory;
 //import io.github.apace100.apoli.access.ScreenHandlerUsabilityOverride;
 //import io.github.apace100.apoli.power.type.ModifyCraftingPowerType;
-//import net.minecraft.entity.player.PlayerEntity;
+//import net.minecraft.world.entity.player.Player;
 //import net.minecraft.entity.player.PlayerInventory;
 //import net.minecraft.inventory.CraftingInventory;
 //import net.minecraft.inventory.CraftingResultInventory;
 //import net.minecraft.inventory.RecipeInputInventory;
-//import net.minecraft.item.ItemStack;
+//import net.minecraft.world.item.ItemStack;
 //import net.minecraft.recipe.CraftingRecipe;
 //import net.minecraft.recipe.RecipeEntry;
 //import net.minecraft.recipe.input.CraftingRecipeInput;
@@ -40,7 +40,7 @@
 //    @Final
 //    private RecipeInputInventory input;
 //
-//    @Shadow @Final private PlayerEntity player;
+//    @Shadow @Final private Player player;
 //    @Unique
 //    private boolean apoli$canUse = false;
 //
@@ -70,7 +70,7 @@
 //    }
 //
 //    @Inject(method = "updateResult", at = @At(value = "INVOKE", target = "Lnet/minecraft/recipe/RecipeManager;getFirstMatch(Lnet/minecraft/recipe/RecipeType;Lnet/minecraft/recipe/input/RecipeInput;Lnet/minecraft/world/World;Lnet/minecraft/recipe/RecipeEntry;)Ljava/util/Optional;"))
-//    private static void apoli$clearPowerCraftingInventory(ScreenHandler handler, World world, PlayerEntity player, RecipeInputInventory craftingInventory, CraftingResultInventory resultInventory, @Nullable RecipeEntry<CraftingRecipe> recipe, CallbackInfo ci) {
+//    private static void apoli$clearPowerCraftingInventory(ScreenHandler handler, World world, Player player, RecipeInputInventory craftingInventory, CraftingResultInventory resultInventory, @Nullable RecipeEntry<CraftingRecipe> recipe, CallbackInfo ci) {
 //
 //        if (craftingInventory instanceof PowerCraftingInventory pci) {
 //            pci.apoli$setPowerTypes(new LinkedList<>());
@@ -79,12 +79,12 @@
 //    }
 //
 //    @ModifyReturnValue(method = "canUse", at = @At("RETURN"))
-//    private boolean apoli$allowUsingViaPower(boolean original, PlayerEntity playerEntity) {
+//    private boolean apoli$allowUsingViaPower(boolean original, Player playerEntity) {
 //        return original || this.apoli$canUse();
 //    }
 //
 //    @ModifyVariable(method = "quickMove", at = @At(value = "INVOKE", target = "Lnet/minecraft/screen/CraftingScreenHandler;insertItem(Lnet/minecraft/item/ItemStack;IIZ)Z", ordinal = 0), ordinal = 1)
-//    private ItemStack apoli$modifyResultStackOnQuickMove(ItemStack original, PlayerEntity player, int slotId, @Local Slot slot) {
+//    private ItemStack apoli$modifyResultStackOnQuickMove(ItemStack original, Player player, int slotId, @Local Slot slot) {
 //        return ModifyCraftingPowerType.executeAfterCraftingAction(player, input, slot, original);
 //    }
 //

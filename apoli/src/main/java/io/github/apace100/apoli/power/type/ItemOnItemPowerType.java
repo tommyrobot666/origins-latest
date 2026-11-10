@@ -12,10 +12,10 @@
 //import io.github.apace100.apoli.util.StackClickPhase;
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
-//import net.minecraft.entity.LivingEntity;
-//import net.minecraft.entity.player.PlayerEntity;
+//import net.minecraft.world.entity.LivingEntity;
+//import net.minecraft.world.entity.player.Player;
 //import net.minecraft.inventory.StackReference;
-//import net.minecraft.item.ItemStack;
+//import net.minecraft.world.item.ItemStack;
 //import net.minecraft.screen.slot.Slot;
 //import net.minecraft.util.ClickType;
 //import org.jetbrains.annotations.NotNull;
@@ -131,7 +131,7 @@
 //        usingItemAction.ifPresent(action -> action.execute(holder.getWorld(), usingStackReference));
 //        onItemAction.ifPresent(action -> action.execute(holder.getWorld(), onStackReference));
 //
-//        if (holder instanceof PlayerEntity player && (resultStack.isPresent() || resultItemAction.isPresent())) {
+//        if (holder instanceof Player player && (resultStack.isPresent() || resultItemAction.isPresent())) {
 //
 //            if (slot.hasStack()) {
 //                player.getInventory().offerOrDrop(resultStackReference.get());
@@ -147,7 +147,7 @@
 //
 //    }
 //
-//    public static boolean executeActions(PlayerEntity user, PriorityPhase priorityPhase, StackClickPhase clickPhase, ClickType clickType, Slot slot, StackReference slotStackReference, StackReference cursorStackReference) {
+//    public static boolean executeActions(Player user, PriorityPhase priorityPhase, StackClickPhase clickPhase, ClickType clickType, Slot slot, StackReference slotStackReference, StackReference cursorStackReference) {
 //
 //        CallInstance<ItemOnItemPowerType> ioipci = new CallInstance<>();
 //        ioipci.add(user, ItemOnItemPowerType.class, p -> p.doesApply(cursorStackReference.get(), slotStackReference.get(), clickType, clickPhase, priorityPhase));

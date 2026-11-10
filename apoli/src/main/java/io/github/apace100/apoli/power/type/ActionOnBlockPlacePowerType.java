@@ -10,9 +10,9 @@
 //import io.github.apace100.apoli.power.PowerConfiguration;
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
-//import net.minecraft.entity.Entity;
-//import net.minecraft.entity.player.PlayerEntity;
-//import net.minecraft.item.ItemStack;
+//import net.minecraft.world.entity.Entity;
+//import net.minecraft.world.entity.player.Player;
+//import net.minecraft.world.item.ItemStack;
 //import net.minecraft.util.ActionResult;
 //import net.minecraft.util.Hand;
 //import net.minecraft.util.math.BlockPos;
@@ -104,7 +104,7 @@
 //
 //    public void executeItemActions(Hand hand) {
 //
-//        if (getHolder() instanceof PlayerEntity playerEntity) {
+//        if (getHolder() instanceof Player playerEntity) {
 //            this.performActorItemStuff(playerEntity, hand);
 //        }
 //

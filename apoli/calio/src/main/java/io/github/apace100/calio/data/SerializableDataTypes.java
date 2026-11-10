@@ -810,11 +810,11 @@ public final class SerializableDataTypes {
 	@Deprecated(forRemoval = true)
     public static final SerializableDataType<List<StatusEffectChance>> STATUS_EFFECT_CHANCES = STATUS_EFFECT_CHANCE.list();
 
-    public static final SerializableDataType<FoodComponent.StatusEffectEntry> FOOD_STATUS_EFFECT_ENTRY = SerializableDataType.of(FoodComponent.StatusEffectEntry.CODEC, FoodComponent.StatusEffectEntry.PACKET_CODEC);
+    public static final SerializableDataType<FoodProperties.StatusEffectEntry> FOOD_STATUS_EFFECT_ENTRY = SerializableDataType.of(FoodProperties.StatusEffectEntry.CODEC, FoodProperties.StatusEffectEntry.PACKET_CODEC);
 
-    public static final SerializableDataType<List<FoodComponent.StatusEffectEntry>> FOOD_STATUS_EFFECT_ENTRIES = FOOD_STATUS_EFFECT_ENTRY.list();
+    public static final SerializableDataType<List<FoodProperties.StatusEffectEntry>> FOOD_STATUS_EFFECT_ENTRIES = FOOD_STATUS_EFFECT_ENTRY.list();
 
-    public static final CompoundSerializableDataType<FoodComponent> FOOD_COMPONENT = SerializableDataType.compound(
+    public static final CompoundSerializableDataType<FoodProperties> FOOD_COMPONENT = SerializableDataType.compound(
         new SerializableData()
             .add("nutrition", NON_NEGATIVE_INT)
             .add("saturation", FLOAT)
@@ -825,12 +825,12 @@ public final class SerializableDataTypes {
             .add("effects", FOOD_STATUS_EFFECT_ENTRIES, null),
         data -> {
 
-            List<FoodComponent.StatusEffectEntry> effects = new ArrayList<>();
+            List<FoodProperties.StatusEffectEntry> effects = new ArrayList<>();
 
-            data.<FoodComponent.StatusEffectEntry>ifPresent("effect", effects::add);
-            data.<List<FoodComponent.StatusEffectEntry>>ifPresent("effects", effects::addAll);
+            data.<FoodProperties.StatusEffectEntry>ifPresent("effect", effects::add);
+            data.<List<FoodProperties.StatusEffectEntry>>ifPresent("effects", effects::addAll);
 
-            return new FoodComponent(
+            return new FoodProperties(
                 data.getInt("nutrition"),
                 data.getFloat("saturation"),
                 data.getBoolean("can_always_eat"),

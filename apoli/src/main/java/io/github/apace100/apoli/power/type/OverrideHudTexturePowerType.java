@@ -12,7 +12,7 @@
 //import net.fabricmc.api.Environment;
 //import net.minecraft.client.gui.DrawContext;
 //import net.minecraft.client.gui.hud.InGameHud;
-//import net.minecraft.util.Identifier;
+//import net.minecraft.resources.Identifier;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.Map;

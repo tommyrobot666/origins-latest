@@ -15,7 +15,7 @@
 //import io.github.apace100.calio.data.SerializableDataType;
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.inventory.StackReference;
-//import net.minecraft.item.ItemStack;
+//import net.minecraft.world.item.ItemStack;
 //import net.minecraft.screen.GrindstoneScreenHandler;
 //import net.minecraft.util.math.BlockPos;
 //import net.minecraft.world.World;

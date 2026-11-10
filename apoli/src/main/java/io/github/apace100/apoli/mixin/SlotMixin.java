@@ -2,7 +2,7 @@
 //
 //import io.github.apace100.apoli.access.SlotState;
 //import net.minecraft.screen.slot.Slot;
-//import net.minecraft.util.Identifier;
+//import net.minecraft.resources.Identifier;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.Unique;
 //

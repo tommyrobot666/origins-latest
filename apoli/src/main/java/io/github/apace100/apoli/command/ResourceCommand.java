@@ -14,7 +14,7 @@ import io.github.apace100.apoli.power.type.PowerType;
 import io.github.apace100.apoli.util.PowerUtil;
 import net.minecraft.command.argument.ScoreHolderArgumentType;
 import net.minecraft.command.argument.ScoreboardObjectiveArgumentType;
-import net.minecraft.entity.Entity;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.scoreboard.ScoreAccess;
 import net.minecraft.scoreboard.ScoreHolder;
 import net.minecraft.scoreboard.ScoreboardObjective;

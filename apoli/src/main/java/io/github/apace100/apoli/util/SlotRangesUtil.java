@@ -9,7 +9,7 @@
 //import it.unimi.dsi.fastutil.ints.IntList;
 //import net.minecraft.inventory.SlotRange;
 //import net.minecraft.inventory.SlotRanges;
-//import net.minecraft.network.codec.PacketCodec;
+//import net.minecraft.network.codec.StreamCodec;
 //import net.minecraft.network.codec.PacketCodecs;
 //import net.minecraft.util.StringIdentifiable;
 //
@@ -120,7 +120,7 @@
 //
 //	};
 //
-//	public static final PacketCodec<ByteBuf, SlotRange> PACKET_CODEC = PacketCodecs.STRING.xmap(SlotRanges::fromName, StringIdentifiable::asString);
+//	public static final StreamCodec<ByteBuf, SlotRange> PACKET_CODEC = PacketCodecs.STRING.xmap(SlotRanges::fromName, StringIdentifiable::asString);
 //
 //	public static DataResult<SlotRange> validateSingleSlot(SlotRange slotRange) {
 //		return slotRange.getSlotCount() == 1

@@ -8,7 +8,7 @@
 //import io.github.apace100.apoli.util.modifier.Modifier;
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
-//import net.minecraft.server.network.ServerPlayerEntity;
+//import net.minecraft.server.network.ServerPlayer;
 //import net.minecraft.stat.ServerStatHandler;
 //import net.minecraft.stat.Stat;
 //import org.jetbrains.annotations.NotNull;
@@ -39,7 +39,7 @@
 //    @Override
 //    public void accept(EntityActionContext context) {
 //
-//        if (context.entity() instanceof ServerPlayerEntity serverPlayer) {
+//        if (context.entity() instanceof ServerPlayer serverPlayer) {
 //
 //            ServerStatHandler statHandler = serverPlayer.getStatHandler();
 //            int originalValue = statHandler.getStat(stat);

@@ -5,9 +5,9 @@
 //import io.github.apace100.apoli.mixin.TextureManagerAccessor;
 //import net.fabricmc.api.EnvType;
 //import net.fabricmc.api.Environment;
-//import net.minecraft.client.MinecraftClient;
+//import net.minecraft.client.Minecraft;
 //import net.minecraft.client.texture.*;
-//import net.minecraft.util.Identifier;
+//import net.minecraft.resources.Identifier;
 //import org.apache.commons.lang3.exception.ExceptionUtils;
 //
 //import java.io.IOException;
@@ -41,7 +41,7 @@
 //     */
 //    public static DataResult<Identifier> tryLoadingTexture(Identifier id, Function<Identifier, String> missingErr, Function<Identifier, String> loadFailureErr) {
 //
-//        TextureManagerAccessor textureManagerAccessor = (TextureManagerAccessor) MinecraftClient.getInstance().getTextureManager();
+//        TextureManagerAccessor textureManagerAccessor = (TextureManagerAccessor) Minecraft.getInstance().getTextureManager();
 //
 //        AbstractTexture texture = textureManagerAccessor.getTextures().get(id);
 //        StringBuilder errorMessage = new StringBuilder();
@@ -95,7 +95,7 @@
 //     */
 //    public static DataResult<Identifier> tryLoadingSprite(Identifier spriteId, Identifier atlasId) {
 //
-//        TextureManagerAccessor textureManagerAccessor = (TextureManagerAccessor) MinecraftClient.getInstance().getTextureManager();
+//        TextureManagerAccessor textureManagerAccessor = (TextureManagerAccessor) Minecraft.getInstance().getTextureManager();
 //        DataResult<Identifier> atlasResult = tryLoadingTexture(atlasId, _id -> "Texture \"" + _id + "\" does not exist!", _id -> "\n");
 //
 //        if (atlasResult.result().isEmpty()) {

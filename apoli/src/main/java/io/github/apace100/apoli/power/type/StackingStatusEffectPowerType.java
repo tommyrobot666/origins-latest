@@ -6,7 +6,7 @@
 //import io.github.apace100.apoli.util.MiscUtil;
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
-//import net.minecraft.entity.LivingEntity;
+//import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.entity.effect.StatusEffectInstance;
 //import net.minecraft.nbt.NbtElement;
 //import net.minecraft.nbt.NbtInt;

@@ -13,12 +13,12 @@
 //import io.github.apace100.apoli.util.StackClickPhase;
 //import net.fabricmc.fabric.api.item.v1.FabricItemStack;
 //import net.minecraft.component.ComponentHolder;
-//import net.minecraft.entity.Entity;
-//import net.minecraft.entity.LivingEntity;
-//import net.minecraft.entity.player.PlayerEntity;
+//import net.minecraft.world.entity.Entity;
+//import net.minecraft.world.entity.LivingEntity;
+//import net.minecraft.world.entity.player.Player;
 //import net.minecraft.inventory.StackReference;
 //import net.minecraft.item.Item;
-//import net.minecraft.item.ItemStack;
+//import net.minecraft.world.item.ItemStack;
 //import net.minecraft.item.ItemUsage;
 //import net.minecraft.screen.slot.Slot;
 //import net.minecraft.sound.SoundEvent;
@@ -77,8 +77,8 @@
 //        this.apoli$holdingEntity = new WeakReference<>(entity);
 //    }
 //
-//    @WrapOperation(method = "use", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/Item;use(Lnet/minecraft/world/World;Lnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/util/Hand;)Lnet/minecraft/util/TypedActionResult;"))
-//    private TypedActionResult<ItemStack> apoli$onItemUse(Item item, World world, PlayerEntity user, Hand hand, Operation<TypedActionResult<ItemStack>> original) {
+//    @WrapOperation(method = "use", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/Item;use(Lnet/minecraft/world/World;Lnet/minecraft/entity/player/Player;Lnet/minecraft/util/Hand;)Lnet/minecraft/util/TypedActionResult;"))
+//    private TypedActionResult<ItemStack> apoli$onItemUse(Item item, World world, Player user, Hand hand, Operation<TypedActionResult<ItemStack>> original) {
 //
 //        //  region  Prevent item use
 //        ItemStack thisAsStack = (ItemStack) (Object) this;
@@ -100,7 +100,7 @@
 //        //  region  Edible item
 //        ItemStack oldUseStack = useStack.copy();
 //        boolean canConsumeCustomFood = EdibleItemPowerType.get(useStack, user)
-//            .map(EdibleItemPowerType::getFoodComponent)
+//            .map(EdibleItemPowerType::getFoodProperties)
 //            .map(fc -> user.canConsume(fc.canAlwaysEat()))
 //            .orElse(false);
 //
@@ -177,7 +177,7 @@
 //
 //        //  region  Edible item consumption effects
 //        finishUsingStackRef.set(EdibleItemPowerType.get(finishUsingStack, user)
-//            .map(p -> user.eatFood(world, stack, p.getFoodComponent()))
+//            .map(p -> user.eatFood(world, stack, p.getFoodProperties()))
 //            .orElseGet(() -> original.call(finishUsingStack.getItem(), finishUsingStack, world, user)));
 //        //  endregion
 //
@@ -223,8 +223,8 @@
 //            : false;
 //    }
 //
-//    @WrapOperation(method = "onStackClicked", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/Item;onStackClicked(Lnet/minecraft/item/ItemStack;Lnet/minecraft/screen/slot/Slot;Lnet/minecraft/util/ClickType;Lnet/minecraft/entity/player/PlayerEntity;)Z"))
-//    private boolean apoli$itemOnItem_cursorStack(Item cursorItem, ItemStack cursorStack, Slot slot, ClickType clickType, PlayerEntity player, Operation<Boolean> original) {
+//    @WrapOperation(method = "onStackClicked", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/Item;onStackClicked(Lnet/minecraft/item/ItemStack;Lnet/minecraft/screen/slot/Slot;Lnet/minecraft/util/ClickType;Lnet/minecraft/entity/player/Player;)Z"))
+//    private boolean apoli$itemOnItem_cursorStack(Item cursorItem, ItemStack cursorStack, Slot slot, ClickType clickType, Player player, Operation<Boolean> original) {
 //
 //        StackClickPhase clickPhase = StackClickPhase.CURSOR;
 //
@@ -237,8 +237,8 @@
 //
 //    }
 //
-//    @WrapOperation(method = "onClicked", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/Item;onClicked(Lnet/minecraft/item/ItemStack;Lnet/minecraft/item/ItemStack;Lnet/minecraft/screen/slot/Slot;Lnet/minecraft/util/ClickType;Lnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/inventory/StackReference;)Z"))
-//    private boolean apoli$itemOnItem_slotStack(Item slotItem, ItemStack slotStack, ItemStack cursorStack, Slot slot, ClickType clickType, PlayerEntity player, StackReference cursorStackReference, Operation<Boolean> original) {
+//    @WrapOperation(method = "onClicked", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/Item;onClicked(Lnet/minecraft/item/ItemStack;Lnet/minecraft/item/ItemStack;Lnet/minecraft/screen/slot/Slot;Lnet/minecraft/util/ClickType;Lnet/minecraft/entity/player/Player;Lnet/minecraft/inventory/StackReference;)Z"))
+//    private boolean apoli$itemOnItem_slotStack(Item slotItem, ItemStack slotStack, ItemStack cursorStack, Slot slot, ClickType clickType, Player player, StackReference cursorStackReference, Operation<Boolean> original) {
 //
 //        StackClickPhase clickPhase = StackClickPhase.SLOT;
 //        StackReference slotStackReference = StackReference.of(slot.inventory, slot.getIndex());

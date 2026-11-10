@@ -15,17 +15,17 @@
 //import it.unimi.dsi.fastutil.objects.ObjectListIterator;
 //import net.minecraft.component.type.AttributeModifierSlot;
 //import net.minecraft.entity.EquipmentSlot;
-//import net.minecraft.entity.LivingEntity;
+//import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.item.Item;
-//import net.minecraft.item.ItemStack;
+//import net.minecraft.world.item.ItemStack;
 //import net.minecraft.item.tooltip.TooltipType;
 //import net.minecraft.nbt.NbtCompound;
 //import net.minecraft.nbt.NbtOps;
-//import net.minecraft.network.codec.PacketCodec;
+//import net.minecraft.network.codec.StreamCodec;
 //import net.minecraft.network.codec.PacketCodecs;
 //import net.minecraft.text.Text;
 //import net.minecraft.util.Formatting;
-//import net.minecraft.util.Identifier;
+//import net.minecraft.resources.Identifier;
 //
 //import java.util.*;
 //import java.util.function.Consumer;
@@ -42,7 +42,7 @@
 //		ItemPowersComponent::entries
 //    );
 //
-//    public static final PacketCodec<ByteBuf, ItemPowersComponent> PACKET_CODEC = PacketCodecs.collection(ObjectLinkedOpenHashSet::new, Entry.PACKET_CODEC).xmap(
+//    public static final StreamCodec<ByteBuf, ItemPowersComponent> PACKET_CODEC = PacketCodecs.collection(ObjectLinkedOpenHashSet::new, Entry.PACKET_CODEC).xmap(
 //        ItemPowersComponent::new,
 //        ItemPowersComponent::entries
 //    );
@@ -182,7 +182,7 @@
 //            Codec.BOOL.optionalFieldOf("negative", false).forGetter(Entry::negative)
 //        ).apply(instance, Entry::new));
 //
-//        public static final PacketCodec<ByteBuf, Entry> PACKET_CODEC = PacketCodec.tuple(
+//        public static final StreamCodec<ByteBuf, Entry> PACKET_CODEC = StreamCodec.tuple(
 //            Identifier.PACKET_CODEC, Entry::powerId,
 //            AttributeModifierSlot.PACKET_CODEC, Entry::slot,
 //            PacketCodecs.BOOL, Entry::hidden,

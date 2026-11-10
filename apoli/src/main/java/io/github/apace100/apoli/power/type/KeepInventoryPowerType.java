@@ -11,11 +11,11 @@
 //import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 //import it.unimi.dsi.fastutil.ints.IntCollection;
 //import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-//import net.minecraft.entity.LivingEntity;
+//import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.inventory.SlotRange;
 //import net.minecraft.inventory.SlotRanges;
 //import net.minecraft.inventory.StackReference;
-//import net.minecraft.item.ItemStack;
+//import net.minecraft.world.item.ItemStack;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.Collection;

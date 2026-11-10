@@ -16,18 +16,18 @@
 //import net.fabricmc.api.EnvType;
 //import net.fabricmc.api.Environment;
 //import net.minecraft.client.model.ModelPart;
-//import net.minecraft.client.network.AbstractClientPlayerEntity;
+//import net.minecraft.client.network.AbstractClientPlayer;
 //import net.minecraft.client.render.RenderLayer;
 //import net.minecraft.client.render.VertexConsumer;
 //import net.minecraft.client.render.VertexConsumerProvider;
 //import net.minecraft.client.render.entity.EntityRendererFactory;
 //import net.minecraft.client.render.entity.LivingEntityRenderer;
-//import net.minecraft.client.render.entity.PlayerEntityRenderer;
+//import net.minecraft.client.render.entity.PlayerRenderer;
 //import net.minecraft.client.render.entity.model.BipedEntityModel;
-//import net.minecraft.client.render.entity.model.PlayerEntityModel;
+//import net.minecraft.client.render.entity.model.PlayerModel;
 //import net.minecraft.client.util.math.MatrixStack;
-//import net.minecraft.entity.EntityPose;
-//import net.minecraft.util.Identifier;
+//import net.minecraft.world.entity.EntityPose;
+//import net.minecraft.resources.Identifier;
 //import net.minecraft.util.math.ColorHelper;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.injection.At;
@@ -35,15 +35,15 @@
 //import java.util.List;
 //
 //@Environment(EnvType.CLIENT)
-//@Mixin(PlayerEntityRenderer.class)
-//public abstract class PlayerEntityRendererMixin extends LivingEntityRenderer<AbstractClientPlayerEntity, PlayerEntityModel<AbstractClientPlayerEntity>> {
+//@Mixin(PlayerRenderer.class)
+//public abstract class PlayerRendererMixin extends LivingEntityRenderer<AbstractClientPlayer, PlayerModel<AbstractClientPlayer>> {
 //
-//    private PlayerEntityRendererMixin(EntityRendererFactory.Context ctx, PlayerEntityModel<AbstractClientPlayerEntity> model, float shadowRadius) {
+//    private PlayerRendererMixin(EntityRendererFactory.Context ctx, PlayerModel<AbstractClientPlayer> model, float shadowRadius) {
 //        super(ctx, model, shadowRadius);
 //    }
 //
 //    @WrapOperation(method = "renderArm", at = {@At(value = "INVOKE", target = "Lnet/minecraft/client/model/ModelPart;render(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumer;II)V", ordinal = 0), @At(value = "INVOKE", target = "Lnet/minecraft/client/model/ModelPart;render(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumer;II)V", ordinal = 1)})
-//    private void apoli$makeArmAndSleeveTransparent(ModelPart instance, MatrixStack matrices, VertexConsumer vertices, int light, int overlay, Operation<Void> original, MatrixStack mMatrices, VertexConsumerProvider mVertexConsumers, int mLight, AbstractClientPlayerEntity mPlayer, @Local Identifier skinTextureId) {
+//    private void apoli$makeArmAndSleeveTransparent(ModelPart instance, MatrixStack matrices, VertexConsumer vertices, int light, int overlay, Operation<Void> original, MatrixStack mMatrices, VertexConsumerProvider mVertexConsumers, int mLight, AbstractClientPlayer mPlayer, @Local Identifier skinTextureId) {
 //
 //        List<ModelColorPowerType> modelColorPowers = PowerHolderComponent.getPowerTypes(mPlayer, ModelColorPowerType.class);
 //        if (modelColorPowers.isEmpty()) {
@@ -60,8 +60,8 @@
 //
 //    }
 //
-//    @ModifyExpressionValue(method = "setupTransforms(Lnet/minecraft/client/network/AbstractClientPlayerEntity;Lnet/minecraft/client/util/math/MatrixStack;FFFF)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/network/AbstractClientPlayerEntity;isFallFlying()Z"))
-//    private boolean apoli$forceFallFlyingPose(boolean original, AbstractClientPlayerEntity player, @Share("applyPseudoFallFlyingTicks") LocalBooleanRef applyPseudoFallFlyingTicksRef, @Share("pseudoRoll") LocalIntRef pseudoRollRef) {
+//    @ModifyExpressionValue(method = "setupTransforms(Lnet/minecraft/client/network/AbstractClientPlayer;Lnet/minecraft/client/util/math/MatrixStack;FFFF)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/network/AbstractClientPlayer;isFallFlying()Z"))
+//    private boolean apoli$forceFallFlyingPose(boolean original, AbstractClientPlayer player, @Share("applyPseudoFallFlyingTicks") LocalBooleanRef applyPseudoFallFlyingTicksRef, @Share("pseudoRoll") LocalIntRef pseudoRollRef) {
 //
 //        if (original || !(player instanceof PseudoRenderDataHolder renderData)) {
 //            return original;
@@ -77,20 +77,20 @@
 //
 //    }
 //
-//    @ModifyExpressionValue(method = "setupTransforms(Lnet/minecraft/client/network/AbstractClientPlayerEntity;Lnet/minecraft/client/util/math/MatrixStack;FFFF)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/network/AbstractClientPlayerEntity;isUsingRiptide()Z"))
-//    private boolean apoli$accountForForcedRiptide(boolean original, AbstractClientPlayerEntity player) {
+//    @ModifyExpressionValue(method = "setupTransforms(Lnet/minecraft/client/network/AbstractClientPlayer;Lnet/minecraft/client/util/math/MatrixStack;FFFF)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/network/AbstractClientPlayer;isUsingRiptide()Z"))
+//    private boolean apoli$accountForForcedRiptide(boolean original, AbstractClientPlayer player) {
 //        return original || PosePowerType.hasEntityPose(player, EntityPose.SPIN_ATTACK);
 //    }
 //
-//    @ModifyExpressionValue(method = "setupTransforms(Lnet/minecraft/client/network/AbstractClientPlayerEntity;Lnet/minecraft/client/util/math/MatrixStack;FFFF)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/network/AbstractClientPlayerEntity;getFallFlyingTicks()I"))
-//    private int apoli$applyPseudoFallFlyingTicks(int original, AbstractClientPlayerEntity player, @Share("applyPseudoFallFlyingTicks") LocalBooleanRef applyPseudoFallFlyingTicksRef, @Share("pseudoRoll") LocalIntRef pseudoRollRef) {
+//    @ModifyExpressionValue(method = "setupTransforms(Lnet/minecraft/client/network/AbstractClientPlayer;Lnet/minecraft/client/util/math/MatrixStack;FFFF)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/network/AbstractClientPlayer;getFallFlyingTicks()I"))
+//    private int apoli$applyPseudoFallFlyingTicks(int original, AbstractClientPlayer player, @Share("applyPseudoFallFlyingTicks") LocalBooleanRef applyPseudoFallFlyingTicksRef, @Share("pseudoRoll") LocalIntRef pseudoRollRef) {
 //        return applyPseudoFallFlyingTicksRef.get()
 //            ? pseudoRollRef.get()
 //            : original;
 //    }
 //
 //    @ModifyReturnValue(method = "getArmPose", at = @At("RETURN"))
-//    private static BipedEntityModel.ArmPose apoli$overrideArmPose(BipedEntityModel.ArmPose original, AbstractClientPlayerEntity player) {
+//    private static BipedEntityModel.ArmPose apoli$overrideArmPose(BipedEntityModel.ArmPose original, AbstractClientPlayer player) {
 //        return ArmPoseReference
 //            .getArmPose(player)
 //            .orElse(original);

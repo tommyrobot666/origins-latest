@@ -8,10 +8,10 @@
 //import io.github.apace100.apoli.power.type.ModifyGrindstonePowerType;
 //import io.github.apace100.apoli.recipe.ModifiedCraftingRecipe;
 //import io.github.apace100.apoli.util.InventoryUtil;
-//import net.minecraft.entity.player.PlayerEntity;
+//import net.minecraft.world.entity.player.Player;
 //import net.minecraft.inventory.CraftingInventory;
 //import net.minecraft.inventory.StackReference;
-//import net.minecraft.item.ItemStack;
+//import net.minecraft.world.item.ItemStack;
 //import net.minecraft.screen.ScreenHandler;
 //import net.minecraft.screen.slot.CraftingResultSlot;
 //import net.minecraft.screen.slot.Slot;
@@ -26,8 +26,8 @@
 //@Mixin(ScreenHandler.class)
 //public class ScreenHandlerMixin {
 //
-//    @ModifyExpressionValue(method = "internalOnSlotClick", at = @At(value = "INVOKE", target = "Lnet/minecraft/screen/slot/Slot;tryTakeStackRange(IILnet/minecraft/entity/player/PlayerEntity;)Ljava/util/Optional;"))
-//    private Optional<ItemStack> apoli$performAfterCraftingActions(Optional<ItemStack> original, int slotIndex, int button, SlotActionType actionType, PlayerEntity player, @Local Slot slot) {
+//    @ModifyExpressionValue(method = "internalOnSlotClick", at = @At(value = "INVOKE", target = "Lnet/minecraft/screen/slot/Slot;tryTakeStackRange(IILnet/minecraft/entity/player/Player;)Ljava/util/Optional;"))
+//    private Optional<ItemStack> apoli$performAfterCraftingActions(Optional<ItemStack> original, int slotIndex, int button, SlotActionType actionType, Player player, @Local Slot slot) {
 //
 //        if ((ScreenHandler) (Object) this instanceof PowerModifiedGrindstone pmg && original.isPresent() && slotIndex == 2) {
 //

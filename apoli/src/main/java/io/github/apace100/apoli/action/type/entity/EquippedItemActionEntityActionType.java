@@ -10,7 +10,7 @@
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.component.type.AttributeModifierSlot;
 //import net.minecraft.entity.EquipmentSlot;
-//import net.minecraft.entity.LivingEntity;
+//import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.inventory.StackReference;
 //import org.jetbrains.annotations.NotNull;
 //

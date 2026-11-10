@@ -13,13 +13,13 @@
 //import net.fabricmc.api.Environment;
 //import net.minecraft.block.BlockState;
 //import net.minecraft.block.ShapeContext;
-//import net.minecraft.client.MinecraftClient;
-//import net.minecraft.entity.Entity;
-//import net.minecraft.entity.EntityPose;
-//import net.minecraft.entity.EntityType;
+//import net.minecraft.client.Minecraft;
+//import net.minecraft.world.entity.Entity;
+//import net.minecraft.world.entity.EntityPose;
+//import net.minecraft.world.entity.EntityType;
 //import net.minecraft.entity.MovementType;
 //import net.minecraft.entity.damage.DamageSource;
-//import net.minecraft.entity.player.PlayerEntity;
+//import net.minecraft.world.entity.player.Player;
 //import net.minecraft.registry.tag.TagKey;
 //import net.minecraft.scoreboard.AbstractTeam;
 //import net.minecraft.text.Text;
@@ -111,7 +111,7 @@
 //    }
 //
 //    @WrapOperation(method = "isInvisibleTo", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/Entity;isInvisible()Z"))
-//    private boolean apoli$specificallyInvisibleTo(Entity entity, Operation<Boolean> original, PlayerEntity viewer) {
+//    private boolean apoli$specificallyInvisibleTo(Entity entity, Operation<Boolean> original, Player viewer) {
 //
 //        List<InvisibilityPowerType> invisibilityPowers = PowerHolderComponent.getPowerTypes(entity, InvisibilityPowerType.class, true);
 //        if (viewer == null || invisibilityPowers.isEmpty()) {
@@ -176,7 +176,7 @@
 ////        }
 //        //  endregion
 //
-//        Entity cameraEntity = MinecraftClient.getInstance().getCameraEntity();
+//        Entity cameraEntity = Minecraft.getInstance().getCameraEntity();
 //        Entity renderedEntity = (Entity) (Object) this;
 //
 //        AbstractTeam team = renderedEntity.getScoreboardTeam();
@@ -358,7 +358,7 @@
 //            .ifPresentOrElse(
 //                posePower -> {
 //
-//                    if (!((Entity) (Object) this instanceof PlayerEntity) && apoli$previousEntityPose == null) {
+//                    if (!((Entity) (Object) this instanceof Player) && apoli$previousEntityPose == null) {
 //                        this.apoli$previousEntityPose = this.getPose();
 //                    }
 //

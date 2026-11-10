@@ -13,11 +13,11 @@
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.util.ArgumentWrapper;
 //import net.minecraft.command.EntitySelector;
-//import net.minecraft.entity.Entity;
+//import net.minecraft.world.entity.Entity;
 //import net.minecraft.server.MinecraftServer;
 //import net.minecraft.server.command.CommandOutput;
 //import net.minecraft.server.command.ServerCommandSource;
-//import net.minecraft.server.network.ServerPlayerEntity;
+//import net.minecraft.server.network.ServerPlayer;
 //import net.minecraft.text.Text;
 //import org.jetbrains.annotations.NotNull;
 //
@@ -69,7 +69,7 @@
 //            .withLevel(Apoli.config.executeCommand.permissionLevel);
 //
 //        if (Apoli.config.executeCommand.showOutput) {
-//            commandSource = commandSource.withOutput(entity instanceof ServerPlayerEntity serverPlayer && serverPlayer.networkHandler != null
+//            commandSource = commandSource.withOutput(entity instanceof ServerPlayer serverPlayer && serverPlayer.networkHandler != null
 //                ? serverPlayer
 //                : server);
 //        }

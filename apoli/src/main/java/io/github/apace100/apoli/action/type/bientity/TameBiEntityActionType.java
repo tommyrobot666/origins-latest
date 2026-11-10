@@ -7,7 +7,7 @@
 //import io.github.apace100.apoli.util.requirement.BiEntityRequirement;
 //import net.minecraft.entity.passive.AbstractHorseEntity;
 //import net.minecraft.entity.passive.TameableEntity;
-//import net.minecraft.entity.player.PlayerEntity;
+//import net.minecraft.world.entity.player.Player;
 //import org.jetbrains.annotations.NotNull;
 //
 //public class TameBiEntityActionType extends BiEntityActionType {
@@ -15,7 +15,7 @@
 //    @Override
 //    public void accept(BiEntityActionContext context) {
 //
-//        if (context.actor() instanceof PlayerEntity playerActor) {
+//        if (context.actor() instanceof Player playerActor) {
 //
 //            switch (context.target()) {
 //                case TameableEntity tameableTarget when !tameableTarget.isTamed() ->

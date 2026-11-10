@@ -3,8 +3,8 @@
 //import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 //import io.github.apace100.apoli.access.EntityLinkedType;
 //import io.github.apace100.apoli.power.type.ModifyTypeTagPowerType;
-//import net.minecraft.entity.Entity;
-//import net.minecraft.entity.EntityType;
+//import net.minecraft.world.entity.Entity;
+//import net.minecraft.world.entity.EntityType;
 //import net.minecraft.registry.entry.RegistryEntryList;
 //import net.minecraft.registry.tag.TagKey;
 //import org.spongepowered.asm.mixin.Mixin;

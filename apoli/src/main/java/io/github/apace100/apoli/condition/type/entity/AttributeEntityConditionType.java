@@ -9,7 +9,7 @@
 //import io.github.apace100.apoli.util.Comparison;
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
-//import net.minecraft.entity.LivingEntity;
+//import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.entity.attribute.EntityAttribute;
 //import net.minecraft.entity.attribute.EntityAttributeInstance;
 //import net.minecraft.registry.entry.RegistryEntry;

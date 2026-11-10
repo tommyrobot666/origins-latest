@@ -8,7 +8,7 @@
 //import io.github.apace100.apoli.util.requirement.BiEntityRequirement;
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
-//import net.minecraft.entity.Entity;
+//import net.minecraft.world.entity.Entity;
 //import net.minecraft.util.hit.HitResult;
 //import net.minecraft.util.math.Vec3d;
 //import net.minecraft.world.RaycastContext;

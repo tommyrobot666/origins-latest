@@ -6,7 +6,7 @@
 //import net.fabricmc.api.EnvType;
 //import net.fabricmc.api.Environment;
 //import net.fabricmc.fabric.api.util.TriState;
-//import net.minecraft.client.MinecraftClient;
+//import net.minecraft.client.Minecraft;
 //import net.minecraft.client.option.KeyBinding;
 //
 //import java.util.HashMap;
@@ -25,7 +25,7 @@
 //    void onUse();
 //
 //    @Environment(EnvType.CLIENT)
-//    static <P extends PowerType & Active> void integrateCallback(MinecraftClient client) {
+//    static <P extends PowerType & Active> void integrateCallback(Minecraft client) {
 //
 //        if (client.player == null) {
 //            return;

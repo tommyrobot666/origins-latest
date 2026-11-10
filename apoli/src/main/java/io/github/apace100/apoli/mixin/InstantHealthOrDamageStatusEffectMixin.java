@@ -4,8 +4,8 @@
 //import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 //import io.github.apace100.apoli.component.PowerHolderComponent;
 //import io.github.apace100.apoli.power.type.EffectImmunityPowerType;
-//import net.minecraft.entity.Entity;
-//import net.minecraft.entity.LivingEntity;
+//import net.minecraft.world.entity.Entity;
+//import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.entity.effect.InstantStatusEffect;
 //import net.minecraft.registry.Registries;
 //import org.spongepowered.asm.mixin.Mixin;

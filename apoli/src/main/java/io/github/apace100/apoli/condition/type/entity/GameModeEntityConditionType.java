@@ -6,13 +6,13 @@
 //import io.github.apace100.apoli.condition.type.EntityConditionTypes;
 //import io.github.apace100.apoli.data.ApoliDataTypes;
 //import io.github.apace100.apoli.data.TypedDataObjectFactory;
-//import io.github.apace100.apoli.mixin.ClientPlayerEntityAccessor;
+//import io.github.apace100.apoli.mixin.ClientPlayerAccessor;
 //import io.github.apace100.apoli.mixin.ClientPlayerInteractionManagerAccessor;
 //import io.github.apace100.apoli.mixin.ServerPlayerInteractionManagerAccessor;
 //import io.github.apace100.calio.data.SerializableData;
-//import net.minecraft.client.network.ClientPlayerEntity;
-//import net.minecraft.entity.player.PlayerEntity;
-//import net.minecraft.server.network.ServerPlayerEntity;
+//import net.minecraft.client.network.ClientPlayer;
+//import net.minecraft.world.entity.player.Player;
+//import net.minecraft.server.network.ServerPlayer;
 //import net.minecraft.world.GameMode;
 //import org.jetbrains.annotations.NotNull;
 //
@@ -37,17 +37,17 @@
 //    @Override
 //    public boolean test(EntityConditionContext context) {
 //
-//        if (!(context.entity() instanceof PlayerEntity player)) {
+//        if (!(context.entity() instanceof Player player)) {
 //            return false;
 //        }
 //
-//        else if (player instanceof ServerPlayerEntity serverPlayer) {
+//        else if (player instanceof ServerPlayer serverPlayer) {
 //            ServerPlayerInteractionManagerAccessor interactionManager = (ServerPlayerInteractionManagerAccessor) serverPlayer.interactionManager;
 //            return interactionManager.getGameMode() == gameMode;
 //        }
 //
-//        else if (player instanceof ClientPlayerEntity clientPlayer) {
-//            ClientPlayerInteractionManagerAccessor interactionManager = (ClientPlayerInteractionManagerAccessor) (((ClientPlayerEntityAccessor) clientPlayer).getClient()).interactionManager;
+//        else if (player instanceof ClientPlayer clientPlayer) {
+//            ClientPlayerInteractionManagerAccessor interactionManager = (ClientPlayerInteractionManagerAccessor) (((ClientPlayerAccessor) clientPlayer).getClient()).interactionManager;
 //            return interactionManager != null && interactionManager.getGameMode() == gameMode;
 //        }
 //

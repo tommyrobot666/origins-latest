@@ -6,8 +6,8 @@
 //import io.github.apace100.apoli.power.PowerConfiguration;
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
-//import net.minecraft.entity.LivingEntity;
-//import net.minecraft.util.Identifier;
+//import net.minecraft.world.entity.LivingEntity;
+//import net.minecraft.resources.Identifier;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.Optional;

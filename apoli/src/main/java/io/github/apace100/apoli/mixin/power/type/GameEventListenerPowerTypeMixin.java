@@ -5,7 +5,7 @@
 //import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 //import io.github.apace100.apoli.component.PowerHolderComponent;
 //import io.github.apace100.apoli.power.type.GameEventListenerPowerType;
-//import net.minecraft.entity.Entity;
+//import net.minecraft.world.entity.Entity;
 //import net.minecraft.particle.ParticleEffect;
 //import net.minecraft.registry.entry.RegistryEntry;
 //import net.minecraft.registry.tag.TagKey;

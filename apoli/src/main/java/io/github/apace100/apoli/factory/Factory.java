@@ -2,8 +2,8 @@
 //
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.util.Validatable;
-//import net.minecraft.network.RegistryByteBuf;
-//import net.minecraft.util.Identifier;
+//import net.minecraft.network.RegistryFriendlyByteBuf;
+//import net.minecraft.resources.Identifier;
 //
 //public interface Factory {
 //
@@ -11,7 +11,7 @@
 //
 //    SerializableData getSerializableData();
 //
-//    Instance receive(RegistryByteBuf buf);
+//    Instance receive(RegistryFriendlyByteBuf buf);
 //
 //    Instance fromData(SerializableData.Instance data);
 //
@@ -34,7 +34,7 @@
 //            this.getData().validate();
 //        }
 //
-//        default void send(RegistryByteBuf buf) {
+//        default void send(RegistryFriendlyByteBuf buf) {
 //
 //            Factory factory = this.getFactory();
 //

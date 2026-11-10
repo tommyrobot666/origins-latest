@@ -8,8 +8,8 @@
 //import io.github.apace100.apoli.util.ArmPoseReference;
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
-//import net.minecraft.entity.Entity;
-//import net.minecraft.entity.EntityPose;
+//import net.minecraft.world.entity.Entity;
+//import net.minecraft.world.entity.EntityPose;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.Optional;

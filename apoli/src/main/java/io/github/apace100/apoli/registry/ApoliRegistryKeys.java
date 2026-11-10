@@ -12,7 +12,7 @@
 //import io.github.apace100.apoli.power.PowerConfiguration;
 //import io.github.apace100.apoli.power.type.PowerType;
 //import io.github.apace100.apoli.util.modifier.IModifierOperation;
-//import net.minecraft.registry.Registry;
+//import net.minecraft.core.Registry;
 //import net.minecraft.registry.RegistryKey;
 //
 //public class ApoliRegistryKeys {

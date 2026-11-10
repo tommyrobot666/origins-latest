@@ -1,7 +1,7 @@
 //package io.github.apace100.apoli.util;
 //
 //import io.github.apace100.apoli.access.BlockCollisionSpliteratorAccess;
-//import net.minecraft.entity.Entity;
+//import net.minecraft.world.entity.Entity;
 //import net.minecraft.util.math.BlockPos;
 //import net.minecraft.util.math.Box;
 //import net.minecraft.util.shape.VoxelShape;

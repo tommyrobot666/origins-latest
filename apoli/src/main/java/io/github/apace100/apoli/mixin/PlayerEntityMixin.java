@@ -19,18 +19,18 @@
 //import io.github.apace100.apoli.util.modifier.Modifier;
 //import io.github.apace100.apoli.util.modifier.ModifierUtil;
 //import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
-//import net.minecraft.component.type.FoodComponent;
+//import net.minecraft.world.food.FoodProperties;
 //import net.minecraft.entity.*;
 //import net.minecraft.entity.damage.DamageSource;
 //import net.minecraft.entity.player.HungerManager;
-//import net.minecraft.entity.player.PlayerEntity;
+//import net.minecraft.world.entity.player.Player;
 //import net.minecraft.entity.player.PlayerInventory;
 //import net.minecraft.inventory.StackReference;
-//import net.minecraft.item.ItemStack;
+//import net.minecraft.world.item.ItemStack;
 //import net.minecraft.network.packet.s2c.play.HealthUpdateS2CPacket;
 //import net.minecraft.registry.tag.DamageTypeTags;
 //import net.minecraft.server.command.CommandOutput;
-//import net.minecraft.server.network.ServerPlayerEntity;
+//import net.minecraft.server.network.ServerPlayer;
 //import net.minecraft.util.ActionResult;
 //import net.minecraft.util.Hand;
 //import net.minecraft.util.Nameable;
@@ -51,8 +51,8 @@
 //
 //import java.util.List;
 //
-//@Mixin(value = PlayerEntity.class, priority = 999)
-//public abstract class PlayerEntityMixin extends LivingEntity implements Nameable, CommandOutput, JumpingEntity, ModifiedPoseHolder {
+//@Mixin(value = Player.class, priority = 999)
+//public abstract class PlayerMixin extends LivingEntity implements Nameable, CommandOutput, JumpingEntity, ModifiedPoseHolder {
 //
 //    @Shadow
 //    public abstract boolean damage(DamageSource source, float amount);
@@ -64,7 +64,7 @@
 //    @Final
 //    PlayerInventory inventory;
 //
-//    protected PlayerEntityMixin(EntityType<? extends LivingEntity> entityType, World world) {
+//    protected PlayerMixin(EntityType<? extends LivingEntity> entityType, World world) {
 //        super(entityType, world);
 //    }
 //
@@ -101,7 +101,7 @@
 //    private boolean apoli$updateStatsManually = false;
 //
 //    @ModifyVariable(method = "eatFood", at = @At("HEAD"), argsOnly = true)
-//    private FoodComponent apoli$modifyFoodComponent(FoodComponent original, World world, ItemStack stack, @Share("modifyFoodPowers") LocalRef<List<ModifyFoodPowerType>> sharedModifyFoodPowers) {
+//    private FoodProperties apoli$modifyFoodProperties(FoodProperties original, World world, ItemStack stack, @Share("modifyFoodPowers") LocalRef<List<ModifyFoodPowerType>> sharedModifyFoodPowers) {
 //
 //        List<ModifyFoodPowerType> modifyFoodPowers = ((ModifiableFoodEntity) this).apoli$getCurrentModifyFoodPowers()
 //            .stream()
@@ -130,7 +130,7 @@
 //            this.apoli$updateStatsManually = true;
 //        }
 //
-//        return new FoodComponent(
+//        return new FoodProperties(
 //            newNutrition,
 //            newSaturation,
 //            original.canAlwaysEat(),
@@ -141,11 +141,11 @@
 //
 //    }
 //
-//    @Inject(method = "eatFood", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/HungerManager;eat(Lnet/minecraft/component/type/FoodComponent;)V", shift = At.Shift.AFTER))
-//    private void apoli$executeActionsAfterEating(World world, ItemStack stack, FoodComponent foodComponent, CallbackInfoReturnable<ItemStack> cir, @Share("modifyFoodPowers") LocalRef<List<ModifyFoodPowerType>> sharedModifyFoodPowers) {
+//    @Inject(method = "eatFood", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/HungerManager;eat(Lnet/minecraft/component/type/FoodProperties;)V", shift = At.Shift.AFTER))
+//    private void apoli$executeActionsAfterEating(World world, ItemStack stack, FoodProperties foodComponent, CallbackInfoReturnable<ItemStack> cir, @Share("modifyFoodPowers") LocalRef<List<ModifyFoodPowerType>> sharedModifyFoodPowers) {
 //
 //        List<ModifyFoodPowerType> modifyFoodPowers = sharedModifyFoodPowers.get();
-//        if (!((PlayerEntity) (Object) this instanceof ServerPlayerEntity serverPlayer) || modifyFoodPowers == null) {
+//        if (!((Player) (Object) this instanceof ServerPlayer serverPlayer) || modifyFoodPowers == null) {
 //            return;
 //        }
 //
@@ -174,7 +174,7 @@
 //
 //    @Inject(method = "dismountVehicle", at = @At("HEAD"))
 //    private void apoli$sendPlayerDismountPacket(CallbackInfo ci) {
-//        if (this.getVehicle() instanceof ServerPlayerEntity player) {
+//        if (this.getVehicle() instanceof ServerPlayer player) {
 //            ServerPlayNetworking.send(player, new DismountPlayerS2CPacket(this.getId()));
 //        }
 //    }
@@ -233,8 +233,8 @@
 //            && !PowerHolderComponent.hasPowerType(this, RestrictArmorPowerType.class, p -> p.doesRestrict(stack, this.getPreferredEquipmentSlot(stack)));
 //    }
 //
-//    @WrapOperation(method = "interact", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/Entity;interact(Lnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/util/Hand;)Lnet/minecraft/util/ActionResult;"))
-//    private ActionResult apoli$beforeEntityUse(Entity entity, PlayerEntity player, Hand hand, Operation<ActionResult> original, @Share("zeroPriority$onEntity") LocalRef<ActionResult> sharedZeroPriority$onEntity) {
+//    @WrapOperation(method = "interact", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/Entity;interact(Lnet/minecraft/entity/player/Player;Lnet/minecraft/util/Hand;)Lnet/minecraft/util/ActionResult;"))
+//    private ActionResult apoli$beforeEntityUse(Entity entity, Player player, Hand hand, Operation<ActionResult> original, @Share("zeroPriority$onEntity") LocalRef<ActionResult> sharedZeroPriority$onEntity) {
 //
 //        ItemStack stackInHand = player.getStackInHand(hand);
 //        for (PreventEntityUsePowerType peup : PowerHolderComponent.getPowerTypes(this, PreventEntityUsePowerType.class)) {
@@ -305,7 +305,7 @@
 //
 //    }
 //
-//    @ModifyReturnValue(method = "interact", at = @At("RETURN"), slice = @Slice(from = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;getStackInHand(Lnet/minecraft/util/Hand;)Lnet/minecraft/item/ItemStack;", ordinal = 0)))
+//    @ModifyReturnValue(method = "interact", at = @At("RETURN"), slice = @Slice(from = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/Player;getStackInHand(Lnet/minecraft/util/Hand;)Lnet/minecraft/item/ItemStack;", ordinal = 0)))
 //    private ActionResult apoli$afterEntityUse(ActionResult original, Entity entity, Hand hand, @Share("zeroPriority$onEntity") LocalRef<ActionResult> sharedZeroPriority$onEntity) {
 //
 //        ActionResult cachedPriorityZeroResult = sharedZeroPriority$onEntity.get();
@@ -321,7 +321,7 @@
 //            Prioritized.CallInstance<ActiveInteractionPowerType> aipci = new Prioritized.CallInstance<>();
 //
 //            aipci.add(this, ActionOnEntityUsePowerType.class, p -> p.shouldExecute(entity, hand, stackInHand, PriorityPhase.AFTER));
-//            aipci.add(entity, ActionOnBeingUsedPowerType.class, p -> p.shouldExecute((PlayerEntity) (Object) this, hand, stackInHand, PriorityPhase.AFTER));
+//            aipci.add(entity, ActionOnBeingUsedPowerType.class, p -> p.shouldExecute((Player) (Object) this, hand, stackInHand, PriorityPhase.AFTER));
 //
 //            for (int i = aipci.getMaxPriority(); i >= aipci.getMinPriority(); i--) {
 //
@@ -340,7 +340,7 @@
 //                    }
 //
 //                    else if (aip instanceof ActionOnBeingUsedPowerType aobup) {
-//                        currentResult = aobup.executeAction((PlayerEntity) (Object) this, hand);
+//                        currentResult = aobup.executeAction((Player) (Object) this, hand);
 //                    }
 //
 //                    if (ActionResultUtil.shouldOverride(previousResult, currentResult)) {
@@ -368,13 +368,13 @@
 //
 //    }
 //
-//    @ModifyExpressionValue(method = "jump", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;isSprinting()Z"))
+//    @ModifyExpressionValue(method = "jump", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/Player;isSprinting()Z"))
 //    private boolean apoli$shouldApplySprintJumpExhaustion(boolean original) {
 //        return original && this.apoli$applySprintJumpEffects();
 //    }
 //
-//    @WrapWithCondition(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;updatePose()V"))
-//    private boolean apoli$preventUpdatingPose(PlayerEntity player) {
+//    @WrapWithCondition(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/Player;updatePose()V"))
+//    private boolean apoli$preventUpdatingPose(Player player) {
 //        return this.apoli$getModifiedEntityPose().isEmpty();
 //    }
 //

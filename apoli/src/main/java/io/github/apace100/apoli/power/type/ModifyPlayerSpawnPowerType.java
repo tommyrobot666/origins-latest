@@ -8,15 +8,15 @@
 //import io.github.apace100.calio.data.SerializableDataType;
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.entity.Dismounting;
-//import net.minecraft.entity.LivingEntity;
-//import net.minecraft.registry.Registry;
+//import net.minecraft.world.entity.LivingEntity;
+//import net.minecraft.core.Registry;
 //import net.minecraft.registry.RegistryKey;
 //import net.minecraft.registry.RegistryKeys;
 //import net.minecraft.registry.entry.RegistryEntry;
 //import net.minecraft.registry.entry.RegistryEntryList;
 //import net.minecraft.registry.tag.TagKey;
 //import net.minecraft.server.MinecraftServer;
-//import net.minecraft.server.network.ServerPlayerEntity;
+//import net.minecraft.server.network.ServerPlayer;
 //import net.minecraft.server.world.ChunkTicketType;
 //import net.minecraft.server.world.ServerWorld;
 //import net.minecraft.sound.SoundEvent;
@@ -117,7 +117,7 @@
 //    @Override
 //    public void onLost() {
 //
-//        if (!(getHolder() instanceof ServerPlayerEntity serverPlayer)) {
+//        if (!(getHolder() instanceof ServerPlayer serverPlayer)) {
 //            return;
 //        }
 //
@@ -138,7 +138,7 @@
 //
 //    public void teleportToModifiedSpawn() {
 //
-//        if (!(getHolder() instanceof ServerPlayerEntity serverPlayer)) {
+//        if (!(getHolder() instanceof ServerPlayer serverPlayer)) {
 //            return;
 //        }
 //
@@ -167,7 +167,7 @@
 //
 //    public Optional<Pair<ServerWorld, BlockPos>> getSpawn() {
 //
-//        if (!(getHolder() instanceof ServerPlayerEntity serverPlayer)) {
+//        if (!(getHolder() instanceof ServerPlayer serverPlayer)) {
 //            return Optional.empty();
 //        }
 //

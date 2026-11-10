@@ -1,7 +1,7 @@
 //package io.github.apace100.apoli.mixin.internal;
 //
-//import net.minecraft.entity.EntityType;
-//import net.minecraft.entity.LivingEntity;
+//import net.minecraft.world.entity.EntityType;
+//import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.entity.attribute.DefaultAttributeContainer;
 //import net.minecraft.entity.attribute.DefaultAttributeRegistry;
 //import org.jetbrains.annotations.ApiStatus;

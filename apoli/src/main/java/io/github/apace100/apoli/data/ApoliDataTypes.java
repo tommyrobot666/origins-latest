@@ -30,17 +30,17 @@
 //import net.minecraft.command.EntitySelector;
 //import net.minecraft.command.argument.EntityArgumentType;
 //import net.minecraft.command.argument.ItemSlotArgumentType;
-//import net.minecraft.entity.EntityPose;
+//import net.minecraft.world.entity.EntityPose;
 //import net.minecraft.inventory.SlotRange;
-//import net.minecraft.item.ItemStack;
-//import net.minecraft.network.RegistryByteBuf;
-//import net.minecraft.network.codec.PacketCodec;
+//import net.minecraft.world.item.ItemStack;
+//import net.minecraft.network.RegistryFriendlyByteBuf;
+//import net.minecraft.network.codec.StreamCodec;
 //import net.minecraft.recipe.CraftingRecipe;
 //import net.minecraft.server.command.AdvancementCommand;
 //import net.minecraft.text.Text;
 //import net.minecraft.text.TextCodecs;
 //import net.minecraft.util.ClickType;
-//import net.minecraft.util.Identifier;
+//import net.minecraft.resources.Identifier;
 //import net.minecraft.util.Pair;
 //import net.minecraft.util.math.Vec3i;
 //import net.minecraft.world.GameMode;
@@ -293,10 +293,10 @@
 //			}
 //
 //		},
-//		new PacketCodec<>() {
+//		new StreamCodec<>() {
 //
 //			@Override
-//			public ContainerType decode(RegistryByteBuf buf) {
+//			public ContainerType decode(RegistryFriendlyByteBuf buf) {
 //
 //				if (buf.readBoolean()) {
 //					return DynamicContainerType.DATA_TYPE.receive(buf);
@@ -309,7 +309,7 @@
 //			}
 //
 //			@Override
-//			public void encode(RegistryByteBuf buf, ContainerType value) {
+//			public void encode(RegistryFriendlyByteBuf buf, ContainerType value) {
 //
 //				if (value instanceof DynamicContainerType dynamicContainerType) {
 //					buf.writeBoolean(true);
@@ -403,10 +403,10 @@
 //
 //				};
 //			},
-//			serializableData -> new PacketCodec<>() {
+//			serializableData -> new StreamCodec<>() {
 //
 //				@Override
-//				public C decode(RegistryByteBuf buf) {
+//				public C decode(RegistryFriendlyByteBuf buf) {
 //
 //					SerializableData.Instance conditionData = serializableData.receive(buf);
 //
@@ -418,7 +418,7 @@
 //				}
 //
 //				@Override
-//				public void encode(RegistryByteBuf buf, C value) {
+//				public void encode(RegistryFriendlyByteBuf buf, C value) {
 //
 //					CT conditionType = value.getType();
 //					ConditionConfiguration<CT> config = (ConditionConfiguration<CT>) conditionType.getConfig();
@@ -473,10 +473,10 @@
 //
 //				};
 //			},
-//			serializableData -> new PacketCodec<>() {
+//			serializableData -> new StreamCodec<>() {
 //
 //				@Override
-//				public A decode(RegistryByteBuf buf) {
+//				public A decode(RegistryFriendlyByteBuf buf) {
 //
 //					SerializableData.Instance actionData = serializableData.receive(buf);
 //					ActionConfiguration<AT> config = actionData.get(typeField);
@@ -486,7 +486,7 @@
 //				}
 //
 //				@Override
-//				public void encode(RegistryByteBuf buf, A value) {
+//				public void encode(RegistryFriendlyByteBuf buf, A value) {
 //
 //					AT actionType = value.getType();
 //					ActionConfiguration<AT> config = (ActionConfiguration<AT>) actionType.getConfig();

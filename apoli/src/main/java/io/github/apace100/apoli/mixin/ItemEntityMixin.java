@@ -7,13 +7,13 @@
 //import io.github.apace100.apoli.power.type.Prioritized;
 //import io.github.apace100.apoli.util.InventoryUtil;
 //import io.github.apace100.apoli.util.MiscUtil;
-//import net.minecraft.entity.Entity;
-//import net.minecraft.entity.EntityType;
+//import net.minecraft.world.entity.Entity;
+//import net.minecraft.world.entity.EntityType;
 //import net.minecraft.entity.ItemEntity;
-//import net.minecraft.entity.player.PlayerEntity;
+//import net.minecraft.world.entity.player.Player;
 //import net.minecraft.entity.player.PlayerInventory;
 //import net.minecraft.inventory.StackReference;
-//import net.minecraft.item.ItemStack;
+//import net.minecraft.world.item.ItemStack;
 //import net.minecraft.world.World;
 //import org.jetbrains.annotations.Nullable;
 //import org.spongepowered.asm.mixin.Mixin;
@@ -41,7 +41,7 @@
 //    }
 //
 //    @WrapOperation(method = "onPlayerCollision", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerInventory;insertStack(Lnet/minecraft/item/ItemStack;)Z"))
-//    private boolean apoli$onItemPickup(PlayerInventory playerInventory, ItemStack stack, Operation<Boolean> original, PlayerEntity player) {
+//    private boolean apoli$onItemPickup(PlayerInventory playerInventory, ItemStack stack, Operation<Boolean> original, Player player) {
 //
 //        if (PreventItemPickupPowerType.doesPrevent(thisAsItemEntity(), player)) {
 //            return false;

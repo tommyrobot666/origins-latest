@@ -7,9 +7,9 @@
 //import io.github.apace100.apoli.util.MiscUtil;
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
-//import net.minecraft.entity.Entity;
-//import net.minecraft.entity.LivingEntity;
-//import net.minecraft.entity.player.PlayerEntity;
+//import net.minecraft.world.entity.Entity;
+//import net.minecraft.world.entity.LivingEntity;
+//import net.minecraft.world.entity.player.Player;
 //import net.minecraft.nbt.*;
 //import net.minecraft.server.MinecraftServer;
 //import net.minecraft.server.world.ServerWorld;
@@ -343,7 +343,7 @@
 //    public static void integrateUnloadCallback(Entity unloadedEntity, ServerWorld world) {
 //
 //        Entity.RemovalReason removalReason = unloadedEntity.getRemovalReason();
-//        if (removalReason == null || !removalReason.shouldDestroy() || unloadedEntity instanceof PlayerEntity) {
+//        if (removalReason == null || !removalReason.shouldDestroy() || unloadedEntity instanceof Player) {
 //            return;
 //        }
 //

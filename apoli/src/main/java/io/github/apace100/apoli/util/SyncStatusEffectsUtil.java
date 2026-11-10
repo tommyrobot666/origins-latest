@@ -3,13 +3,13 @@
 //import io.github.apace100.apoli.networking.packet.s2c.SyncStatusEffectS2CPacket;
 //import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
 //import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
-//import net.minecraft.entity.LivingEntity;
+//import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.entity.effect.StatusEffectInstance;
 //import net.minecraft.nbt.NbtCompound;
 //import net.minecraft.network.PacketByteBuf;
-//import net.minecraft.network.codec.PacketCodec;
+//import net.minecraft.network.codec.StreamCodec;
 //import net.minecraft.network.codec.PacketCodecs;
-//import net.minecraft.server.network.ServerPlayerEntity;
+//import net.minecraft.server.network.ServerPlayer;
 //
 //import java.util.function.BiConsumer;
 //
@@ -27,7 +27,7 @@
 //        }
 //
 //        SyncStatusEffectS2CPacket syncStatusEffectPacket = new SyncStatusEffectS2CPacket(entity.getId(), statusEffectNbt, updateType);
-//        for (ServerPlayerEntity player : PlayerLookup.tracking(entity)) {
+//        for (ServerPlayer player : PlayerLookup.tracking(entity)) {
 //            ServerPlayNetworking.send(player, syncStatusEffectPacket);
 //        }
 //
@@ -52,7 +52,7 @@
 //
 //        });
 //
-//        public static final PacketCodec<PacketByteBuf, UpdateType> PACKET_CODEC = PacketCodecs.indexed(index -> values()[index], UpdateType::ordinal).cast();
+//        public static final StreamCodec<PacketByteBuf, UpdateType> PACKET_CODEC = PacketCodecs.indexed(index -> values()[index], UpdateType::ordinal).cast();
 //
 //        final BiConsumer<LivingEntity, StatusEffectInstance> consumer;
 //        UpdateType(BiConsumer<LivingEntity, StatusEffectInstance> consumer) {

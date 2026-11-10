@@ -14,24 +14,24 @@
 //import io.github.apace100.apoli.util.SyncStatusEffectsUtil;
 //import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
 //import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
-//import net.minecraft.component.type.FoodComponent;
-//import net.minecraft.entity.Entity;
-//import net.minecraft.entity.EntityType;
-//import net.minecraft.entity.LivingEntity;
+//import net.minecraft.world.food.FoodProperties;
+//import net.minecraft.world.entity.Entity;
+//import net.minecraft.world.entity.EntityType;
+//import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.entity.attribute.AttributeContainer;
 //import net.minecraft.entity.attribute.EntityAttribute;
 //import net.minecraft.entity.attribute.EntityAttributes;
 //import net.minecraft.entity.damage.DamageSource;
 //import net.minecraft.entity.effect.StatusEffect;
 //import net.minecraft.entity.effect.StatusEffectInstance;
-//import net.minecraft.entity.player.PlayerEntity;
+//import net.minecraft.world.entity.player.Player;
 //import net.minecraft.fluid.FluidState;
 //import net.minecraft.inventory.StackReference;
-//import net.minecraft.item.ItemStack;
+//import net.minecraft.world.item.ItemStack;
 //import net.minecraft.registry.entry.RegistryEntry;
 //import net.minecraft.registry.tag.DamageTypeTags;
 //import net.minecraft.registry.tag.FluidTags;
-//import net.minecraft.server.network.ServerPlayerEntity;
+//import net.minecraft.server.network.ServerPlayer;
 //import net.minecraft.util.math.BlockPos;
 //import net.minecraft.world.World;
 //import org.jetbrains.annotations.Nullable;
@@ -122,7 +122,7 @@
 //        Optional<Integer> attackerId = Optional.ofNullable(this.attacker).map(Entity::getId);
 //        SyncAttackerS2CPacket syncAttackerPacket = new SyncAttackerS2CPacket(this.getId(), attackerId);
 //
-//        for (ServerPlayerEntity player : PlayerLookup.tracking(this)) {
+//        for (ServerPlayer player : PlayerLookup.tracking(this)) {
 //            ServerPlayNetworking.send(player, syncAttackerPacket);
 //        }
 //
@@ -403,7 +403,7 @@
 //    private ItemStack apoli$modifyEatenStack(ItemStack original) {
 //
 //        LivingEntity thisAsLiving = (LivingEntity) (Object) this;
-//        if (thisAsLiving instanceof PlayerEntity) {
+//        if (thisAsLiving instanceof Player) {
 //            return original;
 //        }
 //
@@ -426,7 +426,7 @@
 //
 //    }
 //
-//    @ModifyVariable(method = "eatFood", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;applyFoodEffects(Lnet/minecraft/component/type/FoodComponent;)V", shift = At.Shift.AFTER), argsOnly = true)
+//    @ModifyVariable(method = "eatFood", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;applyFoodEffects(Lnet/minecraft/component/type/FoodProperties;)V", shift = At.Shift.AFTER), argsOnly = true)
 //    private ItemStack apoli$restoreOriginalEatenStack(ItemStack modified) {
 //        ItemStack original = this.apoli$getOriginalFoodStack();
 //        return original == null
@@ -465,7 +465,7 @@
 //                newStack.increment(1);
 //            }
 //
-//            else if ((LivingEntity) (Object) this instanceof PlayerEntity player && !player.isCreative()) {
+//            else if ((LivingEntity) (Object) this instanceof Player player && !player.isCreative()) {
 //                player.getInventory().offerOrDrop(resultStack);
 //            }
 //
@@ -486,7 +486,7 @@
 //    }
 //
 //    @Inject(method = "applyFoodEffects", at = @At("HEAD"), cancellable = true)
-//    private void apoli$preventApplyingFoodEffects(FoodComponent component, CallbackInfo ci) {
+//    private void apoli$preventApplyingFoodEffects(FoodProperties component, CallbackInfo ci) {
 //        if (this.apoli$getCurrentModifyFoodPowers().stream().anyMatch(ModifyFoodPowerType::doesPreventEffects)) {
 //            ci.cancel();
 //        }

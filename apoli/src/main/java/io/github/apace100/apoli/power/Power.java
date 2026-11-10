@@ -92,10 +92,10 @@ public class Power implements Validatable {
 
 			});
         },
-        serializableData -> new PacketCodec<>() {
+        serializableData -> new StreamCodec<>() {
 
 			@Override
-			public Power decode(RegistryByteBuf buf) {
+			public Power decode(RegistryFriendlyByteBuf buf) {
 
                 Identifier powerId = buf.readIdentifier();
                 SerializableData.Instance powerData = serializableData.receive(buf);
@@ -128,7 +128,7 @@ public class Power implements Validatable {
 			}
 
 			@Override
-			public void encode(RegistryByteBuf buf, Power value) {
+			public void encode(RegistryFriendlyByteBuf buf, Power value) {
 
                 try {
 

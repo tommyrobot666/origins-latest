@@ -6,9 +6,9 @@
 //import io.github.apace100.calio.data.SerializableDataType;
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import io.github.apace100.calio.registry.DataObjectFactory;
-//import net.minecraft.item.ItemStack;
+//import net.minecraft.world.item.ItemStack;
 //import net.minecraft.text.Text;
-//import net.minecraft.util.Identifier;
+//import net.minecraft.resources.Identifier;
 //
 //public record CustomToastData(Text title, Text description, Identifier texture, ItemStack iconStack, int duration) {
 //

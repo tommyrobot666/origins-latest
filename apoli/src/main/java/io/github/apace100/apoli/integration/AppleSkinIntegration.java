@@ -5,9 +5,9 @@ import io.github.apace100.apoli.power.type.EdibleItemPowerType;
 import io.github.apace100.apoli.power.type.ModifyFoodPowerType;
 import io.github.apace100.apoli.util.modifier.Modifier;
 import io.github.apace100.apoli.util.modifier.ModifierUtil;
-import net.minecraft.component.type.FoodComponent;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import squeek.appleskin.api.AppleSkinApi;
 import squeek.appleskin.api.event.FoodValuesEvent;
 
@@ -20,12 +20,12 @@ public class AppleSkinIntegration implements AppleSkinApi {
 
         FoodValuesEvent.EVENT.register(event -> {
 
-            PlayerEntity player = event.player;
+            Player player = event.player;
             ItemStack stack = event.itemStack;
 
             EdibleItemPowerType.get(stack, player)
-                .map(EdibleItemPowerType::getFoodComponent)
-                .ifPresent(foodComponent -> event.modifiedFoodComponent = foodComponent);
+                .map(EdibleItemPowerType::getFoodProperties)
+                .ifPresent(foodComponent -> event.modifiedFoodProperties = foodComponent);
 
             List<ModifyFoodPowerType> modifyFoodPowers = PowerHolderComponent.getPowerTypes(player, ModifyFoodPowerType.class)
                 .stream()
@@ -35,9 +35,9 @@ public class AppleSkinIntegration implements AppleSkinApi {
                 return;
             }
 
-            FoodComponent originalFoodComponent = !event.modifiedFoodComponent.equals(event.defaultFoodComponent)
-                ? event.modifiedFoodComponent
-                : event.defaultFoodComponent;
+            FoodProperties originalFoodProperties = !event.modifiedFoodProperties.equals(event.defaultFoodProperties)
+                ? event.modifiedFoodProperties
+                : event.defaultFoodProperties;
 
             List<Modifier> nutritionModifiers = modifyFoodPowers
                 .stream()
@@ -48,16 +48,16 @@ public class AppleSkinIntegration implements AppleSkinApi {
                 .flatMap(p -> p.getSaturationModifiers().stream())
                 .toList();
 
-            int newNutrition = (int) ModifierUtil.applyModifiers(player, nutritionModifiers, originalFoodComponent.nutrition());
-            float newSaturation = (float) ModifierUtil.applyModifiers(player, saturationModifiers, originalFoodComponent.saturation());
+            int newNutrition = (int) ModifierUtil.applyModifiers(player, nutritionModifiers, originalFoodProperties.nutrition());
+            float newSaturation = (float) ModifierUtil.applyModifiers(player, saturationModifiers, originalFoodProperties.saturation());
 
-            event.modifiedFoodComponent = new FoodComponent(
+            event.modifiedFoodProperties = new FoodProperties(
                 newNutrition,
                 newSaturation,
-                originalFoodComponent.canAlwaysEat(),
-                originalFoodComponent.eatSeconds(),
-                originalFoodComponent.usingConvertsTo(),
-                originalFoodComponent.effects()
+                originalFoodProperties.canAlwaysEat(),
+                originalFoodProperties.eatSeconds(),
+                originalFoodProperties.usingConvertsTo(),
+                originalFoodProperties.effects()
             );
 
         });

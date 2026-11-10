@@ -13,10 +13,10 @@
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.component.DataComponentTypes;
-//import net.minecraft.component.type.FoodComponent;
-//import net.minecraft.entity.Entity;
+//import net.minecraft.world.food.FoodProperties;
+//import net.minecraft.world.entity.Entity;
 //import net.minecraft.inventory.StackReference;
-//import net.minecraft.item.ItemStack;
+//import net.minecraft.world.item.ItemStack;
 //import org.jetbrains.annotations.NotNull;
 //import org.jetbrains.annotations.Nullable;
 //
@@ -140,8 +140,8 @@
 //
 //    public static OptionalInt modifyEatTicks(@Nullable Entity entity, ItemStack stack) {
 //
-//        FoodComponent foodComponent = EdibleItemPowerType.get(stack)
-//            .map(EdibleItemPowerType::getFoodComponent)
+//        FoodProperties foodComponent = EdibleItemPowerType.get(stack)
+//            .map(EdibleItemPowerType::getFoodProperties)
 //            .orElseGet(() -> stack.get(DataComponentTypes.FOOD));
 //
 //        if (foodComponent == null) {

@@ -5,7 +5,7 @@
 //import net.minecraft.loot.function.LootFunction;
 //import net.minecraft.loot.function.LootFunctionType;
 //import net.minecraft.registry.Registries;
-//import net.minecraft.registry.Registry;
+//import net.minecraft.core.Registry;
 //
 //public class ApoliLootFunctionTypes {
 //

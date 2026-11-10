@@ -7,7 +7,7 @@
 //import io.github.apace100.apoli.data.TypedDataObjectFactory;
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
-//import net.minecraft.entity.EntityType;
+//import net.minecraft.world.entity.EntityType;
 //import net.minecraft.registry.tag.TagKey;
 //import org.jetbrains.annotations.NotNull;
 //

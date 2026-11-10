@@ -10,15 +10,15 @@
 //import io.github.apace100.apoli.power.type.SelfGlowPowerType;
 //import net.fabricmc.api.EnvType;
 //import net.fabricmc.api.Environment;
-//import net.minecraft.client.MinecraftClient;
+//import net.minecraft.client.Minecraft;
 //import net.minecraft.client.RunArgs;
-//import net.minecraft.client.network.ClientPlayerEntity;
+//import net.minecraft.client.network.ClientPlayer;
 //import net.minecraft.client.texture.Sprite;
 //import net.minecraft.client.texture.TextureManager;
 //import net.minecraft.client.world.ClientWorld;
-//import net.minecraft.entity.Entity;
+//import net.minecraft.world.entity.Entity;
 //import net.minecraft.resource.ReloadableResourceManagerImpl;
-//import net.minecraft.util.Identifier;
+//import net.minecraft.resources.Identifier;
 //import org.spongepowered.asm.mixin.Final;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.Shadow;
@@ -28,11 +28,11 @@
 //import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 //
 //@Environment(EnvType.CLIENT)
-//@Mixin(MinecraftClient.class)
-//public abstract class MinecraftClientMixin implements OverlaySpriteHolder {
+//@Mixin(Minecraft.class)
+//public abstract class MinecraftMixin implements OverlaySpriteHolder {
 //
 //    @Shadow
-//    public ClientPlayerEntity player;
+//    public ClientPlayer player;
 //
 //    @Shadow
 //    @Final
@@ -59,15 +59,15 @@
 //        return apoli$overlaySpriteHolder.getSprite(id);
 //    }
 //
-//    @Inject(method = "<init>", at = @At(value = "NEW", target = "(Lnet/minecraft/client/MinecraftClient;)Lnet/minecraft/client/gui/hud/InGameHud;"))
+//    @Inject(method = "<init>", at = @At(value = "NEW", target = "(Lnet/minecraft/client/Minecraft;)Lnet/minecraft/client/gui/hud/InGameHud;"))
 //    private void apoli$registerCustomAtlases(RunArgs args, CallbackInfo ci) {
 //        this.apoli$overlaySpriteHolder = new OverlayPowerType.SpriteHolder(this.getTextureManager());
 //        this.resourceManager.registerReloader(apoli$overlaySpriteHolder);
 //    }
 //
 //    @Inject(method = "onFinishedLoading", at = @At("HEAD"))
-//    private void apoli$postReloadTextures(MinecraftClient.LoadingContext loadingContext, CallbackInfo ci) {
-//        PostLoadTexturesCallback.EVENT.invoker().onPostLoad((MinecraftClient) (Object) this, this.isFinishedLoading());
+//    private void apoli$postReloadTextures(Minecraft.LoadingContext loadingContext, CallbackInfo ci) {
+//        PostLoadTexturesCallback.EVENT.invoker().onPostLoad((Minecraft) (Object) this, this.isFinishedLoading());
 //    }
 //
 //    @Inject(method = "setWorld", at = @At("HEAD"))

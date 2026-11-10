@@ -2,7 +2,7 @@
 //
 //import io.github.apace100.apoli.Apoli;
 //import io.github.apace100.apoli.registry.ApoliRegistries;
-//import net.minecraft.registry.Registry;
+//import net.minecraft.core.Registry;
 //
 //import java.util.Locale;
 //

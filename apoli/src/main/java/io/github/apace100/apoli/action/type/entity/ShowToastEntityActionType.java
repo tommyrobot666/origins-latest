@@ -7,7 +7,7 @@
 //import io.github.apace100.apoli.action.type.EntityActionTypes;
 //import io.github.apace100.apoli.data.CustomToastData;
 //import io.github.apace100.apoli.data.TypedDataObjectFactory;
-//import net.minecraft.entity.Entity;
+//import net.minecraft.world.entity.Entity;
 //import org.jetbrains.annotations.NotNull;
 //
 //public class ShowToastEntityActionType extends EntityActionType {

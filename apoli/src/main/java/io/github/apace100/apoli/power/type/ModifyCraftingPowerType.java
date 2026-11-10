@@ -116,7 +116,7 @@
 //        entityAction.ifPresent(action -> action.execute(getHolder()));
 //    }
 //
-//    public static ItemStack executeAfterCraftingAction(PlayerEntity player, RecipeInputInventory recipeInput, Slot slot, ItemStack stack) {
+//    public static ItemStack executeAfterCraftingAction(Player player, RecipeInputInventory recipeInput, Slot slot, ItemStack stack) {
 //
 //        if (!(recipeInput instanceof PowerCraftingInventory pci)) {
 //            return stack;

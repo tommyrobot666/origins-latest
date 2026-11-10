@@ -3,9 +3,9 @@
 //import io.github.apace100.apoli.Apoli;
 //import io.github.apace100.apoli.component.PowerHolderComponent;
 //import io.github.apace100.apoli.power.Power;
-//import net.minecraft.entity.Entity;
-//import net.minecraft.entity.EntityType;
-//import net.minecraft.util.Identifier;
+//import net.minecraft.world.entity.Entity;
+//import net.minecraft.world.entity.EntityType;
+//import net.minecraft.resources.Identifier;
 //
 //import java.util.*;
 //import java.util.function.Predicate;

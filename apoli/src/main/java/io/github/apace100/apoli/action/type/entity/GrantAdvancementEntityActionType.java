@@ -12,12 +12,12 @@
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.advancement.AdvancementEntry;
-//import net.minecraft.entity.Entity;
+//import net.minecraft.world.entity.Entity;
 //import net.minecraft.server.MinecraftServer;
 //import net.minecraft.server.ServerAdvancementLoader;
 //import net.minecraft.server.command.AdvancementCommand;
-//import net.minecraft.server.network.ServerPlayerEntity;
-//import net.minecraft.util.Identifier;
+//import net.minecraft.server.network.ServerPlayer;
+//import net.minecraft.resources.Identifier;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.List;
@@ -58,13 +58,13 @@
 //        Entity entity = context.entity();
 //        MinecraftServer server = entity.getServer();
 //
-//        if (server == null || !(entity instanceof ServerPlayerEntity serverPlayerEntity)) {
+//        if (server == null || !(entity instanceof ServerPlayer serverPlayer)) {
 //            return;
 //        }
 //
 //        ServerAdvancementLoader advancementLoader = server.getAdvancementLoader();
 //        if (selection == AdvancementCommand.Selection.EVERYTHING) {
-//            AdvancementUtil.processAdvancements(advancementLoader.getAdvancements(), AdvancementCommand.Operation.GRANT, serverPlayerEntity);
+//            AdvancementUtil.processAdvancements(advancementLoader.getAdvancements(), AdvancementCommand.Operation.GRANT, serverPlayer);
 //        }
 //
 //        else if (advancementId != null) {
@@ -75,11 +75,11 @@
 //            }
 //
 //            else if (criteria.isEmpty()) {
-//                AdvancementUtil.processAdvancements(AdvancementUtil.selectEntries(server.getAdvancementLoader().getManager(), advancementEntry, selection), AdvancementCommand.Operation.GRANT, serverPlayerEntity);
+//                AdvancementUtil.processAdvancements(AdvancementUtil.selectEntries(server.getAdvancementLoader().getManager(), advancementEntry, selection), AdvancementCommand.Operation.GRANT, serverPlayer);
 //            }
 //
 //            else {
-//                AdvancementUtil.processCriteria(advancementEntry, criteria, AdvancementCommand.Operation.GRANT, serverPlayerEntity);
+//                AdvancementUtil.processCriteria(advancementEntry, criteria, AdvancementCommand.Operation.GRANT, serverPlayer);
 //            }
 //
 //        }

@@ -6,8 +6,8 @@
 //import com.mojang.authlib.GameProfile;
 //import io.github.apace100.apoli.component.PowerHolderComponent;
 //import io.github.apace100.apoli.power.type.ModifyFovPowerType;
-//import net.minecraft.client.network.AbstractClientPlayerEntity;
-//import net.minecraft.entity.player.PlayerEntity;
+//import net.minecraft.client.network.AbstractClientPlayer;
+//import net.minecraft.world.entity.player.Player;
 //import net.minecraft.util.math.BlockPos;
 //import net.minecraft.world.World;
 //import org.spongepowered.asm.mixin.Mixin;
@@ -15,10 +15,10 @@
 //
 //import java.util.List;
 //
-//@Mixin(AbstractClientPlayerEntity.class)
-//public abstract class AbstractClientPlayerEntityMixin extends PlayerEntity {
+//@Mixin(AbstractClientPlayer.class)
+//public abstract class AbstractClientPlayerMixin extends Player {
 //
-//    private AbstractClientPlayerEntityMixin(World world, BlockPos pos, float yaw, GameProfile gameProfile) {
+//    private AbstractClientPlayerMixin(World world, BlockPos pos, float yaw, GameProfile gameProfile) {
 //        super(world, pos, yaw, gameProfile);
 //    }
 //

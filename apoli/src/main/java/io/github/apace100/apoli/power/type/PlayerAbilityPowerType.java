@@ -5,10 +5,10 @@
 //import io.github.ladysnake.pal.AbilitySource;
 //import io.github.ladysnake.pal.Pal;
 //import io.github.ladysnake.pal.PlayerAbility;
-//import net.minecraft.entity.player.PlayerEntity;
+//import net.minecraft.world.entity.player.Player;
 //import net.minecraft.nbt.NbtCompound;
 //import net.minecraft.nbt.NbtElement;
-//import net.minecraft.server.network.ServerPlayerEntity;
+//import net.minecraft.server.network.ServerPlayer;
 //
 //import java.util.Objects;
 //import java.util.Optional;
@@ -30,7 +30,7 @@
 //
 //    @Override
 //    public boolean shouldTick() {
-//        return getHolder() instanceof PlayerEntity;
+//        return getHolder() instanceof Player;
 //    }
 //
 //    @Override
@@ -64,7 +64,7 @@
 //    @Override
 //    public void serverTick() {
 //
-//        if (!(getHolder() instanceof PlayerEntity player)) {
+//        if (!(getHolder() instanceof Player player)) {
 //            return;
 //        }
 //
@@ -92,7 +92,7 @@
 //
 //    @Override
 //    public void onAdded() {
-//        if (getHolder() instanceof ServerPlayerEntity serverPlayer && Apoli.LEGACY_POWER_SOURCE.grants(serverPlayer, ability)) {
+//        if (getHolder() instanceof ServerPlayer serverPlayer && Apoli.LEGACY_POWER_SOURCE.grants(serverPlayer, ability)) {
 //            Apoli.LEGACY_POWER_SOURCE.revokeFrom(serverPlayer, ability);
 //        }
 //    }
@@ -122,17 +122,17 @@
 //    }
 //
 //    public boolean hasAbility() {
-//        return getHolder() instanceof PlayerEntity playerEntity && getSource().grants(playerEntity, ability);
+//        return getHolder() instanceof Player playerEntity && getSource().grants(playerEntity, ability);
 //    }
 //
 //    public void grantAbility() {
-//        if (getHolder() instanceof PlayerEntity playerEntity) {
+//        if (getHolder() instanceof Player playerEntity) {
 //            getSource().grantTo(playerEntity, ability);
 //        }
 //    }
 //
 //    public void revokeAbility() {
-//        if (getHolder() instanceof PlayerEntity playerEntity) {
+//        if (getHolder() instanceof Player playerEntity) {
 //            getSource().revokeFrom(playerEntity, ability);
 //        }
 //    }

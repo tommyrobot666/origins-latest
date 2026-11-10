@@ -10,15 +10,15 @@
 //import io.github.apace100.apoli.util.GainedPowerCriterion;
 //import io.github.apace100.calio.data.SerializableData;
 //import it.unimi.dsi.fastutil.objects.*;
-//import net.minecraft.entity.LivingEntity;
+//import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.nbt.NbtCompound;
 //import net.minecraft.nbt.NbtElement;
 //import net.minecraft.nbt.NbtList;
 //import net.minecraft.nbt.NbtOps;
-//import net.minecraft.network.RegistryByteBuf;
+//import net.minecraft.network.RegistryFriendlyByteBuf;
 //import net.minecraft.registry.RegistryWrapper;
-//import net.minecraft.server.network.ServerPlayerEntity;
-//import net.minecraft.util.Identifier;
+//import net.minecraft.server.network.ServerPlayer;
+//import net.minecraft.resources.Identifier;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.*;
@@ -198,7 +198,7 @@
 //            powerTypeToAdd.onAdded();
 //            powerTypeToAdd.onGained();
 //
-//            if (owner instanceof ServerPlayerEntity serverPlayer) {
+//            if (owner instanceof ServerPlayer serverPlayer) {
 //                GainedPowerCriterion.INSTANCE.trigger(serverPlayer, powerToAdd);
 //            }
 //
@@ -342,13 +342,13 @@
 //    }
 //
 //    @Override
-//    public void writeSyncPacket(RegistryByteBuf buf, ServerPlayerEntity recipient) {
+//    public void writeSyncPacket(RegistryFriendlyByteBuf buf, ServerPlayer recipient) {
 //        buf.writeVarInt(0);
 //        PowerHolderComponent.super.writeSyncPacket(buf, recipient);
 //    }
 //
 //    @Override
-//    public void applySyncPacket(RegistryByteBuf buf) {
+//    public void applySyncPacket(RegistryFriendlyByteBuf buf) {
 //
 //        int syncType = buf.readVarInt();
 //        switch (syncType) {

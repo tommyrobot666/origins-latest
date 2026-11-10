@@ -2,7 +2,7 @@
 //
 //import io.github.apace100.apoli.access.PowerCraftingInventory;
 //import io.github.apace100.apoli.power.type.PowerType;
-//import net.minecraft.entity.player.PlayerEntity;
+//import net.minecraft.world.entity.player.Player;
 //import net.minecraft.inventory.CraftingInventory;
 //import net.minecraft.recipe.input.CraftingRecipeInput;
 //import org.spongepowered.asm.mixin.Mixin;
@@ -18,7 +18,7 @@
 //    private Collection<? extends PowerType> apoli$cachedPowerTypes = new LinkedList<>();
 //
 //    @Unique
-//    private PlayerEntity apoli$cachedPlayer;
+//    private Player apoli$cachedPlayer;
 //
 //    @Unique
 //    private CraftingInventory apoli$inventory;
@@ -40,12 +40,12 @@
 //    }
 //
 //    @Override
-//    public PlayerEntity apoli$getPlayer() {
+//    public Player apoli$getPlayer() {
 //        return apoli$cachedPlayer;
 //    }
 //
 //    @Override
-//    public void apoli$setPlayer(PlayerEntity player) {
+//    public void apoli$setPlayer(Player player) {
 //
 //        this.apoli$cachedPlayer = player;
 //

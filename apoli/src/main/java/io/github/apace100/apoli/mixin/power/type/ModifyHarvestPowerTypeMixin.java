@@ -11,9 +11,9 @@
 //import io.github.apace100.apoli.util.SavedBlockPosition;
 //import net.minecraft.block.AbstractBlock;
 //import net.minecraft.block.BlockState;
-//import net.minecraft.entity.player.PlayerEntity;
+//import net.minecraft.world.entity.player.Player;
 //import net.minecraft.resource.featuretoggle.ToggleableFeature;
-//import net.minecraft.server.network.ServerPlayerEntity;
+//import net.minecraft.server.network.ServerPlayer;
 //import net.minecraft.server.network.ServerPlayerInteractionManager;
 //import net.minecraft.server.world.ServerWorld;
 //import net.minecraft.util.math.BlockPos;
@@ -30,8 +30,8 @@
 //	@Mixin(AbstractBlock.class)
 //	public abstract static class BlockBreakingDeltaProxy implements ToggleableFeature {
 //
-//		@WrapOperation(method = "calcBlockBreakingDelta", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;canHarvest(Lnet/minecraft/block/BlockState;)Z"))
-//		private boolean apoli$modifyHarvest(PlayerEntity player, BlockState state, Operation<Boolean> original, BlockState mState, PlayerEntity mPlayer, BlockView world, BlockPos pos) {
+//		@WrapOperation(method = "calcBlockBreakingDelta", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/Player;canHarvest(Lnet/minecraft/block/BlockState;)Z"))
+//		private boolean apoli$modifyHarvest(Player player, BlockState state, Operation<Boolean> original, BlockState mState, Player mPlayer, BlockView world, BlockPos pos) {
 //			return PowerHolderComponent.getPowerTypes(player, ModifyHarvestPowerType.class)
 //				.stream()
 //				.filter(powerType -> powerType.doesApply(world, pos))
@@ -50,15 +50,15 @@
 //
 //		@Shadow
 //		@Final
-//		protected ServerPlayerEntity player;
+//		protected ServerPlayer player;
 //
 //		@Inject(method = "tryBreakBlock", at = @At("HEAD"))
 //		private void apoli$cacheBreakingBlock(BlockPos pos, CallbackInfoReturnable<Boolean> cir, @Share(value = "breakingBlock", namespace = Apoli.MODID) LocalRef<SavedBlockPosition> breakingBlockRef) {
 //			breakingBlockRef.set(new SavedBlockPosition(this.world, pos));
 //		}
 //
-//		@WrapOperation(method = "tryBreakBlock", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/network/ServerPlayerEntity;canHarvest(Lnet/minecraft/block/BlockState;)Z"))
-//		private boolean apoli$modifyHarvest(ServerPlayerEntity player, BlockState state, Operation<Boolean> original, @Share(value = "breakingBlock", namespace = Apoli.MODID) LocalRef<SavedBlockPosition> breakingBlockRef, @Share(value = "modifiedHarvest", namespace = Apoli.MODID) LocalBooleanRef modifiedHarvestRef) {
+//		@WrapOperation(method = "tryBreakBlock", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/network/ServerPlayer;canHarvest(Lnet/minecraft/block/BlockState;)Z"))
+//		private boolean apoli$modifyHarvest(ServerPlayer player, BlockState state, Operation<Boolean> original, @Share(value = "breakingBlock", namespace = Apoli.MODID) LocalRef<SavedBlockPosition> breakingBlockRef, @Share(value = "modifiedHarvest", namespace = Apoli.MODID) LocalBooleanRef modifiedHarvestRef) {
 //
 //			boolean result = PowerHolderComponent.getPowerTypes(this.player, ModifyHarvestPowerType.class)
 //				.stream()

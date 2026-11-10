@@ -13,7 +13,7 @@
 //import net.minecraft.recipe.RecipeEntry;
 //import net.minecraft.recipe.RecipeMatcher;
 //import net.minecraft.recipe.book.RecipeBook;
-//import net.minecraft.util.Identifier;
+//import net.minecraft.resources.Identifier;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.injection.At;
 //

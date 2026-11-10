@@ -2,18 +2,18 @@ package io.github.apace100.calio.network.packet.s2c;
 
 import io.github.apace100.calio.Calio;
 import io.github.apace100.calio.registry.DataObjectRegistry;
-import net.minecraft.network.RegistryByteBuf;
-import net.minecraft.network.codec.PacketCodec;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.packet.CustomPayload;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
-import net.minecraft.util.Identifier;
+import net.minecraft.resources.Identifier;
 
 public record SyncDataObjectRegistryS2CPacket(DataObjectRegistry<?> registry) implements CustomPacketPayload {
 
     public static final Id<SyncDataObjectRegistryS2CPacket> PACKET_ID = new Id<>(Calio.identifier("s2c/sync_data_object_registry"));
-    public static final PacketCodec<RegistryByteBuf, SyncDataObjectRegistryS2CPacket> PACKET_CODEC = PacketCodec.of(SyncDataObjectRegistryS2CPacket::write, SyncDataObjectRegistryS2CPacket::read);
+    public static final StreamCodec<RegistryFriendlyByteBuf, SyncDataObjectRegistryS2CPacket> PACKET_CODEC = StreamCodec.of(SyncDataObjectRegistryS2CPacket::write, SyncDataObjectRegistryS2CPacket::read);
 
-    public static SyncDataObjectRegistryS2CPacket read(RegistryByteBuf buf) {
+    public static SyncDataObjectRegistryS2CPacket read(RegistryFriendlyByteBuf buf) {
 
         Identifier registryId = buf.readIdentifier();
         DataObjectRegistry<?> registry = DataObjectRegistry.getRegistry(registryId);
@@ -22,7 +22,7 @@ public record SyncDataObjectRegistryS2CPacket(DataObjectRegistry<?> registry) im
 
     }
 
-    public void write(RegistryByteBuf buf) {
+    public void write(RegistryFriendlyByteBuf buf) {
         buf.writeIdentifier(registry.getRegistryId());
         registry.send(buf);
     }

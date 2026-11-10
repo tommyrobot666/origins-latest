@@ -13,8 +13,8 @@
 //import io.github.apace100.apoli.util.PriorityPhase;
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
-//import net.minecraft.entity.player.PlayerEntity;
-//import net.minecraft.item.ItemStack;
+//import net.minecraft.world.entity.player.Player;
+//import net.minecraft.world.item.ItemStack;
 //import net.minecraft.util.ActionResult;
 //import net.minecraft.util.Hand;
 //import net.minecraft.util.hit.BlockHitResult;
@@ -91,7 +91,7 @@
 //        blockAction.ifPresent(action -> action.execute(getHolder().getWorld(), hitResult.getBlockPos(), Optional.of(hitResult.getSide())));
 //        entityAction.ifPresent(action -> action.execute(getHolder()));
 //
-//        if (getHolder() instanceof PlayerEntity player) {
+//        if (getHolder() instanceof Player player) {
 //            this.performActorItemStuff(player, hand);
 //        }
 //

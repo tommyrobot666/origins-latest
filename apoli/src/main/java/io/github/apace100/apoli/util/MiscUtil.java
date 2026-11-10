@@ -21,11 +21,11 @@
 //import net.minecraft.entity.attribute.EntityAttribute;
 //import net.minecraft.entity.damage.DamageSource;
 //import net.minecraft.entity.mob.MobEntity;
-//import net.minecraft.entity.player.PlayerEntity;
+//import net.minecraft.world.entity.player.Player;
 //import net.minecraft.entity.player.PlayerInventory;
 //import net.minecraft.fluid.FluidState;
 //import net.minecraft.inventory.SlotRange;
-//import net.minecraft.item.ItemStack;
+//import net.minecraft.world.item.ItemStack;
 //import net.minecraft.nbt.NbtCompound;
 //import net.minecraft.network.packet.CustomPayload;
 //import net.minecraft.network.packet.Packet;
@@ -34,7 +34,7 @@
 //import net.minecraft.registry.Registries;
 //import net.minecraft.registry.entry.RegistryEntry;
 //import net.minecraft.server.MinecraftServer;
-//import net.minecraft.server.network.ServerPlayerEntity;
+//import net.minecraft.server.network.ServerPlayer;
 //import net.minecraft.server.world.ServerWorld;
 //import net.minecraft.sound.SoundEvents;
 //import net.minecraft.util.math.BlockPos;
@@ -78,9 +78,9 @@
 //            explosion.clearAffectedBlocks();
 //        }
 //
-//        for (ServerPlayerEntity serverPlayerEntity : serverWorld.getPlayers()) {
-//            if (serverPlayerEntity.squaredDistanceTo(x, y, z) < 4096.0) {
-//                serverPlayerEntity.networkHandler.sendPacket(new ExplosionS2CPacket(x, y, z, power, explosion.getAffectedBlocks(), explosion.getAffectedPlayers().get(serverPlayerEntity), explosion.getDestructionType(), explosion.getParticle(), explosion.getEmitterParticle(), explosion.getSoundEvent()));
+//        for (ServerPlayer serverPlayer : serverWorld.getPlayers()) {
+//            if (serverPlayer.squaredDistanceTo(x, y, z) < 4096.0) {
+//                serverPlayer.networkHandler.sendPacket(new ExplosionS2CPacket(x, y, z, power, explosion.getAffectedBlocks(), explosion.getAffectedPlayers().get(serverPlayer), explosion.getDestructionType(), explosion.getParticle(), explosion.getEmitterParticle(), explosion.getSoundEvent()));
 //            }
 //        }
 //
@@ -338,7 +338,7 @@
 //        };
 //    }
 //
-//    public static OptionalInt getSpaceInInventory(PlayerEntity player, ItemStack stack) {
+//    public static OptionalInt getSpaceInInventory(Player player, ItemStack stack) {
 //        return getSpaceInInventory(player.getInventory(), stack);
 //    }
 //
@@ -355,7 +355,7 @@
 //
 //    }
 //
-//    public static boolean hasSpaceInInventory(PlayerEntity player, ItemStack stack) {
+//    public static boolean hasSpaceInInventory(Player player, ItemStack stack) {
 //        return getSpaceInInventory(player, stack).isPresent();
 //    }
 //
@@ -460,16 +460,16 @@
 //
 //    }
 //
-//    public static Collection<ServerPlayerEntity> getTrackingSafely(Entity entity) {
+//    public static Collection<ServerPlayer> getTrackingSafely(Entity entity) {
 //
 //        if (entity == null || entity.getWorld().isClient()) {
 //            return Collections.emptySet();
 //        }
 //
-//        ImmutableSet.Builder<ServerPlayerEntity> builder = ImmutableSet.builder();
+//        ImmutableSet.Builder<ServerPlayer> builder = ImmutableSet.builder();
 //        builder.addAll(PlayerLookup.tracking(entity));
 //
-//        if (entity instanceof ServerPlayerEntity self) {
+//        if (entity instanceof ServerPlayer self) {
 //            builder.add(self);
 //        }
 //

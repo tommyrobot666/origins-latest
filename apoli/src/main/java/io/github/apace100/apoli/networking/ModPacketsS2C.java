@@ -16,13 +16,13 @@
 //import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
 //import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 //import net.minecraft.client.network.ClientPlayNetworkHandler;
-//import net.minecraft.client.network.ClientPlayerEntity;
-//import net.minecraft.entity.Entity;
-//import net.minecraft.entity.LivingEntity;
+//import net.minecraft.client.network.ClientPlayer;
+//import net.minecraft.world.entity.Entity;
+//import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.entity.effect.StatusEffectInstance;
-//import net.minecraft.entity.player.PlayerEntity;
+//import net.minecraft.world.entity.player.Player;
 //import net.minecraft.nbt.NbtElement;
-//import net.minecraft.util.Identifier;
+//import net.minecraft.resources.Identifier;
 //import net.minecraft.world.World;
 //
 //import java.util.Map;
@@ -73,7 +73,7 @@
 //
 //    private static void onStatusEffectSync(SyncStatusEffectS2CPacket payload, ClientPlayNetworking.Context context) {
 //
-//        ClientPlayerEntity player = context.player();
+//        ClientPlayer player = context.player();
 //
 //        Entity target = player.networkHandler.getWorld().getEntityById(payload.targetId());
 //        SyncStatusEffectsUtil.UpdateType updateType = payload.updateType();
@@ -146,14 +146,14 @@
 //
 //    private static void onPlayerDismount(DismountPlayerS2CPacket packet, ClientPlayNetworking.Context context) {
 //
-//        ClientPlayerEntity player = context.player();
+//        ClientPlayer player = context.player();
 //        Entity dismountingEntity = player.networkHandler.getWorld().getEntityById(packet.id());
 //
 //        if (dismountingEntity == null) {
 //            Apoli.LOGGER.warn("Received packet for unknown entity that tried to dismount!");
 //        }
 //
-//        else if (dismountingEntity.getVehicle() instanceof PlayerEntity) {
+//        else if (dismountingEntity.getVehicle() instanceof Player) {
 //            dismountingEntity.dismountVehicle();
 //        }
 //
@@ -161,7 +161,7 @@
 //
 //    private static void onPowerSync(SyncPowerDataS2CPacket payload, ClientPlayNetworking.Context context) {
 //
-//        ClientPlayerEntity player = context.player();
+//        ClientPlayer player = context.player();
 //        Identifier powerTypeId = payload.powerTypeId();
 //
 //        if (!PowerManager.contains(powerTypeId)) {

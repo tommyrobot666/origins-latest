@@ -9,8 +9,8 @@
 //import net.minecraft.client.render.VertexConsumerProvider;
 //import net.minecraft.client.render.entity.feature.ElytraFeatureRenderer;
 //import net.minecraft.client.util.math.MatrixStack;
-//import net.minecraft.entity.LivingEntity;
-//import net.minecraft.util.Identifier;
+//import net.minecraft.world.entity.LivingEntity;
+//import net.minecraft.resources.Identifier;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.injection.At;
 //

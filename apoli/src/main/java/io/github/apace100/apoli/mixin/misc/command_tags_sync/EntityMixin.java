@@ -2,7 +2,7 @@
 //
 //import io.github.apace100.apoli.networking.packet.s2c.SyncCommandTagsS2CPacket;
 //import io.github.apace100.apoli.util.MiscUtil;
-//import net.minecraft.entity.Entity;
+//import net.minecraft.world.entity.Entity;
 //import net.minecraft.world.World;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.Shadow;

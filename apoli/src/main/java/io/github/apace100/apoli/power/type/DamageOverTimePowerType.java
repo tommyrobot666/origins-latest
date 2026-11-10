@@ -9,13 +9,13 @@
 //import net.minecraft.enchantment.Enchantment;
 //import net.minecraft.enchantment.EnchantmentHelper;
 //import net.minecraft.entity.EquipmentSlot;
-//import net.minecraft.entity.LivingEntity;
+//import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.entity.damage.DamageSource;
 //import net.minecraft.entity.damage.DamageType;
-//import net.minecraft.item.ItemStack;
+//import net.minecraft.world.item.ItemStack;
 //import net.minecraft.nbt.NbtCompound;
 //import net.minecraft.nbt.NbtElement;
-//import net.minecraft.registry.Registry;
+//import net.minecraft.core.Registry;
 //import net.minecraft.registry.RegistryKey;
 //import net.minecraft.registry.RegistryKeys;
 //import net.minecraft.registry.entry.RegistryEntry;

@@ -12,8 +12,8 @@
 //import io.github.apace100.calio.data.SerializableDataType;
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.enchantment.Enchantment;
-//import net.minecraft.entity.LivingEntity;
-//import net.minecraft.item.ItemStack;
+//import net.minecraft.world.entity.LivingEntity;
+//import net.minecraft.world.item.ItemStack;
 //import net.minecraft.registry.RegistryKey;
 //import net.minecraft.registry.RegistryKeys;
 //import net.minecraft.registry.entry.RegistryEntry;

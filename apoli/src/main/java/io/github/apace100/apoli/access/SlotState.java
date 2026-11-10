@@ -1,6 +1,6 @@
 //package io.github.apace100.apoli.access;
 //
-//import net.minecraft.util.Identifier;
+//import net.minecraft.resources.Identifier;
 //
 //import java.util.Optional;
 //

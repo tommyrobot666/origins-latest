@@ -6,7 +6,7 @@
 //import io.github.apace100.apoli.power.type.ModifyAttributePowerType;
 //import io.github.apace100.apoli.util.modifier.Modifier;
 //import io.github.apace100.apoli.util.modifier.ModifierUtil;
-//import net.minecraft.entity.Entity;
+//import net.minecraft.world.entity.Entity;
 //import net.minecraft.entity.attribute.EntityAttribute;
 //import net.minecraft.entity.attribute.EntityAttributeInstance;
 //import net.minecraft.entity.attribute.EntityAttributeModifier;

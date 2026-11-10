@@ -12,12 +12,12 @@
 //import io.github.apace100.apoli.power.type.ModifyCraftingPowerType;
 //import io.github.apace100.apoli.power.type.Prioritized;
 //import io.github.apace100.apoli.util.InventoryUtil;
-//import net.minecraft.entity.player.PlayerEntity;
+//import net.minecraft.world.entity.player.Player;
 //import net.minecraft.inventory.CraftingInventory;
 //import net.minecraft.inventory.StackReference;
-//import net.minecraft.item.ItemStack;
-//import net.minecraft.network.RegistryByteBuf;
-//import net.minecraft.network.codec.PacketCodec;
+//import net.minecraft.world.item.ItemStack;
+//import net.minecraft.network.RegistryFriendlyByteBuf;
+//import net.minecraft.network.codec.StreamCodec;
 //import net.minecraft.recipe.CraftingRecipe;
 //import net.minecraft.recipe.Ingredient;
 //import net.minecraft.recipe.Recipe;
@@ -28,7 +28,7 @@
 //import net.minecraft.recipe.input.RecipeInput;
 //import net.minecraft.registry.RegistryWrapper;
 //import net.minecraft.screen.CraftingScreenHandler;
-//import net.minecraft.util.Identifier;
+//import net.minecraft.resources.Identifier;
 //import net.minecraft.util.collection.DefaultedList;
 //import net.minecraft.util.math.BlockPos;
 //import net.minecraft.world.World;
@@ -112,7 +112,7 @@
 //        return delegate().getGroup();
 //    }
 //
-//    public Pair<ItemStack, Collection<ModifyCraftingPowerType>> getModifiedResult(RegistryWrapper.WrapperLookup registriesLookup, @Nullable PlayerEntity player) {
+//    public Pair<ItemStack, Collection<ModifyCraftingPowerType>> getModifiedResult(RegistryWrapper.WrapperLookup registriesLookup, @Nullable Player player) {
 //        return getModifiedResult(id(), delegate(), registriesLookup, player);
 //    }
 //
@@ -126,12 +126,12 @@
 //            && canModify(id, craftingRecipe, pco.apoli$getPlayer());
 //    }
 //
-//    public static boolean canModify(Identifier id, CraftingRecipe craftingRecipe, @Nullable PlayerEntity player) {
+//    public static boolean canModify(Identifier id, CraftingRecipe craftingRecipe, @Nullable Player player) {
 //        return player != null
 //            && PowerHolderComponent.hasPowerType(player, ModifyCraftingPowerType.class, mcpt -> mcpt.doesApply(id, craftingRecipe.getResult(player.getRegistryManager())));
 //    }
 //
-//    public static Pair<ItemStack, Collection<ModifyCraftingPowerType>> getModifiedResult(Identifier id, CraftingRecipe craftingRecipe, RegistryWrapper.WrapperLookup registriesLookup, @Nullable PlayerEntity player) {
+//    public static Pair<ItemStack, Collection<ModifyCraftingPowerType>> getModifiedResult(Identifier id, CraftingRecipe craftingRecipe, RegistryWrapper.WrapperLookup registriesLookup, @Nullable Player player) {
 //
 //        ItemStack resultStack = craftingRecipe.getResult(registriesLookup).copy();
 //        StackReference newStackRef = InventoryUtil.createStackReference(resultStack);
@@ -159,12 +159,12 @@
 //
 //    }
 //
-//    private void send(RegistryByteBuf buf) {
+//    private void send(RegistryFriendlyByteBuf buf) {
 //        buf.writeIdentifier(id());
 //        Recipe.PACKET_CODEC.encode(buf, delegate());
 //    }
 //
-//    private static ModifiedCraftingRecipe receive(RegistryByteBuf buf) {
+//    private static ModifiedCraftingRecipe receive(RegistryFriendlyByteBuf buf) {
 //
 //        Identifier id = buf.readIdentifier();
 //        Recipe<?> recipe = Recipe.PACKET_CODEC.decode(buf);
@@ -186,7 +186,7 @@
 //            ApoliDataTypes.DISALLOWING_INTERNAL_CRAFTING_RECIPE.codec().fieldOf("recipe").forGetter(ModifiedCraftingRecipe::delegate)
 //        ).apply(instance, ModifiedCraftingRecipe::new));
 //
-//        public static final PacketCodec<RegistryByteBuf, ModifiedCraftingRecipe> PACKET_CODEC = PacketCodec.of(
+//        public static final StreamCodec<RegistryFriendlyByteBuf, ModifiedCraftingRecipe> PACKET_CODEC = StreamCodec.of(
 //            ModifiedCraftingRecipe::send,
 //            ModifiedCraftingRecipe::receive
 //        );
@@ -197,7 +197,7 @@
 //        }
 //
 //        @Override
-//        public PacketCodec<RegistryByteBuf, ModifiedCraftingRecipe> packetCodec() {
+//        public StreamCodec<RegistryFriendlyByteBuf, ModifiedCraftingRecipe> packetCodec() {
 //            return PACKET_CODEC;
 //        }
 //

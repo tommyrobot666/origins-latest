@@ -1,6 +1,6 @@
 //package io.github.apace100.apoli.mixin;
 //
-//import net.minecraft.entity.player.PlayerEntity;
+//import net.minecraft.world.entity.player.Player;
 //import net.minecraft.screen.CraftingScreenHandler;
 //import net.minecraft.screen.ScreenHandlerContext;
 //import org.spongepowered.asm.mixin.Mixin;
@@ -10,7 +10,7 @@
 //public interface CraftingScreenHandlerAccessor {
 //
 //    @Accessor
-//    PlayerEntity getPlayer();
+//    Player getPlayer();
 //
 //    @Accessor
 //    ScreenHandlerContext getContext();

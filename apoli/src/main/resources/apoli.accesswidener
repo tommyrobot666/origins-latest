@@ -8,8 +8,8 @@ accessible class net/minecraft/enchantment/EnchantmentHelper$ContextAwareConsume
 accessible class net/minecraft/client/render/BackgroundRenderer$FogData
 accessible class net/minecraft/server/command/AdvancementCommand$Operation
 accessible class net/minecraft/server/command/AdvancementCommand$Selection
-accessible method net/minecraft/server/command/AdvancementCommand$Operation processEach (Lnet/minecraft/server/network/ServerPlayerEntity;Lnet/minecraft/advancement/AdvancementEntry;)Z
-accessible method net/minecraft/server/command/AdvancementCommand$Operation processEachCriterion (Lnet/minecraft/server/network/ServerPlayerEntity;Lnet/minecraft/advancement/AdvancementEntry;Ljava/lang/String;)Z
+accessible method net/minecraft/server/command/AdvancementCommand$Operation processEach (Lnet/minecraft/server/network/ServerPlayer;Lnet/minecraft/advancement/AdvancementEntry;)Z
+accessible method net/minecraft/server/command/AdvancementCommand$Operation processEachCriterion (Lnet/minecraft/server/network/ServerPlayer;Lnet/minecraft/advancement/AdvancementEntry;Ljava/lang/String;)Z
 extendable class net/minecraft/world/event/Vibrations$ListenerData
 accessible field net/minecraft/server/command/AdvancementCommand$Selection before Z
 accessible field net/minecraft/server/command/AdvancementCommand$Selection after Z
@@ -19,9 +19,9 @@ accessible field net/minecraft/entity/player/ItemCooldownManager entries Ljava/u
 accessible field net/minecraft/entity/player/ItemCooldownManager$Entry startTick I
 accessible field net/minecraft/entity/player/ItemCooldownManager$Entry endTick I
 accessible class net/minecraft/client/toast/ToastManager$Entry
-accessible class net/minecraft/server/network/ServerPlayerEntity$RespawnPos
+accessible class net/minecraft/server/network/ServerPlayer$RespawnPos
 accessible class net/minecraft/screen/slot/ArmorSlot
-accessible class net/minecraft/client/MinecraftClient$LoadingContext
+accessible class net/minecraft/client/Minecraft$LoadingContext
 accessible method net/minecraft/registry/entry/RegistryEntryList$ListBacked getEntries ()Ljava/util/List;
 accessible class net/minecraft/registry/tag/TagGroupLoader$TagDependencies
 extendable method net/minecraft/network/chat/contents/TranslatableContents decompose ()V

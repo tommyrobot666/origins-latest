@@ -7,13 +7,13 @@
 //import io.github.apace100.apoli.util.HudRender;
 //import net.fabricmc.api.EnvType;
 //import net.fabricmc.api.Environment;
-//import net.minecraft.client.MinecraftClient;
+//import net.minecraft.client.Minecraft;
 //import net.minecraft.client.gui.DrawContext;
-//import net.minecraft.client.network.ClientPlayerEntity;
+//import net.minecraft.client.network.ClientPlayer;
 //import net.minecraft.client.render.RenderTickCounter;
-//import net.minecraft.entity.LivingEntity;
+//import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.registry.tag.FluidTags;
-//import net.minecraft.util.Identifier;
+//import net.minecraft.resources.Identifier;
 //import net.minecraft.util.math.MathHelper;
 //
 //import java.util.Comparator;
@@ -37,8 +37,8 @@
 //    @Override
 //    public void render(DrawContext context, RenderTickCounter delta) {
 //
-//        MinecraftClient client = MinecraftClient.getInstance();
-//        ClientPlayerEntity player = client.player;
+//        Minecraft client = Minecraft.getInstance();
+//        ClientPlayer player = client.player;
 //
 //        if (player == null || !(Apoli.config instanceof ApoliConfigClient config)) {
 //            return;

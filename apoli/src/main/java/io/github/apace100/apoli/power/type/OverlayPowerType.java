@@ -16,7 +16,7 @@
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.fabricmc.api.EnvType;
 //import net.fabricmc.api.Environment;
-//import net.minecraft.client.MinecraftClient;
+//import net.minecraft.client.Minecraft;
 //import net.minecraft.client.option.GameOptions;
 //import net.minecraft.client.render.*;
 //import net.minecraft.client.resource.metadata.AnimationResourceMetadata;
@@ -24,7 +24,7 @@
 //import net.minecraft.client.texture.Sprite;
 //import net.minecraft.client.texture.SpriteAtlasHolder;
 //import net.minecraft.client.texture.TextureManager;
-//import net.minecraft.util.Identifier;
+//import net.minecraft.resources.Identifier;
 //import net.minecraft.util.math.MathHelper;
 //import org.jetbrains.annotations.NotNull;
 //
@@ -144,7 +144,7 @@
 //            return;
 //        }
 //
-//        MinecraftClient client = MinecraftClient.getInstance();
+//        Minecraft client = Minecraft.getInstance();
 //        if (!(client instanceof OverlaySpriteHolder overlaySpriteHolder)) {
 //            return;
 //        }
@@ -260,7 +260,7 @@
 //    }
 //
 //    @Environment(EnvType.CLIENT)
-//    public static void integrateCallback(MinecraftClient client, boolean initialized) {
+//    public static void integrateCallback(Minecraft client, boolean initialized) {
 //        PowerHolderComponent.getPowerTypes(client.player, OverlayPowerType.class, true).forEach(p -> p.initRender = true);
 //    }
 //

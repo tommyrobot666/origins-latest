@@ -12,8 +12,8 @@
 //import io.github.apace100.calio.data.SerializableDataType;
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.entity.player.ItemCooldownManager;
-//import net.minecraft.entity.player.PlayerEntity;
-//import net.minecraft.item.ItemStack;
+//import net.minecraft.world.entity.player.Player;
+//import net.minecraft.world.item.ItemStack;
 //import org.jetbrains.annotations.NotNull;
 //
 //public class RelativeItemCooldownItemConditionType extends ItemConditionType {
@@ -44,7 +44,7 @@
 //
 //        ItemStack stack = context.stack();
 //
-//        if (!stack.isEmpty() && ((EntityLinkedItemStack) stack).apoli$getEntity(true) instanceof PlayerEntity player) {
+//        if (!stack.isEmpty() && ((EntityLinkedItemStack) stack).apoli$getEntity(true) instanceof Player player) {
 //
 //            ItemCooldownManager cooldownManager = player.getItemCooldownManager();
 //            float cooldownProgress = cooldownManager.getCooldownProgress(stack.getItem(), 0F);

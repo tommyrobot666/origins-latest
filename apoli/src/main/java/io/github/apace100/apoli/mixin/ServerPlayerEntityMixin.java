@@ -23,15 +23,15 @@
 //import io.github.apace100.apoli.util.PriorityPhase;
 //import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 //import net.minecraft.entity.Dismounting;
-//import net.minecraft.entity.player.PlayerEntity;
+//import net.minecraft.world.entity.player.Player;
 //import net.minecraft.inventory.StackReference;
-//import net.minecraft.item.ItemStack;
+//import net.minecraft.world.item.ItemStack;
 //import net.minecraft.network.packet.s2c.play.GameStateChangeS2CPacket;
 //import net.minecraft.registry.RegistryKey;
 //import net.minecraft.screen.ScreenHandlerListener;
 //import net.minecraft.server.MinecraftServer;
 //import net.minecraft.server.network.ServerPlayNetworkHandler;
-//import net.minecraft.server.network.ServerPlayerEntity;
+//import net.minecraft.server.network.ServerPlayer;
 //import net.minecraft.server.network.ServerRecipeBook;
 //import net.minecraft.server.world.ServerWorld;
 //import net.minecraft.text.Text;
@@ -54,8 +54,8 @@
 //import java.util.List;
 //import java.util.Optional;
 //
-//@Mixin(ServerPlayerEntity.class)
-//public abstract class ServerPlayerEntityMixin extends PlayerEntity implements ScreenHandlerListener, EndRespawningEntity, CustomToastViewer {
+//@Mixin(ServerPlayer.class)
+//public abstract class ServerPlayerMixin extends Player implements ScreenHandlerListener, EndRespawningEntity, CustomToastViewer {
 //
 //    @Shadow
 //    private RegistryKey<World> spawnPointDimension;
@@ -80,22 +80,22 @@
 //    public abstract void sendMessage(Text message);
 //
 //    @Shadow
-//    public abstract boolean shouldDamagePlayer(PlayerEntity player);
+//    public abstract boolean shouldDamagePlayer(Player player);
 //
 //    @Shadow
 //    private float spawnAngle;
 //
 //    @Shadow
-//    private static Optional<ServerPlayerEntity.RespawnPos> findRespawnPosition(ServerWorld world, BlockPos pos, float spawnAngle, boolean spawnForced, boolean alive) {
+//    private static Optional<ServerPlayer.RespawnPos> findRespawnPosition(ServerWorld world, BlockPos pos, float spawnAngle, boolean spawnForced, boolean alive) {
 //        throw new AssertionError();
 //    }
 //
-//    private ServerPlayerEntityMixin(World world, BlockPos pos, float yaw, GameProfile gameProfile) {
+//    private ServerPlayerMixin(World world, BlockPos pos, float yaw, GameProfile gameProfile) {
 //        super(world, pos, yaw, gameProfile);
 //    }
 //
-//    @WrapOperation(method = "trySleep", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/network/ServerPlayerEntity;setSpawnPoint(Lnet/minecraft/registry/RegistryKey;Lnet/minecraft/util/math/BlockPos;FZZ)V"))
-//    private void apoli$preventSleep(ServerPlayerEntity serverPlayer, RegistryKey<World> dimension, BlockPos pos, float angle, boolean forced, boolean sendMessage, Operation<Void> original, @Cancellable CallbackInfoReturnable<Either<SleepFailureReason, Unit>> cir) {
+//    @WrapOperation(method = "trySleep", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/network/ServerPlayer;setSpawnPoint(Lnet/minecraft/registry/RegistryKey;Lnet/minecraft/util/math/BlockPos;FZZ)V"))
+//    private void apoli$preventSleep(ServerPlayer serverPlayer, RegistryKey<World> dimension, BlockPos pos, float angle, boolean forced, boolean sendMessage, Operation<Void> original, @Cancellable CallbackInfoReturnable<Either<SleepFailureReason, Unit>> cir) {
 //
 //        List<PreventSleepPowerType> preventSleepPowers = PowerHolderComponent.getPowerTypes(this, PreventSleepPowerType.class)
 //            .stream()
@@ -164,15 +164,15 @@
 //        return original || (!this.apoli$isEndRespawning() && (spawnPointPosition == null || this.apoli$hasObstructedOriginalSpawnPoint()) && PowerHolderComponent.hasPowerType(this, ModifyPlayerSpawnPowerType.class));
 //    }
 //
-//	@WrapOperation(method = "getRespawnTarget", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/network/ServerPlayerEntity;findRespawnPosition(Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/util/math/BlockPos;FZZ)Ljava/util/Optional;"))
-//	private Optional<ServerPlayerEntity.RespawnPos> apoli$retryObstructedSpawnPointIfFailed(ServerWorld world, BlockPos pos, float spawnAngle, boolean spawnForced, boolean alive, Operation<Optional<ServerPlayerEntity.RespawnPos>> original) {
+//	@WrapOperation(method = "getRespawnTarget", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/network/ServerPlayer;findRespawnPosition(Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/util/math/BlockPos;FZZ)Ljava/util/Optional;"))
+//	private Optional<ServerPlayer.RespawnPos> apoli$retryObstructedSpawnPointIfFailed(ServerWorld world, BlockPos pos, float spawnAngle, boolean spawnForced, boolean alive, Operation<Optional<ServerPlayer.RespawnPos>> original) {
 //
-//	    Optional<ServerPlayerEntity.RespawnPos> originalRespawnPos = original.call(world, pos, spawnAngle, spawnForced, alive);
+//	    Optional<ServerPlayer.RespawnPos> originalRespawnPos = original.call(world, pos, spawnAngle, spawnForced, alive);
 //
 //        if (originalRespawnPos.isEmpty() && PowerHolderComponent.hasPowerType(this, ModifyPlayerSpawnPowerType.class)) {
 //            return Optional
 //                .ofNullable(Dismounting.findRespawnPos(this.getType(), world, pos, spawnForced))
-//                .map(newPos -> ServerPlayerEntity.RespawnPos.fromCurrentPos(newPos, pos));
+//                .map(newPos -> ServerPlayer.RespawnPos.fromCurrentPos(newPos, pos));
 //        }
 //
 //        else {
@@ -181,8 +181,8 @@
 //
 //	}
 //
-//    @Inject(method = "copyFrom", at = @At(value = "FIELD", opcode = Opcodes.GETFIELD, target = "Lnet/minecraft/server/network/ServerPlayerEntity;enchantmentTableSeed:I"))
-//    private void copyInventoryWhenKeeping(ServerPlayerEntity oldPlayer, boolean alive, CallbackInfo ci) {
+//    @Inject(method = "copyFrom", at = @At(value = "FIELD", opcode = Opcodes.GETFIELD, target = "Lnet/minecraft/server/network/ServerPlayer;enchantmentTableSeed:I"))
+//    private void copyInventoryWhenKeeping(ServerPlayer oldPlayer, boolean alive, CallbackInfo ci) {
 //        if(PowerHolderComponent.hasPowerType(oldPlayer, KeepInventoryPowerType.class)) {
 //            this.getInventory().clone(oldPlayer.getInventory());
 //        }
@@ -211,7 +211,7 @@
 //        prevSelectedStackLocRef.set(this.getInventory().getMainHandStack().copy());
 //    }
 //
-//    @ModifyArg(method = "dropSelectedItem", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/network/ServerPlayerEntity;dropItem(Lnet/minecraft/item/ItemStack;ZZ)Lnet/minecraft/entity/ItemEntity;"))
+//    @ModifyArg(method = "dropSelectedItem", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/network/ServerPlayer;dropItem(Lnet/minecraft/item/ItemStack;ZZ)Lnet/minecraft/entity/ItemEntity;"))
 //    private ItemStack checkItemUsageStopping(ItemStack original, @Share("prevSelectedStack") LocalRef<ItemStack> prevSelectedStackLocRef) {
 //
 //        ItemStack prevSelectedStack = prevSelectedStackLocRef.get();
@@ -246,7 +246,7 @@
 //
 //    @Override
 //    public void apoli$showToast(CustomToastData toastData) {
-//        ServerPlayNetworking.send((ServerPlayerEntity) (Object) this, new ShowToastS2CPacket(toastData));
+//        ServerPlayNetworking.send((ServerPlayer) (Object) this, new ShowToastS2CPacket(toastData));
 //    }
 //
 //    @ModifyExpressionValue(method = "<init>", at = @At(value = "NEW", target = "()Lnet/minecraft/server/network/ServerRecipeBook;"))

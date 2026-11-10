@@ -7,7 +7,7 @@
 //import io.github.apace100.apoli.util.modifier.Modifier;
 //import io.github.apace100.calio.data.SerializableData;
 //import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-//import net.minecraft.util.Identifier;
+//import net.minecraft.resources.Identifier;
 //import org.apache.commons.lang3.function.TriFunction;
 //
 //import java.util.List;

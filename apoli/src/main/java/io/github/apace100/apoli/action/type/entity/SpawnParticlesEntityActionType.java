@@ -8,7 +8,7 @@
 //import io.github.apace100.apoli.data.TypedDataObjectFactory;
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
-//import net.minecraft.entity.Entity;
+//import net.minecraft.world.entity.Entity;
 //import net.minecraft.particle.ParticleEffect;
 //import net.minecraft.server.world.ServerWorld;
 //import net.minecraft.util.math.Vec3d;

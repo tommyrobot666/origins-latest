@@ -8,7 +8,7 @@
 //import io.github.apace100.apoli.util.keybinding.KeyBindingReference;
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
-//import net.minecraft.entity.LivingEntity;
+//import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.particle.ParticleTypes;
 //import net.minecraft.server.world.ServerWorld;
 //import net.minecraft.sound.SoundCategory;

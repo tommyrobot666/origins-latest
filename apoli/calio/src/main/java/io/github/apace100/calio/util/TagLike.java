@@ -7,13 +7,13 @@ import io.github.apace100.calio.data.DataException;
 import io.github.apace100.calio.mixin.RegistryEntryListBackedAccessor;
 import io.github.apace100.calio.mixin.TagEntryAccessor;
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import net.minecraft.network.RegistryByteBuf;
+import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.registry.*;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.registry.entry.RegistryEntryList;
 import net.minecraft.registry.tag.TagEntry;
 import net.minecraft.registry.tag.TagKey;
-import net.minecraft.util.Identifier;
+import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
@@ -43,7 +43,7 @@ public class TagLike<T> {
             || elementsByTag.values().stream().flatMap(Collection::stream).anyMatch(element::equals);
     }
 
-    public void write(RegistryByteBuf buf) {
+    public void write(RegistryFriendlyByteBuf buf) {
 
         buf.writeRegistryKey(registryRef);
         CalioPacketCodecs.TAG_ENTRY_SET.encode(buf, entries());
@@ -52,7 +52,7 @@ public class TagLike<T> {
 
     }
 
-    public static <T> TagLike<T> read(RegistryByteBuf buf) {
+    public static <T> TagLike<T> read(RegistryFriendlyByteBuf buf) {
 
         RegistryKey<? extends Registry<T>> registryRef = buf.readRegistryRefKey();
         Set<TagEntry> tagEntries = CalioPacketCodecs.TAG_ENTRY_SET.decode(buf);

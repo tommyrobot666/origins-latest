@@ -5,7 +5,7 @@
 //import net.minecraft.advancement.AdvancementManager;
 //import net.minecraft.advancement.PlacedAdvancement;
 //import net.minecraft.server.command.AdvancementCommand;
-//import net.minecraft.server.network.ServerPlayerEntity;
+//import net.minecraft.server.network.ServerPlayer;
 //
 //import java.util.ArrayList;
 //import java.util.Collection;
@@ -38,15 +38,15 @@
 //
 //    }
 //
-//    public static void processCriteria(AdvancementEntry advancementEntry, Collection<String> criteria, AdvancementCommand.Operation operation, ServerPlayerEntity serverPlayerEntity) {
+//    public static void processCriteria(AdvancementEntry advancementEntry, Collection<String> criteria, AdvancementCommand.Operation operation, ServerPlayer serverPlayer) {
 //        for (String criterion : criteria.stream().filter(c -> advancementEntry.value().criteria().containsKey(c)).toList()) {
-//            operation.processEachCriterion(serverPlayerEntity, advancementEntry, criterion);
+//            operation.processEachCriterion(serverPlayer, advancementEntry, criterion);
 //        }
 //    }
 //
-//    public static void processAdvancements(Collection<AdvancementEntry> advancementEntries, AdvancementCommand.Operation operation, ServerPlayerEntity serverPlayerEntity) {
+//    public static void processAdvancements(Collection<AdvancementEntry> advancementEntries, AdvancementCommand.Operation operation, ServerPlayer serverPlayer) {
 //        for (AdvancementEntry advancementEntry : advancementEntries) {
-//            operation.processEach(serverPlayerEntity, advancementEntry);
+//            operation.processEach(serverPlayer, advancementEntry);
 //        }
 //    }
 //

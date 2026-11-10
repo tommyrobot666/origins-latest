@@ -10,9 +10,9 @@
 //import io.github.apace100.apoli.util.keybinding.KeyBindingReference;
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
-//import net.minecraft.entity.Entity;
-//import net.minecraft.entity.EntityType;
-//import net.minecraft.entity.LivingEntity;
+//import net.minecraft.world.entity.Entity;
+//import net.minecraft.world.entity.EntityType;
+//import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.entity.projectile.ExplosiveProjectileEntity;
 //import net.minecraft.entity.projectile.ProjectileEntity;
 //import net.minecraft.nbt.NbtCompound;

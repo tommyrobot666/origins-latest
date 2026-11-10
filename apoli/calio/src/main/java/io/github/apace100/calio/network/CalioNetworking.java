@@ -1,6 +1,6 @@
 package io.github.apace100.calio.network;
 
-import net.minecraft.util.Identifier;
+import net.minecraft.resources.Identifier;
 
 public class CalioNetworking {
 

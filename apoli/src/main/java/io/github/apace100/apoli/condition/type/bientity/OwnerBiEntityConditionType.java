@@ -5,7 +5,7 @@
 //import io.github.apace100.apoli.condition.type.BiEntityConditionType;
 //import io.github.apace100.apoli.condition.type.BiEntityConditionTypes;
 //import io.github.apace100.apoli.util.requirement.BiEntityRequirement;
-//import net.minecraft.entity.Entity;
+//import net.minecraft.world.entity.Entity;
 //import net.minecraft.entity.Ownable;
 //import net.minecraft.entity.Tameable;
 //import org.jetbrains.annotations.NotNull;

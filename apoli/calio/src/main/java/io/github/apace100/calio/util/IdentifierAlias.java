@@ -1,8 +1,8 @@
 package io.github.apace100.calio.util;
 
 import io.github.apace100.calio.Calio;
-import net.minecraft.registry.Registry;
-import net.minecraft.util.Identifier;
+import net.minecraft.core.Registry;
+import net.minecraft.resources.Identifier;
 
 import java.util.HashMap;
 import java.util.Map;

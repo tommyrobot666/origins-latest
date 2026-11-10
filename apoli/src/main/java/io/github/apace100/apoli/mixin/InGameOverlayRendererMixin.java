@@ -4,7 +4,7 @@
 //import io.github.apace100.apoli.power.type.PhasingPowerType;
 //import net.fabricmc.api.EnvType;
 //import net.fabricmc.api.Environment;
-//import net.minecraft.client.MinecraftClient;
+//import net.minecraft.client.Minecraft;
 //import net.minecraft.client.gui.hud.InGameOverlayRenderer;
 //import net.minecraft.client.texture.Sprite;
 //import net.minecraft.client.util.math.MatrixStack;
@@ -20,7 +20,7 @@
 //    @Inject(method = "renderInWallOverlay", at = @At("HEAD"), cancellable = true)
 //    private static void preventInWallOverlayRendering(Sprite sprite, MatrixStack matrixStack, CallbackInfo ci) {
 //
-//        MinecraftClient client = MinecraftClient.getInstance();
+//        Minecraft client = Minecraft.getInstance();
 //
 //        if (PowerHolderComponent.hasPowerType(client.getCameraEntity(), PhasingPowerType.class)) {
 //            ci.cancel();

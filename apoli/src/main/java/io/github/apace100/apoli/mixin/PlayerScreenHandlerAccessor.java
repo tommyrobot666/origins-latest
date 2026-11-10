@@ -1,6 +1,6 @@
 //package io.github.apace100.apoli.mixin;
 //
-//import net.minecraft.entity.player.PlayerEntity;
+//import net.minecraft.world.entity.player.Player;
 //import net.minecraft.screen.PlayerScreenHandler;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.gen.Accessor;
@@ -9,5 +9,5 @@
 //public interface PlayerScreenHandlerAccessor {
 //
 //    @Accessor
-//    PlayerEntity getOwner();
+//    Player getOwner();
 //}

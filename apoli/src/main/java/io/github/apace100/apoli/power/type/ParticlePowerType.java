@@ -6,8 +6,8 @@
 //import io.github.apace100.apoli.power.PowerConfiguration;
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
-//import net.minecraft.entity.LivingEntity;
-//import net.minecraft.entity.player.PlayerEntity;
+//import net.minecraft.world.entity.LivingEntity;
+//import net.minecraft.world.entity.player.Player;
 //import net.minecraft.particle.ParticleEffect;
 //import net.minecraft.util.math.Vec3d;
 //import org.jetbrains.annotations.NotNull;
@@ -91,7 +91,7 @@
 //        return PowerTypes.PARTICLE;
 //    }
 //
-//    public boolean doesApply(PlayerEntity viewer, boolean inFirstPerson) {
+//    public boolean doesApply(Player viewer, boolean inFirstPerson) {
 //        LivingEntity holder = getHolder();
 //        return (!holder.isInvisibleTo(viewer) || this.isVisibleWhileInvisible())
 //            && (holder != viewer || (!inFirstPerson || this.isVisibleInFirstPerson()))

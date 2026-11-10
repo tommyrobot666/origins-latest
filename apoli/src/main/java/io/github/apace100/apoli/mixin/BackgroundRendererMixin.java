@@ -13,9 +13,9 @@
 //import net.minecraft.client.render.BackgroundRenderer;
 //import net.minecraft.client.render.Camera;
 //import net.minecraft.client.world.ClientWorld;
-//import net.minecraft.entity.Entity;
-//import net.minecraft.entity.LivingEntity;
-//import net.minecraft.entity.player.PlayerEntity;
+//import net.minecraft.world.entity.Entity;
+//import net.minecraft.world.entity.LivingEntity;
+//import net.minecraft.world.entity.player.Player;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.Shadow;
 //import org.spongepowered.asm.mixin.injection.At;
@@ -65,7 +65,7 @@
 //    private static void modifyFogColor(Camera camera, float tickDelta, ClientWorld world, int viewDistance, float skyDarkness, CallbackInfo ci) {
 //        if(camera.getFocusedEntity() instanceof LivingEntity) {
 //            if(PowerHolderComponent.getPowerTypes(camera.getFocusedEntity(), PhasingPowerType.class).stream().anyMatch(pp -> pp.getRenderType() == PhasingPowerType.RenderType.BLINDNESS)) {
-//                if(MiscUtil.getInWallBlockState((PlayerEntity)camera.getFocusedEntity()) != null) {
+//                if(MiscUtil.getInWallBlockState((Player)camera.getFocusedEntity()) != null) {
 //                    red = 0f;
 //                    green = 0f;
 //                    blue = 0f;

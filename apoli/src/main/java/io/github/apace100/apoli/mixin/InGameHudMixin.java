@@ -8,13 +8,13 @@
 //import io.github.apace100.apoli.screen.GameHudRender;
 //import net.fabricmc.api.EnvType;
 //import net.fabricmc.api.Environment;
-//import net.minecraft.client.MinecraftClient;
+//import net.minecraft.client.Minecraft;
 //import net.minecraft.client.gui.DrawContext;
 //import net.minecraft.client.gui.LayeredDrawer;
 //import net.minecraft.client.gui.hud.InGameHud;
 //import net.minecraft.entity.effect.StatusEffects;
-//import net.minecraft.entity.player.PlayerEntity;
-//import net.minecraft.util.Identifier;
+//import net.minecraft.world.entity.player.Player;
+//import net.minecraft.resources.Identifier;
 //import org.objectweb.asm.Opcodes;
 //import org.spongepowered.asm.mixin.Final;
 //import org.spongepowered.asm.mixin.Mixin;
@@ -32,12 +32,12 @@
 //@Environment(EnvType.CLIENT)
 //public abstract class InGameHudMixin {
 //
-//    @Shadow @Final private MinecraftClient client;
+//    @Shadow @Final private Minecraft client;
 //
-//    @Shadow protected abstract PlayerEntity getCameraPlayer();
+//    @Shadow protected abstract Player getCameraPlayer();
 //
 //    @Inject(method = "<init>", at = @At(value = "FIELD", target = "Lnet/minecraft/client/gui/hud/InGameHud;layeredDrawer:Lnet/minecraft/client/gui/LayeredDrawer;", opcode = Opcodes.GETFIELD))
-//    private void apoli$renderResourceBars(MinecraftClient client, CallbackInfo ci, @Local(ordinal = 0) LayeredDrawer layeredDrawer) {
+//    private void apoli$renderResourceBars(Minecraft client, CallbackInfo ci, @Local(ordinal = 0) LayeredDrawer layeredDrawer) {
 //
 //        for (GameHudRender hudRender : GameHudRender.HUD_RENDERS) {
 //            ((LayeredDrawerAccessor) layeredDrawer).getLayers().add(3, hudRender::render);
@@ -46,14 +46,14 @@
 //    }
 //
 //    @Unique
-//    private static Optional<OverrideHudTexturePowerType> apoli$getOverrideHudTexturePower(PlayerEntity player) {
+//    private static Optional<OverrideHudTexturePowerType> apoli$getOverrideHudTexturePower(Player player) {
 //        return PowerHolderComponent.getPowerTypes(player, OverrideHudTexturePowerType.class)
 //            .stream()
 //            .max(Comparator.comparing(OverrideHudTexturePowerType::getPriority));
 //    }
 //    
 //    @WrapOperation(method = "renderArmor", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/DrawContext;drawGuiTexture(Lnet/minecraft/util/Identifier;IIII)V", ordinal = 0))
-//    private static void apoli$overrideFullArmorSprite(DrawContext context, Identifier texture, int x, int y, int width, int height, Operation<Void> original, DrawContext mContext, PlayerEntity player) {
+//    private static void apoli$overrideFullArmorSprite(DrawContext context, Identifier texture, int x, int y, int width, int height, Operation<Void> original, DrawContext mContext, Player player) {
 //        apoli$getOverrideHudTexturePower(player).ifPresentOrElse(
 //            p -> p.drawTexture(context, texture, x, y, 34, 9, width, height),
 //            () -> original.call(context, texture, x, y, width, height)
@@ -61,7 +61,7 @@
 //    }
 //
 //    @WrapOperation(method = "renderArmor", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/DrawContext;drawGuiTexture(Lnet/minecraft/util/Identifier;IIII)V", ordinal = 1))
-//    private static void apoli$overrideHalfArmorSprite(DrawContext context, Identifier texture, int x, int y, int width, int height, Operation<Void> original, DrawContext mContext, PlayerEntity player) {
+//    private static void apoli$overrideHalfArmorSprite(DrawContext context, Identifier texture, int x, int y, int width, int height, Operation<Void> original, DrawContext mContext, Player player) {
 //        apoli$getOverrideHudTexturePower(player).ifPresentOrElse(
 //            p -> p.drawTexture(context, texture, x, y, 25, 9, width, height),
 //            () -> original.call(context, texture, x, y, width, height)
@@ -69,7 +69,7 @@
 //    }
 //
 //    @WrapOperation(method = "renderArmor", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/DrawContext;drawGuiTexture(Lnet/minecraft/util/Identifier;IIII)V", ordinal = 2))
-//    private static void apoli$overrideEmptyArmorSprite(DrawContext context, Identifier texture, int x, int y, int width, int height, Operation<Void> original, DrawContext mContext, PlayerEntity player) {
+//    private static void apoli$overrideEmptyArmorSprite(DrawContext context, Identifier texture, int x, int y, int width, int height, Operation<Void> original, DrawContext mContext, Player player) {
 //        apoli$getOverrideHudTexturePower(player).ifPresentOrElse(
 //            p -> p.drawTexture(context, texture, x, y, 16, 9, width, height),
 //            () -> original.call(context, texture, x, y, width, height)
@@ -77,7 +77,7 @@
 //    }
 //
 //    @WrapOperation(method = "renderFood", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/DrawContext;drawGuiTexture(Lnet/minecraft/util/Identifier;IIII)V", ordinal = 0))
-//    private void apoli$overrideEmptyFoodSprite(DrawContext context, Identifier texture, int x, int y, int width, int height, Operation<Void> original, DrawContext mContext, PlayerEntity player) {
+//    private void apoli$overrideEmptyFoodSprite(DrawContext context, Identifier texture, int x, int y, int width, int height, Operation<Void> original, DrawContext mContext, Player player) {
 //        apoli$getOverrideHudTexturePower(player).ifPresentOrElse(
 //            p -> p.drawTexture(context, texture, x, y, this.getCameraPlayer().hasStatusEffect(StatusEffects.HUNGER) ? 133 : 16, 27, width, height),
 //            () -> original.call(context, texture, x, y, width, height)
@@ -85,7 +85,7 @@
 //    }
 //
 //    @WrapOperation(method = "renderFood", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/DrawContext;drawGuiTexture(Lnet/minecraft/util/Identifier;IIII)V", ordinal = 1))
-//    private void apoli$overrideFullFoodSprite(DrawContext context, Identifier texture, int x, int y, int width, int height, Operation<Void> original, DrawContext mContext, PlayerEntity player) {
+//    private void apoli$overrideFullFoodSprite(DrawContext context, Identifier texture, int x, int y, int width, int height, Operation<Void> original, DrawContext mContext, Player player) {
 //        apoli$getOverrideHudTexturePower(player).ifPresentOrElse(
 //            p -> p.drawTexture(context, texture, x, y, this.getCameraPlayer().hasStatusEffect(StatusEffects.HUNGER) ? 88 : 52, 27, width, height),
 //            () -> original.call(context, texture, x, y, width, height)
@@ -93,14 +93,14 @@
 //    }
 //
 //    @WrapOperation(method = "renderFood", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/DrawContext;drawGuiTexture(Lnet/minecraft/util/Identifier;IIII)V", ordinal = 2))
-//    private void apoli$overrideHalfFoodSprite(DrawContext context, Identifier texture, int x, int y, int width, int height, Operation<Void> original, DrawContext mContext, PlayerEntity player) {
+//    private void apoli$overrideHalfFoodSprite(DrawContext context, Identifier texture, int x, int y, int width, int height, Operation<Void> original, DrawContext mContext, Player player) {
 //        apoli$getOverrideHudTexturePower(player).ifPresentOrElse(
 //            p -> p.drawTexture(context, texture, x, y, this.getCameraPlayer().hasStatusEffect(StatusEffects.HUNGER) ? 97 : 61, 27, width, height),
 //            () -> original.call(context, texture, x, y, width, height)
 //        );
 //    }
 //
-//    @WrapOperation(method = "renderStatusBars", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/DrawContext;drawGuiTexture(Lnet/minecraft/util/Identifier;IIII)V", ordinal = 0), slice = @Slice(from = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;isSubmergedIn(Lnet/minecraft/registry/tag/TagKey;)Z")))
+//    @WrapOperation(method = "renderStatusBars", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/DrawContext;drawGuiTexture(Lnet/minecraft/util/Identifier;IIII)V", ordinal = 0), slice = @Slice(from = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/Player;isSubmergedIn(Lnet/minecraft/registry/tag/TagKey;)Z")))
 //    private void apoli$overrideBubbleSprite(DrawContext context, Identifier texture, int x, int y, int width, int height, Operation<Void> original) {
 //        apoli$getOverrideHudTexturePower(this.client.player).ifPresentOrElse(
 //            p -> p.drawTexture(context, texture, x, y, 16, 18, width, height),
@@ -108,7 +108,7 @@
 //        );
 //    }
 //
-//    @WrapOperation(method = "renderStatusBars", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/DrawContext;drawGuiTexture(Lnet/minecraft/util/Identifier;IIII)V", ordinal = 1), slice = @Slice(from = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;isSubmergedIn(Lnet/minecraft/registry/tag/TagKey;)Z")))
+//    @WrapOperation(method = "renderStatusBars", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/DrawContext;drawGuiTexture(Lnet/minecraft/util/Identifier;IIII)V", ordinal = 1), slice = @Slice(from = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/Player;isSubmergedIn(Lnet/minecraft/registry/tag/TagKey;)Z")))
 //    private void apoli$overrideBurstingBubbleSprite(DrawContext instance, Identifier texture, int x, int y, int width, int height, Operation<Void> original) {
 //        apoli$getOverrideHudTexturePower(this.client.player).ifPresentOrElse(
 //            p -> p.drawTexture(instance, texture, x, y, 25, 18, width, height),

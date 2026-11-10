@@ -8,7 +8,7 @@
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.inventory.Inventory;
 //import net.minecraft.screen.ScreenHandlerFactory;
-//import net.minecraft.util.Identifier;
+//import net.minecraft.resources.Identifier;
 //
 ////	TODO: Finish implementation for dynamic container types -eggohito
 //public record DynamicContainerType(TextAlignment titleAlignment, Identifier texture, int columns, int rows) implements ContainerType {

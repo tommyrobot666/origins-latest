@@ -13,10 +13,10 @@
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.component.EnchantmentEffectComponentTypes;
 //import net.minecraft.enchantment.EnchantmentHelper;
-//import net.minecraft.entity.player.PlayerEntity;
+//import net.minecraft.world.entity.player.Player;
 //import net.minecraft.inventory.Inventories;
 //import net.minecraft.inventory.Inventory;
-//import net.minecraft.item.ItemStack;
+//import net.minecraft.world.item.ItemStack;
 //import net.minecraft.nbt.NbtCompound;
 //import net.minecraft.nbt.NbtElement;
 //import net.minecraft.screen.ScreenHandlerFactory;
@@ -100,7 +100,7 @@
 //    @Override
 //    public void onUse() {
 //
-//        if (this.isActive() && getHolder() instanceof PlayerEntity player) {
+//        if (this.isActive() && getHolder() instanceof Player player) {
 //            player.openHandledScreen(new SimpleNamedScreenHandlerFactory(containerHandlerFactory, containerTitle));
 //        }
 //
@@ -194,7 +194,7 @@
 //    }
 //
 //    @Override
-//    public boolean canPlayerUse(PlayerEntity player) {
+//    public boolean canPlayerUse(Player player) {
 //        return player == getHolder();
 //    }
 //
@@ -232,7 +232,7 @@
 //
 //    public void dropItemsOnDeath() {
 //
-//        if (!(getHolder() instanceof PlayerEntity playerEntity) || playerEntity.getWorld().isClient()) {
+//        if (!(getHolder() instanceof Player playerEntity) || playerEntity.getWorld().isClient()) {
 //            return;
 //        }
 //
@@ -254,7 +254,7 @@
 //
 //    public void dropItemsOnLost() {
 //
-//        if (!(getHolder() instanceof PlayerEntity playerEntity) || playerEntity.getWorld().isClient()) {
+//        if (!(getHolder() instanceof Player playerEntity) || playerEntity.getWorld().isClient()) {
 //            return;
 //        }
 //

@@ -2,7 +2,7 @@
 //
 //import net.minecraft.recipe.RecipeEntry;
 //import net.minecraft.recipe.RecipeManager;
-//import net.minecraft.util.Identifier;
+//import net.minecraft.resources.Identifier;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.gen.Accessor;
 //

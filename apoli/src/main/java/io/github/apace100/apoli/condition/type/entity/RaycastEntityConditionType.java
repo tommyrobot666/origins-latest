@@ -12,7 +12,7 @@
 //import io.github.apace100.apoli.util.Space;
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
-//import net.minecraft.entity.Entity;
+//import net.minecraft.world.entity.Entity;
 //import net.minecraft.entity.attribute.EntityAttributes;
 //import net.minecraft.entity.projectile.ProjectileUtil;
 //import net.minecraft.predicate.entity.EntityPredicates;

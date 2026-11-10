@@ -2,9 +2,9 @@
 //
 //import io.github.apace100.apoli.component.PowerHolderComponent;
 //import io.github.apace100.apoli.power.type.*;
-//import net.minecraft.entity.Entity;
-//import net.minecraft.entity.EntityType;
-//import net.minecraft.entity.LivingEntity;
+//import net.minecraft.world.entity.Entity;
+//import net.minecraft.world.entity.EntityType;
+//import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.entity.damage.DamageSource;
 //import net.minecraft.entity.decoration.ArmorStandEntity;
 //import net.minecraft.world.World;

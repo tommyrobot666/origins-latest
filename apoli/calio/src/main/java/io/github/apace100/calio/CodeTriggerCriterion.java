@@ -5,8 +5,8 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.advancement.criterion.AbstractCriterion;
 import net.minecraft.predicate.entity.EntityPredicate;
 import net.minecraft.predicate.entity.LootContextPredicate;
-import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.util.Identifier;
+import net.minecraft.server.network.ServerPlayer;
+import net.minecraft.resources.Identifier;
 
 import java.util.Optional;
 
@@ -20,7 +20,7 @@ public class CodeTriggerCriterion extends AbstractCriterion<CodeTriggerCriterion
         return Conditions.CODEC;
     }
 
-    public void trigger(ServerPlayerEntity player, String triggerId) {
+    public void trigger(ServerPlayer player, String triggerId) {
         super.trigger(player, conditions -> conditions.matches(triggerId));
     }
 

@@ -1,7 +1,7 @@
 //package io.github.apace100.apoli.mixin;
 //
 //import io.github.apace100.apoli.access.PowerCraftingObject;
-//import net.minecraft.entity.player.PlayerEntity;
+//import net.minecraft.world.entity.player.Player;
 //import net.minecraft.recipe.book.RecipeBook;
 //import org.jetbrains.annotations.Nullable;
 //import org.spongepowered.asm.mixin.Mixin;
@@ -13,11 +13,11 @@
 //public abstract class RecipeBookMixin implements PowerCraftingObject {
 //
 //    @Unique
-//    private WeakReference<PlayerEntity> apoli$player;
+//    private WeakReference<Player> apoli$player;
 //
 //    @Nullable
 //    @Override
-//    public PlayerEntity apoli$getPlayer() {
+//    public Player apoli$getPlayer() {
 //
 //        if (apoli$player != null) {
 //            return apoli$player.get();
@@ -30,7 +30,7 @@
 //    }
 //
 //    @Override
-//    public void apoli$setPlayer(PlayerEntity player) {
+//    public void apoli$setPlayer(Player player) {
 //
 //        if (player == null) {
 //            this.apoli$player = null;

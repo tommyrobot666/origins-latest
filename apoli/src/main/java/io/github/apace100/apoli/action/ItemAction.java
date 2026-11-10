@@ -8,7 +8,7 @@
 //import io.github.apace100.apoli.util.WorkableEmptyStack;
 //import io.github.apace100.calio.data.SerializableDataType;
 //import net.minecraft.inventory.StackReference;
-//import net.minecraft.item.ItemStack;
+//import net.minecraft.world.item.ItemStack;
 //import net.minecraft.server.world.ServerWorld;
 //import net.minecraft.world.World;
 //

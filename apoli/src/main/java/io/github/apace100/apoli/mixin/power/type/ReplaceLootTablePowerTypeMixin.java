@@ -12,11 +12,11 @@
 //import io.github.apace100.apoli.power.type.ReplaceLootTablePowerType;
 //import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 //import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-//import net.minecraft.entity.Entity;
+//import net.minecraft.world.entity.Entity;
 //import net.minecraft.entity.ai.brain.MemoryModuleType;
 //import net.minecraft.entity.mob.PiglinEntity;
 //import net.minecraft.entity.projectile.FishingBobberEntity;
-//import net.minecraft.item.ItemStack;
+//import net.minecraft.world.item.ItemStack;
 //import net.minecraft.loot.LootTable;
 //import net.minecraft.loot.context.*;
 //import net.minecraft.loot.entry.LootTableEntry;

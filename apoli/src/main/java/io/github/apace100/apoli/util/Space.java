@@ -1,6 +1,6 @@
 //package io.github.apace100.apoli.util;
 //
-//import net.minecraft.entity.Entity;
+//import net.minecraft.world.entity.Entity;
 //import net.minecraft.util.math.MathHelper;
 //import net.minecraft.util.math.Vec3d;
 //import org.joml.Matrix3f;

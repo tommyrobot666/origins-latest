@@ -3,7 +3,7 @@
 //import io.github.apace100.calio.data.SerializableData;
 //import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
 //import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-//import net.minecraft.entity.Entity;
+//import net.minecraft.world.entity.Entity;
 //import net.minecraft.entity.attribute.EntityAttributeModifier;
 //
 //import java.util.Collection;

@@ -2,9 +2,9 @@
 //
 //import io.github.apace100.apoli.networking.packet.s2c.SyncCommandTagsS2CPacket;
 //import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
-//import net.minecraft.entity.Entity;
+//import net.minecraft.world.entity.Entity;
 //import net.minecraft.server.network.EntityTrackerEntry;
-//import net.minecraft.server.network.ServerPlayerEntity;
+//import net.minecraft.server.network.ServerPlayer;
 //import org.spongepowered.asm.mixin.Final;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.Shadow;
@@ -20,7 +20,7 @@
 //	private Entity entity;
 //
 //	@Inject(method = "startTracking", at = @At("TAIL"))
-//	private void syncCommandTagsAfterTracking(ServerPlayerEntity player, CallbackInfo ci) {
+//	private void syncCommandTagsAfterTracking(ServerPlayer player, CallbackInfo ci) {
 //		ServerPlayNetworking.send(player, new SyncCommandTagsS2CPacket(this.entity));
 //	}
 //

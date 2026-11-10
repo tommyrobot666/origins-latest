@@ -7,7 +7,7 @@
 //import io.github.apace100.apoli.util.RecipeUtil;
 //import net.minecraft.recipe.*;
 //import net.minecraft.recipe.input.RecipeInput;
-//import net.minecraft.util.Identifier;
+//import net.minecraft.resources.Identifier;
 //import net.minecraft.world.World;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.injection.At;

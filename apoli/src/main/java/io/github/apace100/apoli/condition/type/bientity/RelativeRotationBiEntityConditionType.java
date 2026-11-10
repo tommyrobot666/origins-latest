@@ -11,8 +11,8 @@
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataType;
 //import io.github.apace100.calio.data.SerializableDataTypes;
-//import net.minecraft.entity.Entity;
-//import net.minecraft.entity.LivingEntity;
+//import net.minecraft.world.entity.Entity;
+//import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.util.math.Direction;
 //import net.minecraft.util.math.MathHelper;
 //import net.minecraft.util.math.Vec3d;

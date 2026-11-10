@@ -8,7 +8,7 @@
 //import net.minecraft.network.packet.c2s.play.PlayerActionC2SPacket;
 //import net.minecraft.network.packet.c2s.play.UpdateSelectedSlotC2SPacket;
 //import net.minecraft.server.network.ServerPlayNetworkHandler;
-//import net.minecraft.server.network.ServerPlayerEntity;
+//import net.minecraft.server.network.ServerPlayer;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.Shadow;
 //import org.spongepowered.asm.mixin.injection.At;
@@ -19,14 +19,14 @@
 //public class ServerPlayNetworkHandlerMixin {
 //
 //    @Shadow
-//    public ServerPlayerEntity player;
+//    public ServerPlayer player;
 //
-//    @Inject(method = "onClientStatus", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/PlayerManager;respawnPlayer(Lnet/minecraft/server/network/ServerPlayerEntity;ZLnet/minecraft/entity/Entity$RemovalReason;)Lnet/minecraft/server/network/ServerPlayerEntity;", ordinal = 0))
+//    @Inject(method = "onClientStatus", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/PlayerManager;respawnPlayer(Lnet/minecraft/server/network/ServerPlayer;ZLnet/minecraft/entity/Entity$RemovalReason;)Lnet/minecraft/server/network/ServerPlayer;", ordinal = 0))
 //    private void saveEndRespawnStatus(ClientStatusC2SPacket packet, CallbackInfo ci) {
 //        ((EndRespawningEntity)this.player).apoli$setEndRespawning(true);
 //    }
 //
-//    @Inject(method = "onClientStatus", at = @At(value = "INVOKE", target = "Lnet/minecraft/advancement/criterion/ChangedDimensionCriterion;trigger(Lnet/minecraft/server/network/ServerPlayerEntity;Lnet/minecraft/registry/RegistryKey;Lnet/minecraft/registry/RegistryKey;)V"))
+//    @Inject(method = "onClientStatus", at = @At(value = "INVOKE", target = "Lnet/minecraft/advancement/criterion/ChangedDimensionCriterion;trigger(Lnet/minecraft/server/network/ServerPlayer;Lnet/minecraft/registry/RegistryKey;Lnet/minecraft/registry/RegistryKey;)V"))
 //    private void undoEndRespawnStatus(ClientStatusC2SPacket packet, CallbackInfo ci) {
 //        ((EndRespawningEntity)this.player).apoli$setEndRespawning(false);
 //    }
@@ -38,7 +38,7 @@
 //        }
 //    }
 //
-//    @Inject(method = "onPlayerAction", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/network/ServerPlayerEntity;clearActiveItem()V"))
+//    @Inject(method = "onPlayerAction", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/network/ServerPlayer;clearActiveItem()V"))
 //    private void callActionOnUseStopBySwappingHands(PlayerActionC2SPacket packet, CallbackInfo ci) {
 //        if(player.isUsingItem()) {
 //            ActionOnItemUsePowerType.executeActions(player, StackReference.of(player.getInventory(), this.player.getInventory().selectedSlot), player.getActiveItem(), ActionOnItemUsePowerType.TriggerType.STOP, PriorityPhase.ALL);

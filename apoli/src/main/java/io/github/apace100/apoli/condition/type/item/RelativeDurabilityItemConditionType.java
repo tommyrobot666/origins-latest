@@ -10,7 +10,7 @@
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataType;
 //import io.github.apace100.calio.data.SerializableDataTypes;
-//import net.minecraft.item.ItemStack;
+//import net.minecraft.world.item.ItemStack;
 //import org.jetbrains.annotations.NotNull;
 //
 //public class RelativeDurabilityItemConditionType extends ItemConditionType {

@@ -9,8 +9,8 @@
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.component.type.PotionContentsComponent;
 //import net.minecraft.entity.AreaEffectCloudEntity;
-//import net.minecraft.entity.Entity;
-//import net.minecraft.entity.LivingEntity;
+//import net.minecraft.world.entity.Entity;
+//import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.server.world.ServerWorld;
 //import net.minecraft.util.math.Vec3d;
 //import org.jetbrains.annotations.NotNull;

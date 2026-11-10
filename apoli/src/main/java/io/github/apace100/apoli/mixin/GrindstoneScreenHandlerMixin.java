@@ -5,11 +5,11 @@
 //import io.github.apace100.apoli.component.PowerHolderComponent;
 //import io.github.apace100.apoli.power.type.ModifyGrindstonePowerType;
 //import io.github.apace100.apoli.util.InventoryUtil;
-//import net.minecraft.entity.player.PlayerEntity;
+//import net.minecraft.world.entity.player.Player;
 //import net.minecraft.entity.player.PlayerInventory;
 //import net.minecraft.inventory.Inventory;
 //import net.minecraft.inventory.StackReference;
-//import net.minecraft.item.ItemStack;
+//import net.minecraft.world.item.ItemStack;
 //import net.minecraft.screen.GrindstoneScreenHandler;
 //import net.minecraft.screen.ScreenHandler;
 //import net.minecraft.screen.ScreenHandlerContext;
@@ -58,7 +58,7 @@
 //    private ScreenHandlerContext context;
 //
 //    @Unique
-//    private PlayerEntity apoli$cachedPlayer;
+//    private Player apoli$cachedPlayer;
 //
 //    @Unique
 //    private List<ModifyGrindstonePowerType> apoli$appliedPowers;
@@ -91,7 +91,7 @@
 //    }
 //
 //    @ModifyVariable(method = "quickMove", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;copy()Lnet/minecraft/item/ItemStack;"), ordinal = 1)
-//    private ItemStack performAfterGrindstoneActionsQuickMove(ItemStack original, PlayerEntity player, int slotIndex, @Local Slot slot) {
+//    private ItemStack performAfterGrindstoneActionsQuickMove(ItemStack original, Player player, int slotIndex, @Local Slot slot) {
 //
 //        List<ModifyGrindstonePowerType> applyingPowers = this.apoli$getAppliedPowers();
 //        StackReference stackReference = InventoryUtil.createStackReference(original);
@@ -117,7 +117,7 @@
 //    }
 //
 //    @Override
-//    public PlayerEntity apoli$getPlayer() {
+//    public Player apoli$getPlayer() {
 //        return apoli$cachedPlayer;
 //    }
 //

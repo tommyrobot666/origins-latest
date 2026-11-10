@@ -1,7 +1,7 @@
 //package io.github.apace100.apoli.power.type;
 //
 //import io.github.apace100.apoli.component.PowerHolderComponent;
-//import net.minecraft.entity.Entity;
+//import net.minecraft.world.entity.Entity;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.*;

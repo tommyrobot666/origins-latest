@@ -4,8 +4,8 @@
 //import io.github.apace100.apoli.power.type.ParticlePowerType;
 //import net.fabricmc.api.EnvType;
 //import net.fabricmc.api.Environment;
-//import net.minecraft.client.MinecraftClient;
-//import net.minecraft.client.network.ClientPlayerEntity;
+//import net.minecraft.client.Minecraft;
+//import net.minecraft.client.network.ClientPlayer;
 //import net.minecraft.entity.*;
 //import net.minecraft.util.math.Vec3d;
 //import net.minecraft.world.World;
@@ -28,8 +28,8 @@
 //    @Inject(method = "tick", at = @At("HEAD"))
 //    private void apoli$emitParticles(CallbackInfo ci) {
 //
-//        ClientPlayerEntity player = MinecraftClient.getInstance().player;
-//        boolean inFirstPerson = MinecraftClient.getInstance().options.getPerspective().isFirstPerson();
+//        ClientPlayer player = Minecraft.getInstance().player;
+//        boolean inFirstPerson = Minecraft.getInstance().options.getPerspective().isFirstPerson();
 //
 //        if (player == null) {
 //            return;

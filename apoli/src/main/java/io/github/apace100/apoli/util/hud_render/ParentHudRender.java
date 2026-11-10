@@ -2,7 +2,7 @@
 //
 //import com.google.common.collect.ImmutableList;
 //import io.github.apace100.apoli.util.HudRender;
-//import net.minecraft.entity.Entity;
+//import net.minecraft.world.entity.Entity;
 //
 //import java.util.Collection;
 //import java.util.Optional;

@@ -11,8 +11,8 @@
 //import io.github.apace100.apoli.util.modifier.ModifierUtil;
 //import io.github.apace100.calio.data.SerializableData;
 //import net.minecraft.entity.player.ItemCooldownManager;
-//import net.minecraft.entity.player.PlayerEntity;
-//import net.minecraft.item.ItemStack;
+//import net.minecraft.world.entity.player.Player;
+//import net.minecraft.world.item.ItemStack;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.List;
@@ -41,7 +41,7 @@
 //    public void accept(ItemActionContext context) {
 //
 //        ItemStack stack = context.stackReference().get();
-//        if (stack.isEmpty() || modifiers.isEmpty() || !(((EntityLinkedItemStack) stack).apoli$getEntity(true) instanceof PlayerEntity player)) {
+//        if (stack.isEmpty() || modifiers.isEmpty() || !(((EntityLinkedItemStack) stack).apoli$getEntity(true) instanceof Player player)) {
 //            return;
 //        }
 //

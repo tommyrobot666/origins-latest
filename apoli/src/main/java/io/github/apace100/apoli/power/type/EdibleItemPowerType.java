@@ -13,11 +13,11 @@
 //import io.github.apace100.calio.data.SerializableDataType;
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.component.DataComponentTypes;
-//import net.minecraft.component.type.FoodComponent;
-//import net.minecraft.entity.Entity;
-//import net.minecraft.entity.LivingEntity;
+//import net.minecraft.world.food.FoodProperties;
+//import net.minecraft.world.entity.Entity;
+//import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.inventory.StackReference;
-//import net.minecraft.item.ItemStack;
+//import net.minecraft.world.item.ItemStack;
 //import net.minecraft.sound.SoundEvent;
 //import net.minecraft.sound.SoundEvents;
 //import net.minecraft.util.UseAction;
@@ -71,14 +71,14 @@
 //
 //    private final Optional<ItemCondition> itemCondition;
 //
-//    private final FoodComponent foodComponent;
+//    private final FoodProperties foodComponent;
 //    private final Optional<ItemStack> resultStack;
 //    private final UseAction consumeAnimation;
 //    private final SoundEvent consumeSoundEvent;
 //
 //    private final int priority;
 //
-//    public EdibleItemPowerType(Optional<EntityAction> entityAction, Optional<ItemAction> consumedItemAction, Optional<ItemAction> resultItemAction, Optional<ItemCondition> itemCondition, FoodComponent foodComponent, Optional<ItemStack> resultStack, UseAction consumeAnimation, SoundEvent consumeSoundEvent, int priority, Optional<EntityCondition> condition) {
+//    public EdibleItemPowerType(Optional<EntityAction> entityAction, Optional<ItemAction> consumedItemAction, Optional<ItemAction> resultItemAction, Optional<ItemCondition> itemCondition, FoodProperties foodComponent, Optional<ItemStack> resultStack, UseAction consumeAnimation, SoundEvent consumeSoundEvent, int priority, Optional<EntityCondition> condition) {
 //        super(condition);
 //        this.entityAction = entityAction;
 //        this.consumedItemAction = consumedItemAction;
@@ -128,7 +128,7 @@
 //
 //    }
 //
-//    public FoodComponent getFoodComponent() {
+//    public FoodProperties getFoodProperties() {
 //        return foodComponent;
 //    }
 //

@@ -7,8 +7,8 @@
 //import io.github.apace100.apoli.util.InventoryUtil;
 //import io.github.apace100.calio.data.SerializableData;
 //import net.minecraft.entity.EquipmentSlot;
-//import net.minecraft.entity.LivingEntity;
-//import net.minecraft.item.ItemStack;
+//import net.minecraft.world.entity.LivingEntity;
+//import net.minecraft.world.item.ItemStack;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.Arrays;

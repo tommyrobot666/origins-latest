@@ -14,9 +14,9 @@
 //import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 //import net.minecraft.server.MinecraftServer;
 //import net.minecraft.server.network.ServerConfigurationNetworkHandler;
-//import net.minecraft.server.network.ServerPlayerEntity;
+//import net.minecraft.server.network.ServerPlayer;
 //import net.minecraft.text.Text;
-//import net.minecraft.util.Identifier;
+//import net.minecraft.resources.Identifier;
 //
 //public class ModPacketsC2S {
 //
@@ -82,7 +82,7 @@
 //
 //    private static void onUseActivePowers(UseActivePowerTypesC2SPacket payload, ServerPlayNetworking.Context context) {
 //
-//        ServerPlayerEntity player = context.player();
+//        ServerPlayer player = context.player();
 //        PowerHolderComponent component = PowerHolderComponent.KEY.get(player);
 //
 //        for (Identifier powerId : payload.powerIds()) {

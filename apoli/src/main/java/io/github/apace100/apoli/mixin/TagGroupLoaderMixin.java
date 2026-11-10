@@ -5,7 +5,7 @@
 //import net.minecraft.registry.tag.TagEntry;
 //import net.minecraft.registry.tag.TagGroupLoader;
 //import net.minecraft.resource.DependencyTracker;
-//import net.minecraft.util.Identifier;
+//import net.minecraft.resources.Identifier;
 //import org.spongepowered.asm.mixin.Final;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.Shadow;

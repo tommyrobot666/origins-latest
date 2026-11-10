@@ -6,7 +6,7 @@
 //import io.github.apace100.apoli.data.TypedDataObjectFactory;
 //import io.github.apace100.apoli.power.PowerConfiguration;
 //import io.github.apace100.calio.data.SerializableData;
-//import net.minecraft.entity.LivingEntity;
+//import net.minecraft.world.entity.LivingEntity;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.Optional;

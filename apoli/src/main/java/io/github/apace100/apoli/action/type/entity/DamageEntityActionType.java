@@ -11,8 +11,8 @@
 //import io.github.apace100.apoli.util.modifier.ModifierUtil;
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
-//import net.minecraft.entity.Entity;
-//import net.minecraft.entity.LivingEntity;
+//import net.minecraft.world.entity.Entity;
+//import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.entity.damage.DamageSources;
 //import net.minecraft.entity.damage.DamageType;
 //import net.minecraft.registry.RegistryKey;

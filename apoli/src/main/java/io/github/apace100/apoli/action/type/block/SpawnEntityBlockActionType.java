@@ -9,7 +9,7 @@
 //import io.github.apace100.apoli.util.MiscUtil;
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
-//import net.minecraft.entity.EntityType;
+//import net.minecraft.world.entity.EntityType;
 //import net.minecraft.nbt.NbtCompound;
 //import net.minecraft.server.world.ServerWorld;
 //import net.minecraft.util.math.BlockPos;

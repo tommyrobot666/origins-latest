@@ -4,8 +4,8 @@
 //import io.github.apace100.apoli.power.type.PosePowerType;
 //import net.fabricmc.api.EnvType;
 //import net.fabricmc.api.Environment;
-//import net.minecraft.entity.Entity;
-//import net.minecraft.entity.EntityPose;
+//import net.minecraft.world.entity.Entity;
+//import net.minecraft.world.entity.EntityPose;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.Unique;
 //import org.spongepowered.asm.mixin.injection.At;

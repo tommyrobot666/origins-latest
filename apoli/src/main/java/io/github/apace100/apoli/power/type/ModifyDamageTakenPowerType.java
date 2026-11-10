@@ -9,7 +9,7 @@
 //import io.github.apace100.apoli.power.PowerConfiguration;
 //import io.github.apace100.apoli.util.modifier.Modifier;
 //import io.github.apace100.calio.data.SerializableData;
-//import net.minecraft.entity.Entity;
+//import net.minecraft.world.entity.Entity;
 //import net.minecraft.entity.damage.DamageSource;
 //import org.jetbrains.annotations.NotNull;
 //

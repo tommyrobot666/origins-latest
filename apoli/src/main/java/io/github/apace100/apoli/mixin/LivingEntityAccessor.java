@@ -1,7 +1,7 @@
 //package io.github.apace100.apoli.mixin;
 //
 //import net.minecraft.entity.EquipmentSlot;
-//import net.minecraft.entity.LivingEntity;
+//import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.entity.attribute.EntityAttributeModifier;
 //import net.minecraft.inventory.StackReference;
 //import org.spongepowered.asm.mixin.Mixin;

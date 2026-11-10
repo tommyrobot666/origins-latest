@@ -14,8 +14,8 @@
 //import net.fabricmc.api.Environment;
 //import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 //import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
-//import net.minecraft.entity.Entity;
-//import net.minecraft.entity.EntityType;
+//import net.minecraft.world.entity.Entity;
+//import net.minecraft.world.entity.EntityType;
 //import net.minecraft.registry.RegistryKeys;
 //import net.minecraft.registry.entry.RegistryEntryList;
 //import net.minecraft.registry.tag.TagEntry;
@@ -24,8 +24,8 @@
 //import net.minecraft.resource.DependencyTracker;
 //import net.minecraft.resource.LifecycledResourceManager;
 //import net.minecraft.server.MinecraftServer;
-//import net.minecraft.server.network.ServerPlayerEntity;
-//import net.minecraft.util.Identifier;
+//import net.minecraft.server.network.ServerPlayer;
+//import net.minecraft.resources.Identifier;
 //import org.jetbrains.annotations.ApiStatus;
 //import org.jetbrains.annotations.NotNull;
 //
@@ -111,7 +111,7 @@
 //    }
 //
 //    @ApiStatus.Internal
-//    public static void sendTagCache(ServerPlayerEntity player, boolean joined) {
+//    public static void sendTagCache(ServerPlayer player, boolean joined) {
 //        ServerPlayNetworking.send(player, new SyncEntityTypeTagCacheS2CPacket(ENTITY_TYPE_SUB_TAGS));
 //    }
 //

@@ -21,9 +21,9 @@
 //import net.minecraft.client.render.entity.feature.FeatureRenderer;
 //import net.minecraft.client.render.entity.model.EntityModel;
 //import net.minecraft.client.util.math.MatrixStack;
-//import net.minecraft.entity.Entity;
-//import net.minecraft.entity.EntityPose;
-//import net.minecraft.entity.LivingEntity;
+//import net.minecraft.world.entity.Entity;
+//import net.minecraft.world.entity.EntityPose;
+//import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.util.math.ColorHelper;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.injection.At;
@@ -43,7 +43,7 @@
 //        return original || PowerHolderComponent.hasPowerType(entity, ShakingPowerType.class);
 //    }
 //
-//    @ModifyExpressionValue(method = "render(Lnet/minecraft/entity/LivingEntity;FFLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;I)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/MinecraftClient;hasOutline(Lnet/minecraft/entity/Entity;)Z"))
+//    @ModifyExpressionValue(method = "render(Lnet/minecraft/entity/LivingEntity;FFLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;I)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/Minecraft;hasOutline(Lnet/minecraft/entity/Entity;)Z"))
 //    private boolean apoli$preventOutlineWhenInvisible(boolean original, LivingEntity entity) {
 //        return !PowerHolderComponent.hasPowerType(entity, InvisibilityPowerType.class, Predicate.not(InvisibilityPowerType::shouldRenderOutline)) && original;
 //    }

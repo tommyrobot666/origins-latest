@@ -5,7 +5,7 @@
 //import io.github.apace100.apoli.power.PowerConfiguration;
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
-//import net.minecraft.entity.player.PlayerEntity;
+//import net.minecraft.world.entity.player.Player;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.Optional;
@@ -49,7 +49,7 @@
 //    @Override
 //    public void serverTick() {
 //
-//        if (!(getHolder() instanceof PlayerEntity holderPlayer)) {
+//        if (!(getHolder() instanceof Player holderPlayer)) {
 //            return;
 //        }
 //

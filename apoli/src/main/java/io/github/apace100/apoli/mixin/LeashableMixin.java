@@ -2,7 +2,7 @@
 //
 //import com.llamalad7.mixinextras.injector.v2.WrapWithCondition;
 //import io.github.apace100.apoli.access.CustomLeashable;
-//import net.minecraft.entity.Entity;
+//import net.minecraft.world.entity.Entity;
 //import net.minecraft.entity.Leashable;
 //import net.minecraft.item.ItemConvertible;
 //import org.spongepowered.asm.mixin.Mixin;

@@ -10,11 +10,11 @@
 //import io.github.apace100.apoli.util.Comparison;
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
-//import net.minecraft.entity.Entity;
+//import net.minecraft.world.entity.Entity;
 //import net.minecraft.server.MinecraftServer;
 //import net.minecraft.server.command.CommandOutput;
 //import net.minecraft.server.command.ServerCommandSource;
-//import net.minecraft.server.network.ServerPlayerEntity;
+//import net.minecraft.server.network.ServerPlayer;
 //import net.minecraft.server.world.ServerWorld;
 //import net.minecraft.world.World;
 //import org.jetbrains.annotations.NotNull;
@@ -70,7 +70,7 @@
 //
 //        if (Apoli.config.executeCommand.showOutput) {
 //
-//            CommandOutput output = entity instanceof ServerPlayerEntity serverPlayer && serverPlayer.networkHandler != null
+//            CommandOutput output = entity instanceof ServerPlayer serverPlayer && serverPlayer.networkHandler != null
 //                ? serverPlayer
 //                : server;
 //

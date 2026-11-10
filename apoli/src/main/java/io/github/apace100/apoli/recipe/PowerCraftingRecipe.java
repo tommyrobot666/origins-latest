@@ -8,9 +8,9 @@
 //import io.github.apace100.apoli.power.Power;
 //import io.github.apace100.apoli.power.PowerManager;
 //import io.github.apace100.apoli.power.type.RecipePowerType;
-//import net.minecraft.item.ItemStack;
-//import net.minecraft.network.RegistryByteBuf;
-//import net.minecraft.network.codec.PacketCodec;
+//import net.minecraft.world.item.ItemStack;
+//import net.minecraft.network.RegistryFriendlyByteBuf;
+//import net.minecraft.network.codec.StreamCodec;
 //import net.minecraft.recipe.CraftingRecipe;
 //import net.minecraft.recipe.Ingredient;
 //import net.minecraft.recipe.Recipe;
@@ -18,7 +18,7 @@
 //import net.minecraft.recipe.book.CraftingRecipeCategory;
 //import net.minecraft.recipe.input.CraftingRecipeInput;
 //import net.minecraft.registry.RegistryWrapper;
-//import net.minecraft.util.Identifier;
+//import net.minecraft.resources.Identifier;
 //import net.minecraft.util.collection.DefaultedList;
 //import net.minecraft.world.World;
 //
@@ -97,12 +97,12 @@
 //        return delegate().getGroup();
 //    }
 //
-//    private void send(RegistryByteBuf buf) {
+//    private void send(RegistryFriendlyByteBuf buf) {
 //        buf.writeIdentifier(powerId());
 //        Recipe.PACKET_CODEC.encode(buf, delegate());
 //    }
 //
-//    private static PowerCraftingRecipe receive(RegistryByteBuf buf) {
+//    private static PowerCraftingRecipe receive(RegistryFriendlyByteBuf buf) {
 //
 //        Identifier powerId = buf.readIdentifier();
 //        Recipe<?> recipe = Recipe.PACKET_CODEC.decode(buf);
@@ -124,7 +124,7 @@
 //            ApoliDataTypes.DISALLOWING_INTERNAL_CRAFTING_RECIPE.codec().fieldOf("recipe").forGetter(PowerCraftingRecipe::delegate)
 //        ).apply(instance, PowerCraftingRecipe::new));
 //
-//        public static final PacketCodec<RegistryByteBuf, PowerCraftingRecipe> PACKET_CODEC = PacketCodec.of(
+//        public static final StreamCodec<RegistryFriendlyByteBuf, PowerCraftingRecipe> PACKET_CODEC = StreamCodec.of(
 //            PowerCraftingRecipe::send,
 //            PowerCraftingRecipe::receive
 //        );
@@ -135,7 +135,7 @@
 //        }
 //
 //        @Override
-//        public PacketCodec<RegistryByteBuf, PowerCraftingRecipe> packetCodec() {
+//        public StreamCodec<RegistryFriendlyByteBuf, PowerCraftingRecipe> packetCodec() {
 //            return PACKET_CODEC;
 //        }
 //

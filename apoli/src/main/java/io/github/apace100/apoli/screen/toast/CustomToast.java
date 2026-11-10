@@ -5,14 +5,14 @@
 //import io.github.apace100.apoli.util.TextureUtil;
 //import net.fabricmc.api.EnvType;
 //import net.fabricmc.api.Environment;
-//import net.minecraft.client.MinecraftClient;
+//import net.minecraft.client.Minecraft;
 //import net.minecraft.client.font.TextRenderer;
 //import net.minecraft.client.gui.DrawContext;
 //import net.minecraft.client.toast.ToastManager;
-//import net.minecraft.item.ItemStack;
+//import net.minecraft.world.item.ItemStack;
 //import net.minecraft.text.OrderedText;
 //import net.minecraft.text.Text;
-//import net.minecraft.util.Identifier;
+//import net.minecraft.resources.Identifier;
 //import net.minecraft.util.math.MathHelper;
 //
 //import java.util.List;
@@ -44,7 +44,7 @@
 //
 //    public CustomToast(Text title, Text description, Identifier texture, ItemStack iconStack, int duration) {
 //
-//        TextRenderer textRenderer = MinecraftClient.getInstance().textRenderer;
+//        TextRenderer textRenderer = Minecraft.getInstance().textRenderer;
 //        int maxWidth = this.getWidth() - 33;
 //
 //        this.title = textRenderer.wrapLines(title, maxWidth);

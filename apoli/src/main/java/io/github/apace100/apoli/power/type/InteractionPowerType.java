@@ -7,10 +7,10 @@
 //import io.github.apace100.apoli.util.InventoryUtil;
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
-//import net.minecraft.entity.player.PlayerEntity;
+//import net.minecraft.world.entity.player.Player;
 //import net.minecraft.entity.player.PlayerInventory;
 //import net.minecraft.inventory.StackReference;
-//import net.minecraft.item.ItemStack;
+//import net.minecraft.world.item.ItemStack;
 //import net.minecraft.util.ActionResult;
 //import net.minecraft.util.Hand;
 //
@@ -62,7 +62,7 @@
 //        return actionResult;
 //    }
 //
-//    protected void performActorItemStuff(PlayerEntity actor, Hand hand) {
+//    protected void performActorItemStuff(Player actor, Hand hand) {
 //
 //        StackReference heldStackReference = getHeldStackReference(actor, hand);
 //        heldItemAction.ifPresent(action -> action.execute(actor.getWorld(), heldStackReference));
@@ -90,7 +90,7 @@
 //
 //    }
 //
-//    protected static StackReference getHeldStackReference(PlayerEntity player, Hand hand) {
+//    protected static StackReference getHeldStackReference(Player player, Hand hand) {
 //
 //        PlayerInventory playerInventory = player.getInventory();
 //        int selectedSlot = playerInventory.selectedSlot;
