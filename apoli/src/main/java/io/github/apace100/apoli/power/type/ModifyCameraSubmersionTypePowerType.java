@@ -5,7 +5,7 @@
 //import io.github.apace100.apoli.power.PowerConfiguration;
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
-//import net.minecraft.block.enums.CameraSubmersionType;
+//import net.minecraft.block.enums.FogType;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.Optional;
@@ -26,10 +26,10 @@
 //            .set("to", powerType.to)
 //    );
 //
-//    private final Optional<CameraSubmersionType> from;
-//    private final CameraSubmersionType to;
+//    private final Optional<FogType> from;
+//    private final FogType to;
 //
-//    public ModifyCameraSubmersionTypePowerType(Optional<CameraSubmersionType> from, CameraSubmersionType to, Optional<EntityCondition> condition) {
+//    public ModifyCameraSubmersionTypePowerType(Optional<FogType> from, FogType to, Optional<EntityCondition> condition) {
 //        super(condition);
 //        this.from = from;
 //        this.to = to;
@@ -40,11 +40,11 @@
 //        return PowerTypes.MODIFY_CAMERA_SUBMERSION;
 //    }
 //
-//    public boolean doesModify(CameraSubmersionType original) {
+//    public boolean doesModify(FogType original) {
 //        return from.map(from -> from == original).orElse(true);
 //    }
 //
-//    public CameraSubmersionType getNewType() {
+//    public FogType getNewType() {
 //        return to;
 //    }
 //

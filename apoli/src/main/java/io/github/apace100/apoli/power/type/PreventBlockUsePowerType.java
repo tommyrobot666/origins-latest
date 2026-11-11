@@ -16,8 +16,8 @@
 //import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.world.entity.player.Player;
 //import net.minecraft.world.item.ItemStack;
-//import net.minecraft.util.ActionResult;
-//import net.minecraft.util.Hand;
+//import net.minecraft.util.InteractionResult;
+//import net.minecraft.util.InteractionHand;
 //import net.minecraft.util.hit.BlockHitResult;
 //import net.minecraft.util.math.Direction;
 //import org.jetbrains.annotations.NotNull;
@@ -64,8 +64,8 @@
 //    private final EnumSet<BlockUsagePhase> usePhases;
 //    private final EnumSet<Direction> directions;
 //
-//    public PreventBlockUsePowerType(Optional<EntityAction> entityAction, Optional<BlockAction> blockAction, Optional<BlockCondition> blockCondition, EnumSet<BlockUsagePhase> usePhases, EnumSet<Direction> directions, Optional<ItemAction> heldItemAction, Optional<ItemCondition> heldItemCondition, Optional<ItemAction> resultItemAction, Optional<ItemStack> resultStack, EnumSet<Hand> hands, int priority, Optional<EntityCondition> condition) {
-//        super(heldItemAction, heldItemCondition, resultItemAction, resultStack, hands, ActionResult.FAIL, priority, condition);
+//    public PreventBlockUsePowerType(Optional<EntityAction> entityAction, Optional<BlockAction> blockAction, Optional<BlockCondition> blockCondition, EnumSet<BlockUsagePhase> usePhases, EnumSet<Direction> directions, Optional<ItemAction> heldItemAction, Optional<ItemCondition> heldItemCondition, Optional<ItemAction> resultItemAction, Optional<ItemStack> resultStack, EnumSet<InteractionHand> hands, int priority, Optional<EntityCondition> condition) {
+//        super(heldItemAction, heldItemCondition, resultItemAction, resultStack, hands, InteractionResult.FAIL, priority, condition);
 //        this.blockCondition = blockCondition;
 //        this.entityAction = entityAction;
 //        this.blockAction = blockAction;
@@ -78,7 +78,7 @@
 //        return PowerTypes.PREVENT_BLOCK_USE;
 //    }
 //
-//    public void executeActions(BlockHitResult hitResult, Hand hand) {
+//    public void executeActions(BlockHitResult hitResult, InteractionHand hand) {
 //
 //        LivingEntity holder = getHolder();
 //
@@ -91,14 +91,14 @@
 //
 //    }
 //
-//    public boolean doesPrevent(BlockUsagePhase usePhase, BlockHitResult hitResult, ItemStack heldStack, Hand hand) {
+//    public boolean doesPrevent(BlockUsagePhase usePhase, BlockHitResult hitResult, ItemStack heldStack, InteractionHand hand) {
 //        return usePhases.contains(usePhase)
 //            && directions.contains(hitResult.getSide())
 //            && super.shouldExecute(hand, heldStack)
 //            && blockCondition.map(condition -> condition.test(getHolder().level(), hitResult.getBlockPos())).orElse(true);
 //    }
 //
-//    public static boolean doesPrevent(Entity holder, BlockUsagePhase usePhase, BlockHitResult hitResult, ItemStack heldStack, Hand hand) {
+//    public static boolean doesPrevent(Entity holder, BlockUsagePhase usePhase, BlockHitResult hitResult, ItemStack heldStack, InteractionHand hand) {
 //
 //        CallInstance<ActiveInteractionPowerType> aipci = new CallInstance<>();
 //        aipci.add(holder, PreventBlockUsePowerType.class, p -> p.doesPrevent(usePhase, hitResult, heldStack, hand));

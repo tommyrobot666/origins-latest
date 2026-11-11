@@ -7,8 +7,8 @@
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.world.item.ItemStack;
-//import net.minecraft.util.ActionResult;
-//import net.minecraft.util.Hand;
+//import net.minecraft.util.InteractionResult;
+//import net.minecraft.util.InteractionHand;
 //
 //import java.util.EnumSet;
 //import java.util.Optional;
@@ -18,12 +18,12 @@
 //
 //    private final int priority;
 //
-//    public ActiveInteractionPowerType(Optional<ItemAction> heldItemAction, Optional<ItemCondition> heldItemCondition, Optional<ItemAction> resultItemAction, Optional<ItemStack> resultStack, EnumSet<Hand> hands, ActionResult actionResult, int priority, Optional<EntityCondition> condition) {
+//    public ActiveInteractionPowerType(Optional<ItemAction> heldItemAction, Optional<ItemCondition> heldItemCondition, Optional<ItemAction> resultItemAction, Optional<ItemStack> resultStack, EnumSet<InteractionHand> hands, InteractionResult actionResult, int priority, Optional<EntityCondition> condition) {
 //        super(heldItemAction, heldItemCondition, resultItemAction, resultStack, hands, actionResult, condition);
 //        this.priority = priority;
 //    }
 //
-//    public ActiveInteractionPowerType(Optional<ItemAction> heldItemAction, Optional<ItemCondition> heldItemCondition, Optional<ItemAction> resultItemAction, Optional<ItemStack> resultStack, EnumSet<Hand> hands, ActionResult actionResult, int priority) {
+//    public ActiveInteractionPowerType(Optional<ItemAction> heldItemAction, Optional<ItemCondition> heldItemCondition, Optional<ItemAction> resultItemAction, Optional<ItemStack> resultStack, EnumSet<InteractionHand> hands, InteractionResult actionResult, int priority) {
 //        this(heldItemAction, heldItemCondition, resultItemAction, resultStack, hands, actionResult, priority, Optional.empty());
 //    }
 //
@@ -53,7 +53,7 @@
 //
 //    @FunctionalInterface
 //    public interface FromData<T extends ActiveInteractionPowerType> {
-//        T apply(SerializableData.Instance data, Optional<ItemAction> heldItemAction, Optional<ItemCondition> heldItemCondition, Optional<ItemAction> resultItemAction, Optional<ItemStack> resultStack, EnumSet<Hand> hands, ActionResult actionResult, int priority, Optional<EntityCondition> condition);
+//        T apply(SerializableData.Instance data, Optional<ItemAction> heldItemAction, Optional<ItemCondition> heldItemCondition, Optional<ItemAction> resultItemAction, Optional<ItemStack> resultStack, EnumSet<InteractionHand> hands, InteractionResult actionResult, int priority, Optional<EntityCondition> condition);
 //    }
 //
 //}

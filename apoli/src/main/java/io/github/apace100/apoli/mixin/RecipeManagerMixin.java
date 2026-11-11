@@ -18,15 +18,15 @@
 //@Mixin(RecipeManager.class)
 //public abstract class RecipeManagerMixin {
 //
-//    @ModifyReturnValue(method = "getFirstMatch(Lnet/minecraft/recipe/RecipeType;Lnet/minecraft/recipe/input/RecipeInput;Lnet/minecraft/world/Level;Lnet/minecraft/recipe/RecipeEntry;)Ljava/util/Optional;", at = @At("RETURN"))
-//    private Optional<RecipeEntry<?>> apoli$modifyCraftingRecipe(Optional<RecipeEntry<?>> original, RecipeType<?> type, RecipeInput input, Level world) {
+//    @ModifyReturnValue(method = "getFirstMatch(Lnet/minecraft/recipe/RecipeType;Lnet/minecraft/recipe/input/RecipeInput;Lnet/minecraft/world/Level;Lnet/minecraft/recipe/RecipeHolder;)Ljava/util/Optional;", at = @At("RETURN"))
+//    private Optional<RecipeHolder<?>> apoli$modifyCraftingRecipe(Optional<RecipeHolder<?>> original, RecipeType<?> type, RecipeInput input, Level world) {
 //        return original.map(entry -> {
 //
 //            Identifier id = entry.id();
 //            Recipe<?> recipe = entry.value();
 //
 //            if (recipe instanceof CraftingRecipe craftingRecipe && ModifiedCraftingRecipe.canModify(id, craftingRecipe, input)) {
-//                return new RecipeEntry<>(id, new ModifiedCraftingRecipe(id, craftingRecipe));
+//                return new RecipeHolder<>(id, new ModifiedCraftingRecipe(id, craftingRecipe));
 //            }
 //
 //            else {
@@ -36,8 +36,8 @@
 //        });
 //    }
 //
-//    @ModifyExpressionValue(method = "apply(Ljava/util/Map;Lnet/minecraft/resource/ResourceManager;Lnet/minecraft/util/profiler/Profiler;)V", at = @At(value = "NEW", target = "(Lnet/minecraft/util/Identifier;Lnet/minecraft/recipe/Recipe;)Lnet/minecraft/recipe/RecipeEntry;"))
-//    private RecipeEntry<?> apoli$validateRecipe(RecipeEntry<?> original, @Local Recipe<?> recipe) {
+//    @ModifyExpressionValue(method = "apply(Ljava/util/Map;Lnet/minecraft/resource/ResourceManager;Lnet/minecraft/util/profiler/Profiler;)V", at = @At(value = "NEW", target = "(Lnet/minecraft/util/Identifier;Lnet/minecraft/recipe/Recipe;)Lnet/minecraft/recipe/RecipeHolder;"))
+//    private RecipeHolder<?> apoli$validateRecipe(RecipeHolder<?> original, @Local Recipe<?> recipe) {
 //        return RecipeUtil.validateRecipe(recipe)
 //            .map(r -> original)
 //            .getOrThrow();

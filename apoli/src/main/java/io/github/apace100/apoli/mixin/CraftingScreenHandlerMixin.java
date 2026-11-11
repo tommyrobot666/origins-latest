@@ -13,7 +13,7 @@
 //import net.minecraft.inventory.RecipeInputInventory;
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.recipe.CraftingRecipe;
-//import net.minecraft.recipe.RecipeEntry;
+//import net.minecraft.recipe.RecipeHolder;
 //import net.minecraft.recipe.input.CraftingRecipeInput;
 //import net.minecraft.screen.AbstractRecipeScreenHandler;
 //import net.minecraft.screen.CraftingScreenHandler;
@@ -69,8 +69,8 @@
 //
 //    }
 //
-//    @Inject(method = "updateResult", at = @At(value = "INVOKE", target = "Lnet/minecraft/recipe/RecipeManager;getFirstMatch(Lnet/minecraft/recipe/RecipeType;Lnet/minecraft/recipe/input/RecipeInput;Lnet/minecraft/world/Level;Lnet/minecraft/recipe/RecipeEntry;)Ljava/util/Optional;"))
-//    private static void apoli$clearPowerCraftingInventory(ScreenHandler handler, Level world, Player player, RecipeInputInventory craftingInventory, CraftingResultInventory resultInventory, @Nullable RecipeEntry<CraftingRecipe> recipe, CallbackInfo ci) {
+//    @Inject(method = "updateResult", at = @At(value = "INVOKE", target = "Lnet/minecraft/recipe/RecipeManager;getFirstMatch(Lnet/minecraft/recipe/RecipeType;Lnet/minecraft/recipe/input/RecipeInput;Lnet/minecraft/world/Level;Lnet/minecraft/recipe/RecipeHolder;)Ljava/util/Optional;"))
+//    private static void apoli$clearPowerCraftingInventory(ScreenHandler handler, Level world, Player player, RecipeInputInventory craftingInventory, CraftingResultInventory resultInventory, @Nullable RecipeHolder<CraftingRecipe> recipe, CallbackInfo ci) {
 //
 //        if (craftingInventory instanceof PowerCraftingInventory pci) {
 //            pci.apoli$setPowerTypes(new LinkedList<>());

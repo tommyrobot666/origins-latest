@@ -9,7 +9,7 @@ import io.github.apace100.apoli.power.Power;
 import io.github.apace100.apoli.power.PowerManager;
 import io.github.apace100.apoli.power.type.ModifyTypeTagPowerType;
 import io.github.apace100.apoli.power.type.PowerType;
-import io.github.apace100.apoli.util.SyncStatusEffectsUtil;
+import io.github.apace100.apoli.util.SyncMobEffectsUtil;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.networking.v1.ClientConfigurationNetworking;
@@ -19,7 +19,7 @@ import net.minecraft.client.network.ClientPlayNetworkHandler;
 import net.minecraft.client.network.ClientPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.MobEffectInstance;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.nbt.Tag;
 import net.minecraft.resources.Identifier;
@@ -43,7 +43,7 @@ public class ModPacketsS2C {
             ClientPlayNetworking.registerReceiver(MountPlayerS2CPacket.PACKET_ID, ModPacketsS2C::onPlayerMount);
             ClientPlayNetworking.registerReceiver(DismountPlayerS2CPacket.PACKET_ID, ModPacketsS2C::onPlayerDismount);
             ClientPlayNetworking.registerReceiver(SyncAttackerS2CPacket.PACKET_ID, ModPacketsS2C::onAttackerSync);
-            ClientPlayNetworking.registerReceiver(SyncStatusEffectS2CPacket.PACKET_ID, ModPacketsS2C::onStatusEffectSync);
+            ClientPlayNetworking.registerReceiver(SyncMobEffectS2CPacket.PACKET_ID, ModPacketsS2C::onMobEffectSync);
             ClientPlayNetworking.registerReceiver(ShowToastS2CPacket.PACKET_ID, ModPacketsS2C::onShowToast);
             ClientPlayNetworking.registerReceiver(SyncEntityTypeTagCacheS2CPacket.PACKET_ID, ModifyTypeTagPowerType::receiveTagCache);
             ClientPlayNetworking.registerReceiver(SyncCommandTagsS2CPacket.ID, ModPacketsS2C::onCommandTagsSynced);
@@ -71,17 +71,17 @@ public class ModPacketsS2C {
         context.responseSender().sendPacket(new VersionHandshakePacket(Apoli.SEMVER));
     }
 
-    private static void onStatusEffectSync(SyncStatusEffectS2CPacket payload, ClientPlayNetworking.Context context) {
+    private static void onMobEffectSync(SyncMobEffectS2CPacket payload, ClientPlayNetworking.Context context) {
 
         ClientPlayer player = context.player();
 
         Entity target = player.networkHandler.level().getEntityById(payload.targetId());
-        SyncStatusEffectsUtil.UpdateType updateType = payload.updateType();
+        SyncMobEffectsUtil.UpdateType updateType = payload.updateType();
 
         if (target instanceof LivingEntity livingTarget) {
 
-            StatusEffectInstance statusEffectInstance = updateType != SyncStatusEffectsUtil.UpdateType.CLEAR
-                ? StatusEffectInstance.fromNbt(payload.statusEffectData())
+            MobEffectInstance statusEffectInstance = updateType != SyncMobEffectsUtil.UpdateType.CLEAR
+                ? MobEffectInstance.fromNbt(payload.statusEffectData())
                 : null;
 
             updateType.accept(livingTarget, statusEffectInstance);

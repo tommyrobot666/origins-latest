@@ -6,8 +6,8 @@
 //import io.github.apace100.apoli.util.MiscUtil;
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
-//import net.minecraft.entity.effect.StatusEffect;
-//import net.minecraft.entity.effect.StatusEffectInstance;
+//import net.minecraft.entity.effect.MobEffect;
+//import net.minecraft.entity.effect.MobEffectInstance;
 //import net.minecraft.registry.entry.Holder;
 //import org.jetbrains.annotations.NotNull;
 //
@@ -31,10 +31,10 @@
 //            .set("inverted", powerType.inverted)
 //    );
 //
-//    protected final List<Holder<StatusEffect>> effects;
+//    protected final List<Holder<MobEffect>> effects;
 //    protected final boolean inverted;
 //
-//    public EffectImmunityPowerType(List<Holder<StatusEffect>> effects, boolean inverted, Optional<EntityCondition> condition) {
+//    public EffectImmunityPowerType(List<Holder<MobEffect>> effects, boolean inverted, Optional<EntityCondition> condition) {
 //        super(condition);
 //        this.effects = effects;
 //        this.inverted = inverted;
@@ -45,11 +45,11 @@
 //        return PowerTypes.EFFECT_IMMUNITY;
 //    }
 //
-//    public boolean doesApply(StatusEffectInstance instance) {
+//    public boolean doesApply(MobEffectInstance instance) {
 //        return doesApply(instance.getEffectType());
 //    }
 //
-//    public boolean doesApply(Holder<StatusEffect> effect) {
+//    public boolean doesApply(Holder<MobEffect> effect) {
 //        return inverted ^ effects.contains(effect);
 //    }
 //

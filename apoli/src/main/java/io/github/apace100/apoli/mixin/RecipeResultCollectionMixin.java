@@ -10,7 +10,7 @@
 //import io.github.apace100.apoli.recipe.PowerCraftingRecipe;
 //import net.minecraft.client.gui.screen.recipebook.RecipeResultCollection;
 //import net.minecraft.recipe.CraftingRecipe;
-//import net.minecraft.recipe.RecipeEntry;
+//import net.minecraft.recipe.RecipeHolder;
 //import net.minecraft.recipe.RecipeMatcher;
 //import net.minecraft.recipe.book.RecipeBook;
 //import net.minecraft.resources.Identifier;
@@ -21,7 +21,7 @@
 //public abstract class RecipeResultCollectionMixin {
 //
 //    @ModifyExpressionValue(method = "computeCraftables", at = @At(value = "INVOKE", target = "Lnet/minecraft/recipe/RecipeMatcher;match(Lnet/minecraft/recipe/Recipe;Lit/unimi/dsi/fastutil/ints/IntList;)Z"))
-//    private boolean apoli$accountForPowerRecipes(boolean original, RecipeMatcher recipeFinder, int gridWidth, int gridHeight, RecipeBook recipeBook, @Local RecipeEntry<?> recipeEntry) {
+//    private boolean apoli$accountForPowerRecipes(boolean original, RecipeMatcher recipeFinder, int gridWidth, int gridHeight, RecipeBook recipeBook, @Local RecipeHolder<?> recipeEntry) {
 //
 //        if (original && recipeEntry.value() instanceof PowerCraftingRecipe(Identifier powerId, CraftingRecipe ignored) && recipeBook instanceof PowerCraftingObject pco) {
 //

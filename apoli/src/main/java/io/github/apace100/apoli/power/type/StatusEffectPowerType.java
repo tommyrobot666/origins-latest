@@ -1,54 +1,54 @@
 //package io.github.apace100.apoli.power.type;
 //
 //import io.github.apace100.apoli.condition.EntityCondition;
-//import net.minecraft.entity.effect.StatusEffect;
-//import net.minecraft.entity.effect.StatusEffectInstance;
+//import net.minecraft.entity.effect.MobEffect;
+//import net.minecraft.entity.effect.MobEffectInstance;
 //import net.minecraft.registry.entry.Holder;
 //
 //import java.util.LinkedList;
 //import java.util.List;
 //import java.util.Optional;
 //
-//public abstract class StatusEffectPowerType extends PowerType {
+//public abstract class MobEffectPowerType extends PowerType {
 //
-//    protected final List<StatusEffectInstance> effects = new LinkedList<>();
+//    protected final List<MobEffectInstance> effects = new LinkedList<>();
 //
-//    public StatusEffectPowerType(List<StatusEffectInstance> effectInstances, Optional<EntityCondition> condition) {
+//    public MobEffectPowerType(List<MobEffectInstance> effectInstances, Optional<EntityCondition> condition) {
 //        super(condition);
 //        this.effects.addAll(effectInstances);
 //    }
 //
-//    public StatusEffectPowerType(Optional<EntityCondition> condition) {
+//    public MobEffectPowerType(Optional<EntityCondition> condition) {
 //        super(condition);
 //    }
 //
-//    public StatusEffectPowerType() {
+//    public MobEffectPowerType() {
 //
 //    }
 //
-//    public StatusEffectPowerType(StatusEffectInstance effectInstance, Optional<EntityCondition> condition) {
+//    public MobEffectPowerType(MobEffectInstance effectInstance, Optional<EntityCondition> condition) {
 //        this(condition);
 //        this.addEffect(effectInstance);
 //    }
 //
-//    public StatusEffectPowerType(StatusEffectInstance effectInstance) {
+//    public MobEffectPowerType(MobEffectInstance effectInstance) {
 //        this(effectInstance, Optional.empty());
 //    }
 //
-//    public void addEffect(Holder<StatusEffect> effect, int duration) {
+//    public void addEffect(Holder<MobEffect> effect, int duration) {
 //        addEffect(effect, duration, 0);
 //    }
 //
-//    public void addEffect(Holder<StatusEffect> effect, int duration, int amplifier) {
-//        addEffect(new StatusEffectInstance(effect, duration, amplifier));
+//    public void addEffect(Holder<MobEffect> effect, int duration, int amplifier) {
+//        addEffect(new MobEffectInstance(effect, duration, amplifier));
 //    }
 //
-//    public void addEffect(StatusEffectInstance instance) {
+//    public void addEffect(MobEffectInstance instance) {
 //        effects.add(instance);
 //    }
 //
 //    public void applyEffects() {
-//        effects.stream().map(StatusEffectInstance::new).forEach(getHolder()::addStatusEffect);
+//        effects.stream().map(MobEffectInstance::new).forEach(getHolder()::addMobEffect);
 //    }
 //
 //}

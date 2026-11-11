@@ -8,7 +8,7 @@
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-//import net.minecraft.entity.effect.StatusEffect;
+//import net.minecraft.entity.effect.MobEffect;
 //import net.minecraft.registry.entry.Holder;
 //import org.jetbrains.annotations.NotNull;
 //
@@ -16,13 +16,13 @@
 //import java.util.Optional;
 //import java.util.stream.Collectors;
 //
-//public class ModifyStatusEffectDurationPowerType extends ValueModifyingPowerType {
+//public class ModifyMobEffectDurationPowerType extends ValueModifyingPowerType {
 //
-//    public static final TypedDataObjectFactory<ModifyStatusEffectDurationPowerType> DATA_FACTORY = createConditionedModifyingRequiredDataFactory(
+//    public static final TypedDataObjectFactory<ModifyMobEffectDurationPowerType> DATA_FACTORY = createConditionedModifyingRequiredDataFactory(
 //        new SerializableData()
 //            .add("status_effect", SerializableDataTypes.STATUS_EFFECT_ENTRY, null)
 //            .addFunctionedDefault("status_effects", SerializableDataTypes.STATUS_EFFECT_ENTRIES, data -> MiscUtil.singletonListOrEmpty(data.get("status_effect"))),
-//        (data, modifiers, condition) -> new ModifyStatusEffectDurationPowerType(
+//        (data, modifiers, condition) -> new ModifyMobEffectDurationPowerType(
 //            data.get("status_effects"),
 //            modifiers,
 //            condition
@@ -31,9 +31,9 @@
 //            .set("status_effects", powerType.statusEffects)
 //    );
 //
-//    private final List<Holder<StatusEffect>> statusEffects;
+//    private final List<Holder<MobEffect>> statusEffects;
 //
-//    public ModifyStatusEffectDurationPowerType(List<Holder<StatusEffect>> statusEffects, List<Modifier> modifiers, Optional<EntityCondition> condition) {
+//    public ModifyMobEffectDurationPowerType(List<Holder<MobEffect>> statusEffects, List<Modifier> modifiers, Optional<EntityCondition> condition) {
 //        super(modifiers, condition);
 //        this.statusEffects = statusEffects
 //            .stream()
@@ -46,7 +46,7 @@
 //        return PowerTypes.MODIFY_STATUS_EFFECT_DURATION;
 //    }
 //
-//    public boolean doesApply(Holder<StatusEffect> statusEffect) {
+//    public boolean doesApply(Holder<MobEffect> statusEffect) {
 //        return statusEffects.isEmpty()
 //            || statusEffects.contains(statusEffect);
 //    }

@@ -8,14 +8,14 @@
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.world.entity.LivingEntity;
-//import net.minecraft.util.Hand;
+//import net.minecraft.util.InteractionHand;
 //import org.jetbrains.annotations.NotNull;
 //
 //public class SwingHandEntityActionType extends EntityActionType {
 //
 //    public static final TypedDataObjectFactory<SwingHandEntityActionType> DATA_FACTORY = TypedDataObjectFactory.simple(
 //        new SerializableData()
-//            .add("hand", SerializableDataTypes.HAND, Hand.MAIN_HAND),
+//            .add("hand", SerializableDataTypes.HAND, InteractionHand.MAIN_HAND),
 //        data -> new SwingHandEntityActionType(
 //            data.get("hand")
 //        ),
@@ -23,9 +23,9 @@
 //            .set("hand", actionType.hand)
 //    );
 //
-//    private final Hand hand;
+//    private final InteractionHand hand;
 //
-//    public SwingHandEntityActionType(Hand hand) {
+//    public SwingHandEntityActionType(InteractionHand hand) {
 //        this.hand = hand;
 //    }
 //

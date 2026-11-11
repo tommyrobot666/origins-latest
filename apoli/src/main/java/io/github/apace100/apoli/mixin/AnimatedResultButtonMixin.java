@@ -15,7 +15,7 @@
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.recipe.CraftingRecipe;
 //import net.minecraft.recipe.Recipe;
-//import net.minecraft.recipe.RecipeEntry;
+//import net.minecraft.recipe.RecipeHolder;
 //import net.minecraft.recipe.book.RecipeBook;
 //import net.minecraft.registry.RegistryWrapper;
 //import net.minecraft.network.chat.Component;
@@ -31,13 +31,13 @@
 //public abstract class AnimatedResultButtonMixin {
 //
 //    @Shadow
-//    public abstract RecipeEntry<?> currentRecipe();
+//    public abstract RecipeHolder<?> currentRecipe();
 //
 //    @Shadow
 //    private RecipeBook recipeBook;
 //
-//    @WrapOperation(method = {"renderWidget", "getTooltip", "appendClickableNarrations"}, at = @At(value = "INVOKE", target = "Lnet/minecraft/recipe/RecipeEntry;value()Lnet/minecraft/recipe/Recipe;"))
-//    private Recipe<?> apoli$modifyEntryQuery(RecipeEntry<?> entry, Operation<Recipe<?>> original, @Share("originalEntry") LocalRef<RecipeEntry<?>> sharedOriginalEntry) {
+//    @WrapOperation(method = {"renderWidget", "getTooltip", "appendClickableNarrations"}, at = @At(value = "INVOKE", target = "Lnet/minecraft/recipe/RecipeHolder;value()Lnet/minecraft/recipe/Recipe;"))
+//    private Recipe<?> apoli$modifyEntryQuery(RecipeHolder<?> entry, Operation<Recipe<?>> original, @Share("originalEntry") LocalRef<RecipeHolder<?>> sharedOriginalEntry) {
 //
 //        sharedOriginalEntry.set(entry);
 //
@@ -68,9 +68,9 @@
 //    }
 //
 //    @ModifyReturnValue(method = "getTooltip", at = @At("RETURN"))
-//    private List<Component> apoli$appendRequiredRecipePowerTooltip(List<Component> original, @Share("originalEntry") LocalRef<RecipeEntry<?>> sharedOriginalEntry) {
+//    private List<Component> apoli$appendRequiredRecipePowerTooltip(List<Component> original, @Share("originalEntry") LocalRef<RecipeHolder<?>> sharedOriginalEntry) {
 //
-//        RecipeEntry<?> recipeEntry = sharedOriginalEntry.get() != null
+//        RecipeHolder<?> recipeEntry = sharedOriginalEntry.get() != null
 //            ? sharedOriginalEntry.get()
 //            : this.currentRecipe();
 //

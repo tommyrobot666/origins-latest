@@ -13,8 +13,8 @@
 //import net.minecraft.world.entity.Entity;
 //import net.minecraft.world.entity.player.Player;
 //import net.minecraft.world.item.ItemStack;
-//import net.minecraft.util.ActionResult;
-//import net.minecraft.util.Hand;
+//import net.minecraft.util.InteractionResult;
+//import net.minecraft.util.InteractionHand;
 //import net.minecraft.util.math.BlockPos;
 //import net.minecraft.util.math.Direction;
 //import net.minecraft.world.Level;
@@ -66,8 +66,8 @@
 //
 //    private final EnumSet<Direction> directions;
 //
-//    public ActionOnBlockPlacePowerType(Optional<EntityAction> entityAction, Optional<BlockAction> placeToAction, Optional<BlockAction> placeOnAction, Optional<BlockCondition> placeToCondition, Optional<BlockCondition> placeOnCondition, EnumSet<Direction> directions, Optional<ItemAction> heldItemAction, Optional<ItemCondition> heldItemCondition, Optional<ItemAction> resultItemAction, Optional<ItemStack> resultStack, EnumSet<Hand> hands, int priority, Optional<EntityCondition> condition) {
-//        super(heldItemAction, heldItemCondition, resultItemAction, resultStack, hands, ActionResult.SUCCESS, priority, condition);
+//    public ActionOnBlockPlacePowerType(Optional<EntityAction> entityAction, Optional<BlockAction> placeToAction, Optional<BlockAction> placeOnAction, Optional<BlockCondition> placeToCondition, Optional<BlockCondition> placeOnCondition, EnumSet<Direction> directions, Optional<ItemAction> heldItemAction, Optional<ItemCondition> heldItemCondition, Optional<ItemAction> resultItemAction, Optional<ItemStack> resultStack, EnumSet<InteractionHand> hands, int priority, Optional<EntityCondition> condition) {
+//        super(heldItemAction, heldItemCondition, resultItemAction, resultStack, hands, InteractionResult.SUCCESS, priority, condition);
 //        this.entityAction = entityAction;
 //        this.placeToAction = placeToAction;
 //        this.placeOnAction = placeOnAction;
@@ -81,7 +81,7 @@
 //        return PowerTypes.ACTION_ON_BLOCK_PLACE;
 //    }
 //
-//    public boolean shouldExecute(ItemStack heldStack, Hand hand, BlockPos toPos, BlockPos onPos, Direction direction) {
+//    public boolean shouldExecute(ItemStack heldStack, InteractionHand hand, BlockPos toPos, BlockPos onPos, Direction direction) {
 //        return super.shouldExecute(hand, heldStack)
 //            && directions.contains(direction)
 //            && placeOnCondition.map(condition -> condition.test(getHolder().level(), onPos)).orElse(true)
@@ -102,7 +102,7 @@
 //
 //    }
 //
-//    public void executeItemActions(Hand hand) {
+//    public void executeItemActions(InteractionHand hand) {
 //
 //        if (getHolder() instanceof Player playerEntity) {
 //            this.performActorItemStuff(playerEntity, hand);

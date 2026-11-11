@@ -14,7 +14,7 @@ public class ModPackets {
 
         PayloadTypeRegistry.playS2C().register(SyncAttackerS2CPacket.PACKET_ID, SyncAttackerS2CPacket.STREAM_CODEC);
         PayloadTypeRegistry.playS2C().register(DismountPlayerS2CPacket.PACKET_ID, DismountPlayerS2CPacket.STREAM_CODEC);
-        PayloadTypeRegistry.playS2C().register(SyncStatusEffectS2CPacket.PACKET_ID, SyncStatusEffectS2CPacket.STREAM_CODEC);
+        PayloadTypeRegistry.playS2C().register(SyncMobEffectS2CPacket.PACKET_ID, SyncMobEffectS2CPacket.STREAM_CODEC);
         PayloadTypeRegistry.playS2C().register(ShowToastS2CPacket.PACKET_ID, ShowToastS2CPacket.STREAM_CODEC);
         PayloadTypeRegistry.playS2C().register(MountPlayerS2CPacket.PACKET_ID, MountPlayerS2CPacket.STREAM_CODEC);
         PayloadTypeRegistry.playS2C().register(SyncPowerDataS2CPacket.PACKET_ID, SyncPowerDataS2CPacket.STREAM_CODEC);

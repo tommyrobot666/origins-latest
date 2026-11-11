@@ -66,7 +66,7 @@
 //        }
 //
 //        if (thrower instanceof Player playerEntity && playerEntity.level().isClient) {
-//            playerEntity.swingHand(Hand.MAIN_HAND);
+//            playerEntity.swingHand(InteractionHand.MAIN_HAND);
 //        }
 //
 //        double yOffset = thrower.getEyeY() - 0.30000001192092896D;

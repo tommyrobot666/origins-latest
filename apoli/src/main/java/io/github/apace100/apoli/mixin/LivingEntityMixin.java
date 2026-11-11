@@ -11,7 +11,7 @@
 //import io.github.apace100.apoli.networking.packet.s2c.SyncAttackerS2CPacket;
 //import io.github.apace100.apoli.power.type.*;
 //import io.github.apace100.apoli.util.InventoryUtil;
-//import io.github.apace100.apoli.util.SyncStatusEffectsUtil;
+//import io.github.apace100.apoli.util.SyncMobEffectsUtil;
 //import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
 //import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 //import net.minecraft.world.food.FoodProperties;
@@ -22,8 +22,8 @@
 //import net.minecraft.entity.attribute.EntityAttribute;
 //import net.minecraft.entity.attribute.EntityAttributes;
 //import net.minecraft.entity.damage.DamageSource;
-//import net.minecraft.entity.effect.StatusEffect;
-//import net.minecraft.entity.effect.StatusEffectInstance;
+//import net.minecraft.entity.effect.MobEffect;
+//import net.minecraft.entity.effect.MobEffectInstance;
 //import net.minecraft.world.entity.player.Player;
 //import net.minecraft.fluid.FluidState;
 //import net.minecraft.inventory.StackReference;
@@ -72,35 +72,35 @@
 //        super(type, world);
 //    }
 //
-//    @Inject(method = "onStatusEffectApplied", at = @At("TAIL"))
-//    private void apoli$updateStatusEffectWhenApplied(StatusEffectInstance effectInstance, Entity source, CallbackInfo ci) {
-//        SyncStatusEffectsUtil.sendStatusEffectUpdatePacket((LivingEntity) (Object) this, SyncStatusEffectsUtil.UpdateType.APPLY, effectInstance);
+//    @Inject(method = "onMobEffectApplied", at = @At("TAIL"))
+//    private void apoli$updateMobEffectWhenApplied(MobEffectInstance effectInstance, Entity source, CallbackInfo ci) {
+//        SyncMobEffectsUtil.sendMobEffectUpdatePacket((LivingEntity) (Object) this, SyncMobEffectsUtil.UpdateType.APPLY, effectInstance);
 //    }
 //
-//    @Inject(method = "onStatusEffectUpgraded", at = @At("TAIL"))
-//    private void apoli$updateStatusEffectWhenUpgraded(StatusEffectInstance effectInstance, boolean reapplyEffect, Entity source, CallbackInfo ci) {
-//        SyncStatusEffectsUtil.sendStatusEffectUpdatePacket((LivingEntity) (Object) this, SyncStatusEffectsUtil.UpdateType.UPGRADE, effectInstance);
+//    @Inject(method = "onMobEffectUpgraded", at = @At("TAIL"))
+//    private void apoli$updateMobEffectWhenUpgraded(MobEffectInstance effectInstance, boolean reapplyEffect, Entity source, CallbackInfo ci) {
+//        SyncMobEffectsUtil.sendMobEffectUpdatePacket((LivingEntity) (Object) this, SyncMobEffectsUtil.UpdateType.UPGRADE, effectInstance);
 //    }
 //
-//    @Inject(method = "onStatusEffectRemoved", at = @At("TAIL"))
-//    private void apoli$updateStatusEffectWhenRemoved(StatusEffectInstance effectInstance, CallbackInfo ci) {
-//        SyncStatusEffectsUtil.sendStatusEffectUpdatePacket((LivingEntity) (Object) this, SyncStatusEffectsUtil.UpdateType.REMOVE, effectInstance);
+//    @Inject(method = "onMobEffectRemoved", at = @At("TAIL"))
+//    private void apoli$updateMobEffectWhenRemoved(MobEffectInstance effectInstance, CallbackInfo ci) {
+//        SyncMobEffectsUtil.sendMobEffectUpdatePacket((LivingEntity) (Object) this, SyncMobEffectsUtil.UpdateType.REMOVE, effectInstance);
 //    }
 //
-//    @Inject(method = "clearStatusEffects", at = @At("RETURN"))
-//    private void apoli$updateStatusEffectWhenCleared(CallbackInfoReturnable<Boolean> cir) {
-//        SyncStatusEffectsUtil.sendStatusEffectUpdatePacket((LivingEntity) (Object) this, SyncStatusEffectsUtil.UpdateType.CLEAR, null);
+//    @Inject(method = "clearMobEffects", at = @At("RETURN"))
+//    private void apoli$updateMobEffectWhenCleared(CallbackInfoReturnable<Boolean> cir) {
+//        SyncMobEffectsUtil.sendMobEffectUpdatePacket((LivingEntity) (Object) this, SyncMobEffectsUtil.UpdateType.CLEAR, null);
 //    }
 //
-//    @ModifyVariable(method = "addStatusEffect(Lnet/minecraft/entity/effect/StatusEffectInstance;Lnet/minecraft/entity/Entity;)Z", at = @At("HEAD"), argsOnly = true)
-//    private StatusEffectInstance apoli$modifyStatusEffect(StatusEffectInstance original) {
+//    @ModifyVariable(method = "addMobEffect(Lnet/minecraft/entity/effect/MobEffectInstance;Lnet/minecraft/entity/Entity;)Z", at = @At("HEAD"), argsOnly = true)
+//    private MobEffectInstance apoli$modifyMobEffect(MobEffectInstance original) {
 //
-//        Holder<StatusEffect> effectType = original.getEffectType();
+//        Holder<MobEffect> effectType = original.getEffectType();
 //
-//        float amplifier = PowerHolderComponent.modify(this, ModifyStatusEffectAmplifierPowerType.class, original.getAmplifier(), p -> p.doesApply(effectType));
-//        float duration = PowerHolderComponent.modify(this, ModifyStatusEffectDurationPowerType.class, original.getDuration(), p -> p.doesApply(effectType));
+//        float amplifier = PowerHolderComponent.modify(this, ModifyMobEffectAmplifierPowerType.class, original.getAmplifier(), p -> p.doesApply(effectType));
+//        float duration = PowerHolderComponent.modify(this, ModifyMobEffectDurationPowerType.class, original.getDuration(), p -> p.doesApply(effectType));
 //
-//        return new StatusEffectInstance(
+//        return new MobEffectInstance(
 //            effectType,
 //            Math.round(duration),
 //            Math.round(amplifier),
@@ -331,8 +331,8 @@
 //    }
 //
 //    // HOTBLOODED
-//    @ModifyReturnValue(method = "canHaveStatusEffect", at = @At("RETURN"))
-//    private boolean apoli$effectImmunity(boolean original, StatusEffectInstance effectInstance) {
+//    @ModifyReturnValue(method = "canHaveMobEffect", at = @At("RETURN"))
+//    private boolean apoli$effectImmunity(boolean original, MobEffectInstance effectInstance) {
 //        return original
 //            && !PowerHolderComponent.hasPowerType(this, EffectImmunityPowerType.class, p -> p.doesApply(effectInstance));
 //    }
@@ -510,7 +510,7 @@
 //
 //    @Shadow public abstract boolean damage(DamageSource source, float amount);
 //
-//    @Shadow protected abstract void onStatusEffectRemoved(StatusEffectInstance effect);
+//    @Shadow protected abstract void onMobEffectRemoved(MobEffectInstance effect);
 //
 //    @Shadow public float sidewaysSpeed;
 //

@@ -1,6 +1,6 @@
 //package io.github.apace100.apoli.mixin;
 //
-//import net.minecraft.recipe.RecipeEntry;
+//import net.minecraft.recipe.RecipeHolder;
 //import net.minecraft.recipe.RecipeManager;
 //import net.minecraft.resources.Identifier;
 //import org.spongepowered.asm.mixin.Mixin;
@@ -12,6 +12,6 @@
 //public interface RecipeManagerAccessor {
 //
 //	@Accessor
-//	Map<Identifier, RecipeEntry<?>> getRecipesById();
+//	Map<Identifier, RecipeHolder<?>> getRecipesById();
 //
 //}

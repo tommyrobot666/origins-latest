@@ -9,7 +9,7 @@
 //import io.github.apace100.calio.data.SerializableData;
 //import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.world.item.ItemStack;
-//import net.minecraft.util.Hand;
+//import net.minecraft.util.InteractionHand;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.Optional;
@@ -37,7 +37,7 @@
 //
 //        if (context.entity() instanceof LivingEntity livingEntity && livingEntity.isUsingItem()) {
 //
-//            Hand activeHand = livingEntity.getActiveHand();
+//            InteractionHand activeHand = livingEntity.getActiveHand();
 //            ItemStack stackInHand = livingEntity.getStackInHand(activeHand);
 //
 //            return itemCondition

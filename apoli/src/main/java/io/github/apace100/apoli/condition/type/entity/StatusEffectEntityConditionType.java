@@ -8,21 +8,21 @@
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.world.entity.LivingEntity;
-//import net.minecraft.entity.effect.StatusEffect;
-//import net.minecraft.entity.effect.StatusEffectInstance;
+//import net.minecraft.entity.effect.MobEffect;
+//import net.minecraft.entity.effect.MobEffectInstance;
 //import net.minecraft.registry.entry.Holder;
 //import org.jetbrains.annotations.NotNull;
 //
-//public class StatusEffectEntityConditionType extends EntityConditionType {
+//public class MobEffectEntityConditionType extends EntityConditionType {
 //
-//    public static final TypedDataObjectFactory<StatusEffectEntityConditionType> DATA_FACTORY = TypedDataObjectFactory.simple(
+//    public static final TypedDataObjectFactory<MobEffectEntityConditionType> DATA_FACTORY = TypedDataObjectFactory.simple(
 //        new SerializableData()
 //            .add("effect", SerializableDataTypes.STATUS_EFFECT_ENTRY)
 //            .add("min_amplifier", SerializableDataTypes.INT, 0)
 //            .add("max_amplifier", SerializableDataTypes.INT, Integer.MAX_VALUE)
 //            .add("min_duration", SerializableDataTypes.INT, -1)
 //            .add("max_duration", SerializableDataTypes.INT, Integer.MAX_VALUE),
-//        data -> new StatusEffectEntityConditionType(
+//        data -> new MobEffectEntityConditionType(
 //            data.get("effect"),
 //            data.get("min_amplifier"),
 //            data.get("max_amplifier"),
@@ -37,7 +37,7 @@
 //            .set("max_duration", conditionType.maxDuration)
 //    );
 //
-//    private final Holder<StatusEffect> effect;
+//    private final Holder<MobEffect> effect;
 //
 //    private final int minAmplifier;
 //    private final int maxAmplifier;
@@ -45,7 +45,7 @@
 //    private final int minDuration;
 //    private final int maxDuration;
 //
-//    public StatusEffectEntityConditionType(Holder<StatusEffect> effect, int minAmplifier, int maxAmplifier, int minDuration, int maxDuration) {
+//    public MobEffectEntityConditionType(Holder<MobEffect> effect, int minAmplifier, int maxAmplifier, int minDuration, int maxDuration) {
 //        this.effect = effect;
 //        this.minAmplifier = minAmplifier;
 //        this.maxAmplifier = maxAmplifier;
@@ -58,7 +58,7 @@
 //
 //        if (context.entity() instanceof LivingEntity livingEntity) {
 //
-//            StatusEffectInstance effectInstance = livingEntity.getStatusEffect(effect);
+//            MobEffectInstance effectInstance = livingEntity.getMobEffect(effect);
 //
 //            if (effectInstance != null) {
 //

@@ -12,7 +12,7 @@
 //import net.minecraft.client.gui.DrawContext;
 //import net.minecraft.client.gui.LayeredDrawer;
 //import net.minecraft.client.gui.hud.InGameHud;
-//import net.minecraft.entity.effect.StatusEffects;
+//import net.minecraft.entity.effect.MobEffects;
 //import net.minecraft.world.entity.player.Player;
 //import net.minecraft.resources.Identifier;
 //import org.objectweb.asm.Opcodes;
@@ -79,7 +79,7 @@
 //    @WrapOperation(method = "renderFood", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/DrawContext;drawGuiTexture(Lnet/minecraft/util/Identifier;IIII)V", ordinal = 0))
 //    private void apoli$overrideEmptyFoodSprite(DrawContext context, Identifier texture, int x, int y, int width, int height, Operation<Void> original, DrawContext mContext, Player player) {
 //        apoli$getOverrideHudTexturePower(player).ifPresentOrElse(
-//            p -> p.drawTexture(context, texture, x, y, this.getCameraPlayer().hasStatusEffect(StatusEffects.HUNGER) ? 133 : 16, 27, width, height),
+//            p -> p.drawTexture(context, texture, x, y, this.getCameraPlayer().hasMobEffect(MobEffects.HUNGER) ? 133 : 16, 27, width, height),
 //            () -> original.call(context, texture, x, y, width, height)
 //        );
 //    }
@@ -87,7 +87,7 @@
 //    @WrapOperation(method = "renderFood", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/DrawContext;drawGuiTexture(Lnet/minecraft/util/Identifier;IIII)V", ordinal = 1))
 //    private void apoli$overrideFullFoodSprite(DrawContext context, Identifier texture, int x, int y, int width, int height, Operation<Void> original, DrawContext mContext, Player player) {
 //        apoli$getOverrideHudTexturePower(player).ifPresentOrElse(
-//            p -> p.drawTexture(context, texture, x, y, this.getCameraPlayer().hasStatusEffect(StatusEffects.HUNGER) ? 88 : 52, 27, width, height),
+//            p -> p.drawTexture(context, texture, x, y, this.getCameraPlayer().hasMobEffect(MobEffects.HUNGER) ? 88 : 52, 27, width, height),
 //            () -> original.call(context, texture, x, y, width, height)
 //        );
 //    }
@@ -95,7 +95,7 @@
 //    @WrapOperation(method = "renderFood", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/DrawContext;drawGuiTexture(Lnet/minecraft/util/Identifier;IIII)V", ordinal = 2))
 //    private void apoli$overrideHalfFoodSprite(DrawContext context, Identifier texture, int x, int y, int width, int height, Operation<Void> original, DrawContext mContext, Player player) {
 //        apoli$getOverrideHudTexturePower(player).ifPresentOrElse(
-//            p -> p.drawTexture(context, texture, x, y, this.getCameraPlayer().hasStatusEffect(StatusEffects.HUNGER) ? 97 : 61, 27, width, height),
+//            p -> p.drawTexture(context, texture, x, y, this.getCameraPlayer().hasMobEffect(MobEffects.HUNGER) ? 97 : 61, 27, width, height),
 //            () -> original.call(context, texture, x, y, width, height)
 //        );
 //    }

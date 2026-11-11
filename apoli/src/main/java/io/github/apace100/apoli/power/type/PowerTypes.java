@@ -88,8 +88,8 @@ public class PowerTypes {
 //    public static final PowerConfiguration<ModifyPlayerSpawnPowerType> MODIFY_PLAYER_SPAWN = register(PowerConfiguration.of(Apoli.identifier("modify_player_spawn"), ModifyPlayerSpawnPowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<ModifyProjectileDamagePowerType> MODIFY_PROJECTILE_DAMAGE = register(PowerConfiguration.of(Apoli.identifier("modify_projectile_damage"), ModifyProjectileDamagePowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<ModifySlipperinessPowerType> MODIFY_SLIPPERINESS = register(PowerConfiguration.of(Apoli.identifier("modify_slipperiness"), ModifySlipperinessPowerType.DATA_FACTORY));
-//    public static final PowerConfiguration<ModifyStatusEffectAmplifierPowerType> MODIFY_STATUS_EFFECT_AMPLIFIER = register(PowerConfiguration.of(Apoli.identifier("modify_status_effect_amplifier"), ModifyStatusEffectAmplifierPowerType.DATA_FACTORY));
-//    public static final PowerConfiguration<ModifyStatusEffectDurationPowerType> MODIFY_STATUS_EFFECT_DURATION = register(PowerConfiguration.of(Apoli.identifier("modify_status_effect_duration"), ModifyStatusEffectDurationPowerType.DATA_FACTORY));
+//    public static final PowerConfiguration<ModifyMobEffectAmplifierPowerType> MODIFY_STATUS_EFFECT_AMPLIFIER = register(PowerConfiguration.of(Apoli.identifier("modify_status_effect_amplifier"), ModifyMobEffectAmplifierPowerType.DATA_FACTORY));
+//    public static final PowerConfiguration<ModifyMobEffectDurationPowerType> MODIFY_STATUS_EFFECT_DURATION = register(PowerConfiguration.of(Apoli.identifier("modify_status_effect_duration"), ModifyMobEffectDurationPowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<ModifySwimSpeedPowerType> MODIFY_SWIM_SPEED = register(PowerConfiguration.of(Apoli.identifier("modify_swim_speed"), ModifySwimSpeedPowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<ModifyTypeTagPowerType> MODIFY_TYPE_TAG = register(PowerConfiguration.of(Apoli.identifier("modify_type_tag"), ModifyTypeTagPowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<ModifyVelocityPowerType> MODIFY_VELOCITY = register(PowerConfiguration.of(Apoli.identifier("modify_velocity"), ModifyVelocityPowerType.DATA_FACTORY));
@@ -125,7 +125,7 @@ public class PowerTypes {
 //    public static final PowerConfiguration<ShaderPowerType> SHADER = register(PowerConfiguration.of(Apoli.identifier("shader"), ShaderPowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<ShakingPowerType> SHAKING = register(PowerConfiguration.conditionedSimple(Apoli.identifier("shaking"), ShakingPowerType::new));
 //    public static final PowerConfiguration<SprintingPowerType> SPRINTING = register(PowerConfiguration.of(Apoli.identifier("sprinting"), SprintingPowerType.DATA_FACTORY));
-//    public static final PowerConfiguration<StackingStatusEffectPowerType> STACKING_STATUS_EFFECT = register(PowerConfiguration.of(Apoli.identifier("stacking_status_effect"), StackingStatusEffectPowerType.DATA_FACTORY));
+//    public static final PowerConfiguration<StackingMobEffectPowerType> STACKING_STATUS_EFFECT = register(PowerConfiguration.of(Apoli.identifier("stacking_status_effect"), StackingMobEffectPowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<StartingEquipmentPowerType> STARTING_EQUIPMENT = register(PowerConfiguration.of(Apoli.identifier("starting_equipment"), StartingEquipmentPowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<SwimmingPowerType> SWIMMING = register(PowerConfiguration.conditionedSimple(Apoli.identifier("swimming"), SwimmingPowerType::new));
 //    public static final PowerConfiguration<TargetActionOnHitPowerType> TARGET_ACTION_ON_HIT = register(PowerConfiguration.of(Apoli.identifier("target_action_on_hit"), TargetActionOnHitPowerType.DATA_FACTORY));

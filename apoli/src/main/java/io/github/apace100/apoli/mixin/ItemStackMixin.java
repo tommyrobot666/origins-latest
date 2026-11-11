@@ -23,9 +23,9 @@
 //import net.minecraft.screen.slot.Slot;
 //import net.minecraft.sound.SoundEvent;
 //import net.minecraft.util.ClickType;
-//import net.minecraft.util.Hand;
+//import net.minecraft.util.InteractionHand;
 //import net.minecraft.util.TypedActionResult;
-//import net.minecraft.util.UseAction;
+//import net.minecraft.util.UseAnim;
 //import net.minecraft.world.Level;
 //import org.jetbrains.annotations.Nullable;
 //import org.spongepowered.asm.mixin.Mixin;
@@ -77,8 +77,8 @@
 //        this.apoli$holdingEntity = new WeakReference<>(entity);
 //    }
 //
-//    @WrapOperation(method = "use", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/Item;use(Lnet/minecraft/world/Level;Lnet/minecraft/entity/player/Player;Lnet/minecraft/util/Hand;)Lnet/minecraft/util/TypedActionResult;"))
-//    private TypedActionResult<ItemStack> apoli$onItemUse(Item item, Level world, Player user, Hand hand, Operation<TypedActionResult<ItemStack>> original) {
+//    @WrapOperation(method = "use", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/Item;use(Lnet/minecraft/world/Level;Lnet/minecraft/entity/player/Player;Lnet/minecraft/util/InteractionHand;)Lnet/minecraft/util/TypedActionResult;"))
+//    private TypedActionResult<ItemStack> apoli$onItemUse(Item item, Level world, Player user, InteractionHand hand, Operation<TypedActionResult<ItemStack>> original) {
 //
 //        //  region  Prevent item use
 //        ItemStack thisAsStack = (ItemStack) (Object) this;
@@ -189,7 +189,7 @@
 //    }
 //
 //    @ModifyReturnValue(method = "getUseAction", at = @At("RETURN"))
-//    private UseAction apoli$replaceUseAction(UseAction original) {
+//    private UseAnim apoli$replaceUseAction(UseAnim original) {
 //        return EdibleItemPowerType.get((ItemStack) (Object) this)
 //            .map(EdibleItemPowerType::getConsumeAnimation)
 //            .orElse(original);

@@ -13,8 +13,8 @@
 //import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.world.entity.player.Player;
 //import net.minecraft.world.item.ItemStack;
-//import net.minecraft.util.ActionResult;
-//import net.minecraft.util.Hand;
+//import net.minecraft.util.InteractionResult;
+//import net.minecraft.util.InteractionHand;
 //import net.minecraft.util.math.BlockPos;
 //import net.minecraft.util.math.Direction;
 //import org.jetbrains.annotations.NotNull;
@@ -66,8 +66,8 @@
 //
 //    private final EnumSet<Direction> directions;
 //
-//    public PreventBlockPlacePowerType(Optional<EntityAction> entityAction, Optional<BlockAction> placeToAction, Optional<BlockAction> placeOnAction, Optional<BlockCondition> placeToCondition, Optional<BlockCondition> placeOnCondition, EnumSet<Direction> directions, Optional<ItemAction> heldItemAction, Optional<ItemCondition> itemCondition, Optional<ItemAction> resultItemAction, Optional<ItemStack> resultStack, EnumSet<Hand> hands, int priority, Optional<EntityCondition> condition) {
-//        super(heldItemAction, itemCondition, resultItemAction, resultStack, hands, ActionResult.FAIL, priority, condition);
+//    public PreventBlockPlacePowerType(Optional<EntityAction> entityAction, Optional<BlockAction> placeToAction, Optional<BlockAction> placeOnAction, Optional<BlockCondition> placeToCondition, Optional<BlockCondition> placeOnCondition, EnumSet<Direction> directions, Optional<ItemAction> heldItemAction, Optional<ItemCondition> itemCondition, Optional<ItemAction> resultItemAction, Optional<ItemStack> resultStack, EnumSet<InteractionHand> hands, int priority, Optional<EntityCondition> condition) {
+//        super(heldItemAction, itemCondition, resultItemAction, resultStack, hands, InteractionResult.FAIL, priority, condition);
 //        this.entityAction = entityAction;
 //        this.placeToAction = placeToAction;
 //        this.placeOnAction = placeOnAction;
@@ -81,7 +81,7 @@
 //        return PowerTypes.PREVENT_BLOCK_PLACE;
 //    }
 //
-//    public boolean doesPrevent(ItemStack heldStack, Hand hand, BlockPos toPos, BlockPos onPos, Direction direction) {
+//    public boolean doesPrevent(ItemStack heldStack, InteractionHand hand, BlockPos toPos, BlockPos onPos, Direction direction) {
 //        LivingEntity holder = getHolder();
 //        return super.shouldExecute(hand, heldStack)
 //            && directions.contains(direction)
@@ -89,7 +89,7 @@
 //            && placeToCondition.map(condition -> condition.test(holder.level(), toPos)).orElse(true);
 //    }
 //
-//    public void executeActions(Hand hand, BlockPos toPos, BlockPos onPos, Direction direction) {
+//    public void executeActions(InteractionHand hand, BlockPos toPos, BlockPos onPos, Direction direction) {
 //
 //        LivingEntity holder = getHolder();
 //

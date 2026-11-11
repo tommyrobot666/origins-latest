@@ -11,8 +11,8 @@
 //import net.minecraft.entity.player.Inventory;
 //import net.minecraft.inventory.StackReference;
 //import net.minecraft.world.item.ItemStack;
-//import net.minecraft.util.ActionResult;
-//import net.minecraft.util.Hand;
+//import net.minecraft.util.InteractionResult;
+//import net.minecraft.util.InteractionHand;
 //
 //import java.util.EnumSet;
 //import java.util.Optional;
@@ -26,10 +26,10 @@
 //    protected final Optional<ItemAction> resultItemAction;
 //    protected final Optional<ItemStack> resultStack;
 //
-//    protected final EnumSet<Hand> hands;
-//    protected final ActionResult actionResult;
+//    protected final EnumSet<InteractionHand> hands;
+//    protected final InteractionResult actionResult;
 //
-//    public InteractionPowerType(Optional<ItemAction> heldItemAction, Optional<ItemCondition> heldItemCondition, Optional<ItemAction> resultItemAction, Optional<ItemStack> resultStack, EnumSet<Hand> hands, ActionResult actionResult, Optional<EntityCondition> condition) {
+//    public InteractionPowerType(Optional<ItemAction> heldItemAction, Optional<ItemCondition> heldItemCondition, Optional<ItemAction> resultItemAction, Optional<ItemStack> resultStack, EnumSet<InteractionHand> hands, InteractionResult actionResult, Optional<EntityCondition> condition) {
 //        super(condition);
 //        this.hands = hands;
 //        this.actionResult = actionResult;
@@ -39,16 +39,16 @@
 //        this.resultItemAction = resultItemAction;
 //    }
 //
-//    public InteractionPowerType(Optional<ItemAction> heldItemAction, Optional<ItemCondition> heldItemCondition, Optional<ItemStack> resultStack, Optional<ItemAction> resultItemAction, EnumSet<Hand> hands, ActionResult actionResult) {
+//    public InteractionPowerType(Optional<ItemAction> heldItemAction, Optional<ItemCondition> heldItemCondition, Optional<ItemStack> resultStack, Optional<ItemAction> resultItemAction, EnumSet<InteractionHand> hands, InteractionResult actionResult) {
 //        this(heldItemAction, heldItemCondition, resultItemAction, resultStack, hands, actionResult, Optional.empty());
 //    }
 //
-//    public boolean shouldExecute(Hand hand, ItemStack heldStack) {
+//    public boolean shouldExecute(InteractionHand hand, ItemStack heldStack) {
 //        return doesApplyToHand(hand)
 //            && doesApplyToItem(heldStack);
 //    }
 //
-//    public boolean doesApplyToHand(Hand hand) {
+//    public boolean doesApplyToHand(InteractionHand hand) {
 //        return hands.contains(hand);
 //    }
 //
@@ -58,11 +58,11 @@
 //            .orElse(true);
 //    }
 //
-//    public ActionResult getActionResult() {
+//    public InteractionResult getActionResult() {
 //        return actionResult;
 //    }
 //
-//    protected void performActorItemStuff(Player actor, Hand hand) {
+//    protected void performActorItemStuff(Player actor, InteractionHand hand) {
 //
 //        StackReference heldStackReference = getHeldStackReference(actor, hand);
 //        heldItemAction.ifPresent(action -> action.execute(actor.level(), heldStackReference));
@@ -90,16 +90,16 @@
 //
 //    }
 //
-//    protected static StackReference getHeldStackReference(Player player, Hand hand) {
+//    protected static StackReference getHeldStackReference(Player player, InteractionHand hand) {
 //
 //        Inventory playerInventory = player.getInventory();
 //        int selectedSlot = playerInventory.selectedSlot;
 //
-//        if (hand == Hand.MAIN_HAND && Inventory.isValidHotbarIndex(selectedSlot)) {
+//        if (hand == InteractionHand.MAIN_HAND && Inventory.isValidHotbarIndex(selectedSlot)) {
 //            return StackReference.of(playerInventory, selectedSlot);
 //        }
 //
-//        else if (hand == Hand.OFF_HAND) {
+//        else if (hand == InteractionHand.OFF_HAND) {
 //            return StackReference.of(playerInventory.offHand::getFirst, stack -> playerInventory.offHand.set(0, stack));
 //        }
 //
@@ -117,8 +117,8 @@
 //                .addFunctionedDefault("held_item_condition", ItemCondition.DATA_TYPE.optional(), data -> data.get("item_condition"))
 //                .add("result_item_action", ItemAction.DATA_TYPE.optional(), Optional.empty())
 //                .add("result_stack", SerializableDataTypes.ITEM_STACK.optional(), Optional.empty())
-//                .add("hands", SerializableDataTypes.HAND_SET, EnumSet.allOf(Hand.class))
-//                .add("action_result", SerializableDataTypes.ACTION_RESULT, ActionResult.SUCCESS),
+//                .add("hands", SerializableDataTypes.HAND_SET, EnumSet.allOf(InteractionHand.class))
+//                .add("action_result", SerializableDataTypes.ACTION_RESULT, InteractionResult.SUCCESS),
 //            (data, condition) -> fromData.apply(
 //                data,
 //                data.get("held_item_action"),
@@ -141,7 +141,7 @@
 //
 //    @FunctionalInterface
 //    public interface FromData<T extends InteractionPowerType> {
-//        T apply(SerializableData.Instance data, Optional<ItemAction> heldItemAction, Optional<ItemCondition> heldItemCondition, Optional<ItemAction> resultItemAction, Optional<ItemStack> resultStack, EnumSet<Hand> hands, ActionResult actionResult, Optional<EntityCondition> condition);
+//        T apply(SerializableData.Instance data, Optional<ItemAction> heldItemAction, Optional<ItemCondition> heldItemCondition, Optional<ItemAction> resultItemAction, Optional<ItemStack> resultStack, EnumSet<InteractionHand> hands, InteractionResult actionResult, Optional<EntityCondition> condition);
 //    }
 //
 //}

@@ -9,7 +9,7 @@
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.world.entity.LivingEntity;
-//import net.minecraft.entity.effect.StatusEffect;
+//import net.minecraft.entity.effect.MobEffect;
 //import net.minecraft.registry.entry.Holder;
 //import org.jetbrains.annotations.NotNull;
 //
@@ -28,9 +28,9 @@
 //            .set("effects", actionType.effects)
 //    );
 //
-//    private final List<Holder<StatusEffect>> effects;
+//    private final List<Holder<MobEffect>> effects;
 //
-//    public ClearEffectEntityActionType(List<Holder<StatusEffect>> effects) {
+//    public ClearEffectEntityActionType(List<Holder<MobEffect>> effects) {
 //        this.effects = effects;
 //    }
 //
@@ -40,11 +40,11 @@
 //        if (context.entity() instanceof LivingEntity livingEntity) {
 //
 //            if (effects.isEmpty()) {
-//                livingEntity.clearStatusEffects();
+//                livingEntity.clearMobEffects();
 //            }
 //
 //            else {
-//                effects.forEach(livingEntity::removeStatusEffect);
+//                effects.forEach(livingEntity::removeMobEffect);
 //            }
 //
 //        }

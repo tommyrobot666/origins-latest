@@ -30,7 +30,7 @@
 //import net.minecraft.text.MutableText;
 //import net.minecraft.network.chat.Component;
 //import net.minecraft.util.Formatting;
-//import net.minecraft.util.UseAction;
+//import net.minecraft.util.UseAnim;
 //import org.apache.commons.lang3.mutable.MutableBoolean;
 //import org.jetbrains.annotations.Nullable;
 //import org.spongepowered.asm.mixin.Mixin;
@@ -49,7 +49,7 @@
 //public abstract class ItemStackMixinClient implements ComponentHolder {
 //
 //    @Shadow
-//    public abstract UseAction getUseAction();
+//    public abstract UseAnim getUseAction();
 //
 //    @Shadow
 //    public abstract ComponentMap getComponents();

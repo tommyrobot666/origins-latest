@@ -10,7 +10,7 @@
 //import net.fabricmc.fabric.api.entity.event.v1.EntityElytraEvents;
 //import net.minecraft.entity.EquipmentSlot;
 //import net.minecraft.world.entity.LivingEntity;
-//import net.minecraft.entity.effect.StatusEffects;
+//import net.minecraft.entity.effect.MobEffects;
 //import net.minecraft.item.ElytraItem;
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.item.Items;
@@ -55,7 +55,7 @@
 //            state = !living.isOnGround()
 //                && !living.isFallFlying()
 //                && !living.isTouchingWater()
-//                && !living.hasStatusEffect(StatusEffects.LEVITATION);
+//                && !living.hasMobEffect(MobEffects.LEVITATION);
 //        }
 //
 //        if (checkAbility) {

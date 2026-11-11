@@ -10,7 +10,7 @@
 //import net.minecraft.block.BlockState;
 //import net.minecraft.block.Blocks;
 //import net.minecraft.block.FluidBlock;
-//import net.minecraft.block.enums.CameraSubmersionType;
+//import net.minecraft.block.enums.FogType;
 //import net.minecraft.client.Minecraft;
 //import net.minecraft.client.gl.PostEffectProcessor;
 //import net.minecraft.client.render.Camera;
@@ -151,8 +151,8 @@
 //            .orElseGet(() -> original.call(entity, tickDelta));
 //    }
 //
-//    @ModifyExpressionValue(method = "getFov", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/Camera;getSubmersionType()Lnet/minecraft/block/enums/CameraSubmersionType;"))
-//    private CameraSubmersionType apoli$modifySubmersionTypeFov(CameraSubmersionType original, Camera camera) {
+//    @ModifyExpressionValue(method = "getFov", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/Camera;getSubmersionType()Lnet/minecraft/block/enums/FogType;"))
+//    private FogType apoli$modifySubmersionTypeFov(FogType original, Camera camera) {
 //        return PowerHolderComponent.getPowerTypes(camera.getFocusedEntity(), ModifyCameraSubmersionTypePowerType.class, true)
 //            .stream()
 //            .filter(p -> p.doesModify(original) && p.isActive())

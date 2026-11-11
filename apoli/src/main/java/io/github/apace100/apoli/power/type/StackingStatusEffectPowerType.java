@@ -7,7 +7,7 @@
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.world.entity.LivingEntity;
-//import net.minecraft.entity.effect.StatusEffectInstance;
+//import net.minecraft.entity.effect.MobEffectInstance;
 //import net.minecraft.nbt.Tag;
 //import net.minecraft.nbt.NbtInt;
 //import org.jetbrains.annotations.NotNull;
@@ -15,9 +15,9 @@
 //import java.util.List;
 //import java.util.Optional;
 //
-//public class StackingStatusEffectPowerType extends StatusEffectPowerType {
+//public class StackingMobEffectPowerType extends MobEffectPowerType {
 //
-//    public static final TypedDataObjectFactory<StackingStatusEffectPowerType> DATA_FACTORY = PowerType.createConditionedDataFactory(
+//    public static final TypedDataObjectFactory<StackingMobEffectPowerType> DATA_FACTORY = PowerType.createConditionedDataFactory(
 //        new SerializableData()
 //            .add("effect", SerializableDataTypes.STATUS_EFFECT_INSTANCE, null)
 //            .addFunctionedDefault("effects", SerializableDataTypes.STATUS_EFFECT_INSTANCES, data -> MiscUtil.singletonListOrNull(data.get("effect")))
@@ -26,7 +26,7 @@
 //            .add("duration_per_stack", SerializableDataTypes.INT)
 //            .add("tick_rate", SerializableDataTypes.POSITIVE_INT, 10)
 //            .validate(MiscUtil.validateAnyFieldsPresent("effect", "effects")),
-//        (data, condition) -> new StackingStatusEffectPowerType(
+//        (data, condition) -> new StackingMobEffectPowerType(
 //            data.get("effects"),
 //            data.get("min_stacks"),
 //            data.get("max_stacks"),
@@ -54,7 +54,7 @@
 //    private boolean wasActive = false;
 //    private int currentStack = 0;
 //
-//    public StackingStatusEffectPowerType(List<StatusEffectInstance> effects, int minStacks, int maxStacks, int durationPerStack, int tickRate, Optional<EntityCondition> condition) {
+//    public StackingMobEffectPowerType(List<MobEffectInstance> effects, int minStacks, int maxStacks, int durationPerStack, int tickRate, Optional<EntityCondition> condition) {
 //        super(effects, condition);
 //        this.minStacks = minStacks;
 //        this.maxStacks = maxStacks;
@@ -112,12 +112,12 @@
 //    @Override
 //    public void applyEffects() {
 //
-//        for (StatusEffectInstance effectInstance : effects) {
+//        for (MobEffectInstance effectInstance : effects) {
 //
 //            int duration = Math.max(0, durationPerStack * currentStack);
-//            effectInstance = new StatusEffectInstance(effectInstance.getEffectType(), duration, effectInstance.getAmplifier(), effectInstance.isAmbient(), effectInstance.shouldShowParticles(), effectInstance.shouldShowIcon());
+//            effectInstance = new MobEffectInstance(effectInstance.getEffectType(), duration, effectInstance.getAmplifier(), effectInstance.isAmbient(), effectInstance.shouldShowParticles(), effectInstance.shouldShowIcon());
 //
-//            getHolder().addStatusEffect(effectInstance);
+//            getHolder().addMobEffect(effectInstance);
 //
 //        }
 //

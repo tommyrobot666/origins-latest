@@ -15,8 +15,8 @@
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.world.entity.player.Player;
 //import net.minecraft.world.item.ItemStack;
-//import net.minecraft.util.ActionResult;
-//import net.minecraft.util.Hand;
+//import net.minecraft.util.InteractionResult;
+//import net.minecraft.util.InteractionHand;
 //import net.minecraft.util.hit.BlockHitResult;
 //import net.minecraft.util.math.Direction;
 //import org.jetbrains.annotations.NotNull;
@@ -64,7 +64,7 @@
 //    private final EnumSet<BlockUsagePhase> usePhases;
 //    private final EnumSet<Direction> directions;
 //
-//    public ActionOnBlockUsePowerType(Optional<EntityAction> entityAction, Optional<BlockAction> blockAction, Optional<BlockCondition> blockCondition, EnumSet<BlockUsagePhase> usePhases, EnumSet<Direction> directions, Optional<ItemAction> heldItemAction, Optional<ItemCondition> heldItemCondition, Optional<ItemAction> resultItemAction, Optional<ItemStack> resultStack, EnumSet<Hand> hands, ActionResult actionResult, int priority, Optional<EntityCondition> condition) {
+//    public ActionOnBlockUsePowerType(Optional<EntityAction> entityAction, Optional<BlockAction> blockAction, Optional<BlockCondition> blockCondition, EnumSet<BlockUsagePhase> usePhases, EnumSet<Direction> directions, Optional<ItemAction> heldItemAction, Optional<ItemCondition> heldItemCondition, Optional<ItemAction> resultItemAction, Optional<ItemStack> resultStack, EnumSet<InteractionHand> hands, InteractionResult actionResult, int priority, Optional<EntityCondition> condition) {
 //        super(heldItemAction, heldItemCondition, resultItemAction, resultStack, hands, actionResult, priority, condition);
 //        this.entityAction = entityAction;
 //        this.blockCondition = blockCondition;
@@ -78,7 +78,7 @@
 //        return PowerTypes.ACTION_ON_BLOCK_USE;
 //    }
 //
-//    public boolean shouldExecute(BlockUsagePhase usePhase, PriorityPhase priorityPhase, BlockHitResult hitResult, Hand hand, ItemStack heldStack) {
+//    public boolean shouldExecute(BlockUsagePhase usePhase, PriorityPhase priorityPhase, BlockHitResult hitResult, InteractionHand hand, ItemStack heldStack) {
 //        return priorityPhase.test(this.getPriority())
 //            && usePhases.contains(usePhase)
 //            && directions.contains(hitResult.getSide())
@@ -86,7 +86,7 @@
 //            && blockCondition.map(condition -> condition.test(getHolder().level(), hitResult.getBlockPos())).orElse(true);
 //    }
 //
-//    public ActionResult executeAction(BlockHitResult hitResult, Hand hand) {
+//    public InteractionResult executeAction(BlockHitResult hitResult, InteractionHand hand) {
 //
 //        blockAction.ifPresent(action -> action.execute(getHolder().level(), hitResult.getBlockPos(), Optional.of(hitResult.getSide())));
 //        entityAction.ifPresent(action -> action.execute(getHolder()));

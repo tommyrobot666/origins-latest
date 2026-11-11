@@ -31,8 +31,8 @@
 //import net.minecraft.registry.tag.DamageTypeTags;
 //import net.minecraft.server.command.CommandOutput;
 //import net.minecraft.server.level.ServerPlayer;
-//import net.minecraft.util.ActionResult;
-//import net.minecraft.util.Hand;
+//import net.minecraft.util.InteractionResult;
+//import net.minecraft.util.InteractionHand;
 //import net.minecraft.util.Nameable;
 //import net.minecraft.util.math.BlockPos;
 //import net.minecraft.util.math.Direction;
@@ -233,8 +233,8 @@
 //            && !PowerHolderComponent.hasPowerType(this, RestrictArmorPowerType.class, p -> p.doesRestrict(stack, this.getPreferredEquipmentSlot(stack)));
 //    }
 //
-//    @WrapOperation(method = "interact", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/Entity;interact(Lnet/minecraft/entity/player/Player;Lnet/minecraft/util/Hand;)Lnet/minecraft/util/ActionResult;"))
-//    private ActionResult apoli$beforeEntityUse(Entity entity, Player player, Hand hand, Operation<ActionResult> original, @Share("zeroPriority$onEntity") LocalRef<ActionResult> sharedZeroPriority$onEntity) {
+//    @WrapOperation(method = "interact", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/Entity;interact(Lnet/minecraft/entity/player/Player;Lnet/minecraft/util/InteractionHand;)Lnet/minecraft/util/InteractionResult;"))
+//    private InteractionResult apoli$beforeEntityUse(Entity entity, Player player, InteractionHand hand, Operation<InteractionResult> original, @Share("zeroPriority$onEntity") LocalRef<InteractionResult> sharedZeroPriority$onEntity) {
 //
 //        ItemStack stackInHand = player.getStackInHand(hand);
 //        for (PreventEntityUsePowerType peup : PowerHolderComponent.getPowerTypes(this, PreventEntityUsePowerType.class)) {
@@ -265,11 +265,11 @@
 //            }
 //
 //            List<ActiveInteractionPowerType> aips = aipci.getPowerTypes(i);
-//            ActionResult previousResult = ActionResult.PASS;
+//            InteractionResult previousResult = InteractionResult.PASS;
 //
 //            for (ActiveInteractionPowerType aip : aips) {
 //
-//                ActionResult currentResult = ActionResult.PASS;
+//                InteractionResult currentResult = InteractionResult.PASS;
 //                if (aip instanceof ActionOnEntityUsePowerType aoeup) {
 //                    currentResult = aoeup.executeAction(entity, hand);
 //                }
@@ -289,7 +289,7 @@
 //                continue;
 //            }
 //
-//            if (previousResult == ActionResult.PASS) {
+//            if (previousResult == InteractionResult.PASS) {
 //                continue;
 //            }
 //
@@ -305,17 +305,17 @@
 //
 //    }
 //
-//    @ModifyReturnValue(method = "interact", at = @At("RETURN"), slice = @Slice(from = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/Player;getStackInHand(Lnet/minecraft/util/Hand;)Lnet/minecraft/item/ItemStack;", ordinal = 0)))
-//    private ActionResult apoli$afterEntityUse(ActionResult original, Entity entity, Hand hand, @Share("zeroPriority$onEntity") LocalRef<ActionResult> sharedZeroPriority$onEntity) {
+//    @ModifyReturnValue(method = "interact", at = @At("RETURN"), slice = @Slice(from = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/Player;getStackInHand(Lnet/minecraft/util/InteractionHand;)Lnet/minecraft/item/ItemStack;", ordinal = 0)))
+//    private InteractionResult apoli$afterEntityUse(InteractionResult original, Entity entity, InteractionHand hand, @Share("zeroPriority$onEntity") LocalRef<InteractionResult> sharedZeroPriority$onEntity) {
 //
-//        ActionResult cachedPriorityZeroResult = sharedZeroPriority$onEntity.get();
-//        ActionResult newResult = ActionResult.PASS;
+//        InteractionResult cachedPriorityZeroResult = sharedZeroPriority$onEntity.get();
+//        InteractionResult newResult = InteractionResult.PASS;
 //
-//        if (cachedPriorityZeroResult != null && cachedPriorityZeroResult != ActionResult.PASS) {
+//        if (cachedPriorityZeroResult != null && cachedPriorityZeroResult != InteractionResult.PASS) {
 //            newResult = cachedPriorityZeroResult;
 //        }
 //
-//        else if (original == ActionResult.PASS) {
+//        else if (original == InteractionResult.PASS) {
 //
 //            ItemStack stackInHand = this.getStackInHand(hand);
 //            Prioritized.CallInstance<ActiveInteractionPowerType> aipci = new Prioritized.CallInstance<>();
@@ -330,11 +330,11 @@
 //                }
 //
 //                List<ActiveInteractionPowerType> aips = aipci.getPowerTypes(i);
-//                ActionResult previousResult = ActionResult.PASS;
+//                InteractionResult previousResult = InteractionResult.PASS;
 //
 //                for (ActiveInteractionPowerType aip : aips) {
 //
-//                    ActionResult currentResult = ActionResult.PASS;
+//                    InteractionResult currentResult = InteractionResult.PASS;
 //                    if (aip instanceof ActionOnEntityUsePowerType aoeup) {
 //                        currentResult = aoeup.executeAction(entity, hand);
 //                    }
@@ -349,7 +349,7 @@
 //
 //                }
 //
-//                if (previousResult != ActionResult.PASS) {
+//                if (previousResult != InteractionResult.PASS) {
 //                    newResult = previousResult;
 //                    break;
 //                }

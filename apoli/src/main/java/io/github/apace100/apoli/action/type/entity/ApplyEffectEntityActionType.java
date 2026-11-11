@@ -9,7 +9,7 @@
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.world.entity.LivingEntity;
-//import net.minecraft.entity.effect.StatusEffectInstance;
+//import net.minecraft.entity.effect.MobEffectInstance;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.List;
@@ -28,9 +28,9 @@
 //            .set("effects", actionType.effects)
 //    );
 //
-//    private final List<StatusEffectInstance> effects;
+//    private final List<MobEffectInstance> effects;
 //
-//    public ApplyEffectEntityActionType(List<StatusEffectInstance> effects) {
+//    public ApplyEffectEntityActionType(List<MobEffectInstance> effects) {
 //        this.effects = effects;
 //    }
 //
@@ -38,7 +38,7 @@
 //    public void accept(EntityActionContext context) {
 //
 //        if (context.entity() instanceof LivingEntity livingEntity && !livingEntity.level().isClient()) {
-//            effects.forEach(livingEntity::addStatusEffect);
+//            effects.forEach(livingEntity::addMobEffect);
 //        }
 //
 //    }
