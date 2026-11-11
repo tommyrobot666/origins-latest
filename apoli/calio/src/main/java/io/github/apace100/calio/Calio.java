@@ -10,6 +10,7 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.TagKey;
@@ -35,7 +36,7 @@ public class Calio implements ModInitializer {
 	@Override
 	public void onInitialize() {
 
-//        Criteria.register(CodeTriggerCriterion.ID.toString(), CodeTriggerCriterion.INSTANCE);
+		Registry.register(BuiltInRegistries.TRIGGER_TYPES,CodeTriggerCriterion.ID.toString(), CodeTriggerCriterion.INSTANCE);
 		CalioResourceConditions.register();
 
 		PayloadTypeRegistry.clientboundPlay().register(SyncDataObjectRegistryS2CPacket.PACKET_ID, SyncDataObjectRegistryS2CPacket.STREAM_CODEC);

@@ -112,7 +112,7 @@ public class IdentifierAlias {
 
         String namespace = id.getNamespace();
         if (namespaceAliases.containsKey(namespace)) {
-            return Identifier.of(namespaceAliases.get(namespace), id.getPath());
+            return Identifier.fromNamespaceAndPath(namespaceAliases.get(namespace), id.getPath());
         }
 
         else if (this != GLOBAL) {
@@ -133,7 +133,7 @@ public class IdentifierAlias {
 
         String path = id.getPath();
         if (pathAliases.containsKey(path)) {
-            return Identifier.of(id.getNamespace(), pathAliases.get(path));
+            return Identifier.fromNamespaceAndPath(id.getNamespace(), pathAliases.get(path));
         }
 
         else if (this != GLOBAL) {
@@ -213,7 +213,7 @@ public class IdentifierAlias {
                 String aliasedNamespace = aliases.resolveNamespaceAlias(id, false).getNamespace();
                 String aliasedPath = aliases.resolvePathAlias(id, false).getPath();
 
-                return Identifier.of(aliasedNamespace, aliasedPath);
+                return Identifier.fromNamespaceAndPath(aliasedNamespace, aliasedPath);
 
             }
 

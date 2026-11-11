@@ -135,7 +135,7 @@
 //                try {
 //
 //                    String replaced = matcher.replaceAll(replacement);
-//                    ResourceKey<LootTable> replacedKey = ResourceKey.create(Registries.LOOT_TABLE, Identifier.of(replaced));
+//                    ResourceKey<LootTable> replacedKey = ResourceKey.create(Registries.LOOT_TABLE, Identifier.fromNamespaceAndPath(replaced));
 //
 //                    return Optional.of(replacedKey);
 //

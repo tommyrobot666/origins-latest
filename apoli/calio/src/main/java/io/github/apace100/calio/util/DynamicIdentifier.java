@@ -42,7 +42,7 @@ public class DynamicIdentifier extends Identifier {
             if (SerializableData.CURRENT_NAMESPACE != null) {
                 namespaceAndPath[0] = namespaceAndPath[0].replace("*", SerializableData.CURRENT_NAMESPACE);
             } else {
-                throw new InvalidIdentifierException("Identifiers may only contain '*' in its namespace in data loaders that support it.");
+                throw new RuntimeException("Identifiers may only contain '*' in its namespace in data loaders that support it.");
             }
         }
 
@@ -50,7 +50,7 @@ public class DynamicIdentifier extends Identifier {
             if (SerializableData.CURRENT_PATH != null) {
                 namespaceAndPath[1] = namespaceAndPath[1].replace("*", SerializableData.CURRENT_PATH);
             } else {
-                throw new InvalidIdentifierException("Identifiers may only contain '*' in its path in data loaders that support it.");
+                throw new RuntimeException("Identifiers may only contain '*' in its path in data loaders that support it.");
             }
         }
 
@@ -62,7 +62,7 @@ public class DynamicIdentifier extends Identifier {
 
         String[] namespaceAndPath = idString.split(String.valueOf(NAMESPACE_SEPARATOR));
         if (namespaceAndPath.length > 2) {
-            throw new InvalidIdentifierException("Identifier \"" + idString + "\" must only have one \":\" separating its namespace and path.");
+            throw new RuntimeException("Identifier \"" + idString + "\" must only have one \":\" separating its namespace and path.");
         }
 
         if (namespaceAndPath.length == 1) {
