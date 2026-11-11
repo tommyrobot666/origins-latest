@@ -6,17 +6,11 @@
 	"mixins": [
       "HolderLookupAdapterAccessor",
       "ReloadableServerResourcesMixin",
-		"IngredientAccessor",
-		"IngredientAccessor$EntryAccessor",
 		"HolderSetBackedAccessor",
-		"HolderSetNamedAccessor",
 		"RegistryOpsAccessor",
 		"ReloadableRegistriesMixin",
 		"ResourceConditionTypeMixin",
-		"TagEntryAccessor",
-		"TagManagerLoaderMixin",
-		"WeightedListAccessor",
-		"WeightedListEntryAccessor"
+		"TagEntryAccessor"
 	],
 	"client": [],
 	"injectors": {

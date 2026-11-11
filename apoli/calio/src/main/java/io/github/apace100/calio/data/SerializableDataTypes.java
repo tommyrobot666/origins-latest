@@ -7,7 +7,6 @@ import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.*;
 import com.mojang.serialization.codecs.PrimitiveCodec;
 import io.github.apace100.calio.codec.CalioPacketCodecs;
-import io.github.apace100.calio.mixin.IngredientAccessor;
 import io.github.apace100.calio.mixin.TagEntryAccessor;
 import io.github.apace100.calio.registry.DataObjectFactories;
 import io.github.apace100.calio.util.ArgumentWrapper;
@@ -451,7 +450,7 @@ public final class SerializableDataTypes {
                 }
 
                 else {
-					return INGREDIENT_ENTRIES_ARRAY.setRoot(dataType.isRoot()).codec().encode(((IngredientAccessor) input).getEntries(), ops, prefix);
+					return INGREDIENT_ENTRIES_ARRAY.setRoot(dataType.isRoot()).codec().encode(input.items(), ops, prefix);
                 }
 
 			}
