@@ -15,7 +15,7 @@ import io.github.apace100.calio.data.SerializableDataTypes;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.inventory.StackReference;
+import net.minecraft.world.entity.SlotAccess;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -109,7 +109,7 @@ public class ModifyFoodPowerType extends PowerType {
             .orElse(true);
     }
 
-    public void setConsumedItemStackReference(StackReference stackReference) {
+    public void setConsumedItemStackReference(SlotAccess stackReference) {
         replaceStack.ifPresent(stackReference::set);
         itemAction.ifPresent(action -> action.execute(getHolder().level(), stackReference));
     }

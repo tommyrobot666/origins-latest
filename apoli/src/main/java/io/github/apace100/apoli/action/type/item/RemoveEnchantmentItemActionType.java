@@ -11,11 +11,11 @@
 //import net.minecraft.component.DataComponentTypes;
 //import net.minecraft.component.type.ItemEnchantmentsComponent;
 //import net.minecraft.enchantment.Enchantment;
-//import net.minecraft.inventory.StackReference;
+//import net.minecraft.world.entity.SlotAccess;
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.registry.DynamicRegistryManager;
 //import net.minecraft.core.Registry;
-//import net.minecraft.registry.ResourceKey;
+//import net.minecraft.resources.ResourceKey;
 //import net.minecraft.core.registries.Registries;
 //import net.minecraft.registry.entry.Holder;
 //import net.minecraft.server.level.ServerLevel;
@@ -72,7 +72,7 @@
 //    public void accept(ItemActionContext context) {
 //
 //        ServerLevel world = context.world();
-//        StackReference stackReference = context.stackReference();
+//        SlotAccess stackReference = context.stackReference();
 //
 //        ItemStack stack = stackReference.get();
 //        DynamicRegistryManager dynamicRegistries = world.getRegistryManager();

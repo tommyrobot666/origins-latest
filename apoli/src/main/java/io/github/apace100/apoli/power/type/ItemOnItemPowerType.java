@@ -14,9 +14,9 @@
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.world.entity.player.Player;
-//import net.minecraft.inventory.StackReference;
+//import net.minecraft.world.entity.SlotAccess;
 //import net.minecraft.world.item.ItemStack;
-//import net.minecraft.screen.slot.Slot;
+//import net.minecraft.world.inventory.Slot;
 //import net.minecraft.util.ClickType;
 //import org.jetbrains.annotations.NotNull;
 //
@@ -116,7 +116,7 @@
 //            && onItemCondition.map(condition -> condition.test(getHolder().level(), onStack)).orElse(true);
 //    }
 //
-//    public void execute(StackReference usingStackReference, StackReference onStackReference, Slot slot) {
+//    public void execute(SlotAccess usingStackReference, SlotAccess onStackReference, Slot slot) {
 //
 //        LivingEntity holder = getHolder();
 //        ItemStack resultStackCopy = resultStack.isPresent()
@@ -125,7 +125,7 @@
 //                ? onStackReference.get().split(resultFromOnStack)
 //                : onStackReference.get();
 //
-//        StackReference resultStackReference = InventoryUtil.createStackReference(resultStackCopy);
+//        SlotAccess resultStackReference = InventoryUtil.createStackReference(resultStackCopy);
 //        resultItemAction.ifPresent(action -> action.execute(holder.level(), resultStackReference));
 //
 //        usingItemAction.ifPresent(action -> action.execute(holder.level(), usingStackReference));
@@ -147,7 +147,7 @@
 //
 //    }
 //
-//    public static boolean executeActions(Player user, PriorityPhase priorityPhase, StackClickPhase clickPhase, ClickType clickType, Slot slot, StackReference slotStackReference, StackReference cursorStackReference) {
+//    public static boolean executeActions(Player user, PriorityPhase priorityPhase, StackClickPhase clickPhase, ClickType clickType, Slot slot, SlotAccess slotStackReference, SlotAccess cursorStackReference) {
 //
 //        CallInstance<ItemOnItemPowerType> ioipci = new CallInstance<>();
 //        ioipci.add(user, ItemOnItemPowerType.class, p -> p.doesApply(cursorStackReference.get(), slotStackReference.get(), clickType, clickPhase, priorityPhase));

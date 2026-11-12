@@ -17,20 +17,20 @@
 //import net.minecraft.client.Minecraft;
 //import net.minecraft.client.KeyMapping;
 //import com.mojang.blaze3d.platform.InputConstants;
-//import net.minecraft.component.ComponentHolder;
+//import net.minecraft.component.DataComponentHolder;
 //import net.minecraft.component.ComponentMap;
 //import net.minecraft.component.ComponentType;
 //import net.minecraft.component.DataComponentTypes;
 //import net.minecraft.component.type.AttributeModifierSlot;
 //import net.minecraft.world.entity.player.Player;
-//import net.minecraft.item.Item;
+//import net.minecraft.world.item.Item;
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.item.tooltip.TooltipType;
 //import net.minecraft.screen.ScreenTexts;
 //import net.minecraft.text.MutableText;
 //import net.minecraft.network.chat.Component;
 //import net.minecraft.util.Formatting;
-//import net.minecraft.util.UseAnim;
+//import net.minecraft.world.item.ItemUseAnimation;
 //import org.apache.commons.lang3.mutable.MutableBoolean;
 //import org.jetbrains.annotations.Nullable;
 //import org.spongepowered.asm.mixin.Mixin;
@@ -46,7 +46,7 @@
 //
 //@Environment(EnvType.CLIENT)
 //@Mixin(ItemStack.class)
-//public abstract class ItemStackMixinClient implements ComponentHolder {
+//public abstract class ItemStackMixinClient implements DataComponentHolder {
 //
 //    @Shadow
 //    public abstract UseAnim getUseAction();

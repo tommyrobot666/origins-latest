@@ -1,6 +1,6 @@
-//package io.github.apace100.apoli.util;
-//
-//public enum StackClickPhase {
-//    CURSOR,
-//    SLOT
-//}
+package io.github.apace100.apoli.util;
+
+public enum StackClickPhase {
+    CURSOR,
+    SLOT
+}

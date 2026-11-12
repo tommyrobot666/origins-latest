@@ -18,7 +18,7 @@
 //import net.minecraft.loot.LootTable;
 //import net.minecraft.world.level.storage.loot.LootContext;
 //import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-//import net.minecraft.registry.ResourceKey;
+//import net.minecraft.resources.ResourceKey;
 //import net.minecraft.core.registries.Registries;
 //import net.minecraft.resources.Identifier;
 //import net.minecraft.util.InvalidIdentifierException;

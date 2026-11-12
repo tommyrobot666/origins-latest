@@ -18,7 +18,7 @@
 //import net.minecraft.world.entity.Entity;
 //import net.minecraft.inventory.Inventory;
 //import net.minecraft.inventory.SlotRange;
-//import net.minecraft.inventory.StackReference;
+//import net.minecraft.world.entity.SlotAccess;
 //import net.minecraft.world.item.ItemStack;
 //import org.jetbrains.annotations.NotNull;
 //
@@ -124,10 +124,10 @@
 //                continue;
 //            }
 //
-//            StackReference reference = InventoryUtil.getStackReference(source, slot);
+//            SlotAccess reference = InventoryUtil.getStackReference(source, slot);
 //            ItemStack stack = reference.get();
 //
-//            if (reference != StackReference.EMPTY && itemCondition.map(condition -> condition.test(entity.level(), stack)).orElse(false)) {
+//            if (reference != SlotAccess.EMPTY && itemCondition.map(condition -> condition.test(entity.level(), stack)).orElse(false)) {
 //                matches += processMode.applyAsInt(stack);
 //            }
 //

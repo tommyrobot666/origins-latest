@@ -10,7 +10,7 @@
 //import net.minecraft.entity.Dismounting;
 //import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.core.Registry;
-//import net.minecraft.registry.ResourceKey;
+//import net.minecraft.resources.ResourceKey;
 //import net.minecraft.core.registries.Registries;
 //import net.minecraft.registry.entry.Holder;
 //import net.minecraft.core.HolderSet;
@@ -19,7 +19,7 @@
 //import net.minecraft.server.level.ServerPlayer;
 //import net.minecraft.server.world.ChunkTicketType;
 //import net.minecraft.server.level.ServerLevel;
-//import net.minecraft.sound.SoundEvent;
+//import net.minecraft.sounds.SoundEvent;
 //import net.minecraft.network.chat.Component;
 //import net.minecraft.util.Formatting;
 //import net.minecraft.util.Pair;

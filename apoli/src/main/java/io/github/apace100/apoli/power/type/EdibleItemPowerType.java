@@ -16,11 +16,11 @@ import net.minecraft.component.DataComponentTypes;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.inventory.StackReference;
+import net.minecraft.world.entity.SlotAccess;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.sound.SoundEvent;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.util.UseAnim;
+import net.minecraft.world.item.ItemUseAnimation;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -111,17 +111,17 @@ public class EdibleItemPowerType extends PowerType implements Prioritized<Edible
         entityAction.ifPresent(action -> action.execute(getHolder()));
     }
 
-    public StackReference executeItemActions(StackReference consumedStackReference) {
+    public SlotAccess executeItemActions(SlotAccess consumedStackReference) {
 
         LivingEntity holder = getHolder();
         Level world = holder.level();
 
         consumedItemAction.ifPresent(action -> action.execute(world, consumedStackReference));
 
-        StackReference resultStackReference = this.resultStack
+        SlotAccess resultStackReference = this.resultStack
             .map(ItemStack::copy)
             .map(InventoryUtil::createStackReference)
-            .orElse(StackReference.EMPTY);
+            .orElse(SlotAccess.EMPTY);
 
         resultItemAction.ifPresent(action -> action.execute(world, resultStackReference));
         return resultStackReference;

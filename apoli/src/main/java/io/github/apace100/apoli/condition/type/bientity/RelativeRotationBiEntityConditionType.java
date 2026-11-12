@@ -13,7 +13,7 @@
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.world.entity.Entity;
 //import net.minecraft.world.entity.LivingEntity;
-//import net.minecraft.util.math.Direction;
+//import net.minecraft.core.Direction;
 //import net.minecraft.util.math.MathHelper;
 //import net.minecraft.world.phys.Vec3;
 //import org.jetbrains.annotations.NotNull;

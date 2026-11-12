@@ -9,13 +9,13 @@
 //import io.github.apace100.apoli.loot.context.ApoliLootContextTypes;
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
-//import net.minecraft.inventory.StackReference;
+//import net.minecraft.world.entity.SlotAccess;
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.world.level.storage.loot.LootContext;
 //import net.minecraft.loot.context.LootContextParameterSet;
 //import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 //import net.minecraft.loot.function.LootFunction;
-//import net.minecraft.registry.ResourceKey;
+//import net.minecraft.resources.ResourceKey;
 //import net.minecraft.core.registries.Registries;
 //import net.minecraft.server.level.ServerLevel;
 //import org.jetbrains.annotations.NotNull;
@@ -44,7 +44,7 @@
 //    public void accept(ItemActionContext context) {
 //
 //        ServerLevel world = context.world();
-//        StackReference stackReference = context.stackReference();
+//        SlotAccess stackReference = context.stackReference();
 //
 //        ItemStack oldStack = stackReference.get();
 //        LootFunction itemModifier = world.getServer().getReloadableRegistries()

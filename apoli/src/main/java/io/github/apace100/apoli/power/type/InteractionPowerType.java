@@ -9,10 +9,10 @@
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.world.entity.player.Player;
 //import net.minecraft.entity.player.Inventory;
-//import net.minecraft.inventory.StackReference;
+//import net.minecraft.world.entity.SlotAccess;
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.util.InteractionResult;
-//import net.minecraft.util.InteractionHand;
+//import net.minecraft.world.InteractionHand;
 //
 //import java.util.EnumSet;
 //import java.util.Optional;
@@ -64,14 +64,14 @@
 //
 //    protected void performActorItemStuff(Player actor, InteractionHand hand) {
 //
-//        StackReference heldStackReference = getHeldStackReference(actor, hand);
+//        SlotAccess heldStackReference = getHeldStackReference(actor, hand);
 //        heldItemAction.ifPresent(action -> action.execute(actor.level(), heldStackReference));
 //
 //        ItemStack resultStack = this.resultStack.isPresent()
 //            ? this.resultStack.get().copy()
 //            : heldStackReference.get().copy();
 //
-//        StackReference resultStackReference = InventoryUtil.createStackReference(resultStack);
+//        SlotAccess resultStackReference = InventoryUtil.createStackReference(resultStack);
 //        boolean modified = this.resultStack.isPresent() || resultItemAction.isPresent();
 //
 //        resultItemAction.ifPresent(action -> action.execute(actor.level(), resultStackReference));
@@ -90,21 +90,21 @@
 //
 //    }
 //
-//    protected static StackReference getHeldStackReference(Player player, InteractionHand hand) {
+//    protected static SlotAccess getHeldStackReference(Player player, InteractionHand hand) {
 //
 //        Inventory playerInventory = player.getInventory();
 //        int selectedSlot = playerInventory.selectedSlot;
 //
 //        if (hand == InteractionHand.MAIN_HAND && Inventory.isValidHotbarIndex(selectedSlot)) {
-//            return StackReference.of(playerInventory, selectedSlot);
+//            return SlotAccess.of(playerInventory, selectedSlot);
 //        }
 //
 //        else if (hand == InteractionHand.OFF_HAND) {
-//            return StackReference.of(playerInventory.offHand::getFirst, stack -> playerInventory.offHand.set(0, stack));
+//            return SlotAccess.of(playerInventory.offHand::getFirst, stack -> playerInventory.offHand.set(0, stack));
 //        }
 //
 //        else {
-//            return StackReference.EMPTY;
+//            return SlotAccess.EMPTY;
 //        }
 //
 //    }

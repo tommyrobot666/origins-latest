@@ -3,7 +3,7 @@
 //import io.github.apace100.apoli.access.EndRespawningEntity;
 //import io.github.apace100.apoli.power.type.ActionOnItemUsePowerType;
 //import io.github.apace100.apoli.util.PriorityPhase;
-//import net.minecraft.inventory.StackReference;
+//import net.minecraft.world.entity.SlotAccess;
 //import net.minecraft.network.packet.c2s.play.ClientStatusC2SPacket;
 //import net.minecraft.network.packet.c2s.play.PlayerActionC2SPacket;
 //import net.minecraft.network.packet.c2s.play.UpdateSelectedSlotC2SPacket;
@@ -34,14 +34,14 @@
 //    @Inject(method = "onUpdateSelectedSlot", at = @At(value = "INVOKE", target = "Lnet/minecraft/network/packet/c2s/play/UpdateSelectedSlotC2SPacket;getSelectedSlot()I", ordinal = 0))
 //    private void callActionOnUseStopBySwitching(UpdateSelectedSlotC2SPacket packet, CallbackInfo ci) {
 //        if(player.isUsingItem()) {
-//            ActionOnItemUsePowerType.executeActions(player, StackReference.of(player.getInventory(), this.player.getInventory().selectedSlot), player.getActiveItem(), ActionOnItemUsePowerType.TriggerType.STOP, PriorityPhase.ALL);
+//            ActionOnItemUsePowerType.executeActions(player, SlotAccess.of(player.getInventory(), this.player.getInventory().selectedSlot), player.getActiveItem(), ActionOnItemUsePowerType.TriggerType.STOP, PriorityPhase.ALL);
 //        }
 //    }
 //
 //    @Inject(method = "onPlayerAction", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/network/ServerPlayer;clearActiveItem()V"))
 //    private void callActionOnUseStopBySwappingHands(PlayerActionC2SPacket packet, CallbackInfo ci) {
 //        if(player.isUsingItem()) {
-//            ActionOnItemUsePowerType.executeActions(player, StackReference.of(player.getInventory(), this.player.getInventory().selectedSlot), player.getActiveItem(), ActionOnItemUsePowerType.TriggerType.STOP, PriorityPhase.ALL);
+//            ActionOnItemUsePowerType.executeActions(player, SlotAccess.of(player.getInventory(), this.player.getInventory().selectedSlot), player.getActiveItem(), ActionOnItemUsePowerType.TriggerType.STOP, PriorityPhase.ALL);
 //        }
 //    }
 //}

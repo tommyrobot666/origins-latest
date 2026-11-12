@@ -2,7 +2,7 @@
 //
 //import io.github.apace100.apoli.Apoli;
 //import net.minecraft.entity.damage.DamageType;
-//import net.minecraft.registry.ResourceKey;
+//import net.minecraft.resources.ResourceKey;
 //import net.minecraft.core.registries.Registries;
 //
 //public interface ApoliDamageTypes {

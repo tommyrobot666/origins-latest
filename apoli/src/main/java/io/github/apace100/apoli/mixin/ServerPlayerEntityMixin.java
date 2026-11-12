@@ -24,10 +24,10 @@
 //import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 //import net.minecraft.entity.Dismounting;
 //import net.minecraft.world.entity.player.Player;
-//import net.minecraft.inventory.StackReference;
+//import net.minecraft.world.entity.SlotAccess;
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.network.packet.s2c.play.GameStateChangeS2CPacket;
-//import net.minecraft.registry.ResourceKey;
+//import net.minecraft.resources.ResourceKey;
 //import net.minecraft.screen.ScreenHandlerListener;
 //import net.minecraft.server.MinecraftServer;
 //import net.minecraft.server.network.ServerPlayNetworkHandler;
@@ -219,7 +219,7 @@
 //            return original;
 //        }
 //
-//        StackReference newSelectedStackRef = InventoryUtil.createStackReference(original);
+//        SlotAccess newSelectedStackRef = InventoryUtil.createStackReference(original);
 //        ActionOnItemUsePowerType.executeActions(this, newSelectedStackRef, prevSelectedStack, ActionOnItemUsePowerType.TriggerType.STOP, PriorityPhase.ALL);
 //
 //        return newSelectedStackRef.get();

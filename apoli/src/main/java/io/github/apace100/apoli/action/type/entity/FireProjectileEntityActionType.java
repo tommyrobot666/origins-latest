@@ -17,7 +17,7 @@
 //import net.minecraft.server.level.ServerLevel;
 //import net.minecraft.util.math.MathHelper;
 //import net.minecraft.world.phys.Vec3;
-//import net.minecraft.util.math.random.Random;
+//import net.minecraft.util.RandomSource;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.Optional;

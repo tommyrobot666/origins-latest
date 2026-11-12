@@ -14,7 +14,7 @@
 //import net.minecraft.entity.EquipmentSlot;
 //import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.world.entity.player.Player;
-//import net.minecraft.inventory.StackReference;
+//import net.minecraft.world.entity.SlotAccess;
 //import net.minecraft.world.item.ItemStack;
 //import org.jetbrains.annotations.NotNull;
 //
@@ -58,7 +58,7 @@
 //            return;
 //        }
 //
-//        StackReference stackReference = InventoryUtil.createStackReference(stack.copy());
+//        SlotAccess stackReference = InventoryUtil.createStackReference(stack.copy());
 //        itemAction.ifPresent(action -> action.execute(entity.level(), stackReference));
 //
 //        ItemStack stackToGive = stackReference.get();

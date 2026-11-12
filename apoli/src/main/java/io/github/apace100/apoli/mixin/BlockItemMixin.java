@@ -14,10 +14,10 @@
 //import net.minecraft.item.ItemPlacementContext;
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.util.InteractionResult;
-//import net.minecraft.util.InteractionHand;
-//import net.minecraft.util.TypedActionResult;
+//import net.minecraft.world.InteractionHand;
+//import net.minecraft.util.InteractionResultHolder;
 //import net.minecraft.core.BlockPos;
-//import net.minecraft.util.math.Direction;
+//import net.minecraft.core.Direction;
 //import net.minecraft.world.level.Level;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.injection.At;
@@ -114,11 +114,11 @@
 //
 //    }
 //
-//    @WrapOperation(method = "useOnBlock", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/Item;use(Lnet/minecraft/world/Level;Lnet/minecraft/entity/player/Player;Lnet/minecraft/util/InteractionHand;)Lnet/minecraft/util/TypedActionResult;"))
-//    private TypedActionResult<ItemStack> apoli$preventItemUseIfFoodBlockItem(BlockItem instance, Level world, Player user, InteractionHand hand, Operation<TypedActionResult<ItemStack>> original) {
+//    @WrapOperation(method = "useOnBlock", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/Item;use(Lnet/minecraft/world/Level;Lnet/minecraft/entity/player/Player;Lnet/minecraft/util/InteractionHand;)Lnet/minecraft/util/InteractionResultHolder;"))
+//    private InteractionResultHolder<ItemStack> apoli$preventItemUseIfFoodBlockItem(BlockItem instance, Level world, Player user, InteractionHand hand, Operation<InteractionResultHolder<ItemStack>> original) {
 //        ItemStack handStack = user.getStackInHand(hand);
 //        return PowerHolderComponent.hasPowerType(user, PreventItemUsePowerType.class, p -> p.doesPrevent(handStack))
-//            ? TypedActionResult.fail(handStack)
+//            ? InteractionResultHolder.fail(handStack)
 //            : original.call(instance, world, user, hand);
 //    }
 //

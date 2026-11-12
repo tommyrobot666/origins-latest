@@ -31,7 +31,7 @@ public abstract class ItemMixin {
             player.awardStat(Stats.ITEM_USED.get((Item) (Object) this));
             stack.consume(1, player);
 
-            return InteractionResult.CONSUME;//TypedActionResult.consume(stack);
+            return InteractionResult.CONSUME;//InteractionResultHolder.consume(stack);
 
         }
 

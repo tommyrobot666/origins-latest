@@ -13,7 +13,7 @@
 //import net.minecraft.inventory.RecipeInputInventory;
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.screen.PlayerScreenHandler;
-//import net.minecraft.screen.slot.Slot;
+//import net.minecraft.world.inventory.Slot;
 //import org.spongepowered.asm.mixin.Final;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.Shadow;

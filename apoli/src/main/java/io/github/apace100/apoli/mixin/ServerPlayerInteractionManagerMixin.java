@@ -22,11 +22,11 @@
 //import net.minecraft.server.level.ServerPlayerInteractionManager;
 //import net.minecraft.server.level.ServerLevel;
 //import net.minecraft.util.InteractionResult;
-//import net.minecraft.util.InteractionHand;
+//import net.minecraft.world.InteractionHand;
 //import net.minecraft.util.ItemActionResult;
 //import net.minecraft.util.hit.BlockHitResult;
 //import net.minecraft.core.BlockPos;
-//import net.minecraft.util.math.Direction;
+//import net.minecraft.core.Direction;
 //import net.minecraft.world.level.Level;
 //import org.spongepowered.asm.mixin.Final;
 //import org.spongepowered.asm.mixin.Mixin;

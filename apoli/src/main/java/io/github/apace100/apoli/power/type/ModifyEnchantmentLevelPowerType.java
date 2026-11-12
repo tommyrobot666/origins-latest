@@ -28,10 +28,10 @@
 //import net.minecraft.world.entity.Entity;
 //import net.minecraft.entity.EquipmentSlot;
 //import net.minecraft.world.entity.LivingEntity;
-//import net.minecraft.inventory.StackReference;
+//import net.minecraft.world.entity.SlotAccess;
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.core.Registry;
-//import net.minecraft.registry.ResourceKey;
+//import net.minecraft.resources.ResourceKey;
 //import net.minecraft.core.registries.Registries;
 //import net.minecraft.registry.entry.Holder;
 //import net.minecraft.server.command.CommandSourceStack;
@@ -120,10 +120,10 @@
 //
 //        for (var equipmentSlot : EquipmentSlot.values()) {
 //
-//            StackReference stackReference = LivingEntityAccessor.callGetStackReference(holder, equipmentSlot);
+//            SlotAccess stackReference = LivingEntityAccessor.callGetStackReference(holder, equipmentSlot);
 //            ItemStack stack = stackReference.get();
 //
-//            if (stackReference != StackReference.EMPTY && stack.isEmpty() && !WorkableEmptyStack.isOf(stack)) {
+//            if (stackReference != SlotAccess.EMPTY && stack.isEmpty() && !WorkableEmptyStack.isOf(stack)) {
 //                stackReference.set(WorkableEmptyStack.getOrCreate(holder));
 //            }
 //

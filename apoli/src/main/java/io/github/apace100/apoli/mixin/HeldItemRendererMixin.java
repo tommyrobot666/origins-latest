@@ -5,7 +5,7 @@
 //import net.minecraft.client.network.AbstractClientPlayer;
 //import net.minecraft.client.render.item.HeldItemRenderer;
 //import net.minecraft.world.item.ItemStack;
-//import net.minecraft.util.InteractionHand;
+//import net.minecraft.world.InteractionHand;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.injection.At;
 //

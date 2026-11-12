@@ -11,7 +11,7 @@
 //import net.minecraft.item.BoneMealItem;
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.core.BlockPos;
-//import net.minecraft.util.math.Direction;
+//import net.minecraft.core.Direction;
 //import net.minecraft.world.level.Level;
 //import net.minecraft.world.WorldEvents;
 //import org.jetbrains.annotations.NotNull;

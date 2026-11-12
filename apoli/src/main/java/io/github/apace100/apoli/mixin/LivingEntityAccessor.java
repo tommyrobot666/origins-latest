@@ -3,7 +3,7 @@
 //import net.minecraft.entity.EquipmentSlot;
 //import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.entity.attribute.EntityAttributeModifier;
-//import net.minecraft.inventory.StackReference;
+//import net.minecraft.world.entity.SlotAccess;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.gen.Accessor;
 //import org.spongepowered.asm.mixin.gen.Invoker;
@@ -17,7 +17,7 @@
 //    }
 //
 //    @Invoker
-//    static StackReference callGetStackReference(LivingEntity entity, EquipmentSlot slot) {
+//    static SlotAccess callGetStackReference(LivingEntity entity, EquipmentSlot slot) {
 //        throw new AssertionError();
 //    }
 //

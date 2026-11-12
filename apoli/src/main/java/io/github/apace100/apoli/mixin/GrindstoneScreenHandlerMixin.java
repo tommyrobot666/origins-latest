@@ -8,13 +8,13 @@
 //import net.minecraft.world.entity.player.Player;
 //import net.minecraft.entity.player.Inventory;
 //import net.minecraft.inventory.Inventory;
-//import net.minecraft.inventory.StackReference;
+//import net.minecraft.world.entity.SlotAccess;
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.screen.GrindstoneScreenHandler;
 //import net.minecraft.screen.ScreenHandler;
 //import net.minecraft.screen.ScreenHandlerContext;
 //import net.minecraft.screen.ScreenHandlerType;
-//import net.minecraft.screen.slot.Slot;
+//import net.minecraft.world.inventory.Slot;
 //import net.minecraft.core.BlockPos;
 //import org.jetbrains.annotations.Nullable;
 //import org.spongepowered.asm.mixin.Final;
@@ -78,7 +78,7 @@
 //        ItemStack topStack = input.getStack(INPUT_1_ID);
 //        ItemStack bottomStack = input.getStack(INPUT_2_ID);
 //
-//        StackReference outputStackRef = InventoryUtil.createStackReference(result.getStack(0));
+//        SlotAccess outputStackRef = InventoryUtil.createStackReference(result.getStack(0));
 //        this.apoli$appliedPowers = PowerHolderComponent.getPowerTypes(apoli$cachedPlayer, ModifyGrindstonePowerType.class)
 //            .stream()
 //            .filter(mgp -> mgp.doesApply(topStack, bottomStack, outputStackRef.get(), apoli$getPos()))
@@ -94,7 +94,7 @@
 //    private ItemStack performAfterGrindstoneActionsQuickMove(ItemStack original, Player player, int slotIndex, @Local Slot slot) {
 //
 //        List<ModifyGrindstonePowerType> applyingPowers = this.apoli$getAppliedPowers();
-//        StackReference stackReference = InventoryUtil.createStackReference(original);
+//        SlotAccess stackReference = InventoryUtil.createStackReference(original);
 //
 //        if (slotIndex != OUTPUT_ID || applyingPowers == null || applyingPowers.isEmpty()) {
 //            return original;

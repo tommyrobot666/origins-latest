@@ -12,7 +12,7 @@
 //import net.minecraft.entity.ItemEntity;
 //import net.minecraft.world.entity.player.Player;
 //import net.minecraft.entity.player.Inventory;
-//import net.minecraft.inventory.StackReference;
+//import net.minecraft.world.entity.SlotAccess;
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.world.level.Level;
 //import org.jetbrains.annotations.Nullable;
@@ -49,7 +49,7 @@
 //
 //        else if (MiscUtil.hasSpaceInInventory(playerInventory, stack)) {
 //
-//            StackReference stackReference = InventoryUtil.createStackReference(stack);
+//            SlotAccess stackReference = InventoryUtil.createStackReference(stack);
 //            Entity thrower = MiscUtil.getEntityByUuid(this.throwerUuid, this.getServer());
 //
 //            Prioritized.CallInstance<ActionOnItemPickupPowerType> callInstance = ActionOnItemPickupPowerType.executeItemAction(thrower, stackReference, player);

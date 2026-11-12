@@ -11,7 +11,7 @@
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.world.entity.Entity;
-//import net.minecraft.inventory.StackReference;
+//import net.minecraft.world.entity.SlotAccess;
 //import net.minecraft.world.item.ItemStack;
 //import org.jetbrains.annotations.NotNull;
 //
@@ -81,7 +81,7 @@
 //        biEntityAction.ifPresent(action -> action.execute(thrower, getHolder()));
 //    }
 //
-//    public void executeItemAction(StackReference stackReference) {
+//    public void executeItemAction(SlotAccess stackReference) {
 //        itemAction.ifPresent(action -> action.execute(getHolder().level(), stackReference));
 //    }
 //
@@ -93,7 +93,7 @@
 //
 //    }
 //
-//    public static CallInstance<ActionOnItemPickupPowerType> executeItemAction(Entity throwerEntity, StackReference stackReference, Entity entity) {
+//    public static CallInstance<ActionOnItemPickupPowerType> executeItemAction(Entity throwerEntity, SlotAccess stackReference, Entity entity) {
 //
 //        if (PowerHolderComponent.getOptional(entity).isEmpty()) {
 //            return new CallInstance<>();

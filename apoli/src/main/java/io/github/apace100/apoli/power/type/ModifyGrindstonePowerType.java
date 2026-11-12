@@ -14,7 +14,7 @@
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataType;
 //import io.github.apace100.calio.data.SerializableDataTypes;
-//import net.minecraft.inventory.StackReference;
+//import net.minecraft.world.entity.SlotAccess;
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.screen.GrindstoneScreenHandler;
 //import net.minecraft.core.BlockPos;
@@ -127,7 +127,7 @@
 //        return experienceModifier;
 //    }
 //
-//    public void setOutput(ItemStack inputTop, ItemStack inputBottom, StackReference currentOutputStackReference) {
+//    public void setOutput(ItemStack inputTop, ItemStack inputBottom, SlotAccess currentOutputStackReference) {
 //
 //        switch (resultType) {
 //            case SPECIFIED -> resultStack
@@ -143,7 +143,7 @@
 //
 //    }
 //
-//    public void executeActions(@Nullable BlockPos pos, StackReference outputStackRef) {
+//    public void executeActions(@Nullable BlockPos pos, SlotAccess outputStackRef) {
 //        executeActions(pos);
 //        applyAfterGrindingItemAction(outputStackRef);
 //    }
@@ -153,7 +153,7 @@
 //        blockAction.filter(action -> pos != null).ifPresent(action -> action.execute(getHolder().level(), pos, Optional.empty()));
 //    }
 //
-//    public void applyAfterGrindingItemAction(StackReference outputStackReference) {
+//    public void applyAfterGrindingItemAction(SlotAccess outputStackReference) {
 //        itemActionAfterGrinding.ifPresent(action -> action.execute(getHolder().level(), outputStackReference));
 //    }
 //

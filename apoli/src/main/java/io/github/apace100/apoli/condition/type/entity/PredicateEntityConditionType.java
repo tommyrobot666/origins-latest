@@ -13,7 +13,7 @@
 //import net.minecraft.loot.context.LootContextParameterSet;
 //import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 //import net.minecraft.loot.context.LootContextTypes;
-//import net.minecraft.registry.ResourceKey;
+//import net.minecraft.resources.ResourceKey;
 //import net.minecraft.core.registries.Registries;
 //import net.minecraft.server.level.ServerLevel;
 //import org.jetbrains.annotations.NotNull;

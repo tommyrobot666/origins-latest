@@ -26,7 +26,7 @@
 //import net.minecraft.entity.effect.MobEffectInstance;
 //import net.minecraft.world.entity.player.Player;
 //import net.minecraft.fluid.FluidState;
-//import net.minecraft.inventory.StackReference;
+//import net.minecraft.world.entity.SlotAccess;
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.registry.entry.Holder;
 //import net.minecraft.registry.tag.DamageTypeTags;
@@ -407,7 +407,7 @@
 //            return original;
 //        }
 //
-//        StackReference newStackRef = InventoryUtil.createStackReference(original);
+//        SlotAccess newStackRef = InventoryUtil.createStackReference(original);
 //        List<ModifyFoodPowerType> modifyFoodPowers = PowerHolderComponent.getPowerTypes(this, ModifyFoodPowerType.class)
 //            .stream()
 //            .filter(mfp -> mfp.doesApply(original))
@@ -445,13 +445,13 @@
 //
 //            edibleItemPower.executeEntityAction();
 //
-//            StackReference newStackRef = InventoryUtil.createStackReference(original);
-//            StackReference resultStackRef = edibleItemPower.executeItemActions(newStackRef);
+//            SlotAccess newStackRef = InventoryUtil.createStackReference(original);
+//            SlotAccess resultStackRef = edibleItemPower.executeItemActions(newStackRef);
 //
 //            ItemStack newStack = newStackRef.get();
 //            ItemStack resultStack = resultStackRef.get();
 //
-//            if (resultStackRef == StackReference.EMPTY) {
+//            if (resultStackRef == SlotAccess.EMPTY) {
 //                result = newStack;
 //                break modifyCustomFood;
 //            }

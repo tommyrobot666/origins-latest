@@ -10,7 +10,7 @@
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.core.BlockPos;
-//import net.minecraft.util.math.Direction;
+//import net.minecraft.core.Direction;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.Optional;

@@ -11,7 +11,7 @@
 //import net.minecraft.component.type.AttributeModifierSlot;
 //import net.minecraft.entity.EquipmentSlot;
 //import net.minecraft.world.entity.LivingEntity;
-//import net.minecraft.inventory.StackReference;
+//import net.minecraft.world.entity.SlotAccess;
 //import org.jetbrains.annotations.NotNull;
 //
 //public class EquippedItemActionEntityActionType extends EntityActionType {
@@ -47,7 +47,7 @@
 //        for (EquipmentSlot slot : EquipmentSlot.values()) {
 //
 //            if (equipmentSlot.matches(slot)) {
-//                itemAction.execute(livingEntity.level(), StackReference.of(livingEntity, slot));
+//                itemAction.execute(livingEntity.level(), SlotAccess.of(livingEntity, slot));
 //            }
 //
 //        }

@@ -8,7 +8,7 @@
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.entity.damage.DamageType;
-//import net.minecraft.registry.ResourceKey;
+//import net.minecraft.resources.ResourceKey;
 //import org.jetbrains.annotations.NotNull;
 //
 //public class TypeDamageConditionType extends DamageConditionType {

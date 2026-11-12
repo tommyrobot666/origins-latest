@@ -24,7 +24,7 @@
 //import net.minecraft.scoreboard.AbstractTeam;
 //import net.minecraft.network.chat.Component;
 //import net.minecraft.core.BlockPos;
-//import net.minecraft.util.math.Direction;
+//import net.minecraft.core.Direction;
 //import net.minecraft.util.math.MathHelper;
 //import net.minecraft.world.phys.Vec3;
 //import net.minecraft.util.shape.VoxelShape;

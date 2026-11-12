@@ -11,7 +11,7 @@
 //import io.github.apace100.calio.data.SerializableDataType;
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.world.entity.Entity;
-//import net.minecraft.inventory.StackReference;
+//import net.minecraft.world.entity.SlotAccess;
 //import net.minecraft.world.item.ItemStack;
 //import org.jetbrains.annotations.NotNull;
 //
@@ -75,7 +75,7 @@
 //            && itemCondition.map(condition -> condition.test(getHolder().level(), stack)).orElse(true);
 //    }
 //
-//    public void executeActions(StackReference stackReference) {
+//    public void executeActions(SlotAccess stackReference) {
 //        itemAction.ifPresent(action -> action.execute(getHolder().level(), stackReference));
 //        entityAction.ifPresent(action -> action.execute(getHolder()));
 //    }
@@ -84,7 +84,7 @@
 //        INSTANT, START, STOP, FINISH, DURING
 //    }
 //
-//    public static void executeActions(Entity user, StackReference useStack, ItemStack checkStack, TriggerType triggerType, PriorityPhase phase) {
+//    public static void executeActions(Entity user, SlotAccess useStack, ItemStack checkStack, TriggerType triggerType, PriorityPhase phase) {
 //
 //        if (user.level().isClient()) {
 //            return;

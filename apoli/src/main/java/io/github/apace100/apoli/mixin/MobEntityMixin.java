@@ -10,7 +10,7 @@
 //import io.github.apace100.apoli.util.MiscUtil;
 //import net.minecraft.entity.*;
 //import net.minecraft.entity.mob.Mob;
-//import net.minecraft.inventory.StackReference;
+//import net.minecraft.world.entity.SlotAccess;
 //import net.minecraft.world.level.Level;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.injection.At;
@@ -30,7 +30,7 @@
 //    @WrapOperation(method = "tickMovement", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/mob/Mob;loot(Lnet/minecraft/entity/ItemEntity;)V"))
 //    private void apoli$actionOnItemPickup(Mob mobEntity, ItemEntity itemEntity, Operation<Void> original) {
 //
-//        StackReference stackReference = InventoryUtil.createStackReference(itemEntity.getStack());
+//        SlotAccess stackReference = InventoryUtil.createStackReference(itemEntity.getStack());
 //        Entity thrower = MiscUtil.getEntityByUuid(((ItemEntityAccessor) itemEntity).getThrowerUuid(), this.getServer());
 //
 //        Prioritized.CallInstance<ActionOnItemPickupPowerType> callInstance = ActionOnItemPickupPowerType.executeItemAction(thrower, stackReference, this);

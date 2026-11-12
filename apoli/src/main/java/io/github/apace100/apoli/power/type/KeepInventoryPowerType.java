@@ -14,7 +14,7 @@
 //import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.inventory.SlotRange;
 //import net.minecraft.inventory.SlotRanges;
-//import net.minecraft.inventory.StackReference;
+//import net.minecraft.world.entity.SlotAccess;
 //import net.minecraft.world.item.ItemStack;
 //import org.jetbrains.annotations.NotNull;
 //
@@ -87,7 +87,7 @@
 //
 //        for (int slot : slots) {
 //
-//            StackReference stackReference = holder.getStackReference(slot);
+//            SlotAccess stackReference = holder.getStackReference(slot);
 //            ItemStack stack = stackReference.get();
 //
 //            if (!stack.isEmpty() && itemCondition.map(condition -> condition.test(getHolder().level(), stack)).orElse(true)) {

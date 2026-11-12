@@ -27,7 +27,7 @@
 //import net.minecraft.util.hit.EntityHitResult;
 //import net.minecraft.util.hit.HitResult;
 //import net.minecraft.util.math.Box;
-//import net.minecraft.util.math.Direction;
+//import net.minecraft.core.Direction;
 //import net.minecraft.world.phys.Vec3;
 //import net.minecraft.world.RaycastContext;
 //import org.jetbrains.annotations.NotNull;

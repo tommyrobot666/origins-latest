@@ -18,7 +18,7 @@
 //import net.minecraft.world.entity.player.Player;
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.util.InteractionResult;
-//import net.minecraft.util.InteractionHand;
+//import net.minecraft.world.InteractionHand;
 //import net.minecraft.util.ItemActionResult;
 //import net.minecraft.util.hit.BlockHitResult;
 //import net.minecraft.world.level.Level;

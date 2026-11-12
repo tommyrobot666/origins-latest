@@ -17,6 +17,7 @@ import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.util.RandomSource;
 import org.jetbrains.annotations.UnknownNullability;
 
 import java.util.*;
@@ -331,7 +332,7 @@ public class OriginCommand {
 			.toList();
 
 		OriginComponent originComponent = ModComponents.ORIGIN.get(target);
-		Origin origin = origins.get(new Random().nextInt(origins.size()));
+		Origin origin = origins.get(RandomSource.create().nextInt(origins.size()));
 
 		boolean hadOriginBefore = originComponent.hadOriginBefore();
 		boolean hadAllOrigins = originComponent.hasAllOrigins();

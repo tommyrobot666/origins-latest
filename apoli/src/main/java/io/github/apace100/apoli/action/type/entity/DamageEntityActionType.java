@@ -15,7 +15,7 @@
 //import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.entity.damage.DamageSources;
 //import net.minecraft.entity.damage.DamageType;
-//import net.minecraft.registry.ResourceKey;
+//import net.minecraft.resources.ResourceKey;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.List;

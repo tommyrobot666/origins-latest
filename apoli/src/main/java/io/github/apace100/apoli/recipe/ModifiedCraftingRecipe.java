@@ -14,7 +14,7 @@
 //import io.github.apace100.apoli.util.InventoryUtil;
 //import net.minecraft.world.entity.player.Player;
 //import net.minecraft.inventory.CraftingInventory;
-//import net.minecraft.inventory.StackReference;
+//import net.minecraft.world.entity.SlotAccess;
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.network.RegistryFriendlyByteBuf;
 //import net.minecraft.network.codec.StreamCodec;
@@ -134,7 +134,7 @@
 //    public static Pair<ItemStack, Collection<ModifyCraftingPowerType>> getModifiedResult(Identifier id, CraftingRecipe craftingRecipe, HolderLookup.Provider registriesLookup, @Nullable Player player) {
 //
 //        ItemStack resultStack = craftingRecipe.getResult(registriesLookup).copy();
-//        StackReference newStackRef = InventoryUtil.createStackReference(resultStack);
+//        SlotAccess newStackRef = InventoryUtil.createStackReference(resultStack);
 //
 //        Prioritized.CallInstance<ModifyCraftingPowerType> mcptpci = new Prioritized.CallInstance<>();
 //        mcptpci.add(player, ModifyCraftingPowerType.class, mcpt -> mcpt.doesApply(id, resultStack));

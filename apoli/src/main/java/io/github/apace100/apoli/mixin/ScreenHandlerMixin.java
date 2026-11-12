@@ -10,11 +10,11 @@
 //import io.github.apace100.apoli.util.InventoryUtil;
 //import net.minecraft.world.entity.player.Player;
 //import net.minecraft.inventory.CraftingInventory;
-//import net.minecraft.inventory.StackReference;
+//import net.minecraft.world.entity.SlotAccess;
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.screen.ScreenHandler;
 //import net.minecraft.screen.slot.CraftingResultSlot;
-//import net.minecraft.screen.slot.Slot;
+//import net.minecraft.world.inventory.Slot;
 //import net.minecraft.screen.slot.SlotActionType;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.injection.At;
@@ -36,7 +36,7 @@
 //                return original;
 //            }
 //
-//            StackReference stackReference = InventoryUtil.createStackReference(original.get());
+//            SlotAccess stackReference = InventoryUtil.createStackReference(original.get());
 //            applyingPowers.forEach(mgpt -> mgpt.executeActions(pmg.apoli$getPos(), stackReference));
 //
 //            return Optional.of(stackReference.get());
@@ -64,7 +64,7 @@
 //            }
 //
 //            modifyCraftingPowers.forEach(mcpt -> mcpt.executeActions(ModifiedCraftingRecipe.getBlockFromInventory(craftingInventory)));
-//            StackReference stackReference = InventoryUtil.createStackReference(original.get());
+//            SlotAccess stackReference = InventoryUtil.createStackReference(original.get());
 //
 //            modifyCraftingPowers.forEach(mcpt -> mcpt.applyAfterCraftingItemAction(stackReference));
 //            return Optional.of(stackReference.get());

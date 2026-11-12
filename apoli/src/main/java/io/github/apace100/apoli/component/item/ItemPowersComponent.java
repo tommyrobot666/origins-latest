@@ -16,7 +16,7 @@
 //import net.minecraft.component.type.AttributeModifierSlot;
 //import net.minecraft.entity.EquipmentSlot;
 //import net.minecraft.world.entity.LivingEntity;
-//import net.minecraft.item.Item;
+//import net.minecraft.world.item.Item;
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.item.tooltip.TooltipType;
 //import net.minecraft.nbt.CompoundTag;

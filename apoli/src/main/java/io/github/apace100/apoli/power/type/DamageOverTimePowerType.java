@@ -16,7 +16,7 @@
 //import net.minecraft.nbt.CompoundTag;
 //import net.minecraft.nbt.Tag;
 //import net.minecraft.core.Registry;
-//import net.minecraft.registry.ResourceKey;
+//import net.minecraft.resources.ResourceKey;
 //import net.minecraft.core.registries.Registries;
 //import net.minecraft.registry.entry.Holder;
 //import net.minecraft.world.Difficulty;

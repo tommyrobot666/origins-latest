@@ -9,7 +9,7 @@
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataType;
 //import net.minecraft.world.entity.Entity;
-//import net.minecraft.registry.ResourceKey;
+//import net.minecraft.resources.ResourceKey;
 //import net.minecraft.core.registries.Registries;
 //import net.minecraft.registry.entry.Holder;
 //import net.minecraft.world.biome.Biome;

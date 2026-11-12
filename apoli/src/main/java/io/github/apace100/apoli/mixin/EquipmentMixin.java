@@ -7,7 +7,7 @@
 //import net.minecraft.entity.EquipmentSlot;
 //import net.minecraft.world.entity.player.Player;
 //import net.minecraft.item.Equipment;
-//import net.minecraft.item.Item;
+//import net.minecraft.world.item.Item;
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.world.level.Level;
 //import org.spongepowered.asm.mixin.Mixin;

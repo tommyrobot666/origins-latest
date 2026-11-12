@@ -25,17 +25,17 @@
 //import net.minecraft.entity.player.HungerManager;
 //import net.minecraft.world.entity.player.Player;
 //import net.minecraft.entity.player.Inventory;
-//import net.minecraft.inventory.StackReference;
+//import net.minecraft.world.entity.SlotAccess;
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.network.packet.s2c.play.HealthUpdateS2CPacket;
 //import net.minecraft.registry.tag.DamageTypeTags;
 //import net.minecraft.server.command.CommandOutput;
 //import net.minecraft.server.level.ServerPlayer;
 //import net.minecraft.util.InteractionResult;
-//import net.minecraft.util.InteractionHand;
+//import net.minecraft.world.InteractionHand;
 //import net.minecraft.util.Nameable;
 //import net.minecraft.core.BlockPos;
-//import net.minecraft.util.math.Direction;
+//import net.minecraft.core.Direction;
 //import net.minecraft.world.phys.Vec3;
 //import net.minecraft.world.level.Level;
 //import org.spongepowered.asm.mixin.Final;
@@ -76,7 +76,7 @@
 //    @ModifyVariable(method = "eatFood", at = @At("HEAD"), argsOnly = true)
 //    private ItemStack apoli$modifyEatenStack(ItemStack original) {
 //
-//        StackReference newStackRef = InventoryUtil.createStackReference(original);
+//        SlotAccess newStackRef = InventoryUtil.createStackReference(original);
 //        ModifiableFoodEntity modifiableFoodEntity = (ModifiableFoodEntity) this;
 //
 //        List<ModifyFoodPowerType> modifyFoodPowers = PowerHolderComponent.getPowerTypes(this, ModifyFoodPowerType.class)

@@ -12,7 +12,7 @@
 //import net.minecraft.particle.ParticleTypes;
 //import net.minecraft.server.level.ServerLevel;
 //import net.minecraft.sound.SoundCategory;
-//import net.minecraft.sound.SoundEvent;
+//import net.minecraft.sounds.SoundEvent;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.Optional;
