@@ -7,7 +7,7 @@
 //import io.github.apace100.apoli.data.TypedDataObjectFactory;
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
-//import net.minecraft.registry.entry.Holder;
+//import net.minecraft.core.Holder;
 //import net.minecraft.world.event.GameEvent;
 //import org.jetbrains.annotations.NotNull;
 //

@@ -5,9 +5,9 @@ import io.github.apace100.apoli.condition.type.BiomeConditionType;
 import io.github.apace100.apoli.condition.type.BiomeConditionTypes;
 import io.github.apace100.apoli.data.ApoliDataTypes;
 import io.github.apace100.calio.data.SerializableDataType;
-import net.minecraft.registry.entry.Holder;
+import net.minecraft.core.Holder;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.biome.Biome;
+import net.minecraft.world.level.biome.Biome;
 
 public final class BiomeCondition extends Condition<BiomeConditionContext, BiomeConditionType> {
 

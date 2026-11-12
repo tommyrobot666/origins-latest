@@ -15,7 +15,7 @@
 //import net.minecraft.enchantment.EnchantmentHelper;
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.predicate.item.ComponentSubPredicate;
-//import net.minecraft.registry.entry.Holder;
+//import net.minecraft.core.Holder;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.injection.At;
 //import org.spongepowered.asm.mixin.injection.ModifyVariable;

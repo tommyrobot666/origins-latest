@@ -2,7 +2,7 @@ package io.github.apace100.origins.util;
 
 import io.github.apace100.apoli.power.Power;
 import io.github.apace100.apoli.power.type.Active;
-import io.github.apace100.apoli.util.keybinding.KeyMappingReference;
+import io.github.apace100.apoli.util.keybinding.KeyBindingReference;
 import io.github.apace100.apoli.util.keybinding.KeyBindingUtil;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import net.minecraft.resources.Identifier;
@@ -35,7 +35,7 @@ public class PowerKeyManager {
 
         if (power.getType() instanceof Active activePowerType) {
 
-            KeyMappingReference keyBindingReference = activePowerType.getKey();
+            KeyBindingReference keyBindingReference = activePowerType.getKey();
             String keyId = keyBindingReference.id();
 
             if (KeyBindingUtil.ALIASES.hasAlias(keyId)) {

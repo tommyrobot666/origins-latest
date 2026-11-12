@@ -3,7 +3,7 @@
 //import net.minecraft.client.world.ClientWorld;
 //import net.minecraft.registry.DynamicRegistryManager;
 //import net.minecraft.resources.ResourceKey;
-//import net.minecraft.registry.entry.Holder;
+//import net.minecraft.core.Holder;
 //import net.minecraft.util.profiler.Profiler;
 //import net.minecraft.world.MutableWorldProperties;
 //import net.minecraft.world.level.Level;

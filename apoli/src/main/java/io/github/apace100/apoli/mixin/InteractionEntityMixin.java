@@ -9,8 +9,7 @@
 //import net.minecraft.advancement.criterion.PlayerHurtEntityCriterion;
 //import net.minecraft.world.entity.Entity;
 //import net.minecraft.world.entity.EntityType;
-//import net.minecraft.entity.damage.DamageSource;
-//import net.minecraft.entity.decoration.InteractionEntity;
+//import net.minecraft.world.damagesource.DamageSource;//import net.minecraft.entity.decoration.InteractionEntity;
 //import net.minecraft.server.level.ServerPlayer;
 //import net.minecraft.world.level.Level;
 //import org.spongepowered.asm.mixin.Mixin;

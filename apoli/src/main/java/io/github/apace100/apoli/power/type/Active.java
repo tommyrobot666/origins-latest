@@ -2,7 +2,7 @@ package io.github.apace100.apoli.power.type;
 
 import io.github.apace100.apoli.ApoliClient;
 import io.github.apace100.apoli.component.PowerHolderComponent;
-import io.github.apace100.apoli.util.keybinding.KeyMappingReference;
+import io.github.apace100.apoli.util.keybinding.KeyBindingReference;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.util.TriState;
@@ -16,7 +16,7 @@ import java.util.Map;
 
 public interface Active {
 
-    KeyMappingReference getKey();
+    KeyBindingReference getKey();
 
     default boolean canTrigger() {
         return true;
@@ -41,9 +41,9 @@ public interface Active {
                 continue;
             }
 
-            KeyMappingReference keyBindingReference = activePowerType.getKey();
+            KeyBindingReference keyBindingReference = activePowerType.getKey();
             TriState keyPressed = keyBindingReference.asKeyMapping()
-                .map(KeyMapping::isPressed)
+                .map(KeyMapping::isDown)
                 .map(TriState::of)
                 .orElse(TriState.DEFAULT);
 

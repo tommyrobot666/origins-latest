@@ -15,17 +15,16 @@
 //import net.minecraft.block.ShapeContext;
 //import net.minecraft.client.Minecraft;
 //import net.minecraft.world.entity.Entity;
-//import net.minecraft.world.entity.EntityPose;
+//import net.minecraft.world.entity.Pose;
 //import net.minecraft.world.entity.EntityType;
 //import net.minecraft.entity.MovementType;
-//import net.minecraft.entity.damage.DamageSource;
-//import net.minecraft.world.entity.player.Player;
+//import net.minecraft.world.damagesource.DamageSource;//import net.minecraft.world.entity.player.Player;
 //import net.minecraft.tags.TagKey;
 //import net.minecraft.scoreboard.AbstractTeam;
 //import net.minecraft.network.chat.Component;
 //import net.minecraft.core.BlockPos;
 //import net.minecraft.core.Direction;
-//import net.minecraft.util.math.MathHelper;
+//import net.minecraft.util.Mth;
 //import net.minecraft.world.phys.Vec3;
 //import net.minecraft.util.shape.VoxelShape;
 //import net.minecraft.world.BlockGetter;
@@ -61,9 +60,9 @@
 //
 //    @Shadow public abstract Component getName();
 //
-//    @Shadow public abstract void setPose(EntityPose pose);
+//    @Shadow public abstract void setPose(Pose pose);
 //
-//    @Shadow public abstract EntityPose getPose();
+//    @Shadow public abstract Pose getPose();
 //
 //    @Shadow public abstract boolean isSwimming();
 //
@@ -217,7 +216,7 @@
 //        }
 //
 //        return colorAmount > 0
-//            ? MathHelper.packRgb(red / colorAmount, green / colorAmount, blue / colorAmount)
+//            ? Mth.packRgb(red / colorAmount, green / colorAmount, blue / colorAmount)
 //            : original;
 //
 //    }
@@ -322,21 +321,21 @@
 //    }
 //
 //    @Unique
-//    private EntityPose apoli$previousEntityPose;
+//    private Pose apoli$previousEntityPose;
 //
 //    @Unique
-//    private EntityPose apoli$modifiedEntityPose;
+//    private Pose apoli$modifiedEntityPose;
 //
 //    @Unique
 //    private ArmPoseReference apoli$modifiedArmPose;
 //
 //    @Override
-//    public Optional<EntityPose> apoli$getModifiedEntityPose() {
+//    public Optional<Pose> apoli$getModifiedEntityPose() {
 //        return Optional.ofNullable(apoli$modifiedEntityPose);
 //    }
 //
 //    @Override
-//    public void apoli$setModifiedEntityPose(EntityPose entityPose) {
+//    public void apoli$setModifiedEntityPose(Pose entityPose) {
 //        this.apoli$modifiedEntityPose = entityPose;
 //    }
 //
@@ -362,7 +361,7 @@
 //                        this.apoli$previousEntityPose = this.getPose();
 //                    }
 //
-//                    Optional<EntityPose> replacementEntityPose = posePower.getEntityPose();
+//                    Optional<Pose> replacementEntityPose = posePower.getEntityPose();
 //
 //                    this.apoli$setModifiedEntityPose(replacementEntityPose.orElse(null));
 //                    this.apoli$setModifiedArmPose(posePower.getArmPose().orElse(null));

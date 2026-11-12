@@ -3,7 +3,7 @@ package io.github.apace100.apoli.condition.type;
 import io.github.apace100.apoli.Apoli;
 import io.github.apace100.apoli.condition.BiEntityCondition;
 import io.github.apace100.apoli.condition.ConditionConfiguration;
-import io.github.apace100.apoli.condition.type.bientity.*;
+//import io.github.apace100.apoli.condition.type.bientity.*;
 import io.github.apace100.apoli.condition.type.bientity.meta.*;
 import io.github.apace100.apoli.condition.type.meta.AllOfMetaConditionType;
 import io.github.apace100.apoli.condition.type.meta.AnyOfMetaConditionType;

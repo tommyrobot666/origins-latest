@@ -10,15 +10,14 @@
 //import net.minecraft.enchantment.EnchantmentHelper;
 //import net.minecraft.entity.EquipmentSlot;
 //import net.minecraft.world.entity.LivingEntity;
-//import net.minecraft.entity.damage.DamageSource;
-//import net.minecraft.entity.damage.DamageType;
+//import net.minecraft.world.damagesource.DamageSource;//import net.minecraft.entity.damage.DamageType;
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.nbt.CompoundTag;
 //import net.minecraft.nbt.Tag;
 //import net.minecraft.core.Registry;
 //import net.minecraft.resources.ResourceKey;
 //import net.minecraft.core.registries.Registries;
-//import net.minecraft.registry.entry.Holder;
+//import net.minecraft.core.Holder;
 //import net.minecraft.world.Difficulty;
 //import org.jetbrains.annotations.NotNull;
 //

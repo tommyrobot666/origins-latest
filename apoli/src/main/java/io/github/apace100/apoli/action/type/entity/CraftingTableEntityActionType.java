@@ -8,7 +8,7 @@
 //import net.minecraft.world.entity.player.Player;
 //import net.minecraft.screen.CraftingScreenHandler;
 //import net.minecraft.screen.ScreenHandlerContext;
-//import net.minecraft.screen.ScreenHandlerFactory;
+//import net.minecraft.world.inventory.MenuConstructor;
 //import net.minecraft.screen.SimpleNamedScreenHandlerFactory;
 //import net.minecraft.stat.Stats;
 //import net.minecraft.network.chat.Component;
@@ -21,7 +21,7 @@
 //
 //        if (context.entity() instanceof Player player) {
 //
-//            ScreenHandlerFactory handlerFactory = (syncId, playerInventory, _player) -> {
+//            MenuConstructor handlerFactory = (syncId, playerInventory, _player) -> {
 //
 //                CraftingScreenHandler craftingScreenHandler = new CraftingScreenHandler(syncId, playerInventory, ScreenHandlerContext.create(player.level(), player.getBlockPos()));
 //                ((ScreenHandlerUsabilityOverride) craftingScreenHandler).apoli$canUse(true);

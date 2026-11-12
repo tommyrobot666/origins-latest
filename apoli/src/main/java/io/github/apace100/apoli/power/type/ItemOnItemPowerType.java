@@ -17,7 +17,7 @@
 //import net.minecraft.world.entity.SlotAccess;
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.world.inventory.Slot;
-//import net.minecraft.util.ClickType;
+//import net.minecraft.world.inventory.ClickAction;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.EnumSet;
@@ -32,7 +32,7 @@
 //            .add("on_item_action", ItemAction.DATA_TYPE.optional(), Optional.empty())
 //            .add("using_item_condition", ItemCondition.DATA_TYPE.optional(), Optional.empty())
 //            .add("on_item_condition", ItemCondition.DATA_TYPE.optional(), Optional.empty())
-//            .add("click_types", ApoliDataTypes.CLICK_TYPE_SET, EnumSet.allOf(ClickType.class))
+//            .add("click_types", ApoliDataTypes.CLICK_TYPE_SET, EnumSet.allOf(ClickAction.class))
 //            .add("click_phases", ApoliDataTypes.STACK_CLICK_PHASE_SET, EnumSet.allOf(StackClickPhase.class))
 //            .add("result", SerializableDataTypes.ITEM_STACK.optional(), Optional.empty())
 //            .addFunctionedDefault("result_stack", SerializableDataTypes.ITEM_STACK.optional(), data -> data.get("result"))
@@ -74,7 +74,7 @@
 //    private final Optional<ItemCondition> usingItemCondition;
 //    private final Optional<ItemCondition> onItemCondition;
 //
-//    private final EnumSet<ClickType> clickTypes;
+//    private final EnumSet<ClickAction> clickTypes;
 //    private final EnumSet<StackClickPhase> clickPhases;
 //
 //    private final Optional<ItemStack> resultStack;
@@ -83,7 +83,7 @@
 //    private final int resultFromOnStack;
 //    private final int priority;
 //
-//    public ItemOnItemPowerType(Optional<EntityAction> entityAction, Optional<ItemAction> usingItemAction, Optional<ItemAction> onItemAction, Optional<ItemCondition> usingItemCondition, Optional<ItemCondition> onItemCondition, EnumSet<ClickType> clickTypes, EnumSet<StackClickPhase> clickPhases, Optional<ItemStack> resultStack, Optional<ItemAction> resultItemAction, int resultFromOnStack, int priority, Optional<EntityCondition> condition) {
+//    public ItemOnItemPowerType(Optional<EntityAction> entityAction, Optional<ItemAction> usingItemAction, Optional<ItemAction> onItemAction, Optional<ItemCondition> usingItemCondition, Optional<ItemCondition> onItemCondition, EnumSet<ClickAction> clickTypes, EnumSet<StackClickPhase> clickPhases, Optional<ItemStack> resultStack, Optional<ItemAction> resultItemAction, int resultFromOnStack, int priority, Optional<EntityCondition> condition) {
 //        super(condition);
 //        this.usingItemCondition = usingItemCondition;
 //        this.onItemCondition = onItemCondition;
@@ -108,7 +108,7 @@
 //        return priority;
 //    }
 //
-//    public boolean doesApply(ItemStack usingStack, ItemStack onStack, ClickType clickType, StackClickPhase clickPhase, PriorityPhase priorityPhase) {
+//    public boolean doesApply(ItemStack usingStack, ItemStack onStack, ClickAction clickType, StackClickPhase clickPhase, PriorityPhase priorityPhase) {
 //        return clickTypes.contains(clickType)
 //            && clickPhases.contains(clickPhase)
 //            && priorityPhase.test(this.getPriority())
@@ -147,7 +147,7 @@
 //
 //    }
 //
-//    public static boolean executeActions(Player user, PriorityPhase priorityPhase, StackClickPhase clickPhase, ClickType clickType, Slot slot, SlotAccess slotStackReference, SlotAccess cursorStackReference) {
+//    public static boolean executeActions(Player user, PriorityPhase priorityPhase, StackClickPhase clickPhase, ClickAction clickType, Slot slot, SlotAccess slotStackReference, SlotAccess cursorStackReference) {
 //
 //        CallInstance<ItemOnItemPowerType> ioipci = new CallInstance<>();
 //        ioipci.add(user, ItemOnItemPowerType.class, p -> p.doesApply(cursorStackReference.get(), slotStackReference.get(), clickType, clickPhase, priorityPhase));

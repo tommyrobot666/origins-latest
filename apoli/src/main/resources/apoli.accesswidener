@@ -29,3 +29,6 @@ accessible field net/minecraft/network/chat/contents/TranslatableContents decomp
 accessible field net/minecraft/network/chat/contents/TranslatableContents decomposedParts Ljava/util/List;
 accessible field net/minecraft/world/biome/Biome weather Lnet/minecraft/world/biome/Biome$Weather;
 accessible class net/minecraft/world/biome/Biome$Weather
+accessible field net/minecraft/world/level/storage/TagValueOutput output Lnet/minecraft/nbt/CompoundTag;
+accessible field net/minecraft/world/level/storage/TagValueInput input Lnet/minecraft/nbt/CompoundTag;
+accessible class net/minecraft/resources/RegistryOps$HolderLookupAdapter

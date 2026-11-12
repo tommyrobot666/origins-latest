@@ -3,8 +3,8 @@
 //import com.mojang.datafixers.util.Pair;
 //import io.github.apace100.apoli.util.AttributedEntityAttributeModifier;
 //import net.minecraft.world.entity.LivingEntity;
-//import net.minecraft.entity.attribute.EntityAttributeInstance;
-//import net.minecraft.entity.attribute.EntityAttributeModifier;
+//import net.minecraft.world.entity.ai.attributes.AttributeInstance
+//import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 //
 //import java.util.List;
 //import java.util.function.BiConsumer;
@@ -15,7 +15,7 @@
 //
 //	boolean shouldUpdateHealth();
 //
-//	default void processModifiers(LivingEntity entity, BiConsumer<EntityAttributeModifier, EntityAttributeInstance> processor) {
+//	default void processModifiers(LivingEntity entity, BiConsumer<AttributeModifier, AttributeInstance> processor) {
 //
 //		if (entity.level().isClientSide()()) {
 //			return;

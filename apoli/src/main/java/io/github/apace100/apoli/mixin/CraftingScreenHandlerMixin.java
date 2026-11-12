@@ -12,13 +12,13 @@
 //import net.minecraft.inventory.CraftingResultInventory;
 //import net.minecraft.inventory.RecipeInputInventory;
 //import net.minecraft.world.item.ItemStack;
-//import net.minecraft.recipe.CraftingRecipe;
+//import net.minecraft.world.item.crafting.CraftingRecipe;
 //import net.minecraft.recipe.RecipeHolder;
 //import net.minecraft.recipe.input.CraftingRecipeInput;
 //import net.minecraft.screen.AbstractRecipeScreenHandler;
 //import net.minecraft.screen.CraftingScreenHandler;
 //import net.minecraft.screen.ScreenHandler;
-//import net.minecraft.screen.ScreenHandlerType;
+//import net.minecraft.screen.MenuType;
 //import net.minecraft.world.inventory.Slot;
 //import net.minecraft.world.level.Level;
 //import org.jetbrains.annotations.Nullable;
@@ -54,7 +54,7 @@
 //        this.apoli$canUse = canUse;
 //    }
 //
-//    private CraftingScreenHandlerMixin(ScreenHandlerType screenHandlerType, int i) {
+//    private CraftingScreenHandlerMixin(MenuType screenHandlerType, int i) {
 //        super(screenHandlerType, i);
 //    }
 //

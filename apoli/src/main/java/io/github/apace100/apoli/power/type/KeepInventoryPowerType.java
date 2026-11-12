@@ -12,7 +12,7 @@
 //import it.unimi.dsi.fastutil.ints.IntCollection;
 //import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 //import net.minecraft.world.entity.LivingEntity;
-//import net.minecraft.inventory.SlotRange;
+//import net.minecraft.world.inventory.SlotRange;
 //import net.minecraft.inventory.SlotRanges;
 //import net.minecraft.world.entity.SlotAccess;
 //import net.minecraft.world.item.ItemStack;

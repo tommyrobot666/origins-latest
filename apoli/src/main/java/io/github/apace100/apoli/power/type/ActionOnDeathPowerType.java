@@ -8,8 +8,7 @@
 //import io.github.apace100.apoli.power.PowerConfiguration;
 //import io.github.apace100.calio.data.SerializableData;
 //import net.minecraft.world.entity.Entity;
-//import net.minecraft.entity.damage.DamageSource;
-//import org.jetbrains.annotations.NotNull;
+//import net.minecraft.world.damagesource.DamageSource;//import org.jetbrains.annotations.NotNull;
 //
 //import java.util.Optional;
 //

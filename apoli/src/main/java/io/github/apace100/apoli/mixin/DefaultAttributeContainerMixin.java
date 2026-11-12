@@ -5,7 +5,7 @@
 //import io.github.apace100.apoli.access.OwnableAttributeInstance;
 //import net.minecraft.world.entity.Entity;
 //import net.minecraft.entity.attribute.DefaultAttributeContainer;
-//import net.minecraft.entity.attribute.EntityAttributeInstance;
+//import net.minecraft.world.entity.ai.attributes.AttributeInstance
 //import org.jetbrains.annotations.Nullable;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.Unique;
@@ -28,8 +28,8 @@
 //        this.apoli$owner.set(owner);
 //    }
 //
-//    @ModifyExpressionValue(method = "getValue", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/attribute/DefaultAttributeContainer;require(Lnet/minecraft/registry/entry/Holder;)Lnet/minecraft/entity/attribute/EntityAttributeInstance;"))
-//    private EntityAttributeInstance apoli$setAttributeInstanceOwner(EntityAttributeInstance original) {
+//    @ModifyExpressionValue(method = "getValue", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/attribute/DefaultAttributeContainer;require(Lnet/minecraft/registry/entry/Holder;)Lnet/minecraft/entity/attribute/AttributeInstance;"))
+//    private AttributeInstance apoli$setAttributeInstanceOwner(AttributeInstance original) {
 //
 //        if (original instanceof OwnableAttributeInstance ownableAttributeInstance) {
 //            ownableAttributeInstance.apoli$setOwner(this.apoli$getOwner());

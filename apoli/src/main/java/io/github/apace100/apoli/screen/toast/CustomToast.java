@@ -13,7 +13,7 @@
 //import net.minecraft.text.OrderedText;
 //import net.minecraft.network.chat.Component;
 //import net.minecraft.resources.Identifier;
-//import net.minecraft.util.math.MathHelper;
+//import net.minecraft.util.Mth;
 //
 //import java.util.List;
 //
@@ -72,7 +72,7 @@
 //    public Visibility draw(int x, int y, DrawContext context, ToastManager manager, long startTime) {
 //
 //        TextRenderer textRenderer = manager.getClient().textRenderer;
-//        int alphaShift = MathHelper.floor(MathHelper.clamp((float) Math.abs(alphaShiftEnd - startTime) / 300, 0.0, 1.0) * 255.0f) << 24 | 67108864;
+//        int alphaShift = Mth.floor(Mth.clamp((float) Math.abs(alphaShiftEnd - startTime) / 300, 0.0, 1.0) * 255.0f) << 24 | 67108864;
 //
 //        int toastTextX = 30;
 //        int toastTextYCenter = this.getHeight() / 2;
@@ -123,7 +123,7 @@
 //
 //        }
 //
-//        this.height = MathHelper.lerp(MathHelper.clamp((float) startTime / (float) heightShift, 0F, 1F), titleHeight, descriptionHeight);
+//        this.height = Mth.lerp(Mth.clamp((float) startTime / (float) heightShift, 0F, 1F), titleHeight, descriptionHeight);
 //        return startTime >= duration * manager.getNotificationDisplayTimeMultiplier()
 //            ? Visibility.HIDE
 //            : Visibility.SHOW;

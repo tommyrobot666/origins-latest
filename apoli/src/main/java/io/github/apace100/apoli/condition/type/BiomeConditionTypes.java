@@ -3,14 +3,8 @@ package io.github.apace100.apoli.condition.type;
 import io.github.apace100.apoli.Apoli;
 import io.github.apace100.apoli.condition.BiomeCondition;
 import io.github.apace100.apoli.condition.ConditionConfiguration;
-import io.github.apace100.apoli.condition.type.biome.HighHumidityBiomeConditionType;
-import io.github.apace100.apoli.condition.type.biome.InTagBiomeConditionType;
-import io.github.apace100.apoli.condition.type.biome.PrecipitationBiomeConditionType;
-import io.github.apace100.apoli.condition.type.biome.TemperatureBiomeConditionType;
-import io.github.apace100.apoli.condition.type.biome.meta.AllOfBiomeConditionType;
-import io.github.apace100.apoli.condition.type.biome.meta.AnyOfBiomeConditionType;
-import io.github.apace100.apoli.condition.type.biome.meta.ConstantBiomeConditionType;
-import io.github.apace100.apoli.condition.type.biome.meta.RandomChanceBiomeConditionType;
+//import io.github.apace100.apoli.condition.type.biome.*;
+import io.github.apace100.apoli.condition.type.biome.meta.*;
 import io.github.apace100.apoli.condition.type.meta.AllOfMetaConditionType;
 import io.github.apace100.apoli.condition.type.meta.AnyOfMetaConditionType;
 import io.github.apace100.apoli.condition.type.meta.ConstantMetaConditionType;
@@ -30,10 +24,10 @@ public class BiomeConditionTypes {
     public static final ConditionConfiguration<ConstantBiomeConditionType> CONSTANT = register(ConstantMetaConditionType.createConfiguration(ConstantBiomeConditionType::new));
     public static final ConditionConfiguration<RandomChanceBiomeConditionType> RANDOM_CHANCE = register(RandomChanceMetaConditionType.createConfiguration(RandomChanceBiomeConditionType::new));
 
-    public static final ConditionConfiguration<HighHumidityBiomeConditionType> HIGH_HUMIDITY = register(ConditionConfiguration.simple(Apoli.identifier("high_humidity"), HighHumidityBiomeConditionType::new));
-    public static final ConditionConfiguration<InTagBiomeConditionType> IN_TAG = register(ConditionConfiguration.of(Apoli.identifier("in_tag"), InTagBiomeConditionType.DATA_FACTORY));
-    public static final ConditionConfiguration<PrecipitationBiomeConditionType> PRECIPITATION = register(ConditionConfiguration.of(Apoli.identifier("precipitation"), PrecipitationBiomeConditionType.DATA_FACTORY));
-    public static final ConditionConfiguration<TemperatureBiomeConditionType> TEMPERATURE = register(ConditionConfiguration.of(Apoli.identifier("temperature"), TemperatureBiomeConditionType.DATA_FACTORY));
+//    public static final ConditionConfiguration<HighHumidityBiomeConditionType> HIGH_HUMIDITY = register(ConditionConfiguration.simple(Apoli.identifier("high_humidity"), HighHumidityBiomeConditionType::new));
+//    public static final ConditionConfiguration<InTagBiomeConditionType> IN_TAG = register(ConditionConfiguration.of(Apoli.identifier("in_tag"), InTagBiomeConditionType.DATA_FACTORY));
+//    public static final ConditionConfiguration<PrecipitationBiomeConditionType> PRECIPITATION = register(ConditionConfiguration.of(Apoli.identifier("precipitation"), PrecipitationBiomeConditionType.DATA_FACTORY));
+//    public static final ConditionConfiguration<TemperatureBiomeConditionType> TEMPERATURE = register(ConditionConfiguration.of(Apoli.identifier("temperature"), TemperatureBiomeConditionType.DATA_FACTORY));
 
     public static void register() {
         ALIASES.addPathAlias("and", ALL_OF.id().getPath());

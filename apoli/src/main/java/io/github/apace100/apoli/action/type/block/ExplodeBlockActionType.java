@@ -12,7 +12,7 @@
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.server.level.ServerLevel;
 //import net.minecraft.core.BlockPos;
-//import net.minecraft.world.explosion.Explosion;
+//import net.minecraft.world.level.Explosion;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.function.Predicate;

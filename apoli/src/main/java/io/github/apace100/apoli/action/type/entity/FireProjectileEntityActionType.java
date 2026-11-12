@@ -15,7 +15,7 @@
 //import net.minecraft.entity.projectile.ProjectileEntity;
 //import net.minecraft.nbt.CompoundTag;
 //import net.minecraft.server.level.ServerLevel;
-//import net.minecraft.util.math.MathHelper;
+//import net.minecraft.util.Mth;
 //import net.minecraft.world.phys.Vec3;
 //import net.minecraft.util.RandomSource;
 //import org.jetbrains.annotations.NotNull;
@@ -114,9 +114,9 @@
 //                float j = 0.017453292F;
 //                double k = 0.007499999832361937D;
 //
-//                float l = -MathHelper.sin(yaw * j) * MathHelper.cos(pitch * j);
-//                float m = -MathHelper.sin(pitch * j);
-//                float n =  MathHelper.cos(yaw * j) * MathHelper.cos(pitch * j);
+//                float l = -Mth.sin(yaw * j) * Mth.cos(pitch * j);
+//                float m = -Mth.sin(pitch * j);
+//                float n =  Mth.cos(yaw * j) * Mth.cos(pitch * j);
 //
 //                Vec3 velocityToApply = new Vec3(l, m, n)
 //                    .normalize()

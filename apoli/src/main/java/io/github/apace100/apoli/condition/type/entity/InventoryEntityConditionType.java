@@ -16,8 +16,8 @@
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import it.unimi.dsi.fastutil.ints.IntSet;
 //import net.minecraft.world.entity.Entity;
-//import net.minecraft.inventory.Inventory;
-//import net.minecraft.inventory.SlotRange;
+//import net.minecraft.world.entity.player.Inventory;
+//import net.minecraft.world.inventory.SlotRange;
 //import net.minecraft.world.entity.SlotAccess;
 //import net.minecraft.world.item.ItemStack;
 //import org.jetbrains.annotations.NotNull;

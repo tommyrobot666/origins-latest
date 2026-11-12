@@ -25,7 +25,7 @@ import net.minecraft.client.texture.Sprite;
 import net.minecraft.client.texture.SpriteAtlasHolder;
 import net.minecraft.client.texture.TextureManager;
 import net.minecraft.resources.Identifier;
-import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.Mth;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Optional;
@@ -176,7 +176,7 @@ public class OverlayPowerType extends PowerType {
             case NAUSEA -> {
 
                 RenderSystem.blendFuncSeparate(GlStateManager.SrcFactor.ONE, GlStateManager.DstFactor.ONE, GlStateManager.SrcFactor.ONE, GlStateManager.DstFactor.ONE);
-                float stretch = MathHelper.lerp(strength, 2.0F, 1.0F);
+                float stretch = Mth.lerp(strength, 2.0F, 1.0F);
 
                 red = this.red * strength;
                 green = this.green * strength;

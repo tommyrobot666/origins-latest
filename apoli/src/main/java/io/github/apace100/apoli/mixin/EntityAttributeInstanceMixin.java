@@ -7,10 +7,10 @@
 //import io.github.apace100.apoli.util.modifier.Modifier;
 //import io.github.apace100.apoli.util.modifier.ModifierUtil;
 //import net.minecraft.world.entity.Entity;
-//import net.minecraft.entity.attribute.Attribute;
-//import net.minecraft.entity.attribute.EntityAttributeInstance;
-//import net.minecraft.entity.attribute.EntityAttributeModifier;
-//import net.minecraft.registry.entry.Holder;
+//import net.minecraft.world.entity.ai.attributes.Attribute;
+//import net.minecraft.world.entity.ai.attributes.AttributeInstance
+//import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+//import net.minecraft.core.Holder;
 //import org.jetbrains.annotations.Nullable;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.Shadow;
@@ -22,11 +22,11 @@
 //import java.util.Set;
 //import java.util.stream.Stream;
 //
-//@Mixin(EntityAttributeInstance.class)
+//@Mixin(AttributeInstance.class)
 //public abstract class EntityAttributeInstanceMixin implements OwnableAttributeInstance {
 //
 //    @Shadow
-//    public abstract Set<EntityAttributeModifier> getModifiers();
+//    public abstract Set<AttributeModifier> getModifiers();
 //
 //    @Shadow
 //    public abstract double getBaseValue();
@@ -51,8 +51,8 @@
 //    }
 //
 //    /**
-//     *  TODO: Optimize this impl. by using a modifier cache, injecting into {@link EntityAttributeInstance#computeValue()}, and calling
-//     *        {@link EntityAttributeInstance#onUpdate()} if the modifier cache is no longer up-to-date -eggohito
+//     *  TODO: Optimize this impl. by using a modifier cache, injecting into {@link AttributeInstance#computeValue()}, and calling
+//     *        {@link AttributeInstance#onUpdate()} if the modifier cache is no longer up-to-date -eggohito
 //     */
 //    @SuppressWarnings("JavadocReference")
 //    @ModifyReturnValue(method = "getValue", at = @At("RETURN"))

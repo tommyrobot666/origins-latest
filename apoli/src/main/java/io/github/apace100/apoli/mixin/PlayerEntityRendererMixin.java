@@ -26,7 +26,7 @@
 //import net.minecraft.client.render.entity.model.BipedEntityModel;
 //import net.minecraft.client.render.entity.model.PlayerModel;
 //import net.minecraft.client.util.math.MatrixStack;
-//import net.minecraft.world.entity.EntityPose;
+//import net.minecraft.world.entity.Pose;
 //import net.minecraft.resources.Identifier;
 //import net.minecraft.util.math.ColorHelper;
 //import org.spongepowered.asm.mixin.Mixin;
@@ -79,7 +79,7 @@
 //
 //    @ModifyExpressionValue(method = "setupTransforms(Lnet/minecraft/client/network/AbstractClientPlayer;Lnet/minecraft/client/util/math/MatrixStack;FFFF)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/network/AbstractClientPlayer;isUsingRiptide()Z"))
 //    private boolean apoli$accountForForcedRiptide(boolean original, AbstractClientPlayer player) {
-//        return original || PosePowerType.hasEntityPose(player, EntityPose.SPIN_ATTACK);
+//        return original || PosePowerType.hasEntityPose(player, Pose.SPIN_ATTACK);
 //    }
 //
 //    @ModifyExpressionValue(method = "setupTransforms(Lnet/minecraft/client/network/AbstractClientPlayer;Lnet/minecraft/client/util/math/MatrixStack;FFFF)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/network/AbstractClientPlayer;getFallFlyingTicks()I"))

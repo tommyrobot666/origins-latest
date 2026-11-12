@@ -5,10 +5,10 @@
 //import io.github.apace100.apoli.command.argument.PowerArgumentType;
 //import io.github.apace100.apoli.command.argument.PowerHolderArgumentType;
 //import io.github.apace100.apoli.command.argument.PowerOperationArgumentType;
-//import net.minecraft.command.argument.ArgumentTypes;
-//import net.minecraft.command.argument.EntityArgumentType;
-//import net.minecraft.command.argument.serialize.ArgumentSerializer;
-//import net.minecraft.command.argument.serialize.ConstantArgumentSerializer;
+//import net.minecraft.commands.arguments.ArgumentTypes;
+//import net.minecraft.commands.arguments.EntityArgument;
+//import net.minecraft.commands.arguments.serialize.ArgumentSerializer;
+//import net.minecraft.commands.arguments.serialize.ConstantArgumentSerializer;
 //import net.minecraft.core.Registry;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.Shadow;
@@ -26,6 +26,6 @@
 //    private static void registerApoliArgumentTypes(Registry<ArgumentSerializer<?, ?>> registry, CallbackInfoReturnable<ArgumentSerializer<?, ?>> cir) {
 //        register(registry, Apoli.MODID + ":power", PowerArgumentType.class, new PowerArgumentType.Serializer());
 //        register(registry, Apoli.MODID + ":power_operation", PowerOperationArgumentType.class, ConstantArgumentSerializer.of(PowerOperationArgumentType::operation));
-//        register(registry , Apoli.MODID + ":power_holder", PowerHolderArgumentType.class, new EntityArgumentType.Serializer());
+//        register(registry , Apoli.MODID + ":power_holder", PowerHolderArgumentType.class, new EntityArgument.Serializer());
 //    }
 //}

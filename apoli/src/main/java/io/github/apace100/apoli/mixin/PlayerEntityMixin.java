@@ -21,8 +21,7 @@
 //import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 //import net.minecraft.world.food.FoodProperties;
 //import net.minecraft.entity.*;
-//import net.minecraft.entity.damage.DamageSource;
-//import net.minecraft.entity.player.HungerManager;
+//import net.minecraft.world.damagesource.DamageSource;//import net.minecraft.entity.player.HungerManager;
 //import net.minecraft.world.entity.player.Player;
 //import net.minecraft.entity.player.Inventory;
 //import net.minecraft.world.entity.SlotAccess;

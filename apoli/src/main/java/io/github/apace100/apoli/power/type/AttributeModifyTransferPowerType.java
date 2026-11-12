@@ -12,11 +12,11 @@ import io.github.apace100.calio.data.SerializableData;
 import io.github.apace100.calio.data.SerializableDataTypes;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.entity.attribute.AttributeContainer;
-import net.minecraft.entity.attribute.Attribute;
-import net.minecraft.entity.attribute.EntityAttributeInstance;
-import net.minecraft.entity.attribute.EntityAttributeModifier;
-import net.minecraft.registry.entry.Holder;
+import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.ai.attributes.AttributeInstance;
+import net.minecraft.world.entity.ai.attributes.AttributeMap;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.core.Holder;
 import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.NotNull;
 
@@ -73,15 +73,15 @@ public class AttributeModifyTransferPowerType extends PowerType {
 
         for (var transferPowerType : PowerHolderComponent.getPowerTypes(livingEntity, AttributeModifyTransferPowerType.class)) {
 
-            AttributeContainer attributeContainer = livingEntity.getAttributes();
-            EntityAttributeInstance attributeInstance = attributeContainer.getCustomInstance(transferPowerType.attribute);
+            AttributeMap attributeContainer = livingEntity.getAttributes();
+            AttributeInstance attributeInstance = attributeContainer.getInstance(transferPowerType.attribute);
 
             if (attributeInstance == null || !transferPowerType.doesApply(powerClass)) {
                 continue;
             }
 
             for (var attributeModifier : attributeInstance.getModifiers()) {
-                var modifiedAttributeModifier = new EntityAttributeModifier(attributeModifier.id(), attributeModifier.value() * transferPowerType.valueMultiplier, attributeModifier.operation());
+                var modifiedAttributeModifier = new AttributeModifier(attributeModifier.id(), attributeModifier.amount() * transferPowerType.valueMultiplier, attributeModifier.operation());
                 modifiers.add(ModifierUtil.fromAttributeModifier(modifiedAttributeModifier));
             }
 

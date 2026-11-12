@@ -17,7 +17,7 @@
 //import net.minecraft.server.level.ServerLevel;
 //import net.minecraft.core.BlockPos;
 //import net.minecraft.util.math.ChunkPos;
-//import net.minecraft.util.math.MathHelper;
+//import net.minecraft.util.Mth;
 //import net.minecraft.world.phys.Vec3;
 //import net.minecraft.util.RandomSource;
 //import net.minecraft.world.Heightmap;
@@ -111,7 +111,7 @@
 //        for (int i = 0; i < attempts; i++) {
 //
 //            x = entity.getX() + (random.nextDouble() - 0.5) * areaWidth;
-//            y = MathHelper.clamp(entity.getY() + (random.nextInt(Math.max((int) areaHeight, 1)) - (areaHeight / 2)), serverWorld.getBottomY(), serverWorld.getBottomY() + (serverWorld.getLogicalHeight() - 1));
+//            y = Mth.clamp(entity.getY() + (random.nextInt(Math.max((int) areaHeight, 1)) - (areaHeight / 2)), serverWorld.getBottomY(), serverWorld.getBottomY() + (serverWorld.getLogicalHeight() - 1));
 //            z = entity.getZ() + (random.nextDouble() - 0.5) * areaWidth;
 //
 //            if (this.attemptToTeleport(entity, serverWorld, x, y, z)) {
@@ -168,9 +168,9 @@
 //            return false;
 //        }
 //
-//        destX = landingOffset.getX() == 0 ? destX : MathHelper.floor(destX) + landingOffset.getX();
+//        destX = landingOffset.getX() == 0 ? destX : Mth.floor(destX) + landingOffset.getX();
 //        destY = destBlockPos.getY() + landingOffset.getY();
-//        destZ = landingOffset.getZ() == 0 ? destZ : MathHelper.floor(destZ) + landingOffset.getZ();
+//        destZ = landingOffset.getZ() == 0 ? destZ : Mth.floor(destZ) + landingOffset.getZ();
 //
 //        destBlockPos.set(destX, destY, destZ);
 //

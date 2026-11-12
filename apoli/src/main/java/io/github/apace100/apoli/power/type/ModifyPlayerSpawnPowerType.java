@@ -12,7 +12,7 @@
 //import net.minecraft.core.Registry;
 //import net.minecraft.resources.ResourceKey;
 //import net.minecraft.core.registries.Registries;
-//import net.minecraft.registry.entry.Holder;
+//import net.minecraft.core.Holder;
 //import net.minecraft.core.HolderSet;
 //import net.minecraft.tags.TagKey;
 //import net.minecraft.server.MinecraftServer;
@@ -29,7 +29,7 @@
 //import net.minecraft.util.math.ChunkSectionPos;
 //import net.minecraft.world.phys.Vec3;
 //import net.minecraft.world.level.Level;
-//import net.minecraft.world.biome.Biome;
+//import net.minecraft.world.level.biome.Biome;
 //import net.minecraft.world.gen.structure.Structure;
 //import org.apache.commons.lang3.function.TriFunction;
 //import org.jetbrains.annotations.NotNull;

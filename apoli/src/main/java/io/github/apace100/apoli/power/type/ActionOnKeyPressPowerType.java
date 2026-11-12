@@ -6,7 +6,7 @@
 //import io.github.apace100.apoli.data.TypedDataObjectFactory;
 //import io.github.apace100.apoli.power.PowerConfiguration;
 //import io.github.apace100.apoli.util.HudRender;
-//import io.github.apace100.apoli.util.keybinding.KeyMappingReference;
+//import io.github.apace100.apoli.util.keybinding.KeyBindingReference;
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import org.jetbrains.annotations.NotNull;
@@ -20,7 +20,7 @@
 //			.add("entity_action", EntityAction.DATA_TYPE)
 //			.add("hud_render", HudRender.DATA_TYPE, HudRender.DONT_RENDER)
 //			.add("cooldown", SerializableDataTypes.INT, 1)
-//			.add("key", ApoliDataTypes.BACKWARDS_COMPATIBLE_KEY, KeyMappingReference.NONE),
+//			.add("key", ApoliDataTypes.BACKWARDS_COMPATIBLE_KEY, KeyBindingReference.NONE),
 //		(data, condition) -> new ActionOnKeyPressPowerType(
 //			data.get("entity_action"),
 //			data.get("hud_render"),
@@ -37,7 +37,7 @@
 //
 //	private final EntityAction entityAction;
 //
-//	public ActionOnKeyPressPowerType(EntityAction entityAction, HudRender hudRender, int cooldownDuration, KeyMappingReference key, Optional<EntityCondition> condition) {
+//	public ActionOnKeyPressPowerType(EntityAction entityAction, HudRender hudRender, int cooldownDuration, KeyBindingReference key, Optional<EntityCondition> condition) {
 //		super(hudRender, cooldownDuration, key, condition);
 //		this.entityAction = entityAction;
 //	}

@@ -22,7 +22,7 @@
 //import net.minecraft.client.render.entity.model.EntityModel;
 //import net.minecraft.client.util.math.MatrixStack;
 //import net.minecraft.world.entity.Entity;
-//import net.minecraft.world.entity.EntityPose;
+//import net.minecraft.world.entity.Pose;
 //import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.util.math.ColorHelper;
 //import org.spongepowered.asm.mixin.Mixin;
@@ -96,7 +96,7 @@
 //
 //    @ModifyExpressionValue(method = "setupTransforms", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;isUsingRiptide()Z"))
 //    private boolean apoli$forceRiptidePose(boolean original, LivingEntity entity) {
-//        return original || PosePowerType.hasEntityPose(entity, EntityPose.SPIN_ATTACK);
+//        return original || PosePowerType.hasEntityPose(entity, Pose.SPIN_ATTACK);
 //    }
 //
 //    @ModifyExpressionValue(method = "setupTransforms", at = @At(value = "FIELD", target = "Lnet/minecraft/entity/LivingEntity;deathTime:I", ordinal = 0))

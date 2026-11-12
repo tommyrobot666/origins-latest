@@ -2,7 +2,7 @@
 //
 //import net.minecraft.entity.EquipmentSlot;
 //import net.minecraft.world.entity.LivingEntity;
-//import net.minecraft.entity.attribute.EntityAttributeModifier;
+//import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 //import net.minecraft.world.entity.SlotAccess;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.gen.Accessor;
@@ -12,7 +12,7 @@
 //public interface LivingEntityAccessor {
 //
 //    @Accessor("SPRINTING_SPEED_BOOST")
-//    static EntityAttributeModifier apoli$getSprintingSpeedBoost() {
+//    static AttributeModifier apoli$getSprintingSpeedBoost() {
 //        throw new RuntimeException();
 //    }
 //

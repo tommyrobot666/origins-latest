@@ -14,7 +14,7 @@
 //import net.minecraft.world.entity.Entity;
 //import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.core.Direction;
-//import net.minecraft.util.math.MathHelper;
+//import net.minecraft.util.Mth;
 //import net.minecraft.world.phys.Vec3;
 //import org.jetbrains.annotations.NotNull;
 //
@@ -106,10 +106,10 @@
 //        float f = livingEntity.getPitch() * ((float) Math.PI / 180);
 //        float g = -livingEntity.getYaw() * ((float) Math.PI / 180);
 //
-//        float h = MathHelper.cos(g);
-//        float i = MathHelper.sin(g);
-//        float j = MathHelper.cos(f);
-//        float k = MathHelper.sin(f);
+//        float h = Mth.cos(g);
+//        float i = Mth.sin(g);
+//        float j = Mth.cos(f);
+//        float k = Mth.sin(f);
 //
 //        return new Vec3(i * j, -k, h * j);
 //

@@ -3,7 +3,7 @@
 //import com.llamalad7.mixinextras.injector.v2.WrapWithCondition;
 //import io.github.apace100.apoli.component.PowerHolderComponent;
 //import io.github.apace100.apoli.power.type.PreventGameEventPowerType;
-//import net.minecraft.registry.entry.Holder;
+//import net.minecraft.core.Holder;
 //import net.minecraft.server.level.ServerLevel;
 //import net.minecraft.world.phys.Vec3;
 //import net.minecraft.world.event.GameEvent;

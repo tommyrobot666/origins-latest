@@ -19,7 +19,7 @@
 //@Mixin(LivingEntity.class)
 //public abstract class EntityParticleMixin extends Entity {
 //
-//    @Shadow public abstract EntityDimensions getDimensions(EntityPose pose);
+//    @Shadow public abstract EntityDimensions getDimensions(Pose pose);
 //
 //    public EntityParticleMixin(EntityType<?> type, Level world) {
 //        super(type, world);

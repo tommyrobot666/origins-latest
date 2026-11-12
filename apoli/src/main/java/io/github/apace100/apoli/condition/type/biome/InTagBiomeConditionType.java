@@ -8,7 +8,7 @@
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.tags.TagKey;
-//import net.minecraft.world.biome.Biome;
+//import net.minecraft.world.level.biome.Biome;
 //import org.jetbrains.annotations.NotNull;
 //
 //public class InTagBiomeConditionType extends BiomeConditionType {

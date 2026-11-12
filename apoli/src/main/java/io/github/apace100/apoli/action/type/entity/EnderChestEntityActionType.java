@@ -5,8 +5,8 @@
 //import io.github.apace100.apoli.action.type.EntityActionType;
 //import io.github.apace100.apoli.action.type.EntityActionTypes;
 //import net.minecraft.world.entity.player.Player;
-//import net.minecraft.screen.GenericContainerScreenHandler;
-//import net.minecraft.screen.ScreenHandlerFactory;
+//import net.minecraft.screen.ChestMenu;
+//import net.minecraft.world.inventory.MenuConstructor;
 //import net.minecraft.screen.SimpleNamedScreenHandlerFactory;
 //import net.minecraft.stat.Stats;
 //import net.minecraft.network.chat.Component;
@@ -19,7 +19,7 @@
 //
 //        if (context.entity() instanceof Player player) {
 //
-//            ScreenHandlerFactory handlerFactory = (syncId, playerInventory, _player) -> GenericContainerScreenHandler.createGeneric9x3(syncId, playerInventory, player.getEnderChestInventory());
+//            MenuConstructor handlerFactory = (syncId, playerInventory, _player) -> ChestMenu.createGeneric9x3(syncId, playerInventory, player.getEnderChestInventory());
 //            player.openHandledScreen(new SimpleNamedScreenHandlerFactory(handlerFactory, Component.translatable("container.enderchest")));
 //
 //            player.incrementStat(Stats.OPEN_ENDERCHEST);

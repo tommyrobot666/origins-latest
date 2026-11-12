@@ -19,7 +19,7 @@
 //import net.minecraft.state.property.EnumProperty;
 //import net.minecraft.state.property.IntProperty;
 //import net.minecraft.state.property.Property;
-//import net.minecraft.util.StringIdentifiable;
+//import net.minecraft.util.StringRepresentable;
 //import net.minecraft.core.BlockPos;
 //import net.minecraft.world.level.Level;
 //import org.jetbrains.annotations.NotNull;
@@ -126,7 +126,7 @@
 //        return BlockActionTypes.MODIFY_BLOCK_STATE;
 //    }
 //
-//    private <T extends Enum<T> & StringIdentifiable> void setEnumProperty(EnumProperty<T> property, String name, Level world, BlockPos pos, BlockState originalState) {
+//    private <T extends Enum<T> & StringRepresentable> void setEnumProperty(EnumProperty<T> property, String name, Level world, BlockPos pos, BlockState originalState) {
 //        property.parse(name).ifPresentOrElse(
 //            propValue ->
 //                world.setBlockState(pos, originalState.with(property, propValue)),
@@ -135,7 +135,7 @@
 //                RegistryOps<JsonElement> jsonOps = world.getRegistryManager().getOps(JsonOps.INSTANCE);
 //                Optional<JsonElement> blockActionJson = BlockAction.DATA_TYPE.write(jsonOps, this.getAction()).result();
 //
-//                Apoli.LOGGER.warn("Couldn't set enum property \"{}\" of block at {} to \"{}\" (with block action {})! Expected value to be any of {}", property.getName(), pos.toShortString(), name, blockActionJson.map(JsonElement::toString).orElse("<unknown>"), property.getValues().stream().map(StringIdentifiable::asString).collect(Collectors.joining(", ")));
+//                Apoli.LOGGER.warn("Couldn't set enum property \"{}\" of block at {} to \"{}\" (with block action {})! Expected value to be any of {}", property.getName(), pos.toShortString(), name, blockActionJson.map(JsonElement::toString).orElse("<unknown>"), property.getValues().stream().map(StringRepresentable::asString).collect(Collectors.joining(", ")));
 //
 //            }
 //        );

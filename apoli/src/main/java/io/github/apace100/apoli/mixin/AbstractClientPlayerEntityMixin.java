@@ -27,7 +27,7 @@
 //        return PowerHolderComponent.modify(this, ModifyFovPowerType.class, original);
 //    }
 //
-//    @WrapOperation(method = "getFovMultiplier", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/math/MathHelper;lerp(FFF)F"))
+//    @WrapOperation(method = "getFovMultiplier", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/math/Mth;lerp(FFF)F"))
 //    private float apoli$modifyFov(float delta, float start, float end, Operation<Float> original) {
 //
 //        List<ModifyFovPowerType> mfps = PowerHolderComponent.getPowerTypes(this, ModifyFovPowerType.class);

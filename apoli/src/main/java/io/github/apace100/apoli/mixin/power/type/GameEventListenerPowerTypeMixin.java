@@ -7,7 +7,7 @@
 //import io.github.apace100.apoli.power.type.GameEventListenerPowerType;
 //import net.minecraft.world.entity.Entity;
 //import net.minecraft.particle.ParticleEffect;
-//import net.minecraft.registry.entry.Holder;
+//import net.minecraft.core.Holder;
 //import net.minecraft.tags.TagKey;
 //import net.minecraft.server.level.ServerLevel;
 //import net.minecraft.world.level.Level;

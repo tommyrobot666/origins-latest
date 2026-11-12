@@ -8,7 +8,7 @@
 //import net.minecraft.world.level.block.state.BlockState;
 //import net.minecraft.client.Minecraft;
 //import net.minecraft.client.render.chunk.ChunkRendererRegion;
-//import net.minecraft.fluid.FluidState;
+//import net.minecraft.world.level.material.FluidState;
 //import net.minecraft.core.BlockPos;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.injection.At;

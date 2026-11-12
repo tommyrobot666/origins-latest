@@ -18,17 +18,16 @@
 //import net.minecraft.world.entity.Entity;
 //import net.minecraft.world.entity.EntityType;
 //import net.minecraft.world.entity.LivingEntity;
-//import net.minecraft.entity.attribute.AttributeContainer;
-//import net.minecraft.entity.attribute.Attribute;
+//import net.minecraft.world.entity.ai.attributes.AttributeMap
+//import net.minecraft.world.entity.ai.attributes.Attribute;
 //import net.minecraft.entity.attribute.EntityAttributes;
-//import net.minecraft.entity.damage.DamageSource;
-//import net.minecraft.entity.effect.MobEffect;
+//import net.minecraft.world.damagesource.DamageSource;//import net.minecraft.entity.effect.MobEffect;
 //import net.minecraft.entity.effect.MobEffectInstance;
 //import net.minecraft.world.entity.player.Player;
-//import net.minecraft.fluid.FluidState;
+//import net.minecraft.world.level.material.FluidState;
 //import net.minecraft.world.entity.SlotAccess;
 //import net.minecraft.world.item.ItemStack;
-//import net.minecraft.registry.entry.Holder;
+//import net.minecraft.core.Holder;
 //import net.minecraft.registry.tag.DamageTypeTags;
 //import net.minecraft.registry.tag.FluidTags;
 //import net.minecraft.server.level.ServerPlayer;
@@ -386,7 +385,7 @@
 //    }
 //
 //    @Inject(method = "getAttributes", at = @At("RETURN"))
-//    private void apoli$setAttributeContainerOwner(CallbackInfoReturnable<AttributeContainer> cir) {
+//    private void apoli$setAttributeContainerOwner(CallbackInfoReturnable<AttributeMap> cir) {
 //
 //        if (cir.getReturnValue() instanceof OwnableAttributeContainer ownableAttributeContainer) {
 //            ownableAttributeContainer.apoli$setOwner(this);
@@ -498,7 +497,7 @@
 //
 //    @Shadow public abstract int getArmor();
 //
-//    @Shadow public abstract AttributeContainer getAttributes();
+//    @Shadow public abstract AttributeMap getAttributes();
 //
 //    @Shadow public abstract boolean isClimbing();
 //

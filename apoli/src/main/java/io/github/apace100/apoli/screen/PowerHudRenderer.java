@@ -14,7 +14,7 @@
 //import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.registry.tag.FluidTags;
 //import net.minecraft.resources.Identifier;
-//import net.minecraft.util.math.MathHelper;
+//import net.minecraft.util.Mth;
 //
 //import java.util.Comparator;
 //import java.util.Map;
@@ -50,7 +50,7 @@
 //        }
 //
 //        if (player.getVehicle() instanceof LivingEntity livingVehicle) {
-//            int bars = MathHelper.clamp((int) Math.ceil(livingVehicle.getMaxHealth() / 20.0F), 1, 3) - 1;
+//            int bars = Mth.clamp((int) Math.ceil(livingVehicle.getMaxHealth() / 20.0F), 1, 3) - 1;
 //            yOffset += bars * 10;
 //        }
 //

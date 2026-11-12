@@ -1,8 +1,8 @@
 //package io.github.apace100.apoli.recipe;
 //
 //import io.github.apace100.apoli.Apoli;
-//import net.minecraft.recipe.Recipe;
-//import net.minecraft.recipe.RecipeSerializer;
+//import net.minecraft.world.item.crafting.Recipe;
+//import net.minecraft.world.item.crafting.RecipeSerializer;
 //import net.minecraft.core.registries.Registries;
 //import net.minecraft.core.Registry;
 //

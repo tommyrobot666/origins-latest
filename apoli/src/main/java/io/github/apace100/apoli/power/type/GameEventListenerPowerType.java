@@ -14,7 +14,7 @@
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.world.entity.Entity;
 //import net.minecraft.world.entity.LivingEntity;
-//import net.minecraft.registry.entry.Holder;
+//import net.minecraft.core.Holder;
 //import net.minecraft.tags.TagKey;
 //import net.minecraft.server.level.ServerLevel;
 //import net.minecraft.core.BlockPos;

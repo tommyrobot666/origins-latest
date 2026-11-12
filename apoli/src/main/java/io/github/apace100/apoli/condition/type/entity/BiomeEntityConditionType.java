@@ -11,8 +11,8 @@
 //import net.minecraft.world.entity.Entity;
 //import net.minecraft.resources.ResourceKey;
 //import net.minecraft.core.registries.Registries;
-//import net.minecraft.registry.entry.Holder;
-//import net.minecraft.world.biome.Biome;
+//import net.minecraft.core.Holder;
+//import net.minecraft.world.level.biome.Biome;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.List;

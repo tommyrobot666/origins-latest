@@ -10,7 +10,7 @@
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.entity.effect.MobEffect;
-//import net.minecraft.registry.entry.Holder;
+//import net.minecraft.core.Holder;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.List;

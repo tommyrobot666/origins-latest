@@ -8,7 +8,7 @@
 //import net.minecraft.client.gui.widget.AbstractTextWidget;
 //import net.minecraft.network.chat.Component;
 //import net.minecraft.util.Util;
-//import net.minecraft.util.math.MathHelper;
+//import net.minecraft.util.Mth;
 //
 //import java.util.Optional;
 //
@@ -64,7 +64,7 @@
 //            double d = (double) Util.getMeasuringTimeMs() / 1000.0;
 //            double e = Math.max((double) horizontalDiff * 0.5, 3.0);
 //            double f = Math.sin((Math.PI / 2) * Math.cos((Math.PI * 2) * d / e)) / 2.0 + 0.5;
-//            double g = MathHelper.lerp(f, 0.0, horizontalDiff);
+//            double g = Mth.lerp(f, 0.0, horizontalDiff);
 //
 //            context.enableScissor(left, top, right, bottom);
 //            context.drawText(textRenderer, text, left - (int) g, height, color, hasShadow);

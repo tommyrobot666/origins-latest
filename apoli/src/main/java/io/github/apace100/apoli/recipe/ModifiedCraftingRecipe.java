@@ -18,10 +18,10 @@
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.network.RegistryFriendlyByteBuf;
 //import net.minecraft.network.codec.StreamCodec;
-//import net.minecraft.recipe.CraftingRecipe;
+//import net.minecraft.world.item.crafting.CraftingRecipe;
 //import net.minecraft.recipe.Ingredient;
-//import net.minecraft.recipe.Recipe;
-//import net.minecraft.recipe.RecipeSerializer;
+//import net.minecraft.world.item.crafting.Recipe;
+//import net.minecraft.world.item.crafting.RecipeSerializer;
 //import net.minecraft.recipe.book.CraftingRecipeCategory;
 //import net.minecraft.recipe.book.RecipeBook;
 //import net.minecraft.recipe.input.CraftingRecipeInput;

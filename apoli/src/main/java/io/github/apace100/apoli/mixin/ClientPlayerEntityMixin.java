@@ -18,7 +18,7 @@
 //import net.minecraft.client.network.ClientPlayer;
 //import net.minecraft.client.recipebook.ClientRecipeBook;
 //import net.minecraft.client.world.ClientWorld;
-//import net.minecraft.world.entity.EntityPose;
+//import net.minecraft.world.entity.Pose;
 //import net.minecraft.entity.player.PlayerAbilities;
 //import net.minecraft.stat.StatHandler;
 //import org.spongepowered.asm.mixin.Final;
@@ -125,7 +125,7 @@
 //
 //    @ModifyExpressionValue(method = "tickMovement", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/network/ClientPlayer;isSneaking()Z"))
 //    private boolean apoli$forceSneakingPose(boolean original) {
-//        return original || PosePowerType.hasEntityPose(this, EntityPose.CROUCHING);
+//        return original || PosePowerType.hasEntityPose(this, Pose.CROUCHING);
 //    }
 //
 //    @Inject(method = "<init>", at = @At("TAIL"))

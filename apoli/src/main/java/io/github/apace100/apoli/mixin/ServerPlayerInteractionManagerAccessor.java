@@ -2,7 +2,7 @@
 //
 //import net.minecraft.server.level.ServerPlayerInteractionManager;
 //import net.minecraft.core.BlockPos;
-//import net.minecraft.world.GameMode;
+//import net.minecraft.world.level.GameType;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.gen.Accessor;
 //
@@ -16,5 +16,5 @@
 //    boolean getMining();
 //
 //    @Accessor
-//    GameMode getGameMode();
+//    GameType getGameMode();
 //}

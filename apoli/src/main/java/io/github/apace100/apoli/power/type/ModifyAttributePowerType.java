@@ -6,8 +6,8 @@
 //import io.github.apace100.apoli.util.modifier.Modifier;
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
-//import net.minecraft.entity.attribute.Attribute;
-//import net.minecraft.registry.entry.Holder;
+//import net.minecraft.world.entity.ai.attributes.Attribute;
+//import net.minecraft.core.Holder;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.List;

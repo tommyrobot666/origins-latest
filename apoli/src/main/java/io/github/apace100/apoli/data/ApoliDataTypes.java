@@ -17,7 +17,7 @@ import io.github.apace100.apoli.power.PowerReference;
 import io.github.apace100.apoli.util.*;
 import io.github.apace100.apoli.util.context.ActionContext;
 import io.github.apace100.apoli.util.context.ConditionContext;
-import io.github.apace100.apoli.util.keybinding.KeyMappingReference;
+import io.github.apace100.apoli.util.keybinding.KeyBindingReference;
 import io.github.apace100.calio.SerializationHelper;
 import io.github.apace100.calio.data.CompoundSerializableDataType;
 import io.github.apace100.calio.data.SerializableData;
@@ -27,24 +27,25 @@ import io.github.apace100.calio.registry.DataObjectFactories;
 import io.github.apace100.calio.util.ArgumentWrapper;
 import io.github.ladysnake.pal.Pal;
 import io.github.ladysnake.pal.PlayerAbility;
-import net.minecraft.command.EntitySelector;
-import net.minecraft.command.argument.EntityArgumentType;
-import net.minecraft.command.argument.ItemSlotArgumentType;
-import net.minecraft.world.entity.EntityPose;
-import net.minecraft.inventory.SlotRange;
+import net.minecraft.commands.arguments.EntityArgument;
+import net.minecraft.commands.arguments.SlotArgument;
+import net.minecraft.commands.arguments.selector.EntitySelector;
+import net.minecraft.core.Vec3i;
+import net.minecraft.network.chat.ComponentSerialization;
+import net.minecraft.world.entity.Pose;
+import net.minecraft.world.inventory.ClickAction;
+import net.minecraft.world.inventory.SlotRange;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.recipe.CraftingRecipe;
-import net.minecraft.server.command.AdvancementCommand;
+//import net.minecraft.server.command.AdvancementCommand;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentCodecs;
-import net.minecraft.util.ClickType;
 import net.minecraft.resources.Identifier;
-import net.minecraft.util.Pair;
-import net.minecraft.util.math.Vec3i;
-import net.minecraft.world.GameMode;
-import net.minecraft.world.explosion.Explosion;
+import net.minecraft.world.item.crafting.CraftingRecipe;
+import net.minecraft.world.level.Explosion;
+import net.minecraft.world.level.GameType;
+import org.apache.commons.lang3.tuple.ImmutablePair;
+import org.apache.commons.lang3.tuple.Pair;
 import org.joml.Vector3f;
 
 import java.util.EnumSet;
@@ -94,10 +95,11 @@ public class ApoliDataTypes {
     public static final SerializableDataType<Pair<Integer, ItemStack>> POSITIONED_ITEM_STACK = SerializableDataType.compound(
         DataObjectFactories.ITEM_STACK.getSerializableData().copy()
             .add("slot", SerializableDataTypes.INT, Integer.MIN_VALUE),
-        data -> new Pair<>(
-            data.getInt("slot"),
-            DataObjectFactories.ITEM_STACK.fromData(data)
-        ),
+        data -> new ImmutablePair<Integer, ItemStack>(
+				data.getInt("slot"),
+				DataObjectFactories.ITEM_STACK.fromData(data)
+		) {
+		},
         (positionedStack, serializableData) -> DataObjectFactories.ITEM_STACK
             .toData(positionedStack.getRight(), serializableData)
             .set("slot", positionedStack.getLeft())
@@ -109,18 +111,18 @@ public class ApoliDataTypes {
 	@Deprecated(forRemoval = true)
     public static final SerializableDataType<List<Pair<Integer, ItemStack>>> POSITIONED_ITEM_STACKS = POSITIONED_ITEM_STACK.list();
 
-    public static final SerializableDataType<KeyMappingReference> KEY = KeyMappingReference.DATA_FACTORY.getDataType();
+    public static final SerializableDataType<KeyBindingReference> KEY = KeyBindingReference.DATA_FACTORY.getDataType();
 
-    public static final SerializableDataType<KeyMappingReference> BACKWARDS_COMPATIBLE_KEY = SerializableDataType.of(
+    public static final SerializableDataType<KeyBindingReference> BACKWARDS_COMPATIBLE_KEY = SerializableDataType.of(
         new Codec<>() {
 
             @Override
-            public <T> DataResult<com.mojang.datafixers.util.Pair<KeyMappingReference, T>> decode(DynamicOps<T> ops, T input) {
+            public <T> DataResult<com.mojang.datafixers.util.Pair<KeyBindingReference, T>> decode(DynamicOps<T> ops, T input) {
 
                 DataResult<String> stringInput = ops.getStringValue(input);
                 if (stringInput.isSuccess()) {
 					return stringInput
-						.map(KeyMappingReference::new)
+						.map(KeyBindingReference::new)
 						.map(key -> com.mojang.datafixers.util.Pair.of(key, input));
                 }
 
@@ -131,7 +133,7 @@ public class ApoliDataTypes {
             }
 
             @Override
-            public <T> DataResult<T> encode(KeyMappingReference input, DynamicOps<T> ops, T prefix) {
+            public <T> DataResult<T> encode(KeyBindingReference input, DynamicOps<T> ops, T prefix) {
                 return KEY.codec().encode(input, ops, prefix);
             }
 
@@ -151,7 +153,7 @@ public class ApoliDataTypes {
 
     public static final SerializableDataType<PlayerAbility> PLAYER_ABILITY = SerializableDataTypes.IDENTIFIER.xmap(id -> Pal.provideRegisteredAbility(id).get(), PlayerAbility::getId);
 
-    public static final SerializableDataType<ArgumentWrapper<Integer>> ITEM_SLOT = SerializableDataType.argumentType(ItemSlotArgumentType.itemSlot());
+    public static final SerializableDataType<ArgumentWrapper<Integer>> ITEM_SLOT = SerializableDataType.argumentType(SlotArgument.slot());
 
     public static final SerializableDataType<List<ArgumentWrapper<Integer>>> ITEM_SLOTS = ITEM_SLOT.list();
 
@@ -163,20 +165,20 @@ public class ApoliDataTypes {
 
 	public static final SerializableDataType<List<SlotRange>> SINGLE_SLOT_RANGES = SINGLE_SLOT_RANGE.list();
 
-    public static final SerializableDataType<Explosion.DestructionType> DESTRUCTION_TYPE = SerializableDataType.enumValue(Explosion.DestructionType.class);
+    public static final SerializableDataType<Explosion.BlockInteraction> DESTRUCTION_TYPE = SerializableDataType.enumValue(Explosion.BlockInteraction.class);
 
-    public static final SerializableDataType<ArgumentWrapper<EntitySelector>> ENTITIES_SELECTOR = SerializableDataType.argumentType(EntityArgumentType.entities());
+    public static final SerializableDataType<ArgumentWrapper<EntitySelector>> ENTITIES_SELECTOR = SerializableDataType.argumentType(EntityArgument.entities());
 
-    public static final SerializableDataType<AdvancementCommand.Operation> ADVANCEMENT_OPERATION = SerializableDataType.enumValue(AdvancementCommand.Operation.class);
+//    public static final SerializableDataType<AdvancementCommand.Operation> ADVANCEMENT_OPERATION = SerializableDataType.enumValue(AdvancementCommand.Operation.class);
+//
+//    public static final SerializableDataType<AdvancementCommand.Selection> ADVANCEMENT_SELECTION = SerializableDataType.enumValue(AdvancementCommand.Selection.class);
 
-    public static final SerializableDataType<AdvancementCommand.Selection> ADVANCEMENT_SELECTION = SerializableDataType.enumValue(AdvancementCommand.Selection.class);
-
-    public static final SerializableDataType<ClickType> CLICK_TYPE = SerializableDataType.enumValue(ClickType.class, () -> ImmutableMap.of(
-        "left", ClickType.LEFT,
-        "right", ClickType.RIGHT
+    public static final SerializableDataType<ClickAction> CLICK_TYPE = SerializableDataType.enumValue(ClickAction.class, () -> ImmutableMap.of(
+        "left", ClickAction.PRIMARY,
+        "right", ClickAction.SECONDARY
     ));
 
-    public static final SerializableDataType<EnumSet<ClickType>> CLICK_TYPE_SET = SerializableDataType.enumSet(CLICK_TYPE);
+    public static final SerializableDataType<EnumSet<ClickAction>> CLICK_TYPE_SET = SerializableDataType.enumSet(CLICK_TYPE);
 
     public static final SerializableDataType<TextAlignment> TEXT_ALIGNMENT = SerializableDataType.enumValue(TextAlignment.class);
 
@@ -192,7 +194,7 @@ public class ApoliDataTypes {
 
 	public static final SerializableDataType<Map<Pattern, String>> REGEX_REPLACEMENT_MAP = SerializableDataType.map(REGEX, SerializableDataTypes.STRING);
 
-    public static final SerializableDataType<GameMode> GAME_MODE = SerializableDataType.enumValue(GameMode.class);
+    public static final SerializableDataType<GameType> GAME_MODE = SerializableDataType.enumValue(GameType.class);
 
     //  This is for keeping backwards compatibility to fields that used to accept strings as translation keys
     public static final SerializableDataType<Component> DEFAULT_TRANSLATABLE_TEXT = SerializableDataType.of(
@@ -220,20 +222,20 @@ public class ApoliDataTypes {
 			}
 
 		},
-		TextCodecs.UNLIMITED_REGISTRY_STREAM_CODEC
+		ComponentSerialization.TRUSTED_STREAM_CODEC
 	);
 
     public static final SerializableDataType<StackClickPhase> STACK_CLICK_PHASE = SerializableDataType.enumValue(StackClickPhase.class);
 
     public static final SerializableDataType<EnumSet<StackClickPhase>> STACK_CLICK_PHASE_SET = SerializableDataType.enumSet(STACK_CLICK_PHASE);
 
-    public static final SerializableDataType<BlockUsagePhase> BLOCK_USAGE_PHASE = SerializableDataType.enumValue(BlockUsagePhase.class);
+//    public static final SerializableDataType<BlockUsagePhase> BLOCK_USAGE_PHASE = SerializableDataType.enumValue(BlockUsagePhase.class);
+//
+//    public static final SerializableDataType<EnumSet<BlockUsagePhase>> BLOCK_USAGE_PHASE_SET = SerializableDataType.enumSet(BLOCK_USAGE_PHASE);
 
-    public static final SerializableDataType<EnumSet<BlockUsagePhase>> BLOCK_USAGE_PHASE_SET = SerializableDataType.enumSet(BLOCK_USAGE_PHASE);
+    public static final SerializableDataType<Pose> ENTITY_POSE = SerializableDataType.enumValue(Pose.class);
 
-    public static final SerializableDataType<EntityPose> ENTITY_POSE = SerializableDataType.enumValue(EntityPose.class);
-
-    public static final SerializableDataType<ArmPoseReference> ARM_POSE_REFERENCE = SerializableDataType.enumValue(ArmPoseReference.class);
+//    public static final SerializableDataType<ArmPoseReference> ARM_POSE_REFERENCE = SerializableDataType.enumValue(ArmPoseReference.class);
 
 	public static final SerializableDataType<CraftingRecipe> DISALLOWING_INTERNAL_CRAFTING_RECIPE = SerializableDataTypes.RECIPE.comapFlatMap(RecipeUtil::validateCraftingRecipe, Function.identity());
 

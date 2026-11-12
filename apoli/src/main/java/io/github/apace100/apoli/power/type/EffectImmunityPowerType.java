@@ -8,7 +8,7 @@
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.entity.effect.MobEffect;
 //import net.minecraft.entity.effect.MobEffectInstance;
-//import net.minecraft.registry.entry.Holder;
+//import net.minecraft.core.Holder;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.List;

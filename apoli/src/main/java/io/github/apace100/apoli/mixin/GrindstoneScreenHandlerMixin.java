@@ -7,13 +7,13 @@
 //import io.github.apace100.apoli.util.InventoryUtil;
 //import net.minecraft.world.entity.player.Player;
 //import net.minecraft.entity.player.Inventory;
-//import net.minecraft.inventory.Inventory;
+//import net.minecraft.world.entity.player.Inventory;
 //import net.minecraft.world.entity.SlotAccess;
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.screen.GrindstoneScreenHandler;
 //import net.minecraft.screen.ScreenHandler;
 //import net.minecraft.screen.ScreenHandlerContext;
-//import net.minecraft.screen.ScreenHandlerType;
+//import net.minecraft.screen.MenuType;
 //import net.minecraft.world.inventory.Slot;
 //import net.minecraft.core.BlockPos;
 //import org.jetbrains.annotations.Nullable;
@@ -63,7 +63,7 @@
 //    @Unique
 //    private List<ModifyGrindstonePowerType> apoli$appliedPowers;
 //
-//    private GrindstoneScreenHandlerMixin(@Nullable ScreenHandlerType<?> type, int syncId) {
+//    private GrindstoneScreenHandlerMixin(@Nullable MenuType<?> type, int syncId) {
 //        super(type, syncId);
 //    }
 //

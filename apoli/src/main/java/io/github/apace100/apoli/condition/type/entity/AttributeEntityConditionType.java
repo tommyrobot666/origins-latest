@@ -10,9 +10,9 @@
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.world.entity.LivingEntity;
-//import net.minecraft.entity.attribute.Attribute;
-//import net.minecraft.entity.attribute.EntityAttributeInstance;
-//import net.minecraft.registry.entry.Holder;
+//import net.minecraft.world.entity.ai.attributes.Attribute;
+//import net.minecraft.world.entity.ai.attributes.AttributeInstance
+//import net.minecraft.core.Holder;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.Optional;
@@ -51,7 +51,7 @@
 //
 //        if (context.entity() instanceof LivingEntity livingEntity) {
 //            return Optional.ofNullable(livingEntity.getAttributeInstance(attribute))
-//                .map(EntityAttributeInstance::getValue)
+//                .map(AttributeInstance::getValue)
 //                .map(value -> comparison.compare(value, compareTo))
 //                .orElse(false);
 //        }

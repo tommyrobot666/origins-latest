@@ -12,7 +12,7 @@
 //import io.github.apace100.apoli.data.TypedDataObjectFactory;
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.util.ArgumentWrapper;
-//import net.minecraft.command.EntitySelector;
+//import net.minecraft.commands.arguments.selector.EntitySelector;
 //import net.minecraft.world.entity.Entity;
 //import net.minecraft.server.MinecraftServer;
 //import net.minecraft.server.command.CommandOutput;

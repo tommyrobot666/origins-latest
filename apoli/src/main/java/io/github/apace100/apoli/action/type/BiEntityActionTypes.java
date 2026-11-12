@@ -32,7 +32,7 @@ public class BiEntityActionTypes {
 //    public static final ActionConfiguration<TargetActionBiEntityActionType> TARGET_ACTION = register(ActionConfiguration.of(Apoli.identifier("target_action"), TargetActionBiEntityActionType.DATA_FACTORY));
 //
 //    public static final ActionConfiguration<AddToEntitySetBiEntityActionType> ADD_TO_ENTITY_SET = register(ActionConfiguration.of(Apoli.identifier("add_to_entity_set"), AddToEntitySetBiEntityActionType.DATA_FACTORY));
-//    public static final ActionConfiguration<AddVelocityBiEntityActionType> ADD_VELOCITY = register(ActionConfiguration.of(Apoli.identifier("add_velocity"), AddVelocityBiEntityActionType.DATA_FACTORY));
+    public static final ActionConfiguration<AddVelocityBiEntityActionType> ADD_VELOCITY = register(ActionConfiguration.of(Apoli.identifier("add_velocity"), AddVelocityBiEntityActionType.DATA_FACTORY));
 //    public static final ActionConfiguration<DamageBiEntityActionType> DAMAGE = register(ActionConfiguration.of(Apoli.identifier("damage"), DamageBiEntityActionType.DATA_FACTORY));
 //    public static final ActionConfiguration<LeashBiEntityActionType> LEASH = register(ActionConfiguration.simple(Apoli.identifier("leash"), LeashBiEntityActionType::new));
 //    public static final ActionConfiguration<MountBiEntityActionType> MOUNT = register(ActionConfiguration.simple(Apoli.identifier("mount"), MountBiEntityActionType::new));

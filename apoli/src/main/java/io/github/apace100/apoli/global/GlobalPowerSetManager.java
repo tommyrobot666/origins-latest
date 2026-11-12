@@ -23,6 +23,7 @@ import net.fabricmc.fabric.api.event.lifecycle.v1.ServerEntityEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.resource.IdentifiableResourceReloadListener;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.packs.PackType;
@@ -101,7 +102,7 @@ public class GlobalPowerSetManager extends IdentifiableMultiJsonDataLoader imple
                     throw new JsonSyntaxException("Not a JSON object: " + jsonElement);
                 }
 
-                GlobalPowerSet globalPowerSet = GlobalPowerSet.DATA_TYPE.read(wrapperLookup.getOps(JsonOps.INSTANCE), jsonObject).getOrThrow();
+                GlobalPowerSet globalPowerSet = GlobalPowerSet.DATA_TYPE.read(wrapperLookup.createSerializationContext(JsonOps.INSTANCE), jsonObject).getOrThrow();
                 int currLoadingPriority = GsonHelper.getAsInt(jsonObject, "loading_priority", 0);
 
                 PrioritizedEntry<GlobalPowerSet> entry = new PrioritizedEntry<>(globalPowerSet, currLoadingPriority);
@@ -216,7 +217,7 @@ public class GlobalPowerSetManager extends IdentifiableMultiJsonDataLoader imple
         powerReferences.addAll(newSet.getPowerReferences());
 
         Optional<TagLike<EntityType<?>>> entityTypes = oldSet.getEntityTypes().isPresent() || newSet.getEntityTypes().isPresent()
-            ? Optional.of(oldBuilder.build(wrapperLookup.getWrapperOrThrow(Registries.ENTITY_TYPE)))
+            ? Optional.of(oldBuilder.build(wrapperLookup.lookupOrThrow(Registries.ENTITY_TYPE)))
             : Optional.empty();
 
         return new GlobalPowerSet(

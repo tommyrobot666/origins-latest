@@ -28,9 +28,13 @@ import net.fabricmc.fabric.api.resource.conditions.v1.ResourceConditions;
 import net.fabricmc.fabric.impl.resource.conditions.ResourceConditionsImpl;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.resources.Identifier;
+import net.minecraft.resources.RegistryOps;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.resources.ResourceManager;
+import net.minecraft.util.GsonHelper;
 import net.minecraft.util.profiling.ProfilerFiller;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.ApiStatus;
@@ -92,8 +96,6 @@ public class PowerManager extends IdentifiableMultiJsonDataLoader implements IdP
             updateData(player, joined);
         });
 
-        ResourceManagerHelper.get(PackType.SERVER_DATA).registerReloadListener(ID, PowerManager::new);
-
     }
 
     @Override
@@ -101,7 +103,6 @@ public class PowerManager extends IdentifiableMultiJsonDataLoader implements IdP
 
         Apoli.LOGGER.info("Reading powers from data packs...");
 
-        PowerReloadCallback.EVENT.invoker().onPowerReload();
         PrePowerReloadCallback.EVENT.invoker().onPrePowerReload();
 
         startBuilding();
@@ -146,19 +147,9 @@ public class PowerManager extends IdentifiableMultiJsonDataLoader implements IdP
 
     }
 
-    @Override
-    public Identifier getFabricId() {
-        return ID;
-    }
-
-    @Override
-    public Collection<Identifier> getFabricDependencies() {
-        return DEPENDENCIES;
-    }
-
     private static void updateData(Entity entity, boolean initialize) {
 
-        RegistryOps<JsonElement> jsonOps = entity.getRegistryManager().getOps(JsonOps.INSTANCE);
+        RegistryOps<JsonElement> jsonOps = entity.registryAccess().createSerializationContext(JsonOps.INSTANCE);
         PowerHolderComponent component = PowerHolderComponent.KEY.getNullable(entity);
 
         if (component == null) {
@@ -250,7 +241,7 @@ public class PowerManager extends IdentifiableMultiJsonDataLoader implements IdP
         powerJson.addProperty("id", powerId.toString());
 
         PrePowerLoadCallback.EVENT.invoker().onPrePowerLoad(powerId, powerJson);
-        Power basePower = Power.DATA_TYPE.read(wrapperLookup.getOps(JsonOps.INSTANCE), powerJson).getOrThrow(JsonParseException::new);
+        Power basePower = Power.DATA_TYPE.read(wrapperLookup.createSerializationContext(JsonOps.INSTANCE), powerJson).getOrThrow(JsonParseException::new);
 
         if (basePower.isMultiple()) {
 
@@ -265,13 +256,13 @@ public class PowerManager extends IdentifiableMultiJsonDataLoader implements IdP
 
                 try {
 
-                    if (!Identifier.isPathValid(key)) {
-                        throw new InvalidIdentifierException("Non [a-z0-9/._-] character in sub-power name \"" + key + "\"!");
+                    if (!Identifier.isValidPath(key)) {
+                        throw new RuntimeException("Non [a-z0-9/._-] character in sub-power name \"" + key + "\"!");
                     }
 
                     else if (jsonElement instanceof JsonObject subPowerJson) {
 
-                        Identifier subPowerId = powerId.withSuffixedPath("_" + key);
+                        Identifier subPowerId = powerId.withSuffix("_" + key);
 
                         if (this.readSubPower(packName, powerId, subPowerId, key, subPowerJson)) {
                             subPowerIds.add(subPowerId);
@@ -309,7 +300,7 @@ public class PowerManager extends IdentifiableMultiJsonDataLoader implements IdP
 
     private boolean readSubPower(String packName, Identifier superPowerId, Identifier subPowerId, String name, JsonObject subPowerJson) {
 
-        if (!ResourceConditionsImpl.applyResourceConditions(subPowerJson, directoryName, subPowerId, wrapperLookup)) {
+        if (!ResourceConditionsImpl.applyResourceConditions(subPowerJson, directoryName, subPowerId, new RegistryOps.HolderLookupAdapter(wrapperLookup))) {
             this.onReject(packName, subPowerId);
             return false;
         }
@@ -317,7 +308,7 @@ public class PowerManager extends IdentifiableMultiJsonDataLoader implements IdP
         else {
 
             subPowerJson.addProperty("id", subPowerId.toString());
-            Power basePower = Power.DATA_TYPE.read(wrapperLookup.getOps(JsonOps.INSTANCE), subPowerJson).getOrThrow(JsonParseException::new);
+            Power basePower = Power.DATA_TYPE.read(wrapperLookup.createSerializationContext(JsonOps.INSTANCE), subPowerJson).getOrThrow(JsonParseException::new);
 
             SubPower subPower = switch (this.readPower(packName, new SubPower(superPowerId, name, basePower), subPowerJson)) {
                 case SubPower selfSubPower ->
@@ -346,7 +337,7 @@ public class PowerManager extends IdentifiableMultiJsonDataLoader implements IdP
         Identifier powerId = power.getId();
 
         int previousPriority = LOADING_PRIORITIES.getOrDefault(powerId, 0);
-        int priority = JsonHelper.getInt(powerJson, "loading_priority", 0);
+        int priority = GsonHelper.getAsInt(powerJson, "loading_priority", 0);
 
         if (!contains(powerId)) {
             return this.finishReadingPower(PowerManager::register, powerId, power, powerJson, priority);
@@ -554,7 +545,7 @@ public class PowerManager extends IdentifiableMultiJsonDataLoader implements IdP
 
     public static void send(ServerPlayer player) {
 
-        if (player.server.isRemote()) {
+        if (player.level().getServer().isDedicatedServer()) {
             ServerPlayNetworking.send(player, new SyncPowersS2CPacket(POWERS_BY_ID));
         }
 
