@@ -19,7 +19,7 @@
 //import net.minecraft.world.entity.EntityType;
 //import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.entity.attribute.AttributeContainer;
-//import net.minecraft.entity.attribute.EntityAttribute;
+//import net.minecraft.entity.attribute.Attribute;
 //import net.minecraft.entity.attribute.EntityAttributes;
 //import net.minecraft.entity.damage.DamageSource;
 //import net.minecraft.entity.effect.MobEffect;
@@ -32,8 +32,8 @@
 //import net.minecraft.registry.tag.DamageTypeTags;
 //import net.minecraft.registry.tag.FluidTags;
 //import net.minecraft.server.level.ServerPlayer;
-//import net.minecraft.util.math.BlockPos;
-//import net.minecraft.world.Level;
+//import net.minecraft.core.BlockPos;
+//import net.minecraft.world.level.Level;
 //import org.jetbrains.annotations.Nullable;
 //import org.objectweb.asm.Opcodes;
 //import org.spongepowered.asm.mixin.Mixin;
@@ -504,7 +504,7 @@
 //
 //    @Shadow public abstract boolean isDead();
 //
-//    @Shadow public abstract double getAttributeValue(Holder<EntityAttribute> attribute);
+//    @Shadow public abstract double getAttributeValue(Holder<Attribute> attribute);
 //
 //    @Shadow public abstract float getArmorVisibility();
 //
@@ -516,7 +516,7 @@
 //
 //    @Shadow public float forwardSpeed;
 //
-//    @Shadow public abstract double getAttributeBaseValue(Holder<EntityAttribute> attribute);
+//    @Shadow public abstract double getAttributeBaseValue(Holder<Attribute> attribute);
 //
 //    @Inject(method = "getOffGroundSpeed", at = @At("RETURN"), cancellable = true)
 //    private void modifyFlySpeed(CallbackInfoReturnable<Float> cir) {

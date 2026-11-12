@@ -10,14 +10,14 @@
 //import io.github.apace100.apoli.power.type.ModifyHarvestPowerType;
 //import io.github.apace100.apoli.util.SavedBlockPosition;
 //import net.minecraft.block.AbstractBlock;
-//import net.minecraft.block.BlockState;
+//import net.minecraft.world.level.block.state.BlockState;
 //import net.minecraft.world.entity.player.Player;
 //import net.minecraft.resource.featuretoggle.ToggleableFeature;
 //import net.minecraft.server.level.ServerPlayer;
 //import net.minecraft.server.level.ServerPlayerInteractionManager;
 //import net.minecraft.server.level.ServerLevel;
-//import net.minecraft.util.math.BlockPos;
-//import net.minecraft.world.BlockView;
+//import net.minecraft.core.BlockPos;
+//import net.minecraft.world.BlockGetter;
 //import org.spongepowered.asm.mixin.Final;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.Shadow;
@@ -31,7 +31,7 @@
 //	public abstract static class BlockBreakingDeltaProxy implements ToggleableFeature {
 //
 //		@WrapOperation(method = "calcBlockBreakingDelta", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/Player;canHarvest(Lnet/minecraft/block/BlockState;)Z"))
-//		private boolean apoli$modifyHarvest(Player player, BlockState state, Operation<Boolean> original, BlockState mState, Player mPlayer, BlockView world, BlockPos pos) {
+//		private boolean apoli$modifyHarvest(Player player, BlockState state, Operation<Boolean> original, BlockState mState, Player mPlayer, BlockGetter world, BlockPos pos) {
 //			return PowerHolderComponent.getPowerTypes(player, ModifyHarvestPowerType.class)
 //				.stream()
 //				.filter(powerType -> powerType.doesApply(world, pos))

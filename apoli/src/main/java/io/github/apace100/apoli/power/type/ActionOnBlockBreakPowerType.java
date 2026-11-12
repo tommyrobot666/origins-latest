@@ -9,7 +9,7 @@
 //import io.github.apace100.apoli.util.SavedBlockPosition;
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
-//import net.minecraft.util.math.BlockPos;
+//import net.minecraft.core.BlockPos;
 //import net.minecraft.util.math.Direction;
 //import org.jetbrains.annotations.NotNull;
 //

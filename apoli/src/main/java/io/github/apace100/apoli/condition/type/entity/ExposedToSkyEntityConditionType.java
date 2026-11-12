@@ -6,8 +6,8 @@
 //import io.github.apace100.apoli.condition.type.EntityConditionTypes;
 //import io.github.apace100.apoli.util.MiscUtil;
 //import net.minecraft.world.entity.Entity;
-//import net.minecraft.util.math.BlockPos;
-//import net.minecraft.world.Level;
+//import net.minecraft.core.BlockPos;
+//import net.minecraft.world.level.Level;
 //import org.jetbrains.annotations.NotNull;
 //
 //public class ExposedToSkyEntityConditionType extends EntityConditionType {

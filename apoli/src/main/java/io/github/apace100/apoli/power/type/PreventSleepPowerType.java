@@ -8,9 +8,9 @@
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.network.chat.Component;
-//import net.minecraft.util.math.BlockPos;
-//import net.minecraft.world.Level;
-//import net.minecraft.world.WorldView;
+//import net.minecraft.core.BlockPos;
+//import net.minecraft.world.level.Level;
+//import net.minecraft.world.level.LevelReader;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.Optional;
@@ -67,7 +67,7 @@
 //        return priority;
 //    }
 //
-//    public boolean doesPrevent(WorldView worldView, BlockPos pos) {
+//    public boolean doesPrevent(LevelReader worldView, BlockPos pos) {
 //        return worldView instanceof Level world && blockCondition
 //            .map(condition -> condition.test(world, pos))
 //            .orElse(true);

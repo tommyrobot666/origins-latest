@@ -5,7 +5,7 @@
 //import io.github.apace100.apoli.power.type.PreventGameEventPowerType;
 //import net.minecraft.registry.entry.Holder;
 //import net.minecraft.server.level.ServerLevel;
-//import net.minecraft.util.math.Vec3;
+//import net.minecraft.world.phys.Vec3;
 //import net.minecraft.world.event.GameEvent;
 //import net.minecraft.world.event.listener.GameEventDispatchManager;
 //import org.spongepowered.asm.mixin.Mixin;

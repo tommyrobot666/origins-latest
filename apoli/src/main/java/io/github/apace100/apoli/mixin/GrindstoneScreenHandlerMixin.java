@@ -15,7 +15,7 @@
 //import net.minecraft.screen.ScreenHandlerContext;
 //import net.minecraft.screen.ScreenHandlerType;
 //import net.minecraft.screen.slot.Slot;
-//import net.minecraft.util.math.BlockPos;
+//import net.minecraft.core.BlockPos;
 //import org.jetbrains.annotations.Nullable;
 //import org.spongepowered.asm.mixin.Final;
 //import org.spongepowered.asm.mixin.Mixin;

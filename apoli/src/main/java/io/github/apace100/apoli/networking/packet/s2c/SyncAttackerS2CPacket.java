@@ -8,7 +8,7 @@
 //
 //import java.util.Optional;
 //
-//public record SyncAttackerS2CPacket(int targetId, Optional<Integer> attackerId) implements CustomPayload {
+//public record SyncAttackerS2CPacket(int targetId, Optional<Integer> attackerId) implements CustomPacketPayload {
 //
 //    public static final Type<SyncAttackerS2CPacket> PACKET_ID = new Type<>(Apoli.identifier("s2c/sync_attacker"));
 //    public static final StreamCodec<RegistryFriendlyByteBuf, SyncAttackerS2CPacket> STREAM_CODEC = StreamCodec.composite(

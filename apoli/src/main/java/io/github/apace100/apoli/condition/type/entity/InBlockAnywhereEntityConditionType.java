@@ -11,7 +11,7 @@
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.world.entity.Entity;
-//import net.minecraft.util.math.BlockPos;
+//import net.minecraft.core.BlockPos;
 //import net.minecraft.util.math.Box;
 //import org.jetbrains.annotations.NotNull;
 //
@@ -59,7 +59,7 @@
 //        Entity entity = context.entity();
 //
 //        Box boundingBox = entity.getBoundingBox();
-//        BlockPos.Mutable mutablePos = new BlockPos.Mutable();
+//        BlockPos.MutableBlockPos mutablePos = new BlockPos.MutableBlockPos();
 //
 //        BlockPos minPos = BlockPos.ofFloored(boundingBox.minX + 0.001D, boundingBox.minY + 0.001D, boundingBox.minZ + 0.001D);
 //        BlockPos maxPos = BlockPos.ofFloored(boundingBox.maxX - 0.001D, boundingBox.maxY - 0.001D, boundingBox.maxZ - 0.001D);

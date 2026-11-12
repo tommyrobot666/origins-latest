@@ -7,12 +7,12 @@
 //import io.github.apace100.apoli.data.TypedDataObjectFactory;
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
-//import net.minecraft.block.BlockState;
+//import net.minecraft.world.level.block.state.BlockState;
 //import net.minecraft.item.BoneMealItem;
 //import net.minecraft.world.item.ItemStack;
-//import net.minecraft.util.math.BlockPos;
+//import net.minecraft.core.BlockPos;
 //import net.minecraft.util.math.Direction;
-//import net.minecraft.world.Level;
+//import net.minecraft.world.level.Level;
 //import net.minecraft.world.WorldEvents;
 //import org.jetbrains.annotations.NotNull;
 //

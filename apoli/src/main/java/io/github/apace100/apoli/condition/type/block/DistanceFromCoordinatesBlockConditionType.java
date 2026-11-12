@@ -8,7 +8,7 @@
 //import io.github.apace100.apoli.condition.type.meta.DistanceFromCoordinatesMetaConditionType;
 //import io.github.apace100.apoli.util.Comparison;
 //import io.github.apace100.apoli.util.Shape;
-//import net.minecraft.util.math.Vec3;
+//import net.minecraft.world.phys.Vec3;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.Optional;

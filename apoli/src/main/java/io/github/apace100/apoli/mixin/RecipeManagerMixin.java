@@ -8,7 +8,7 @@
 //import net.minecraft.recipe.*;
 //import net.minecraft.recipe.input.RecipeInput;
 //import net.minecraft.resources.Identifier;
-//import net.minecraft.world.Level;
+//import net.minecraft.world.level.Level;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.injection.At;
 //

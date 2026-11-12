@@ -7,10 +7,10 @@
 //import io.github.apace100.apoli.util.modifier.Modifier;
 //import io.github.apace100.apoli.util.modifier.ModifierUtil;
 //import net.minecraft.block.AbstractBlock;
-//import net.minecraft.block.BlockState;
+//import net.minecraft.world.level.block.state.BlockState;
 //import net.minecraft.world.entity.player.Player;
-//import net.minecraft.util.math.BlockPos;
-//import net.minecraft.world.BlockView;
+//import net.minecraft.core.BlockPos;
+//import net.minecraft.world.BlockGetter;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.injection.At;
 //
@@ -19,8 +19,8 @@
 //@Mixin(AbstractBlock.class)
 //public abstract class AbstractBlockMixin {
 //
-//    @ModifyExpressionValue(method = "calcBlockBreakingDelta", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/BlockState;getHardness(Lnet/minecraft/world/BlockView;Lnet/minecraft/util/math/BlockPos;)F"))
-//    private float apoli$modifyBlockHardness(float original, BlockState state, Player player, BlockView world, BlockPos pos) {
+//    @ModifyExpressionValue(method = "calcBlockBreakingDelta", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/BlockState;getHardness(Lnet/minecraft/world/BlockGetter;Lnet/minecraft/util/math/BlockPos;)F"))
+//    private float apoli$modifyBlockHardness(float original, BlockState state, Player player, BlockGetter world, BlockPos pos) {
 //
 //        List<Modifier> hardnessModifiers = PowerHolderComponent.getPowerTypes(player, ModifyBreakSpeedPowerType.class)
 //            .stream()
@@ -33,7 +33,7 @@
 //    }
 //
 //    @ModifyReturnValue(method = "calcBlockBreakingDelta", at = @At("RETURN"))
-//    private float apoli$modifyBlockBreakSpeed(float original, BlockState state, Player player, BlockView world, BlockPos pos) {
+//    private float apoli$modifyBlockBreakSpeed(float original, BlockState state, Player player, BlockGetter world, BlockPos pos) {
 //        return PowerHolderComponent.modify(player, ModifyBreakSpeedPowerType.class, original, mbsp -> mbsp.doesApply(pos));
 //    }
 //

@@ -37,8 +37,8 @@
 //import net.minecraft.network.chat.Component;
 //import net.minecraft.util.Pair;
 //import net.minecraft.util.Unit;
-//import net.minecraft.util.math.BlockPos;
-//import net.minecraft.world.Level;
+//import net.minecraft.core.BlockPos;
+//import net.minecraft.world.level.Level;
 //import org.objectweb.asm.Opcodes;
 //import org.spongepowered.asm.mixin.Final;
 //import org.spongepowered.asm.mixin.Mixin;

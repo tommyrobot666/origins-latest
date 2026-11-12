@@ -6,7 +6,7 @@
 //import io.github.apace100.apoli.data.ApoliDataTypes;
 //import io.github.apace100.calio.data.SerializableDataType;
 //import net.minecraft.world.item.ItemStack;
-//import net.minecraft.world.Level;
+//import net.minecraft.world.level.Level;
 //
 //public final class ItemCondition extends Condition<ItemConditionContext, ItemConditionType> {
 //

@@ -9,26 +9,26 @@
 //import io.github.apace100.apoli.util.InventoryUtil;
 //import io.github.apace100.apoli.util.MiscUtil;
 //import net.minecraft.entity.*;
-//import net.minecraft.entity.mob.MobEntity;
+//import net.minecraft.entity.mob.Mob;
 //import net.minecraft.inventory.StackReference;
-//import net.minecraft.world.Level;
+//import net.minecraft.world.level.Level;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.injection.At;
 //
-//@Mixin(MobEntity.class)
+//@Mixin(Mob.class)
 //public abstract class MobEntityMixin extends LivingEntity implements Targeter {
 //
 //    private MobEntityMixin(EntityType<? extends LivingEntity> entityType, Level world) {
 //        super(entityType, world);
 //    }
 //
-//    @WrapWithCondition(method = "tickMovement", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/mob/MobEntity;loot(Lnet/minecraft/entity/ItemEntity;)V"))
-//    private boolean apoli$preventItemPickup(MobEntity mobEntity, ItemEntity itemEntity) {
+//    @WrapWithCondition(method = "tickMovement", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/mob/Mob;loot(Lnet/minecraft/entity/ItemEntity;)V"))
+//    private boolean apoli$preventItemPickup(Mob mobEntity, ItemEntity itemEntity) {
 //        return !PreventItemPickupPowerType.doesPrevent(itemEntity, this);
 //    }
 //
-//    @WrapOperation(method = "tickMovement", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/mob/MobEntity;loot(Lnet/minecraft/entity/ItemEntity;)V"))
-//    private void apoli$actionOnItemPickup(MobEntity mobEntity, ItemEntity itemEntity, Operation<Void> original) {
+//    @WrapOperation(method = "tickMovement", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/mob/Mob;loot(Lnet/minecraft/entity/ItemEntity;)V"))
+//    private void apoli$actionOnItemPickup(Mob mobEntity, ItemEntity itemEntity, Operation<Void> original) {
 //
 //        StackReference stackReference = InventoryUtil.createStackReference(itemEntity.getStack());
 //        Entity thrower = MiscUtil.getEntityByUuid(((ItemEntityAccessor) itemEntity).getThrowerUuid(), this.getServer());

@@ -10,16 +10,16 @@
 //import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
 //import net.minecraft.block.AbstractBlock;
 //import net.minecraft.block.Block;
-//import net.minecraft.block.BlockState;
+//import net.minecraft.world.level.block.state.BlockState;
 //import net.minecraft.block.ShapeContext;
 //import net.minecraft.world.entity.Entity;
 //import net.minecraft.state.State;
 //import net.minecraft.state.property.Property;
-//import net.minecraft.util.math.BlockPos;
+//import net.minecraft.core.BlockPos;
 //import net.minecraft.util.shape.VoxelShape;
 //import net.minecraft.util.shape.VoxelShapes;
-//import net.minecraft.world.BlockView;
-//import net.minecraft.world.Level;
+//import net.minecraft.world.BlockGetter;
+//import net.minecraft.world.level.Level;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.Shadow;
 //import org.spongepowered.asm.mixin.Unique;
@@ -32,7 +32,7 @@
 //    public abstract Block getBlock();
 //
 //    @Shadow
-//    public abstract VoxelShape getCollisionShape(BlockView world, BlockPos pos, ShapeContext context);
+//    public abstract VoxelShape getCollisionShape(BlockGetter world, BlockPos pos, ShapeContext context);
 //
 //    @Unique
 //    private boolean apoli$queryOriginal = false;
@@ -41,8 +41,8 @@
 //        super(owner, propertyMap, codec);
 //    }
 //
-//    @ModifyReturnValue(method = "getOutlineShape(Lnet/minecraft/world/BlockView;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/ShapeContext;)Lnet/minecraft/util/shape/VoxelShape;", at = @At("RETURN"))
-//    private VoxelShape apoli$preventBlockSelection(VoxelShape original, BlockView blockView, BlockPos blockPos, ShapeContext context) {
+//    @ModifyReturnValue(method = "getOutlineShape(Lnet/minecraft/world/BlockGetter;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/ShapeContext;)Lnet/minecraft/util/shape/VoxelShape;", at = @At("RETURN"))
+//    private VoxelShape apoli$preventBlockSelection(VoxelShape original, BlockGetter blockView, BlockPos blockPos, ShapeContext context) {
 //
 //        if (context == ShapeContext.absent()) {
 //            return original;
@@ -56,8 +56,8 @@
 //
 //    }
 //
-//    @ModifyReturnValue(method = "getCollisionShape(Lnet/minecraft/world/BlockView;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/ShapeContext;)Lnet/minecraft/util/shape/VoxelShape;", at = @At("RETURN"))
-//    private VoxelShape apoli$phaseThroughBlocks(VoxelShape original, BlockView blockView, BlockPos blockPos, ShapeContext context) {
+//    @ModifyReturnValue(method = "getCollisionShape(Lnet/minecraft/world/BlockGetter;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/ShapeContext;)Lnet/minecraft/util/shape/VoxelShape;", at = @At("RETURN"))
+//    private VoxelShape apoli$phaseThroughBlocks(VoxelShape original, BlockGetter blockView, BlockPos blockPos, ShapeContext context) {
 //
 //        if (context == ShapeContext.absent()) {
 //            return original;
@@ -77,7 +77,7 @@
 //    }
 //
 //    @Override
-//    public VoxelShape apoli$getOriginalCollisionShape(BlockView world, BlockPos pos, ShapeContext context) {
+//    public VoxelShape apoli$getOriginalCollisionShape(BlockGetter world, BlockPos pos, ShapeContext context) {
 //
 //        this.apoli$queryOriginal = true;
 //        VoxelShape originalShape = this.getCollisionShape(world, pos, context);

@@ -6,7 +6,7 @@
 //import net.minecraft.network.codec.ByteBufCodecs;
 //import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 //
-//public record MountPlayerS2CPacket(int actorId, int targetId) implements CustomPayload {
+//public record MountPlayerS2CPacket(int actorId, int targetId) implements CustomPacketPayload {
 //
 //    public static final Type<MountPlayerS2CPacket> PACKET_ID = new Type<>(Apoli.identifier("s2c/mount_player"));
 //    public static final StreamCodec<FriendlyByteBuf, MountPlayerS2CPacket> STREAM_CODEC = StreamCodec.composite(

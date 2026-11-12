@@ -2,12 +2,12 @@
 //
 //import io.github.apace100.apoli.access.BlockCollisionSpliteratorAccess;
 //import net.minecraft.world.entity.Entity;
-//import net.minecraft.util.math.BlockPos;
+//import net.minecraft.core.BlockPos;
 //import net.minecraft.util.math.Box;
 //import net.minecraft.util.shape.VoxelShape;
 //import net.minecraft.world.BlockCollisionSpliterator;
 //import net.minecraft.world.Heightmap;
-//import net.minecraft.world.Level;
+//import net.minecraft.world.level.Level;
 //import net.minecraft.world.biome.Biome;
 //import org.jetbrains.annotations.Nullable;
 //

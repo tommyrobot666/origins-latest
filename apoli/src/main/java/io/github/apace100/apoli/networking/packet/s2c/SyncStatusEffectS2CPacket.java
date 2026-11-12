@@ -8,7 +8,7 @@
 //import net.minecraft.network.codec.ByteBufCodecs;
 //import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 //
-//public record SyncMobEffectS2CPacket(int targetId, CompoundTag statusEffectData, SyncMobEffectsUtil.UpdateType updateType) implements CustomPayload {
+//public record SyncMobEffectS2CPacket(int targetId, CompoundTag statusEffectData, SyncMobEffectsUtil.UpdateType updateType) implements CustomPacketPayload {
 //
 //    public static final Type<SyncMobEffectS2CPacket> PACKET_ID = new Type<>(Apoli.identifier("s2c/sync_status_effect"));
 //    public static final StreamCodec<RegistryFriendlyByteBuf, SyncMobEffectS2CPacket> STREAM_CODEC = StreamCodec.composite(

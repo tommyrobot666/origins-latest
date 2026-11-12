@@ -34,10 +34,10 @@
 //import net.minecraft.util.InteractionResult;
 //import net.minecraft.util.InteractionHand;
 //import net.minecraft.util.Nameable;
-//import net.minecraft.util.math.BlockPos;
+//import net.minecraft.core.BlockPos;
 //import net.minecraft.util.math.Direction;
-//import net.minecraft.util.math.Vec3;
-//import net.minecraft.world.Level;
+//import net.minecraft.world.phys.Vec3;
+//import net.minecraft.world.level.Level;
 //import org.spongepowered.asm.mixin.Final;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.Shadow;

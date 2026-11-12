@@ -7,7 +7,7 @@
 //import io.github.apace100.apoli.mixin.ClientPlayerAccessor;
 //import io.github.apace100.apoli.mixin.ClientPlayerInteractionManagerAccessor;
 //import io.github.apace100.apoli.mixin.ServerPlayerInteractionManagerAccessor;
-//import net.minecraft.block.BlockState;
+//import net.minecraft.world.level.block.state.BlockState;
 //import net.minecraft.client.network.ClientPlayer;
 //import net.minecraft.world.entity.player.Player;
 //import net.minecraft.server.level.ServerPlayer;

@@ -15,13 +15,13 @@
 //import net.minecraft.entity.mob.PathAwareEntity;
 //import net.minecraft.server.world.ChunkTicketType;
 //import net.minecraft.server.level.ServerLevel;
-//import net.minecraft.util.math.BlockPos;
+//import net.minecraft.core.BlockPos;
 //import net.minecraft.util.math.ChunkPos;
 //import net.minecraft.util.math.MathHelper;
-//import net.minecraft.util.math.Vec3;
+//import net.minecraft.world.phys.Vec3;
 //import net.minecraft.util.math.random.Random;
 //import net.minecraft.world.Heightmap;
-//import net.minecraft.world.Level;
+//import net.minecraft.world.level.Level;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.Optional;
@@ -139,7 +139,7 @@
 //
 //    private boolean attemptToTeleport(Entity entity, ServerLevel serverWorld, double destX, double destY, double destZ) {
 //
-//        BlockPos.Mutable destBlockPos = BlockPos.ofFloored(destX, destY, destZ).mutableCopy();
+//        BlockPos.MutableBlockPos destBlockPos = BlockPos.ofFloored(destX, destY, destZ).mutableCopy();
 //        boolean foundSurface = false;
 //
 //        if (heightmapType.isPresent()) {

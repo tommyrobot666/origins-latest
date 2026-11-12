@@ -14,7 +14,7 @@
 //import java.util.function.Function;
 //import java.util.stream.Collectors;
 //
-//public record SyncPowersS2CPacket(Map<Identifier, Power> powersById) implements CustomPayload {
+//public record SyncPowersS2CPacket(Map<Identifier, Power> powersById) implements CustomPacketPayload {
 //
 //    public static final Type<SyncPowersS2CPacket> PACKET_ID = new Type<>(Apoli.identifier("s2c/sync_power_registry"));
 //    public static final StreamCodec<RegistryFriendlyByteBuf, SyncPowersS2CPacket> STREAM_CODEC = StreamCodec.of(SyncPowersS2CPacket::write, SyncPowersS2CPacket::read);

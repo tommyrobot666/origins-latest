@@ -12,7 +12,7 @@
 //import net.minecraft.world.entity.EntityType;
 //import net.minecraft.nbt.CompoundTag;
 //import net.minecraft.server.level.ServerLevel;
-//import net.minecraft.util.math.BlockPos;
+//import net.minecraft.core.BlockPos;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.Optional;

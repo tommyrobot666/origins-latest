@@ -14,7 +14,7 @@
 //import io.github.apace100.apoli.util.BlockUsagePhase;
 //import io.github.apace100.apoli.util.PriorityPhase;
 //import io.github.apace100.apoli.util.SavedBlockPosition;
-//import net.minecraft.block.BlockState;
+//import net.minecraft.world.level.block.state.BlockState;
 //import net.minecraft.world.entity.player.Player;
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.network.packet.c2s.play.PlayerActionC2SPacket;
@@ -25,9 +25,9 @@
 //import net.minecraft.util.InteractionHand;
 //import net.minecraft.util.ItemActionResult;
 //import net.minecraft.util.hit.BlockHitResult;
-//import net.minecraft.util.math.BlockPos;
+//import net.minecraft.core.BlockPos;
 //import net.minecraft.util.math.Direction;
-//import net.minecraft.world.Level;
+//import net.minecraft.world.level.Level;
 //import org.spongepowered.asm.mixin.Final;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.Shadow;

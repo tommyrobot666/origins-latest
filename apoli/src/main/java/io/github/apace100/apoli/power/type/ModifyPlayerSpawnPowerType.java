@@ -24,11 +24,11 @@
 //import net.minecraft.util.Formatting;
 //import net.minecraft.util.Pair;
 //import net.minecraft.util.Unit;
-//import net.minecraft.util.math.BlockPos;
+//import net.minecraft.core.BlockPos;
 //import net.minecraft.util.math.ChunkPos;
 //import net.minecraft.util.math.ChunkSectionPos;
-//import net.minecraft.util.math.Vec3;
-//import net.minecraft.world.Level;
+//import net.minecraft.world.phys.Vec3;
+//import net.minecraft.world.level.Level;
 //import net.minecraft.world.biome.Biome;
 //import net.minecraft.world.gen.structure.Structure;
 //import org.apache.commons.lang3.function.TriFunction;
@@ -184,8 +184,8 @@
 //        AtomicReference<Vec3> newSpawnPointVec = new AtomicReference<>();
 //        BlockPos dimensionSpawnPos = serverPlayer.getServerLevel().getSpawnPos();
 //
-//        BlockPos.Mutable newSpawnPointPos = new BlockPos.Mutable();
-//        BlockPos.Mutable mutableDimensionSpawnPos = spawnStrategy.apply(dimensionSpawnPos, center, dimensionDistanceMultiplier).mutableCopy();
+//        BlockPos.MutableBlockPos newSpawnPointPos = new BlockPos.MutableBlockPos();
+//        BlockPos.MutableBlockPos mutableDimensionSpawnPos = spawnStrategy.apply(dimensionSpawnPos, center, dimensionDistanceMultiplier).mutableCopy();
 //
 //        this.getBiomePos(targetDimension, mutableDimensionSpawnPos).ifPresent(mutableDimensionSpawnPos::set);
 //        this.getSpawnPos(targetDimension, mutableDimensionSpawnPos, range).ifPresent(newSpawnPointVec::set);
@@ -347,7 +347,7 @@
 //
 //        //  The valid spawn position and (mutable) starting position
 //        Vec3 spawnPos;
-//        BlockPos.Mutable mutableStartPos = startPos.mutableCopy();
+//        BlockPos.MutableBlockPos mutableStartPos = startPos.mutableCopy();
 //
 //        //  The current position
 //        int x = startPos.getX();
@@ -428,7 +428,7 @@
 //        CENTER((blockPos, center, multiplier) -> new BlockPos(0, center, 0)),
 //        DEFAULT((blockPos, center, multiplier) -> {
 //
-//            BlockPos.Mutable mut = new BlockPos.Mutable();
+//            BlockPos.MutableBlockPos mut = new BlockPos.MutableBlockPos();
 //            multiplier = Math.max(multiplier, 1F);
 //
 //            return mut.set(blockPos.getX() * multiplier, blockPos.getY(), blockPos.getZ() * multiplier);

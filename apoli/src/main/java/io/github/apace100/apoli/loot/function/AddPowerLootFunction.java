@@ -11,7 +11,7 @@
 //import net.minecraft.component.type.AttributeModifierSlot;
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.loot.condition.LootCondition;
-//import net.minecraft.loot.context.LootContext;
+//import net.minecraft.world.level.storage.loot.LootContext;
 //import net.minecraft.loot.function.ConditionalLootFunction;
 //import net.minecraft.loot.function.LootFunctionType;
 //

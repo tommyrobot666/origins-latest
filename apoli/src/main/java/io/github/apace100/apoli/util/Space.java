@@ -2,7 +2,7 @@
 //
 //import net.minecraft.world.entity.Entity;
 //import net.minecraft.util.math.MathHelper;
-//import net.minecraft.util.math.Vec3;
+//import net.minecraft.world.phys.Vec3;
 //import org.joml.Matrix3f;
 //import org.joml.Vector3f;
 //

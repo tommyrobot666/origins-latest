@@ -3,7 +3,7 @@
 //import io.github.apace100.apoli.condition.context.BlockConditionContext;
 //import io.github.apace100.apoli.util.context.ActionContext;
 //import net.minecraft.server.level.ServerLevel;
-//import net.minecraft.util.math.BlockPos;
+//import net.minecraft.core.BlockPos;
 //import net.minecraft.util.math.Direction;
 //
 //import java.util.Optional;

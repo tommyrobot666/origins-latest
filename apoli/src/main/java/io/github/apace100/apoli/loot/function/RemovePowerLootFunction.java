@@ -16,8 +16,8 @@
 //import net.minecraft.entity.EquipmentSlot;
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.loot.condition.LootCondition;
-//import net.minecraft.loot.context.LootContext;
-//import net.minecraft.loot.context.LootContextParameters;
+//import net.minecraft.world.level.storage.loot.LootContext;
+//import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 //import net.minecraft.loot.function.ConditionalLootFunction;
 //import net.minecraft.loot.function.LootFunctionType;
 //import net.minecraft.resources.Identifier;
@@ -74,7 +74,7 @@
 //
 //    protected void onSlotsRemoval(LootContext context, Collection<ItemPowersComponent.Entry> removedEntries) {
 //
-//        Entity entity = context.get(LootContextParameters.THIS_ENTITY);
+//        Entity entity = context.get(LootContextParams.THIS_ENTITY);
 //        Power power = PowerManager.getOptional(powerId).orElse(null);
 //
 //        if (entity == null || power == null) {

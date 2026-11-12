@@ -11,7 +11,7 @@
 //
 //import java.util.Set;
 //
-//public record SyncCommandTagsS2CPacket(Set<String> tags, int entityId) implements CustomPayload {
+//public record SyncCommandTagsS2CPacket(Set<String> tags, int entityId) implements CustomPacketPayload {
 //
 //	public static final Type<SyncCommandTagsS2CPacket> ID = new Type<>(Apoli.identifier("s2c/sync_command_tags"));
 //	public static final StreamCodec<ByteBuf, SyncCommandTagsS2CPacket> CODEC = StreamCodec.composite(

@@ -4,9 +4,9 @@
 //import io.github.apace100.apoli.condition.context.BlockConditionContext;
 //import io.github.apace100.apoli.condition.type.BlockConditionType;
 //import io.github.apace100.apoli.condition.type.BlockConditionTypes;
-//import net.minecraft.util.math.BlockPos;
+//import net.minecraft.core.BlockPos;
 //import net.minecraft.util.math.Direction;
-//import net.minecraft.world.Level;
+//import net.minecraft.world.level.Level;
 //import org.jetbrains.annotations.NotNull;
 //
 //public class AttachableBlockConditionType extends BlockConditionType {

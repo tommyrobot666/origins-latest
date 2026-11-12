@@ -2,7 +2,7 @@
 //
 //import io.github.apace100.apoli.power.type.ModifyGrindstonePowerType;
 //import net.minecraft.world.entity.player.Player;
-//import net.minecraft.util.math.BlockPos;
+//import net.minecraft.core.BlockPos;
 //import org.jetbrains.annotations.Nullable;
 //
 //import java.util.List;

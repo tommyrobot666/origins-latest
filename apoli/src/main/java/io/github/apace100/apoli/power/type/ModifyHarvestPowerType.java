@@ -7,9 +7,9 @@
 //import io.github.apace100.apoli.util.SavedBlockPosition;
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
-//import net.minecraft.util.math.BlockPos;
-//import net.minecraft.world.BlockView;
-//import net.minecraft.world.Level;
+//import net.minecraft.core.BlockPos;
+//import net.minecraft.world.BlockGetter;
+//import net.minecraft.world.level.Level;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.Optional;
@@ -63,7 +63,7 @@
 //        return priority;
 //    }
 //
-//    public boolean doesApply(BlockView blockView, BlockPos pos) {
+//    public boolean doesApply(BlockGetter blockView, BlockPos pos) {
 //        return blockView instanceof Level world && blockCondition
 //            .map(condition -> condition.test(world, pos))
 //            .orElse(true);

@@ -7,7 +7,7 @@
 //import io.github.apace100.apoli.util.modifier.Modifier;
 //import io.github.apace100.apoli.util.modifier.ModifierUtil;
 //import net.minecraft.world.entity.Entity;
-//import net.minecraft.entity.attribute.EntityAttribute;
+//import net.minecraft.entity.attribute.Attribute;
 //import net.minecraft.entity.attribute.EntityAttributeInstance;
 //import net.minecraft.entity.attribute.EntityAttributeModifier;
 //import net.minecraft.registry.entry.Holder;
@@ -31,7 +31,7 @@
 //    @Shadow
 //    public abstract double getBaseValue();
 //
-//    @Shadow public abstract Holder<EntityAttribute> getAttribute();
+//    @Shadow public abstract Holder<Attribute> getAttribute();
 //
 //    @Unique
 //    @Nullable

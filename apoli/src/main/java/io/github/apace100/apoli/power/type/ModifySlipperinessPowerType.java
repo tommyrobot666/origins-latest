@@ -6,9 +6,9 @@
 //import io.github.apace100.apoli.power.PowerConfiguration;
 //import io.github.apace100.apoli.util.modifier.Modifier;
 //import io.github.apace100.calio.data.SerializableData;
-//import net.minecraft.util.math.BlockPos;
-//import net.minecraft.world.Level;
-//import net.minecraft.world.WorldView;
+//import net.minecraft.core.BlockPos;
+//import net.minecraft.world.level.Level;
+//import net.minecraft.world.level.LevelReader;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.List;
@@ -40,7 +40,7 @@
 //        return PowerTypes.MODIFY_SLIPPERINESS;
 //    }
 //
-//    public boolean doesApply(WorldView worldView, BlockPos pos) {
+//    public boolean doesApply(LevelReader worldView, BlockPos pos) {
 //        return worldView instanceof Level world && blockCondition
 //            .map(condition -> condition.test(world, pos))
 //            .orElse(true);

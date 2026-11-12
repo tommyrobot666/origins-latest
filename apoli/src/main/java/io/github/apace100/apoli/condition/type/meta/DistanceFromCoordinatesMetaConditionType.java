@@ -14,9 +14,9 @@
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataType;
 //import io.github.apace100.calio.data.SerializableDataTypes;
-//import net.minecraft.util.math.BlockPos;
-//import net.minecraft.util.math.Vec3;
-//import net.minecraft.world.Level;
+//import net.minecraft.core.BlockPos;
+//import net.minecraft.world.phys.Vec3;
+//import net.minecraft.world.level.Level;
 //
 //import java.math.BigDecimal;
 //import java.math.RoundingMode;

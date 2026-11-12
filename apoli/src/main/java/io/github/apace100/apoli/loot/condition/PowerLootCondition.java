@@ -8,7 +8,7 @@
 //import net.minecraft.world.entity.Entity;
 //import net.minecraft.loot.condition.LootCondition;
 //import net.minecraft.loot.condition.LootConditionType;
-//import net.minecraft.loot.context.LootContext;
+//import net.minecraft.world.level.storage.loot.LootContext;
 //import net.minecraft.resources.Identifier;
 //
 //import java.util.Optional;

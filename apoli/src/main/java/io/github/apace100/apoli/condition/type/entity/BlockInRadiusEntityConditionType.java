@@ -13,7 +13,7 @@
 //import io.github.apace100.calio.data.SerializableDataType;
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.world.entity.Entity;
-//import net.minecraft.util.math.BlockPos;
+//import net.minecraft.core.BlockPos;
 //import org.jetbrains.annotations.NotNull;
 //
 //public class BlockInRadiusEntityConditionType extends EntityConditionType {

@@ -20,7 +20,7 @@
 //import net.minecraft.registry.RegistryWrapper;
 //import net.minecraft.resources.Identifier;
 //import net.minecraft.util.collection.DefaultedList;
-//import net.minecraft.world.Level;
+//import net.minecraft.world.level.Level;
 //
 //public record PowerCraftingRecipe(Identifier powerId, CraftingRecipe delegate) implements CraftingRecipe {
 //

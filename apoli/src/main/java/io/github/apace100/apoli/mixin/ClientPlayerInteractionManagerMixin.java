@@ -12,7 +12,7 @@
 //import io.github.apace100.apoli.util.ActionResultUtil;
 //import io.github.apace100.apoli.util.BlockUsagePhase;
 //import io.github.apace100.apoli.util.PriorityPhase;
-//import net.minecraft.block.BlockState;
+//import net.minecraft.world.level.block.state.BlockState;
 //import net.minecraft.client.network.ClientPlayer;
 //import net.minecraft.client.network.ClientPlayerInteractionManager;
 //import net.minecraft.world.entity.player.Player;
@@ -21,7 +21,7 @@
 //import net.minecraft.util.InteractionHand;
 //import net.minecraft.util.ItemActionResult;
 //import net.minecraft.util.hit.BlockHitResult;
-//import net.minecraft.world.Level;
+//import net.minecraft.world.level.Level;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.injection.At;
 //import org.spongepowered.asm.mixin.injection.Slice;

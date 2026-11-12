@@ -8,7 +8,7 @@
 //import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 //import net.minecraft.resources.Identifier;
 //
-//public record SyncPowerDataS2CPacket(int entityId, Identifier powerTypeId, CompoundTag powerData) implements CustomPayload {
+//public record SyncPowerDataS2CPacket(int entityId, Identifier powerTypeId, CompoundTag powerData) implements CustomPacketPayload {
 //
 //    public static final Type<SyncPowerDataS2CPacket> PACKET_ID = new Type<>(Apoli.identifier("s2c/sync_power_data"));
 //    public static final StreamCodec<RegistryFriendlyByteBuf, SyncPowerDataS2CPacket> STREAM_CODEC = StreamCodec.composite(

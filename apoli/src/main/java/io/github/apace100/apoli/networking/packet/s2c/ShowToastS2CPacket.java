@@ -6,7 +6,7 @@
 //import net.minecraft.network.codec.StreamCodec;
 //import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 //
-//public record ShowToastS2CPacket(CustomToastData toastData) implements CustomPayload {
+//public record ShowToastS2CPacket(CustomToastData toastData) implements CustomPacketPayload {
 //
 //    public static final Type<ShowToastS2CPacket> PACKET_ID = new Type<>(Apoli.identifier("s2c/show_toast"));
 //    public static final StreamCodec<RegistryFriendlyByteBuf, ShowToastS2CPacket> STREAM_CODEC = StreamCodec.ofStatic(

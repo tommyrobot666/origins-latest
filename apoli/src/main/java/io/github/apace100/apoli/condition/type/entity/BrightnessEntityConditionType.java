@@ -11,8 +11,8 @@
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.world.entity.Entity;
-//import net.minecraft.util.math.BlockPos;
-//import net.minecraft.world.Level;
+//import net.minecraft.core.BlockPos;
+//import net.minecraft.world.level.Level;
 //import org.jetbrains.annotations.NotNull;
 //
 //public class BrightnessEntityConditionType extends EntityConditionType {

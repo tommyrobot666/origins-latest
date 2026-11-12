@@ -7,7 +7,7 @@
 //import io.github.apace100.apoli.util.MiscUtil;
 //import io.github.apace100.apoli.util.WorldUtil;
 //import net.minecraft.world.entity.Entity;
-//import net.minecraft.util.math.BlockPos;
+//import net.minecraft.core.BlockPos;
 //import org.jetbrains.annotations.NotNull;
 //
 //public class InThunderstormEntityConditionType extends EntityConditionType {

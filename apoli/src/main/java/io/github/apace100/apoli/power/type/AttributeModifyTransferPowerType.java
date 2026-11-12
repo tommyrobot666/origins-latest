@@ -13,7 +13,7 @@ import io.github.apace100.calio.data.SerializableDataTypes;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.entity.attribute.AttributeContainer;
-import net.minecraft.entity.attribute.EntityAttribute;
+import net.minecraft.entity.attribute.Attribute;
 import net.minecraft.entity.attribute.EntityAttributeInstance;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.registry.entry.Holder;
@@ -45,11 +45,11 @@ public class AttributeModifyTransferPowerType extends PowerType {
     );
 
     private final Class<?> modifyClass;
-    private final Holder<EntityAttribute> attribute;
+    private final Holder<Attribute> attribute;
 
     private final double valueMultiplier;
 
-    public AttributeModifyTransferPowerType(Class<?> modifyClass, Holder<EntityAttribute> attribute, double valueMultiplier, Optional<EntityCondition> condition) {
+    public AttributeModifyTransferPowerType(Class<?> modifyClass, Holder<Attribute> attribute, double valueMultiplier, Optional<EntityCondition> condition) {
         super(condition);
         this.modifyClass = modifyClass;
         this.attribute = attribute;

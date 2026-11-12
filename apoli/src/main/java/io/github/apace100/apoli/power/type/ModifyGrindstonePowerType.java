@@ -17,8 +17,8 @@
 //import net.minecraft.inventory.StackReference;
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.screen.GrindstoneScreenHandler;
-//import net.minecraft.util.math.BlockPos;
-//import net.minecraft.world.Level;
+//import net.minecraft.core.BlockPos;
+//import net.minecraft.world.level.Level;
 //import org.jetbrains.annotations.NotNull;
 //import org.jetbrains.annotations.Nullable;
 //

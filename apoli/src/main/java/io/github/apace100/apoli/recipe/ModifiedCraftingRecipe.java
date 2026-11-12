@@ -30,8 +30,8 @@
 //import net.minecraft.screen.CraftingScreenHandler;
 //import net.minecraft.resources.Identifier;
 //import net.minecraft.util.collection.DefaultedList;
-//import net.minecraft.util.math.BlockPos;
-//import net.minecraft.world.Level;
+//import net.minecraft.core.BlockPos;
+//import net.minecraft.world.level.Level;
 //import org.jetbrains.annotations.Nullable;
 //
 //import java.util.Collection;

@@ -11,7 +11,7 @@
 //import io.github.apace100.apoli.util.ArmPoseReference;
 //import net.fabricmc.api.EnvType;
 //import net.fabricmc.api.Environment;
-//import net.minecraft.block.BlockState;
+//import net.minecraft.world.level.block.state.BlockState;
 //import net.minecraft.block.ShapeContext;
 //import net.minecraft.client.Minecraft;
 //import net.minecraft.world.entity.Entity;
@@ -23,13 +23,13 @@
 //import net.minecraft.tags.TagKey;
 //import net.minecraft.scoreboard.AbstractTeam;
 //import net.minecraft.network.chat.Component;
-//import net.minecraft.util.math.BlockPos;
+//import net.minecraft.core.BlockPos;
 //import net.minecraft.util.math.Direction;
 //import net.minecraft.util.math.MathHelper;
-//import net.minecraft.util.math.Vec3;
+//import net.minecraft.world.phys.Vec3;
 //import net.minecraft.util.shape.VoxelShape;
-//import net.minecraft.world.BlockView;
-//import net.minecraft.world.Level;
+//import net.minecraft.world.BlockGetter;
+//import net.minecraft.world.level.Level;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.Shadow;
 //import org.spongepowered.asm.mixin.Unique;
@@ -134,8 +134,8 @@
 //
 //    }
 //
-//    @Redirect(method = "method_30022", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/BlockState;getCollisionShape(Lnet/minecraft/world/BlockView;Lnet/minecraft/util/math/BlockPos;)Lnet/minecraft/util/shape/VoxelShape;"))
-//    private VoxelShape preventPhasingSuffocation(BlockState state, BlockView world, BlockPos pos) {
+//    @Redirect(method = "method_30022", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/BlockState;getCollisionShape(Lnet/minecraft/world/BlockGetter;Lnet/minecraft/util/math/BlockPos;)Lnet/minecraft/util/shape/VoxelShape;"))
+//    private VoxelShape preventPhasingSuffocation(BlockState state, BlockGetter world, BlockPos pos) {
 //        return state.getCollisionShape(world, pos, ShapeContext.of((Entity)(Object)this));
 //    }
 //

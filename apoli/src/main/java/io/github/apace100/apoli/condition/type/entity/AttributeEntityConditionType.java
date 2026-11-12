@@ -10,7 +10,7 @@
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.world.entity.LivingEntity;
-//import net.minecraft.entity.attribute.EntityAttribute;
+//import net.minecraft.entity.attribute.Attribute;
 //import net.minecraft.entity.attribute.EntityAttributeInstance;
 //import net.minecraft.registry.entry.Holder;
 //import org.jetbrains.annotations.NotNull;
@@ -35,12 +35,12 @@
 //            .set("compare_to", conditionType.compareTo)
 //    );
 //
-//    private final Holder<EntityAttribute> attribute;
+//    private final Holder<Attribute> attribute;
 //
 //    private final Comparison comparison;
 //    private final double compareTo;
 //
-//    public AttributeEntityConditionType(Holder<EntityAttribute> attribute, Comparison comparison, double compareTo) {
+//    public AttributeEntityConditionType(Holder<Attribute> attribute, Comparison comparison, double compareTo) {
 //        this.attribute = attribute;
 //        this.comparison = comparison;
 //        this.compareTo = compareTo;

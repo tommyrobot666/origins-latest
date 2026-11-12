@@ -2,10 +2,10 @@
 //
 //import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 //import net.minecraft.world.entity.Entity;
-//import net.minecraft.util.math.BlockPos;
+//import net.minecraft.core.BlockPos;
 //import net.minecraft.util.math.Box;
-//import net.minecraft.util.math.Vec3;
-//import net.minecraft.world.Level;
+//import net.minecraft.world.phys.Vec3;
+//import net.minecraft.world.level.Level;
 //
 //import java.util.Collection;
 //import java.util.Set;

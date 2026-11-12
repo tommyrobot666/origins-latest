@@ -11,7 +11,7 @@
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.server.level.ServerLevel;
-//import net.minecraft.util.math.BlockPos;
+//import net.minecraft.core.BlockPos;
 //import net.minecraft.world.explosion.Explosion;
 //import org.jetbrains.annotations.NotNull;
 //

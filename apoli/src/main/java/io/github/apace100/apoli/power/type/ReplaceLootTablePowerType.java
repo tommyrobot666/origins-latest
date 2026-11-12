@@ -16,8 +16,8 @@
 //import net.minecraft.world.entity.Entity;
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.loot.LootTable;
-//import net.minecraft.loot.context.LootContext;
-//import net.minecraft.loot.context.LootContextParameters;
+//import net.minecraft.world.level.storage.loot.LootContext;
+//import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 //import net.minecraft.registry.ResourceKey;
 //import net.minecraft.core.registries.Registries;
 //import net.minecraft.resources.Identifier;
@@ -108,8 +108,8 @@
 //
 //    public boolean doesApply(LootContext context) {
 //
-//        Entity contextEntity = context.get(LootContextParameters.THIS_ENTITY);
-//        ItemStack toolStack = context.hasParameter(LootContextParameters.TOOL) ? context.get(LootContextParameters.TOOL) : ItemStack.EMPTY;
+//        Entity contextEntity = context.get(LootContextParams.THIS_ENTITY);
+//        ItemStack toolStack = context.hasParameter(LootContextParams.TOOL) ? context.get(LootContextParams.TOOL) : ItemStack.EMPTY;
 //
 //        return doesApply(contextEntity, toolStack, SavedBlockPosition.fromLootContext(context));
 //

@@ -121,7 +121,7 @@
 //				return;
 //			}
 //
-//			Entity thisEntity = context.get(LootContextParameters.THIS_ENTITY);
+//			Entity thisEntity = context.get(LootContextParams.THIS_ENTITY);
 //			Entity holder = thisEntity;
 //
 //			if (contextType == LootContextTypes.FISHING) {
@@ -134,8 +134,8 @@
 //
 //			else if (contextType == LootContextTypes.ENTITY) {
 //
-//				if (context.hasParameter(LootContextParameters.ATTACKING_ENTITY)) {
-//					holder = context.get(LootContextParameters.ATTACKING_ENTITY);
+//				if (context.hasParameter(LootContextParams.ATTACKING_ENTITY)) {
+//					holder = context.get(LootContextParams.ATTACKING_ENTITY);
 //				}
 //
 //			}

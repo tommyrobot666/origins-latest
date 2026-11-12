@@ -8,7 +8,7 @@
 //import io.github.apace100.apoli.util.modifier.Modifier;
 //import io.github.apace100.calio.data.SerializableData;
 //import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-//import net.minecraft.util.math.BlockPos;
+//import net.minecraft.core.BlockPos;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.List;

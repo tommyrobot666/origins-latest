@@ -15,23 +15,33 @@ import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.Registries;
+import net.minecraft.core.Holder;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
+import net.minecraft.network.protocol.game.ClientboundExplodePacket;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.util.random.WeightedList;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.SlotRange;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.world.level.Explosion;
-import net.minecraft.world.level.ExplosionDamageCalculator;
-import net.minecraft.world.level.Level;
+import net.minecraft.world.level.*;
+import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.pattern.BlockInWorld;
+import net.minecraft.world.level.levelgen.structure.BoundingBox;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
@@ -44,48 +54,41 @@ import java.util.function.Supplier;
 @SuppressWarnings("OptionalUsedAsFieldOrParameterType")
 public final class MiscUtil {
 
-    public static void createExplosion(Level world, Vec3 pos, float power, boolean createFire, Explosion.DestructionType destructionType, ExplosionDamageCalculator behavior) {
+    public static void createExplosion(Level world, Vec3 pos, float power, boolean createFire, Explosion.BlockInteraction destructionType, ExplosionDamageCalculator behavior) {
         createExplosion(world, null, pos, power, createFire, destructionType, behavior);
     }
 
-    public static void createExplosion(Level world, Entity entity, Vec3 pos, float power, boolean createFire, Explosion.DestructionType destructionType, ExplosionDamageCalculator behavior) {
-        createExplosion(world, entity, null, pos.getX(), pos.getY(), pos.getZ(), power, createFire, destructionType, behavior);
+    public static void createExplosion(Level world, Entity entity, Vec3 pos, float power, boolean createFire, Explosion.BlockInteraction destructionType, ExplosionDamageCalculator behavior) {
+        createExplosion(world, entity, null, pos.x(), pos.y(), pos.z(), power, createFire, destructionType, behavior);
     }
 
-    public static void createExplosion(Level world, @Nullable Entity entity, @Nullable DamageSource damageSource, double x, double y, double z, float power, boolean createFire, Explosion.DestructionType destructionType, ExplosionDamageCalculator behavior) {
+    public static void createExplosion(Level world, @Nullable Entity entity, @Nullable DamageSource damageSource, double x, double y, double z, float power, boolean createFire, Explosion.BlockInteraction destructionType, ExplosionDamageCalculator behavior) {
+        Vec3 center = new Vec3(x,y,z);
+        ServerExplosion explosion = new ServerExplosion((ServerLevel) world, entity, damageSource, behavior, center, power, createFire, destructionType);
 
-        Explosion explosion = new Explosion(world, entity, damageSource, behavior, x, y, z, power, createFire, destructionType, ParticleTypes.EXPLOSION, ParticleTypes.EXPLOSION_EMITTER, SoundEvents.ENTITY_GENERIC_EXPLODE);
+        int blockCount = explosion.explode();
+        ParticleOptions explosionParticle = explosion.isSmall() ? ParticleTypes.EXPLOSION : ParticleTypes.EXPLOSION_EMITTER;
 
-        explosion.collectBlocksAndDamageEntities();
-        explosion.affectWorld(world.isClient);
-
-        //  Sync the explosion effect to the client if the explosion is created on the server
-        if (!(world instanceof ServerLevel serverWorld)) {
-            return;
-        }
-
-        if (!explosion.shouldDestroy()) {
-            explosion.clearAffectedBlocks();
-        }
-
-        for (ServerPlayer serverPlayer : serverWorld.getPlayers()) {
-            if (serverPlayer.squaredDistanceTo(x, y, z) < 4096.0) {
-                serverPlayer.networkHandler.sendPacket(new ExplosionS2CPacket(x, y, z, power, explosion.getAffectedBlocks(), explosion.getAffectedPlayers().get(serverPlayer), explosion.getDestructionType(), explosion.getParticle(), explosion.getEmitterParticle(), explosion.getSoundEvent()));
+        for(Player player : world.players()) {
+            ServerPlayer splayer = ((ServerPlayer) player);
+            if (player.distanceToSqr(center) < (double)4096.0F) {
+                Optional<Vec3> playerKnockback = Optional.ofNullable(explosion.getHitPlayers().get(player));
+                splayer.connection.send(new ClientboundExplodePacket(center, power, blockCount, playerKnockback, explosionParticle, SoundEvents.GENERIC_EXPLODE, WeightedList.of(), true));
             }
         }
 
     }
 
     @Nullable
-    public static ExplosionDamageCalculator getExplosionBehavior(Level world, float indestructibleResistance, @Nullable Predicate<CachedBlockPosition> indestructibleCondition) {
+    public static ExplosionDamageCalculator getExplosionBehavior(Level world, float indestructibleResistance, @Nullable Predicate<BlockInWorld> indestructibleCondition) {
         return indestructibleCondition == null ? null : new ExplosionDamageCalculator() {
 
             @Override
-            public Optional<Float> getBlastResistance(Explosion explosion, BlockView blockView, BlockPos pos, BlockState blockState, FluidState fluidState) {
+            public Optional<Float> getBlockExplosionResistance(Explosion explosion, BlockGetter blockView, BlockPos pos, BlockState blockState, FluidState fluidState) {
 
-                CachedBlockPosition cachedBlockPosition = new CachedBlockPosition(world, pos, true);
+                BlockInWorld cachedBlockPosition = new BlockInWorld(world, pos, true);
 
-                Optional<Float> defaultValue = super.getBlastResistance(explosion, world, pos, blockState, fluidState);
+                Optional<Float> defaultValue = super.getBlockExplosionResistance(explosion, world, pos, blockState, fluidState);
                 Optional<Float> newValue = indestructibleCondition.test(cachedBlockPosition) ? Optional.of(indestructibleResistance) : Optional.empty();
 
                 return defaultValue.isPresent() ? (newValue.isPresent() ? (defaultValue.get() > newValue.get() ? (defaultValue) : newValue) : defaultValue) : defaultValue;
@@ -93,8 +96,8 @@ public final class MiscUtil {
             }
 
             @Override
-            public boolean canDestroyBlock(Explosion explosion, BlockView blockView, BlockPos pos, BlockState state, float power) {
-                return !indestructibleCondition.test(new CachedBlockPosition(world, pos, true));
+            public boolean shouldBlockExplode(Explosion explosion, BlockGetter blockView, BlockPos pos, BlockState state, float power) {
+                return !indestructibleCondition.test(new BlockInWorld(world, pos, true));
             }
 
         };
@@ -105,9 +108,9 @@ public final class MiscUtil {
         return indestructibleCondition == null ? null : new ExplosionDamageCalculator() {
 
             @Override
-            public Optional<Float> getBlastResistance(Explosion explosion, BlockView world, BlockPos pos, BlockState blockState, FluidState fluidState) {
+            public Optional<Float> getBlockExplosionResistance(Explosion explosion, BlockGetter world, BlockPos pos, BlockState blockState, FluidState fluidState) {
 
-                Optional<Float> defaultValue = super.getBlastResistance(explosion, world, pos, blockState, fluidState);
+                Optional<Float> defaultValue = super.getBlockExplosionResistance(explosion, world, pos, blockState, fluidState);
                 Optional<Float> newValue = indestructibleCondition.test(new BlockConditionContext((Level) world, pos))
                     ? Optional.of(resistance)
                     : Optional.empty();
@@ -119,7 +122,7 @@ public final class MiscUtil {
             }
 
             @Override
-            public boolean canDestroyBlock(Explosion explosion, BlockView world, BlockPos pos, BlockState state, float power) {
+            public boolean shouldBlockExplode(Explosion explosion, BlockGetter world, BlockPos pos, BlockState state, float power) {
                 return !indestructibleCondition.test(new BlockConditionContext((Level) world, pos));
             }
 
@@ -138,15 +141,16 @@ public final class MiscUtil {
 
         CompoundTag entityToSpawnNbt = new CompoundTag();
         if (entityNbt != null && !entityNbt.isEmpty()) {
-            entityToSpawnNbt.copyFrom(entityNbt);
+            entityToSpawnNbt.merge(entityNbt);
         }
 
-        entityToSpawnNbt.putString("id", Registries.ENTITY_TYPE.getId(entityType).toString());
-        Entity entityToSpawn = EntityType.loadEntityWithPassengers(
+        entityToSpawnNbt.putString("id", BuiltInRegistries.ENTITY_TYPE.getKey(entityType).toString());
+        Entity entityToSpawn = EntityType.loadEntityRecursive(
             entityToSpawnNbt,
             serverWorld,
+                new EntitySpawnRequest(EntitySpawnReason.COMMAND,true),
             entity -> {
-                entity.refreshPositionAndAngles(pos.x, pos.y, pos.z, yaw.orElse(entity.getYaw()), pitch.orElse(entity.getPitch()));
+                entity.moveOrInterpolateTo(pos, yaw.orElse(entity.getYRot()), pitch.orElse(entity.getXRot()));
                 return entity;
             }
         );
@@ -155,8 +159,8 @@ public final class MiscUtil {
             return Optional.empty();
         }
 
-        if ((entityNbt == null || entityNbt.isEmpty()) && entityToSpawn instanceof MobEntity mobToSpawn) {
-            mobToSpawn.initialize(serverWorld, serverWorld.getLocalDifficulty(BlockPos.ofFloored(pos)), SpawnReason.COMMAND, null);
+        if ((entityNbt == null || entityNbt.isEmpty()) && entityToSpawn instanceof Mob mobToSpawn) {
+            mobToSpawn.finalizeSpawn(serverWorld, serverWorld.getCurrentDifficultyAt(BlockPos.containing(pos)), EntitySpawnReason.COMMAND, null);
         }
 
         return Optional.of(entityToSpawn);
@@ -171,7 +175,7 @@ public final class MiscUtil {
         }
 
         Entity entity;
-        for (ServerLevel serverWorld : server.getWorlds()) {
+        for (ServerLevel serverWorld : server.getAllLevels()) {
 
             if ((entity = serverWorld.getEntity(uuid)) != null) {
                 return entity;
@@ -184,15 +188,15 @@ public final class MiscUtil {
     }
 
     public static BlockState getInWallBlockState(Entity playerEntity) {
-        BlockPos.Mutable mutable = new BlockPos.Mutable();
+        BlockPos.MutableBlockPos mutable = new BlockPos.MutableBlockPos();
 
         for(int i = 0; i < 8; ++i) {
-            double d = playerEntity.getX() + (double)(((float)((i >> 0) % 2) - 0.5F) * playerEntity.getWidth() * 0.8F);
+            double d = playerEntity.getX() + (double)(((float)((i >> 0) % 2) - 0.5F) * playerEntity.getBbWidth() * 0.8F);
             double e = playerEntity.getEyeY() + (double)(((float)((i >> 1) % 2) - 0.5F) * 0.1F);
-            double f = playerEntity.getZ() + (double)(((float)((i >> 2) % 2) - 0.5F) * playerEntity.getWidth() * 0.8F);
+            double f = playerEntity.getZ() + (double)(((float)((i >> 2) % 2) - 0.5F) * playerEntity.getBbWidth() * 0.8F);
             mutable.set(d, e, f);
             BlockState blockState = playerEntity.level().getBlockState(mutable);
-            if (blockState.getRenderType() != BlockRenderType.INVISIBLE && blockState.shouldBlockVision(playerEntity.level(), mutable)) {
+            if (blockState.getRenderShape() != RenderShape.INVISIBLE && blockState.isViewBlocking(playerEntity.level(), mutable, AABB.of(BoundingBox.infinite()))) {
                 return blockState;
             }
         }
@@ -334,9 +338,9 @@ public final class MiscUtil {
 
     public static OptionalInt getSpaceInInventory(Inventory playerInventory, ItemStack stack) {
 
-        int slot = playerInventory.getOccupiedSlotWithRoomForStack(stack);
+        int slot = playerInventory.getSlotWithRemainingSpace(stack);
         if (slot == -1) {
-            slot = playerInventory.getEmptySlot();
+            slot = playerInventory.getFreeSlot();
         }
 
         return slot == -1
@@ -379,7 +383,7 @@ public final class MiscUtil {
 
         IntSet slotIdSet = new IntOpenHashSet();
         for (SlotRange slotRange : slotRanges) {
-            slotIdSet.addAll(slotRange.getSlotIds());
+            slotIdSet.addAll(slotRange.slots());
         }
 
         return slotIdSet;
@@ -390,7 +394,7 @@ public final class MiscUtil {
         return new Vec3(entity.getX(), entity.getY() + entity.getEyeHeight(entity.getPose()), entity.getZ());
     }
 
-    public static double getAttributeValueOrElse(Entity entity, Holder<EntityAttribute> attribute, double defaultValue) {
+    public static double getAttributeValueOrElse(Entity entity, Holder<Attribute> attribute, double defaultValue) {
 
         if (entity instanceof LivingEntity livingEntity && livingEntity.getAttributes().hasAttribute(attribute)) {
             return livingEntity.getAttributeValue(attribute);
@@ -429,18 +433,19 @@ public final class MiscUtil {
 
     public static int getInventoryProperIndex(EquipmentSlot slot) {
 
-        for (var slotRange : SlotRangesAccessor.getSlotRanges()) {
+        for (var slotRange : SlotRangesAccessor.getSlots()) {
 
-            String slotName = slotRange.asString();
+            String slotName = slotRange.getSerializedName();
 
             if (slotName.contains(slot.getName())) {
                 return switch (slot.getType()) {
                     case HAND ->
-                        slot.getOffsetEntitySlotId(98);
+                        slot.getIndex(98);
                     case HUMANOID_ARMOR ->
-                        slot.getOffsetEntitySlotId(100);
+                        slot.getIndex(100);
                     case ANIMAL_ARMOR ->
-                        slot.getOffsetEntitySlotId(105);
+                        slot.getIndex(105);
+                    case SADDLE -> slot.getIndex(106);
                 };
             }
 
@@ -452,7 +457,7 @@ public final class MiscUtil {
 
     public static Collection<ServerPlayer> getTrackingSafely(Entity entity) {
 
-        if (entity == null || entity.level().isClientSide()()) {
+        if (entity == null || entity.level().isClientSide()) {
             return Collections.emptySet();
         }
 
@@ -467,11 +472,11 @@ public final class MiscUtil {
 
     }
 
-    public static void sendToTrackers(Entity target, CustomPayload payload) {
+    public static void sendToTrackers(Entity target, CustomPacketPayload payload) {
 
         for (var recipient : getTrackingSafely(target)) {
 
-            if (ServerPlayNetworking.canSend(recipient, payload.getId())) {
+            if (ServerPlayNetworking.canSend(recipient, payload.type())) {
                 ServerPlayNetworking.send(recipient, payload);
             }
 
@@ -482,7 +487,7 @@ public final class MiscUtil {
     public static void sendToTrackers(Entity target, Packet<?> packet) {
 
         for (var recipient : getTrackingSafely(target)) {
-            recipient.networkHandler.sendPacket(packet);
+            recipient.connection.send(packet);
         }
 
     }

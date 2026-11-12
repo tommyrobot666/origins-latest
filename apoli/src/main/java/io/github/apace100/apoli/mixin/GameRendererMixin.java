@@ -7,7 +7,7 @@
 //import io.github.apace100.apoli.power.type.*;
 //import net.fabricmc.api.EnvType;
 //import net.fabricmc.api.Environment;
-//import net.minecraft.block.BlockState;
+//import net.minecraft.world.level.block.state.BlockState;
 //import net.minecraft.block.Blocks;
 //import net.minecraft.block.FluidBlock;
 //import net.minecraft.block.enums.FogType;
@@ -20,10 +20,10 @@
 //import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.resource.ResourceManager;
 //import net.minecraft.resources.Identifier;
-//import net.minecraft.util.math.BlockPos;
+//import net.minecraft.core.BlockPos;
 //import net.minecraft.util.math.Box;
-//import net.minecraft.util.math.Vec3;
-//import net.minecraft.world.BlockView;
+//import net.minecraft.world.phys.Vec3;
+//import net.minecraft.world.BlockGetter;
 //import org.spongepowered.asm.mixin.Final;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.Shadow;
@@ -200,8 +200,8 @@
 //    }
 //
 //    // PHASING
-//    @Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/Camera;update(Lnet/minecraft/world/BlockView;Lnet/minecraft/entity/Entity;ZZF)V"), method = "renderWorld")
-//    private void preventThirdPerson(Camera camera, BlockView area, Entity focusedEntity, boolean thirdPerson, boolean inverseView, float tickDelta) {
+//    @Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/Camera;update(Lnet/minecraft/world/BlockGetter;Lnet/minecraft/entity/Entity;ZZF)V"), method = "renderWorld")
+//    private void preventThirdPerson(Camera camera, BlockGetter area, Entity focusedEntity, boolean thirdPerson, boolean inverseView, float tickDelta) {
 //        if (PowerHolderComponent.getPowerTypes(camera.getFocusedEntity(), PhasingPowerType.class).stream().anyMatch(pp -> pp.getRenderType() == PhasingPowerType.RenderType.REMOVE_BLOCKS)) {
 //            camera.update(area, focusedEntity, false, false, tickDelta);
 //        } else {

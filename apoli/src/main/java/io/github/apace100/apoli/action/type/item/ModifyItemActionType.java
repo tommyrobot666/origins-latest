@@ -11,9 +11,9 @@
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.inventory.StackReference;
 //import net.minecraft.world.item.ItemStack;
-//import net.minecraft.loot.context.LootContext;
+//import net.minecraft.world.level.storage.loot.LootContext;
 //import net.minecraft.loot.context.LootContextParameterSet;
-//import net.minecraft.loot.context.LootContextParameters;
+//import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 //import net.minecraft.loot.function.LootFunction;
 //import net.minecraft.registry.ResourceKey;
 //import net.minecraft.core.registries.Registries;
@@ -53,9 +53,9 @@
 //            .getOrThrow(modifier);
 //
 //        LootContextParameterSet lootContextParameterSet = new LootContextParameterSet.Builder(world)
-//            .add(LootContextParameters.ORIGIN, world.getSpawnPos().toCenterPos())
-//            .add(LootContextParameters.TOOL, oldStack)
-//            .addOptional(LootContextParameters.THIS_ENTITY, ((EntityLinkedItemStack) oldStack).apoli$getEntity())
+//            .add(LootContextParams.ORIGIN, world.getSpawnPos().toCenterPos())
+//            .add(LootContextParams.TOOL, oldStack)
+//            .addOptional(LootContextParams.THIS_ENTITY, ((EntityLinkedItemStack) oldStack).apoli$getEntity())
 //            .build(ApoliLootContextTypes.ANY);
 //
 //        ItemStack newStack = itemModifier.apply(oldStack, new LootContext.Builder(lootContextParameterSet).build(Optional.empty()));

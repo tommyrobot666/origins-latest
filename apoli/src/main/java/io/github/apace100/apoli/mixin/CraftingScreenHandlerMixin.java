@@ -20,7 +20,7 @@
 //import net.minecraft.screen.ScreenHandler;
 //import net.minecraft.screen.ScreenHandlerType;
 //import net.minecraft.screen.slot.Slot;
-//import net.minecraft.world.Level;
+//import net.minecraft.world.level.Level;
 //import org.jetbrains.annotations.Nullable;
 //import org.spongepowered.asm.mixin.Final;
 //import org.spongepowered.asm.mixin.Mixin;

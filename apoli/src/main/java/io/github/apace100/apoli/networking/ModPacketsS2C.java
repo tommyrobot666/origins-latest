@@ -23,7 +23,7 @@ import net.minecraft.entity.effect.MobEffectInstance;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.nbt.Tag;
 import net.minecraft.resources.Identifier;
-import net.minecraft.world.Level;
+import net.minecraft.world.level.Level;
 
 import java.util.Map;
 import java.util.Optional;

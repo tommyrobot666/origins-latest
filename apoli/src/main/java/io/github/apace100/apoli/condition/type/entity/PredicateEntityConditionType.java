@@ -9,9 +9,9 @@
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.world.entity.Entity;
 //import net.minecraft.loot.condition.LootCondition;
-//import net.minecraft.loot.context.LootContext;
+//import net.minecraft.world.level.storage.loot.LootContext;
 //import net.minecraft.loot.context.LootContextParameterSet;
-//import net.minecraft.loot.context.LootContextParameters;
+//import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 //import net.minecraft.loot.context.LootContextTypes;
 //import net.minecraft.registry.ResourceKey;
 //import net.minecraft.core.registries.Registries;
@@ -51,8 +51,8 @@
 //            .get(Registries.PREDICATE)
 //            .getOrThrow(predicate);
 //        LootContextParameterSet lootContextParameterSet = new LootContextParameterSet.Builder(serverWorld)
-//            .add(LootContextParameters.ORIGIN, entity.getPos())
-//            .addOptional(LootContextParameters.THIS_ENTITY, entity)
+//            .add(LootContextParams.ORIGIN, entity.getPos())
+//            .addOptional(LootContextParams.THIS_ENTITY, entity)
 //            .build(LootContextTypes.COMMAND);
 //
 //        return lootCondition.test(new LootContext.Builder(lootContextParameterSet).build(Optional.empty()));

@@ -11,7 +11,7 @@
 //import net.minecraft.world.entity.Entity;
 //import net.minecraft.particle.ParticleEffect;
 //import net.minecraft.server.level.ServerLevel;
-//import net.minecraft.util.math.Vec3;
+//import net.minecraft.world.phys.Vec3;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.Optional;

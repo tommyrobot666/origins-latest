@@ -16,7 +16,7 @@
 //import net.minecraft.nbt.CompoundTag;
 //import net.minecraft.server.level.ServerLevel;
 //import net.minecraft.util.math.MathHelper;
-//import net.minecraft.util.math.Vec3;
+//import net.minecraft.world.phys.Vec3;
 //import net.minecraft.util.math.random.Random;
 //import org.jetbrains.annotations.NotNull;
 //

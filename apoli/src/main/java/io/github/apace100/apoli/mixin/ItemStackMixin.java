@@ -26,7 +26,7 @@
 //import net.minecraft.util.InteractionHand;
 //import net.minecraft.util.TypedActionResult;
 //import net.minecraft.util.UseAnim;
-//import net.minecraft.world.Level;
+//import net.minecraft.world.level.Level;
 //import org.jetbrains.annotations.Nullable;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.Shadow;

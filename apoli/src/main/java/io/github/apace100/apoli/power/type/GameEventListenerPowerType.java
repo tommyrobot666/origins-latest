@@ -17,7 +17,7 @@
 //import net.minecraft.registry.entry.Holder;
 //import net.minecraft.tags.TagKey;
 //import net.minecraft.server.level.ServerLevel;
-//import net.minecraft.util.math.BlockPos;
+//import net.minecraft.core.BlockPos;
 //import net.minecraft.world.event.EntityPositionSource;
 //import net.minecraft.world.event.GameEvent;
 //import net.minecraft.world.event.PositionSource;

@@ -10,7 +10,7 @@
 //import java.util.Collection;
 //import java.util.Map;
 //
-//public record SyncEntityTypeTagCacheS2CPacket(Map<Identifier, Collection<Identifier>> subTags) implements CustomPayload {
+//public record SyncEntityTypeTagCacheS2CPacket(Map<Identifier, Collection<Identifier>> subTags) implements CustomPacketPayload {
 //
 //	public static final Type<SyncEntityTypeTagCacheS2CPacket> PACKET_ID = new Type<>(Apoli.identifier("s2c/sync_entity_type_tag_cache"));
 //	public static final StreamCodec<FriendlyByteBuf, SyncEntityTypeTagCacheS2CPacket> STREAM_CODEC = StreamCodec.of(SyncEntityTypeTagCacheS2CPacket::write, SyncEntityTypeTagCacheS2CPacket::read);

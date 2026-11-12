@@ -8,8 +8,8 @@
 //import io.github.apace100.apoli.power.type.ModifyFovPowerType;
 //import net.minecraft.client.network.AbstractClientPlayer;
 //import net.minecraft.world.entity.player.Player;
-//import net.minecraft.util.math.BlockPos;
-//import net.minecraft.world.Level;
+//import net.minecraft.core.BlockPos;
+//import net.minecraft.world.level.Level;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.injection.At;
 //

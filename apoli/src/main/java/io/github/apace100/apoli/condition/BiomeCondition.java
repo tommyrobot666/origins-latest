@@ -6,7 +6,7 @@
 //import io.github.apace100.apoli.data.ApoliDataTypes;
 //import io.github.apace100.calio.data.SerializableDataType;
 //import net.minecraft.registry.entry.Holder;
-//import net.minecraft.util.math.BlockPos;
+//import net.minecraft.core.BlockPos;
 //import net.minecraft.world.biome.Biome;
 //
 //public final class BiomeCondition extends Condition<BiomeConditionContext, BiomeConditionType> {

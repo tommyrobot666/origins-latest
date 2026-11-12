@@ -7,7 +7,7 @@
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.recipe.RecipeType;
 //import net.minecraft.recipe.input.SingleStackRecipeInput;
-//import net.minecraft.world.Level;
+//import net.minecraft.world.level.Level;
 //import org.jetbrains.annotations.NotNull;
 //
 //public class SmeltableItemConditionType extends ItemConditionType {

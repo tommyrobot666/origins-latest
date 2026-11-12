@@ -6,7 +6,7 @@
 //import io.github.apace100.apoli.util.modifier.Modifier;
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
-//import net.minecraft.entity.attribute.EntityAttribute;
+//import net.minecraft.entity.attribute.Attribute;
 //import net.minecraft.registry.entry.Holder;
 //import org.jetbrains.annotations.NotNull;
 //
@@ -27,9 +27,9 @@
 //            .set("attribute", powerType.attribute)
 //    );
 //
-//    private final Holder<EntityAttribute> attribute;
+//    private final Holder<Attribute> attribute;
 //
-//    public ModifyAttributePowerType(Holder<EntityAttribute> attribute, List<Modifier> modifiers, Optional<EntityCondition> condition) {
+//    public ModifyAttributePowerType(Holder<Attribute> attribute, List<Modifier> modifiers, Optional<EntityCondition> condition) {
 //        super(modifiers, condition);
 //        this.attribute = attribute;
 //    }
@@ -39,7 +39,7 @@
 //        return PowerTypes.MODIFY_ATTRIBUTE;
 //    }
 //
-//    public Holder<EntityAttribute> getAttribute() {
+//    public Holder<Attribute> getAttribute() {
 //        return attribute;
 //    }
 //

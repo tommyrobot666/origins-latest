@@ -8,7 +8,7 @@
 //import io.github.apace100.calio.data.SerializableData;
 //import net.minecraft.block.EntityShapeContext;
 //import net.minecraft.block.ShapeContext;
-//import net.minecraft.util.math.BlockPos;
+//import net.minecraft.core.BlockPos;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.Optional;

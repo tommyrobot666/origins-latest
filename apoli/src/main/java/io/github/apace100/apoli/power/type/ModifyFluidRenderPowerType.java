@@ -11,8 +11,8 @@
 //import net.fabricmc.api.Environment;
 //import net.minecraft.fluid.Fluid;
 //import net.minecraft.fluid.FluidState;
-//import net.minecraft.util.math.BlockPos;
-//import net.minecraft.world.Level;
+//import net.minecraft.core.BlockPos;
+//import net.minecraft.world.level.Level;
 //import org.jetbrains.annotations.NotNull;
 //
 //import java.util.Optional;
