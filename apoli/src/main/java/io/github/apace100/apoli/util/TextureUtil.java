@@ -47,7 +47,7 @@
 //        StringBuilder errorMessage = new StringBuilder();
 //
 //        boolean erred = false;
-//        
+//
 //        if (texture != null) {
 //            return texture == MissingSprite.getMissingSpriteTexture()
 //                ? DataResult.error(() -> missingErr.apply(id))
@@ -109,11 +109,11 @@
 //                throw new IllegalArgumentException("Identifier \"" + atlasId + "\" does not refer to an atlas texture!");
 //            }
 //
-//            Sprite missingSprite = ((SpriteAtlasTextureAccessor) atlasTexture).getMissingSprite();
-//            Sprite sprite = atlasTexture.getSprite(spriteId);
+//            TextureAtlasSprite missingSprite = ((SpriteAtlasTextureAccessor) atlasTexture).getMissingSprite();
+//            TextureAtlasSprite sprite = atlasTexture.getSprite(spriteId);
 //
 //            if (sprite == missingSprite) {
-//                throw new IllegalArgumentException("Sprite \"" + spriteId + "\" does not exist in atlas \"" + atlasId + "\"!");
+//                throw new IllegalArgumentException("TextureAtlasSprite \"" + spriteId + "\" does not exist in atlas \"" + atlasId + "\"!");
 //            }
 //
 //            return DataResult.success(spriteId);

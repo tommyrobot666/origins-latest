@@ -9,7 +9,7 @@
 //import net.fabricmc.api.Environment;
 //import net.minecraft.client.Minecraft;
 //import net.minecraft.client.gui.DrawContext;
-//import net.minecraft.client.network.ClientPlayer;
+//import net.minecraft.client.player.LocalPlayer;
 //import net.minecraft.client.render.RenderTickCounter;
 //import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.registry.tag.FluidTags;
@@ -38,7 +38,7 @@
 //    public void render(DrawContext context, RenderTickCounter delta) {
 //
 //        Minecraft client = Minecraft.getInstance();
-//        ClientPlayer player = client.player;
+//        LocalPlayer player = client.player;
 //
 //        if (player == null || !(Apoli.config instanceof ApoliConfigClient config)) {
 //            return;

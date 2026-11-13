@@ -12,7 +12,7 @@
 //import net.minecraft.advancement.AdvancementEntry;
 //import net.minecraft.advancement.AdvancementProgress;
 //import net.minecraft.client.network.ClientAdvancementManager;
-//import net.minecraft.client.network.ClientPlayer;
+//import net.minecraft.client.player.LocalPlayer;
 //import net.minecraft.world.entity.player.Player;
 //import net.minecraft.server.MinecraftServer;
 //import net.minecraft.server.level.ServerPlayer;
@@ -64,7 +64,7 @@
 //
 //        }
 //
-//        else if (player instanceof ClientPlayer clientPlayer && clientPlayer.networkHandler != null) {
+//        else if (player instanceof LocalPlayer clientPlayer && clientPlayer.networkHandler != null) {
 //
 //            ClientAdvancementManager advancementManager = clientPlayer.networkHandler.getAdvancementHandler();
 //            AdvancementEntry advancement = advancementManager.get(this.advancement);

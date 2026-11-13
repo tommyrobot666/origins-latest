@@ -651,7 +651,7 @@ public final class SerializableDataTypes {
 
 //    public static final SerializableDataType<InteractionResult> ACTION_RESULT = SerializableDataType.enumValue(InteractionResult.class);
 
-//    public static final SerializableDataType<UseAnim> USE_ACTION = SerializableDataType.enumValue(UseAnim.class);
+//    public static final SerializableDataType<ItemUseAnimation> USE_ACTION = SerializableDataType.enumValue(ItemUseAnimation.class);
 
     public static final CompoundSerializableDataType<FoodProperties> FOOD_COMPONENT = SerializableDataType.compound(
         new SerializableData()

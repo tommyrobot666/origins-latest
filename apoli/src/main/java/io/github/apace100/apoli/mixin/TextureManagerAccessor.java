@@ -1,7 +1,7 @@
 //package io.github.apace100.apoli.mixin;
 //
 //import net.minecraft.client.texture.AbstractTexture;
-//import net.minecraft.client.texture.TextureManager;
+//import net.minecraft.client.renderer.texture.TextureManager;
 //import net.minecraft.client.texture.TextureTickListener;
 //import net.minecraft.resource.ResourceManager;
 //import net.minecraft.resources.Identifier;

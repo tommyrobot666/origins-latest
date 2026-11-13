@@ -39,7 +39,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class ModifyTypeTagPowerType extends PowerType {
 
     private static final Map<Identifier, Collection<Identifier>> ENTITY_TYPE_SUB_TAGS = new ConcurrentHashMap<>();
-    private static final String ENTITY_TYPE_TAG_PATH = Registries.getTagPath(Registries.ENTITY_TYPE);
+    private static final String ENTITY_TYPE_TAG_PATH = Registries.tagsDirPath(Registries.ENTITY_TYPE);
 
     public static final TypedDataObjectFactory<ModifyTypeTagPowerType> DATA_FACTORY = PowerType.createConditionedDataFactory(
         new SerializableData()
@@ -65,7 +65,7 @@ public class ModifyTypeTagPowerType extends PowerType {
     }
 
     public boolean doesApply(TagKey<EntityType<?>> typeTag) {
-        return Objects.equals(typeTag, tag) || ENTITY_TYPE_SUB_TAGS.getOrDefault(typeTag.id(), new ObjectArrayList<>())
+        return Objects.equals(typeTag, tag) || ENTITY_TYPE_SUB_TAGS.getOrDefault(typeTag.location(), new ObjectArrayList<>())
             .stream()
             .map(id -> TagKey.create(Registries.ENTITY_TYPE, id))
             .anyMatch(this::doesApply);
@@ -76,19 +76,19 @@ public class ModifyTypeTagPowerType extends PowerType {
     }
 
     public static boolean doesApply(Entity entity, HolderSet<EntityType<?>> entryList) {
-        return entryList.getTagKey()
+        return entryList.unwrapKey()
             .map(tagKey -> doesApply(entity, tagKey))
             .orElse(false);
     }
 
     @ApiStatus.Internal
-    public static <T> void setTagCache(String directory, TagEntry.ValueGetter<T> valueGetter, DependencySorter<Identifier, TagLoader.TagDependencies> dependencyTracker) {
+    public static <T> void setTagCache(String directory, TagEntry.Lookup<T> valueGetter, DependencySorter<Identifier, TagLoader.SortingEntry> dependencyTracker) {
 
         if (ENTITY_TYPE_TAG_PATH.equals(directory)) {
-            dependencyTracker.traverse((id, dependencies) -> dependencies.entries()
+            dependencyTracker.orderByDependencies((id, dependencies) -> dependencies.entries()
                 .stream()
-                .map(TagLoader.TrackedEntry::entry)
-                .filter(entry -> entry.resolve(valueGetter, value -> {}))
+                .map(TagLoader.EntryWithSource::entry)
+                .filter(entry -> entry.build(valueGetter, value -> {}))
                 .map(TagEntryAccessor.class::cast)
                 .filter(TagEntryAccessor::isTag)
                 .forEach(entry -> ENTITY_TYPE_SUB_TAGS

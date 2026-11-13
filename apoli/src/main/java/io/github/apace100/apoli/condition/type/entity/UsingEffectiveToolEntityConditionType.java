@@ -8,7 +8,7 @@
 //import io.github.apace100.apoli.mixin.ClientPlayerInteractionManagerAccessor;
 //import io.github.apace100.apoli.mixin.ServerPlayerInteractionManagerAccessor;
 //import net.minecraft.world.level.block.state.BlockState;
-//import net.minecraft.client.network.ClientPlayer;
+//import net.minecraft.client.player.LocalPlayer;
 //import net.minecraft.world.entity.player.Player;
 //import net.minecraft.server.level.ServerPlayer;
 //import org.jetbrains.annotations.NotNull;
@@ -34,7 +34,7 @@
 //
 //        }
 //
-//        else if (playerEntity instanceof ClientPlayer clientPlayer) {
+//        else if (playerEntity instanceof LocalPlayer clientPlayer) {
 //
 //            ClientPlayerInteractionManagerAccessor interactionManager = (ClientPlayerInteractionManagerAccessor) ((ClientPlayerAccessor) clientPlayer).getClient().interactionManager;
 //            if (interactionManager == null || !interactionManager.getBreakingBlock()) {

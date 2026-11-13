@@ -6,7 +6,7 @@
 //import net.fabricmc.api.Environment;
 //import net.minecraft.client.Minecraft;
 //import net.minecraft.client.gui.hud.InGameOverlayRenderer;
-//import net.minecraft.client.texture.Sprite;
+//import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 //import net.minecraft.client.util.math.MatrixStack;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.injection.At;
@@ -18,7 +18,7 @@
 //public class InGameOverlayRendererMixin {
 //
 //    @Inject(method = "renderInWallOverlay", at = @At("HEAD"), cancellable = true)
-//    private static void preventInWallOverlayRendering(Sprite sprite, MatrixStack matrixStack, CallbackInfo ci) {
+//    private static void preventInWallOverlayRendering(TextureAtlasSprite sprite, MatrixStack matrixStack, CallbackInfo ci) {
 //
 //        Minecraft client = Minecraft.getInstance();
 //

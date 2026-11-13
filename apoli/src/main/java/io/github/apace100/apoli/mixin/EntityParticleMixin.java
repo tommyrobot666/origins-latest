@@ -5,7 +5,7 @@
 //import net.fabricmc.api.EnvType;
 //import net.fabricmc.api.Environment;
 //import net.minecraft.client.Minecraft;
-//import net.minecraft.client.network.ClientPlayer;
+//import net.minecraft.client.player.LocalPlayer;
 //import net.minecraft.entity.*;
 //import net.minecraft.world.phys.Vec3;
 //import net.minecraft.world.level.Level;
@@ -28,7 +28,7 @@
 //    @Inject(method = "tick", at = @At("HEAD"))
 //    private void apoli$emitParticles(CallbackInfo ci) {
 //
-//        ClientPlayer player = Minecraft.getInstance().player;
+//        LocalPlayer player = Minecraft.getInstance().player;
 //        boolean inFirstPerson = Minecraft.getInstance().options.getPerspective().isFirstPerson();
 //
 //        if (player == null) {

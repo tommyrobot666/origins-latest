@@ -49,7 +49,7 @@
 //public abstract class ItemStackMixinClient implements DataComponentHolder {
 //
 //    @Shadow
-//    public abstract UseAnim getUseAction();
+//    public abstract ItemUseAnimation getUseAction();
 //
 //    @Shadow
 //    public abstract ComponentMap getComponents();

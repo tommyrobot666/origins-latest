@@ -16,7 +16,7 @@ import net.fabricmc.fabric.api.client.networking.v1.ClientConfigurationNetworkin
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.client.network.ClientPlayNetworkHandler;
-import net.minecraft.client.network.ClientPlayer;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.entity.effect.MobEffectInstance;
@@ -73,7 +73,7 @@ public class ModPacketsS2C {
 
     private static void onMobEffectSync(SyncMobEffectS2CPacket payload, ClientPlayNetworking.Context context) {
 
-        ClientPlayer player = context.player();
+        LocalPlayer player = context.player();
 
         Entity target = player.networkHandler.level().getEntityById(payload.targetId());
         SyncMobEffectsUtil.UpdateType updateType = payload.updateType();
@@ -146,7 +146,7 @@ public class ModPacketsS2C {
 
     private static void onPlayerDismount(DismountPlayerS2CPacket packet, ClientPlayNetworking.Context context) {
 
-        ClientPlayer player = context.player();
+        LocalPlayer player = context.player();
         Entity dismountingEntity = player.networkHandler.level().getEntityById(packet.id());
 
         if (dismountingEntity == null) {
@@ -161,7 +161,7 @@ public class ModPacketsS2C {
 
     private static void onPowerSync(SyncPowerDataS2CPacket payload, ClientPlayNetworking.Context context) {
 
-        ClientPlayer player = context.player();
+        LocalPlayer player = context.player();
         Identifier powerTypeId = payload.powerTypeId();
 
         if (!PowerManager.contains(powerTypeId)) {

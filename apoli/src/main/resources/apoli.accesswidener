@@ -32,3 +32,4 @@ accessible class net/minecraft/world/biome/Biome$Weather
 accessible field net/minecraft/world/level/storage/TagValueOutput output Lnet/minecraft/nbt/CompoundTag;
 accessible field net/minecraft/world/level/storage/TagValueInput input Lnet/minecraft/nbt/CompoundTag;
 accessible class net/minecraft/resources/RegistryOps$HolderLookupAdapter
+accessible class net/minecraft/tags/TagLoader$SortingEntry

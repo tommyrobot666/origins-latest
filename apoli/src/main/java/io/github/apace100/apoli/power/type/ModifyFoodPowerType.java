@@ -12,11 +12,11 @@ import io.github.apace100.apoli.util.modifier.Modifier;
 import io.github.apace100.apoli.util.modifier.ModifierUtil;
 import io.github.apace100.calio.data.SerializableData;
 import io.github.apace100.calio.data.SerializableDataTypes;
-import net.minecraft.component.DataComponentTypes;
-import net.minecraft.world.food.FoodProperties;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.SlotAccess;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.component.Consumable;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -140,11 +140,11 @@ public class ModifyFoodPowerType extends PowerType {
 
     public static OptionalInt modifyEatTicks(@Nullable Entity entity, ItemStack stack) {
 
-        FoodProperties foodComponent = EdibleItemPowerType.get(stack)
-            .map(EdibleItemPowerType::getFoodProperties)
-            .orElseGet(() -> stack.get(DataComponentTypes.FOOD));
+        Consumable consumableComponent = EdibleItemPowerType.get(stack)
+            .map(EdibleItemPowerType::getConsumableComponent)
+            .orElseGet(() -> stack.get(DataComponents.CONSUMABLE));
 
-        if (foodComponent == null) {
+        if (consumableComponent == null) {
             return OptionalInt.empty();
         }
 
@@ -154,7 +154,7 @@ public class ModifyFoodPowerType extends PowerType {
             .flatMap(p -> p.getEatTicksModifiers().stream())
             .toList();
 
-        return OptionalInt.of((int) ModifierUtil.applyModifiers(entity, modifiers, foodComponent.getEatTicks()));
+        return OptionalInt.of((int) ModifierUtil.applyModifiers(entity, modifiers, consumableComponent.consumeTicks()));
 
     }
 

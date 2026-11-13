@@ -10,7 +10,7 @@
 //import io.github.apace100.apoli.mixin.ClientPlayerInteractionManagerAccessor;
 //import io.github.apace100.apoli.mixin.ServerPlayerInteractionManagerAccessor;
 //import io.github.apace100.calio.data.SerializableData;
-//import net.minecraft.client.network.ClientPlayer;
+//import net.minecraft.client.player.LocalPlayer;
 //import net.minecraft.world.entity.player.Player;
 //import net.minecraft.server.level.ServerPlayer;
 //import net.minecraft.world.level.GameType;
@@ -46,7 +46,7 @@
 //            return interactionManager.getGameMode() == gameMode;
 //        }
 //
-//        else if (player instanceof ClientPlayer clientPlayer) {
+//        else if (player instanceof LocalPlayer clientPlayer) {
 //            ClientPlayerInteractionManagerAccessor interactionManager = (ClientPlayerInteractionManagerAccessor) (((ClientPlayerAccessor) clientPlayer).getClient()).interactionManager;
 //            return interactionManager != null && interactionManager.getGameMode() == gameMode;
 //        }

@@ -15,7 +15,7 @@
 //import net.minecraft.client.Minecraft;
 //import net.minecraft.client.network.AbstractClientPlayer;
 //import net.minecraft.client.network.ClientPlayNetworkHandler;
-//import net.minecraft.client.network.ClientPlayer;
+//import net.minecraft.client.player.LocalPlayer;
 //import net.minecraft.client.recipebook.ClientRecipeBook;
 //import net.minecraft.client.world.ClientWorld;
 //import net.minecraft.world.entity.Pose;
@@ -34,7 +34,7 @@
 //import java.util.List;
 //import java.util.function.Predicate;
 //
-//@Mixin(ClientPlayer.class)
+//@Mixin(LocalPlayer.class)
 //public abstract class ClientPlayerMixin extends AbstractClientPlayer implements WaterMovingEntity, CustomToastViewer {
 //
 //    @Unique
@@ -97,14 +97,14 @@
 //        preventSprintingRef.set(PowerHolderComponent.hasPowerType(this, PreventSprintingPowerType.class));
 //    }
 //
-//    @ModifyExpressionValue(method = "tickMovement", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/network/ClientPlayer;canStartSprinting()Z"))
+//    @ModifyExpressionValue(method = "tickMovement", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/network/LocalPlayer;canStartSprinting()Z"))
 //    private boolean apoli$allowActivePowerSprinting(boolean original, @Share("sprintingPowers") LocalRef<List<SprintingPowerType>> sprintingPowersRef, @Share("preventSprinting") LocalBooleanRef preventSprintingRef) {
 //        return original || (this.isWalking() && sprintingPowersRef.get()
 //            .stream()
 //            .anyMatch(SprintingPowerType::shouldRequireInput));
 //    }
 //
-//    @Inject(method = "tickMovement", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/network/ClientPlayer;isSprinting()Z"))
+//    @Inject(method = "tickMovement", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/network/LocalPlayer;isSprinting()Z"))
 //    private void apoli$allowPassivePowerSprinting(CallbackInfo ci, @Share("sprintingPowers") LocalRef<List<SprintingPowerType>> sprintingPowersRef, @Share("preventSprinting") LocalBooleanRef preventSprintingRef) {
 //
 //        if (this.isSprinting() || preventSprintingRef.get()) {
@@ -117,13 +117,13 @@
 //
 //    }
 //
-//    @ModifyExpressionValue(method = "tickMovement", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/network/ClientPlayer;canSprint()Z"))
+//    @ModifyExpressionValue(method = "tickMovement", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/network/LocalPlayer;canSprint()Z"))
 //    private boolean apoli$accountForSprintingPowersWhenCancelling(boolean original, @Share("sprintingPowers") LocalRef<List<SprintingPowerType>> sprintingPowersRef, @Share("preventSprinting") LocalBooleanRef preventSprintingRef) {
 //        return (original || !sprintingPowersRef.get().isEmpty())
 //            && !preventSprintingRef.get();
 //    }
 //
-//    @ModifyExpressionValue(method = "tickMovement", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/network/ClientPlayer;isSneaking()Z"))
+//    @ModifyExpressionValue(method = "tickMovement", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/network/LocalPlayer;isSneaking()Z"))
 //    private boolean apoli$forceSneakingPose(boolean original) {
 //        return original || PosePowerType.hasEntityPose(this, Pose.CROUCHING);
 //    }

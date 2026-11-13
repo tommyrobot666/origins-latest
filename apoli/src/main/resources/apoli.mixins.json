@@ -119,7 +119,7 @@
 		"LayeredDrawerAccessor",
 		"LightmapTextureManagerMixin",
 		"LivingEntityRendererMixin",
-		"MinecraftMixin",
+      "MinecraftClientMixin",
 		"PlayerRendererMixin",
 		"RecipeResultCollectionMixin",
 		"SpriteAtlasTextureAccessor",
