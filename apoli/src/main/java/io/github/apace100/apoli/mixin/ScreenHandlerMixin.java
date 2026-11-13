@@ -9,11 +9,11 @@
 //import io.github.apace100.apoli.recipe.ModifiedCraftingRecipe;
 //import io.github.apace100.apoli.util.InventoryUtil;
 //import net.minecraft.world.entity.player.Player;
-//import net.minecraft.inventory.CraftingInventory;
+//import net.minecraft.inventory.TransientCraftingContainer;
 //import net.minecraft.world.entity.SlotAccess;
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.screen.ScreenHandler;
-//import net.minecraft.screen.slot.CraftingResultSlot;
+//import net.minecraft.screen.slot.ResultSlot;
 //import net.minecraft.world.inventory.Slot;
 //import net.minecraft.screen.slot.SlotActionType;
 //import org.spongepowered.asm.mixin.Mixin;
@@ -43,9 +43,9 @@
 //
 //        }
 //
-//        else if (original.isPresent() && slot instanceof CraftingResultSlot resultSlot) {
+//        else if (original.isPresent() && slot instanceof ResultSlot resultSlot) {
 //
-//            if (!(((CraftingResultSlotAccessor) resultSlot).getInput() instanceof CraftingInventory craftingInventory)) {
+//            if (!(((CraftingResultSlotAccessor) resultSlot).getInput() instanceof TransientCraftingContainer craftingInventory)) {
 //                return original;
 //            }
 //

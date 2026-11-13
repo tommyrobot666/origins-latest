@@ -8,29 +8,23 @@ import io.github.apace100.apoli.data.ApoliDataTypes;
 import io.github.apace100.apoli.power.Power;
 import io.github.apace100.apoli.power.PowerManager;
 import io.github.apace100.apoli.power.type.RecipePowerType;
+import net.minecraft.core.NonNullList;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.item.crafting.CraftingRecipe;
-import net.minecraft.recipe.Ingredient;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.recipe.book.CraftingRecipeCategory;
-import net.minecraft.recipe.input.CraftingRecipeInput;
-import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.world.item.crafting.*;
 import net.minecraft.resources.Identifier;
-import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.world.level.Level;
 
 public record PowerCraftingRecipe(Identifier powerId, CraftingRecipe delegate) implements CraftingRecipe {
 
     @Override
-    public CraftingRecipeCategory getCategory() {
-        return delegate().getCategory();
+    public CraftingBookCategory category() {
+        return delegate().category();
     }
 
     @Override
-    public boolean matches(CraftingRecipeInput input, Level world) {
+    public boolean matches(CraftingInput input, Level world) {
 
         if (!(input instanceof PowerCraftingObject pco)) {
             return false;
@@ -48,43 +42,33 @@ public record PowerCraftingRecipe(Identifier powerId, CraftingRecipe delegate) i
     }
 
     @Override
-    public ItemStack craft(CraftingRecipeInput input, HolderLookup.Provider lookup) {
-        return delegate().craft(input, lookup);
+    public ItemStack assemble(CraftingInput input) {
+        return delegate().assemble(input);
     }
 
-    @Override
-    public boolean fits(int width, int height) {
-        return delegate().fits(width, height);
-    }
+//    @Override
+//    public boolean fits(int width, int height) {
+//        return delegate().fits(width, height);
+//    }
 
     @Override
-    public ItemStack getResult(HolderLookup.Provider registriesLookup) {
-        return delegate().getResult(registriesLookup);
-    }
-
-    @Override
-    public RecipeSerializer<?> getSerializer() {
+    public RecipeSerializer<? extends CraftingRecipe> getSerializer() {
         return ApoliRecipeSerializers.POWER_CRAFTING;
     }
 
     @Override
-    public boolean isEmpty() {
-        return delegate().isEmpty();
+    public PlacementInfo placementInfo() {
+        return delegate().placementInfo();
     }
 
     @Override
-    public DefaultedList<ItemStack> getRemainder(CraftingRecipeInput input) {
-        return delegate().getRemainder(input);
+    public NonNullList<ItemStack> getRemainingItems(CraftingInput input) {
+        return delegate().getRemainingItems(input);
     }
 
     @Override
-    public DefaultedList<Ingredient> getIngredients() {
-        return delegate().getIngredients();
-    }
-
-    @Override
-    public boolean isIgnoredInRecipeBook() {
-        return delegate().isIgnoredInRecipeBook();
+    public boolean isSpecial() {
+        return delegate().isSpecial();
     }
 
     @Override
@@ -93,13 +77,13 @@ public record PowerCraftingRecipe(Identifier powerId, CraftingRecipe delegate) i
     }
 
     @Override
-    public String getGroup() {
-        return delegate().getGroup();
+    public String group() {
+        return delegate().group();
     }
 
-    private void send(RegistryFriendlyByteBuf buf) {
-        buf.writeIdentifier(powerId());
-        Recipe.STREAM_CODEC.encode(buf, delegate());
+    private static void send(RegistryFriendlyByteBuf buf, PowerCraftingRecipe recipe) {
+        buf.writeIdentifier(recipe.powerId());
+        Recipe.STREAM_CODEC.encode(buf, recipe.delegate());
     }
 
     private static PowerCraftingRecipe receive(RegistryFriendlyByteBuf buf) {
@@ -117,7 +101,7 @@ public record PowerCraftingRecipe(Identifier powerId, CraftingRecipe delegate) i
 
     }
 
-    public static class Serializer implements RecipeSerializer<PowerCraftingRecipe> {
+    public static class Serializer  {
 
         public static final MapCodec<PowerCraftingRecipe> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
             Identifier.CODEC.fieldOf("power").forGetter(PowerCraftingRecipe::powerId),
@@ -129,16 +113,7 @@ public record PowerCraftingRecipe(Identifier powerId, CraftingRecipe delegate) i
             PowerCraftingRecipe::receive
         );
 
-        @Override
-        public MapCodec<PowerCraftingRecipe> codec() {
-            return CODEC;
-        }
-
-        @Override
-        public StreamCodec<RegistryFriendlyByteBuf, PowerCraftingRecipe> packetCodec() {
-            return STREAM_CODEC;
-        }
-
+       public static final RecipeSerializer<PowerCraftingRecipe> SERIALIZER = new RecipeSerializer<>(CODEC,STREAM_CODEC);
     }
 
 }

@@ -3,14 +3,14 @@
 //import io.github.apace100.apoli.access.PowerCraftingInventory;
 //import io.github.apace100.apoli.power.type.PowerType;
 //import net.minecraft.world.entity.player.Player;
-//import net.minecraft.inventory.CraftingInventory;
+//import net.minecraft.inventory.TransientCraftingContainer;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.Unique;
 //
 //import java.util.Collection;
 //import java.util.LinkedList;
 //
-//@Mixin(CraftingInventory.class)
+//@Mixin(TransientCraftingContainer.class)
 //public abstract class CraftingInventoryMixin implements PowerCraftingInventory {
 //
 //    @Unique
@@ -30,8 +30,8 @@
 //    }
 //
 //    @Override
-//    public CraftingInventory apoli$getInventory() {
-//        return (CraftingInventory) (Object) this;
+//    public TransientCraftingContainer apoli$getInventory() {
+//        return (TransientCraftingContainer) (Object) this;
 //    }
 //
 //    @Override

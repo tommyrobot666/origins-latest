@@ -12,24 +12,17 @@ import io.github.apace100.apoli.mixin.CraftingScreenHandlerAccessor;
 import io.github.apace100.apoli.power.type.ModifyCraftingPowerType;
 import io.github.apace100.apoli.power.type.Prioritized;
 import io.github.apace100.apoli.util.InventoryUtil;
+import net.minecraft.core.NonNullList;
+import net.minecraft.stats.RecipeBook;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.inventory.CraftingInventory;
 import net.minecraft.world.entity.SlotAccess;
+import net.minecraft.world.inventory.CraftingMenu;
+import net.minecraft.world.inventory.TransientCraftingContainer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.item.crafting.CraftingRecipe;
-import net.minecraft.recipe.Ingredient;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.recipe.book.CraftingRecipeCategory;
-import net.minecraft.recipe.book.RecipeBook;
-import net.minecraft.recipe.input.CraftingRecipeInput;
-import net.minecraft.recipe.input.RecipeInput;
-import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.screen.CraftingScreenHandler;
+import net.minecraft.world.item.crafting.*;
 import net.minecraft.resources.Identifier;
-import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
@@ -40,21 +33,21 @@ import java.util.Optional;
 public record ModifiedCraftingRecipe(Identifier id, CraftingRecipe delegate) implements CraftingRecipe {
 
     @Override
-    public CraftingRecipeCategory getCategory() {
-        return delegate().getCategory();
+    public CraftingBookCategory category() {
+        return delegate().category();
     }
 
     @Override
-    public boolean matches(CraftingRecipeInput input, Level world) {
+    public boolean matches(CraftingInput input, Level world) {
         return delegate().matches(input, world);
     }
 
     @Override
-    public ItemStack craft(CraftingRecipeInput input, HolderLookup.Provider lookup) {
+    public ItemStack assemble(CraftingInput input) {
 
         if (input instanceof PowerCraftingInventory pci) {
 
-            Pair<ItemStack, Collection<ModifyCraftingPowerType>> result = this.getModifiedResult(lookup, pci.apoli$getPlayer());
+            Pair<ItemStack, Collection<ModifyCraftingPowerType>> result = this.getModifiedResult(pci.apoli$getPlayer(),input);
             pci.apoli$setPowerTypes(result.getSecond());
 
             return result.getFirst().copy();
@@ -62,44 +55,34 @@ public record ModifiedCraftingRecipe(Identifier id, CraftingRecipe delegate) imp
         }
 
         else {
-            return this.getResult(lookup).copy();
+            return delegate().assemble(input);
         }
 
     }
 
-    @Override
-    public boolean fits(int width, int height) {
-        return delegate().fits(width, height);
-    }
+//    @Override
+//    public boolean canCraftInDimensions(int width, int height) {
+//        return delegate().canCraftInDimensions(width, height);
+//    }
 
     @Override
-    public ItemStack getResult(HolderLookup.Provider registriesLookup) {
-        return delegate().getResult(registriesLookup);
-    }
-
-    @Override
-    public RecipeSerializer<?> getSerializer() {
+    public RecipeSerializer<? extends CraftingRecipe> getSerializer() {
         return ApoliRecipeSerializers.MODIFIED_CRAFTING;
     }
 
     @Override
-    public boolean isEmpty() {
-        return delegate().isEmpty();
+    public PlacementInfo placementInfo() {
+        return delegate().placementInfo();
     }
 
     @Override
-    public DefaultedList<ItemStack> getRemainder(CraftingRecipeInput input) {
-        return delegate().getRemainder(input);
+    public NonNullList<ItemStack> getRemainingItems(CraftingInput input) {
+        return delegate().getRemainingItems(input);
     }
 
     @Override
-    public DefaultedList<Ingredient> getIngredients() {
-        return delegate().getIngredients();
-    }
-
-    @Override
-    public boolean isIgnoredInRecipeBook() {
-        return delegate().isIgnoredInRecipeBook();
+    public boolean isSpecial() {
+        return delegate().isSpecial();
     }
 
     @Override
@@ -108,32 +91,32 @@ public record ModifiedCraftingRecipe(Identifier id, CraftingRecipe delegate) imp
     }
 
     @Override
-    public String getGroup() {
-        return delegate().getGroup();
+    public String group() {
+        return delegate().group();
     }
 
-    public Pair<ItemStack, Collection<ModifyCraftingPowerType>> getModifiedResult(HolderLookup.Provider registriesLookup, @Nullable Player player) {
-        return getModifiedResult(id(), delegate(), registriesLookup, player);
+    public Pair<ItemStack, Collection<ModifyCraftingPowerType>> getModifiedResult(@Nullable Player player, CraftingInput input) {
+        return getModifiedResult(id(), delegate(), player, input);
     }
 
     public static boolean canModify(Identifier id, CraftingRecipe craftingRecipe, RecipeBook recipeBook) {
         return recipeBook instanceof PowerCraftingObject pco
-            && canModify(id, craftingRecipe, pco.apoli$getPlayer());
+            && canModify(id, craftingRecipe, pco.apoli$getPlayer(), CraftingInput.EMPTY);
     }
 
     public static boolean canModify(Identifier id, CraftingRecipe craftingRecipe, RecipeInput recipeInput) {
         return recipeInput instanceof PowerCraftingObject pco
-            && canModify(id, craftingRecipe, pco.apoli$getPlayer());
+            && canModify(id, craftingRecipe, pco.apoli$getPlayer(), (CraftingInput) recipeInput);
     }
 
-    public static boolean canModify(Identifier id, CraftingRecipe craftingRecipe, @Nullable Player player) {
+    public static boolean canModify(Identifier id, CraftingRecipe craftingRecipe, @Nullable Player player, CraftingInput input) {
         return player != null
-            && PowerHolderComponent.hasPowerType(player, ModifyCraftingPowerType.class, mcpt -> mcpt.doesApply(id, craftingRecipe.getResult(player.getRegistryManager())));
+            && PowerHolderComponent.hasPowerType(player, ModifyCraftingPowerType.class, mcpt -> mcpt.doesApply(id, craftingRecipe.assemble(input)));
     }
 
-    public static Pair<ItemStack, Collection<ModifyCraftingPowerType>> getModifiedResult(Identifier id, CraftingRecipe craftingRecipe, HolderLookup.Provider registriesLookup, @Nullable Player player) {
+    public static Pair<ItemStack, Collection<ModifyCraftingPowerType>> getModifiedResult(Identifier id, CraftingRecipe craftingRecipe, @Nullable Player player, CraftingInput input) {
 
-        ItemStack resultStack = craftingRecipe.getResult(registriesLookup).copy();
+        ItemStack resultStack = craftingRecipe.assemble(input);
         SlotAccess newStackRef = InventoryUtil.createStackReference(resultStack);
 
         Prioritized.CallInstance<ModifyCraftingPowerType> mcptpci = new Prioritized.CallInstance<>();
@@ -147,10 +130,10 @@ public record ModifiedCraftingRecipe(Identifier id, CraftingRecipe delegate) imp
 
     }
 
-    public static Optional<BlockPos> getBlockFromInventory(CraftingInventory craftingInventory) {
+    public static Optional<BlockPos> getBlockFromInventory(TransientCraftingContainer craftingInventory) {
 
-        if (((CraftingInventoryAccessor) craftingInventory).getHandler() instanceof CraftingScreenHandler craftingScreenHandler) {
-            return ((CraftingScreenHandlerAccessor) craftingScreenHandler).getContext().get((world, pos) -> pos);
+        if (((CraftingInventoryAccessor) craftingInventory).getMenu() instanceof CraftingMenu craftingScreenHandler) {
+            return ((CraftingScreenHandlerAccessor) craftingScreenHandler).getAccess().evaluate((world, pos) -> pos);
         }
 
         else {
@@ -159,9 +142,9 @@ public record ModifiedCraftingRecipe(Identifier id, CraftingRecipe delegate) imp
 
     }
 
-    private void send(RegistryFriendlyByteBuf buf) {
-        buf.writeIdentifier(id());
-        Recipe.STREAM_CODEC.encode(buf, delegate());
+    private static void send(RegistryFriendlyByteBuf buf, ModifiedCraftingRecipe recipe) {
+        buf.writeIdentifier(recipe.id());
+        Recipe.STREAM_CODEC.encode(buf, recipe.delegate());
     }
 
     private static ModifiedCraftingRecipe receive(RegistryFriendlyByteBuf buf) {
@@ -179,8 +162,7 @@ public record ModifiedCraftingRecipe(Identifier id, CraftingRecipe delegate) imp
 
     }
 
-    public static class Serializer implements RecipeSerializer<ModifiedCraftingRecipe> {
-
+    public static class Serializer {
         public static final MapCodec<ModifiedCraftingRecipe> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
             Identifier.CODEC.fieldOf("id").forGetter(ModifiedCraftingRecipe::id),
             ApoliDataTypes.DISALLOWING_INTERNAL_CRAFTING_RECIPE.codec().fieldOf("recipe").forGetter(ModifiedCraftingRecipe::delegate)
@@ -191,15 +173,7 @@ public record ModifiedCraftingRecipe(Identifier id, CraftingRecipe delegate) imp
             ModifiedCraftingRecipe::receive
         );
 
-        @Override
-        public MapCodec<ModifiedCraftingRecipe> codec() {
-            return CODEC;
-        }
-
-        @Override
-        public StreamCodec<RegistryFriendlyByteBuf, ModifiedCraftingRecipe> packetCodec() {
-            return STREAM_CODEC;
-        }
+        public static final RecipeSerializer<ModifiedCraftingRecipe> SERIALIZER = new RecipeSerializer<>(CODEC,STREAM_CODEC);
 
     }
 

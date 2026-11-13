@@ -69,7 +69,7 @@ public class PowerTypes {
 //    public static final PowerConfiguration<ModifyBlockRenderPowerType> MODIFY_BLOCK_RENDER = register(PowerConfiguration.of(Apoli.identifier("modify_block_render"), ModifyBlockRenderPowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<ModifyBreakSpeedPowerType> MODIFY_BREAK_SPEED = register(PowerConfiguration.of(Apoli.identifier("modify_break_speed"), ModifyBreakSpeedPowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<ModifyCameraSubmersionTypePowerType> MODIFY_CAMERA_SUBMERSION = register(PowerConfiguration.of(Apoli.identifier("modify_camera_submersion"), ModifyCameraSubmersionTypePowerType.DATA_FACTORY));
-//    public static final PowerConfiguration<ModifyCraftingPowerType> MODIFY_CRAFTING = register(PowerConfiguration.of(Apoli.identifier("modify_crafting"), ModifyCraftingPowerType.DATA_FACTORY));
+    public static final PowerConfiguration<ModifyCraftingPowerType> MODIFY_CRAFTING = register(PowerConfiguration.of(Apoli.identifier("modify_crafting"), ModifyCraftingPowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<ModifyDamageDealtPowerType> MODIFY_DAMAGE_DEALT = register(PowerConfiguration.of(Apoli.identifier("modify_damage_dealt"), ModifyDamageDealtPowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<ModifyDamageTakenPowerType> MODIFY_DAMAGE_TAKEN = register(PowerConfiguration.of(Apoli.identifier("modify_damage_taken"), ModifyDamageTakenPowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<ModifyEnchantmentLevelPowerType> MODIFY_ENCHANTMENT_LEVEL = register(PowerConfiguration.of(Apoli.identifier("modify_enchantment_level"), ModifyEnchantmentLevelPowerType.DATA_FACTORY));
@@ -115,7 +115,7 @@ public class PowerTypes {
 //    public static final PowerConfiguration<PreventItemUsePowerType> PREVENT_ITEM_USE = register(PowerConfiguration.of(Apoli.identifier("prevent_item_use"), PreventItemUsePowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<PreventSleepPowerType> PREVENT_SLEEP = register(PowerConfiguration.of(Apoli.identifier("prevent_sleep"), PreventSleepPowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<PreventSprintingPowerType> PREVENT_SPRINTING = register(PowerConfiguration.conditionedSimple(Apoli.identifier("prevent_sprinting"), PreventSprintingPowerType::new));
-//    public static final PowerConfiguration<RecipePowerType> RECIPE = register(PowerConfiguration.of(Apoli.identifier("recipe"), RecipePowerType.DATA_FACTORY));
+    public static final PowerConfiguration<RecipePowerType> RECIPE = register(PowerConfiguration.of(Apoli.identifier("recipe"), RecipePowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<ReplaceLootTablePowerType> REPLACE_LOOT_TABLE = register(PowerConfiguration.of(Apoli.identifier("replace_loot_table"), ReplaceLootTablePowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<ResourcePowerType> RESOURCE = register(PowerConfiguration.of(Apoli.identifier("resource"), ResourcePowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<RestrictArmorPowerType> RESTRICT_ARMOR = register(PowerConfiguration.of(Apoli.identifier("restrict_armor"), RestrictArmorPowerType.DATA_FACTORY));

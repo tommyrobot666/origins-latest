@@ -9,8 +9,8 @@
 //import net.minecraft.entity.EquipmentSlot;
 //import net.minecraft.world.entity.player.Player;
 //import net.minecraft.entity.player.Inventory;
-//import net.minecraft.inventory.CraftingInventory;
-//import net.minecraft.inventory.RecipeInputInventory;
+//import net.minecraft.inventory.TransientCraftingContainer;
+//import net.minecraft.inventory.CraftingContainer;
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.screen.PlayerScreenHandler;
 //import net.minecraft.world.inventory.Slot;
@@ -26,10 +26,10 @@
 //
 //    @Shadow
 //    @Final
-//    private RecipeInputInventory craftingInput;
+//    private CraftingContainer craftingInput;
 //
-//    @ModifyExpressionValue(method = "<init>", at = @At(value = "NEW", target = "(Lnet/minecraft/screen/ScreenHandler;II)Lnet/minecraft/inventory/CraftingInventory;"))
-//    private CraftingInventory apoli$cachePlayerToCraftingInventory(CraftingInventory original, Inventory playerInventory) {
+//    @ModifyExpressionValue(method = "<init>", at = @At(value = "NEW", target = "(Lnet/minecraft/screen/ScreenHandler;II)Lnet/minecraft/inventory/TransientCraftingContainer;"))
+//    private TransientCraftingContainer apoli$cachePlayerToCraftingInventory(TransientCraftingContainer original, Inventory playerInventory) {
 //
 //        if (original instanceof PowerCraftingInventory pci) {
 //            pci.apoli$setPlayer(playerInventory.player);
