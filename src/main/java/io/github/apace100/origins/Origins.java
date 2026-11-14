@@ -9,6 +9,7 @@ import io.github.apace100.calio.data.IdPreparableReloadListener;
 import io.github.apace100.calio.util.IdentifierAlias;
 import io.github.apace100.origins.badge.BadgeManager;
 import io.github.apace100.origins.command.OriginCommand;
+import io.github.apace100.origins.command.argument.ModArgumentTypes;
 import io.github.apace100.origins.condition.factory.entity.OriginsEntityConditionTypes;
 import io.github.apace100.origins.networking.ModPackets;
 import io.github.apace100.origins.networking.ModPacketsC2S;
@@ -95,6 +96,8 @@ public class Origins implements ModInitializer {
 
 		ModComponents.register();
 		ModDataComponentTypes.register();
+
+		ModArgumentTypes.register();
 
 		Origin.init();
 		BadgeManager.init();

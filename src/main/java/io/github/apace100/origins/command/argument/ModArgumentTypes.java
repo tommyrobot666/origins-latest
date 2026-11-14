@@ -13,8 +13,8 @@ public class ModArgumentTypes {
         );
         ArgumentTypeRegistry.registerArgumentType(
                 Origins.identifier("layer"),
-                OriginArgumentType.class,
-                SingletonArgumentInfo.contextFree(OriginArgumentType::new)
+                OriginLayerArgumentType.class,
+                SingletonArgumentInfo.contextFree(OriginLayerArgumentType::new)
         );
     }
 }

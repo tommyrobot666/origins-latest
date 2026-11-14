@@ -6,6 +6,7 @@ import io.github.apace100.apoli.action.type.EntityActionTypes;
 import io.github.apace100.apoli.action.type.ItemActionTypes;
 import io.github.apace100.apoli.command.PowerCommand;
 import io.github.apace100.apoli.command.ResourceCommand;
+import io.github.apace100.apoli.command.argument.ApoliArgumentTypes;
 import io.github.apace100.apoli.component.PowerHolderComponent;
 import io.github.apace100.apoli.component.PowerHolderComponentImpl;
 //import io.github.apace100.apoli.component.item.ApoliDataComponentTypes;
@@ -106,6 +107,7 @@ public class Apoli implements ModInitializer, EntityComponentInitializer {
 		ModifierOperations.registerAll();
 //		ApoliDataComponentTypes.register();
 		ApoliRecipeSerializers.register();
+		ApoliArgumentTypes.register();
 
 		BiEntityConditionTypes.register();
 		BiomeConditionTypes.register();
