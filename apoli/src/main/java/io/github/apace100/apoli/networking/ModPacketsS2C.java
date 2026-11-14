@@ -9,17 +9,17 @@ import io.github.apace100.apoli.power.Power;
 import io.github.apace100.apoli.power.PowerManager;
 import io.github.apace100.apoli.power.type.ModifyTypeTagPowerType;
 import io.github.apace100.apoli.power.type.PowerType;
-import io.github.apace100.apoli.util.SyncMobEffectsUtil;
+import io.github.apace100.apoli.util.SyncStatusEffectsUtil;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.networking.v1.ClientConfigurationNetworking;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
-import net.minecraft.client.network.ClientPlayNetworkHandler;
 import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.nbt.NbtOps;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.entity.effect.MobEffectInstance;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.nbt.Tag;
 import net.minecraft.resources.Identifier;
@@ -43,7 +43,7 @@ public class ModPacketsS2C {
             ClientPlayNetworking.registerReceiver(MountPlayerS2CPacket.PACKET_ID, ModPacketsS2C::onPlayerMount);
             ClientPlayNetworking.registerReceiver(DismountPlayerS2CPacket.PACKET_ID, ModPacketsS2C::onPlayerDismount);
             ClientPlayNetworking.registerReceiver(SyncAttackerS2CPacket.PACKET_ID, ModPacketsS2C::onAttackerSync);
-            ClientPlayNetworking.registerReceiver(SyncMobEffectS2CPacket.PACKET_ID, ModPacketsS2C::onMobEffectSync);
+            ClientPlayNetworking.registerReceiver(SyncStatusEffectS2CPacket.PACKET_ID, ModPacketsS2C::onMobEffectSync);
             ClientPlayNetworking.registerReceiver(ShowToastS2CPacket.PACKET_ID, ModPacketsS2C::onShowToast);
             ClientPlayNetworking.registerReceiver(SyncEntityTypeTagCacheS2CPacket.PACKET_ID, ModifyTypeTagPowerType::receiveTagCache);
             ClientPlayNetworking.registerReceiver(SyncCommandTagsS2CPacket.ID, ModPacketsS2C::onCommandTagsSynced);
@@ -54,15 +54,15 @@ public class ModPacketsS2C {
 	private static void onCommandTagsSynced(SyncCommandTagsS2CPacket payload, ClientPlayNetworking.Context context) {
 
         Level world = context.player().level();
-        Entity entity = world.getEntityById(payload.entityId());
+        Entity entity = world.getEntity(payload.entityId());
 
         if (entity == null) {
             Apoli.LOGGER.warn("Received packet for syncing {} command tag(s) of an entity unknown to the client!", payload.tags().size());
         }
 
         else {
-            entity.getCommandTags().clear();
-            payload.tags().forEach(entity::addCommandTag);
+            entity.entityTags().clear();
+            payload.tags().forEach(entity::addTag);
         }
 
 	}
@@ -71,17 +71,17 @@ public class ModPacketsS2C {
         context.responseSender().sendPacket(new VersionHandshakePacket(Apoli.SEMVER));
     }
 
-    private static void onMobEffectSync(SyncMobEffectS2CPacket payload, ClientPlayNetworking.Context context) {
+    private static void onMobEffectSync(SyncStatusEffectS2CPacket payload, ClientPlayNetworking.Context context) {
 
         LocalPlayer player = context.player();
 
-        Entity target = player.networkHandler.level().getEntityById(payload.targetId());
-        SyncMobEffectsUtil.UpdateType updateType = payload.updateType();
+        Entity target = player.level().getEntity(payload.targetId());
+        SyncStatusEffectsUtil.UpdateType updateType = payload.updateType();
 
         if (target instanceof LivingEntity livingTarget) {
 
-            MobEffectInstance statusEffectInstance = updateType != SyncMobEffectsUtil.UpdateType.CLEAR
-                ? MobEffectInstance.fromNbt(payload.statusEffectData())
+            MobEffectInstance statusEffectInstance = updateType != SyncStatusEffectsUtil.UpdateType.CLEAR
+                ? MobEffectInstance.CODEC.decode(NbtOps.INSTANCE,payload.statusEffectData()).getOrThrow().getFirst()
                 : null;
 
             updateType.accept(livingTarget, statusEffectInstance);
@@ -96,7 +96,7 @@ public class ModPacketsS2C {
 
     private static void onAttackerSync(SyncAttackerS2CPacket payload, ClientPlayNetworking.Context context) {
 
-        Entity target = context.player().networkHandler.level().getEntityById(payload.targetId());
+        Entity target = context.player().level().getEntity(payload.targetId());
         if (!(target instanceof LivingEntity livingTarget)) {
             Apoli.LOGGER.warn("Received packet for syncing the attacker of {} entity!", (target == null ? "an unknown" : "a non-living"));
             return;
@@ -104,26 +104,26 @@ public class ModPacketsS2C {
 
         Optional<Integer> attackerId = payload.attackerId();
         if (attackerId.isEmpty()) {
-            livingTarget.setAttacker(null);
+            livingTarget.setLastHurtByMob(null);
             return;
         }
 
-        Entity attacker = context.player().networkHandler.level().getEntityById(attackerId.get());
+        Entity attacker = context.player().level().getEntity(attackerId.get());
         if (!(attacker instanceof LivingEntity livingAttacker)) {
             Apoli.LOGGER.warn("Received packet for syncing non-living attacker of entity \"{}\"!", target.getName().getString());
             return;
         }
 
-        livingTarget.setAttacker(livingAttacker);
+        livingTarget.setLastHurtByMob(livingAttacker);
 
     }
 
     private static void onPlayerMount(MountPlayerS2CPacket packet, ClientPlayNetworking.Context context) {
 
-        ClientPlayNetworkHandler handler = context.player().networkHandler;
+        Level level = context.player().level();
 
-        Entity actor = handler.level().getEntityById(packet.actorId());
-        Entity target = handler.level().getEntityById(packet.targetId());
+        Entity actor = level.getEntity(packet.actorId());
+        Entity target = level.getEntity(packet.targetId());
 
         if (target == null) {
             Apoli.LOGGER.warn("Received packet for passenger for unknown player!");
@@ -135,7 +135,7 @@ public class ModPacketsS2C {
             return;
         }
 
-        boolean result = actor.startRiding(target, true);
+        boolean result = actor.startRiding(target, true, true);
 
         Consumer<String> loggerMethod = result ? Apoli.LOGGER::info : Apoli.LOGGER::warn;
         String action = result ? " started riding " : " failed to start riding ";
@@ -147,14 +147,14 @@ public class ModPacketsS2C {
     private static void onPlayerDismount(DismountPlayerS2CPacket packet, ClientPlayNetworking.Context context) {
 
         LocalPlayer player = context.player();
-        Entity dismountingEntity = player.networkHandler.level().getEntityById(packet.id());
+        Entity dismountingEntity = player.level().getEntity(packet.id());
 
         if (dismountingEntity == null) {
             Apoli.LOGGER.warn("Received packet for unknown entity that tried to dismount!");
         }
 
         else if (dismountingEntity.getVehicle() instanceof Player) {
-            dismountingEntity.dismountVehicle();
+            dismountingEntity.removeVehicle();
         }
 
     }
@@ -169,7 +169,7 @@ public class ModPacketsS2C {
             return;
         }
 
-        Entity entity = player.networkHandler.level().getEntityById(payload.entityId());
+        Entity entity = player.level().getEntity(payload.entityId());
         if (entity == null) {
             Apoli.LOGGER.warn("Received packet for syncing power \"{}\" to unknown entity!", powerTypeId);
             return;
@@ -195,7 +195,7 @@ public class ModPacketsS2C {
 
     private static void onPowerSyncInBulk(SyncBulkPowerDataS2CPacket payload, ClientPlayNetworking.Context context) {
 
-        Entity entity = context.player().level().getEntityById(payload.entityId());
+        Entity entity = context.player().level().getEntity(payload.entityId());
         Map<Identifier, Tag> powerAndData = payload.powerAndData();
 
         if (entity == null) {

@@ -13,10 +13,10 @@ import net.fabricmc.fabric.api.networking.v1.ServerConfigurationNetworking;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.network.ServerConfigurationNetworkHandler;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
+import net.minecraft.server.network.ServerConfigurationPacketListenerImpl;
 
 public class ModPacketsC2S {
 
@@ -33,14 +33,14 @@ public class ModPacketsC2S {
 
     }
 
-    private static void handshake(ServerConfigurationNetworkHandler handler, MinecraftServer server) {
+    private static void handshake(ServerConfigurationPacketListenerImpl handler, MinecraftServer server) {
 
         if (ServerConfigurationNetworking.canSend(handler, VersionHandshakePacket.PACKET_ID)) {
             handler.addTask(new VersionHandshakeTask(Apoli.SEMVER));
         }
 
         else {
-            handler.disconnect(Component.of("This server requires you to install the Apoli mod (v" + Apoli.VERSION + ") to play."));
+            handler.disconnect(Component.literal("This server requires you to install the Apoli mod (v" + Apoli.VERSION + ") to play."));
         }
 
     }
@@ -48,7 +48,7 @@ public class ModPacketsC2S {
 
     private static void handleHandshakeReply(VersionHandshakePacket payload, ServerConfigurationNetworking.Context context) {
 
-        ServerConfigurationNetworkHandler handler = context.networkHandler();
+        ServerConfigurationPacketListenerImpl handler = context.packetListener();
 
         int[] semver = payload.semver();
         boolean mismatch = semver.length != Apoli.SEMVER.length;
@@ -75,7 +75,7 @@ public class ModPacketsC2S {
             separator = ".";
         }
 
-        handler.disconnect(Component.stringifiedTranslatable("apoli.gui.version_mismatch", Apoli.VERSION, semverString));
+        handler.disconnect(Component.translatableEscape("apoli.gui.version_mismatch", Apoli.VERSION, semverString));
 
     }
 

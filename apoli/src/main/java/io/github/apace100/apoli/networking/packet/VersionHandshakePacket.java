@@ -11,11 +11,11 @@ public record VersionHandshakePacket(int[] semver) implements CustomPacketPayloa
     public static final StreamCodec<FriendlyByteBuf, VersionHandshakePacket> STREAM_CODEC = StreamCodec.of(VersionHandshakePacket::write, VersionHandshakePacket::read);
 
     public static VersionHandshakePacket read(FriendlyByteBuf buf) {
-        return new VersionHandshakePacket(buf.readIntArray());
+        return new VersionHandshakePacket(buf.readVarIntArray());
     }
 
-    public void write(FriendlyByteBuf buf) {
-        buf.writeIntArray(semver);
+    public static void write(FriendlyByteBuf buf, VersionHandshakePacket p) {
+        buf.writeVarIntArray(p.semver);
     }
 
     @Override

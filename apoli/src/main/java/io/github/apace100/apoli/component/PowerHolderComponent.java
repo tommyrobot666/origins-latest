@@ -13,6 +13,7 @@ import io.github.apace100.apoli.power.type.ValueModifyingPowerType;
 import io.github.apace100.apoli.util.MiscUtil;
 import io.github.apace100.apoli.util.modifier.Modifier;
 import io.github.apace100.apoli.util.modifier.ModifierUtil;
+import io.github.apace100.calio.util.BufUtil;
 import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
@@ -465,13 +466,13 @@ public interface PowerHolderComponent extends AutoSyncedComponent, CommonTicking
         public static final PacketHandler<Map<Identifier, Collection<Power>>> GRANT_POWERS = new PacketHandler.Impl<>(
             powersBySource -> (buf, recipient) -> buf.writeMap(powersBySource,
                 FriendlyByteBuf::writeIdentifier,
-                (vbuf, powers) -> vBufUtil.writeCollection(powers, (ebuf, power) -> ebuf.writeIdentifier(power.getId()))
+                (vbuf, powers) -> BufUtil.writeCollection(powers, (ebuf, power) -> ebuf.writeIdentifier(power.getId()))
             ),
             (buf, component) -> {
 
                 var powersBySource = buf.readMap(
                     FriendlyByteBuf::readIdentifier,
-                    vbuf -> vBufUtil.readCollection(ArrayList::new, ebuf -> PowerManager.get(ebuf.readIdentifier())));
+                    vbuf -> BufUtil.readCollection(ArrayList::new, ebuf -> PowerManager.get(ebuf.readIdentifier())));
 
                 powersBySource.forEach((source, powers) -> powers.forEach(power -> component.addPower(power, source)));
 
@@ -485,7 +486,7 @@ public interface PowerHolderComponent extends AutoSyncedComponent, CommonTicking
 
                 var powersBySource = buf.readMap(
                     FriendlyByteBuf::readIdentifier,
-                    vbuf -> vBufUtil.readCollection(ArrayList::new, ebuf -> PowerManager.get(ebuf.readIdentifier())));
+                    vbuf -> BufUtil.readCollection(ArrayList::new, ebuf -> PowerManager.get(ebuf.readIdentifier())));
 
                 powersBySource.forEach((source, powers) -> powers.forEach(power -> component.removePower(power, source)));
 

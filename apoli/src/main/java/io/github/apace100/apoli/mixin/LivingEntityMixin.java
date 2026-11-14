@@ -11,7 +11,7 @@
 //import io.github.apace100.apoli.networking.packet.s2c.SyncAttackerS2CPacket;
 //import io.github.apace100.apoli.power.type.*;
 //import io.github.apace100.apoli.util.InventoryUtil;
-//import io.github.apace100.apoli.util.SyncMobEffectsUtil;
+//import io.github.apace100.apoli.util.SyncStatusEffectsUtil;
 //import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
 //import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 //import net.minecraft.world.food.FoodProperties;
@@ -73,22 +73,22 @@
 //
 //    @Inject(method = "onMobEffectApplied", at = @At("TAIL"))
 //    private void apoli$updateMobEffectWhenApplied(MobEffectInstance effectInstance, Entity source, CallbackInfo ci) {
-//        SyncMobEffectsUtil.sendMobEffectUpdatePacket((LivingEntity) (Object) this, SyncMobEffectsUtil.UpdateType.APPLY, effectInstance);
+//        SyncStatusEffectsUtil.sendMobEffectUpdatePacket((LivingEntity) (Object) this, SyncStatusEffectsUtil.UpdateType.APPLY, effectInstance);
 //    }
 //
 //    @Inject(method = "onMobEffectUpgraded", at = @At("TAIL"))
 //    private void apoli$updateMobEffectWhenUpgraded(MobEffectInstance effectInstance, boolean reapplyEffect, Entity source, CallbackInfo ci) {
-//        SyncMobEffectsUtil.sendMobEffectUpdatePacket((LivingEntity) (Object) this, SyncMobEffectsUtil.UpdateType.UPGRADE, effectInstance);
+//        SyncStatusEffectsUtil.sendMobEffectUpdatePacket((LivingEntity) (Object) this, SyncStatusEffectsUtil.UpdateType.UPGRADE, effectInstance);
 //    }
 //
 //    @Inject(method = "onMobEffectRemoved", at = @At("TAIL"))
 //    private void apoli$updateMobEffectWhenRemoved(MobEffectInstance effectInstance, CallbackInfo ci) {
-//        SyncMobEffectsUtil.sendMobEffectUpdatePacket((LivingEntity) (Object) this, SyncMobEffectsUtil.UpdateType.REMOVE, effectInstance);
+//        SyncStatusEffectsUtil.sendMobEffectUpdatePacket((LivingEntity) (Object) this, SyncStatusEffectsUtil.UpdateType.REMOVE, effectInstance);
 //    }
 //
 //    @Inject(method = "clearMobEffects", at = @At("RETURN"))
 //    private void apoli$updateMobEffectWhenCleared(CallbackInfoReturnable<Boolean> cir) {
-//        SyncMobEffectsUtil.sendMobEffectUpdatePacket((LivingEntity) (Object) this, SyncMobEffectsUtil.UpdateType.CLEAR, null);
+//        SyncStatusEffectsUtil.sendMobEffectUpdatePacket((LivingEntity) (Object) this, SyncStatusEffectsUtil.UpdateType.CLEAR, null);
 //    }
 //
 //    @ModifyVariable(method = "addMobEffect(Lnet/minecraft/entity/effect/MobEffectInstance;Lnet/minecraft/entity/Entity;)Z", at = @At("HEAD"), argsOnly = true)

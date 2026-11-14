@@ -1,25 +1,25 @@
-//package io.github.apace100.apoli.networking.packet.s2c;
-//
-//import io.github.apace100.apoli.Apoli;
-//import net.minecraft.network.RegistryFriendlyByteBuf;
-//import net.minecraft.network.codec.StreamCodec;
-//import net.minecraft.network.codec.ByteBufCodecs;
-//import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
-//
-//import java.util.Optional;
-//
-//public record SyncAttackerS2CPacket(int targetId, Optional<Integer> attackerId) implements CustomPacketPayload {
-//
-//    public static final Type<SyncAttackerS2CPacket> PACKET_ID = new Type<>(Apoli.identifier("s2c/sync_attacker"));
-//    public static final StreamCodec<RegistryFriendlyByteBuf, SyncAttackerS2CPacket> STREAM_CODEC = StreamCodec.composite(
-//        ByteBufCodecs.VAR_INT, SyncAttackerS2CPacket::targetId,
-//        ByteBufCodecs.optional(ByteBufCodecs.VAR_INT), SyncAttackerS2CPacket::attackerId,
-//        SyncAttackerS2CPacket::new
-//    );
-//
-//    @Override
-//    public Type<? extends CustomPacketPayload> type() {
-//        return PACKET_ID;
-//    }
-//
-//}
+package io.github.apace100.apoli.networking.packet.s2c;
+
+import io.github.apace100.apoli.Apoli;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.network.codec.ByteBufCodecs;
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
+
+import java.util.Optional;
+
+public record SyncAttackerS2CPacket(int targetId, Optional<Integer> attackerId) implements CustomPacketPayload {
+
+    public static final Type<SyncAttackerS2CPacket> PACKET_ID = new Type<>(Apoli.identifier("s2c/sync_attacker"));
+    public static final StreamCodec<RegistryFriendlyByteBuf, SyncAttackerS2CPacket> STREAM_CODEC = StreamCodec.composite(
+        ByteBufCodecs.VAR_INT, SyncAttackerS2CPacket::targetId,
+        ByteBufCodecs.optional(ByteBufCodecs.VAR_INT), SyncAttackerS2CPacket::attackerId,
+        SyncAttackerS2CPacket::new
+    );
+
+    @Override
+    public Type<? extends CustomPacketPayload> type() {
+        return PACKET_ID;
+    }
+
+}
