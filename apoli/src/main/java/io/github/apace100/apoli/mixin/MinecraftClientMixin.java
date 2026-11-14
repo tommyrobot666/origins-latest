@@ -5,12 +5,13 @@ import io.github.apace100.apoli.access.OverlaySpriteHolder;
 import io.github.apace100.apoli.component.PowerHolderComponent;
 import io.github.apace100.apoli.internal.InternalClient;
 import io.github.apace100.apoli.power.type.EntityGlowPowerType;
-import io.github.apace100.apoli.power.type.OverlayPowerType;
+//import io.github.apace100.apoli.power.type.OverlayPowerType;
 import io.github.apace100.apoli.power.type.SelfGlowPowerType;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.Minecraft;
 //import net.minecraft.client.RunArgs;
+import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.texture.TextureManager;
 //import net.minecraft.client.world.ClientWorld;
@@ -21,6 +22,8 @@ import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Environment(EnvType.CLIENT)
 @Mixin(Minecraft.class)
@@ -65,8 +68,8 @@ public abstract class MinecraftClientMixin implements OverlaySpriteHolder {
 //        PostLoadTexturesCallback.EVENT.invoker().onPostLoad((Minecraft) (Object) this, this.isFinishedLoading());
 //    }
 //
-//    @Inject(method = "setWorld", at = @At("HEAD"))
-//    private void apoli$onJoinWorld(ClientWorld world, CallbackInfo ci) {
-//        InternalClient.onClientWorldChanged();
-//    }
+    @Inject(method = "updateLevelInEngines", at = @At("HEAD"))
+    private void apoli$onJoinWorld(ClientLevel world, CallbackInfo ci) {
+        InternalClient.onClientWorldChanged();
+    }
 }

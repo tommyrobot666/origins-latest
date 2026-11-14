@@ -37,10 +37,6 @@ import java.lang.ref.WeakReference;
 @Mixin(ItemStack.class)
 public abstract class ItemStackMixin implements DataComponentHolder, EntityLinkedItemStack, FabricItemStack {
 
-    @Nullable
-    @Shadow
-    public abstract Entity getHolder();
-
     @Shadow
     public abstract Item getItem();
 
@@ -61,7 +57,7 @@ public abstract class ItemStackMixin implements DataComponentHolder, EntityLinke
 
     @Override
     public Entity apoli$getEntity(boolean prioritiseVanillaHolder) {
-        Entity vanillaHolder = getHolder();
+        Entity vanillaHolder = null;
         if (prioritiseVanillaHolder && vanillaHolder != null) {
             return vanillaHolder;
         }
@@ -90,7 +86,7 @@ public abstract class ItemStackMixin implements DataComponentHolder, EntityLinke
         SlotAccess useStackReference = InventoryUtil.getStackReferenceFromStack(user, thisAsStack);
         ItemStack useStack = useStackReference.get();
 
-        ActionOnItemUsePowerType.TriggerType triggerType = useStack.getMaxUseTime(user) == 0
+        ActionOnItemUsePowerType.TriggerType triggerType = useStack.getUseDuration(user) == 0
             ? ActionOnItemUsePowerType.TriggerType.INSTANT
             : ActionOnItemUsePowerType.TriggerType.START;
         ActionOnItemUsePowerType.executeActions(user, useStackReference, useStack, triggerType, PriorityPhase.BEFORE);
@@ -113,8 +109,8 @@ public abstract class ItemStackMixin implements DataComponentHolder, EntityLinke
         //  endregion
 
         //  region  Action on item after use
-        useStackReference = SlotAccess.of(user, user.getPreferredEquipmentSlot(oldUseStack));
-        triggerType = useStack.getMaxUseTime(user) == 0
+        useStackReference = SlotAccess.forEquipmentSlot(user, user.getEquipmentSlotForItem(oldUseStack),(stack) -> true);
+        triggerType = useStack.getUseDuration(user) == 0
             ? ActionOnItemUsePowerType.TriggerType.INSTANT
             : ActionOnItemUsePowerType.TriggerType.START;
 
@@ -177,7 +173,7 @@ public abstract class ItemStackMixin implements DataComponentHolder, EntityLinke
 
         //  region  Edible item consumption effects
         finishUsingStackRef.set(EdibleItemPowerType.get(finishUsingStack, user)
-            .map(p -> user.eatFood(world, stack, p.getFoodProperties()))
+            .map(p -> p.getConsumableComponent().onConsume(world, user, stack))
             .orElseGet(() -> original.call(finishUsingStack.getItem(), finishUsingStack, world, user)));
         //  endregion
 
@@ -214,12 +210,13 @@ public abstract class ItemStackMixin implements DataComponentHolder, EntityLinke
 
         StackClickPhase clickPhase = StackClickPhase.CURSOR;
 
-        SlotAccess cursorStackReference = ((ScreenHandlerAccessor) player.currentScreenHandler).callGetCursorStackReference();
-        SlotAccess slotStackReference = SlotAccess.of(slot.inventory, slot.getIndex());
+        ItemStack carriedItem = ((ScreenHandlerAccessor) player.containerMenu).callGetCarried();
+        SlotAccess slotStackReference = SlotAccess.of(slot::getItem,slot::set);
+        SlotAccess carriedItemAccess = ((ScreenHandlerAccessor) player.containerMenu).callCreateCarriedSlotAccess();
 
-        return ItemOnItemPowerType.executeActions(player, PriorityPhase.BEFORE, clickPhase, clickType, slot, slotStackReference, cursorStackReference)
-            || original.call(cursorStackReference.get().getItem(), cursorStackReference.get(), slot, clickType, player)
-            || ItemOnItemPowerType.executeActions(player, PriorityPhase.AFTER, clickPhase, clickType, slot, slotStackReference, cursorStackReference);
+        return ItemOnItemPowerType.executeActions(player, PriorityPhase.BEFORE, clickPhase, clickAction, slot, slotStackReference, carriedItemAccess)
+            || original.call(carriedItem.getItem(), carriedItem, slot, clickAction, player)
+            || ItemOnItemPowerType.executeActions(player, PriorityPhase.AFTER, clickPhase, clickAction, slot, slotStackReference, carriedItemAccess);
 
     }
 
@@ -227,11 +224,11 @@ public abstract class ItemStackMixin implements DataComponentHolder, EntityLinke
     private boolean apoli$itemOnItem_slotStack(Item instance, ItemStack self, ItemStack other, Slot slot, ClickAction clickAction, Player player, SlotAccess carriedItem, Operation<Boolean> original) {
 
         StackClickPhase clickPhase = StackClickPhase.SLOT;
-        SlotAccess slotStackReference = SlotAccess.of(slot.inventory, slot.getIndex());
+        SlotAccess slotStackReference = SlotAccess.of(slot::getItem,slot::set);
 
-        return ItemOnItemPowerType.executeActions(player, PriorityPhase.BEFORE, clickPhase, clickType, slot, slotStackReference, cursorStackReference)
-            || original.call(slotStackReference.get().getItem(), slotStackReference.get(), cursorStackReference.get(), slot, clickType, player, cursorStackReference)
-            || ItemOnItemPowerType.executeActions(player, PriorityPhase.AFTER, clickPhase, clickType, slot, slotStackReference, cursorStackReference);
+        return ItemOnItemPowerType.executeActions(player, PriorityPhase.BEFORE, clickPhase, clickAction, slot, slotStackReference, carriedItem)
+            || original.call(slotStackReference.get().getItem(), slotStackReference.get(), carriedItem.get(), slot, clickAction, player, carriedItem)
+            || ItemOnItemPowerType.executeActions(player, PriorityPhase.AFTER, clickPhase, clickAction, slot, slotStackReference, carriedItem);
 
     }
 

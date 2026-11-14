@@ -2,7 +2,7 @@ package io.github.apace100.apoli.integration;
 
 import io.github.apace100.apoli.component.PowerHolderComponent;
 import io.github.apace100.apoli.power.type.Active;
-import io.github.apace100.apoli.power.type.OverlayPowerType;
+//import io.github.apace100.apoli.power.type.OverlayPowerType;
 import io.github.apace100.apoli.power.type.PowerType;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -18,7 +18,7 @@ public class PowerIntegrationClient {
         ClientEntityEvents.ENTITY_UNLOAD.register((entity, world) -> PowerHolderComponent.getPowerTypes(entity, PowerType.class, true).forEach(PowerType::onRemoved));
 
         ClientTickEvents.START_CLIENT_TICK.register(Active::integrateCallback);
-        PostLoadTexturesCallback.EVENT.register(OverlayPowerType::integrateCallback);
+//        PostLoadTexturesCallback.EVENT.register(OverlayPowerType::integrateCallback);
 
     }
 

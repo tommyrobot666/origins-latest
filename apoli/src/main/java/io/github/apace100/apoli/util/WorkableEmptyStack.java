@@ -6,6 +6,7 @@ import io.github.apace100.apoli.access.EntityLinkedItemStack;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.SlotAccess;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.ItemLike;
 
 import java.util.UUID;
 import java.util.concurrent.ExecutionException;
@@ -24,8 +25,8 @@ public final class WorkableEmptyStack {
 		try {
 			return CACHE.get(entity.getUUID(), () -> {
 
-			    ItemStack workableStack = new ItemStack((Void) null);
-			    ((EntityLinkedItemStack) workableStack).apoli$setEntity(entity);
+			    ItemStack workableStack = new ItemStack((ItemLike) (Object) null);
+			    ((EntityLinkedItemStack) (Object) workableStack).apoli$setEntity(entity);
 
 			    return workableStack;
 
@@ -44,7 +45,7 @@ public final class WorkableEmptyStack {
 	}
 
 	public static boolean isOf(ItemStack stack) {
-		Entity holdingEntity = ((EntityLinkedItemStack) stack).apoli$getEntity();
+		Entity holdingEntity = ((EntityLinkedItemStack) (Object) stack).apoli$getEntity();
 		return holdingEntity != null
 			&& isOf(holdingEntity, stack);
 	}

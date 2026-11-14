@@ -112,7 +112,7 @@ public class PowerTypes {
 //    public static final PowerConfiguration<PreventFeatureRenderPowerType> PREVENT_FEATURE_RENDER = register(PowerConfiguration.of(Apoli.identifier("prevent_feature_render"), PreventFeatureRenderPowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<PreventGameEventPowerType> PREVENT_GAME_EVENT = register(PowerConfiguration.of(Apoli.identifier("prevent_game_event"), PreventGameEventPowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<PreventItemPickupPowerType> PREVENT_ITEM_PICKUP = register(PowerConfiguration.of(Apoli.identifier("prevent_item_pickup"), PreventItemPickupPowerType.DATA_FACTORY));
-//    public static final PowerConfiguration<PreventItemUsePowerType> PREVENT_ITEM_USE = register(PowerConfiguration.of(Apoli.identifier("prevent_item_use"), PreventItemUsePowerType.DATA_FACTORY));
+    public static final PowerConfiguration<PreventItemUsePowerType> PREVENT_ITEM_USE = register(PowerConfiguration.of(Apoli.identifier("prevent_item_use"), PreventItemUsePowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<PreventSleepPowerType> PREVENT_SLEEP = register(PowerConfiguration.of(Apoli.identifier("prevent_sleep"), PreventSleepPowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<PreventSprintingPowerType> PREVENT_SPRINTING = register(PowerConfiguration.conditionedSimple(Apoli.identifier("prevent_sprinting"), PreventSprintingPowerType::new));
     public static final PowerConfiguration<RecipePowerType> RECIPE = register(PowerConfiguration.of(Apoli.identifier("recipe"), RecipePowerType.DATA_FACTORY));
