@@ -14,7 +14,7 @@ import java.util.Optional;
 public class CodeTriggerCriterion extends SimpleCriterionTrigger<CodeTriggerCriterion.Conditions> {
 
     public static final CodeTriggerCriterion INSTANCE = new CodeTriggerCriterion();
-    public static final Identifier ID = Identifier.fromNamespaceAndPath(Calio.MOD_NAMESPACE,"apacelib:code_trigger");
+    public static final Identifier ID = Identifier.parse("apacelib:code_trigger");
 
     @Override
     public @NonNull Codec<Conditions> codec() {

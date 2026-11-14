@@ -11,11 +11,11 @@ import org.spongepowered.asm.mixin.injection.At;
 @Mixin(ResourceConditionType.class)
 public interface ResourceConditionTypeMixin {
 
-    @ModifyExpressionValue(method = "lambda$static$2", at = @At(value = "INVOKE", target = "Lnet/fabricmc/fabric/api/resource/conditions/v1/ResourceConditions;getConditionType(Lnet/minecraft/resources/Identifier;)Lnet/fabricmc/fabric/api/resource/conditions/v1/ResourceConditionType;"))
-    private static ResourceConditionType<?> calio$applyAliases(ResourceConditionType<?> original, Identifier id) {
-        return original != null
-            ? original
-            : ResourceConditions.getConditionType(CalioResourceConditions.ALIASES.resolveAlias(id, k -> ResourceConditions.getConditionType(k) != null));
-    }
+//    @ModifyExpressionValue(method = "lambda$static$2", at = @At(value = "INVOKE", target = "Lnet/fabricmc/fabric/api/resource/conditions/v1/ResourceConditions;getConditionType(Lnet/minecraft/resources/Identifier;)Lnet/fabricmc/fabric/api/resource/conditions/v1/ResourceConditionType;"))
+//    private static ResourceConditionType<?> calio$applyAliases(ResourceConditionType<?> original, Identifier id) {
+//        return original != null
+//            ? original
+//            : ResourceConditions.getConditionType(CalioResourceConditions.ALIASES.resolveAlias(id, k -> ResourceConditions.getConditionType(k) != null));
+//    }
 
 }

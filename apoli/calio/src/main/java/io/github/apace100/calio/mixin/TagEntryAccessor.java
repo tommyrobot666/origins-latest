@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 @Mixin(TagEntry.class)
 public interface TagEntryAccessor {
 
-    @Invoker
+    @Invoker("elementOrTag")
     ExtraCodecs.TagOrElementLocation callGetIdForCodec();
 
     @Accessor
