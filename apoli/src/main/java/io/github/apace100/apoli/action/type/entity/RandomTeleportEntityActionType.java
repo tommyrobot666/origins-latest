@@ -139,7 +139,7 @@
 //
 //    private boolean attemptToTeleport(Entity entity, ServerLevel serverWorld, double destX, double destY, double destZ) {
 //
-//        BlockPos.MutableBlockPos destBlockPos = BlockPos.ofFloored(destX, destY, destZ).mutableCopy();
+//        BlockPos.MutableBlockPos destBlockPos = BlockPos.ofFloored(destX, destY, destZ).mutable();
 //        boolean foundSurface = false;
 //
 //        if (heightmapType.isPresent()) {
@@ -180,7 +180,7 @@
 //
 //        ChunkPos destChunkPos = new ChunkPos(destBlockPos);
 //        if (!loadedChunksOnly && !serverWorld.isChunkLoaded(destChunkPos.x, destChunkPos.z)) {
-//            serverWorld.getChunkManager().addTicket(ChunkTicketType.POST_TELEPORT, destChunkPos, 0, entity.getId());
+//            serverWorld.getChunkSource().addTicket(ChunkTicketType.POST_TELEPORT, destChunkPos, 0, entity.getId());
 //            serverWorld.getChunk(destChunkPos.x, destChunkPos.z);
 //        }
 //

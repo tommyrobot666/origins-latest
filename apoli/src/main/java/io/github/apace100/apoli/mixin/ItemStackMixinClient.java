@@ -29,7 +29,7 @@
 //import net.minecraft.screen.ScreenTexts;
 //import net.minecraft.text.MutableText;
 //import net.minecraft.network.chat.Component;
-//import net.minecraft.util.Formatting;
+//import net.minecraft.util.ChatFormatting;
 //import net.minecraft.world.item.ItemUseAnimation;
 //import org.apache.commons.lang3.mutable.MutableBoolean;
 //import org.jetbrains.annotations.Nullable;
@@ -110,8 +110,8 @@
 //
 //        String translationKey = "tooltip.apoli.unusable." + this.getUseAction().toString().toLowerCase(Locale.ROOT) + (preventItemUsePowers.size() == 1 ? ".single" : ".multiple");
 //
-//        Formatting baseTextFormat = Formatting.GRAY;
-//        Formatting powerTextFormat = Formatting.RED;
+//        ChatFormatting baseTextFormat = ChatFormatting.GRAY;
+//        ChatFormatting powerTextFormat = ChatFormatting.RED;
 //
 //        Component powerText;
 //        Component baseText;
@@ -120,8 +120,8 @@
 //
 //            PreventItemUsePowerType preventItemUsePower = preventItemUsePowers.getFirst();
 //
-//            powerText = preventItemUsePower.getPower().getName().formatted(powerTextFormat);
-//            baseText = Component.translatable(translationKey, powerText).formatted(baseTextFormat);
+//            powerText = preventItemUsePower.getPower().getName().withStyle(powerTextFormat);
+//            baseText = Component.translatable(translationKey, powerText).withStyle(baseTextFormat);
 //
 //            apoli$tooltip.add(baseText);
 //
@@ -144,17 +144,17 @@
 //
 //            else {
 //
-//                powerText = Component.translatable("tooltip.apoli.usability_hint.power_count", preventItemUsePowers.size()).formatted(powerTextFormat);
-//                baseText = Component.translatable(translationKey, powerText).formatted(baseTextFormat);
+//                powerText = Component.translatable("tooltip.apoli.usability_hint.power_count", preventItemUsePowers.size()).withStyle(powerTextFormat);
+//                baseText = Component.translatable(translationKey, powerText).withStyle(baseTextFormat);
 //
 //                apoli$tooltip.add(baseText);
 //                apoli$tooltip.add(Component.empty());
 //
 //                Component keyBindingText = KeyBindingUtil.getLocalizedName(keyBinding.getTranslationKey()).styled(style -> style
-//                    .withColor(Formatting.YELLOW)
+//                    .withColor(ChatFormatting.YELLOW)
 //                    .withItalic(keyBinding.isUnbound()));
 //
-//                Component guideText = Component.translatable("tooltip.apoli.usability_hint.show_powers", keyBindingText).formatted(baseTextFormat);
+//                Component guideText = Component.translatable("tooltip.apoli.usability_hint.show_powers", keyBindingText).withStyle(baseTextFormat);
 //                apoli$tooltip.add(guideText);
 //
 //            }
@@ -193,7 +193,7 @@
 //        if (shouldAppendSlotName.isTrue()) {
 //
 //            tooltipConsumer.accept(ScreenTexts.EMPTY);
-//            tooltipConsumer.accept(Component.translatable("item.modifiers." + modifierSlot.asString()).formatted(Formatting.GRAY));
+//            tooltipConsumer.accept(Component.translatable("item.modifiers." + modifierSlot.asString()).withStyle(ChatFormatting.GRAY));
 //
 //            shouldAppendSlotName.setFalse();
 //
@@ -205,20 +205,20 @@
 //    }
 //
 //    @Unique
-//    private void apoli$appendExpandedTooltip(List<PreventItemUsePowerType> powers, List<Component> tooltip, String translationKey, Formatting powerTextColor, Formatting baseTextColor) {
+//    private void apoli$appendExpandedTooltip(List<PreventItemUsePowerType> powers, List<Component> tooltip, String translationKey, ChatFormatting powerTextColor, ChatFormatting baseTextColor) {
 //
 //        List<Component> powerTexts = new LinkedList<>();
 //        for (PreventItemUsePowerType power : powers) {
 //
-//            MutableText prependedText = Component.literal("  - ").formatted(baseTextColor);
-//            MutableText powerText = power.getPower().getName().formatted(powerTextColor);
+//            MutableText prependedText = Component.literal("  - ").withStyle(baseTextColor);
+//            MutableText powerText = power.getPower().getName().withStyle(powerTextColor);
 //
 //            powerTexts.add(prependedText.append(powerText));
 //
 //        }
 //
-//        Component powerText = Component.translatable("tooltip.apoli.usability_hint.power_count", powers.size()).formatted(powerTextColor);
-//        Component baseText = Component.translatable(translationKey, powerText).formatted(baseTextColor);
+//        Component powerText = Component.translatable("tooltip.apoli.usability_hint.power_count", powers.size()).withStyle(powerTextColor);
+//        Component baseText = Component.translatable(translationKey, powerText).withStyle(baseTextColor);
 //
 //        tooltip.add(baseText);
 //        tooltip.addAll(powerTexts);

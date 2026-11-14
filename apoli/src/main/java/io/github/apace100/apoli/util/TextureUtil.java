@@ -99,7 +99,7 @@
 //        DataResult<Identifier> atlasResult = tryLoadingTexture(atlasId, _id -> "Texture \"" + _id + "\" does not exist!", _id -> "\n");
 //
 //        if (atlasResult.result().isEmpty()) {
-//            return atlasResult.mapError(err -> "Failed to load atlas \"%s\": %s".formatted(atlasId, err));
+//            return atlasResult.mapError(err -> "Failed to load atlas \"%s\": %s".withStyle(atlasId, err));
 //        }
 //
 //        AbstractTexture texture = textureManagerAccessor.getTextures().get(atlasId);
@@ -119,7 +119,7 @@
 //            return DataResult.success(spriteId);
 //
 //        } catch (Throwable t) {
-//            return DataResult.error(() -> "Failed to load sprite \"%s\" from atlas \"%s\": %s".formatted(spriteId, atlasId, t));
+//            return DataResult.error(() -> "Failed to load sprite \"%s\" from atlas \"%s\": %s".withStyle(spriteId, atlasId, t));
 //        }
 //
 //    }

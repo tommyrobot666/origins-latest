@@ -24,7 +24,7 @@
 //import net.minecraft.network.codec.StreamCodec;
 //import net.minecraft.network.codec.ByteBufCodecs;
 //import net.minecraft.network.chat.Component;
-//import net.minecraft.util.Formatting;
+//import net.minecraft.util.ChatFormatting;
 //import net.minecraft.resources.Identifier;
 //
 //import java.util.*;
@@ -99,9 +99,9 @@
 //
 //            tooltip.accept(Component
 //                .translatable("tooltip.apoli.stack_power.name", power.getName())
-//                .formatted(entry.negative()
-//                    ? Formatting.RED
-//                    : Formatting.YELLOW));
+//                .withStyle(entry.negative()
+//                    ? ChatFormatting.RED
+//                    : ChatFormatting.YELLOW));
 //
 //            if (!type.isAdvanced()) {
 //                continue;
@@ -109,7 +109,7 @@
 //
 //            tooltip.accept(Component
 //                .translatable("tooltip.apoli.stack_power.description", power.getDescription())
-//                .formatted(Formatting.GRAY));
+//                .withStyle(ChatFormatting.GRAY));
 //
 //        }
 //

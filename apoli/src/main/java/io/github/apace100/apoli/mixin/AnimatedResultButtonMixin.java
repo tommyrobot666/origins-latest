@@ -19,7 +19,7 @@
 //import net.minecraft.recipe.book.RecipeBook;
 //import net.minecraft.registry.RegistryWrapper;
 //import net.minecraft.network.chat.Component;
-//import net.minecraft.util.Formatting;
+//import net.minecraft.util.ChatFormatting;
 //import net.minecraft.resources.Identifier;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.Shadow;
@@ -81,7 +81,7 @@
 //
 //            if (power != null && component != null && !component.hasPower(power)) {
 //                original.add(Component.empty());
-//                original.add(Component.translatable("tooltip.apoli.power_recipe.required_power", power.getName()).formatted(Formatting.RED));
+//                original.add(Component.translatable("tooltip.apoli.power_recipe.required_power", power.getName()).withStyle(ChatFormatting.RED));
 //            }
 //
 //        }

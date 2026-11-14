@@ -21,7 +21,7 @@ public class PowerTypes {
 //    public static final PowerConfiguration<ActionOnBlockBreakPowerType> ACTION_ON_BLOCK_BREAK = register(PowerConfiguration.of(Apoli.identifier("action_on_block_break"), ActionOnBlockBreakPowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<ActionOnBlockPlacePowerType> ACTION_ON_BLOCK_PLACE = register(PowerConfiguration.of(Apoli.identifier("action_on_block_place"), ActionOnBlockPlacePowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<ActionOnBlockUsePowerType> ACTION_ON_BLOCK_USE = register(PowerConfiguration.of(Apoli.identifier("action_on_block_use"), ActionOnBlockUsePowerType.DATA_FACTORY));
-//    public static final PowerConfiguration<ActionOnCallbackPowerType> ACTION_ON_CALLBACK = register(PowerConfiguration.of(Apoli.identifier("action_on_callback"), ActionOnCallbackPowerType.DATA_FACTORY));
+    public static final PowerConfiguration<ActionOnCallbackPowerType> ACTION_ON_CALLBACK = register(PowerConfiguration.of(Apoli.identifier("action_on_callback"), ActionOnCallbackPowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<ActionOnDeathPowerType> ACTION_ON_DEATH = register(PowerConfiguration.of(Apoli.identifier("action_on_death"), ActionOnDeathPowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<ActionOnEntityUsePowerType> ACTION_ON_ENTITY_USE = register(PowerConfiguration.of(Apoli.identifier("action_on_entity_use"), ActionOnEntityUsePowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<ActionOnHitPowerType> ACTION_ON_HIT = register(PowerConfiguration.of(Apoli.identifier("action_on_hit"), ActionOnHitPowerType.DATA_FACTORY));
@@ -85,7 +85,7 @@ public class PowerTypes {
 //    public static final PowerConfiguration<ModifyInsomniaTicksPowerType> MODIFY_INSOMNIA_TICKS = register(ValueModifyingPowerType.createModifyingConfiguration(Apoli.identifier("modify_insomnia_ticks"), ModifyInsomniaTicksPowerType::new));
 //    public static final PowerConfiguration<ModifyJumpPowerType> MODIFY_JUMP = register(PowerConfiguration.of(Apoli.identifier("modify_jump"), ModifyJumpPowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<ModifyLavaSpeedPowerType> MODIFY_LAVA_SPEED = register(PowerConfiguration.of(Apoli.identifier("modify_lava_speed"), ModifyLavaSpeedPowerType.DATA_FACTORY));
-//    public static final PowerConfiguration<ModifyPlayerSpawnPowerType> MODIFY_PLAYER_SPAWN = register(PowerConfiguration.of(Apoli.identifier("modify_player_spawn"), ModifyPlayerSpawnPowerType.DATA_FACTORY));
+    public static final PowerConfiguration<ModifyPlayerSpawnPowerType> MODIFY_PLAYER_SPAWN = register(PowerConfiguration.of(Apoli.identifier("modify_player_spawn"), ModifyPlayerSpawnPowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<ModifyProjectileDamagePowerType> MODIFY_PROJECTILE_DAMAGE = register(PowerConfiguration.of(Apoli.identifier("modify_projectile_damage"), ModifyProjectileDamagePowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<ModifySlipperinessPowerType> MODIFY_SLIPPERINESS = register(PowerConfiguration.of(Apoli.identifier("modify_slipperiness"), ModifySlipperinessPowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<ModifyMobEffectAmplifierPowerType> MODIFY_STATUS_EFFECT_AMPLIFIER = register(PowerConfiguration.of(Apoli.identifier("modify_status_effect_amplifier"), ModifyMobEffectAmplifierPowerType.DATA_FACTORY));
@@ -93,7 +93,7 @@ public class PowerTypes {
 //    public static final PowerConfiguration<ModifySwimSpeedPowerType> MODIFY_SWIM_SPEED = register(PowerConfiguration.of(Apoli.identifier("modify_swim_speed"), ModifySwimSpeedPowerType.DATA_FACTORY));
     public static final PowerConfiguration<ModifyTypeTagPowerType> MODIFY_TYPE_TAG = register(PowerConfiguration.of(Apoli.identifier("modify_type_tag"), ModifyTypeTagPowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<ModifyVelocityPowerType> MODIFY_VELOCITY = register(PowerConfiguration.of(Apoli.identifier("modify_velocity"), ModifyVelocityPowerType.DATA_FACTORY));
-//    public static final PowerConfiguration<NightVisionPowerType> NIGHT_VISION = register(PowerConfiguration.of(Apoli.identifier("night_vision"), NightVisionPowerType.DATA_FACTORY));
+    public static final PowerConfiguration<NightVisionPowerType> NIGHT_VISION = register(PowerConfiguration.of(Apoli.identifier("night_vision"), NightVisionPowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<OverlayPowerType> OVERLAY = register(PowerConfiguration.of(Apoli.identifier("overlay"), OverlayPowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<OverrideHudTexturePowerType> STATUS_BAR_TEXTURE = register(PowerConfiguration.of(Apoli.identifier("status_bar_texture"), OverrideHudTexturePowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<ParticlePowerType> PARTICLE = register(PowerConfiguration.of(Apoli.identifier("particle"), ParticlePowerType.DATA_FACTORY));
@@ -129,8 +129,8 @@ public class PowerTypes {
 //    public static final PowerConfiguration<StartingEquipmentPowerType> STARTING_EQUIPMENT = register(PowerConfiguration.of(Apoli.identifier("starting_equipment"), StartingEquipmentPowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<SwimmingPowerType> SWIMMING = register(PowerConfiguration.conditionedSimple(Apoli.identifier("swimming"), SwimmingPowerType::new));
 //    public static final PowerConfiguration<TargetActionOnHitPowerType> TARGET_ACTION_ON_HIT = register(PowerConfiguration.of(Apoli.identifier("target_action_on_hit"), TargetActionOnHitPowerType.DATA_FACTORY));
-//    public static final PowerConfiguration<ToggleNightVisionPowerType> TOGGLE_NIGHT_VISION = register(PowerConfiguration.of(Apoli.identifier("toggle_night_vision"), ToggleNightVisionPowerType.DATA_FACTORY));
-//    public static final PowerConfiguration<TogglePowerType> TOGGLE = register(PowerConfiguration.of(Apoli.identifier("toggle"), TogglePowerType.DATA_FACTORY));
+    public static final PowerConfiguration<ToggleNightVisionPowerType> TOGGLE_NIGHT_VISION = register(PowerConfiguration.of(Apoli.identifier("toggle_night_vision"), ToggleNightVisionPowerType.DATA_FACTORY));
+    public static final PowerConfiguration<TogglePowerType> TOGGLE = register(PowerConfiguration.of(Apoli.identifier("toggle"), TogglePowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<TooltipPowerType> TOOLTIP = register(PowerConfiguration.of(Apoli.identifier("tooltip"), TooltipPowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<WalkOnFluidPowerType> WALK_ON_FLUID = register(PowerConfiguration.of(Apoli.identifier("walk_on_fluid"), WalkOnFluidPowerType.DATA_FACTORY));
 

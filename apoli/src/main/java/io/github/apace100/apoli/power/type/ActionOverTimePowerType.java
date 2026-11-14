@@ -6,7 +6,7 @@
 //import io.github.apace100.apoli.power.PowerConfiguration;
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
-//import net.minecraft.nbt.NbtByte;
+//import net.minecraft.nbt.ByteTag;
 //import net.minecraft.nbt.Tag;
 //import org.jetbrains.annotations.NotNull;
 //
@@ -119,12 +119,12 @@
 //
 //    @Override
 //    public Tag toTag() {
-//        return NbtByte.of(wasActive);
+//        return ByteTag.of(wasActive);
 //    }
 //
 //    @Override
 //    public void fromTag(Tag tag) {
-//        wasActive = tag.equals(NbtByte.ONE);
+//        wasActive = tag.equals(ByteTag.ONE);
 //    }
 //
 //}

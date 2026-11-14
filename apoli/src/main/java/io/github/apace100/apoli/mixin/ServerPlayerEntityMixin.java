@@ -22,7 +22,7 @@
 //import io.github.apace100.apoli.util.InventoryUtil;
 //import io.github.apace100.apoli.util.PriorityPhase;
 //import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
-//import net.minecraft.entity.Dismounting;
+//import net.minecraft.entity.DismountHelper;
 //import net.minecraft.world.entity.player.Player;
 //import net.minecraft.world.entity.SlotAccess;
 //import net.minecraft.world.item.ItemStack;
@@ -137,7 +137,7 @@
 //
 //    }
 //
-//    @ModifyReturnValue(method = "getSpawnPointPosition", at = @At("RETURN"))
+//    @ModifyReturnValue(method = "getRespawnPosition", at = @At("RETURN"))
 //    private BlockPos apoli$modifySpawnPointPosition(BlockPos original) {
 //
 //        if (this.apoli$isEndRespawning() || !PowerHolderComponent.hasPowerType(this, ModifyPlayerSpawnPowerType.class)) {
@@ -159,7 +159,7 @@
 //
 //    }
 //
-//    @ModifyReturnValue(method = "isSpawnForced", at = @At("RETURN"))
+//    @ModifyReturnValue(method = "isRespawnForced", at = @At("RETURN"))
 //    private boolean apoli$modifySpawnForced(boolean original) {
 //        return original || (!this.apoli$isEndRespawning() && (spawnPointPosition == null || this.apoli$hasObstructedOriginalSpawnPoint()) && PowerHolderComponent.hasPowerType(this, ModifyPlayerSpawnPowerType.class));
 //    }
@@ -171,7 +171,7 @@
 //
 //        if (originalRespawnPos.isEmpty() && PowerHolderComponent.hasPowerType(this, ModifyPlayerSpawnPowerType.class)) {
 //            return Optional
-//                .ofNullable(Dismounting.findRespawnPos(this.getType(), world, pos, spawnForced))
+//                .ofNullable(DismountHelper.findSafeDismountLocation(this.getType(), world, pos, spawnForced))
 //                .map(newPos -> ServerPlayer.RespawnPos.fromCurrentPos(newPos, pos));
 //        }
 //
