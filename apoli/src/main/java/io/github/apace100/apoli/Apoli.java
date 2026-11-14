@@ -23,6 +23,7 @@ import io.github.apace100.apoli.power.PowerManager;
 //import io.github.apace100.apoli.power.type.ModifyEnchantmentLevelPowerType;
 import io.github.apace100.apoli.power.type.PowerTypes;
 import io.github.apace100.apoli.recipe.ApoliRecipeSerializers;
+import io.github.apace100.apoli.recipe.ApoliRecipeTypes;
 import io.github.apace100.apoli.registry.ApoliClassData;
 import io.github.apace100.apoli.util.ApoliConfig;
 import io.github.apace100.apoli.util.GainedPowerCriterion;
@@ -109,6 +110,7 @@ public class Apoli implements ModInitializer, EntityComponentInitializer {
 		ModifierOperations.registerAll();
 //		ApoliDataComponentTypes.register();
 		ApoliRecipeSerializers.register();
+		ApoliRecipeTypes.register();
 
 		BiEntityConditionTypes.register();
 		BiomeConditionTypes.register();
