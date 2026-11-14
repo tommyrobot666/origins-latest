@@ -2,6 +2,8 @@ package io.github.apace100.apoli.component;
 
 import io.github.apace100.apoli.Apoli;
 import io.github.apace100.apoli.data.TypedDataObjectFactory;
+import io.github.apace100.apoli.mixin.TagValueInputAccessor;
+import io.github.apace100.apoli.mixin.TagValueOutputAccessor;
 import io.github.apace100.apoli.power.MultiplePower;
 import io.github.apace100.apoli.power.Power;
 import io.github.apace100.apoli.power.PowerConfiguration;
@@ -10,6 +12,7 @@ import io.github.apace100.apoli.power.type.PowerType;
 import io.github.apace100.apoli.util.GainedPowerCriterion;
 import io.github.apace100.calio.data.SerializableData;
 import it.unimi.dsi.fastutil.objects.*;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.nbt.Tag;
 import net.minecraft.nbt.NbtOps;
@@ -284,7 +287,7 @@ public class PowerHolderComponentImpl implements PowerHolderComponent {
 
             try {
 
-                Power.DataEntry powerDataEntry = Power.DataEntry.CODEC.read(NbtOps.INSTANCE, ((TagValueInput) powerTag).input).getOrThrow();
+                Power.DataEntry powerDataEntry = Power.DataEntry.CODEC.read(NbtOps.INSTANCE, ((TagValueInputAccessor) (TagValueInput) powerTag).input()).getOrThrow();
                 PowerReference powerReference = powerDataEntry.powerReference();
 
                 try {
@@ -346,7 +349,7 @@ public class PowerHolderComponentImpl implements PowerHolderComponent {
     }
 
     private static void setWriteValueInternalTag(Tag tag, ValueOutput powerTag) {
-        ((TagValueOutput) powerTag).output = tag;
+        ((TagValueOutputAccessor) (TagValueOutput) powerTag).output((CompoundTag) tag);
     }
 
     @Override

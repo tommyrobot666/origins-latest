@@ -123,7 +123,7 @@
 //            SlotAccess stackReference = LivingEntityAccessor.callGetStackReference(holder, equipmentSlot);
 //            ItemStack stack = stackReference.get();
 //
-//            if (stackReference != SlotAccess.EMPTY && stack.isEmpty() && !WorkableEmptyStack.isOf(stack)) {
+//            if (stackReference != SlotAccess.of(null,null) && stack.isEmpty() && !WorkableEmptyStack.isOf(stack)) {
 //                stackReference.set(WorkableEmptyStack.getOrCreate(holder));
 //            }
 //

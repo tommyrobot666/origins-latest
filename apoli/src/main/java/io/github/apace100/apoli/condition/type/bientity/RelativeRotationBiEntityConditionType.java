@@ -103,8 +103,8 @@
 //            return entity.getRotationVec(1.0f);
 //        }
 //
-//        float f = livingEntity.getPitch() * ((float) Math.PI / 180);
-//        float g = -livingEntity.getYaw() * ((float) Math.PI / 180);
+//        float f = livingEntity.getXRot() * ((float) Math.PI / 180);
+//        float g = -livingEntity.getYRot() * ((float) Math.PI / 180);
 //
 //        float h = Mth.cos(g);
 //        float i = Mth.sin(g);

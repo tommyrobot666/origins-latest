@@ -464,15 +464,15 @@ public interface PowerHolderComponent extends AutoSyncedComponent, CommonTicking
     final class PacketHandlers {
 
         public static final PacketHandler<Map<Identifier, Collection<Power>>> GRANT_POWERS = new PacketHandler.Impl<>(
-            powersBySource -> (buf, recipient) -> buf.writeMap(powersBySource,
+            powersBySource -> (buf, recipient) -> BufUtil.writeMap(buf,powersBySource,
                 FriendlyByteBuf::writeIdentifier,
-                (vbuf, powers) -> BufUtil.writeCollection(powers, (ebuf, power) -> ebuf.writeIdentifier(power.getId()))
+                (vbuf, powers) -> BufUtil.writeCollection(vbuf,powers, (ebuf, power) -> ebuf.writeIdentifier(power.getId()))
             ),
             (buf, component) -> {
 
-                var powersBySource = buf.readMap(
+                var powersBySource = BufUtil.readMap(buf,
                     FriendlyByteBuf::readIdentifier,
-                    vbuf -> BufUtil.readCollection(ArrayList::new, ebuf -> PowerManager.get(ebuf.readIdentifier())));
+                    vbuf -> BufUtil.readCollection(vbuf,ArrayList::new, ebuf -> PowerManager.get(ebuf.readIdentifier())));
 
                 powersBySource.forEach((source, powers) -> powers.forEach(power -> component.addPower(power, source)));
 
@@ -484,9 +484,9 @@ public interface PowerHolderComponent extends AutoSyncedComponent, CommonTicking
             GRANT_POWERS::write,
             (buf, component) -> {
 
-                var powersBySource = buf.readMap(
+                Map<Identifier,Collection<Power>> powersBySource = BufUtil.readMap(buf,
                     FriendlyByteBuf::readIdentifier,
-                    vbuf -> BufUtil.readCollection(ArrayList::new, ebuf -> PowerManager.get(ebuf.readIdentifier())));
+                    vbuf -> BufUtil.readCollection(vbuf,ArrayList::new, ebuf -> PowerManager.get(ebuf.readIdentifier())));
 
                 powersBySource.forEach((source, powers) -> powers.forEach(power -> component.removePower(power, source)));
 
@@ -496,9 +496,9 @@ public interface PowerHolderComponent extends AutoSyncedComponent, CommonTicking
 
         public static final PacketHandler<Collection<Identifier>> REVOKE_ALL_POWERS = new PacketHandler.Impl<>(
             sources -> (buf, recipient) ->
-                BufUtil.writeCollection(sources, FriendlyByteBuf::writeIdentifier),
-            (buf, component) -> buf
-                .readCollection(ArrayList::new, FriendlyByteBuf::readIdentifier)
+                BufUtil.writeCollection(buf,sources, FriendlyByteBuf::writeIdentifier),
+            (buf, component) -> BufUtil
+                .readCollection(buf,ArrayList::new, FriendlyByteBuf::readIdentifier)
                 .forEach(component::removeAllPowersFromSource),
             3
         );

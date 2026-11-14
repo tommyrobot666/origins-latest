@@ -85,8 +85,8 @@
 //        Vec3 velocity = entity.getVelocity();
 //        Vec3 verticalOffset = entity.getPos().add(0, entity.getEyeHeight(entity.getPose()), 0);
 //
-//        float pitch = entity.getPitch();
-//        float yaw = entity.getYaw();
+//        float pitch = entity.getXRot();
+//        float yaw = entity.getYRot();
 //
 //        for (int i = 0; i < count; i++) {
 //

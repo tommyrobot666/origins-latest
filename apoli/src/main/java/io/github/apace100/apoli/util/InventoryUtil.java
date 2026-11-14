@@ -9,15 +9,22 @@ import io.github.apace100.apoli.power.type.PowerType;
 import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
 import it.unimi.dsi.fastutil.ints.IntSet;
 import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.Container;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.SlotAccess;
 import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.SlotRange;
+import net.minecraft.world.inventory.SlotRanges;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.component.SwingAnimation;
 
-import java.util.*;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.function.BiPredicate;
 import java.util.function.Consumer;
 import java.util.function.ToIntFunction;
@@ -65,14 +72,14 @@ public class InventoryUtil {
             return;
         }
 
-        if (thrower instanceof Player playerEntity && playerEntity.level().isClient) {
-            playerEntity.swingHand(InteractionHand.MAIN_HAND);
+        if (thrower instanceof Player playerEntity && playerEntity.level().isClientSide()) {
+            playerEntity.swing(InteractionHand.MAIN_HAND, SwingAnimation.DEFAULT, true);
         }
 
         double yOffset = thrower.getEyeY() - 0.30000001192092896D;
 
         ItemEntity itemEntity = new ItemEntity(thrower.level(), thrower.getX(), yOffset, thrower.getZ(), stack);
-        Random random = Random.create();
+        RandomSource random = RandomSource.create();
 
         float f;
         float g;
@@ -86,23 +93,23 @@ public class InventoryUtil {
             f = random.nextFloat() * 0.5F;
             g = random.nextFloat() * 6.2831855F;
 
-            itemEntity.setVelocity(- Mth.sin(g) * f, 0.20000000298023224D, Mth.cos(g) * f);
+            itemEntity.setDeltaMovement(- Mth.sin(g) * f, 0.20000000298023224D, Mth.cos(g) * f);
 
         }
 
         else {
 
             f = 0.3F;
-            g = Mth.sin(thrower.getPitch() * 0.017453292F);
+            g = Mth.sin(thrower.getXRot() * 0.017453292F);
 
-            float h = Mth.cos(thrower.getPitch() * 0.017453292F);
-            float i = Mth.sin(thrower.getYaw() * 0.017453292F);
-            float j = Mth.cos(thrower.getYaw() * 0.017453292F);
+            float h = Mth.cos(thrower.getXRot() * 0.017453292F);
+            float i = Mth.sin(thrower.getYRot() * 0.017453292F);
+            float j = Mth.cos(thrower.getYRot() * 0.017453292F);
 
             float k = random.nextFloat() * 6.2831855F;
             float l = 0.02F * random.nextFloat();
 
-            itemEntity.setVelocity(
+            itemEntity.setDeltaMovement(
                 (double) (- i * h * f) + Math.cos(k) * (double) l,
                 (-g * f + 0.1F + (random.nextFloat() - random.nextFloat()) * 0.1F),
                 (double) (j * h * f) + Math.sin(k) * (double) l
@@ -110,7 +117,7 @@ public class InventoryUtil {
 
         }
 
-        thrower.level().spawnEntity(itemEntity);
+        thrower.level().addFreshEntity(itemEntity);
         postProcessor.accept(itemEntity);
 
     }
@@ -141,13 +148,13 @@ public class InventoryUtil {
 
         for (var type : powerComponent.getPowerTypes()) {
 
-	        if (!(type instanceof Inventory inventory)) {
+	        if (!(type instanceof Container inventory)) {
                 continue;
 	        }
 
-            for (int i = 0; i < inventory.size(); i++) {
+            for (int i = 0; i < inventory.getContainerSize(); i++) {
 
-                ItemStack stack = inventory.getStack(i);
+                ItemStack stack = inventory.getItem(i);
 
                 if (!stack.isEmpty()) {
                     stackConsumer.accept(stack);
@@ -173,13 +180,13 @@ public class InventoryUtil {
             }
 
             SlotAccess stackReference = entity.getSlot(slot);
-            if (stackReference != SlotAccess.EMPTY && equalityPredicate.test(stack, stackReference.get())) {
+            if (stackReference != SlotAccess.of(null,null) && equalityPredicate.test(stack, stackReference.get())) {
                 return stackReference;
             }
 
         }
 
-        return SlotAccess.EMPTY;
+        return SlotAccess.of(null,null);
 
     }
 
@@ -193,28 +200,28 @@ public class InventoryUtil {
     public static OptionalInt getSelectedHotBarSlot(Entity entity) {
 
         SlotRange slotRange = entity instanceof Player player
-            ? SlotRanges.fromName("hotbar." + player.getInventory().selectedSlot)
+            ? SlotRanges.nameToIds("hotbar." + player.getInventory().getSelectedSlot())
             : null;
 
         return slotRange != null
-            ? OptionalInt.of(slotRange.getSlotIds().getFirst())
+            ? OptionalInt.of(slotRange.slots().getFirst())
             : OptionalInt.empty();
 
     }
 
-    public static boolean isSlotWithinInventoryBounds(Inventory inventory, int slot) {
+    public static boolean isSlotWithinInventoryBounds(Container inventory, int slot) {
         return slot >= 0
-            && slot < inventory.size();
+            && slot < inventory.getContainerSize();
     }
 
-    public static SlotAccess getStackReference(Either<Inventory, Entity> source, int slot) {
+    public static SlotAccess getStackReference(Either<Container, Entity> source, int slot) {
         return source.map(inventory -> getInventoryStackReference(inventory, slot), entity -> entity.getSlot(slot));
     }
 
-    public static SlotAccess getInventoryStackReference(Inventory inventory, int slot) {
+    public static SlotAccess getInventoryStackReference(Container inventory, int slot) {
         return isSlotWithinInventoryBounds(inventory, slot)
-            ? SlotAccess.of(inventory, slot)
-            : SlotAccess.EMPTY;
+            ? SlotAccess.of(() -> inventory.getItem(slot), (stack) -> inventory.setItem(slot,stack))
+            : SlotAccess.of(null,null);
     }
 
     /**
@@ -251,8 +258,8 @@ public class InventoryUtil {
 
         if (ALL_SLOTS.isEmpty()) {
 
-            for (SlotRange slotRange : SlotRangesAccessor.getSlotRanges()) {
-                ALL_SLOTS.addAll(slotRange.getSlotIds());
+            for (SlotRange slotRange : SlotRangesAccessor.getSlots()) {
+                ALL_SLOTS.addAll(slotRange.slots());
             }
 
         }
@@ -267,7 +274,7 @@ public class InventoryUtil {
 
             SlotAccess queriedStackRef = entity.getSlot(slot);
 
-            if (queriedStackRef != SlotAccess.EMPTY && queriedStackRef.equals(stackReference)) {
+            if (queriedStackRef != SlotAccess.of(null,null) && queriedStackRef.equals(stackReference)) {
                 return OptionalInt.of(slot);
             }
 
@@ -280,10 +287,10 @@ public class InventoryUtil {
     public static List<SlotRange> singleOrAllSlots(Optional<SlotRange> slot) {
         return slot
             .map(List::of)
-            .orElseGet(SlotRangesAccessor::getSlotRanges);
+            .orElseGet(SlotRangesAccessor::getSlots);
     }
 
-    public static Iterable<Inventory> getPowerInventories(Entity entity, PowerReference reference) {
+    public static Iterable<Container> getPowerInventories(Entity entity, PowerReference reference) {
 
         if (reference != null) {
             return () -> new AbstractIterator<>() {
@@ -291,13 +298,13 @@ public class InventoryUtil {
                 boolean done;
 
 	            @Override
-	            protected Inventory computeNext() {
+	            protected Container computeNext() {
 
                     if (!done) {
 
                         this.done = true;
 
-                        if (reference.getNullablePowerType(entity) instanceof Inventory inventory) {
+                        if (reference.getNullablePowerType(entity) instanceof Container inventory) {
                             return inventory;
                         }
 
@@ -316,11 +323,11 @@ public class InventoryUtil {
 	            final Iterator<PowerType> types = PowerHolderComponent.getPowerTypes(entity).iterator();
 
 	            @Override
-	            protected Inventory computeNext() {
+	            protected Container computeNext() {
 
 		            while (types.hasNext()) {
 
-			            if (types.next() instanceof Inventory inventory) {
+			            if (types.next() instanceof Container inventory) {
 				            return inventory;
 			            }
 

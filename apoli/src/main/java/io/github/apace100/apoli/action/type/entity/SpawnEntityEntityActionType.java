@@ -67,8 +67,8 @@
 //            entityType,
 //            tag,
 //            entity.getPos(),
-//            entity.getYaw(),
-//            entity.getPitch()
+//            entity.getYRot(),
+//            entity.getXRot()
 //        );
 //
 //        if (entityToSpawn.isEmpty()) {

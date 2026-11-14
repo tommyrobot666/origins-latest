@@ -150,8 +150,8 @@
 //        ServerLevel spawnPointDimension = spawnPoint.getLeft();
 //        BlockPos spawnPointPosition = spawnPoint.getRight();
 //
-//        float pitch = serverPlayer.getPitch();
-//        float yaw = serverPlayer.getYaw();
+//        float pitch = serverPlayer.getXRot();
+//        float yaw = serverPlayer.getYRot();
 //
 //        Vec3 placement = Dismounting.findRespawnPos(serverPlayer.getType(), spawnPointDimension, spawnPointPosition, true);
 //        if (placement == null) {
