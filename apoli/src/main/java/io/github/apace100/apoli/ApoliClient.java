@@ -8,8 +8,8 @@ import io.github.apace100.apoli.power.Power;
 import io.github.apace100.apoli.power.type.Active;
 import io.github.apace100.apoli.power.type.PowerType;
 //import io.github.apace100.apoli.registry.ApoliClassDataClient;
-//import io.github.apace100.apoli.screen.GameHudRender;
-//import io.github.apace100.apoli.screen.PowerHudRenderer;
+import io.github.apace100.apoli.screen.GameHudRender;
+import io.github.apace100.apoli.screen.PowerHudRenderer;
 import io.github.apace100.apoli.util.ApoliConfigClient;
 import io.github.apace100.apoli.util.keybinding.KeyBindingUtil;
 import me.shedaniel.autoconfig.AutoConfig;
@@ -45,7 +45,7 @@ public class ApoliClient implements ClientModInitializer {
 //		ApoliClassDataClient.registerAll();
 		PowerIntegrationClient.register();
 
-//		GameHudRender.HUD_RENDERS.add(new PowerHudRenderer());
+		GameHudRender.HUD_RENDERS.add(new PowerHudRenderer());
 
 		AutoConfig.register(ApoliConfigClient.class, JanksonConfigSerializer::new);
 		Apoli.config = AutoConfig.getConfigHolder(ApoliConfigClient.class).getConfig();

@@ -75,7 +75,7 @@ public class PowerTypes {
 //    public static final PowerConfiguration<ModifyEnchantmentLevelPowerType> MODIFY_ENCHANTMENT_LEVEL = register(PowerConfiguration.of(Apoli.identifier("modify_enchantment_level"), ModifyEnchantmentLevelPowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<ModifyExhaustionPowerType> MODIFY_EXHAUSTION = register(ValueModifyingPowerType.createModifyingConfiguration(Apoli.identifier("modify_exhaustion"), ModifyExhaustionPowerType::new));
 //    public static final PowerConfiguration<ModifyExperiencePowerType> MODIFY_EXPERIENCE = register(ValueModifyingPowerType.createModifyingConfiguration(Apoli.identifier("modify_xp_gain"), ModifyExperiencePowerType::new));
-//    public static final PowerConfiguration<ModifyFallingPowerType> MODIFY_FALLING = register(PowerConfiguration.of(Apoli.identifier("modify_falling"), ModifyFallingPowerType.DATA_FACTORY));
+    public static final PowerConfiguration<ModifyFallingPowerType> MODIFY_FALLING = register(PowerConfiguration.of(Apoli.identifier("modify_falling"), ModifyFallingPowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<ModifyFluidRenderPowerType> MODIFY_FLUID_RENDER = register(PowerConfiguration.of(Apoli.identifier("modify_fluid_render"), ModifyFluidRenderPowerType.DATA_FACTORY));
     public static final PowerConfiguration<ModifyFoodPowerType> MODIFY_FOOD = register(PowerConfiguration.of(Apoli.identifier("modify_food"), ModifyFoodPowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<ModifyFovPowerType> MODIFY_FOV = register(PowerConfiguration.of(Apoli.identifier("modify_fov"), ModifyFovPowerType.DATA_FACTORY));
