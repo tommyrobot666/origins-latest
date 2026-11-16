@@ -21,6 +21,7 @@ import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.MinecraftServer;
@@ -66,6 +67,9 @@ public class OriginManager extends IdentifiableMultiJsonDataLoader implements Pr
 	public @Nullable Identifier getBefore() {
 		return PowerManager.ID;
 	}
+
+	@Override
+	public void giveLookup(HolderLookup.Provider wrapperLookup) {}
 
 	@Override
 	protected void apply(MultiJsonDataContainer prepared, ResourceManager manager, ProfilerFiller profiler) {

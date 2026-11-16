@@ -24,6 +24,7 @@ import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.RegistryOps;
@@ -82,6 +83,9 @@ public class OriginLayerManager extends IdentifiableMultiJsonDataLoader implemen
     public Identifier getBefore() {
         return OriginManager.ID;
     }
+
+    @Override
+    public void giveLookup(HolderLookup.Provider wrapperLookup) {}
 
     private void updateData(ServerPlayer player, boolean init) {
 

@@ -11,6 +11,7 @@ import io.github.apace100.apoli.power.Power;
 import io.github.apace100.apoli.power.PowerManager;
 import io.github.apace100.apoli.power.PowerReference;
 import io.github.apace100.apoli.util.PrioritizedEntry;
+import io.github.apace100.calio.data.IdPreparableReloadListener;
 import io.github.apace100.calio.data.IdentifiableMultiJsonDataLoader;
 import io.github.apace100.calio.data.MultiJsonDataContainer;
 import io.github.apace100.calio.data.SerializableData;
@@ -27,6 +28,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.packs.PackType;
+import net.minecraft.server.packs.resources.PreparableReloadListener;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.util.Util;
@@ -37,7 +39,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
 
-public class GlobalPowerSetManager extends IdentifiableMultiJsonDataLoader implements IdentifiableResourceReloadListener {
+public class GlobalPowerSetManager extends IdentifiableMultiJsonDataLoader implements PreparableReloadListener {
 
     public static final Set<Identifier> DEPENDENCIES = Util.make(new HashSet<>(), set -> set.add(Apoli.identifier("powers")));
     public static final Identifier ID = Apoli.identifier("global_powers");
@@ -51,11 +53,10 @@ public class GlobalPowerSetManager extends IdentifiableMultiJsonDataLoader imple
         .setPrettyPrinting()
         .create();
 
-    private final HolderLookup.Provider wrapperLookup;
+    private HolderLookup.Provider wrapperLookup;
 
-    GlobalPowerSetManager(HolderLookup.Provider wrapperLookup) {
+    GlobalPowerSetManager() {
         super(GSON, "global_powers", PackType.SERVER_DATA);
-        this.wrapperLookup = wrapperLookup;
     }
 
     @Override
@@ -66,6 +67,11 @@ public class GlobalPowerSetManager extends IdentifiableMultiJsonDataLoader imple
     @Override
     public Identifier getBefore(){
         return Apoli.identifier("powers");
+    }
+
+    @Override
+    public void giveLookup(HolderLookup.Provider wrapperLookup) {
+        this.wrapperLookup = wrapperLookup;
     }
 
     public static void init() {
@@ -80,7 +86,7 @@ public class GlobalPowerSetManager extends IdentifiableMultiJsonDataLoader imple
             }
         });
 
-        ResourceManagerHelper.get(PackType.SERVER_DATA).registerReloadListener(ID, GlobalPowerSetManager::new);
+        IdPreparableReloadListener.registerReloadListener(PackType.SERVER_DATA, new GlobalPowerSetManager());
 
     }
 
@@ -181,16 +187,6 @@ public class GlobalPowerSetManager extends IdentifiableMultiJsonDataLoader imple
             disable(resourceId);
         }
 
-    }
-
-    @Override
-    public Identifier getFabricId() {
-        return ID;
-    }
-
-    @Override
-    public Collection<Identifier> getFabricDependencies() {
-        return DEPENDENCIES;
     }
 
     private GlobalPowerSet merge(GlobalPowerSet oldSet, GlobalPowerSet newSet) {

@@ -1,6 +1,7 @@
 package io.github.apace100.calio.data;
 
 import net.fabricmc.fabric.api.resource.v1.ResourceLoader;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.resources.PreparableReloadListener;
@@ -9,6 +10,7 @@ import org.jetbrains.annotations.Nullable;
 public interface IdPreparableReloadListener extends PreparableReloadListener {
     Identifier getId();
     @Nullable Identifier getBefore();
+    void giveLookup(HolderLookup.Provider wrapperLookup);
 
     static void registerReloadListener(PackType packType, IdPreparableReloadListener listener){
         ResourceLoader.get(packType).registerReloadListener(listener.getId(),listener);

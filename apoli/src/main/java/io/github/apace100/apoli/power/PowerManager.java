@@ -30,6 +30,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.resources.RegistryOps;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.packs.PackType;
+import net.minecraft.server.packs.resources.PreparableReloadListener;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.util.profiling.ProfilerFiller;
@@ -43,7 +44,7 @@ import java.util.*;
 import java.util.function.BiFunction;
 
 @SuppressWarnings("unused")
-public class PowerManager extends IdentifiableMultiJsonDataLoader implements IdPreparableReloadListener {
+public class PowerManager extends IdentifiableMultiJsonDataLoader implements PreparableReloadListener {
 
     public static final Set<Identifier> DEPENDENCIES = new HashSet<>();
     public static final Identifier ID = Apoli.identifier("powers");
@@ -65,11 +66,10 @@ public class PowerManager extends IdentifiableMultiJsonDataLoader implements IdP
     private static final Object2ObjectOpenHashMap<Identifier, Power> POWERS_BY_ID = new Object2ObjectOpenHashMap<>();
     private static final ObjectOpenHashSet<Identifier> DISABLED_POWERS = new ObjectOpenHashSet<>();
 
-    private final HolderLookup.Provider wrapperLookup;
+    private HolderLookup.Provider wrapperLookup;
 
-    PowerManager(HolderLookup.Provider wrapperLookup) {
+    PowerManager() {
         super(GSON, "powers", PackType.SERVER_DATA);
-        this.wrapperLookup = wrapperLookup;
     }
 
     @Override
@@ -80,6 +80,11 @@ public class PowerManager extends IdentifiableMultiJsonDataLoader implements IdP
     @Override
     public Identifier getBefore(){
         return null;
+    }
+
+    @Override
+    public void giveLookup(HolderLookup.Provider wrapperLookup) {
+        this.wrapperLookup = wrapperLookup;
     }
 
     public static void init() {
@@ -95,6 +100,7 @@ public class PowerManager extends IdentifiableMultiJsonDataLoader implements IdP
             updateData(player, joined);
         });
 
+        IdPreparableReloadListener.registerReloadListener(PackType.SERVER_DATA, new PowerManager());
     }
 
     @Override

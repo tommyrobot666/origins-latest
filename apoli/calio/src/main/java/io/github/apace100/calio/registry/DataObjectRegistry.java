@@ -7,6 +7,7 @@ import io.github.apace100.calio.Calio;
 import io.github.apace100.calio.data.*;
 import io.github.apace100.calio.network.packet.s2c.SyncDataObjectRegistryS2CPacket;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerPlayer;
@@ -336,6 +337,9 @@ public class DataObjectRegistry<T extends DataObject<T>> {
         public Identifier getBefore(){
             return dependencies.stream().findFirst().orElse(null);
         }
+
+        @Override
+        public void giveLookup(HolderLookup.Provider wrapperLookup) {}
 
         @Override
         protected void apply(MultiJsonDataContainer prepared, ResourceManager manager, ProfilerFiller profiler) {

@@ -1,5 +1,6 @@
 package io.github.apace100.calio.data;
 
+import net.fabricmc.fabric.api.resource.v1.ResourceLoader;
 import net.minecraft.server.packs.resources.PreparableReloadListener;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.SimplePreparableReloadListener;
@@ -14,6 +15,7 @@ public abstract class ExtendedSinglePreparationResourceReloader<T> extends IdSim
 
     @Override
     public final @NonNull CompletableFuture<Void> reload(final PreparableReloadListener.@NonNull SharedState currentReload, final @NonNull Executor taskExecutor, final PreparableReloadListener.@NonNull PreparationBarrier preparationBarrier, final @NonNull Executor reloadExecutor) {
+        giveLookup(currentReload.get(ResourceLoader.REGISTRY_LOOKUP_KEY));
         return CompletableFuture.supplyAsync(() -> this.prepare(currentReload.resourceManager(), Profiler.get()), taskExecutor)
                 .thenCompose(preparationBarrier::wait)
                 .thenAcceptAsync(prepared -> this.processBeforeApply(prepared, currentReload.resourceManager(), Profiler.get()), reloadExecutor);

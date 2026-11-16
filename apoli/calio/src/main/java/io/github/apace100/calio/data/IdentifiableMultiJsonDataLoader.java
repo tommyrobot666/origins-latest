@@ -6,11 +6,11 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import io.github.apace100.calio.CalioServer;
 import net.fabricmc.fabric.impl.resource.conditions.ResourceConditionsImpl;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.RegistryOps;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.util.profiling.Profiler;
 import net.minecraft.util.profiling.ProfilerFiller;
 import org.apache.commons.io.FilenameUtils;
 import org.jetbrains.annotations.Nullable;
@@ -131,4 +131,5 @@ public abstract class IdentifiableMultiJsonDataLoader extends ExtendedSinglePrep
 
     public abstract Identifier getId();
     public abstract @Nullable Identifier getBefore();
+    public abstract void giveLookup(HolderLookup.Provider wrapperLookup);
 }
