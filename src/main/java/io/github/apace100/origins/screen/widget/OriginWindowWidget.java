@@ -22,7 +22,6 @@ import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.AbstractScrollArea;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
-import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -78,7 +77,10 @@ public class OriginWindowWidget extends AbstractScrollArea {
 
 		renderBackground(graphics);
 		renderContents(graphics, mouseX, mouseY, delta);
+		extractScrollbar(graphics, mouseX, mouseY);
 		renderOverlay(graphics);
+
+//		graphics.text(textRenderer,"TEXT",20,20,0xffffffff);
 
 //		super.extractWidgetRenderState(graphics, mouseX, mouseY + Math.round((float) this.scrollBarY()), delta);
 
@@ -230,7 +232,7 @@ public class OriginWindowWidget extends AbstractScrollArea {
 				: Component.translatable("origins.gui.view_origin.not_installed");
 
 			for (var line : textRenderer.split(emptyOrNotInstalledText, this.getTextMaxWidth())) {
-				context.centeredText(textRenderer, line, this.getCenterX(), y, -1);
+				context.centeredText(textRenderer, line, this.getCenterX(), y, 0xffCCCCCC);
 				y += LINE_HEIGHT;
 			}
 
@@ -244,7 +246,7 @@ public class OriginWindowWidget extends AbstractScrollArea {
 
 			for (var descriptionLine : textRenderer.split(description, this.getTextMaxWidth())) {
 
-				context.text(textRenderer, descriptionLine, x, y, 0xCCCCCC);
+				context.text(textRenderer, descriptionLine, x, y, 0xffCCCCCC);
 
 				y += LINE_HEIGHT;
 				lines++;
@@ -255,7 +257,7 @@ public class OriginWindowWidget extends AbstractScrollArea {
 
 				for (var randomOriginLine : textRenderer.split(randomOrigins, this.getTextMaxWidth())) {
 
-					context.text(textRenderer, randomOriginLine, x, y, 0xCCCCCC);
+					context.text(textRenderer, randomOriginLine, x, y, 0xffCCCCCC);
 
 					y += LINE_HEIGHT;
 					lines++;
@@ -280,7 +282,7 @@ public class OriginWindowWidget extends AbstractScrollArea {
 
 					for (var nameLine : nameLines) {
 
-						context.text(textRenderer, nameLine, x, y, 0xFFFFFF);
+						context.text(textRenderer, nameLine, x, y, 0xffFFFFFF);
 
 						y += LINE_HEIGHT;
 						lines++;
@@ -329,7 +331,7 @@ public class OriginWindowWidget extends AbstractScrollArea {
 
 					for (var powerDescriptionLine : textRenderer.split(power.getDescription(), this.getTextMaxWidth())) {
 
-						context.text(textRenderer, powerDescriptionLine, x, y, 0xCCCCCC);
+						context.text(textRenderer, powerDescriptionLine, x, y, 0xffCCCCCC);
 
 						y += LINE_HEIGHT;
 						lines++;
@@ -368,7 +370,7 @@ public class OriginWindowWidget extends AbstractScrollArea {
 		int nameEndY = nameStartY + 9;
 
 		if (textRenderer != null) {
-			MiscUtilClient.drawScrollingText(context, textRenderer, origin.getName(), TextAlignment.CENTER, nameStartX, nameStartY, nameEndX, nameEndY, 0xFFFFFF, true);
+			MiscUtilClient.drawScrollingText(context, textRenderer, origin.getName(), TextAlignment.CENTER, nameStartX, nameStartY, nameEndX, nameEndY, 0xffFFFFFF, true);
 		}
 
 		impactWidget.extractWidgetRenderState(context, mouseX, mouseY, delta);

@@ -3,9 +3,12 @@ package io.github.apace100.calio.registry;
 import io.github.apace100.calio.data.SerializableData;
 import io.github.apace100.calio.data.SerializableDataType;
 import io.github.apace100.calio.data.SerializableDataTypes;
+import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponentPatch;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.ItemLike;
 
 public final class DataObjectFactories {
 
@@ -36,6 +39,16 @@ public final class DataObjectFactories {
 		(stack, serializableData) -> serializableData.instance()
 			.set("id", stack.typeHolder())
 			.set("components", stack.getComponentsPatch())
+	);
+
+	public static final DataObjectFactory<ItemStack> UNCOUNTED_ITEM_STACK_NO_COMPONENTS = DataObjectFactory.simple(
+			new SerializableData()
+					.add("id", SerializableDataTypes.ITEM_ENTRY),
+			data -> new ItemStack(
+                    (Holder<Item>) data.get("id")
+            ),
+			(stack, serializableData) -> serializableData.instance()
+					.set("id", stack.typeHolder())
 	);
 
 	public static final DataObjectFactory<ItemStack> ITEM_STACK = DataObjectFactory.simple(

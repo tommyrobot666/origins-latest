@@ -270,14 +270,9 @@ public class PowerHolderComponentImpl implements PowerHolderComponent {
         powers.clear();
         powerSources.clear();
 
-        ValueInput.ValueInputList powersTag = readView.childrenList("powers").orElseThrow();
+        ValueInput.ValueInputList powersTag = readView.childrenListOrEmpty("powers");
         Stream<ValueInput> powersTagStream = powersTag.stream();
         List<ValueInput> powersTags;
-
-        //  Migrate compound NBTs from the old 'Powers' NBT path to the new 'powers' NBT path
-        if (readView.contains("Powers")) {
-            powersTagStream = Stream.concat(powersTagStream,readView.childrenList("Powers").orElseThrow().stream());
-        }
 
         powersTags = powersTagStream.toList();
 

@@ -45,10 +45,6 @@ public class WaitForNextLayerScreen extends Screen {
             nextOrClose();
         }
 
-        else {
-            this.extractBackground(context, mouseX, mouseY, delta);
-        }
-
     }
 
     @Override

@@ -357,7 +357,7 @@ public class DataObjectRegistry<T extends DataObject<T>> {
                     T object = readDataObject(jsonObject);
                     if (useLoadingPriority) {
 
-                        int loadingPriority = jsonObject.get("loading_priority").getAsInt(); //JsonHelper.getInt(jsonObject, "loading_priority", 0);
+                        int loadingPriority = GsonHelper.getAsInt(jsonObject, "loading_priority", 0);
                         if (!containsId(id) || LOADING_PRIORITIES.getOrDefault(id, 0) < loadingPriority) {
                             LOADING_PRIORITIES.put(id, loadingPriority);
                             register(id, object);

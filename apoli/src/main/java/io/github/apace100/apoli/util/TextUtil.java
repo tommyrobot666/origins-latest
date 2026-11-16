@@ -10,6 +10,7 @@ import java.util.Optional;
 public class TextUtil {
 
 	/**
+	 * <h1>ForcedTranslatableTextContent has been removed from this, it now only returns normal translatable text</h1>
 	 * 	<p>Forcefully constructs a translatable text out of the {@code translationKey} and {@code altText} arguments.
 	 * 	The resulting translatable text may differ according to the following scenarios:</p>
 	 *
@@ -41,20 +42,7 @@ public class TextUtil {
 
 		if (altText.isPresent()) {
 
-			Component text = altText.get();
-			String literal = text.getString();
-
-			if (text.getContents() instanceof TranslatableContents) {
-				return text;
-			}
-
-			else if (literal != null) {
-				return Component.translatableWithFallback(translationKey, literal);
-			}
-
-			else {
-				return MutableComponent.create(new ForcedTranslatableTextContent(translationKey, text));
-			}
+			return Component.translatableWithFallback(translationKey, altText.orElseThrow().getString());
 
 		}
 

@@ -11,6 +11,7 @@ import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent;
 import net.minecraft.client.gui.screens.inventory.tooltip.DefaultTooltipPositioner;
+import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.network.chat.Component;
 
 import java.util.List;
@@ -28,7 +29,7 @@ public final class BadgeWidget extends AbstractWidget implements DrawableTooltip
 
 	@Override
 	protected void extractWidgetRenderState(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float a) {
-		graphics.blit(badge.spriteId(), this.getX(), this.getY(), 0, 0, 9, 9, 9, 9);
+		graphics.blitSprite(RenderPipelines.GUI_TEXTURED, badge.spriteId(), this.getX(), this.getY(), Badge.SIZE, Badge.SIZE);
 	}
 
 	@Override

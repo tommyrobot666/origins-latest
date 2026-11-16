@@ -39,7 +39,6 @@ public abstract class OriginDisplayScreen extends Screen {
 
     @Override
     public void extractRenderState(GuiGraphicsExtractor context, int mouseX, int mouseY, float delta) {
-        extractBackground(context, mouseX, mouseY, delta);
         super.extractRenderState(context, mouseX, mouseY, delta);
         context.centeredText(font, this.getTitle(), width / 2, windowWidget.getY() - 15, 0xFFFFFF);
     }

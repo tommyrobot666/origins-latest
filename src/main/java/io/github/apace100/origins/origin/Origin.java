@@ -39,10 +39,11 @@ public class Origin implements Comparable<Origin>, Validatable {
     public static final Origin EMPTY = new Origin(Origins.identifier("empty"), () -> ItemStack.EMPTY, Impact.NONE, Integer.MIN_VALUE);
     public static final Origin RANDOM = new Origin(Origins.identifier("random"), () -> Suppliers.memoize(() -> ModItems.ORB_OF_ORIGIN).get().getDefaultInstance(), Impact.NONE, Integer.MAX_VALUE);
 
+    // TODO bring back icon field
     public static final SerializableDataType<Origin> DATA_TYPE = SerializableDataType.compound(
         new SerializableData()
             .add("id", SerializableDataTypes.IDENTIFIER)
-            .add("icon", SerializableDataTypes.UNCOUNTED_ITEM_STACK, ItemStack.EMPTY)
+//            .add("icon", SerializableDataTypes.UNCOUNTED_ITEM_STACK_NO_COMPONENTS, ItemStack.EMPTY)
             .add("powers", ApoliDataTypes.POWER_REFERENCE.list(), new ObjectArrayList<>())
             .add("impact", OriginsDataTypes.IMPACT, Impact.NONE)
             .add("name", SerializableDataTypes.TEXT, null)
@@ -51,7 +52,8 @@ public class Origin implements Comparable<Origin>, Validatable {
             .add("order", SerializableDataTypes.INT, Integer.MAX_VALUE),
         data -> Origin.of(
             data.get("id"),
-            data.get("icon"),
+//            data.get("icon"),
+                ItemStack.EMPTY,
             data.get("powers"),
             data.get("impact"),
             data.get("name"),
