@@ -148,7 +148,7 @@
 //        );
 //    }
 //
-//    @WrapOperation(method = "renderCrosshair", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/DrawContext;drawGuiTexture(Lnet/minecraft/util/Identifier;IIII)V", ordinal = 0), slice = @Slice(from = @At(value = "INVOKE", target = "Lnet/minecraft/client/option/GameOptions;getAttackIndicator()Lnet/minecraft/client/option/SimpleOption;"), to = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/DrawContext;drawGuiTexture(Lnet/minecraft/util/Identifier;IIIIIIII)V")))
+//    @WrapOperation(method = "renderCrosshair", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/DrawContext;drawGuiTexture(Lnet/minecraft/util/Identifier;IIII)V", ordinal = 0), slice = @Slice(from = @At(value = "INVOKE", target = "Lnet/minecraft/client/option/Options;getAttackIndicator()Lnet/minecraft/client/option/SimpleOption;"), to = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/DrawContext;drawGuiTexture(Lnet/minecraft/util/Identifier;IIIIIIII)V")))
 //    private void apoli$overrideFullCrosshairAttackIndicatorSprite(DrawContext instance, Identifier texture, int x, int y, int width, int height, Operation<Void> original) {
 //        apoli$getOverrideHudTexturePower(this.client.player).ifPresentOrElse(
 //            p -> p.drawTexture(instance, texture, x, y, 68, 94, width, height),
@@ -156,7 +156,7 @@
 //        );
 //    }
 //
-//    @WrapOperation(method = "renderCrosshair", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/DrawContext;drawGuiTexture(Lnet/minecraft/util/Identifier;IIII)V", ordinal = 1), slice = @Slice(from = @At(value = "INVOKE", target = "Lnet/minecraft/client/option/GameOptions;getAttackIndicator()Lnet/minecraft/client/option/SimpleOption;"), to = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/DrawContext;drawGuiTexture(Lnet/minecraft/util/Identifier;IIIIIIII)V")))
+//    @WrapOperation(method = "renderCrosshair", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/DrawContext;drawGuiTexture(Lnet/minecraft/util/Identifier;IIII)V", ordinal = 1), slice = @Slice(from = @At(value = "INVOKE", target = "Lnet/minecraft/client/option/Options;getAttackIndicator()Lnet/minecraft/client/option/SimpleOption;"), to = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/DrawContext;drawGuiTexture(Lnet/minecraft/util/Identifier;IIIIIIII)V")))
 //    private void apoli$overrideBaseCrosshairAttackIndicatorSprite(DrawContext instance, Identifier texture, int x, int y, int width, int height, Operation<Void> original) {
 //        apoli$getOverrideHudTexturePower(this.client.player).ifPresentOrElse(
 //            p -> p.drawTexture(instance, texture, x, y, 36, 94, width, height),

@@ -94,7 +94,7 @@ public class PowerTypes {
     public static final PowerConfiguration<ModifyTypeTagPowerType> MODIFY_TYPE_TAG = register(PowerConfiguration.of(Apoli.identifier("modify_type_tag"), ModifyTypeTagPowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<ModifyVelocityPowerType> MODIFY_VELOCITY = register(PowerConfiguration.of(Apoli.identifier("modify_velocity"), ModifyVelocityPowerType.DATA_FACTORY));
     public static final PowerConfiguration<NightVisionPowerType> NIGHT_VISION = register(PowerConfiguration.of(Apoli.identifier("night_vision"), NightVisionPowerType.DATA_FACTORY));
-//    public static final PowerConfiguration<OverlayPowerType> OVERLAY = register(PowerConfiguration.of(Apoli.identifier("overlay"), OverlayPowerType.DATA_FACTORY));
+    public static final PowerConfiguration<OverlayPowerType> OVERLAY = register(PowerConfiguration.of(Apoli.identifier("overlay"), OverlayPowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<OverrideHudTexturePowerType> STATUS_BAR_TEXTURE = register(PowerConfiguration.of(Apoli.identifier("status_bar_texture"), OverrideHudTexturePowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<ParticlePowerType> PARTICLE = register(PowerConfiguration.of(Apoli.identifier("particle"), ParticlePowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<PhasingPowerType> PHASING = register(PowerConfiguration.of(Apoli.identifier("phasing"), PhasingPowerType.DATA_FACTORY));

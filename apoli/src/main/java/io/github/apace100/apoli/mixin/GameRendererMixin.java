@@ -113,7 +113,7 @@
 //
 //    }
 //
-//    @Inject(method = "render", at = @At(value = "FIELD", target = "Lnet/minecraft/client/option/GameOptions;hudHidden:Z"))
+//    @Inject(method = "render", at = @At(value = "FIELD", target = "Lnet/minecraft/client/option/Options;hudHidden:Z"))
 //    private void apoli$renderOverlayPowersBelowHud(RenderTickCounter tickCounter, boolean tick, CallbackInfo ci) {
 //        PowerHolderComponent.getPowerTypes(client.getCameraEntity(), OverlayPowerType.class)
 //            .stream()
