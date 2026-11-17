@@ -139,7 +139,7 @@
 //
 //    private boolean attemptToTeleport(Entity entity, ServerLevel serverWorld, double destX, double destY, double destZ) {
 //
-//        BlockPos.MutableBlockPos destBlockPos = BlockPos.ofFloored(destX, destY, destZ).mutable();
+//        BlockPos.MutableBlockPos destBlockPos = BlockPos.containing(destX, destY, destZ).mutable();
 //        boolean foundSurface = false;
 //
 //        if (heightmapType.isPresent()) {

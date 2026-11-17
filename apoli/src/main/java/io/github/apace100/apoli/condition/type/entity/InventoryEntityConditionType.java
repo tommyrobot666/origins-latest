@@ -16,7 +16,7 @@
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import it.unimi.dsi.fastutil.ints.IntSet;
 //import net.minecraft.world.entity.Entity;
-//import net.minecraft.world.entity.player.Inventory;
+//import net.minecraft.world.entity.player.Container;
 //import net.minecraft.world.inventory.SlotRange;
 //import net.minecraft.world.entity.SlotAccess;
 //import net.minecraft.world.item.ItemStack;
@@ -113,7 +113,7 @@
 //        return EntityConditionTypes.INVENTORY;
 //    }
 //
-//    private int countMatches(Entity entity, Either<Inventory, Entity> source) {
+//    private int countMatches(Entity entity, Either<Container, Entity> source) {
 //
 //        OptionalInt slotToSkip = InventoryUtil.getSelectedHotBarSlot(entity);
 //        int matches = 0;

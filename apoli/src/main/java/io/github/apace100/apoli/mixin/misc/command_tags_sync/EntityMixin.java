@@ -34,7 +34,7 @@
 //	@Inject(method = "baseTick", at = @At("TAIL"))
 //	private void apoli$syncCommandTagsWhenDirty(CallbackInfo ci) {
 //
-//		if (!this.level().isClient() && apoli$syncCommandTags) {
+//		if (!this.level().isClientSide() && apoli$syncCommandTags) {
 //			MiscUtil.sendToTrackers(thisAsEntity(), new SyncCommandTagsS2CPacket(thisAsEntity()));
 //		}
 //

@@ -89,17 +89,13 @@ public class EntitySetPowerType extends PowerType {
 
         if (!tempEntities.isEmpty() && this.isActive()) {
 
-            if (startTicks == null && holder instanceof AgeableMob ager) {
-//                this.startTicks = holder.age % tickRate; is this supposed to only work for AgeableMob?
-                this.startTicks = ager.getAge() % tickRate;
+            if (startTicks == null) {
+                this.startTicks = holder.tickCount % tickRate;
                 return;
             }
 
-            if (holder instanceof AgeableMob ager){
-                //holder.age is this supposed to only work for AgeableMob?
-                if (ager.getAge() % tickRate == startTicks) {
-                    this.tickTempEntities();
-                }
+            if (holder.tickCount % tickRate == startTicks) {
+                this.tickTempEntities();
             }
 
             this.wasActive = true;
@@ -278,8 +274,6 @@ public class EntitySetPowerType extends PowerType {
 
         if (server != null && (entity == null || entity.isRemoved())) {
             entity = MiscUtil.getEntityByUuid(uuid, server);
-//            entity = StreamSupport.stream(server.getAllLevels().spliterator(),true)
-//                    .filter(l -> l.getEntity(uuid) != null).findAny().orElseThrow().getEntity(uuid);
         }
 
         return entity;

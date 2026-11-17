@@ -6,7 +6,7 @@
 //import io.github.apace100.apoli.component.PowerHolderComponent;
 //import io.github.apace100.apoli.power.type.GameEventListenerPowerType;
 //import net.minecraft.world.entity.Entity;
-//import net.minecraft.particle.ParticleEffect;
+//import net.minecraft.particle.ParticleOptions;
 //import net.minecraft.core.Holder;
 //import net.minecraft.tags.TagKey;
 //import net.minecraft.server.level.ServerLevel;
@@ -45,8 +45,8 @@
 //	@Mixin(Vibrations.Ticker.class)
 //	public interface ParticleAppearanceHandler {
 //
-//		@WrapWithCondition(method = "method_51408", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/world/ServerLevel;spawnParticles(Lnet/minecraft/particle/ParticleEffect;DDDIDDDD)I"))
-//		private static boolean apoli$onlyShowParticleWhenSpecified(ServerLevel world, ParticleEffect particle, double x, double y, double z, int count, double deltaX, double deltaY, double deltaZ, double speed, Vibrations.ListenerData listenerData) {
+//		@WrapWithCondition(method = "method_51408", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/world/ServerLevel;spawnParticles(Lnet/minecraft/particle/ParticleOptions;DDDIDDDD)I"))
+//		private static boolean apoli$onlyShowParticleWhenSpecified(ServerLevel world, ParticleOptions particle, double x, double y, double z, int count, double deltaX, double deltaY, double deltaZ, double speed, Vibrations.ListenerData listenerData) {
 //
 //			if (listenerData instanceof GameEventListenerPowerType.ListenerData powerListenerData) {
 //				return powerListenerData.shouldShowParticle();

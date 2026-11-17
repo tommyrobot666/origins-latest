@@ -6,7 +6,7 @@
 //import io.github.apace100.apoli.access.BlockCollisionSpliteratorAccess;
 //import io.github.apace100.apoli.access.BlockStateCollisionShapeAccess;
 //import net.minecraft.world.level.block.state.BlockState;
-//import net.minecraft.block.ShapeContext;
+//import net.minecraft.block.CollisionContext;
 //import net.minecraft.core.BlockPos;
 //import net.minecraft.util.shape.VoxelShape;
 //import net.minecraft.world.BlockCollisionSpliterator;
@@ -31,8 +31,8 @@
 //        this.apoli$getOriginalShapes = getOriginalShapes;
 //    }
 //
-//    @WrapOperation(method = "computeNext", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/BlockState;getCollisionShape(Lnet/minecraft/world/BlockGetter;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/ShapeContext;)Lnet/minecraft/util/shape/VoxelShape;"))
-//    private VoxelShape apoli$overrideCollisionShapeQuery(BlockState state, BlockGetter world, BlockPos pos, ShapeContext context, Operation<VoxelShape> original) {
+//    @WrapOperation(method = "computeNext", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/BlockState;getCollisionShape(Lnet/minecraft/world/BlockGetter;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/CollisionContext;)Lnet/minecraft/util/shape/VoxelShape;"))
+//    private VoxelShape apoli$overrideCollisionShapeQuery(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context, Operation<VoxelShape> original) {
 //        return state instanceof BlockStateCollisionShapeAccess shapeAccess && this.apoli$shouldGetOriginalShapes()
 //            ? shapeAccess.apoli$getOriginalCollisionShape(world, pos, context)
 //            : original.call(state, world, pos, context);

@@ -11,7 +11,7 @@
 //import net.minecraft.world.entity.EntityType;
 //import net.minecraft.entity.ItemEntity;
 //import net.minecraft.world.entity.player.Player;
-//import net.minecraft.entity.player.Inventory;
+//import net.minecraft.entity.player.Container;
 //import net.minecraft.world.entity.SlotAccess;
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.world.level.Level;
@@ -40,8 +40,8 @@
 //        super(type, world);
 //    }
 //
-//    @WrapOperation(method = "onPlayerCollision", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/Inventory;insertStack(Lnet/minecraft/item/ItemStack;)Z"))
-//    private boolean apoli$onItemPickup(Inventory playerInventory, ItemStack stack, Operation<Boolean> original, Player player) {
+//    @WrapOperation(method = "onPlayerCollision", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/Container;insertStack(Lnet/minecraft/item/ItemStack;)Z"))
+//    private boolean apoli$onItemPickup(Container playerInventory, ItemStack stack, Operation<Boolean> original, Player player) {
 //
 //        if (PreventItemPickupPowerType.doesPrevent(thisAsItemEntity(), player)) {
 //            return false;

@@ -57,7 +57,7 @@
 //        Entity entity = context.entity();
 //        Level world = entity.level();
 //
-//        BlockPos blockPos = BlockPos.ofFloored(entity.getPos().add(context.offset()));
+//        BlockPos blockPos = BlockPos.containing(entity.getPos().add(context.offset()));
 //        world.playSound(null, blockPos, sound, category.orElseGet(entity::getSoundCategory), volume, pitch);
 //
 //    }

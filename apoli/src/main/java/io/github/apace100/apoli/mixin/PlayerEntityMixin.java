@@ -23,7 +23,7 @@
 //import net.minecraft.entity.*;
 //import net.minecraft.world.damagesource.DamageSource;//import net.minecraft.entity.player.HungerManager;
 //import net.minecraft.world.entity.player.Player;
-//import net.minecraft.entity.player.Inventory;
+//import net.minecraft.entity.player.Container;
 //import net.minecraft.world.entity.SlotAccess;
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.network.packet.s2c.play.HealthUpdateS2CPacket;
@@ -61,7 +61,7 @@
 //
 //    @Shadow
 //    @Final
-//    Inventory inventory;
+//    Container inventory;
 //
 //    protected PlayerMixin(EntityType<? extends LivingEntity> entityType, Level world) {
 //        super(entityType, world);
@@ -215,13 +215,13 @@
 //        return PowerHolderComponent.modify(this, ModifyExhaustionPowerType.class, exhaustionIn);
 //    }
 //
-//    @Inject(method = "dropInventory", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/Inventory;dropAll()V"))
+//    @Inject(method = "dropInventory", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/Container;dropAll()V"))
 //    private void dropAdditionalInventory(CallbackInfo ci) {
 //        PowerHolderComponent.withPowerTypes(this, InventoryPowerType.class, InventoryPowerType::shouldDropOnDeath, InventoryPowerType::dropItemsOnDeath);
 //        PowerHolderComponent.withPowerTypes(this, KeepInventoryPowerType.class, p -> true, KeepInventoryPowerType::preventItemsFromDropping);
 //    }
 //
-//    @Inject(method = "dropInventory", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/Inventory;dropAll()V", shift = At.Shift.AFTER))
+//    @Inject(method = "dropInventory", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/Container;dropAll()V", shift = At.Shift.AFTER))
 //    private void restoreKeptInventory(CallbackInfo ci) {
 //        PowerHolderComponent.withPowerTypes(this, KeepInventoryPowerType.class, p -> true, KeepInventoryPowerType::restoreSavedItems);
 //    }

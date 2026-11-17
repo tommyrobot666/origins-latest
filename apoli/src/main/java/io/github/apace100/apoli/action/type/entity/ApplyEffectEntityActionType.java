@@ -37,7 +37,7 @@
 //    @Override
 //    public void accept(EntityActionContext context) {
 //
-//        if (context.entity() instanceof LivingEntity livingEntity && !livingEntity.level().isClient()) {
+//        if (context.entity() instanceof LivingEntity livingEntity && !livingEntity.level().isClientSide()) {
 //            effects.forEach(livingEntity::addMobEffect);
 //        }
 //

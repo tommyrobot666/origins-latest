@@ -20,7 +20,7 @@
 //import net.minecraft.component.DataComponentTypes;
 //import net.minecraft.component.type.NbtComponent;
 //import net.minecraft.world.entity.Entity;
-//import net.minecraft.world.entity.player.Inventory;
+//import net.minecraft.world.entity.player.Container;
 //import net.minecraft.world.inventory.SlotRange;
 //import net.minecraft.world.entity.SlotAccess;
 //import net.minecraft.world.item.ItemStack;
@@ -125,7 +125,7 @@
 //        return EntityActionTypes.REPLACE_INVENTORY;
 //    }
 //
-//    private void replaceMatches(Entity entity, Either<Inventory, Entity> source) {
+//    private void replaceMatches(Entity entity, Either<Container, Entity> source) {
 //
 //        OptionalInt slotToSkip = InventoryUtil.getSelectedHotBarSlot(entity);
 //

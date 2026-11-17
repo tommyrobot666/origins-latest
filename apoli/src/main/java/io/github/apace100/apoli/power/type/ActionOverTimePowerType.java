@@ -75,14 +75,14 @@
 //
 //            if (startTicks == null) {
 //
-//                startTicks = getHolder().age % interval;
+//                startTicks = getHolder().tickCount % interval;
 //                endTicks = null;
 //
 //                return;
 //
 //            }
 //
-//            if (getHolder().age % interval != startTicks) {
+//            if (getHolder().tickCount % interval != startTicks) {
 //                return;
 //            }
 //
@@ -99,14 +99,14 @@
 //
 //            if (endTicks == null) {
 //
-//                endTicks = getHolder().age % interval;
+//                endTicks = getHolder().tickCount % interval;
 //                startTicks = null;
 //
 //                return;
 //
 //            }
 //
-//            if (getHolder().age % interval != endTicks) {
+//            if (getHolder().tickCount % interval != endTicks) {
 //                return;
 //            }
 //

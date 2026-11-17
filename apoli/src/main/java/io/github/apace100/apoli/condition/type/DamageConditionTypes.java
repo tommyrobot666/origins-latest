@@ -3,7 +3,7 @@ package io.github.apace100.apoli.condition.type;
 import io.github.apace100.apoli.Apoli;
 import io.github.apace100.apoli.condition.ConditionConfiguration;
 import io.github.apace100.apoli.condition.DamageCondition;
-//import io.github.apace100.apoli.condition.type.damage.*;
+import io.github.apace100.apoli.condition.type.damage.*;
 import io.github.apace100.apoli.condition.type.damage.meta.*;
 import io.github.apace100.apoli.condition.type.meta.*;
 import io.github.apace100.apoli.registry.ApoliRegistries;
@@ -21,7 +21,7 @@ public class DamageConditionTypes {
     public static final ConditionConfiguration<ConstantDamageConditionType> CONSTANT = register(ConstantMetaConditionType.createConfiguration(ConstantDamageConditionType::new));
     public static final ConditionConfiguration<RandomChanceDamageConditionType> RANDOM_CHANCE = register(RandomChanceMetaConditionType.createConfiguration(RandomChanceDamageConditionType::new));
 
-//    public static final ConditionConfiguration<AmountDamageConditionType> AMOUNT  = register(ConditionConfiguration.of(Apoli.identifier("amount"), AmountDamageConditionType.DATA_FACTORY));
+    public static final ConditionConfiguration<AmountDamageConditionType> AMOUNT  = register(ConditionConfiguration.of(Apoli.identifier("amount"), AmountDamageConditionType.DATA_FACTORY));
 //    public static final ConditionConfiguration<AttackerDamageConditionType> ATTACKER = register(ConditionConfiguration.of(Apoli.identifier("attacker"), AttackerDamageConditionType.DATA_FACTORY));
 //    public static final ConditionConfiguration<BypassesArmorDamageConditionType> BYPASSES_ARMOR = register(ConditionConfiguration.simple(Apoli.identifier("bypasses_armor"), BypassesArmorDamageConditionType::new));
 //    public static final ConditionConfiguration<ExplosiveDamageConditionType> EXPLOSIVE = register(ConditionConfiguration.simple(Apoli.identifier("explosive"), ExplosiveDamageConditionType::new));

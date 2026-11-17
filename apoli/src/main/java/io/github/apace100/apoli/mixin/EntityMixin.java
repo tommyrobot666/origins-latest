@@ -12,7 +12,7 @@
 //import net.fabricmc.api.EnvType;
 //import net.fabricmc.api.Environment;
 //import net.minecraft.world.level.block.state.BlockState;
-//import net.minecraft.block.ShapeContext;
+//import net.minecraft.block.CollisionContext;
 //import net.minecraft.client.Minecraft;
 //import net.minecraft.world.entity.Entity;
 //import net.minecraft.world.entity.Pose;
@@ -135,7 +135,7 @@
 //
 //    @Redirect(method = "method_30022", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/BlockState;getCollisionShape(Lnet/minecraft/world/BlockGetter;Lnet/minecraft/util/math/BlockPos;)Lnet/minecraft/util/shape/VoxelShape;"))
 //    private VoxelShape preventPhasingSuffocation(BlockState state, BlockGetter world, BlockPos pos) {
-//        return state.getCollisionShape(world, pos, ShapeContext.of((Entity)(Object)this));
+//        return state.getCollisionShape(world, pos, CollisionContext.of((Entity)(Object)this));
 //    }
 //
 //    @ModifyVariable(method = "move", at = @At("HEAD"), argsOnly = true)

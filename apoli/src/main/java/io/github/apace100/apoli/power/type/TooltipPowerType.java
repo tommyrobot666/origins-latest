@@ -116,7 +116,7 @@
 //    public void serverTick() {
 //
 //        LivingEntity holder = getHolder();
-//        int modTicks = holder.age % tickRate;
+//        int modTicks = holder.tickCount % tickRate;
 //
 //        if (isActive()) {
 //

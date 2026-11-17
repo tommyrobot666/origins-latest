@@ -1,7 +1,7 @@
 package io.github.apace100.apoli.data.container;
 
 import io.github.apace100.apoli.util.TextAlignment;
-import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.Container;
 import net.minecraft.world.inventory.MenuConstructor;
 import org.jetbrains.annotations.Range;
 
@@ -9,7 +9,7 @@ public interface ContainerType {
 
 	TextAlignment titleAlignment();
 
-	MenuConstructor create(Inventory inventory);
+	MenuConstructor create(Container inventory);
 
 	default int size() {
 		return columns() * rows();

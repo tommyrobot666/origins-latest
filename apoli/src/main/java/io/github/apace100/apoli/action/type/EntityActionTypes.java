@@ -3,7 +3,7 @@ package io.github.apace100.apoli.action.type;
 import io.github.apace100.apoli.Apoli;
 import io.github.apace100.apoli.action.ActionConfiguration;
 import io.github.apace100.apoli.action.EntityAction;
-//import io.github.apace100.apoli.action.type.entity.*;
+import io.github.apace100.apoli.action.type.entity.*;
 import io.github.apace100.apoli.action.type.entity.meta.*;
 import io.github.apace100.apoli.action.type.meta.*;
 import io.github.apace100.apoli.condition.EntityCondition;
@@ -35,7 +35,7 @@ public class EntityActionTypes {
 //    public static final ActionConfiguration<ChangeResourceEntityActionType> CHANGE_RESOURCE = register(ActionConfiguration.of(Apoli.identifier("change_resource"), ChangeResourceEntityActionType.DATA_FACTORY));
 //    public static final ActionConfiguration<ClearEffectEntityActionType> CLEAR_EFFECT = register(ActionConfiguration.of(Apoli.identifier("clear_effect"), ClearEffectEntityActionType.DATA_FACTORY));
 //    public static final ActionConfiguration<CraftingTableEntityActionType> CRAFTING_TABLE = register(ActionConfiguration.simple(Apoli.identifier("crafting_table"), CraftingTableEntityActionType::new));
-//    public static final ActionConfiguration<DamageEntityActionType> DAMAGE = register(ActionConfiguration.of(Apoli.identifier("damage"), DamageEntityActionType.DATA_FACTORY));
+    public static final ActionConfiguration<DamageEntityActionType> DAMAGE = register(ActionConfiguration.of(Apoli.identifier("damage"), DamageEntityActionType.DATA_FACTORY));
 //    public static final ActionConfiguration<DismountEntityActionType> DISMOUNT = register(ActionConfiguration.simple(Apoli.identifier("dismount"), DismountEntityActionType::new));
 //    public static final ActionConfiguration<DropInventoryEntityActionType> DROP_INVENTORY = register(ActionConfiguration.of(Apoli.identifier("drop_inventory"), DropInventoryEntityActionType.DATA_FACTORY));
 //    public static final ActionConfiguration<EmitGameEventEntityActionType> EMIT_GAME_EVENT = register(ActionConfiguration.of(Apoli.identifier("emit_game_event"), EmitGameEventEntityActionType.DATA_FACTORY));
@@ -47,7 +47,7 @@ public class EntityActionTypes {
 //    public static final ActionConfiguration<ExtinguishEntityActionType> EXTINGUISH = register(ActionConfiguration.simple(Apoli.identifier("extinguish"), ExtinguishEntityActionType::new));
 //    public static final ActionConfiguration<FeedEntityActionType> FEED = register(ActionConfiguration.of(Apoli.identifier("feed"), FeedEntityActionType.DATA_FACTORY));
 //    public static final ActionConfiguration<FireProjectileEntityActionType> FIRE_PROJECTILE = register(ActionConfiguration.of(Apoli.identifier("fire_projectile"), FireProjectileEntityActionType.DATA_FACTORY));
-//    public static final ActionConfiguration<GainAirEntityActionType> GAIN_AIR = register(ActionConfiguration.of(Apoli.identifier("gain_air"), GainAirEntityActionType.DATA_FACTORY));
+    public static final ActionConfiguration<GainAirEntityActionType> GAIN_AIR = register(ActionConfiguration.of(Apoli.identifier("gain_air"), GainAirEntityActionType.DATA_FACTORY));
 //    public static final ActionConfiguration<GiveEntityActionType> GIVE = register(ActionConfiguration.of(Apoli.identifier("give"), GiveEntityActionType.DATA_FACTORY));
 //    public static final ActionConfiguration<GrantAdvancementEntityActionType> GRANT_ADVANCEMENT = register(ActionConfiguration.of(Apoli.identifier("grant_advancement"), GrantAdvancementEntityActionType.DATA_FACTORY));
 //    public static final ActionConfiguration<GrantPowerEntityActionType> GRANT_POWER = register(ActionConfiguration.of(Apoli.identifier("grant_power"), GrantPowerEntityActionType.DATA_FACTORY));

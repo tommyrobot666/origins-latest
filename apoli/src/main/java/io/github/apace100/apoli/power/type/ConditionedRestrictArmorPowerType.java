@@ -69,11 +69,11 @@
 //        if (this.isActive()) {
 //
 //            if (startTicks == null) {
-//                this.startTicks = holder.age % tickRate;
+//                this.startTicks = holder.tickCount % tickRate;
 //                this.endTicks = null;
 //            }
 //
-//            else if (holder.age % tickRate == startTicks) {
+//            else if (holder.tickCount % tickRate == startTicks) {
 //                dropEquippedStacks();
 //                this.wasActive = true;
 //            }
@@ -83,11 +83,11 @@
 //        else if (wasActive) {
 //
 //            if (endTicks == null) {
-//                this.endTicks = holder.age % tickRate;
+//                this.endTicks = holder.tickCount % tickRate;
 //                this.startTicks = null;
 //            }
 //
-//            else if (holder.age % tickRate == endTicks) {
+//            else if (holder.tickCount % tickRate == endTicks) {
 //                this.wasActive = false;
 //            }
 //

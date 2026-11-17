@@ -7,7 +7,7 @@
 //import io.github.apace100.apoli.access.ScreenHandlerUsabilityOverride;
 //import io.github.apace100.apoli.power.type.ModifyCraftingPowerType;
 //import net.minecraft.world.entity.player.Player;
-//import net.minecraft.entity.player.Inventory;
+//import net.minecraft.entity.player.Container;
 //import net.minecraft.inventory.TransientCraftingContainer;
 //import net.minecraft.inventory.CraftingResultInventory;
 //import net.minecraft.inventory.CraftingContainer;
@@ -58,8 +58,8 @@
 //        super(screenHandlerType, i);
 //    }
 //
-//    @ModifyExpressionValue(method = "<init>(ILnet/minecraft/entity/player/Inventory;Lnet/minecraft/screen/ScreenHandlerContext;)V", at = @At(value = "NEW", target = "(Lnet/minecraft/screen/ScreenHandler;II)Lnet/minecraft/inventory/TransientCraftingContainer;"))
-//    private TransientCraftingContainer apoli$cachePlayerToCraftingInventory(TransientCraftingContainer original, int syncId, Inventory playerInventory) {
+//    @ModifyExpressionValue(method = "<init>(ILnet/minecraft/entity/player/Container;Lnet/minecraft/screen/ScreenHandlerContext;)V", at = @At(value = "NEW", target = "(Lnet/minecraft/screen/ScreenHandler;II)Lnet/minecraft/inventory/TransientCraftingContainer;"))
+//    private TransientCraftingContainer apoli$cachePlayerToCraftingInventory(TransientCraftingContainer original, int syncId, Container playerInventory) {
 //
 //        if (original instanceof PowerCraftingInventory pci) {
 //            pci.apoli$setPlayer(playerInventory.player);

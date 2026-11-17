@@ -11,7 +11,7 @@
 //import net.minecraft.block.AbstractBlock;
 //import net.minecraft.block.Block;
 //import net.minecraft.world.level.block.state.BlockState;
-//import net.minecraft.block.ShapeContext;
+//import net.minecraft.block.CollisionContext;
 //import net.minecraft.world.entity.Entity;
 //import net.minecraft.state.State;
 //import net.minecraft.state.property.Property;
@@ -32,7 +32,7 @@
 //    public abstract Block getBlock();
 //
 //    @Shadow
-//    public abstract VoxelShape getCollisionShape(BlockGetter world, BlockPos pos, ShapeContext context);
+//    public abstract VoxelShape getCollisionShape(BlockGetter world, BlockPos pos, CollisionContext context);
 //
 //    @Unique
 //    private boolean apoli$queryOriginal = false;
@@ -41,10 +41,10 @@
 //        super(owner, propertyMap, codec);
 //    }
 //
-//    @ModifyReturnValue(method = "getOutlineShape(Lnet/minecraft/world/BlockGetter;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/ShapeContext;)Lnet/minecraft/util/shape/VoxelShape;", at = @At("RETURN"))
-//    private VoxelShape apoli$preventBlockSelection(VoxelShape original, BlockGetter blockView, BlockPos blockPos, ShapeContext context) {
+//    @ModifyReturnValue(method = "getOutlineShape(Lnet/minecraft/world/BlockGetter;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/CollisionContext;)Lnet/minecraft/util/shape/VoxelShape;", at = @At("RETURN"))
+//    private VoxelShape apoli$preventBlockSelection(VoxelShape original, BlockGetter blockView, BlockPos blockPos, CollisionContext context) {
 //
-//        if (context == ShapeContext.absent()) {
+//        if (context == CollisionContext.absent()) {
 //            return original;
 //        }
 //
@@ -56,10 +56,10 @@
 //
 //    }
 //
-//    @ModifyReturnValue(method = "getCollisionShape(Lnet/minecraft/world/BlockGetter;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/ShapeContext;)Lnet/minecraft/util/shape/VoxelShape;", at = @At("RETURN"))
-//    private VoxelShape apoli$phaseThroughBlocks(VoxelShape original, BlockGetter blockView, BlockPos blockPos, ShapeContext context) {
+//    @ModifyReturnValue(method = "getCollisionShape(Lnet/minecraft/world/BlockGetter;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/CollisionContext;)Lnet/minecraft/util/shape/VoxelShape;", at = @At("RETURN"))
+//    private VoxelShape apoli$phaseThroughBlocks(VoxelShape original, BlockGetter blockView, BlockPos blockPos, CollisionContext context) {
 //
-//        if (context == ShapeContext.absent()) {
+//        if (context == CollisionContext.absent()) {
 //            return original;
 //        }
 //
@@ -77,7 +77,7 @@
 //    }
 //
 //    @Override
-//    public VoxelShape apoli$getOriginalCollisionShape(BlockGetter world, BlockPos pos, ShapeContext context) {
+//    public VoxelShape apoli$getOriginalCollisionShape(BlockGetter world, BlockPos pos, CollisionContext context) {
 //
 //        this.apoli$queryOriginal = true;
 //        VoxelShape originalShape = this.getCollisionShape(world, pos, context);

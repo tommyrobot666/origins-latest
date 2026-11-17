@@ -7,7 +7,7 @@ import io.github.apace100.calio.data.CompoundSerializableDataType;
 import io.github.apace100.calio.data.SerializableData;
 import io.github.apace100.calio.data.SerializableDataTypes;
 import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.Container;
 import net.minecraft.world.inventory.MenuConstructor;
 
 //	TODO: Finish implementation for dynamic container types -eggohito
@@ -39,7 +39,7 @@ public record DynamicContainerType(TextAlignment titleAlignment, Identifier text
 	}
 
 	@Override
-	public MenuConstructor create(Inventory inventory) {
+	public MenuConstructor create(Container inventory) {
 		throw new UnsupportedOperationException("Dynamic container types are currently not supported!");
 	}
 

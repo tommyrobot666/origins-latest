@@ -18,7 +18,7 @@
 //        Entity entity = context.entity();
 //        Level world = entity.level();
 //
-//        return world.isSkyVisible(BlockPos.ofFloored(MiscUtil.getPoseDependentEyePos(entity)))
+//        return world.isSkyVisible(BlockPos.containing(MiscUtil.getPoseDependentEyePos(entity)))
 //            || world.isSkyVisible(entity.getBlockPos());
 //
 //    }

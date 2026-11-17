@@ -8,7 +8,7 @@
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.world.entity.player.Player;
-//import net.minecraft.entity.player.Inventory;
+//import net.minecraft.entity.player.Container;
 //import net.minecraft.world.entity.SlotAccess;
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.util.InteractionResult;
@@ -92,10 +92,10 @@
 //
 //    protected static SlotAccess getHeldStackReference(Player player, InteractionHand hand) {
 //
-//        Inventory playerInventory = player.getInventory();
+//        Container playerInventory = player.getInventory();
 //        int selectedSlot = playerInventory.selectedSlot;
 //
-//        if (hand == InteractionHand.MAIN_HAND && Inventory.isValidHotbarIndex(selectedSlot)) {
+//        if (hand == InteractionHand.MAIN_HAND && Container.isValidHotbarIndex(selectedSlot)) {
 //            return SlotAccess.of(playerInventory, selectedSlot);
 //        }
 //

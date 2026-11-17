@@ -9,7 +9,7 @@
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.minecraft.world.entity.Entity;
-//import net.minecraft.particle.ParticleEffect;
+//import net.minecraft.particle.ParticleOptions;
 //import net.minecraft.server.level.ServerLevel;
 //import net.minecraft.world.phys.Vec3;
 //import org.jetbrains.annotations.NotNull;
@@ -50,7 +50,7 @@
 //    );
 //
 //    private final Optional<BiEntityCondition> biEntityCondition;
-//    private final ParticleEffect particle;
+//    private final ParticleOptions particle;
 //
 //    private final Vec3 offset;
 //    private final Vec3 spread;
@@ -59,7 +59,7 @@
 //    private final float speed;
 //    private final int count;
 //
-//    public SpawnParticlesEntityActionType(Optional<BiEntityCondition> biEntityCondition, ParticleEffect particle, Vec3 offset, Vec3 spread, boolean force, float speed, int count) {
+//    public SpawnParticlesEntityActionType(Optional<BiEntityCondition> biEntityCondition, ParticleOptions particle, Vec3 offset, Vec3 spread, boolean force, float speed, int count) {
 //        this.biEntityCondition = biEntityCondition;
 //        this.particle = particle;
 //        this.offset = offset;

@@ -35,7 +35,7 @@
 //    public void accept(EntityActionContext context) {
 //
 //        Entity entity = context.entity();
-//        BlockPos blockPos = BlockPos.ofFloored(entity.getPos().add(context.offset()));
+//        BlockPos blockPos = BlockPos.containing(entity.getPos().add(context.offset()));
 //
 //        blockAction.execute(entity.level(), blockPos, Optional.empty());
 //

@@ -18,7 +18,7 @@
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import it.unimi.dsi.fastutil.ints.IntSet;
 //import net.minecraft.world.entity.Entity;
-//import net.minecraft.world.entity.player.Inventory;
+//import net.minecraft.world.entity.player.Container;
 //import net.minecraft.world.inventory.SlotRange;
 //import net.minecraft.world.entity.SlotAccess;
 //import net.minecraft.world.item.ItemStack;
@@ -127,7 +127,7 @@
 //        return EntityActionTypes.DROP_INVENTORY;
 //    }
 //
-//    private void dropMatches(Entity thrower, Either<Inventory, Entity> source) {
+//    private void dropMatches(Entity thrower, Either<Container, Entity> source) {
 //
 //        OptionalInt slotToSkip = InventoryUtil.getSelectedHotBarSlot(thrower);
 //
