@@ -37,7 +37,7 @@ public class EntityConditionTypes {
 //    public static final ConditionConfiguration<DimensionEntityConditionType> DIMENSION = register(ConditionConfiguration.of(Apoli.identifier("dimension"), DimensionEntityConditionType.DATA_FACTORY));
 //    public static final ConditionConfiguration<DistanceFromCoordinatesEntityConditionType> DISTANCE_FROM_COORDINATES = register(DistanceFromCoordinatesMetaConditionType.createConfiguration(DistanceFromCoordinatesEntityConditionType::new));
 //    public static final ConditionConfiguration<ElytraFlightPossibleEntityConditionType> ELYTRA_FLIGHT_POSSIBLE = register(ConditionConfiguration.of(Apoli.identifier("elytra_flight_possible"), ElytraFlightPossibleEntityConditionType.DATA_FACTORY));
-//    public static final ConditionConfiguration<EnchantmentEntityConditionType> ENCHANTMENT = register(ConditionConfiguration.of(Apoli.identifier("enchantment"), EnchantmentEntityConditionType.DATA_FACTORY));
+    public static final ConditionConfiguration<EnchantmentEntityConditionType> ENCHANTMENT = register(ConditionConfiguration.of(Apoli.identifier("enchantment"), EnchantmentEntityConditionType.DATA_FACTORY));
 //    public static final ConditionConfiguration<EntityInRadiusEntityConditionType> ENTITY_IN_RADIUS = register(ConditionConfiguration.of(Apoli.identifier("entity_in_radius"), EntityInRadiusEntityConditionType.DATA_FACTORY));
 //    public static final ConditionConfiguration<EntitySetSizeEntityConditionType> ENTITY_SET_SIZE = register(ConditionConfiguration.of(Apoli.identifier("entity_set_size"), EntitySetSizeEntityConditionType.DATA_FACTORY));
 //    public static final ConditionConfiguration<EntityTypeEntityConditionType> ENTITY_TYPE = register(ConditionConfiguration.of(Apoli.identifier("entity_type"), EntityTypeEntityConditionType.DATA_FACTORY));
@@ -46,8 +46,8 @@ public class EntityConditionTypes {
 //    public static final ConditionConfiguration<ExposedToSkyEntityConditionType> EXPOSED_TO_SKY = register(ConditionConfiguration.simple(Apoli.identifier("exposed_to_sky"), ExposedToSkyEntityConditionType::new));
 //    public static final ConditionConfiguration<ExposedToSunEntityConditionType> EXPOSED_TO_SUN = register(ConditionConfiguration.simple(Apoli.identifier("exposed_to_sun"), ExposedToSunEntityConditionType::new));
 //    public static final ConditionConfiguration<FallDistanceEntityConditionType> FALL_DISTANCE = register(ConditionConfiguration.of(Apoli.identifier("fall_distance"), FallDistanceEntityConditionType.DATA_FACTORY));
-//    public static final ConditionConfiguration<FallFlyingEntityConditionType> FALL_FLYING = register(ConditionConfiguration.simple(Apoli.identifier("fall_flying"), FallFlyingEntityConditionType::new));
-//    public static final ConditionConfiguration<FluidHeightEntityConditionType> FLUID_HEIGHT = register(ConditionConfiguration.of(Apoli.identifier("fluid_height"), FluidHeightEntityConditionType.DATA_FACTORY));
+    public static final ConditionConfiguration<FallFlyingEntityConditionType> FALL_FLYING = register(ConditionConfiguration.simple(Apoli.identifier("fall_flying"), FallFlyingEntityConditionType::new));
+    public static final ConditionConfiguration<FluidHeightEntityConditionType> FLUID_HEIGHT = register(ConditionConfiguration.of(Apoli.identifier("fluid_height"), FluidHeightEntityConditionType.DATA_FACTORY));
     public static final ConditionConfiguration<FoodLevelEntityConditionType> FOOD_LEVEL = register(ConditionConfiguration.of(Apoli.identifier("food_level"), FoodLevelEntityConditionType.DATA_FACTORY));
 //    public static final ConditionConfiguration<GameModeEntityConditionType> GAME_MODE = register(ConditionConfiguration.of(Apoli.identifier("gamemode"), GameModeEntityConditionType.DATA_FACTORY));
 //    public static final ConditionConfiguration<GlowingEntityConditionType> GLOWING = register(ConditionConfiguration.simple(Apoli.identifier("glowing"), GlowingEntityConditionType::new));
@@ -64,7 +64,7 @@ public class EntityConditionTypes {
 //    public static final ConditionConfiguration<LivingEntityConditionType> LIVING = register(ConditionConfiguration.simple(Apoli.identifier("living"), LivingEntityConditionType::new));
 //    public static final ConditionConfiguration<MovingEntityConditionType> MOVING = register(ConditionConfiguration.of(Apoli.identifier("moving"), MovingEntityConditionType.DATA_FACTORY));
 //    public static final ConditionConfiguration<NbtEntityConditionType> NBT = register(ConditionConfiguration.of(Apoli.identifier("nbt"), NbtEntityConditionType.DATA_FACTORY));
-//    public static final ConditionConfiguration<OnBlockEntityConditionType> ON_BLOCK = register(ConditionConfiguration.of(Apoli.identifier("on_block"), OnBlockEntityConditionType.DATA_FACTORY));
+    public static final ConditionConfiguration<OnBlockEntityConditionType> ON_BLOCK = register(ConditionConfiguration.of(Apoli.identifier("on_block"), OnBlockEntityConditionType.DATA_FACTORY));
 //    public static final ConditionConfiguration<OnFireEntityConditionType> ON_FIRE = register(ConditionConfiguration.simple(Apoli.identifier("on_fire"), OnFireEntityConditionType::new));
 //    public static final ConditionConfiguration<PassengerEntityConditionType> PASSENGER = register(ConditionConfiguration.of(Apoli.identifier("passenger"), PassengerEntityConditionType.DATA_FACTORY));
 //    public static final ConditionConfiguration<PassengerRecursiveEntityConditionType> PASSENGER_RECURSIVE = register(ConditionConfiguration.of(Apoli.identifier("passenger_recursive"), PassengerRecursiveEntityConditionType.DATA_FACTORY));

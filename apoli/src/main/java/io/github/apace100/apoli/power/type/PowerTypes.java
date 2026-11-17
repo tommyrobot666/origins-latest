@@ -72,7 +72,7 @@ public class PowerTypes {
     public static final PowerConfiguration<ModifyCraftingPowerType> MODIFY_CRAFTING = register(PowerConfiguration.of(Apoli.identifier("modify_crafting"), ModifyCraftingPowerType.DATA_FACTORY));
     public static final PowerConfiguration<ModifyDamageDealtPowerType> MODIFY_DAMAGE_DEALT = register(PowerConfiguration.of(Apoli.identifier("modify_damage_dealt"), ModifyDamageDealtPowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<ModifyDamageTakenPowerType> MODIFY_DAMAGE_TAKEN = register(PowerConfiguration.of(Apoli.identifier("modify_damage_taken"), ModifyDamageTakenPowerType.DATA_FACTORY));
-//    public static final PowerConfiguration<ModifyEnchantmentLevelPowerType> MODIFY_ENCHANTMENT_LEVEL = register(PowerConfiguration.of(Apoli.identifier("modify_enchantment_level"), ModifyEnchantmentLevelPowerType.DATA_FACTORY));
+    public static final PowerConfiguration<ModifyEnchantmentLevelPowerType> MODIFY_ENCHANTMENT_LEVEL = register(PowerConfiguration.of(Apoli.identifier("modify_enchantment_level"), ModifyEnchantmentLevelPowerType.DATA_FACTORY));
     public static final PowerConfiguration<ModifyExhaustionPowerType> MODIFY_EXHAUSTION = register(ValueModifyingPowerType.createModifyingConfiguration(Apoli.identifier("modify_exhaustion"), ModifyExhaustionPowerType::new));
 //    public static final PowerConfiguration<ModifyExperiencePowerType> MODIFY_EXPERIENCE = register(ValueModifyingPowerType.createModifyingConfiguration(Apoli.identifier("modify_xp_gain"), ModifyExperiencePowerType::new));
     public static final PowerConfiguration<ModifyFallingPowerType> MODIFY_FALLING = register(PowerConfiguration.of(Apoli.identifier("modify_falling"), ModifyFallingPowerType.DATA_FACTORY));

@@ -9,6 +9,7 @@
     "CraftingScreenHandlerAccessor",
     "EntityAccessor",
     "ItemStackMixin",
+    "LivingEntityAccessor",
     "RecipeManagerAccessor",
     "RecipeMapAccessor",
     "ScreenHandlerAccessor",

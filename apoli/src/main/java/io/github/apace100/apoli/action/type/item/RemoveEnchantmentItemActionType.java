@@ -9,7 +9,7 @@
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 //import net.minecraft.component.DataComponentTypes;
-//import net.minecraft.component.type.ItemEnchantmentsComponent;
+//import net.minecraft.component.type.ItemEnchantments;
 //import net.minecraft.enchantment.Enchantment;
 //import net.minecraft.world.entity.SlotAccess;
 //import net.minecraft.world.item.ItemStack;
@@ -81,8 +81,8 @@
 //            return;
 //        }
 //
-//        ItemEnchantmentsComponent oldEnchantments = stack.getEnchantments();
-//        ItemEnchantmentsComponent.Builder newEnchantments = new ItemEnchantmentsComponent.Builder(oldEnchantments);
+//        ItemEnchantments oldEnchantments = stack.getEnchantments();
+//        ItemEnchantments.Mutable newEnchantments = new ItemEnchantments.Mutable(oldEnchantments);
 //
 //        Registry<Enchantment> enchantmentRegistry = dynamicRegistries.get(Registries.ENCHANTMENT);
 //        for (ResourceKey<Enchantment> enchantmentKey : allEnchantmentKeys) {

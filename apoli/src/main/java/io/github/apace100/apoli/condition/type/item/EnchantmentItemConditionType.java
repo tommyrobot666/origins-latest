@@ -10,7 +10,7 @@
 //import io.github.apace100.apoli.util.Comparison;
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
-//import net.minecraft.component.type.ItemEnchantmentsComponent;
+//import net.minecraft.component.type.ItemEnchantments;
 //import net.minecraft.enchantment.Enchantment;
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.resources.ResourceKey;
@@ -60,7 +60,7 @@
 //        ItemStack stack = context.stack();
 //        Level world = context.world();
 //
-//        ItemEnchantmentsComponent enchantmentsComponent = ModifyEnchantmentLevelPowerType.getEnchantments(stack, useModifications);
+//        ItemEnchantments enchantmentsComponent = ModifyEnchantmentLevelPowerType.getEnchantments(stack, useModifications);
 //        int levelOrEnchantments = enchantmentKey
 //            .map(key -> world.getRegistryManager().get(Registries.ENCHANTMENT).entryOf(key))
 //            .map(enchantmentsComponent::getLevel)

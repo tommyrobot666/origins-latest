@@ -3,9 +3,7 @@
 	"hidden": true,
 	"item_condition": {
 		"type": "origins:ingredient",
-		"ingredient": {
-			"item": "minecraft:potion"
-		}
+		"ingredient": "minecraft:potion"
 	},
 	"entity_action": {
 		"type": "origins:gain_air",
