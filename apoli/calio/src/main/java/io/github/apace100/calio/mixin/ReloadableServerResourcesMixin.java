@@ -35,6 +35,12 @@ public abstract class ReloadableServerResourcesMixin {
     private static void calio$cacheDynamicRegistries(ReloadableServerRegistries.LoadResult fullRegistries, FeatureFlagSet enabledFeatures, Commands.CommandSelection commandSelection, List updatedContextTags, PermissionSet functionCompilationPermissions, ResourceManager resourceManager, Executor backgroundExecutor, Executor mainThreadExecutor, List pendingComponents, CallbackInfoReturnable<CompletionStage> cir, @Local ReloadableServerResources result) {
         CalioServer.DYNAMIC_REGISTRIES.put(Unit.INSTANCE, fullRegistries.layers().compositeAccess());
         CalioServer.DATA_PACK_CONTENTS.put(Unit.INSTANCE, result);
+
+
+        CalioServer.REGISTRY_TAGS.clear();
+        BuiltInRegistries.REGISTRY.entrySet().forEach(
+                e -> e.getValue().getTags().forEach(
+                        ReloadableServerResourcesMixin::putInCache));
     }
 
     @Inject(method = "updateComponentsAndStaticRegistryTags", at = @At("RETURN"))

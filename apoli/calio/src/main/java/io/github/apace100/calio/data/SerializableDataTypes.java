@@ -6,6 +6,7 @@ import com.google.gson.internal.LazilyParsedNumber;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.*;
 import com.mojang.serialization.codecs.PrimitiveCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.github.apace100.calio.codec.CalioPacketCodecs;
 import io.github.apace100.calio.mixin.TagEntryAccessor;
 import io.github.apace100.calio.registry.DataObjectFactories;
@@ -324,6 +325,17 @@ public final class SerializableDataTypes {
             CustomIngredientSerializer::getCodec
     );
 
+	public static final Codec<Ingredient> OLD_INGREDIENT_CODEC = Codec.withAlternative(
+			RecordCodecBuilder.create(instance ->
+			instance.group(
+					Identifier.CODEC.fieldOf("item").forGetter((ing) -> ing.getSingleItem().orElseThrow().unwrapKey().orElseThrow().identifier())
+			).apply(instance,(item) -> Ingredient.of(BuiltInRegistries.ITEM.getValue(item)))),
+			RecordCodecBuilder.create(instance ->
+			instance.group(
+					TagKey.codec(Registries.ITEM).fieldOf("tag").forGetter((ing) -> TagKey.create(Registries.ITEM,Identifier.withDefaultNamespace("an_error")))
+			).apply(instance,(tag) -> Ingredient.of(HolderSet.direct(BuiltInRegistries.ITEM.get(tag).orElseThrow().stream().toList())))
+			));
+
     /**
 	 *  <p>A data type version of {@link Ingredient#DISALLOW_EMPTY_CODEC} that allows for
 	 *  empty item stacks (e.g: {@code "minecraft:air"}), and inline references for items/item tags.</p>
@@ -352,6 +364,12 @@ public final class SerializableDataTypes {
 
 				//	Otherwise, decode the input as a vanilla ingredient
 				else {
+					DataResult<Pair<Ingredient, T>> realVanilla = Ingredient.CODEC.decode(ops, input);
+					if (realVanilla.isSuccess()) return realVanilla;
+
+					DataResult<Pair<Ingredient, T>> oldStuffs = OLD_INGREDIENT_CODEC.decode(ops, input);
+					if (oldStuffs.isSuccess()) return oldStuffs;
+
 					return INGREDIENT_ENTRIES_ARRAY.setRoot(dataType.isRoot()).codec().decode(ops, input)
 						.map(entriesAndInput -> entriesAndInput
 							.mapFirst(s -> Ingredient.of(s)));
