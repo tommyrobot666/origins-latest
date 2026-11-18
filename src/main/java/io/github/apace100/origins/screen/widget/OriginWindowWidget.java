@@ -74,16 +74,19 @@ public class OriginWindowWidget extends AbstractScrollArea {
 
 		this.overlayContext = new OverlayContext(mouseX, mouseY, delta);
 		this.lines = 0;
+		int yOffset = (int) -scrollAmount();
 
 		renderBackground(graphics);
-		renderContents(graphics, mouseX, mouseY, delta);
+		renderContents(graphics, mouseX, mouseY, delta, yOffset);
+
 		extractScrollbar(graphics, mouseX, mouseY);
 		renderOverlay(graphics);
 
-//		graphics.text(textRenderer,"TEXT",20,20,0xffffffff);
+	}
 
-//		super.extractWidgetRenderState(graphics, mouseX, mouseY + Math.round((float) this.scrollBarY()), delta);
-
+	@Override
+	protected int scrollBarX() {
+		return super.scrollBarX() + 5;
 	}
 
 	@Override
@@ -102,11 +105,14 @@ public class OriginWindowWidget extends AbstractScrollArea {
 	}
 
 	protected void renderBackground(GuiGraphicsExtractor context) {
+		context.blitSprite(RenderPipelines.GUI_TEXTURED,textures.border(), this.getX(), this.getY(), this.getWidth(), this.getHeight());
 		context.blitSprite(RenderPipelines.GUI_TEXTURED,textures.background(), this.getX(), this.getY(), this.getWidth(), this.getHeight());
 	}
 
-	protected void renderContents(GuiGraphicsExtractor context, int mouseX, int mouseY, float delta) {
-		this.renderPowersAndBadges(context, mouseX, mouseY, delta);
+	protected void renderContents(GuiGraphicsExtractor context, int mouseX, int mouseY, float delta, int yOffset) {
+		context.enableScissor(this.getX(), this.getY()+25,this.getX()+this.getWidth(),this.getY()+this.getHeight()-7);
+		this.renderPowersAndBadges(context, mouseX, mouseY, delta, yOffset);
+		context.disableScissor();
 		this.renderNameAndImpact(context, mouseX, mouseY, delta);
 	}
 
@@ -216,14 +222,14 @@ public class OriginWindowWidget extends AbstractScrollArea {
 
 	}
 
-	protected void renderPowersAndBadges(GuiGraphicsExtractor context, int mouseX, int mouseY, float delta) {
+	protected void renderPowersAndBadges(GuiGraphicsExtractor context, int mouseX, int mouseY, float delta, int yOffset) {
 
 		if (textRenderer == null) {
 			return;
 		}
 
 		int x = this.getX() + 18;
-		int y = this.getY() + 45;
+		int y = this.getY() + 45 + yOffset;
 
 		if (origin == null || layer == null) {
 
