@@ -569,8 +569,6 @@ public final class SerializableDataTypes {
 
 	public static final SerializableDataType<ItemStack> UNCOUNTED_ITEM_STACK = SerializableDataType.lazy(() -> SerializableDataType.compound(DataObjectFactories.UNCOUNTED_ITEM_STACK));
 
-	public static final SerializableDataType<ItemStack> UNCOUNTED_ITEM_STACK_NO_COMPONENTS = SerializableDataType.lazy(() -> SerializableDataType.compound(DataObjectFactories.UNCOUNTED_ITEM_STACK_NO_COMPONENTS));
-
 	public static final SerializableDataType<ItemStack> ITEM_STACK = SerializableDataType.lazy(() -> SerializableDataType.compound(DataObjectFactories.ITEM_STACK));
 
 	public static final SerializableDataType<ItemStackTemplate> ITEM_STACK_TEMPLATE = SerializableDataType.lazy(() -> SerializableDataType.compound(DataObjectFactories.ITEM_STACK_TEMPLATE));

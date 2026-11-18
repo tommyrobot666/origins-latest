@@ -42,16 +42,6 @@ public final class DataObjectFactories {
 			.set("components", stack.getComponentsPatch())
 	);
 
-	public static final DataObjectFactory<ItemStack> UNCOUNTED_ITEM_STACK_NO_COMPONENTS = DataObjectFactory.simple(
-			new SerializableData()
-					.add("id", SerializableDataTypes.ITEM_ENTRY),
-			data -> new ItemStack(
-                    (Holder<Item>) data.get("id")
-            ),
-			(stack, serializableData) -> serializableData.instance()
-					.set("id", stack.typeHolder())
-	);
-
 	public static final DataObjectFactory<ItemStack> ITEM_STACK = DataObjectFactory.simple(
 		UNCOUNTED_ITEM_STACK.getSerializableData().copy()
 			.add("count", SerializableDataType.boundNumber(SerializableDataTypes.INT, 1, 99), 1),

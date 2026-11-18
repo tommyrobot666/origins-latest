@@ -46,8 +46,7 @@ public class Origin implements Comparable<Origin>, Validatable {
     public static final SerializableDataType<Origin> DATA_TYPE = SerializableDataType.compound(
         new SerializableData()
             .add("id", SerializableDataTypes.IDENTIFIER)
-//            .add("icon", SerializableDataTypes.ITEM_STACK_TEMPLATE, ItemStackTemplate.fromStack(Items.DIRT.getDefaultInstance()))
-                .add("icon", SerializableDataTypes.ITEM_ID, Items.AIR)
+            .add("icon", SerializableDataTypes.ITEM_ID, Items.AIR)
             .add("powers", ApoliDataTypes.POWER_REFERENCE.list(), new ObjectArrayList<>())
             .add("impact", OriginsDataTypes.IMPACT, Impact.NONE)
             .add("name", SerializableDataTypes.TEXT, null)
@@ -56,8 +55,7 @@ public class Origin implements Comparable<Origin>, Validatable {
             .add("order", SerializableDataTypes.INT, Integer.MAX_VALUE),
         data -> Origin.of(
             data.get("id"),
-//            ((ItemStackTemplate) data.get("icon")).create(),
-                ((Item) data.get("icon")).getDefaultInstance(),
+            ((Item) data.get("icon")),
             data.get("powers"),
             data.get("impact"),
             data.get("name"),
@@ -122,6 +120,14 @@ public class Origin implements Comparable<Origin>, Validatable {
 
     public static Origin of(Identifier id, ItemStack icon, List<PowerReference> powers, Impact impact, @Nullable Component name, @Nullable Component description, boolean unchoosable, int order) {
         return new Origin(id, () -> icon, powers, GuiMetadata.DEFAULT, impact, name, description,  unchoosable, order);
+    }
+
+    public static Origin of(Identifier id, ItemStackTemplate icon, List<PowerReference> powers, Impact impact, @Nullable Component name, @Nullable Component description, boolean unchoosable, int order) {
+        return new Origin(id, icon::create, powers, GuiMetadata.DEFAULT, impact, name, description,  unchoosable, order);
+    }
+
+    public static Origin of(Identifier id, Item icon, List<PowerReference> powers, Impact impact, @Nullable Component name, @Nullable Component description, boolean unchoosable, int order) {
+        return new Origin(id, icon::getDefaultInstance, powers, GuiMetadata.DEFAULT, impact, name, description,  unchoosable, order);
     }
 
     //  TODO: Add a config that determines how origins should be sorted -eggohito
