@@ -29,7 +29,7 @@ public final class BadgeWidget extends AbstractWidget implements DrawableTooltip
 
 	@Override
 	protected void extractWidgetRenderState(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float a) {
-		graphics.blitSprite(RenderPipelines.GUI_TEXTURED, badge.spriteId(), this.getX(), this.getY(), Badge.SIZE, Badge.SIZE);
+		graphics.blit(RenderPipelines.GUI_TEXTURED, badge.spriteId(), this.getX(), this.getY(),0f,0f, Badge.SIZE, Badge.SIZE, Badge.SIZE, Badge.SIZE);
 	}
 
 	@Override
