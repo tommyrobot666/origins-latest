@@ -25,7 +25,10 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.util.Util;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemStackTemplate;
+import net.minecraft.world.item.Items;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -43,7 +46,8 @@ public class Origin implements Comparable<Origin>, Validatable {
     public static final SerializableDataType<Origin> DATA_TYPE = SerializableDataType.compound(
         new SerializableData()
             .add("id", SerializableDataTypes.IDENTIFIER)
-//            .add("icon", SerializableDataTypes.UNCOUNTED_ITEM_STACK_NO_COMPONENTS, ItemStack.EMPTY)
+//            .add("icon", SerializableDataTypes.ITEM_STACK_TEMPLATE, ItemStackTemplate.fromStack(Items.DIRT.getDefaultInstance()))
+                .add("icon", SerializableDataTypes.ITEM_ID, Items.AIR)
             .add("powers", ApoliDataTypes.POWER_REFERENCE.list(), new ObjectArrayList<>())
             .add("impact", OriginsDataTypes.IMPACT, Impact.NONE)
             .add("name", SerializableDataTypes.TEXT, null)
@@ -52,8 +56,8 @@ public class Origin implements Comparable<Origin>, Validatable {
             .add("order", SerializableDataTypes.INT, Integer.MAX_VALUE),
         data -> Origin.of(
             data.get("id"),
-//            data.get("icon"),
-                ItemStack.EMPTY,
+//            ((ItemStackTemplate) data.get("icon")).create(),
+                ((Item) data.get("icon")).getDefaultInstance(),
             data.get("powers"),
             data.get("impact"),
             data.get("name"),

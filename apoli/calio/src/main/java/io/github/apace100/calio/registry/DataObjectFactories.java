@@ -8,6 +8,7 @@ import net.minecraft.core.component.DataComponentPatch;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.level.ItemLike;
 
 public final class DataObjectFactories {
@@ -65,6 +66,16 @@ public final class DataObjectFactories {
 		(stack, serializableData) -> UNCOUNTED_ITEM_STACK
 			.toData(stack, serializableData)
 			.set("count", stack.getCount())
+	);
+
+	public static final DataObjectFactory<ItemStackTemplate> ITEM_STACK_TEMPLATE = DataObjectFactory.simple(
+			ITEM_STACK.getSerializableData().copy(),
+			data -> new ItemStackTemplate(
+					data.get("id"),
+					data.getInt("count"),
+					data.get("components")
+			),
+			(template, data) -> data.instance()
 	);
 
 }
