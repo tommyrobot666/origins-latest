@@ -465,23 +465,22 @@ public class SerializableDataType<T> {
                 public <I> DataResult<Pair<TagKey<T>, I>> decode(DynamicOps<I> ops, I input) {
                     return SerializableDataTypes.IDENTIFIER.codec().decode(ops, input)
                         .flatMap(idAndInput -> {
-
-//                            Pair<TagKey<T>, I> tagAndInput = idAndInput.mapFirst(id -> TagKey.create(registryRef, id));
-                            Pair<TagKey<T>, I> tagAndInput = Pair.of(TagKey.create(registryRef,idAndInput.getFirst()),input);
-                            TagKey<T> tag = tagAndInput.getFirst();
+                            TagKey<T> tag = TagKey.create(registryRef,idAndInput.getFirst());
+                            Pair<TagKey<T>, I> tagAndInput = Pair.of(tag,input);
 
                             if (CalioServer.getRegistryTags().containsKey(tag)) {
                                 return DataResult.success(tagAndInput);
                             }
 
                             else {
-                                return RegistryOpsUtil.getEntryLookup(ops, registryRef)
-                                    .map(DataResult::success)
-                                    .orElse(DataResult.error(() -> "Couldn't find registry \"" + registryRef.identifier() + "\"; " + (ops instanceof RegistryOps<I> ? "it doesn't exist!" : "the passed dynamic ops is not a registry ops!")))
-                                    .flatMap(entryLookup -> entryLookup.get(tag)
-                                        .map(registryEntries -> tagAndInput)
-                                        .map(DataResult::success)
-                                        .orElse(DataResult.error(() -> "Tag \"" + tag.location() + "\" for registry \"" + registryRef.identifier() + "\" doesn't exist!")));
+                                return DataResult.success(tagAndInput);
+//                                return RegistryOpsUtil.getEntryLookup(ops, registryRef)
+//                                    .map(DataResult::success)
+//                                    .orElse(DataResult.error(() -> "Couldn't find registry \"" + registryRef.identifier() + "\"; " + (ops instanceof RegistryOps<I> ? "it doesn't exist!" : "the passed dynamic ops is not a registry ops!")))
+//                                    .flatMap(entryLookup -> entryLookup.get(tag)
+//                                        .map(registryEntries -> tagAndInput)
+//                                        .map(DataResult::success)
+//                                        .orElse(DataResult.error(() -> "Tag \"" + tag.location() + "\" for registry \"" + registryRef.identifier() + "\" doesn't exist!")));
                             }
 
                         });
