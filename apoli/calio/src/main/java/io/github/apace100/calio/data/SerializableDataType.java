@@ -466,7 +466,8 @@ public class SerializableDataType<T> {
                     return SerializableDataTypes.IDENTIFIER.codec().decode(ops, input)
                         .flatMap(idAndInput -> {
 
-                            Pair<TagKey<T>, I> tagAndInput = idAndInput.mapFirst(id -> TagKey.create(registryRef, id));
+//                            Pair<TagKey<T>, I> tagAndInput = idAndInput.mapFirst(id -> TagKey.create(registryRef, id));
+                            Pair<TagKey<T>, I> tagAndInput = Pair.of(TagKey.create(registryRef,idAndInput.getFirst()),input);
                             TagKey<T> tag = tagAndInput.getFirst();
 
                             if (CalioServer.getRegistryTags().containsKey(tag)) {
