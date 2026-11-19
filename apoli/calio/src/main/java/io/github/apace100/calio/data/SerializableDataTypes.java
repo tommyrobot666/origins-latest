@@ -7,6 +7,7 @@ import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.*;
 import com.mojang.serialization.codecs.PrimitiveCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.github.apace100.calio.Calio;
 import io.github.apace100.calio.codec.CalioPacketCodecs;
 import io.github.apace100.calio.mixin.TagEntryAccessor;
 import io.github.apace100.calio.registry.DataObjectFactories;
@@ -59,6 +60,7 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemStackTemplate;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
@@ -339,8 +341,16 @@ public final class SerializableDataTypes {
 			RecordCodecBuilder.create(instance ->
 			instance.group(
 					TagKey.codec(Registries.ITEM).fieldOf("tag").forGetter((ing) -> TagKey.create(Registries.ITEM,Identifier.withDefaultNamespace("an_error")))
-			).apply(instance,(tag) -> Ingredient.of(HolderSet.direct(BuiltInRegistries.ITEM.get(tag).orElseThrow().stream().toList())))
-			));
+			).apply(instance,(tag) -> {
+				var newTag = TagKey.create(Registries.ITEM, tag.location().withPrefix("item/"));
+				var tagValues = BuiltInRegistries.ITEM.get(tag);
+				if (tagValues.isEmpty()){
+					Calio.LOGGER.warn("Tag not found: " + tag.toString());
+					return Ingredient.of(Items.DEBUG_STICK);
+				}
+				return Ingredient.of(tagValues.orElseThrow());
+			}
+			)));
 
     /**
 	 *  <p>A data type version of {@link Ingredient#DISALLOW_EMPTY_CODEC} that allows for

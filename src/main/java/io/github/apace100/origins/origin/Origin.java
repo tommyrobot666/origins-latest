@@ -42,7 +42,6 @@ public class Origin implements Comparable<Origin>, Validatable {
     public static final Origin EMPTY = new Origin(Origins.identifier("empty"), () -> ItemStack.EMPTY, Impact.NONE, Integer.MIN_VALUE);
     public static final Origin RANDOM = new Origin(Origins.identifier("random"), () -> Suppliers.memoize(() -> ModItems.ORB_OF_ORIGIN).get().getDefaultInstance(), Impact.NONE, Integer.MAX_VALUE);
 
-    // TODO bring back icon field
     public static final SerializableDataType<Origin> DATA_TYPE = SerializableDataType.compound(
         new SerializableData()
             .add("id", SerializableDataTypes.IDENTIFIER)
@@ -55,7 +54,7 @@ public class Origin implements Comparable<Origin>, Validatable {
             .add("order", SerializableDataTypes.INT, Integer.MAX_VALUE),
         data -> Origin.of(
             data.get("id"),
-            ((Item) data.get("icon")),
+            iconToItem(data.get("icon")),
             data.get("powers"),
             data.get("impact"),
             data.get("name"),
@@ -74,6 +73,13 @@ public class Origin implements Comparable<Origin>, Validatable {
             .set("special", origin.isSpecial())
             .set("order", origin.getOrder())
     );
+
+    private static Item iconToItem(Object icon) {
+        if (icon instanceof Item item) return item;
+        if (icon instanceof ItemStack stack) return stack.getItem();
+        if (icon instanceof ItemStackTemplate template) return template.item().value();
+        throw new IllegalArgumentException("origin icon wasn't expected value");
+    }
 
     private final Identifier id;
     private final Supplier<ItemStack> displayItem;
