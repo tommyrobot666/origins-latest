@@ -26,7 +26,7 @@
 //import net.minecraft.core.Direction;
 //import net.minecraft.util.Mth;
 //import net.minecraft.world.phys.Vec3;
-//import net.minecraft.util.shape.VoxelShape;
+//import net.minecraft.world.phys.shapes.VoxelShape;
 //import net.minecraft.world.BlockGetter;
 //import net.minecraft.world.level.Level;
 //import org.spongepowered.asm.mixin.Mixin;

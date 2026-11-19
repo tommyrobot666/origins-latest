@@ -21,7 +21,7 @@
 //import net.minecraft.component.ComponentMap;
 //import net.minecraft.component.ComponentType;
 //import net.minecraft.component.DataComponentTypes;
-//import net.minecraft.component.type.AttributeModifierSlot;
+//import net.minecraft.component.type.EquipmentSlotGroup;
 //import net.minecraft.world.entity.player.Player;
 //import net.minecraft.world.item.Item;
 //import net.minecraft.world.item.ItemStack;
@@ -58,7 +58,7 @@
 //    public abstract Item getItem();
 //
 //    @Unique
-//    private EnumSet<AttributeModifierSlot> apoli$appendedSlots;
+//    private EnumSet<EquipmentSlotGroup> apoli$appendedSlots;
 //
 //    @Unique
 //    private Item.TooltipContext apoli$tooltipContext;
@@ -77,7 +77,7 @@
 //            return;
 //        }
 //
-//        this.apoli$appendedSlots = EnumSet.noneOf(AttributeModifierSlot.class);
+//        this.apoli$appendedSlots = EnumSet.noneOf(EquipmentSlotGroup.class);
 //        this.apoli$tooltipContext = context;
 //        this.apoli$tooltipType = type;
 //        this.apoli$tooltip = tooltip;
@@ -182,8 +182,8 @@
 //
 //    }
 //
-//    @Inject(method = "appendAttributeModifiersTooltip", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;applyAttributeModifier(Lnet/minecraft/component/type/AttributeModifierSlot;Ljava/util/function/BiConsumer;)V", shift = At.Shift.AFTER))
-//    private void apoli$appendItemPowersTooltips(Consumer<Component> tooltipConsumer, @Nullable Player player, CallbackInfo ci, @Local AttributeModifierSlot modifierSlot, @Local MutableBoolean shouldAppendSlotName) {
+//    @Inject(method = "appendAttributeModifiersTooltip", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;applyAttributeModifier(Lnet/minecraft/component/type/EquipmentSlotGroup;Ljava/util/function/BiConsumer;)V", shift = At.Shift.AFTER))
+//    private void apoli$appendItemPowersTooltips(Consumer<Component> tooltipConsumer, @Nullable Player player, CallbackInfo ci, @Local EquipmentSlotGroup modifierSlot, @Local MutableBoolean shouldAppendSlotName) {
 //
 //        ItemPowersComponent itemPowersComponent = this.getOrDefault(ApoliDataComponentTypes.POWERS, ItemPowersComponent.DEFAULT);
 //        if (apoli$appendedSlots == null || apoli$appendedSlots.contains(modifierSlot) || !itemPowersComponent.containsSlot(modifierSlot)) {

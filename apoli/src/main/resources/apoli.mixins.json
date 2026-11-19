@@ -5,6 +5,8 @@
   "plugin": "io.github.apace100.apoli.ApoliMixinPlugin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "AbstractBlockStateMixin",
+    "BlockCollisionSpliteratorMixin",
     "CraftingInventoryAccessor",
     "CraftingScreenHandlerAccessor",
     "EntityAccessor",

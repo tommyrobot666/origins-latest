@@ -7,7 +7,7 @@
 //import io.github.apace100.apoli.data.TypedDataObjectFactory;
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
-//import net.minecraft.block.Block;
+//import net.minecraft.world.level.block.Block;
 //import net.minecraft.tags.TagKey;
 //import org.jetbrains.annotations.NotNull;
 //

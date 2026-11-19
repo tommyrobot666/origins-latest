@@ -13,8 +13,8 @@
 //import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 //import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
 //import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-//import net.minecraft.component.type.AttributeModifierSlot;
-//import net.minecraft.entity.EquipmentSlot;
+//import net.minecraft.component.type.EquipmentSlotGroup;
+//import net.minecraft.world.entity.EquipmentSlot;
 //import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.world.item.Item;
 //import net.minecraft.world.item.ItemStack;
@@ -88,7 +88,7 @@
 //        return entries.stream();
 //    }
 //
-//    public void appendTooltip(AttributeModifierSlot modifierSlot, Item.TooltipContext context, Consumer<Component> tooltip, TooltipType type) {
+//    public void appendTooltip(EquipmentSlotGroup modifierSlot, Item.TooltipContext context, Consumer<Component> tooltip, TooltipType type) {
 //
 //        for (Entry entry : entries) {
 //
@@ -115,7 +115,7 @@
 //
 //    }
 //
-//    public int matchingSlots(AttributeModifierSlot modifierSlot) {
+//    public int matchingSlots(EquipmentSlotGroup modifierSlot) {
 //        return (int) entries
 //            .stream()
 //            .map(Entry::slot)
@@ -123,7 +123,7 @@
 //            .count();
 //    }
 //
-//    public boolean containsSlot(AttributeModifierSlot modifierSlot) {
+//    public boolean containsSlot(EquipmentSlotGroup modifierSlot) {
 //        return entries
 //            .stream()
 //            .map(Entry::slot)
@@ -173,18 +173,18 @@
 //
 //    }
 //
-//    public record Entry(Identifier powerId, AttributeModifierSlot slot, boolean hidden, boolean negative) {
+//    public record Entry(Identifier powerId, EquipmentSlotGroup slot, boolean hidden, boolean negative) {
 //
 //        public static final MapCodec<Entry> MAP_CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
 //            Identifier.CODEC.fieldOf("power").forGetter(Entry::powerId),
-//            AttributeModifierSlot.CODEC.fieldOf("slot").forGetter(Entry::slot),
+//            EquipmentSlotGroup.CODEC.fieldOf("slot").forGetter(Entry::slot),
 //            Codec.BOOL.optionalFieldOf("hidden", false).forGetter(Entry::hidden),
 //            Codec.BOOL.optionalFieldOf("negative", false).forGetter(Entry::negative)
 //        ).apply(instance, Entry::new));
 //
 //        public static final StreamCodec<ByteBuf, Entry> STREAM_CODEC = StreamCodec.composite(
 //            Identifier.STREAM_CODEC, Entry::powerId,
-//            AttributeModifierSlot.STREAM_CODEC, Entry::slot,
+//            EquipmentSlotGroup.STREAM_CODEC, Entry::slot,
 //            ByteBufCodecs.BOOL, Entry::hidden,
 //            ByteBufCodecs.BOOL, Entry::negative,
 //            Entry::new
@@ -236,10 +236,10 @@
 //            this.entries.addAll(baseItemPowers.entries);
 //        }
 //
-//        public Builder add(EnumSet<AttributeModifierSlot> slots, Identifier powerId, boolean hidden, boolean negative) {
+//        public Builder add(EnumSet<EquipmentSlotGroup> slots, Identifier powerId, boolean hidden, boolean negative) {
 //
 //            CompoundTag entryNbt = new CompoundTag();
-//            for (AttributeModifierSlot slot : slots) {
+//            for (EquipmentSlotGroup slot : slots) {
 //
 //                entryNbt.putString("slot", slot.asString());
 //                entryNbt.putString("power", powerId.toString());
@@ -256,11 +256,11 @@
 //
 //        }
 //
-//        public Builder remove(EnumSet<AttributeModifierSlot> slots, Identifier powerId) {
+//        public Builder remove(EnumSet<EquipmentSlotGroup> slots, Identifier powerId) {
 //            return remove(slots, powerId, modifierSlot -> {});
 //        }
 //
-//        public Builder remove(EnumSet<AttributeModifierSlot> slots, Identifier powerId, Consumer<Collection<Entry>> removalCallback) {
+//        public Builder remove(EnumSet<EquipmentSlotGroup> slots, Identifier powerId, Consumer<Collection<Entry>> removalCallback) {
 //
 //            ObjectListIterator<Entry> entryIterator = entries.iterator();
 //            ObjectLinkedOpenHashSet<Entry> removedEntries = new ObjectLinkedOpenHashSet<>();

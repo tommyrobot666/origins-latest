@@ -8,7 +8,7 @@
 //import io.github.apace100.apoli.data.ApoliDataTypes;
 //import io.github.apace100.apoli.power.PowerReference;
 //import io.github.apace100.calio.data.SerializableDataTypes;
-//import net.minecraft.component.type.AttributeModifierSlot;
+//import net.minecraft.component.type.EquipmentSlotGroup;
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.loot.condition.LootCondition;
 //import net.minecraft.world.level.storage.loot.LootContext;
@@ -21,19 +21,19 @@
 //public class AddPowerLootFunction extends ConditionalLootFunction {
 //
 //    public static final MapCodec<AddPowerLootFunction> MAP_CODEC = RecordCodecBuilder.mapCodec(instance -> addConditionsField(instance).and(instance.group(
-//        SerializableDataTypes.ATTRIBUTE_MODIFIER_SLOT_SET.codec().optionalFieldOf("slot", EnumSet.of(AttributeModifierSlot.ANY)).forGetter(AddPowerLootFunction::slots),
+//        SerializableDataTypes.ATTRIBUTE_MODIFIER_SLOT_SET.codec().optionalFieldOf("slot", EnumSet.of(EquipmentSlotGroup.ANY)).forGetter(AddPowerLootFunction::slots),
 //        ApoliDataTypes.POWER_REFERENCE.codec().fieldOf("power").forGetter(AddPowerLootFunction::power),
 //        Codec.BOOL.optionalFieldOf("hidden", false).forGetter(AddPowerLootFunction::hidden),
 //        Codec.BOOL.optionalFieldOf("negative", false).forGetter(AddPowerLootFunction::negative)
 //    )).apply(instance, AddPowerLootFunction::new));
 //
-//    private final EnumSet<AttributeModifierSlot> slots;
+//    private final EnumSet<EquipmentSlotGroup> slots;
 //    private final PowerReference power;
 //
 //    private final boolean hidden;
 //    private final boolean negative;
 //
-//    private AddPowerLootFunction(List<LootCondition> conditions, EnumSet<AttributeModifierSlot> slots, PowerReference power, boolean hidden, boolean negative) {
+//    private AddPowerLootFunction(List<LootCondition> conditions, EnumSet<EquipmentSlotGroup> slots, PowerReference power, boolean hidden, boolean negative) {
 //        super(conditions);
 //        this.slots = slots;
 //        this.power = power;
@@ -62,7 +62,7 @@
 //
 //    }
 //
-//    public EnumSet<AttributeModifierSlot> slots() {
+//    public EnumSet<EquipmentSlotGroup> slots() {
 //        return slots;
 //    }
 //

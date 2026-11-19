@@ -70,7 +70,7 @@ public class ModifyEnchantmentLevelPowerType extends ValueModifyingPowerType {
             .set("item_condition", powerType.itemCondition)
     );
 
-    private final Cache<ItemStack, State> stateCache = CacheBuilder.newBuilder()
+    private final Cache<ItemStack, StateHolder> stateCache = CacheBuilder.newBuilder()
         .weakKeys()
         .build();
 
@@ -238,7 +238,7 @@ public class ModifyEnchantmentLevelPowerType extends ValueModifyingPowerType {
         for (var powerType : PowerHolderComponent.getPowerTypes(entity, ModifyEnchantmentLevelPowerType.class, true)) {
 
             //  ...to check if the power type no longer applies to the item stack, or if its modifiers have changed
-            var newCache = new State(powerType.doesApply(stack), (int) Math.round(ModifierUtil.applyModifiers(entity, powerType.getModifiers(), 0)));
+            var newCache = new StateHolder(powerType.doesApply(stack), (int) Math.round(ModifierUtil.applyModifiers(entity, powerType.getModifiers(), 0)));
             var oldCache = powerType.stateCache.getIfPresent(stack);
 
             //  If the power type doesn't have a cache of its previous state, or its previous and current state no longer match...
@@ -369,7 +369,7 @@ public class ModifyEnchantmentLevelPowerType extends ValueModifyingPowerType {
 
     }
 
-    public record State(boolean applies, int level) {
+    public record StateHolder(boolean applies, int level) {
 
     }
 

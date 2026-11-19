@@ -8,7 +8,7 @@
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import net.fabricmc.fabric.api.entity.event.v1.EntityElytraEvents;
-//import net.minecraft.entity.EquipmentSlot;
+//import net.minecraft.world.entity.EquipmentSlot;
 //import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.entity.effect.MobEffects;
 //import net.minecraft.item.ElytraItem;

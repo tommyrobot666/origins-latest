@@ -4,7 +4,7 @@
 //import com.llamalad7.mixinextras.sugar.Local;
 //import io.github.apace100.apoli.component.PowerHolderComponent;
 //import io.github.apace100.apoli.power.type.RestrictArmorPowerType;
-//import net.minecraft.entity.EquipmentSlot;
+//import net.minecraft.world.entity.EquipmentSlot;
 //import net.minecraft.world.entity.player.Player;
 //import net.minecraft.item.Equipment;
 //import net.minecraft.world.item.Item;

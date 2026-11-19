@@ -3,7 +3,7 @@
 //import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 //import net.minecraft.world.entity.Entity;
 //import net.minecraft.core.BlockPos;
-//import net.minecraft.util.math.Box;
+//import net.minecraft.util.math.AABB;
 //import net.minecraft.world.phys.Vec3;
 //import net.minecraft.world.level.Level;
 //
@@ -44,7 +44,7 @@
 //        double diameter = radius * 2;
 //        double x, y, z;
 //
-//        for (Entity entity : world.getNonSpectatingEntities(Entity.class, Box.of(center, diameter, diameter, diameter))) {
+//        for (Entity entity : world.getNonSpectatingEntities(Entity.class, AABB.of(center, diameter, diameter, diameter))) {
 //
 //            x = Math.abs(entity.getX() - center.getX());
 //            y = Math.abs(entity.getY() - center.getY());

@@ -11,9 +11,9 @@
 //import io.github.apace100.calio.data.SerializableDataTypes;
 //import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 //import net.minecraft.component.ComponentChanges;
-//import net.minecraft.component.type.AttributeModifierSlot;
+//import net.minecraft.component.type.EquipmentSlotGroup;
 //import net.minecraft.world.entity.Entity;
-//import net.minecraft.entity.EquipmentSlot;
+//import net.minecraft.world.entity.EquipmentSlot;
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.loot.condition.LootCondition;
 //import net.minecraft.world.level.storage.loot.LootContext;
@@ -27,14 +27,14 @@
 //public class RemovePowerLootFunction extends ConditionalLootFunction {
 //
 //    public static final MapCodec<RemovePowerLootFunction> MAP_CODEC = RecordCodecBuilder.mapCodec(instance -> addConditionsField(instance).and(instance.group(
-//        SerializableDataTypes.ATTRIBUTE_MODIFIER_SLOT_SET.codec().optionalFieldOf("slot", EnumSet.allOf(AttributeModifierSlot.class)).forGetter(RemovePowerLootFunction::slots),
+//        SerializableDataTypes.ATTRIBUTE_MODIFIER_SLOT_SET.codec().optionalFieldOf("slot", EnumSet.allOf(EquipmentSlotGroup.class)).forGetter(RemovePowerLootFunction::slots),
 //        Identifier.CODEC.fieldOf("power").forGetter(RemovePowerLootFunction::powerId)
 //    )).apply(instance, RemovePowerLootFunction::new));
 //
-//    private final EnumSet<AttributeModifierSlot> slots;
+//    private final EnumSet<EquipmentSlotGroup> slots;
 //    private final Identifier powerId;
 //
-//    private RemovePowerLootFunction(List<LootCondition> conditions, EnumSet<AttributeModifierSlot> slots, Identifier powerId) {
+//    private RemovePowerLootFunction(List<LootCondition> conditions, EnumSet<EquipmentSlotGroup> slots, Identifier powerId) {
 //        super(conditions);
 //        this.slots = slots;
 //        this.powerId = powerId;
@@ -89,7 +89,7 @@
 //        Map<Identifier, Collection<Power>> revokedPowers = new HashMap<>();
 //        for (ItemPowersComponent.Entry entry : removedEntries) {
 //
-//            AttributeModifierSlot modifierSlot = entry.slot();
+//            EquipmentSlotGroup modifierSlot = entry.slot();
 //
 //            for (EquipmentSlot slot : EquipmentSlot.values()) {
 //
@@ -111,7 +111,7 @@
 //
 //    }
 //
-//    public EnumSet<AttributeModifierSlot> slots() {
+//    public EnumSet<EquipmentSlotGroup> slots() {
 //        return slots;
 //    }
 //

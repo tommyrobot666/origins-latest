@@ -9,7 +9,7 @@
 //import io.github.apace100.apoli.component.PowerHolderComponent;
 //import io.github.apace100.apoli.power.type.ModifyHarvestPowerType;
 //import io.github.apace100.apoli.util.SavedBlockPosition;
-//import net.minecraft.block.AbstractBlock;
+//importnet.minecraft.world.level.block.state.BlockBehaviour;
 //import net.minecraft.world.level.block.state.BlockState;
 //import net.minecraft.world.entity.player.Player;
 //import net.minecraft.resource.featuretoggle.ToggleableFeature;

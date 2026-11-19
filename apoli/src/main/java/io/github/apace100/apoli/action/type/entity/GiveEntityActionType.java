@@ -9,9 +9,9 @@
 //import io.github.apace100.apoli.util.InventoryUtil;
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
-//import net.minecraft.component.type.AttributeModifierSlot;
+//import net.minecraft.component.type.EquipmentSlotGroup;
 //import net.minecraft.world.entity.Entity;
-//import net.minecraft.entity.EquipmentSlot;
+//import net.minecraft.world.entity.EquipmentSlot;
 //import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.world.entity.player.Player;
 //import net.minecraft.world.entity.SlotAccess;
@@ -40,10 +40,10 @@
 //
 //    private final Optional<ItemAction> itemAction;
 //
-//    private final Optional<AttributeModifierSlot> preferredSlot;
+//    private final Optional<EquipmentSlotGroup> preferredSlot;
 //    private final ItemStack stack;
 //
-//    public GiveEntityActionType(Optional<ItemAction> itemAction, Optional<AttributeModifierSlot> preferredSlot, ItemStack stack) {
+//    public GiveEntityActionType(Optional<ItemAction> itemAction, Optional<EquipmentSlotGroup> preferredSlot, ItemStack stack) {
 //        this.itemAction = itemAction;
 //        this.preferredSlot = preferredSlot;
 //        this.stack = stack;
@@ -65,7 +65,7 @@
 //
 //        if (preferredSlot.isPresent() && entity instanceof LivingEntity living) {
 //
-//            AttributeModifierSlot actualPreferredSlot = preferredSlot.get();
+//            EquipmentSlotGroup actualPreferredSlot = preferredSlot.get();
 //            for (EquipmentSlot slot : EquipmentSlot.values()) {
 //
 //                if (!actualPreferredSlot.matches(slot)) {

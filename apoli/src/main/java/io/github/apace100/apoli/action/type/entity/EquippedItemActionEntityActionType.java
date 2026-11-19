@@ -8,8 +8,8 @@
 //import io.github.apace100.apoli.data.TypedDataObjectFactory;
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
-//import net.minecraft.component.type.AttributeModifierSlot;
-//import net.minecraft.entity.EquipmentSlot;
+//import net.minecraft.component.type.EquipmentSlotGroup;
+//import net.minecraft.world.entity.EquipmentSlot;
 //import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.world.entity.SlotAccess;
 //import org.jetbrains.annotations.NotNull;
@@ -29,10 +29,10 @@
 //            .set("item_action", actionType.itemAction)
 //    );
 //
-//    private final AttributeModifierSlot equipmentSlot;
+//    private final EquipmentSlotGroup equipmentSlot;
 //    private final ItemAction itemAction;
 //
-//    public EquippedItemActionEntityActionType(AttributeModifierSlot equipmentSlot, ItemAction itemAction) {
+//    public EquippedItemActionEntityActionType(EquipmentSlotGroup equipmentSlot, ItemAction itemAction) {
 //        this.equipmentSlot = equipmentSlot;
 //        this.itemAction = itemAction;
 //    }

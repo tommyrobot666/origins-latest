@@ -23,7 +23,7 @@
 //
 //            MenuConstructor handlerFactory = (syncId, playerInventory, _player) -> {
 //
-//                CraftingScreenHandler craftingScreenHandler = new CraftingScreenHandler(syncId, playerInventory, ScreenHandlerContext.create(player.level(), player.getBlockPos()));
+//                CraftingScreenHandler craftingScreenHandler = new CraftingScreenHandler(syncId, playerInventory, ScreenHandlerContext.create(player.level(), player.blockPosition()));
 //                ((ScreenHandlerUsabilityOverride) craftingScreenHandler).apoli$canUse(true);
 //
 //                return craftingScreenHandler;

@@ -6,7 +6,7 @@
 //import io.github.apace100.apoli.power.PowerConfiguration;
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
-//import net.minecraft.entity.EquipmentSlot;
+//import net.minecraft.world.entity.EquipmentSlot;
 //import net.minecraft.world.entity.LivingEntity;
 //import org.jetbrains.annotations.NotNull;
 //

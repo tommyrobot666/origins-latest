@@ -6,7 +6,7 @@
 //import io.github.apace100.apoli.component.PowerHolderComponent;
 //import io.github.apace100.apoli.power.type.ModifyCraftingPowerType;
 //import io.github.apace100.apoli.power.type.RestrictArmorPowerType;
-//import net.minecraft.entity.EquipmentSlot;
+//import net.minecraft.world.entity.EquipmentSlot;
 //import net.minecraft.world.entity.player.Player;
 //import net.minecraft.entity.player.Container;
 //import net.minecraft.inventory.TransientCraftingContainer;

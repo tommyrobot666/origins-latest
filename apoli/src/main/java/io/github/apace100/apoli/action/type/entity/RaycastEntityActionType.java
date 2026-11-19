@@ -26,7 +26,7 @@
 //import net.minecraft.util.hit.BlockHitResult;
 //import net.minecraft.util.hit.EntityHitResult;
 //import net.minecraft.util.hit.HitResult;
-//import net.minecraft.util.math.Box;
+//import net.minecraft.util.math.AABB;
 //import net.minecraft.core.Direction;
 //import net.minecraft.world.phys.Vec3;
 //import net.minecraft.world.RaycastContext;
@@ -219,7 +219,7 @@
 //
 //            switch (result) {
 //                case BlockHitResult blockResult ->
-//                    blockAction.ifPresent(self -> self.execute(entity.level(), blockResult.getBlockPos(), Optional.of(blockResult.getSide())));
+//                    blockAction.ifPresent(self -> self.execute(entity.level(), blockResult.blockPosition(), Optional.of(blockResult.getSide())));
 //                case EntityHitResult entityResult ->
 //                    biEntityAction.ifPresent(self -> self.execute(entity, entityResult.getEntity()));
 //                default -> {
@@ -254,7 +254,7 @@
 //    private EntityHitResult entityRaycast(Entity caster, Vec3 origin, Vec3 destination) {
 //
 //        Vec3 ray = destination.subtract(origin);
-//        Box box = caster.getBoundingBox().stretch(ray).expand(1.0D);
+//        AABB box = caster.getBoundingBox().stretch(ray).expand(1.0D);
 //
 //        Predicate<Entity> intersectPredicate = EntityPredicates.EXCEPT_SPECTATOR
 //            .and(intersected -> biEntityCondition

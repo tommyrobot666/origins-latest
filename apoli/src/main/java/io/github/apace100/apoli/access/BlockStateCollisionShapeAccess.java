@@ -1,10 +1,10 @@
-//package io.github.apace100.apoli.access;
-//
-//import net.minecraft.block.CollisionContext;
-//import net.minecraft.core.BlockPos;
-//import net.minecraft.util.shape.VoxelShape;
-//import net.minecraft.world.BlockGetter;
-//
-//public interface BlockStateCollisionShapeAccess {
-//    VoxelShape apoli$getOriginalCollisionShape(BlockGetter world, BlockPos pos, CollisionContext context);
-//}
+package io.github.apace100.apoli.access;
+
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
+
+public interface BlockStateCollisionShapeAccess {
+    VoxelShape apoli$getOriginalCollisionShape(BlockGetter world, BlockPos pos, CollisionContext context);
+}

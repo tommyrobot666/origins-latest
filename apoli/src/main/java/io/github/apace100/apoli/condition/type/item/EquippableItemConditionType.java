@@ -7,7 +7,7 @@
 //import io.github.apace100.apoli.data.TypedDataObjectFactory;
 //import io.github.apace100.calio.data.SerializableData;
 //import io.github.apace100.calio.data.SerializableDataTypes;
-//import net.minecraft.component.type.AttributeModifierSlot;
+//import net.minecraft.component.type.EquipmentSlotGroup;
 //import net.minecraft.item.Equipment;
 //import org.jetbrains.annotations.NotNull;
 //
@@ -25,9 +25,9 @@
 //            .set("equipment_slot", conditionType.equipmentSlot)
 //    );
 //
-//    private final Optional<AttributeModifierSlot> equipmentSlot;
+//    private final Optional<EquipmentSlotGroup> equipmentSlot;
 //
-//    public EquippableItemConditionType(Optional<AttributeModifierSlot> equipmentSlot) {
+//    public EquippableItemConditionType(Optional<EquipmentSlotGroup> equipmentSlot) {
 //        this.equipmentSlot = equipmentSlot;
 //    }
 //

@@ -3,7 +3,7 @@
 //import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 //import io.github.apace100.apoli.component.PowerHolderComponent;
 //import io.github.apace100.apoli.power.type.RestrictArmorPowerType;
-//import net.minecraft.entity.EquipmentSlot;
+//import net.minecraft.world.entity.EquipmentSlot;
 //import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.screen.slot.ArmorSlot;
