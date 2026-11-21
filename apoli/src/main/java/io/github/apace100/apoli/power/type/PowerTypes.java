@@ -80,10 +80,10 @@ public class PowerTypes {
     public static final PowerConfiguration<ModifyFoodPowerType> MODIFY_FOOD = register(PowerConfiguration.of(Apoli.identifier("modify_food"), ModifyFoodPowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<ModifyFovPowerType> MODIFY_FOV = register(PowerConfiguration.of(Apoli.identifier("modify_fov"), ModifyFovPowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<ModifyGrindstonePowerType> MODIFY_GRINDSTONE = register(PowerConfiguration.of(Apoli.identifier("modify_grindstone"), ModifyGrindstonePowerType.DATA_FACTORY));
-//    public static final PowerConfiguration<ModifyHarvestPowerType> MODIFY_HARVEST = register(PowerConfiguration.of(Apoli.identifier("modify_harvest"), ModifyHarvestPowerType.DATA_FACTORY));
+    public static final PowerConfiguration<ModifyHarvestPowerType> MODIFY_HARVEST = register(PowerConfiguration.of(Apoli.identifier("modify_harvest"), ModifyHarvestPowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<ModifyHealingPowerType> MODIFY_HEALING = register(ValueModifyingPowerType.createModifyingConfiguration(Apoli.identifier("modify_healing"), ModifyHealingPowerType::new));
 //    public static final PowerConfiguration<ModifyInsomniaTicksPowerType> MODIFY_INSOMNIA_TICKS = register(ValueModifyingPowerType.createModifyingConfiguration(Apoli.identifier("modify_insomnia_ticks"), ModifyInsomniaTicksPowerType::new));
-//    public static final PowerConfiguration<ModifyJumpPowerType> MODIFY_JUMP = register(PowerConfiguration.of(Apoli.identifier("modify_jump"), ModifyJumpPowerType.DATA_FACTORY));
+    public static final PowerConfiguration<ModifyJumpPowerType> MODIFY_JUMP = register(PowerConfiguration.of(Apoli.identifier("modify_jump"), ModifyJumpPowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<ModifyLavaSpeedPowerType> MODIFY_LAVA_SPEED = register(PowerConfiguration.of(Apoli.identifier("modify_lava_speed"), ModifyLavaSpeedPowerType.DATA_FACTORY));
     public static final PowerConfiguration<ModifyPlayerSpawnPowerType> MODIFY_PLAYER_SPAWN = register(PowerConfiguration.of(Apoli.identifier("modify_player_spawn"), ModifyPlayerSpawnPowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<ModifyProjectileDamagePowerType> MODIFY_PROJECTILE_DAMAGE = register(PowerConfiguration.of(Apoli.identifier("modify_projectile_damage"), ModifyProjectileDamagePowerType.DATA_FACTORY));

@@ -162,7 +162,7 @@
 //        boolean hasModifyingPower = false;
 //
 //        if (source.getAttacker() != null) {
-//            if (source.isIn(DamageTypeTags.IS_PROJECTILE)) hasModifyingPower = PowerHolderComponent.hasPowerType(source.getAttacker(), ModifyProjectileDamagePowerType.class, mpdp -> mpdp.doesApply(source, amount, this));
+//            if (source.is(DamageTypeTags.IS_PROJECTILE)) hasModifyingPower = PowerHolderComponent.hasPowerType(source.getAttacker(), ModifyProjectileDamagePowerType.class, mpdp -> mpdp.doesApply(source, amount, this));
 //            else hasModifyingPower = PowerHolderComponent.hasPowerType(source.getAttacker(), ModifyDamageDealtPowerType.class, mddp -> mddp.doesApply(source, amount, this));
 //        }
 //

@@ -14,7 +14,7 @@
 //import io.github.apace100.apoli.util.PriorityPhase;
 //import net.minecraft.world.level.block.state.BlockState;
 //import net.minecraft.client.player.LocalPlayer;
-//import net.minecraft.client.network.ClientPlayerInteractionManager;
+//import net.minecraft.client.network.MultiPlayerGameMode;
 //import net.minecraft.world.entity.player.Player;
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.util.InteractionResult;
@@ -28,8 +28,8 @@
 //
 //import java.util.List;
 //
-//@Mixin(ClientPlayerInteractionManager.class)
-//public abstract class ClientPlayerInteractionManagerMixin {
+//@Mixin(MultiPlayerGameMode.class)
+//public abstract class MultiPlayerGameModeMixin {
 //
 //    @WrapOperation(method = "interactBlockInternal", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/BlockState;onUse(Lnet/minecraft/world/Level;Lnet/minecraft/entity/player/Player;Lnet/minecraft/util/hit/BlockHitResult;)Lnet/minecraft/util/InteractionResult;"))
 //    private InteractionResult apoli$beforeUseBlock(BlockState state, Level world, Player player, BlockHitResult hitResult, Operation<InteractionResult> original, LocalPlayer mPlayer, InteractionHand mHand, @Share("zeroPriority$useBlock") LocalRef<InteractionResult> zeroPriority$useBlockRef) {

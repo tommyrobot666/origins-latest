@@ -31,7 +31,7 @@
 //
 //    @Override
 //    public boolean test(FluidConditionContext context) {
-//        return context.fluidState().isIn(tag);
+//        return context.fluidState().is(tag);
 //    }
 //
 //    @Override

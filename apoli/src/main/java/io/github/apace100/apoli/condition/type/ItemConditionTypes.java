@@ -22,7 +22,7 @@ public class ItemConditionTypes {
     public static final ConditionConfiguration<RandomChanceItemConditionType> RANDOM_CHANCE = register(RandomChanceMetaConditionType.createConfiguration(RandomChanceItemConditionType::new));
 
 //    public static final ConditionConfiguration<AmountItemConditionType> AMOUNT = register(ConditionConfiguration.of(Apoli.identifier("amount"), AmountItemConditionType.DATA_FACTORY));
-//    public static final ConditionConfiguration<ArmorValueItemConditionType> ARMOR_VALUE = register(ConditionConfiguration.of(Apoli.identifier("armor_value"), ArmorValueItemConditionType.DATA_FACTORY));
+    public static final ConditionConfiguration<ArmorValueItemConditionType> ARMOR_VALUE = register(ConditionConfiguration.of(Apoli.identifier("armor_value"), ArmorValueItemConditionType.DATA_FACTORY));
 //    public static final ConditionConfiguration<CustomDataItemConditionType> CUSTOM_DATA = register(ConditionConfiguration.of(Apoli.identifier("custom_data"), CustomDataItemConditionType.DATA_FACTORY));
 //    public static final ConditionConfiguration<DamageableItemConditionType> DAMAGEABLE = register(ConditionConfiguration.simple(Apoli.identifier("damageable"), DamageableItemConditionType::new));
 //    public static final ConditionConfiguration<DurabilityItemConditionType> DURABILITY = register(ConditionConfiguration.of(Apoli.identifier("durability"), DurabilityItemConditionType.DATA_FACTORY));

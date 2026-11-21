@@ -5,6 +5,7 @@ import io.github.apace100.apoli.action.ActionConfiguration;
 import io.github.apace100.apoli.action.BlockAction;
 import io.github.apace100.apoli.action.type.block.meta.*;
 import io.github.apace100.apoli.action.type.meta.*;
+import io.github.apace100.apoli.condition.BlockCondition;
 import io.github.apace100.apoli.registry.ApoliRegistries;
 import io.github.apace100.calio.data.SerializableDataType;
 import io.github.apace100.calio.util.IdentifierAlias;
@@ -20,7 +21,7 @@ public class BlockActionTypes {
 //    public static final ActionConfiguration<ChoiceBlockActionType> CHOICE = register(ChoiceMetaActionType.createConfiguration(BlockAction.DATA_TYPE, ChoiceBlockActionType::new));
 //    public static final ActionConfiguration<DelayBlockActionType> DELAY = register(DelayMetaActionType.createConfiguration(BlockAction.DATA_TYPE, DelayBlockActionType::new));
 //    public static final ActionConfiguration<IfElseListBlockActionType> IF_ELSE_LIST = register(IfElseListMetaActionType.createConfiguration(BlockAction.DATA_TYPE, BlockCondition.DATA_TYPE, IfElseListBlockActionType::new));
-//    public static final ActionConfiguration<IfElseBlockActionType> IF_ELSE = register(IfElseMetaActionType.createConfiguration(BlockAction.DATA_TYPE, BlockCondition.DATA_TYPE, IfElseBlockActionType::new));
+    public static final ActionConfiguration<IfElseBlockActionType> IF_ELSE = register(IfElseMetaActionType.createConfiguration(BlockAction.DATA_TYPE, BlockCondition.DATA_TYPE, IfElseBlockActionType::new));
 //    public static final ActionConfiguration<NothingBlockActionType> NOTHING = register(NothingMetaActionType.createConfiguration(NothingBlockActionType::new));
 //    public static final ActionConfiguration<SideBlockActionType> SIDE = register(SideMetaActionType.createConfiguration(BlockAction.DATA_TYPE, SideBlockActionType::new));
 //

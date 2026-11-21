@@ -27,7 +27,7 @@
 //import net.minecraft.util.Mth;
 //import net.minecraft.world.phys.Vec3;
 //import net.minecraft.world.phys.shapes.VoxelShape;
-//import net.minecraft.world.BlockGetter;
+//import net.minecraft.world.level.BlockGetter;
 //import net.minecraft.world.level.Level;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.Shadow;
@@ -315,9 +315,9 @@
 //
 //    }
 //
-//    @WrapOperation(method = "handleFallDamage", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/EntityType;isIn(Lnet/minecraft/registry/tag/TagKey;)Z"))
+//    @WrapOperation(method = "handleFallDamage", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/EntityType;is(Lnet/minecraft/registry/tag/TagKey;)Z"))
 //    private boolean apoli$fixEntityTypeCalls(EntityType<?> instance, TagKey<EntityType<?>> tag, Operation<Boolean> original) {
-//        return this.getType().isIn(tag);
+//        return this.getType().is(tag);
 //    }
 //
 //    @Unique

@@ -71,7 +71,7 @@
 //    @Override
 //    public Visibility draw(int x, int y, DrawContext context, ToastManager manager, long startTime) {
 //
-//        TextRenderer textRenderer = manager.getClient().textRenderer;
+//        TextRenderer textRenderer = manager.getMinecraft().textRenderer;
 //        int alphaShift = Mth.floor(Mth.clamp((float) Math.abs(alphaShiftEnd - startTime) / 300, 0.0, 1.0) * 255.0f) << 24 | 67108864;
 //
 //        int toastTextX = 30;

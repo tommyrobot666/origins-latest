@@ -15,6 +15,7 @@
     "RecipeManagerAccessor",
     "RecipeMapAccessor",
     "ScreenHandlerAccessor",
+    "ServerPlayerGameModeAccessor",
     "SlotRangesAccessor",
     "TagValueInputAccessor",
     "TagValueOutputAccessor",
@@ -23,8 +24,10 @@
     "internal.DefaultAttributeRegistryAccessor"
   ],
   "client": [
+    "ClientPlayerAccessor",
     "KeyBindingAccessor",
-    "MinecraftClientMixin"
+    "MinecraftClientMixin",
+    "MultiPlayerGameModeAccessor"
   ],
   "injectors": {
     "defaultRequire": 1

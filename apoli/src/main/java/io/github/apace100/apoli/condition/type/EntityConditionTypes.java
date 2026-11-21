@@ -57,7 +57,7 @@ public class EntityConditionTypes {
 //    public static final ConditionConfiguration<InBlockEntityConditionType> IN_BLOCK = register(ConditionConfiguration.of(Apoli.identifier("in_block"), InBlockEntityConditionType.DATA_FACTORY));
     public static final ConditionConfiguration<InRainEntityConditionType> IN_RAIN = register(ConditionConfiguration.simple(Apoli.identifier("in_rain"), InRainEntityConditionType::new));
 //    public static final ConditionConfiguration<InSnowEntityConditionType> IN_SNOW = register(ConditionConfiguration.simple(Apoli.identifier("in_snow"), InSnowEntityConditionType::new));
-//    public static final ConditionConfiguration<InTagEntityConditionType> IN_TAG = register(ConditionConfiguration.of(Apoli.identifier("in_tag"), InTagEntityConditionType.DATA_FACTORY));
+    public static final ConditionConfiguration<InTagEntityConditionType> IN_TAG = register(ConditionConfiguration.of(Apoli.identifier("in_tag"), InTagEntityConditionType.DATA_FACTORY));
 //    public static final ConditionConfiguration<InThunderstormEntityConditionType> IN_THUNDERSTORM = register(ConditionConfiguration.simple(Apoli.identifier("in_thunderstorm"), InThunderstormEntityConditionType::new));
 //    public static final ConditionConfiguration<InventoryEntityConditionType> INVENTORY = register(ConditionConfiguration.of(Apoli.identifier("inventory"), InventoryEntityConditionType.DATA_FACTORY));
     public static final ConditionConfiguration<InvisibleEntityConditionType> INVISIBLE = register(ConditionConfiguration.simple(Apoli.identifier("invisible"), InvisibleEntityConditionType::new));
@@ -87,7 +87,7 @@ public class EntityConditionTypes {
 //    public static final ConditionConfiguration<SwimmingEntityConditionType> SWIMMING = register(ConditionConfiguration.simple(Apoli.identifier("swimming"), SwimmingEntityConditionType::new));
 //    public static final ConditionConfiguration<TamedEntityConditionType> TAMED = register(ConditionConfiguration.simple(Apoli.identifier("tamed"), TamedEntityConditionType::new));
 //    public static final ConditionConfiguration<TimeOfDayEntityConditionType> TIME_OF_DAY = register(ConditionConfiguration.of(Apoli.identifier("time_of_day"), TimeOfDayEntityConditionType.DATA_FACTORY));
-//    public static final ConditionConfiguration<UsingEffectiveToolEntityConditionType> USING_EFFECTIVE_TOOL = register(ConditionConfiguration.simple(Apoli.identifier("using_effective_tool"), UsingEffectiveToolEntityConditionType::new));
+    public static final ConditionConfiguration<UsingEffectiveToolEntityConditionType> USING_EFFECTIVE_TOOL = register(ConditionConfiguration.simple(Apoli.identifier("using_effective_tool"), UsingEffectiveToolEntityConditionType::new));
 //    public static final ConditionConfiguration<UsingItemEntityConditionType> USING_ITEM = register(ConditionConfiguration.of(Apoli.identifier("using_item"), UsingItemEntityConditionType.DATA_FACTORY));
 //    public static final ConditionConfiguration<XpLevelsEntityConditionType> XP_LEVELS = register(ConditionConfiguration.of(Apoli.identifier("xp_levels"), XpLevelsEntityConditionType.DATA_FACTORY));
 //    public static final ConditionConfiguration<XpPointsEntityConditionType> XP_POINTS = register(ConditionConfiguration.of(Apoli.identifier("xp_points"), XpPointsEntityConditionType.DATA_FACTORY));

@@ -23,7 +23,7 @@
 //import net.minecraft.core.BlockPos;
 //import net.minecraft.util.math.AABB;
 //import net.minecraft.world.phys.Vec3;
-//import net.minecraft.world.BlockGetter;
+//import net.minecraft.world.level.BlockGetter;
 //import org.spongepowered.asm.mixin.Final;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.Shadow;

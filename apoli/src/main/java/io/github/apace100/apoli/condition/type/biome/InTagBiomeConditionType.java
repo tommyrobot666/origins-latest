@@ -31,7 +31,7 @@
 //
 //    @Override
 //    public boolean test(BiomeConditionContext context) {
-//        return context.biomeEntry().isIn(tag);
+//        return context.biomeEntry().is(tag);
 //    }
 //
 //    @Override

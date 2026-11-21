@@ -7,8 +7,8 @@
 //import io.github.apace100.apoli.data.ApoliDataTypes;
 //import io.github.apace100.apoli.data.TypedDataObjectFactory;
 //import io.github.apace100.apoli.mixin.ClientPlayerAccessor;
-//import io.github.apace100.apoli.mixin.ClientPlayerInteractionManagerAccessor;
-//import io.github.apace100.apoli.mixin.ServerPlayerInteractionManagerAccessor;
+//import io.github.apace100.apoli.mixin.MultiPlayerGameModeAccessor;
+//import io.github.apace100.apoli.mixin.ServerPlayerGameModeAccessor;
 //import io.github.apace100.calio.data.SerializableData;
 //import net.minecraft.client.player.LocalPlayer;
 //import net.minecraft.world.entity.player.Player;
@@ -42,12 +42,12 @@
 //        }
 //
 //        else if (player instanceof ServerPlayer serverPlayer) {
-//            ServerPlayerInteractionManagerAccessor interactionManager = (ServerPlayerInteractionManagerAccessor) serverPlayer.interactionManager;
+//            ServerPlayerGameModeAccessor interactionManager = (ServerPlayerGameModeAccessor) serverPlayer.interactionManager;
 //            return interactionManager.getGameMode() == gameMode;
 //        }
 //
 //        else if (player instanceof LocalPlayer clientPlayer) {
-//            ClientPlayerInteractionManagerAccessor interactionManager = (ClientPlayerInteractionManagerAccessor) (((ClientPlayerAccessor) clientPlayer).getClient()).interactionManager;
+//            MultiPlayerGameModeAccessor interactionManager = (MultiPlayerGameModeAccessor) (((ClientPlayerAccessor) clientPlayer).getMinecraft()).interactionManager;
 //            return interactionManager != null && interactionManager.getGameMode() == gameMode;
 //        }
 //

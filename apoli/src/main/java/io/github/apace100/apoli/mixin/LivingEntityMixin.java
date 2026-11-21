@@ -130,7 +130,7 @@
 //    @ModifyReturnValue(method = "canWalkOnFluid", at = @At("RETURN"))
 //    private boolean apoli$letEntitiesWalkOnFluid(boolean original, FluidState fluidState) {
 //        return original
-//            || PowerHolderComponent.hasPowerType(this, WalkOnFluidPowerType.class, p -> fluidState.isIn(p.getFluidTag()));
+//            || PowerHolderComponent.hasPowerType(this, WalkOnFluidPowerType.class, p -> fluidState.is(p.getFluidTag()));
 //    }
 //
 //    @ModifyVariable(method = "heal", at = @At("HEAD"), argsOnly = true)
@@ -162,7 +162,7 @@
 //        LivingEntity thisAsLiving = (LivingEntity) (Object) this;
 //        float newValue = original;
 //
-//        if (source.getAttacker() != null && source.isIn(DamageTypeTags.IS_PROJECTILE)) {
+//        if (source.getAttacker() != null && source.is(DamageTypeTags.IS_PROJECTILE)) {
 //            newValue = PowerHolderComponent.modify(source.getAttacker(), ModifyProjectileDamagePowerType.class, original,
 //                p -> p.doesApply(source, original, thisAsLiving),
 //                p -> p.executeActions(thisAsLiving));
@@ -207,7 +207,7 @@
 //
 //    }
 //
-//    @ModifyExpressionValue(method = "applyArmorToDamage", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/damage/DamageSource;isIn(Lnet/minecraft/registry/tag/TagKey;)Z"))
+//    @ModifyExpressionValue(method = "applyArmorToDamage", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/damage/DamageSource;is(Lnet/minecraft/registry/tag/TagKey;)Z"))
 //    private boolean apoli$allowApplyingOrDamagingArmor(boolean original, DamageSource source, float amount) {
 //
 //        if (apoli$shouldApplyArmor.isEmpty() && (original && apoli$shouldDamageArmor.orElse(false))) {

@@ -30,7 +30,7 @@ public class DamageConditionTypes {
     public static final ConditionConfiguration<InTagDamageConditionType> IN_TAG = register(ConditionConfiguration.of(Apoli.identifier("in_tag"), InTagDamageConditionType.DATA_FACTORY));
 //    public static final ConditionConfiguration<NameDamageConditionType> NAME = register(ConditionConfiguration.of(Apoli.identifier("name"), NameDamageConditionType.DATA_FACTORY));
 //    public static final ConditionConfiguration<OutOfWorldDamageConditionType> OUT_OF_WORLD = register(ConditionConfiguration.simple(Apoli.identifier("out_of_world"), OutOfWorldDamageConditionType::new));
-//    public static final ConditionConfiguration<ProjectileDamageConditionType> PROJECTILE = register(ConditionConfiguration.of(Apoli.identifier("projectile"), ProjectileDamageConditionType.DATA_FACTORY));
+    public static final ConditionConfiguration<ProjectileDamageConditionType> PROJECTILE = register(ConditionConfiguration.of(Apoli.identifier("projectile"), ProjectileDamageConditionType.DATA_FACTORY));
 //    public static final ConditionConfiguration<TypeDamageConditionType> TYPE = register(ConditionConfiguration.of(Apoli.identifier("type"), TypeDamageConditionType.DATA_FACTORY));
 //    public static final ConditionConfiguration<UnblockableDamageConditionType> UNBLOCKABLE = register(ConditionConfiguration.simple(Apoli.identifier("unblockable"), UnblockableDamageConditionType::new));
 

@@ -19,7 +19,7 @@
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.network.packet.c2s.play.PlayerActionC2SPacket;
 //import net.minecraft.server.level.ServerPlayer;
-//import net.minecraft.server.level.ServerPlayerInteractionManager;
+//import net.minecraft.server.level.ServerPlayerGameMode;
 //import net.minecraft.server.level.ServerLevel;
 //import net.minecraft.util.InteractionResult;
 //import net.minecraft.world.InteractionHand;
@@ -40,8 +40,8 @@
 //
 //import java.util.List;
 //
-//@Mixin(ServerPlayerInteractionManager.class)
-//public class ServerPlayerInteractionManagerMixin {
+//@Mixin(ServerPlayerGameMode.class)
+//public class ServerPlayerGameModeMixin {
 //
 //    @Shadow
 //    protected ServerLevel world;

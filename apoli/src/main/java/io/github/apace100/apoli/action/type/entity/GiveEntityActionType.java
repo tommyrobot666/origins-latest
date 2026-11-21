@@ -12,6 +12,7 @@ import io.github.apace100.calio.data.SerializableDataTypes;
 import net.minecraft.util.Prediction;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
@@ -24,16 +25,19 @@ public class GiveEntityActionType extends EntityActionType {
         new SerializableData()
             .add("item_action", ItemAction.DATA_TYPE.optional(), Optional.empty())
             .add("preferred_slot", SerializableDataTypes.ATTRIBUTE_MODIFIER_SLOT.optional(), Optional.empty())
-            .add("stack", SerializableDataTypes.ITEM_STACK),
+//            .add("stack", SerializableDataTypes.ITEM_STACK),
+            .add("stack", SerializableDataTypes.ITEM_ID),
         data -> new GiveEntityActionType(
             data.get("item_action"),
             data.get("preferred_slot"),
-            data.get("stack")
+//            data.get("stack")
+            ((Item) data.get("stack")).getDefaultInstance()
         ),
         (actionType, serializableData) -> serializableData.instance()
             .set("item_action", actionType.itemAction)
             .set("preferred_slot", actionType.preferredSlot)
-            .set("stack", actionType.stack)
+//            .set("stack", actionType.stack)
+            .set("stack", actionType.stack.getItem())
     );
 
     private final Optional<ItemAction> itemAction;

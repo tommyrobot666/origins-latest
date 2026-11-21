@@ -27,7 +27,7 @@
 //	@Mixin(Vibrations.Callback.class)
 //	public interface CustomCallbackHandler {
 //
-//		@WrapOperation(method = "canAccept", at = @At(value = "INVOKE", target = "Lnet/minecraft/registry/entry/Holder;isIn(Lnet/minecraft/registry/tag/TagKey;)Z", ordinal = 0))
+//		@WrapOperation(method = "canAccept", at = @At(value = "INVOKE", target = "Lnet/minecraft/registry/entry/Holder;is(Lnet/minecraft/registry/tag/TagKey;)Z", ordinal = 0))
 //		private boolean apoli$acceptsGameEvent(Holder<GameEvent> gameEvent, TagKey<GameEvent> gameEventTag, Operation<Boolean> original) {
 //
 //			if ((Vibrations.Callback) this instanceof GameEventListenerPowerType.Callback powerCallback) {

@@ -223,7 +223,7 @@
 //        }
 //
 //        public boolean containsEvent(Holder<GameEvent> gameEvent) {
-//            return gameEventTag.map(gameEvent::isIn).orElse(true)
+//            return gameEventTag.map(gameEvent::is).orElse(true)
 //                && (gameEvents.isEmpty() || gameEvents.contains(gameEvent));
 //        }
 //

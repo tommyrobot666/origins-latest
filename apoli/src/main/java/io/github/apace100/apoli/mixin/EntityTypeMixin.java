@@ -33,13 +33,13 @@
 //        this.apoli$currentEntity.set(new WeakReference<>(entity));
 //    }
 //
-//    @ModifyReturnValue(method = "isIn(Lnet/minecraft/registry/tag/TagKey;)Z", at = @At("RETURN"))
+//    @ModifyReturnValue(method = "is(Lnet/minecraft/registry/tag/TagKey;)Z", at = @At("RETURN"))
 //    private boolean apoli$inTagProxy(boolean original, TagKey<EntityType<?>> tag) {
 //        return original
 //            || ModifyTypeTagPowerType.doesApply(this.apoli$getEntity(), tag);
 //    }
 //
-//    @ModifyReturnValue(method = "isIn(Lnet/minecraft/registry/entry/HolderSet;)Z", at = @At("RETURN"))
+//    @ModifyReturnValue(method = "is(Lnet/minecraft/registry/entry/HolderSet;)Z", at = @At("RETURN"))
 //    private boolean apoli$inTagEntryListProxy(boolean original, HolderSet<EntityType<?>> entryList) {
 //        return original
 //            || ModifyTypeTagPowerType.doesApply(this.apoli$getEntity(), entryList);
