@@ -104,7 +104,7 @@
 //        }
 //
 //        else {
-//            return SlotAccess.of(null,null);
+//            return SlotAccess.of(()->ItemStack.EMPTY,(item)->{});
 //        }
 //
 //    }

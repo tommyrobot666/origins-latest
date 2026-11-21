@@ -122,7 +122,7 @@ public class ModifyEnchantmentLevelPowerType extends ValueModifyingPowerType {
             SlotAccess stackReference = LivingEntityAccessor.callCreateEquipmentSlotAccess(holder, equipmentSlot);
             ItemStack stack = stackReference.get();
 
-            if (stackReference != SlotAccess.of(null,null) && stack.isEmpty() && !WorkableEmptyStack.isOf(stack)) {
+            if (stackReference != SlotAccess.of(()->ItemStack.EMPTY,(item)->{}) && stack.isEmpty() && !WorkableEmptyStack.isOf(stack)) {
                 stackReference.set(WorkableEmptyStack.getOrCreate(holder));
             }
 

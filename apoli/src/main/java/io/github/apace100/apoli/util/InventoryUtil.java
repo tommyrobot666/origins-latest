@@ -180,13 +180,14 @@ public class InventoryUtil {
             }
 
             SlotAccess stackReference = entity.getSlot(slot);
-            if (stackReference != SlotAccess.of(null,null) && equalityPredicate.test(stack, stackReference.get())) {
+            if (stackReference != null && equalityPredicate.test(stack, stackReference.get())) {
                 return stackReference;
             }
 
         }
 
-        return SlotAccess.of(null,null);
+        //TODO replace every SlotAccess.of(()->ItemStack.EMPTY,(item)->{}) with something else
+        return SlotAccess.of(()->ItemStack.EMPTY,(item)->{});
 
     }
 
@@ -221,7 +222,7 @@ public class InventoryUtil {
     public static SlotAccess getInventoryStackReference(Container inventory, int slot) {
         return isSlotWithinInventoryBounds(inventory, slot)
             ? SlotAccess.of(() -> inventory.getItem(slot), (stack) -> inventory.setItem(slot,stack))
-            : SlotAccess.of(null,null);
+            : SlotAccess.of(()->ItemStack.EMPTY,(item)->{});
     }
 
     /**
@@ -274,7 +275,7 @@ public class InventoryUtil {
 
             SlotAccess queriedStackRef = entity.getSlot(slot);
 
-            if (queriedStackRef != SlotAccess.of(null,null) && queriedStackRef.equals(stackReference)) {
+            if (queriedStackRef != SlotAccess.of(()->ItemStack.EMPTY,(item)->{}) && queriedStackRef.equals(stackReference)) {
                 return OptionalInt.of(slot);
             }
 

@@ -121,7 +121,7 @@ public class EdibleItemPowerType extends PowerType implements Prioritized<Edible
         SlotAccess resultStackReference = this.resultStack
             .map(ItemStack::copy)
             .map(InventoryUtil::createStackReference)
-            .orElse(SlotAccess.of(null,null));
+            .orElse(SlotAccess.of(()->ItemStack.EMPTY,(item)->{}));
 
         resultItemAction.ifPresent(action -> action.execute(world, resultStackReference));
         return resultStackReference;

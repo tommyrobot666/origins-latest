@@ -64,7 +64,7 @@ public class Origin implements Comparable<Origin>, Validatable {
         ),
         (origin, serializableData) -> serializableData.instance()
             .set("id", origin.getId())
-            .set("icon", origin.getDisplayItem())
+//            .set("icon", airToDirt(iconToItem(origin.getDisplayItem())))
             .set("powers", origin.getPowerReferences())
             .set("impact", origin.getImpact())
             .set("name", origin.getName())
@@ -73,6 +73,11 @@ public class Origin implements Comparable<Origin>, Validatable {
             .set("special", origin.isSpecial())
             .set("order", origin.getOrder())
     );
+
+    private static Item airToDirt(Item item) {
+        if (item == Items.AIR) return Items.DIRT;
+        return item;
+    }
 
     private static Item iconToItem(Object icon) {
         if (icon instanceof Item item) return item;

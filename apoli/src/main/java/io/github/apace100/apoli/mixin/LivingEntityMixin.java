@@ -450,7 +450,7 @@
 //            ItemStack newStack = newStackRef.get();
 //            ItemStack resultStack = resultStackRef.get();
 //
-//            if (resultStackRef == SlotAccess.of(null,null)) {
+//            if (resultStackRef == SlotAccess.of(()->ItemStack.EMPTY,(item)->{})) {
 //                result = newStack;
 //                break modifyCustomFood;
 //            }
