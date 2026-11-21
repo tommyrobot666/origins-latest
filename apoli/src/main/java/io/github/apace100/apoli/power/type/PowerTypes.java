@@ -51,6 +51,7 @@ public class PowerTypes {
     public static final PowerConfiguration<EntitySetPowerType> ENTITY_SET = register(PowerConfiguration.of(Apoli.identifier("entity_set"), EntitySetPowerType.DATA_FACTORY));
     public static final PowerConfiguration<ExhaustOverTimePowerType> EXHAUST = register(PowerConfiguration.of(Apoli.identifier("exhaust"), ExhaustOverTimePowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<FireImmunityPowerType> FIRE_IMMUNITY = register(PowerConfiguration.conditionedSimple(Apoli.identifier("fire_immunity"), FireImmunityPowerType::new));
+    //TODO fix all origins using FIRE_PROJECTILE by replacing with action
 //    public static final PowerConfiguration<FireProjectilePowerType> FIRE_PROJECTILE = register(PowerConfiguration.of(Apoli.identifier("fire_projectile"), FireProjectilePowerType.DATA_FACTORY));
 //    public static final PowerConfiguration<FreezePowerType> FREEZE = register(PowerConfiguration.conditionedSimple(Apoli.identifier("freeze"), FreezePowerType::new));
 //    public static final PowerConfiguration<GameEventListenerPowerType> GAME_EVENT_LISTENER = register(PowerConfiguration.of(Apoli.identifier("game_event_listener"), GameEventListenerPowerType.DATA_FACTORY));

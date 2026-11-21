@@ -8,6 +8,7 @@ import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.*;
 import com.mojang.serialization.codecs.UnboundedMapCodec;
+import io.github.apace100.calio.Calio;
 import io.github.apace100.calio.CalioServer;
 import io.github.apace100.calio.codec.JsonCodec;
 import io.github.apace100.calio.registry.DataObjectFactory;
@@ -470,9 +471,16 @@ public class SerializableDataType<T> {
 
                             if (CalioServer.getRegistryTags().containsKey(tag)) {
                                 return DataResult.success(tagAndInput);
-                            }
+                            } else {
+                                var lookup = RegistryOpsUtil.getEntryLookup(ops, registryRef);
+                                if (lookup.isPresent()){
+                                    var isTag = lookup.orElseThrow().get(tag);
+                                    if (isTag.isEmpty()) Calio.LOGGER.warn("tag {} doesn't exist",idAndInput.getFirst());
+                                } else {
+                                    Calio.LOGGER.warn("failed to lookup tags when loading {}",idAndInput.getFirst());
+                                }
 
-                            else {
+
                                 return DataResult.success(tagAndInput);
 //                                return RegistryOpsUtil.getEntryLookup(ops, registryRef)
 //                                    .map(DataResult::success)

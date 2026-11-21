@@ -81,7 +81,7 @@ public class EntityConditionTypes {
 //    public static final ConditionConfiguration<SaturationLevelEntityConditionType> SATURATION_LEVEL = register(ConditionConfiguration.of(Apoli.identifier("saturation_level"), SaturationLevelEntityConditionType.DATA_FACTORY));
 //    public static final ConditionConfiguration<ScoreboardEntityConditionType> SCOREBOARD = register(ConditionConfiguration.of(Apoli.identifier("scoreboard"), ScoreboardEntityConditionType.DATA_FACTORY));
     public static final ConditionConfiguration<SneakingEntityConditionType> SNEAKING = register(ConditionConfiguration.simple(Apoli.identifier("sneaking"), SneakingEntityConditionType::new));
-//    public static final ConditionConfiguration<SprintingEntityConditionType> SPRINTING = register(ConditionConfiguration.simple(Apoli.identifier("sprinting"), SprintingEntityConditionType::new));
+    public static final ConditionConfiguration<SprintingEntityConditionType> SPRINTING = register(ConditionConfiguration.simple(Apoli.identifier("sprinting"), SprintingEntityConditionType::new));
 //    public static final ConditionConfiguration<MobEffectEntityConditionType> STATUS_EFFECT = register(ConditionConfiguration.of(Apoli.identifier("status_effect"), MobEffectEntityConditionType.DATA_FACTORY));
     public static final ConditionConfiguration<SubmergedInEntityConditionType> SUBMERGED_IN = register(ConditionConfiguration.of(Apoli.identifier("submerged_in"), SubmergedInEntityConditionType.DATA_FACTORY));
 //    public static final ConditionConfiguration<SwimmingEntityConditionType> SWIMMING = register(ConditionConfiguration.simple(Apoli.identifier("swimming"), SwimmingEntityConditionType::new));

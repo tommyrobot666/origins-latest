@@ -14,7 +14,6 @@ import io.github.apace100.calio.registry.DataObjectFactories;
 import io.github.apace100.calio.util.ArgumentWrapper;
 import io.github.apace100.calio.util.DynamicIdentifier;
 import io.github.apace100.calio.util.TagLike;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.fabricmc.fabric.api.recipe.v1.ingredient.CustomIngredient;
 import net.fabricmc.fabric.api.recipe.v1.ingredient.CustomIngredientSerializer;
 import net.fabricmc.fabric.impl.recipe.ingredient.CustomIngredientImpl;
@@ -48,7 +47,6 @@ import net.minecraft.tags.TagEntry;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.ExtraCodecs;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -376,6 +374,18 @@ public final class SerializableDataTypes {
 					return CUSTOM_INGREDIENT_CODEC.decode(ops, input)
 						.map(customIngredientAndInput -> customIngredientAndInput
 							.mapFirst(CustomIngredient::toVanilla));
+				}
+
+				DataResult<T> tagIngredient = ops.get(input,"tag");
+				if (tagIngredient.isSuccess()){
+					String tag = ops.getStringValue(tagIngredient.getOrThrow()).getOrThrow();
+					Identifier tagId = DynamicIdentifier.of(tag);
+					var tagEntries = BuiltInRegistries.ITEM.get(TagKey.create(Registries.ITEM,tagId));
+					if (tagEntries.isEmpty()){
+						Calio.LOGGER.warn("failed loading tag ingredient {}",tag);
+						return DataResult.success(Pair.of(Ingredient.of(Items.DIRT),input));
+					}
+					return DataResult.success(Pair.of(Ingredient.of(tagEntries.orElseThrow()),input));
 				}
 
 				//	Otherwise, decode the input as a vanilla ingredient
