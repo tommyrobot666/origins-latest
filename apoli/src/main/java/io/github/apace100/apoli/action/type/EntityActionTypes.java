@@ -31,7 +31,7 @@ public class EntityActionTypes {
 //    public static final ActionConfiguration<AddXpEntityActionType> ADD_XP = register(ActionConfiguration.of(Apoli.identifier("add_xp"), AddXpEntityActionType.DATA_FACTORY));
 //    public static final ActionConfiguration<ApplyEffectEntityActionType> APPLY_EFFECT = register(ActionConfiguration.of(Apoli.identifier("apply_effect"), ApplyEffectEntityActionType.DATA_FACTORY));
 //    public static final ActionConfiguration<AreaOfEffectEntityActionType> AREA_OF_EFFECT = register(ActionConfiguration.of(Apoli.identifier("area_of_effect"), AreaOfEffectEntityActionType.DATA_FACTORY));
-//    public static final ActionConfiguration<BlockActionAtEntityActionType> BLOCK_ACTION_AT = register(ActionConfiguration.of(Apoli.identifier("block_action_at"), BlockActionAtEntityActionType.DATA_FACTORY));
+    public static final ActionConfiguration<BlockActionAtEntityActionType> BLOCK_ACTION_AT = register(ActionConfiguration.of(Apoli.identifier("block_action_at"), BlockActionAtEntityActionType.DATA_FACTORY));
 //    public static final ActionConfiguration<ChangeResourceEntityActionType> CHANGE_RESOURCE = register(ActionConfiguration.of(Apoli.identifier("change_resource"), ChangeResourceEntityActionType.DATA_FACTORY));
 //    public static final ActionConfiguration<ClearEffectEntityActionType> CLEAR_EFFECT = register(ActionConfiguration.of(Apoli.identifier("clear_effect"), ClearEffectEntityActionType.DATA_FACTORY));
 //    public static final ActionConfiguration<CraftingTableEntityActionType> CRAFTING_TABLE = register(ActionConfiguration.simple(Apoli.identifier("crafting_table"), CraftingTableEntityActionType::new));
@@ -48,7 +48,7 @@ public class EntityActionTypes {
 //    public static final ActionConfiguration<FeedEntityActionType> FEED = register(ActionConfiguration.of(Apoli.identifier("feed"), FeedEntityActionType.DATA_FACTORY));
 //    public static final ActionConfiguration<FireProjectileEntityActionType> FIRE_PROJECTILE = register(ActionConfiguration.of(Apoli.identifier("fire_projectile"), FireProjectileEntityActionType.DATA_FACTORY));
     public static final ActionConfiguration<GainAirEntityActionType> GAIN_AIR = register(ActionConfiguration.of(Apoli.identifier("gain_air"), GainAirEntityActionType.DATA_FACTORY));
-//    public static final ActionConfiguration<GiveEntityActionType> GIVE = register(ActionConfiguration.of(Apoli.identifier("give"), GiveEntityActionType.DATA_FACTORY));
+    public static final ActionConfiguration<GiveEntityActionType> GIVE = register(ActionConfiguration.of(Apoli.identifier("give"), GiveEntityActionType.DATA_FACTORY));
 //    public static final ActionConfiguration<GrantAdvancementEntityActionType> GRANT_ADVANCEMENT = register(ActionConfiguration.of(Apoli.identifier("grant_advancement"), GrantAdvancementEntityActionType.DATA_FACTORY));
 //    public static final ActionConfiguration<GrantPowerEntityActionType> GRANT_POWER = register(ActionConfiguration.of(Apoli.identifier("grant_power"), GrantPowerEntityActionType.DATA_FACTORY));
 //    public static final ActionConfiguration<HealEntityActionType> HEAL = register(ActionConfiguration.of(Apoli.identifier("heal"), HealEntityActionType.DATA_FACTORY));

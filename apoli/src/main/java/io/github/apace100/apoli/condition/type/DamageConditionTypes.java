@@ -27,7 +27,7 @@ public class DamageConditionTypes {
 //    public static final ConditionConfiguration<ExplosiveDamageConditionType> EXPLOSIVE = register(ConditionConfiguration.simple(Apoli.identifier("explosive"), ExplosiveDamageConditionType::new));
 //    public static final ConditionConfiguration<FireDamageConditionType> FIRE = register(ConditionConfiguration.simple(Apoli.identifier("fire"), FireDamageConditionType::new));
 //    public static final ConditionConfiguration<FromFallingDamageConditionType> FROM_FALLING = register(ConditionConfiguration.simple(Apoli.identifier("from_falling"), FromFallingDamageConditionType::new));
-//    public static final ConditionConfiguration<InTagDamageConditionType> IN_TAG = register(ConditionConfiguration.of(Apoli.identifier("in_tag"), InTagDamageConditionType.DATA_FACTORY));
+    public static final ConditionConfiguration<InTagDamageConditionType> IN_TAG = register(ConditionConfiguration.of(Apoli.identifier("in_tag"), InTagDamageConditionType.DATA_FACTORY));
 //    public static final ConditionConfiguration<NameDamageConditionType> NAME = register(ConditionConfiguration.of(Apoli.identifier("name"), NameDamageConditionType.DATA_FACTORY));
 //    public static final ConditionConfiguration<OutOfWorldDamageConditionType> OUT_OF_WORLD = register(ConditionConfiguration.simple(Apoli.identifier("out_of_world"), OutOfWorldDamageConditionType::new));
 //    public static final ConditionConfiguration<ProjectileDamageConditionType> PROJECTILE = register(ConditionConfiguration.of(Apoli.identifier("projectile"), ProjectileDamageConditionType.DATA_FACTORY));

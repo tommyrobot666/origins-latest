@@ -81,7 +81,7 @@
 //            if (!given) {
 //
 //                if (holder instanceof Player player) {
-//                    player.getInventory().offerOrDrop(stack);
+//                    player.getInventory().placeItemBackInInventory(stack);
 //                }
 //
 //                else {

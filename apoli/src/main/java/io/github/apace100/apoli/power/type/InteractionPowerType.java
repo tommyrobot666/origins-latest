@@ -83,7 +83,7 @@
 //            }
 //
 //            else {
-//                actor.getInventory().offerOrDrop(resultStackReference.get());
+//                actor.getInventory().placeItemBackInInventory(resultStackReference.get());
 //            }
 //
 //        }

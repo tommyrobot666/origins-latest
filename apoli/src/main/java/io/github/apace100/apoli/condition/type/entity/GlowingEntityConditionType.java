@@ -13,7 +13,7 @@
 //	@Override
 //	public boolean test(EntityConditionContext context) {
 //		Entity entity = context.entity();
-//		return !entity.level().isClientSide()()
+//		return !entity.level().isClientSide()
 //			? entity.isGlowing()
 //			: Minecraft.getInstance().hasOutline(entity);
 //	}

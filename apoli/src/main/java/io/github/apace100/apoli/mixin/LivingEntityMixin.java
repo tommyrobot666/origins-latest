@@ -465,7 +465,7 @@
 //            }
 //
 //            else if ((LivingEntity) (Object) this instanceof Player player && !player.isCreative()) {
-//                player.getInventory().offerOrDrop(resultStack);
+//                player.getInventory().placeItemBackInInventory(resultStack);
 //            }
 //
 //            else {
