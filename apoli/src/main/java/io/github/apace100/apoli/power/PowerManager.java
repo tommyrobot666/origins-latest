@@ -24,6 +24,7 @@ import net.fabricmc.fabric.api.event.lifecycle.v1.ServerEntityEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.fabricmc.fabric.api.resource.conditions.v1.ResourceConditions;
+import net.fabricmc.fabric.api.resource.v1.reloader.ResourceReloaderKeys;
 import net.fabricmc.fabric.impl.resource.conditions.ResourceConditionsImpl;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.resources.Identifier;
@@ -79,7 +80,7 @@ public class PowerManager extends IdentifiableMultiJsonDataLoader implements Pre
 
     @Override
     public Identifier getBefore(){
-        return null;
+        return ResourceReloaderKeys.AFTER_VANILLA;
     }
 
     @Override
