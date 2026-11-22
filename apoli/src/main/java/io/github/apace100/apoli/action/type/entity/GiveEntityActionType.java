@@ -18,6 +18,7 @@ import org.jetbrains.annotations.NotNull;
 
 
 import java.util.Optional;
+import java.util.function.Supplier;
 
 public class GiveEntityActionType extends EntityActionType {
 
@@ -25,30 +26,35 @@ public class GiveEntityActionType extends EntityActionType {
         new SerializableData()
             .add("item_action", ItemAction.DATA_TYPE.optional(), Optional.empty())
             .add("preferred_slot", SerializableDataTypes.ATTRIBUTE_MODIFIER_SLOT.optional(), Optional.empty())
+                //TODO fix "Components not bound yet" instead of removing components from SerializableData
 //            .add("stack", SerializableDataTypes.ITEM_STACK),
             .add("stack", SerializableDataTypes.ITEM_ID),
         data -> new GiveEntityActionType(
             data.get("item_action"),
             data.get("preferred_slot"),
 //            data.get("stack")
-            ((Item) data.get("stack")).getDefaultInstance()
+            ((Item) data.get("stack"))
         ),
         (actionType, serializableData) -> serializableData.instance()
             .set("item_action", actionType.itemAction)
             .set("preferred_slot", actionType.preferredSlot)
 //            .set("stack", actionType.stack)
-            .set("stack", actionType.stack.getItem())
+            .set("stack", actionType.stack.get().getItem())
     );
 
     private final Optional<ItemAction> itemAction;
 
     private final Optional<EquipmentSlotGroup> preferredSlot;
-    private final ItemStack stack;
+    private final Supplier<ItemStack> stack;
 
-    public GiveEntityActionType(Optional<ItemAction> itemAction, Optional<EquipmentSlotGroup> preferredSlot, ItemStack stack) {
+    public GiveEntityActionType(Optional<ItemAction> itemAction, Optional<EquipmentSlotGroup> preferredSlot, Supplier<ItemStack> stack) {
         this.itemAction = itemAction;
         this.preferredSlot = preferredSlot;
         this.stack = stack;
+    }
+
+    public GiveEntityActionType(Optional<ItemAction> itemAction, Optional<EquipmentSlotGroup> preferredSlot, Item item) {
+        this(itemAction,preferredSlot,item::getDefaultInstance);
     }
 
     @Override
@@ -56,11 +62,11 @@ public class GiveEntityActionType extends EntityActionType {
 
         Entity entity = context.entity();
 
-        if (entity.level().isClientSide() || stack.isEmpty()) {
+        if (entity.level().isClientSide() || stack.get().isEmpty()) {
             return;
         }
 
-        SlotAccess stackReference = InventoryUtil.createStackReference(stack.copy());
+        SlotAccess stackReference = InventoryUtil.createStackReference(stack.get().copy());
         itemAction.ifPresent(action -> action.execute(entity.level(), stackReference));
 
         ItemStack stackToGive = stackReference.get();

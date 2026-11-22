@@ -6,7 +6,7 @@
 //import io.github.apace100.apoli.power.type.EffectImmunityPowerType;
 //import net.minecraft.world.entity.Entity;
 //import net.minecraft.world.entity.LivingEntity;
-//import net.minecraft.entity.effect.MobEffect;
+//import net.minecraft.world.effect.MobEffect;
 //import net.minecraft.core.registries.Registries;
 //import org.spongepowered.asm.mixin.Mixin;
 //

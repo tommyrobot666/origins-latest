@@ -10,7 +10,7 @@
 //import net.fabricmc.fabric.api.entity.event.v1.EntityElytraEvents;
 //import net.minecraft.world.entity.EquipmentSlot;
 //import net.minecraft.world.entity.LivingEntity;
-//import net.minecraft.entity.effect.MobEffects;
+//import net.minecraft.world.effect.MobEffects;
 //import net.minecraft.item.ElytraItem;
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.item.Items;

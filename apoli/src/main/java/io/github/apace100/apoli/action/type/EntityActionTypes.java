@@ -57,7 +57,7 @@ public class EntityActionTypes {
 //    public static final ActionConfiguration<ModifyResourceEntityActionType> MODIFY_RESOURCE = register(ActionConfiguration.of(Apoli.identifier("modify_resource"), ModifyResourceEntityActionType.DATA_FACTORY));
 //    public static final ActionConfiguration<ModifyStatEntityActionType> MODIFY_STAT = register(ActionConfiguration.of(Apoli.identifier("modify_stat"), ModifyStatEntityActionType.DATA_FACTORY));
 //    public static final ActionConfiguration<PassengerActionEntityActionType> PASSENGER = register(ActionConfiguration.of(Apoli.identifier("passenger_action"), PassengerActionEntityActionType.DATA_FACTORY));
-//    public static final ActionConfiguration<PlaySoundEntityActionType> PLAY_SOUND = register(ActionConfiguration.of(Apoli.identifier("play_sound"), PlaySoundEntityActionType.DATA_FACTORY));
+    public static final ActionConfiguration<PlaySoundEntityActionType> PLAY_SOUND = register(ActionConfiguration.of(Apoli.identifier("play_sound"), PlaySoundEntityActionType.DATA_FACTORY));
 //    public static final ActionConfiguration<RandomTeleportEntityActionType> RANDOM_TELEPORT = register(ActionConfiguration.of(Apoli.identifier("random_teleport"), RandomTeleportEntityActionType.DATA_FACTORY));
 //    public static final ActionConfiguration<RaycastEntityActionType> RAYCAST = register(ActionConfiguration.of(Apoli.identifier("raycast"), RaycastEntityActionType.DATA_FACTORY));
 //    public static final ActionConfiguration<RemovePowerEntityActionType> REMOVE_POWER = register(ActionConfiguration.of(Apoli.identifier("remove_power"), RemovePowerEntityActionType.DATA_FACTORY));
@@ -75,7 +75,7 @@ public class EntityActionTypes {
 //    public static final ActionConfiguration<SpawnEntityEntityActionType> SPAWN_ENTITY = register(ActionConfiguration.of(Apoli.identifier("spawn_entity"), SpawnEntityEntityActionType.DATA_FACTORY));
 //    public static final ActionConfiguration<SpawnParticlesEntityActionType> SPAWN_PARTICLES = register(ActionConfiguration.of(Apoli.identifier("spawn_particles"), SpawnParticlesEntityActionType.DATA_FACTORY));
 //    public static final ActionConfiguration<SwingHandEntityActionType> SWING_HAND = register(ActionConfiguration.of(Apoli.identifier("swing_hand"), SwingHandEntityActionType.DATA_FACTORY));
-//    public static final ActionConfiguration<ToggleEntityActionType> TOGGLE = register(ActionConfiguration.of(Apoli.identifier("toggle"), ToggleEntityActionType.DATA_FACTORY));
+    public static final ActionConfiguration<ToggleEntityActionType> TOGGLE = register(ActionConfiguration.of(Apoli.identifier("toggle"), ToggleEntityActionType.DATA_FACTORY));
 //    public static final ActionConfiguration<TriggerCooldownEntityActionType> TRIGGER_COOLDOWN = register(ActionConfiguration.of(Apoli.identifier("trigger_cooldown"), TriggerCooldownEntityActionType.DATA_FACTORY));
 
     public static void register() {

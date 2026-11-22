@@ -21,8 +21,8 @@
 //import net.minecraft.world.entity.ai.attributes.AttributeMap
 //import net.minecraft.world.entity.ai.attributes.Attribute;
 //import net.minecraft.entity.attribute.EntityAttributes;
-//import net.minecraft.world.damagesource.DamageSource;//import net.minecraft.entity.effect.MobEffect;
-//import net.minecraft.entity.effect.MobEffectInstance;
+//import net.minecraft.world.damagesource.DamageSource;//import net.minecraft.world.effect.MobEffect;
+//import net.minecraft.world.effect.MobEffectInstance;
 //import net.minecraft.world.entity.player.Player;
 //import net.minecraft.world.level.material.FluidState;
 //import net.minecraft.world.entity.SlotAccess;

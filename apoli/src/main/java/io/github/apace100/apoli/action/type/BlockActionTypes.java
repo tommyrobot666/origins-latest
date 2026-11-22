@@ -3,6 +3,7 @@ package io.github.apace100.apoli.action.type;
 import io.github.apace100.apoli.Apoli;
 import io.github.apace100.apoli.action.ActionConfiguration;
 import io.github.apace100.apoli.action.BlockAction;
+import io.github.apace100.apoli.action.type.block.*;
 import io.github.apace100.apoli.action.type.block.meta.*;
 import io.github.apace100.apoli.action.type.meta.*;
 import io.github.apace100.apoli.condition.BlockCondition;
@@ -33,7 +34,7 @@ public class BlockActionTypes {
 //    public static final ActionConfiguration<ExecuteCommandBlockActionType> EXECUTE_COMMAND = register(ActionConfiguration.of(Apoli.identifier("execute_command"), ExecuteCommandBlockActionType.DATA_FACTORY));
 //    public static final ActionConfiguration<ExplodeBlockActionType> EXPLODE = register(ActionConfiguration.of(Apoli.identifier("explode"), ExplodeBlockActionType.DATA_FACTORY));
 //    public static final ActionConfiguration<ModifyBlockStateBlockActionType> MODIFY_BLOCK_STATE = register(ActionConfiguration.of(Apoli.identifier("modify_block_state"), ModifyBlockStateBlockActionType.DATA_FACTORY));
-//    public static final ActionConfiguration<SetBlockBlockActionType> SET_BLOCK = register(ActionConfiguration.of(Apoli.identifier("set_block"), SetBlockBlockActionType.DATA_FACTORY));
+    public static final ActionConfiguration<SetBlockBlockActionType> SET_BLOCK = register(ActionConfiguration.of(Apoli.identifier("set_block"), SetBlockBlockActionType.DATA_FACTORY));
 //    public static final ActionConfiguration<SpawnEntityBlockActionType> SPAWN_ENTITY = register(ActionConfiguration.of(Apoli.identifier("spawn_entity"), SpawnEntityBlockActionType.DATA_FACTORY));
 
     public static void register() {

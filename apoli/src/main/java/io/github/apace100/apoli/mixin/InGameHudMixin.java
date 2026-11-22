@@ -12,7 +12,7 @@
 //import net.minecraft.client.gui.DrawContext;
 //import net.minecraft.client.gui.LayeredDrawer;
 //import net.minecraft.client.gui.hud.InGameHud;
-//import net.minecraft.entity.effect.MobEffects;
+//import net.minecraft.world.effect.MobEffects;
 //import net.minecraft.world.entity.player.Player;
 //import net.minecraft.resources.Identifier;
 //import org.objectweb.asm.Opcodes;

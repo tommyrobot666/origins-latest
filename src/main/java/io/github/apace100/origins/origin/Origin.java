@@ -45,6 +45,7 @@ public class Origin implements Comparable<Origin>, Validatable {
     public static final SerializableDataType<Origin> DATA_TYPE = SerializableDataType.compound(
         new SerializableData()
             .add("id", SerializableDataTypes.IDENTIFIER)
+                //TODO fix "Components not bound yet" instead of removing components from SerializableData
             .add("icon", SerializableDataTypes.ITEM_ID, Items.AIR)
             .add("powers", ApoliDataTypes.POWER_REFERENCE.list(), new ObjectArrayList<>())
             .add("impact", OriginsDataTypes.IMPACT, Impact.NONE)
